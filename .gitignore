@@ -1,5 +1,5 @@
 .htaccess
-wp-content/uploads/
+wp-content/uploads/*
 wp-content/blogs.dir/
 wp-content/upgrade/
 wp-content/backup-db/
