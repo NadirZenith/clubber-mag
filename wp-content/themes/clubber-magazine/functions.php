@@ -183,7 +183,7 @@ do_action('attitude_init');
 add_filter("gform_post_data", "event_change_date_format", 10, 3);
 
 function event_change_date_format($post_data, $form, $entry) {
-      d($post_data);
+      /*d($post_data);*/
       if ($form["id"] != 1) {
             return $post_data;
       }
@@ -200,7 +200,7 @@ function event_change_date_format($post_data, $form, $entry) {
                   $post_data['post_custom_fields']['wpcf-event_end_date'] = $user_input_end_DATETIME->getTimestamp();
             }
       }
-      d($post_data);
+      /*d($post_data);*/
 
       return $post_data;
 }
