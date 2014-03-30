@@ -1,6 +1,5 @@
 <?php
 
-include_once 'kint-0.9/Kint.class.php';
 
 
 /*                ----------------------------              */
