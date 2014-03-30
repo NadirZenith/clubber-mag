@@ -1,0 +1,204 @@
+/*home-list*/
+/*     events       */
+.home-list .col-0{
+}
+/*     news       */
+.home-list .col-1{
+    width: 350px;
+}
+/*       banner & music     */
+.home-list .col-2{
+    width: 350px;
+}
+/*     photo & video       */
+.home-list .col-3{
+    width: 500px;
+}
+
+.home-list section.photo article{
+    width: 490px;
+    height: 280px;
+}
+.home-list section.video article{
+    width: 490px;
+    height: 295px;
+}
+
+
+.event-date{
+    font-weight: 700;
+    background-color: #0583F2; 
+    padding: 0 5px;
+}
+.home-list h2 a{
+    /*color: #eee;*/
+}
+/*.home-list */
+section:hover h1 a{
+    color: #eee;
+}
+
+
+.home-list .banner-side{
+    background-color: #DDD;
+    margin:5px;
+    height: 130px; 
+}
+
+
+/*  ---- CALENDAR ----*/
+#calendar{
+    font-size: 20px;
+}
+#calendar .fc-header-center{
+    padding-right:  17px;
+}
+#calendar .fc-header-title h2{
+    /*color: #333;*/
+}
+#calendar .fc-day-header{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: #333;
+    background-color: #777;
+}
+#calendar .fc-today{
+    background-color:#0583F1 !important;
+}
+#calendar .fc-other-month{
+    color: #fff;
+}
+#calendar .fc-day:hover{
+    background-color: #333;
+    font-size: 25px;
+}
+#calendar .fc-day{
+    cursor: pointer;
+}
+
+#calendar .fc-day-number{
+    text-align: center;
+    float: none;
+    margin-top: 7px;
+}
+
+
+/*FOOTER*/
+#site-footer{
+    background-color: #444;
+    padding-top: 60px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+#footer-menu{
+    margin-left: 80px;
+}
+#footer-menu ul{
+    float: left;
+    font-family: 'Russo One', sans-serif;
+}
+/* cascade menu move to common */
+/*   FIRST LEVEL MENU   */
+#footer-menu ul li{
+    float: left;
+    width: 200px;
+    margin-left: 15px;
+    font-size: 15px;
+
+}
+#footer-menu ul li a{
+    border-bottom: 1px #eee solid;
+    width: 100%;
+    display: block;
+    text-indent: 5px;
+    color: #eee;
+    padding: 5px 0;
+}
+/*  SECOND LEVEL MENU    */
+#footer-menu ul li ul{
+    background-color: transparent;
+
+}
+#footer-menu ul li ul li{
+    clear: both;
+    font-size: 13px;
+    margin-left: 0;
+}
+#footer-menu ul li ul li a{
+    border-bottom: none;
+    /*color: #eee;*/
+}
+/* =Responsive Structure
+----------------------------------------------- */
+/* All Tablet Portrait size smaller than standard 1079 (devices and browsers) */
+@media only screen and (max-width: 1078px) {
+
+    .home-list .col-1{
+        width: 50%;
+    }
+    .home-list .col-2{
+        width: 50%;
+    }
+
+    .home-list .col-3{
+        width: 668px;
+    }
+    .home-list section.photo article{
+        width: 655px;
+        height: 380px;
+    }
+
+
+}
+
+
+
+/* All Mobile Portrait size smaller than 768 (devices and browsers) */
+@media only screen and (max-width: 767px) {
+
+    .home-list .col-1{
+        width: 100%;
+    }
+    .home-list .col-2{
+        width: 100%;
+    }
+    .home-list .col-3{
+        width: 280px;
+    }
+    .home-list section.photo article{
+        width: 270px;
+        height: 180px;
+    }
+
+
+}
+
+/* All Mobile landscape size and All Mini Tablet Portrait size smaller than standard 768 and larger than 480 (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .home-list .col-3{
+        width: 420px;
+    }
+    .home-list section.photo article{
+        width: 410px;
+        height: 190px;
+    }
+
+
+
+}
+
+
+/* All Mobile size smaller than standard 320 (devices and browsers) */
+@media only screen and (max-width: 319px) {
+    .home-list .col-3{
+        width: 100%;
+    }
+
+    .home-list section.photo article{
+        width: 250px;
+        height: 170px;
+    }
+
+}
