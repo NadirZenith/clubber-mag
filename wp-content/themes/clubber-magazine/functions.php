@@ -115,7 +115,7 @@ function attitude_load_files() {
       require_once( CLUBBER_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/ml-slider/ml-slider.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php');
-      /* require_once( CLUBBER_PLUGIN_DIR . '/ozh-admin-drop-down-menu/wp_ozh_adminmenu.php'); */
+       require_once( CLUBBER_PLUGIN_DIR . '/ozh-admin-drop-down-menu/wp_ozh_adminmenu.php'); 
       /* require_once( CLUBBER_PLUGIN_DIR . '/disable-default-post/disable-default-post.php'); //REMOVES results OF HOME(NEWS MUSIC GALLERY) */
       /* require_once( CLUBBER_PLUGIN_DIR . '/wp-maintenance-mode/wp-maintenance-mode.php'); */
 
