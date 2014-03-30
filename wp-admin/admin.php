@@ -5,7 +5,6 @@
  * @package WordPress
  * @subpackage Administration
  */
-include_once 'kint-0.9/Kint.class.php';
 
 /**
  * In WordPress Administration Screens
