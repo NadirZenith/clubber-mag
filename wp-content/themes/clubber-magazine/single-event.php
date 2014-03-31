@@ -1,21 +1,6 @@
-<?php
-/**
- * Displays the single section of the theme.
- *
- * @package Theme Horse
- * @subpackage Attitude
- * @since Attitude 1.0
- */
-?>
 
 <?php get_header(); ?>
 
-<?php
-/**
- * attitude_before_main_container hook
- */
-/* do_action('attitude_before_main_container'); */
-?>
 <div id="container">
       <div id="primary">
             <?php
@@ -26,7 +11,9 @@
                         $post_timestamp = get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true);
                         $taxonomy = 'city';
                         $term = wp_get_post_terms(get_the_ID(), $taxonomy)[0]->name;
-                        $link = get_term_link($term, $taxonomy);
+                        if ($term = wp_get_post_terms(get_the_ID(), $taxonomy)[0]->name) {
+                              $link = get_term_link($term, $taxonomy);
+                        }
                         ?>
 
                         <section class="bg-50 block-5" style="overflow:visible">
@@ -51,9 +38,7 @@
                                                 </div>
                                                 <div class="post-meta meddium" >
                                                       <div class="fl col-2-4">
-                                                            <ul >
-                                                                  <!--<ul style="border-right:1px solid #333;">-->
-
+                                                            <ul>
                                                                   <li class="event-city">
                                                                         <span class="bold">Ciudad: </span>
                                                                         <?php echo "<a href='{$link}' title='Eventos en {$term}'>{$term}</a>"; ?> 
@@ -71,18 +56,22 @@
                                                       </div>
                                                       <div class="fl col-2-4">
                                                             <ul>
-                                                                  <li class="event-promoter">
-                                                                        <span class="bold"> Promotor: </span>
-                                                                        <?php echo get_post_meta(get_the_ID(), 'wpcf-event_promoter', true); ?>
-                                                                  </li>
+                                                                  <?php if ($event_promoter = get_post_meta(get_the_ID(), 'wpcf-event_promoter', true)) { ?>
+                                                                        <li class="event-promoter">
+                                                                              <span class="bold"> Promotor: </span>
+                                                                              <?php echo $event_promoter ?>
+                                                                        </li>
+                                                                  <?php } ?>
                                                                   <li class="event-price">
                                                                         <span class="bold">Precio: </span>
                                                                         <?php echo get_post_meta(get_the_ID(), 'wpcf-event_price', true) . '€'; ?>
                                                                   </li>
-                                                                  <li class="event-price-conditions">
-                                                                        <span class="bold">Condiciones del evento: </span>
-                                                                        <?php echo get_post_meta(get_the_ID(), 'wpcf-event_price_conditions', true); ?>
-                                                                  </li>
+                                                                  <?php if ($event_price_conditions = get_post_meta(get_the_ID(), 'wpcf-event_price_conditions', true)) { ?>
+                                                                        <li class="event-price-conditions">
+                                                                              <span class="bold">Condiciones del evento: </span>
+                                                                              <?php echo $event_price_conditions; ?>
+                                                                        </li>
+                                                                  <?php } ?>
                                                             </ul>
 
                                                       </div>
