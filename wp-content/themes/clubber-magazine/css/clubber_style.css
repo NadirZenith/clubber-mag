@@ -42,6 +42,10 @@ section:hover h1 a{
     height: 130px; 
 }
 
+.top-banner{
+    margin-left: 140px; margin-top: 30px;
+}
+
 
 /*  ---- CALENDAR ----*/
 #calendar{
@@ -145,6 +149,11 @@ section:hover h1 a{
         width: 655px;
         height: 380px;
     }
+    .top-banner{
+        margin-left: 0;
+        margin-top: 0px;
+    }
+
     .banner-side{
         height: available;
     }

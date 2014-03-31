@@ -134,12 +134,8 @@ function attitude_headerdetails() {
                               </a>	
                         </h1>
                   </hgroup><!-- #site-logo -->
-                  <div class="fl " style="margin-left: 140px; margin-top: 30px;"> 
-                        <?php
-                        echo do_shortcode('[sam id=1]');
-                        ?>
-                  </div>
-                  <section id="social-profiles">
+
+                  <section class="fr" id="social-profiles">
                         <ul>
                               <li>
                                     <a href="https://www.facebook.com/Clubber.Nightlife.Guide">
@@ -159,6 +155,11 @@ function attitude_headerdetails() {
                         </ul>
                         <?php ?>
                   </section>
+                  <div class="fl top-banner" style=""> 
+                        <?php
+                        echo do_shortcode('[sam id=1]');
+                        ?>
+                  </div>
             </div><!-- .hgroup-wrap -->
       </div><!-- .container -->	
       <?php
@@ -177,7 +178,6 @@ function attitude_headerdetails() {
       </nav>
       <?php
 }
-
 
 /* * ************************************************************************************* */
 
