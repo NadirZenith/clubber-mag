@@ -13,11 +13,9 @@ if (isset($_GET['date'])) {
       $decoded_date = urldecode($_GET['date']);
       $DateTime = date_create_from_format('d/m/Y', $decoded_date);
       if ($DateTime) {
-            /* d($DateTime); */
             $start_date = $DateTime->getTimestamp();
       }
 }
-/* d($start_date); */
 ?>
             function updateQueryStringParameter(uri, key, value) {
                   var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
