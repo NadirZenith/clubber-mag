@@ -38,8 +38,8 @@
                                     </div>
                                     <div class="mt15  col-2-4 fl">
                                           <div class="ml5"> 
-                                                <header style="" class="">
-                                                      <h1 style="" class=" mr15">
+                                                <header  class="mt30">
+                                                      <h1 style="line-height: normal;" class=" mr15">
                                                             <?php
                                                             the_title();
                                                             ?>
