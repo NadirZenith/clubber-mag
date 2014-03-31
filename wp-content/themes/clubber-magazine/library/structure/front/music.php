@@ -25,9 +25,12 @@ $the_query = new WP_Query($args);
                               <div class="hover">
                                     <h2 >
                                           <a class="ml5" href="<?php the_permalink() ?>">
-                                                <?php the_title() ?>
                                                 <?php
-                                                /* echo wp_trim_words(get_the_title(), 5); */
+                                                $mytitle = get_the_title();
+                                                if (strlen($mytitle) > 35) {
+                                                      $mytitle = substr($mytitle, 0, 35) . '...';
+                                                }
+                                                echo $mytitle;
                                                 ?>
                                           </a>
                                           <span style="font-size: 12px;" class="fr mr5"><?php echo $terms[0]->name; ?></span>

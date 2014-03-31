@@ -21,13 +21,19 @@ $the_query = new WP_Query($args);
                               <div class="hover">
                                     <h2>
                                           <a class="ml5"  href="<?php the_permalink() ?>">
-                                                <?php echo wp_trim_words(get_the_title(), 5); ?>
+                                                <?php
+                                                $mytitle = get_the_title();
+                                                if (strlen($mytitle) > 40) {
+                                                      $mytitle = substr($mytitle, 0, 40) . '...';
+                                                }
+                                                echo $mytitle;
+                                                ?>
                                           </a>
                                     </h2>
                               </div>
 
                               <a class="featured-image" href="<?php the_permalink() ?>"  style="">
-                                    <?php the_post_thumbnail('340-155-thumb'); ?>
+            <?php the_post_thumbnail('340-155-thumb'); ?>
                               </a>
 
                         </article>
