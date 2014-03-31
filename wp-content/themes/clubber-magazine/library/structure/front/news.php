@@ -32,8 +32,8 @@ $the_query = new WP_Query($args);
                                     </h2>
                               </div>
 
-                              <a class="featured-image" href="<?php the_permalink() ?>"  style="">
-            <?php the_post_thumbnail('340-155-thumb'); ?>
+                              <a class="featured-image" href="<?php the_permalink() ?>" >
+                                    <?php the_post_thumbnail('340-155-thumb'); ?>
                               </a>
 
                         </article>
