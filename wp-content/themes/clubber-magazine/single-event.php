@@ -45,7 +45,12 @@
                                                       <a  class="sc-eee" href="<?php echo add_query_arg(array('date' => urlencode(date('d/m/Y', $post_timestamp))), get_post_type_archive_link('event')) ?>">
                                                             <?php echo date('l d/m/y - H:i', $post_timestamp); ?>
                                                       </a>
-                                                      <?php echo ' / ' . date('H:i', $event_end_date); ?>
+
+                                                      <?php
+                                                      if ($event_end_date = get_post_meta(get_the_ID(), 'wpcf-event_end_date', true)) {
+                                                            echo ' / ' . date('H:i', $event_end_date);
+                                                      }
+                                                      ?>
                                                 </div>
                                                 <div class="post-meta meddium" >
                                                       <div class="fl col-2-4">
