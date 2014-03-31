@@ -41,7 +41,7 @@
                         <?php require_once 'library/structure/front/music.php'; ?>
                   </section>
 
-                  <div class="banner-side featured-image">
+                  <div class="banner-side">
                         <?php
                         echo do_shortcode('[sam id=3]');
                         ?>
