@@ -3,6 +3,11 @@
 
 <div id="container">
       <div id="primary">
+            <style>
+                  .event-date:hover .sc-eee{
+                        color: #333;
+                  }
+            </style>
             <?php
             global $post;
             if (have_posts()) {
@@ -34,7 +39,12 @@
                                                 </header>
                                                 <hr>
                                                 <div class="event-date" style="position: absolute; right: 0; top: 0px;font-size: 20px;padding: 2px;">
-                                                      <?php echo date('l d/m/y - H:i', $post_timestamp); ?>
+                                                      <?php
+                                                      ?>
+                                                      <a  class="sc-eee" href="<?php echo add_query_arg(array('date' => urlencode(date('d/m/Y', $post_timestamp))), get_post_type_archive_link('event')) ?>">
+                                                            <?php echo date('l d/m/y - H:i', $post_timestamp); ?>
+
+                                                      </a>
                                                 </div>
                                                 <div class="post-meta meddium" >
                                                       <div class="fl col-2-4">
@@ -64,7 +74,7 @@
                                                                   <?php } ?>
                                                                   <li class="event-price">
                                                                         <span class="bold">Precio: </span>
-                                                                        <?php echo get_post_meta(get_the_ID(), 'wpcf-event_price', true) . '€'; ?>
+                                                                        <?php echo get_post_meta(get_the_ID(), 'wpcf-event_price', true); ?>
                                                                   </li>
                                                                   <?php if ($event_price_conditions = get_post_meta(get_the_ID(), 'wpcf-event_price_conditions', true)) { ?>
                                                                         <li class="event-price-conditions">
