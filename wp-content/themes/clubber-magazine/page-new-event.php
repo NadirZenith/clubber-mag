@@ -65,8 +65,9 @@
             .gform_confirmation_wrapper {
                   font-size: 150%;
                   font-weight: 700;
-                  margin-left: 10px;
-                  margin-top: 10px;
+                  margin-left: 20px;
+                  margin-top: 30px;
+                  color:#333;
             }
 
       </style>
