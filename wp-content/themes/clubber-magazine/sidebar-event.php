@@ -12,10 +12,23 @@ $start_date = strtotime("now");
 if (isset($_GET['date'])) {
       $decoded_date = urldecode($_GET['date']);
       $DateTime = date_create_from_format('d/m/Y', $decoded_date);
-      if ($DateTime)
+      if ($DateTime) {
+            /* d($DateTime); */
             $start_date = $DateTime->getTimestamp();
+      }
 }
+/* d($start_date); */
 ?>
+            function updateQueryStringParameter(uri, key, value) {
+                  var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+                  var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+                  if (uri.match(re)) {
+                        return uri.replace(re, '$1' + key + "=" + value + '$2');
+                  }
+                  else {
+                        return uri + separator + key + "=" + value;
+                  }
+            }
 
             var start_date = new Date('<?php echo date('r', $start_date) ?>');
 
@@ -31,7 +44,9 @@ if (isset($_GET['date'])) {
                   firstDay: 1,
                   dayClick: function(date, allDay, jsEvent, view) {
                         var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-                        window.location = "<?php echo get_post_type_archive_link( 'event' ); ?>?date=" + encodeURIComponent(date_str);
+                        
+                        var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('event');?>', 'date', encodeURIComponent(date_str));
+                        window.location = location;
 
                   },
                   dayRender: function(date, cell) {
@@ -53,12 +68,12 @@ if (isset($_GET['date'])) {
 </script>
 
 
-<?php 
+<?php
 /*    BANNER      */
-/*include_once 'banners/archive-event.php';*/
+/* include_once 'banners/archive-event.php'; */
 include_once 'banners/right-2-300-300.php';
 
 /*    FACEBOOK LIKE BOX       */
-/*include_once 'facebook/facepile.php';*/
+/* include_once 'facebook/facepile.php'; */
 include_once 'facebook/like-box.php';
 ?>
