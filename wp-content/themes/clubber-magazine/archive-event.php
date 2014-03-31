@@ -66,10 +66,10 @@ if (is_tax($tax, 'madrid')) {
             $wp_query = new WP_Query($args);
             ?>
 
-                 <div class="clearfix ml15 mt15 mb15 mr15 bold meddium">
+            <div class="clearfix ml15 mt15 mb15 mr15 bold meddium">
                   <ul>
                         <li class="fl   " style="">
-                              <a href="<?php echo add_query_arg(array('date' => urlencode(date('d/m/Y', $prev_date)))) ?>"> <span class="meddium sc-1">&#8678;</span> Previous week</a>
+                              <a href="<?php echo add_query_arg(array('date' => urlencode(date('d/m/Y', $prev_date)))) ?>"> <span class="meddium sc-3">&#8678;</span> Previous week</a>
                         </li>
                         <li class="fr " style="font-weight: bold">
                               <a href="<?php echo add_query_arg(array('date' => date('d/m/Y', $end_date))) ?>">Next week <span class="meddium sc-3">&#8680;</span></a>
@@ -94,16 +94,22 @@ if (is_tax($tax, 'madrid')) {
                               }
                               $last_date = $post_date;
                               ?>
-                              <li>
+                              <li class="pr">
 
                                     <section class="bg-50 block-5 mb15" >
                                           <article>
                                                 <header>
                                                       <h1 class="mt5" style="">
-                                                            <a class="ml5" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-
+                                                            <a class="ml5" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                                                                  <?php
+                                                                  $mytitle = get_the_title();
+                                                                  if (strlen($mytitle) > 65) {
+                                                                        $mytitle = substr($mytitle, 0, 65) . '...';
+                                                                  }
+                                                                  echo $mytitle;
+                                                                  ?>
+                                                            </a>
                                                       </h1>
-
                                                 </header>
                                                 <hr class="pb5">
                                                 <div class="fl ml5 col-2-4 ">
@@ -114,33 +120,15 @@ if (is_tax($tax, 'madrid')) {
                                                       <div class="event-date" style="position: absolute; right: 0; bottom: 0;">
                                                             <?php
                                                             echo date('d/m/y - H:i', get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true));
-                                                            ?>
 
-                                                            <?php
-                                                            $term = wp_get_post_terms(get_the_ID(), $tax)[0]->name;
-                                                            if ($term) {
-                                                                  echo "- {$term}";
+                                                            if ($term = wp_get_post_terms(get_the_ID(), $tax)[0]->name) {
+                                                                  $link = get_term_link($term, $tax);
+                                                                  echo " <a href='{$link}'>en {$term}</a>";
                                                             }
-                                                            /* $link = get_term_link( $term, $taxonomy ); */
-                                                            /* d($link); */
-                                                            /* echo "- <a href='{$link}'>{$term}</a>"; */
                                                             ?>
                                                       </div>
 
-                                                      <div class="">
-                                                            <a class="readmore" href="<?php the_permalink() ?>" title="<?php the_title() ?>"> <?php echo __('Read more', 'attitude') ?></a>
-                                                      </div>
-                                                      <!--<div>
-                                                      <?php
-                                                      /*
-                                                        $terms = wp_get_post_terms(get_the_ID(), $tax);
-                                                        if ($terms) {
-                                                        echo $terms[0]->name;
-                                                        }
-                                                       */
-                                                      ?>
-                                                      </div>
-                                                      -->
+
                                                 </div>
                                                 <div class="fr col-2-4 nm" >
                                                       <?php
@@ -157,9 +145,10 @@ if (is_tax($tax, 'madrid')) {
                                                       ?>
                                                 </div>
                                           </article>
+                                          <div style="position: absolute; bottom: 10px;left: 20px;">
+                                                <a class="readmore" href="<?php the_permalink() ?>" title="<?php the_title() ?>"> <?php echo __('Read more', 'attitude') ?></a>
+                                          </div>
                                     </section>
-                                    <?php
-                                    ?>
                               </li>
                               <?php
                         }
@@ -175,7 +164,7 @@ if (is_tax($tax, 'madrid')) {
             </ul>
             <div class="clearfix ml15 mt30 mb15 mr15 bold meddium" >
                   <ul>
-                         <li class="fl">
+                        <li class="fl">
                               <a href="<?php echo add_query_arg(array('date' => urlencode(date('d/m/Y', $prev_date)))) ?>"> <span class="meddium sc-3">&#8678;</span> Previous week</a>
                         </li>
                         <li class="fr ">
@@ -190,7 +179,7 @@ if (is_tax($tax, 'madrid')) {
       <div id="secondary">
             <?php get_sidebar('event'); ?>
       </div>
-      
+
 </div><!-- #container -->
 
 <?php get_footer(); ?>
