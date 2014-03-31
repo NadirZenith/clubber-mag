@@ -145,6 +145,9 @@ section:hover h1 a{
         width: 655px;
         height: 380px;
     }
+    .banner-side{
+        height: available;
+    }
     .banner-side .sam-place{
         height: auto;
     }
