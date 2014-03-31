@@ -1,21 +1,6 @@
-<?php
-/**
- * Displays the single section of the theme.
- *
- * @package Theme Horse
- * @subpackage Attitude
- * @since Attitude 1.0
- */
-?>
 
 <?php get_header(); ?>
 
-<?php
-/**
- * attitude_before_main_container hook
- */
-/* do_action('attitude_before_main_container'); */
-?>
 <div id="container">
       <div id="primary">
             <?php
@@ -81,12 +66,7 @@
 
 
 </div><!--container-->
-<?php
-/**
- * attitude_after_main_container hook
- */
-do_action('attitude_after_main_container');
-?>
+
 
 <?php
 get_footer();
