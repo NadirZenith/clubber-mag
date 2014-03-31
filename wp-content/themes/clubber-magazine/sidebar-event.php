@@ -31,8 +31,7 @@ if (isset($_GET['date'])) {
                   firstDay: 1,
                   dayClick: function(date, allDay, jsEvent, view) {
                         var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-                        console.log(date_str);
-                        window.location = "?date=" + encodeURIComponent(date_str);
+                        window.location = "<?php echo get_post_type_archive_link( 'event' ); ?>?date=" + encodeURIComponent(date_str);
 
                   },
                   dayRender: function(date, cell) {
