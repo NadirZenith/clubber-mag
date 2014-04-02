@@ -130,7 +130,7 @@ function attitude_headerdetails() {
                   <hgroup id="site-logo" class="clearfix">
                         <h1 id=""> 
                               <a class="featured-image" style="width: 180px;" href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
-                                    <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/logo.png" class="" width="" height="" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
+                                    <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/logo1.png" class="" width="" height="" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
                               </a>	
                         </h1>
                   </hgroup><!-- #site-logo -->
