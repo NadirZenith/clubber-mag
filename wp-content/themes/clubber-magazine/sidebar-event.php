@@ -69,9 +69,9 @@ if (isset($_GET['date'])) {
 <?php
 /*    BANNER      */
 /* include_once 'banners/archive-event.php'; */
-include_once 'banners/right-2-300-300.php';
+/*include_once 'banners/right-2-300-300.php';*/
 
 /*    FACEBOOK LIKE BOX       */
-/* include_once 'facebook/facepile.php'; */
 include_once 'facebook/like-box.php';
+ /*include_once 'facebook/facepile.php'; */
 ?>
