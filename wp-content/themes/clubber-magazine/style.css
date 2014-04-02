@@ -636,7 +636,8 @@ li.default-menu {
         margin-top: 10px;
     } 
     #site-logo {
-        margin-top: 30px;
+        /*margin-top: 30px;*/
+        padding-bottom: 30px;
     }
     #site-title a img {
         max-width: 420px;	
