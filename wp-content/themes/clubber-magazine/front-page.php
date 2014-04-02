@@ -9,7 +9,7 @@
             <li class="col-0">
                   <section class="featured-posts">
                         <?php
-                        echo do_shortcode('[metaslider id=494]');
+                        echo do_shortcode('[metaslider id=661]');
                         ?>
                   </section>
             </li>
