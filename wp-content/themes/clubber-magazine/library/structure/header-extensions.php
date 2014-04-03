@@ -111,7 +111,7 @@ function attitude_webpageicon() {
         <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone4.png" />
        */
 
-      echo '<link rel="apple-touch-icon" href="' . get_site_url() . '/wp-content/themes/clubber-magazine/images/logo.png" />';
+      echo '<link rel="apple-touch-icon" href="' . get_site_url() . '/wp-content/themes/clubber-magazine/images/apple-touch-icon.png" />';
 }
 
 /* * ************************************************************************************* */
