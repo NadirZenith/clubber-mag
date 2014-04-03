@@ -95,7 +95,7 @@ add_action('admin_head', 'attitude_favicon');
 
 function attitude_favicon() {
 
-      echo '<link rel="shortcut icon" href="' . get_site_url() . '/wp-content/themes/clubber-magazine/images/favicon.ico" type="image/x-icon" />';
+      echo '<link rel="shortcut icon" href="' . get_site_url() . '/wp-content/themes/clubber-magazine/images/faviconv4.ico" type="image/x-icon" />';
 }
 
 /* * ************************************************************************************* */

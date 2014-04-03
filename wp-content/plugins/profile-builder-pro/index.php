@@ -133,5 +133,4 @@ register_deactivation_hook(__FILE__, array($PB_Admin, 'profile_builder_deactivat
   add_action( 'wp_ajax_profile_builder_delete', array( $PB_Admin, 'profile_builder_delete' ) );
   add_action( 'wp_ajax_profile_builder_next_id', array( $PB_Admin, 'profile_builder_next_id' ) );
   add_action( 'wp_ajax_profile_builder_sort', array( $PB_Admin, 'profile_builder_sort' ) );
-/*include ('images/social.png');*/
 ?>
