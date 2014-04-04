@@ -10,7 +10,7 @@
                         </nav>
 
                         <div class="featured-image" style="width:150px;position: absolute; bottom: 10px; right: 25px;">
-                              <a href="https://www.facebook.com/Clubber.Nightlife.Guide">
+                              <a href="https://www.facebook.com/Clubber.Mag"  target="_blank">
                                     <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/facebook_footer.png">
                               </a>
                         </div>
