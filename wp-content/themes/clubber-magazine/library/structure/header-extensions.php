@@ -138,24 +138,24 @@ function attitude_headerdetails() {
                   <section class="fr" id="social-profiles">
                         <ul>
                               <li>
-                                    <a href="https://www.facebook.com/Clubber.Nightlife.Guide">
+                                    <a href="https://www.facebook.com/Clubber.Mag"  target="_blank">
                                           <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/facebook.png">
                                     </a>
                               </li> 
                               <li>
-                                    <a>
+                                    <a href="https://twitter.com/ClubberMag" target="_blank">
                                           <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/twitter.png">
                                     </a>
                               </li> 
                               <li>
-                                    <a>
+                                    <a href="https://www.youtube.com/channel/UCVEK0H-FgtXo45AfdEDN61g" target="_blank">
                                           <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/youtube.png">
                                     </a>
                               </li> 
                         </ul>
                         <?php ?>
                   </section>
-                  <div class="fl top-banner" style=""> 
+                  <div class="fl top-banner"> 
                         <?php
                         echo do_shortcode('[sam id=1]');
                         ?>
