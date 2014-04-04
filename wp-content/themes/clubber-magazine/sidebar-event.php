@@ -42,8 +42,8 @@ if (isset($_GET['date'])) {
                   firstDay: 1,
                   dayClick: function(date, allDay, jsEvent, view) {
                         var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-                        
-                        var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('event');?>', 'date', encodeURIComponent(date_str));
+
+                        var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('event'); ?>', 'date', encodeURIComponent(date_str));
                         window.location = location;
 
                   },
@@ -69,9 +69,11 @@ if (isset($_GET['date'])) {
 <?php
 /*    BANNER      */
 /* include_once 'banners/archive-event.php'; */
-/*include_once 'banners/right-2-300-300.php';*/
+/* include_once 'banners/right-2-300-300.php'; */
 
 /*    FACEBOOK LIKE BOX       */
+include_once 'banners/right-2-300-300.php';
 include_once 'facebook/like-box.php';
- /*include_once 'facebook/facepile.php'; */
+
+/* include_once 'facebook/facepile.php'; */
 ?>

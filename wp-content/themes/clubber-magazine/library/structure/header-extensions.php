@@ -128,11 +128,12 @@ function attitude_headerdetails() {
       <div class="container clearfix">
             <div class="hgroup-wrap clearfix">
                   <hgroup id="site-logo" class="clearfix">
-                        <h1 id=""> 
-                              <a class="featured-image mt15 mb15" style="width: 180px; " href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
-                                    <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/logo1.png" class="" width="" height="" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
-                              </a>	
+                        <h1 style="display: hidden"> 
+                              Clubber-MAG
                         </h1>
+                        <a class="featured-image mt15 mb15" style="width: 180px; " href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
+                              <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/logo1.png" class="" width="" height="" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
+                        </a>	
                   </hgroup><!-- #site-logo -->
 
                   <section class="fr" id="social-profiles">

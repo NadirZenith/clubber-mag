@@ -12,16 +12,14 @@
       <head>
 
             <?php
-          
             do_action('attitude_title');
 
-           
+
             do_action('attitude_meta');
             ?>
             <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/common.css" type="text/css">
             <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/clubber_style.css" type="text/css">
             <?php
-        
             do_action('attitude_links');
 
             /**
@@ -41,10 +39,27 @@
             <script type="text/javascript" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fancybox/source/jquery.fancybox.pack.js"></script>
 
       </head>
-      <?php
-      /* <body <?php body_class(); ?>> */
-      ?>
+<?php
+/* <body <?php body_class(); ?>> */
+?>
       <body>
+            <script>
+                  (function(i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function() {
+                              (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                                m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                  ga('create', 'UA-49721787-1', 'clubber-mag.com');
+                  ga('send', 'pageview');
+
+            </script>
             <div id="fb-root"></div>
             <script>(function(d, s, id) {
                         var js, fjs = d.getElementsByTagName(s)[0];
@@ -56,39 +71,39 @@
                         fjs.parentNode.insertBefore(js, fjs);
                   }(document, 'script', 'facebook-jssdk'));</script>
 
-            <?php
-            /**
-             * attitude_before hook
-             */
-            /* do_action('attitude_before'); */
-            ?>
+<?php
+/**
+ * attitude_before hook
+ */
+/* do_action('attitude_before'); */
+?>
 
             <div class="wrapper">
-                  <?php
-                  /**
-                   * attitude_before_header hook
-                   */
-                  do_action('attitude_before_header');
-                  ?>
+<?php
+/**
+ * attitude_before_header hook
+ */
+do_action('attitude_before_header');
+?>
                   <header id="branding">
 
+<?php
+/**
+ * attitude_header hook
+ *
+ * HOOKED_FUNCTION_NAME PRIORITY
+ *
+ * attitude_headerdetails 10
+ */
+do_action('attitude_header');
+?>
+                  </header>
                         <?php
                         /**
-                         * attitude_header hook
-                         *
-                         * HOOKED_FUNCTION_NAME PRIORITY
-                         *
-                         * attitude_headerdetails 10
+                         * attitude_after_header hook
                          */
-                        do_action('attitude_header');
+                        do_action('attitude_after_header');
                         ?>
-                  </header>
-                  <?php
-                  /**
-                   * attitude_after_header hook
-                   */
-                  do_action('attitude_after_header');
-                  ?>
 
                   <?php
                   /**
