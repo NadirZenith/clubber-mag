@@ -38,11 +38,24 @@
             <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fancybox/source/jquery.fancybox.css" type="text/css">
             <script type="text/javascript" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fancybox/source/jquery.fancybox.pack.js"></script>
 
+      <?php
+            /* <body <?php body_class(); ?>> */
+            ?>
       </head>
-<?php
-/* <body <?php body_class(); ?>> */
-?>
       <body>
+
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id))
+                              return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&status=0";
+                        fjs.parentNode.insertBefore(js, fjs);
+                  }(document, 'script', 'facebook-jssdk'));</script>
+
+
             <script>
                   (function(i, s, o, g, r, a, m) {
                         i['GoogleAnalyticsObject'] = r;
@@ -60,50 +73,40 @@
                   ga('send', 'pageview');
 
             </script>
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id))
-                              return;
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-                        fjs.parentNode.insertBefore(js, fjs);
-                  }(document, 'script', 'facebook-jssdk'));</script>
 
-<?php
-/**
- * attitude_before hook
- */
-/* do_action('attitude_before'); */
-?>
+            <?php
+            /**
+             * attitude_before hook
+             */
+            /* do_action('attitude_before'); */
+            ?>
 
             <div class="wrapper">
-<?php
-/**
- * attitude_before_header hook
- */
-do_action('attitude_before_header');
-?>
+                  <?php
+                  /**
+                   * attitude_before_header hook
+                   */
+                  do_action('attitude_before_header');
+                  ?>
                   <header id="branding">
 
-<?php
-/**
- * attitude_header hook
- *
- * HOOKED_FUNCTION_NAME PRIORITY
- *
- * attitude_headerdetails 10
- */
-do_action('attitude_header');
-?>
-                  </header>
                         <?php
                         /**
-                         * attitude_after_header hook
+                         * attitude_header hook
+                         *
+                         * HOOKED_FUNCTION_NAME PRIORITY
+                         *
+                         * attitude_headerdetails 10
                          */
-                        do_action('attitude_after_header');
+                        do_action('attitude_header');
                         ?>
+                  </header>
+                  <?php
+                  /**
+                   * attitude_after_header hook
+                   */
+                  do_action('attitude_after_header');
+                  ?>
 
                   <?php
                   /**

