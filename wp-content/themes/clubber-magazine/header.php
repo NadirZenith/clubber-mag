@@ -38,11 +38,12 @@
             <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fancybox/source/jquery.fancybox.css" type="text/css">
             <script type="text/javascript" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fancybox/source/jquery.fancybox.pack.js"></script>
 
-      <?php
+            <?php
             /* <body <?php body_class(); ?>> */
             ?>
       </head>
       <body>
+
 
             <div id="fb-root"></div>
             <script>(function(d, s, id) {
@@ -51,11 +52,9 @@
                               return;
                         js = d.createElement(s);
                         js.id = id;
-                        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&status=0";
+                        js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=1467286160155560";
                         fjs.parentNode.insertBefore(js, fjs);
                   }(document, 'script', 'facebook-jssdk'));</script>
-
-
 
             <?php
             /**
