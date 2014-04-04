@@ -50,6 +50,11 @@ $wp_query = new WP_Query($args);
                                     <?php
                                     $date = get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true);
                                     echo date('d/m/y', $date);
+                                    $tax = 'city';
+                                    if ($term = wp_get_post_terms(get_the_ID(), $tax)[0]->name) {
+                                          $link = get_term_link($term, $tax);
+                                          echo " <a href='{$link}'>en {$term}</a>";
+                                    }
                                     ?>
                               </div>
 
