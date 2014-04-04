@@ -53,7 +53,7 @@ $wp_query = new WP_Query($args);
                                     $tax = 'city';
                                     if ($term = wp_get_post_terms(get_the_ID(), $tax)[0]->name) {
                                           $link = get_term_link($term, $tax);
-                                          echo " <a href='{$link}'>en {$term}</a>";
+                                          echo " <a href='{$link}'>{$term}</a>";
                                     }
                                     ?>
                               </div>
