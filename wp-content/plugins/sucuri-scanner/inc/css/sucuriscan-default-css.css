@@ -1,0 +1,57 @@
+/**
+ * Sucuri Security - SiteCheck Malware Scanner
+ * Copyright (C) 2010-2012 Sucuri Security - http://sucuri.net
+ * Released under the GPL - see LICENSE file for details.
+ */
+.sucuriscan_header{background:#333;border-radius:5px;height:38px;margin:0 0 20px 0;min-width:255px;padding:10px;position:relative}
+.sucuriscan_header img{float:left;height:38px;width:101px}
+.wrap .sucuriscan_header h2{color:#fff;float:left;margin-left:10px;padding:3px 0 0;text-shadow:#000 0 1px 0}
+.sucuriscan-maincontent{padding:0 20px 0 0}
+#sidebar{}
+#sidebar .sucuriscan-sidebar{border:1px solid #ccc;border-bottom-left-radius:5px;border-bottom-right-radius:5px;border-top-left-radius:5px;border-top-right-radius:5px;margin:0 0 10px;padding:10px 15px}
+#sitecleanup.sucuriscan-sidebar{background-color:#bbe8f5;border-color:#4393ac}
+#sucuri-latest-posts.sucuriscan-sidebar{background-color:#ececec;border-color:#999}
+.sucuriscan-maincontent #poststuff{min-width:initial;padding-top:0}
+.sucuriscan-maincontent .widefat tbody th.check-column{padding:6px 0 3px 0}
+.sucuriscan-maincontent .hardening-box .primary-secondary{margin:0 0 0 10px}
+.sucuriscan-maincontent a.lastlogins-showall{display:inline-block;float:right}
+.sucuri-visible{}
+.sucuri-hidden{display:none !important}
+.sucuri-alert{position:relative}
+.sucuri-alert>a.close{position:absolute;top:8px;right:10px;font-size:18px;text-decoration:none}
+.sucuri-alert-updated, .sucuri-alert-error{background:#fff;margin:5px 0 15px;padding:1px 12px;border:1px solid #e5e5e5;border-left:4px solid #ccc}
+.sucuri-alert-updated{border-left:4px solid #7ad03a}
+.sucuri-alert-error{border-left:4px solid #dd3d36}
+.sucuri-alert-updated p, .sucuri-alert-error p{margin:.5em 0;padding:2px}
+.sucuri-inline-error{font-weight:bold;color:red}
+.sucuri-list li{list-style:disc;margin:0 0 5px 15px}
+.sucuriscan-maincontent .alternate{background:#f5f5f5}
+.sucuriscan-maincontent hr{border:none;border-top:1px solid #999}
+.sucuriscan-maincontent table td > table{background:#fff}
+.sucuriscan-maincontent table td > table th{padding:4px 8px}
+.sucuriscan-maincontent .sucuriscan-lastmodified td, .sucuriscan-maincontent .sucuriscan-corefiles td{font-family:Monaco, Monspace, Courier;font-weight:bold}
+.sucuriscan-maincontent .sucuriscan-corefiles tr > th{background:#f1f1f1;background-image:-webkit-gradient(linear,left bottom,left top,from(#ececec),to(#f9f9f9));background-image:-webkit-linear-gradient(bottom,#ececec,#f9f9f9);background-image:-moz-linear-gradient(bottom,#ececec,#f9f9f9);background-image:-o-linear-gradient(bottom,#ececec,#f9f9f9);background-image:linear-gradient(to top,#ececec,#f9f9f9)}
+.sucuriscan-maincontent .thead-with-button span{line-height:24px}
+.sucuriscan-maincontent .thead-with-button .input-text{line-height:22px}
+.sucuriscan-maincontent .thead-topright-action{display:inline-block;float:right}
+.sucuriscan-monospace{font-family: Monaco, Monospace, Courier;line-height:26px}
+.sucuriscan-maincontent .sucuri-infosys-htaccess{margin:20px 0 0 0}
+.sucuriscan-maincontent .sucuri-full-textarea{width:100%;height:400px;line-height:normal;resize:vertical;padding:10px}
+.sucuriscan-wpconfig-textarea{width:600px;height:525px;background:#f5f5f5;line-height:1.4em;resize:none;margin:15px 0 0 0;padding:10px}
+.sucuriscan-maincontent .sucuriscan-about-list{margin:20px 0}
+.sucuriscan-maincontent .sucuriscan-about-list td+td{font-family:Monaco, Monspace, Courier;font-weight:bold}
+.sucuriscan-maincontent .sucuriscan-wpcron-list{margin:20px 0 15px 0}
+.sucuriscan-maincontent .sucuriscan-wpcron-list td+td+td+td{font-family:Monaco, Monspace, Courier;font-weight:bold}
+.sucuriscan-results .icon-ok, .sucuriscan-results .icon-warn, .sucuriscan-results .icon-error{position:relative;top:5px;width:22px;height:22px}
+.sucuriscan-last-logins .sucuriscan-time-ago{}
+.sucuriscan-last-logins .sucuriscan-datetime{font-style:italic;color:#999}
+.sucuriscan-scanner-video{width:100%;background:#fff;border:1px solid #ddd}
+.sucuriscan-clearfix:before, .sucuriscan-clearfix:after{display:table;content:' '}
+.sucuriscan-clearfix:after{clear:both}
+.sucuriscan-column-left, .sucuriscan-column-right{width:49%;min-width:initial !important}
+.sucuriscan-column-left{float:left}
+.sucuriscan-column-right{float:right}
+.sucuriscan-hstatus{position:relative;margin:0 -12px;padding:10px 12px;border:1px solid transparent}
+.sucuriscan-hstatus-1{background-color:#dff0d8;color:#3c763d;border-color:#d6e9c6}
+.sucuriscan-hstatus-0{background-color:#f2dede;color:#a94442;border-color:#ebccd1}
+.sucuriscan-hstatus .button-primary, .sucuriscan-hstatus .button-secondary{position:absolute;top:5px;right:5px}
