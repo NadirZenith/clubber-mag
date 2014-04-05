@@ -53,7 +53,9 @@
             <div class="cb bg-50  block-5">
 
                   <h1 class="ml5">Comentarios</h1>
-
+                  <?php
+                  include_once 'facebook/comments.php';
+                  ?>
             </div>
 
       </div>
