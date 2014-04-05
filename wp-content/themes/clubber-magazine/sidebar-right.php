@@ -1,12 +1,6 @@
-<?php ?>
-
-<div >
-      <div style="background-color: red; width: 160px; height: 600px;margin: 0 auto">
-            <img src="http://lab.dev/clubber-magazine-dev/wp-content/themes/clubber-magazine/prueba/banner-prueba-vertical.gif">
-
-      </div>
-</div>
-
+<?php
+include_once 'facebook/like-box.php';
+?>
 <div class="cb mt15">&nbsp; </div>
 <!--
 <div style="">
