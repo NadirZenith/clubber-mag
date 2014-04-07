@@ -39,7 +39,7 @@
                         <div class="fl col-1-4 nm">
                               <a class="featured-image" href="<?php echo get_post_type_archive_link('photo'); ?>">
                                     <?php
-                                    $img_src = get_home_url() . '/wp-content/themes/clubber-magazine/images/photo_review.png';
+                                    $img_src = get_site_url() . '/wp-content/themes/clubber-magazine/images/photo_review.png';
                                     ?>
                                     <img src="<?php echo $img_src ?>"/>
                               </a>
