@@ -115,7 +115,7 @@ function attitude_load_files() {
       require_once( CLUBBER_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/ml-slider/ml-slider.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php');
-       require_once( CLUBBER_PLUGIN_DIR . '/ozh-admin-drop-down-menu/wp_ozh_adminmenu.php'); 
+      require_once( CLUBBER_PLUGIN_DIR . '/ozh-admin-drop-down-menu/wp_ozh_adminmenu.php');
       /* require_once( CLUBBER_PLUGIN_DIR . '/disable-default-post/disable-default-post.php'); //REMOVES results OF HOME(NEWS MUSIC GALLERY) */
       /* require_once( CLUBBER_PLUGIN_DIR . '/wp-maintenance-mode/wp-maintenance-mode.php'); */
 
@@ -183,7 +183,7 @@ do_action('attitude_init');
 add_filter("gform_post_data", "event_change_date_format", 10, 3);
 
 function event_change_date_format($post_data, $form, $entry) {
-      /*d($post_data);*/
+      /* d($post_data); */
       if ($form["id"] != 1) {
             return $post_data;
       }
@@ -200,7 +200,7 @@ function event_change_date_format($post_data, $form, $entry) {
                   $post_data['post_custom_fields']['wpcf-event_end_date'] = $user_input_end_DATETIME->getTimestamp();
             }
       }
-      /*d($post_data);*/
+      /* d($post_data); */
 
       return $post_data;
 }
@@ -258,3 +258,30 @@ function revcon_change_post_object() {
       $labels->menu_name = 'News11';
       $labels->name_admin_bar = 'News item'; //admin top bar
 }
+
+/*    PROFILE BUILDER   */
+/*    CHANGE HOME/author/name to HOME/perfil/name */
+add_action('init', 'change_author_base');
+
+function change_author_base() {
+      global $wp_rewrite;
+      $author_slug = 'perfil'; // change slug name
+      $wp_rewrite->author_base = $author_slug;
+}
+
+//register form
+add_filter('wppb_register_content_name1', '__return_empty_string');
+add_filter('wppb_register_content_info1', '__return_empty_string');
+add_filter('wppb_register_content_about_yourself1', '__return_empty_string');
+add_filter('wppb_register_confirmation_email_form', '__return_empty_string');
+
+add_filter('wppb_pre_login_url_filter', 'recover_password_url');
+
+function recover_password_url($url) {
+
+      $login_url = get_permalink(get_page_by_path('registrate')) . '?action=lostpassword';
+      return $login_url;
+}
+
+//recover password form
+add_filter('wppb_recover_password_message1', '__return_empty_string');

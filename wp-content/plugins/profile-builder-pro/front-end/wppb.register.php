@@ -1049,7 +1049,7 @@ function wppb_front_end_register($atts){
 									$errorVar = '';
 									$errorMark = '';
 									if ($wppb_defaultOptions['emailRequired'] == 'yes'){
-										$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'">*</font>';
+										$errorMark = '<font color="" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'"> *</font>';
 										if (isset($_POST['email'])){
 											if ( (trim($_POST['email']) == '') || (!is_email(trim($_POST['email']))) ){
 												$errorMark = '<img src="'.WPPB_PLUGIN_URL . '/assets/images/pencil_delete.png" title="This field is required for registration."/>';
@@ -1086,7 +1086,7 @@ function wppb_front_end_register($atts){
 								$errorVar = '';
 								$errorMark = '';
 								if ($wppb_defaultOptions['firstnameRequired'] == 'yes'){
-									$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'">*</font>';
+									$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'"> *</font>';
 									if (isset($_POST['first_name'])){
 										if (trim($_POST['first_name']) == ''){
 											$errorMark = '<img src="'.WPPB_PLUGIN_URL . '/assets/images/pencil_delete.png" title="'.__('This field must be filled out before registering (It was marked as required by the administrator)', 'profilebuilder').'"/>';
@@ -1110,7 +1110,7 @@ function wppb_front_end_register($atts){
 							$errorVar = '';
 							$errorMark = '';
 							if ($wppb_defaultOptions['lastnameRequired'] == 'yes'){
-								$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'">*</font>';
+								$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'"> *</font>';
 								if (isset($_POST['last_name'])){
 									if (trim($_POST['last_name']) == ''){
 										$errorMark = '<img src="'.WPPB_PLUGIN_URL . '/assets/images/pencil_delete.png" title="'.__('This field must be filled out before registering (It was marked as required by the administrator)', 'profilebuilder').'"/>';
@@ -1134,7 +1134,7 @@ function wppb_front_end_register($atts){
 							$errorVar = '';
 							$errorMark = '';
 							if ($wppb_defaultOptions['nicknameRequired'] == 'yes'){
-								$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'">*</font>';
+								$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'"> *</font>';
 								if (isset($_POST['nickname'])){
 									if (trim($_POST['nickname']) == ''){
 										$errorMark = '<img src="'.WPPB_PLUGIN_URL . '/assets/images/pencil_delete.png" title="'.__('This field must be filled out before registering (It was marked as required by the administrator)', 'profilebuilder').'"/>';
@@ -1163,7 +1163,7 @@ function wppb_front_end_register($atts){
 								$errorVar = '';
 								$errorMark = '';
 								if ($wppb_defaultOptions['emailRequired'] == 'yes'){
-									$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'">*</font>';
+									$errorMark = '<font color="" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'"> *</font>';
 									if (isset($_POST['email'])){
 										if ( (trim($_POST['email']) == '') || (!is_email(trim($_POST['email']))) ){
 											$errorMark = '<img src="'.WPPB_PLUGIN_URL . '/assets/images/pencil_delete.png" title="This field is required for registration."/>';
@@ -1188,7 +1188,7 @@ function wppb_front_end_register($atts){
 							$errorVar = '';
 							$errorMark = '';
 							if ($wppb_defaultOptions['websiteRequired'] == 'yes'){
-								$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'">*</font>';
+								$errorMark = '<font color="red" title="'.__('This field is marked as required by the administrator', 'profilebuilder').'"> *</font>';
 								if (isset($_POST['website'])){
 									if (trim($_POST['website']) == ''){
 										$errorMark = '<img src="'.WPPB_PLUGIN_URL . '/assets/images/pencil_delete.png" title="'.__('This field must be filled out before registering (It was marked as required by the administrator)', 'profilebuilder').'"/>';
@@ -1313,8 +1313,8 @@ function wppb_front_end_register($atts){
 							$errorVar = '';
 							$errorVar2 = '';
 							if ($wppb_defaultOptions['passwordRequired'] == 'yes'){
-								$errorMark = '<font color="red" title="This field is required for registration.">*</font>';
-								$errorMark2 = '<font color="red" title="This field is required for registration.">*</font>';
+								$errorMark = '<font color="" title="This field is required for registration."> *</font>';
+								$errorMark2 = '<font color="" title="This field is required for registration."> *</font>';
 								if (isset ($_POST['passw1']))
 									if (trim($_POST['passw1']) == ''){
 										$errorMark = '<img src="'.WPPB_PLUGIN_URL . '/assets/images/pencil_delete.png" title="This field is required for registration."/>';
