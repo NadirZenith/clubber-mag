@@ -32,17 +32,17 @@
                               </h1>
 
                               <div class="meddium bold">
-                                    <p>
-                                         description
-                                    </p>
+                                   
                               </div>
                               <a class="readmore mr5" href="<?php echo get_post_type_archive_link('photo'); ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
                         </div>
-                        <div class="fl featured-image col-1-4 nm" >
-                              <?php
-                              echo $thumb[0];
-                             
-                              ?>
+                        <div class="fl col-1-4 nm">
+                              <a class="featured-image" href="<?php echo get_post_type_archive_link('photo'); ?>">
+                                    <?php
+                                    $img_src = get_home_url() . '/wp-content/themes/clubber-magazine/images/photo_review.png';
+                                    ?>
+                                    <img src="<?php echo $img_src ?>"/>
+                              </a>
                         </div>
 
                   </section>  
@@ -59,18 +59,17 @@
                               </h1>
 
                               <div class="meddium bold">
-                                    <p>
-                                         description
-                                    </p>
+                                  
                               </div>
                               <a class="readmore mr5" href="<?php echo get_post_type_archive_link('video'); ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
                         </div>
-                        <div class="fl featured-image col-1-4 nm" >
-
-                              <?php
-                              echo $thumb[1];
-                              /* the_post_thumbnail('340-155-thumb'); */
-                              ?>
+                        <div class="fl col-1-4 nm">
+                              <a class="featured-image" href="<?php echo get_post_type_archive_link('video'); ?>">
+                                    <?php
+                                    $img_src = get_home_url() . '/wp-content/themes/clubber-magazine/images/video_review.png';
+                                    ?>
+                                    <img src="<?php echo $img_src ?>"/>
+                              </a>
                         </div>
 
                   </section>  
