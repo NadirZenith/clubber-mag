@@ -32,7 +32,7 @@
                         <div class="fl col-1-4 nm">
                               <a class="featured-image" href="<?php echo $term_archive_url; ?>">
                                     <?php
-                                    $img_src = get_home_url() . '/wp-content/themes/clubber-magazine/images/club.png';
+                                    $img_src = get_site_url() . '/wp-content/themes/clubber-magazine/images/club.png';
                                     ?>
                                     <img src="<?php echo $img_src ?>"/>
                               </a>
@@ -60,7 +60,7 @@
                         <div class="fl col-1-4 nm">
                               <a class="featured-image" href="<?php echo $term_archive_url; ?>">
                                     <?php
-                                    $img_src = get_home_url() . '/wp-content/themes/clubber-magazine/images/bar.png';
+                                    $img_src = get_site_url() . '/wp-content/themes/clubber-magazine/images/bar.png';
                                     ?>
                                     <img src="<?php echo $img_src ?>"/>
                               </a>
@@ -88,7 +88,7 @@
                         <div class="fl col-1-4 nm">
                               <a class="featured-image" href="<?php echo $term_archive_url; ?>">
                                     <?php
-                                    $img_src = get_home_url() . '/wp-content/themes/clubber-magazine/images/restaurante.png';
+                                    $img_src = get_site_url() . '/wp-content/themes/clubber-magazine/images/restaurante.png';
                                     ?>
                                     <img src="<?php echo $img_src ?>"/>
                               </a>
