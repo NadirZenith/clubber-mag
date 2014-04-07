@@ -67,27 +67,32 @@
             $post_type = 'music';
             $taxonomy = 'music_type';
 
+            $music_terms = get_terms($taxonomy, array(
+                'orderby' => 'count',
+                'hide_empty' => 0
+            ));
+
             $terms = array(
                 /* 'artist' => 'Artistas', */
                 'review' => 'Reviews',
                 'podcast' => 'Podcasts',
                 'interview' => 'Entrevistas'
             );
-            foreach ($terms as $term => $name) {
-                  $Term = get_term_by('slug', $term, $taxonomy);
-                  $term_link = get_term_link($Term);
+            foreach ($music_terms as $term) {
+                  /* $Term = get_term_by('slug', $term, $taxonomy); */
+                  $term_link = get_term_link($term);
                   $args = array(
-                      'post_type' => $post_type,
                       'posts_per_page' => 1,
-                      'post_status' => 'publish',
+                      'post_type' => $post_type,
                       'tax_query' => array(
                           array(
-                              'taxonomy' => $taxonomy,
+                              'taxonomy' => 'music_type',
                               'field' => 'slug',
-                              'terms' => $term
+                              'terms' => $term->slug
                           )
                       )
                   );
+
                   $query = new WP_Query($args);
                   if ($query->have_posts()) {
 
@@ -98,7 +103,7 @@
                                     <div class="fr col-3-4 col-min">
                                           <h1>
                                                 <a class="ml5" href="<?php echo $term_link; ?>">
-                                                      <?php echo $name ?>
+                                                      <?php echo $term->name ?>
                                                 </a>
                                           </h1>
 
@@ -111,24 +116,27 @@
                                           </div>
                                           <a class="readmore mr5" href="<?php echo $term_link; ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
                                     </div>
-                                    <div class="fl featured-image col-1-4 nm">
-                                          <?php
-                                          the_post_thumbnail('340-155-thumb');
-                                          ?>
+                                    <div class="fl col-1-4 nm">
+                                          <a class="featured-image" href="<?php echo $term_link; ?>">
+                                                <?php
+                                                the_post_thumbnail('340-155-thumb');
+                                                ?>
+                                          </a>
                                     </div>
                               </section>
                         </li>
                         <?php
                   } else {
                         ?>
-                        <li> NO POSTS!! </li>
                         <?php
+                        /* <li> NO POSTS!! </li> */
                   }
             }
             wp_reset_postdata();
             ?>
 
       </ul>
+
 
 </div><!-- #container -->
 
