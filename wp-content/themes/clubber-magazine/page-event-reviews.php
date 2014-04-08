@@ -5,22 +5,7 @@
 
       <ul class="archive-list">
 
-            <?php
-            $args = array(
-                'post_type' => 'photo',
-                'post_status' => 'publish',
-                /* 'name' => $wp_query->query_vars['name'], */
-                'posts_per_page' => 2
-            );
-            $query = new WP_Query($args);
-            $thumb = array();
-            if ($query->have_posts()) {
-                  $query->the_post();
-                  $thumb[] = get_the_post_thumbnail(get_the_ID(), '340-155-thumb');
-                  $query->the_post();
-                  $thumb[] = get_the_post_thumbnail(get_the_ID(), '340-155-thumb');
-            }
-            ?>
+          
             <li class="bg-50 block-5 mt15">
 
                   <section class="">
@@ -32,7 +17,9 @@
                               </h1>
 
                               <div class="meddium bold">
-                                   
+                                    <p>
+                                          Mira, búscate y comparte las fotografías de los eventos más importantes de tu cuidad.
+                                    </p>
                               </div>
                               <a class="readmore mr5" href="<?php echo get_post_type_archive_link('photo'); ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
                         </div>
@@ -59,7 +46,9 @@
                               </h1>
 
                               <div class="meddium bold">
-                                  
+                                    <p>
+                                          Revive los eventos más destacados en tú cuidad con nosotros.
+                                    </p>
                               </div>
                               <a class="readmore mr5" href="<?php echo get_post_type_archive_link('video'); ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
                         </div>
