@@ -38,10 +38,13 @@
                                           <a class="readmore mr5" href="<?php echo $args['link']; ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
                                     </div>
                                     <div class="fl col-1-4 nm">
-                                          <a class="featured-image" href="<?php echo $args['link'];; ?>">
-                                          <?php
-                                          the_post_thumbnail('340-155-thumb');
-                                          ?>
+                                          <a class="featured-image" href="<?php
+                                          echo $args['link'];
+                                          ;
+                                          ?>">
+                                                   <?php
+                                                   the_post_thumbnail('340-155-thumb');
+                                                   ?>
                                           </a>
                                     </div>
 
@@ -51,12 +54,8 @@
                   }
             }
 
-
             wp_reset_postdata();
-            ?>
 
-
-            <?php
             $post_type = 'music';
             $taxonomy = 'music_type';
 
@@ -111,17 +110,11 @@
                               </section>
                         </li>
                         <?php
-                  } else {
-                        ?>
-                        <?php
-                        /* <li> NO POSTS!! </li> */
-                  }
-            }
+                  }// have posts
+            }//for each
             wp_reset_postdata();
             ?>
-
       </ul>
-
 
 </div><!-- #container -->
 
