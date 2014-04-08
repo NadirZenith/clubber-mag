@@ -2,10 +2,8 @@
 <?php get_header(); ?>
 
 <div id="container">
-
       <ul class="archive-list">
 
-          
             <li class="bg-50 block-5 mt15">
 
                   <section class="">

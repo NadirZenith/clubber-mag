@@ -3,15 +3,6 @@
 
 
 <div id="container">
-      <?php
-      /**
-       *    ARTISTS
-       *    REVIEWS
-       *    PODCASTS
-       *    ENTREVISTAS
-       *          
-       */
-      ?>
       <ul class="archive-list">
             <?php
             $args = array(
@@ -74,14 +65,7 @@
                 'hide_empty' => 0
             ));
 
-            $terms = array(
-                /* 'artist' => 'Artistas', */
-                'review' => 'Reviews',
-                'podcast' => 'Podcasts',
-                'interview' => 'Entrevistas'
-            );
             foreach ($music_terms as $term) {
-                  /* $Term = get_term_by('slug', $term, $taxonomy); */
                   $term_link = get_term_link($term);
                   $args = array(
                       'posts_per_page' => 1,
@@ -97,7 +81,6 @@
 
                   $query = new WP_Query($args);
                   if ($query->have_posts()) {
-
                         $query->the_post();
                         ?>
                         <li class="bg-50 block-5 mt15">
