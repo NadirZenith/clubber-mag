@@ -70,7 +70,7 @@ if (is_user_logged_in()) {
                         <div class="col-2-4 fl pb15 pt5 mt15 bg-50 block-5">
                               <div class="ml5 pb15">
                                     <h1>Entra</h1>
-                                    <h2 class="">Entra y accede a nuestra plataforma, donde podrás compartir tus eventos, fotografías, vídeos e información de lugares para visitar además de crear contenido en nuestras publicaciones.</h2>
+                                    <h2 class="">Accede a nuestra plataforma y podrás compartir tus eventos, fotografías y vídeos además de colaborar con contenido en nuestras publicaciones. </h2>
                               </div>
                               <div class="ml5">
 
@@ -89,7 +89,7 @@ if (is_user_logged_in()) {
                         <div class="col-2-4 fl pb15 pt5 mt15 bg-50 block-5">
                               <div class="ml5 pb15">
                                     <h1 class="">Regístrate</h1>
-                                    <h2>Si eres artista, dj´s, promotor, un club o un fanático de la música electrónica Regístrate en Clubber Mag y sé parte de nosotros.</h2>
+                                    <h2>Si te gusta la música electrónica, eres productor, dj, promotor o un club, regístrate en Clubber Mag y sé parte de nosotros.</h2>
                               </div>
                               <div class="ml5">
 
