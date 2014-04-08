@@ -4,19 +4,17 @@
 <?php
 do_action('attitude_before_main_container');
 $tax = 'city';
-if (is_tax($tax, 'barcelona')) {
-      $city = 'Barcelona';
-}
-if (is_tax($tax, 'madrid')) {
-      $city = 'Madrid';
+if (is_tax($tax)) {
+      global $wp_query;
+      $term = $wp_query->get_queried_object();
+      $city = ucfirst($term->name);
 }
 ?>
 
 <div id="container">
       <section class="event bg-50 block-5">
             <?php
-            //@todo remove link **
-            require_once 'library/structure/front/event.php';
+             require_once 'library/structure/front/event.php'; 
             ?>
       </section>
 
@@ -33,7 +31,9 @@ if (is_tax($tax, 'madrid')) {
             <?php
             if (isset($_GET['date'])) {
                   $DateTime = date_create_from_format('d/m/Y', $_GET['date']);
+
                   if ($DateTime) {
+                        $DateTime->setTime(0, 0, 0);//to avoid date problems
                         $start_date = $DateTime->getTimestamp();
                   }
             } else {
@@ -46,7 +46,6 @@ if (is_tax($tax, 'madrid')) {
                 'post_type' => 'event',
                 'posts_per_page' => -1,
                 'order' => 'ASC',
-                /* 'orderby' => 'meta_value', */
                 'orderby' => 'meta_value_num',
                 'meta_key' => 'wpcf-event_begin_date',
                 'meta_query' => array(
@@ -62,16 +61,15 @@ if (is_tax($tax, 'madrid')) {
                   $args[$tax] = $city;
             }
 
-
             $wp_query = new WP_Query($args);
             ?>
 
             <div class="clearfix ml15 mt15 mb15 mr15 bold meddium">
                   <ul>
-                        <li class="fl   " style="">
+                        <li class="fl">
                               <a href="<?php echo add_query_arg(array('date' => urlencode(date('d/m/Y', $prev_date)))) ?>"> <span class="meddium sc-3">&#8678;</span> Previous week</a>
                         </li>
-                        <li class="fr " style="font-weight: bold">
+                        <li class="fr" >
                               <a href="<?php echo add_query_arg(array('date' => date('d/m/Y', $end_date))) ?>">Next week <span class="meddium sc-3">&#8680;</span></a>
                         </li>
                   </ul>
