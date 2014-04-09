@@ -4,3 +4,7 @@
 .ui-state-default{
 	font: 150% "Trebuchet MS", sans-serif;
 }
+select.ui-datepicker-year,
+select.ui-datepicker-month{
+    height: auto !important;
+}
