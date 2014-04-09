@@ -221,7 +221,7 @@ add_action('init', 'revcon_change_post_object');
 function revcon_change_post_object() {
       global $wp_post_types;
       $labels = &$wp_post_types['post']->labels;
-      $labels->name = 'News'; //admin list news title
+      $labels->name = 'Noticias'; //admin list news title
       $labels->singular_name = 'News item22';
       $labels->add_new = 'Add News item'; //admin edit post new shortcut
       $labels->add_new_item = 'Add News item'; //admin edit new post title
