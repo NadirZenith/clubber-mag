@@ -175,7 +175,7 @@ if (is_tax($tax)) {
       wp_reset_postdata();
       ?>
       <div id="secondary">
-            <?php get_sidebar('event'); ?>
+            <?php get_sidebar('agenda'); ?>
       </div>
 
 </div><!-- #container -->
