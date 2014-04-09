@@ -208,9 +208,7 @@ add_action('admin_menu', 'revcon_change_post_label');
 
 function revcon_change_post_label() {
       global $menu;
-      /* d($menu); */
       global $submenu;
-      /* d($submenu); */
       $menu[5][0] = 'News';
       $submenu['edit.php'][5][0] = 'News';
       $submenu['edit.php'][10][0] = 'Add News item'; //admin sidebar

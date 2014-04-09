@@ -1,4 +1,9 @@
-
+/**
+* Template Name: Archive noticias
+*
+* Displays archive for noticias (posts)
+*
+*/
 <?php get_header(); ?>
 
 <?php
