@@ -6,7 +6,7 @@
             <?php
       } else {
             ?>
-            <a class="ml5" href="<?php echo get_post_type_archive_link('event'); ?>">Eventos destacados</a>
+            <a class="ml5" href="<?php echo get_post_type_archive_link('agenda'); ?>">Eventos destacados</a>
             <?php
       }
       ?>
