@@ -13,33 +13,12 @@
 </h1>
 
 <?php
-/*d(time());*/
-/**
- *  initial query 
- * purpose : get all events order by custom field date
- */
-$arg1 = array(
-    'post_type' => 'event',
-    'posts_per_page' => 4,
-    'order' => 'ASC',
-    'orderby' => 'meta_value_num',
-    'meta_key' => 'wpcf-event_begin_date',
-    'meta_query' => array(
-        array(
-            'key' => 'wpcf-event_displayed',
-            'value' => 1,
-            'compare' => '=',
-        )
-    )
-);
-/*d(date_default_timezone_get(void));*/
-/*date_default_timezone_set('UTC');*/
+
 $now_timestamp = time();
 $date = date('d/m/Y', $now_timestamp);
-/*d($date);*/
 
 $args = array(
-    'post_type' => 'event',
+    'post_type' => 'agenda',
     'posts_per_page' => 4,
     'order' => 'ASC',
     'orderby' => 'meta_value_num',

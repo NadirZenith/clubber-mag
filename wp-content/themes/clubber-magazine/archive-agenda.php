@@ -43,7 +43,7 @@ if (is_tax($tax)) {
             $prev_date = strtotime('- 1 week', $start_date);
 
             $args = array(
-                'post_type' => 'event',
+                'post_type' => 'agenda',
                 'posts_per_page' => -1,
                 'order' => 'ASC',
                 'orderby' => 'meta_value_num',

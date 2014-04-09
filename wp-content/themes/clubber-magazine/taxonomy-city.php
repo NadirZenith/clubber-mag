@@ -1,3 +1,3 @@
 <?php
-require_once 'archive-event.php';
+require_once 'archive-agenda.php';
 ?>
