@@ -1,6 +1,6 @@
 <?php
 $args = array(
-    'post_type' => 'music',
+    'post_type' => 'musica',
     'posts_per_page' => 3,
 );
 $the_query = new WP_Query($args);
