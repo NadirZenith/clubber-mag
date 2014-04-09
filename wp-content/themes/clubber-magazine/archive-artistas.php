@@ -163,15 +163,6 @@ function sort_all_by_first_letter() {
 
 <?php get_header(); ?>
 
-<?php
-/**
- * attitude_before_main_container hook
- */
-do_action('attitude_before_main_container');
-?>
-
-
-
 <div id="container">
 
       <?php
@@ -195,10 +186,4 @@ do_action('attitude_before_main_container');
 
 </div><!-- #container -->
 
-<?php
-/**
- * attitude_after_main_container hook
- */
-do_action('attitude_after_main_container');
-?>
 <?php get_footer(); ?>
