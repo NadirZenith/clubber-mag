@@ -14,7 +14,7 @@ if (is_tax($tax)) {
 <div id="container">
       <section class="event bg-50 block-5">
             <?php
-             require_once 'library/structure/front/event.php'; 
+            require_once 'library/structure/front/event.php';
             ?>
       </section>
 
@@ -33,7 +33,7 @@ if (is_tax($tax)) {
                   $DateTime = date_create_from_format('d/m/Y', $_GET['date']);
 
                   if ($DateTime) {
-                        $DateTime->setTime(0, 0, 0);//to avoid date problems
+                        $DateTime->setTime(0, 0, 0); //to avoid date problems
                         $start_date = $DateTime->getTimestamp();
                   }
             } else {
@@ -112,7 +112,7 @@ if (is_tax($tax)) {
                                                 <hr class="pb5">
                                                 <div class="fl ml5 col-2-4 ">
                                                       <div class="meddium" style="">
-                                                            <?php the_excerpt() ?>
+                                                            <div><?php echo wp_trim_words(get_the_content(), 20); ?></div>
                                                       </div>
 
                                                       <div class="event-date" style="position: absolute; right: 0; bottom: 0;">
