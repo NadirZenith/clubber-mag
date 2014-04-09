@@ -7,8 +7,8 @@
             <?php
             $args = array(
                 'label_name' => 'Artistas',
-                'link' => get_post_type_archive_link('artists'),
                 'post_type' => 'artists',
+                'link' => get_post_type_archive_link('artists'),
                 'post_status' => 'publish',
                 'posts_per_page' => 1,
             );
@@ -56,7 +56,7 @@
 
             wp_reset_postdata();
 
-            $post_type = 'music';
+            $post_type = 'musica';
             $taxonomy = 'music_type';
 
             $music_terms = get_terms($taxonomy, array(
