@@ -10,9 +10,6 @@
 
 <?php get_header(); ?>
 
-<?php
-d('archive');
-?>
 <div id="container">
       <div id="primary">
             <h1>
@@ -82,7 +79,6 @@ d('archive');
 
 
                               <?php
-                            
                         }
                   } else {
                         ?>
@@ -95,22 +91,7 @@ d('archive');
 
       <div id="secondary" class="no-margin-left">
             <?php get_sidebar('right'); ?>
-      </div><!-- #secondary -->
-      <?php
-      /**
-       * attitude_main_container hook
-       *
-       * HOOKED_FUNCTION_NAME PRIORITY
-       *
-       * attitude_content 10
-       */
-      /* do_action('attitude_main_container'); */
-      ?>
-</div><!-- #container -->
-<?php
-/**
- * attitude_after_main_container hook
- */
-/*do_action('attitude_after_main_container');*/
-?>
+      </div>
+
+</div>
 <?php get_footer(); ?>

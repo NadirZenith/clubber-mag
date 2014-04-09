@@ -47,7 +47,7 @@ function attitude_constants() {
       define('ATTITUDE_WIDGETS_DIR', ATTITUDE_LIBRARY_DIR . '/widgets');
 
       /*  CLUBBER CONSTANTS    */
-      define('CLUBBER_DEV', TRUE);
+      define('CLUBBER_DEV', FALSE);
       define('CLUBBER_PLUGIN_DIR', ATTITUDE_PARENT_DIR . '/plugins');
       define('CLUBBER_PLUGIN_URL', get_site_url() . '/wp-content/themes/clubber-magazine/plugins');
 
@@ -82,15 +82,7 @@ add_action('attitude_init', 'attitude_load_files', 15);
  * @since 1.0
  */
 function attitude_load_files() {
-      /**
-       * attitude_add_files hook
-       *
-       * Adding other addtional files if needed.
-       */
-      /* do_action('attitude_add_files'); */
-      if (CLUBBER_DEV) {
-            
-      }
+    
 
       /** Load functions */
       require_once( ATTITUDE_FUNCTIONS_DIR . '/i18n.php' );
@@ -105,19 +97,14 @@ function attitude_load_files() {
 
       /*    CLUBBER FILES  */
       (CLUBBER_DEV) ? NULL : define('ACF_LITE', true);
-      /* require_once( CLUBBER_POST_TYPES_DIR . '/clubber-add-custom-post-types.php' ); */
-      /* require_once( CLUBBER_TAXONOMY_DIR . '/clubber-custom-taxonomy.php' ); */
 
       require_once( CLUBBER_PLUGIN_DIR . '/advanced-custom-fields/acf.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/acf-field-date-time-picker/acf-date_time_picker.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/acf-gallery/gallery.php' );
-      /* require_once( CLUBBER_CUSTOM_FIELDS_DIR . '/custom-fields.php' ); */
       require_once( CLUBBER_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/ml-slider/ml-slider.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php');
       require_once( CLUBBER_PLUGIN_DIR . '/ozh-admin-drop-down-menu/wp_ozh_adminmenu.php');
-      /* require_once( CLUBBER_PLUGIN_DIR . '/disable-default-post/disable-default-post.php'); //REMOVES results OF HOME(NEWS MUSIC GALLERY) */
-      /* require_once( CLUBBER_PLUGIN_DIR . '/wp-maintenance-mode/wp-maintenance-mode.php'); */
 
       /** Load Shortcodes */
       /* require_once( ATTITUDE_SHORTCODES_DIR . '/attitude-shortcodes.php' ); */
@@ -144,15 +131,7 @@ add_action('attitude_init', 'attitude_core_functionality', 20);
  * @since 1.0
  */
 function attitude_core_functionality() {
-      /**
-       * attitude_add_functionality hook
-       *
-       * Adding other addtional functionality if needed.
-       */
-      /* do_action('attitude_add_functionality'); */
-
-      /*      clubber_register_post_types(); */
-      /* clubber_register_taxonomy(); */
+     
 
       // Add default posts and comments RSS feed links to head
       add_theme_support('automatic-feed-links');
@@ -250,7 +229,7 @@ function revcon_change_post_object() {
       $labels->add_new_item = 'Add News item'; //admin edit new post title
       $labels->edit_item = 'Edit News item'; //admin edit post title
       $labels->new_item = 'News6';
-      $labels->view_item = 'View News7';
+      $labels->view_item = 'View News item';   //View button from admin 
       $labels->search_items = 'Search News'; //admin list news search input
       $labels->not_found = 'No News found9';
       $labels->not_found_in_trash = 'No News found in Trash';
