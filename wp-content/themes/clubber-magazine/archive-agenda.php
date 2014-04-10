@@ -30,7 +30,7 @@ if (is_tax($tax)) {
 
             <?php
             if (isset($_GET['date'])) {
-                  $DateTime = date_create_from_format('d/m/Y', $_GET['date']);
+                  $DateTime = date_create_from_format('d-m-Y', $_GET['date']);
 
                   if ($DateTime) {
                         $DateTime->setTime(0, 0, 0); //to avoid date problems
@@ -67,10 +67,10 @@ if (is_tax($tax)) {
             <div class="clearfix ml15 mt15 mb15 mr15 bold meddium">
                   <ul>
                         <li class="fl">
-                              <a href="<?php echo add_query_arg(array('date' => urlencode(date('d/m/Y', $prev_date)))) ?>"> <span class="meddium sc-3">&#8678; </span>Semana anterior</a>
+                              <a href="<?php echo add_query_arg(array('date' => date('d-m-Y', $prev_date) ) ) ?>"> <span class="meddium sc-3">&#8678; </span>Semana anterior</a>
                         </li>
                         <li class="fr" >
-                              <a href="<?php echo add_query_arg(array('date' => date('d/m/Y', $end_date))) ?>">Próxima semana<span class="meddium sc-3"> &#8680;</span></a>
+                              <a href="<?php echo add_query_arg(array('date' => date('d-m-Y', $end_date) ) ) ?>">Próxima semana<span class="meddium sc-3"> &#8680;</span></a>
                         </li>
                   </ul>
             </div>
@@ -163,10 +163,10 @@ if (is_tax($tax)) {
             <div class="clearfix ml15 mt30 mb15 mr15 bold meddium" >
                   <ul>
                          <li class="fl">
-                              <a href="<?php echo add_query_arg(array('date' => urlencode(date('d/m/Y', $prev_date)))) ?>"> <span class="meddium sc-3">&#8678; </span>Semana anterior</a>
+                              <a href="<?php echo add_query_arg(array('date' => date('d-m-Y', $prev_date) ) ) ?>"> <span class="meddium sc-3">&#8678; </span>Semana anterior</a>
                         </li>
                         <li class="fr">
-                              <a href="<?php echo add_query_arg(array('date' => date('d/m/Y', $end_date))) ?>">Próxima semana<span class="meddium sc-3"> &#8680;</span></a>
+                              <a href="<?php echo add_query_arg(array('date' => date('d-m-Y', $end_date) ) ) ?>">Próxima semana<span class="meddium sc-3"> &#8680;</span></a>
                         </li>
                   </ul>
             </div>
