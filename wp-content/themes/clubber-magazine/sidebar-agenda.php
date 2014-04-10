@@ -1,15 +1,6 @@
 
-
-
 <div class="mt30">&nbsp;</div>
-<?php
-/*
 
- * 
- * 
-
- *  */
-?>
 <div id="sticky">
       <div id="calendar" class="bg-50 block-5"></div>
       <?php
@@ -18,15 +9,10 @@
       ?>
 </div>
 
-
-
 <?php
 /*    FACEBOOK LIKE BOX       */
 include_once 'facebook/like-box.php';
 ?>
-
-
-
 
 <?php
 $start_date = strtotime("now");
