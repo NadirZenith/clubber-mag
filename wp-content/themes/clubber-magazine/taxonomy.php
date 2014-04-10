@@ -7,16 +7,16 @@
             $taxonomy_type['music_type'] = array(
                 'title' => 'Musica',
                 'terms' => array(
-                    'review' => 'Reviews',
-                    'podcast' => 'Podcasts',
-                    'interview' => 'Entrevistas',
+                    'reviews' => 'Reviews',
+                    'podcasts' => 'Podcasts',
+                    'entrevistas' => 'Entrevistas',
             ));
             $taxonomy_type['cool_place_type'] = array(
                 'title' => 'Cool Places',
                 'terms' => array(
-                    'clubs' => 'Clubes',
+                    'clubs' => 'Clubs',
                     'bares' => 'Bares',
-                    'restaurantes' => 'Restaurants'
+                    'restaurantes' => 'Restaurantes'
             ));
             if (array_key_exists(get_query_var('taxonomy'), $taxonomy_type)) {
                   $title = $taxonomy_type[get_query_var('taxonomy')]['title'];

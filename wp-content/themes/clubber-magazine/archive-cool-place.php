@@ -20,7 +20,7 @@
                         <div class="fr col-3-4 col-min">
                               <h1>
                                     <a class="ml5" href="<?php echo $term_archive_url; ?>">
-                                          Clubes
+                                          Clubs
                                     </a>
                               </h1>
 
