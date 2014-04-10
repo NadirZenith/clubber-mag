@@ -140,7 +140,7 @@ html .fc,
 .fc-button {
     position: relative;
     display: inline-block;
-    padding: 0 .6em;
+    /*padding: 0 .6em;*/
     overflow: hidden;
     height: 1.9em;
     line-height: 1.9em;
@@ -149,7 +149,7 @@ html .fc,
 }
 
 .fc-state-default { /* non-theme */
-    border: 1px solid;
+    /*border: 1px solid;*/
 }
 
 .fc-state-default.fc-corner-left { /* non-theme */
@@ -168,7 +168,8 @@ html .fc,
 */
 
 .fc-text-arrow {
-    margin: 0 .1em;
+    /*margin: 0 .1em;*/
+    padding: 0 .2em;
     font-size: 2em;
     font-family: "Courier New", Courier, monospace;
     vertical-align: baseline; /* for IE7 */
