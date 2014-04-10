@@ -76,9 +76,12 @@ if (is_tax($tax)) {
             </div>
             <ul class="cb archive-list ">
                   <?php
+                  /*    MAIN AGENDA QUERY              */
                   if (have_posts()) {
+                        $main_posts_id = array();
                         while (have_posts()) {
                               the_post();
+                              $main_posts_id[] = get_the_ID();
                               $post_timestamp = get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true); //1394924400
                               $post_date = date('l d/m/y', $post_timestamp); //"15/03/14"
 
@@ -135,7 +138,6 @@ if (is_tax($tax)) {
                                                             <a class="featured-image" href="<?php the_permalink() ?>"  style="">
                                                                   <?php
                                                                   the_post_thumbnail('430-190-thumb');
-                                                                  /* the_post_thumbnail('home-gallery-thumb'); */
                                                                   ?>
                                                             </a>
                                                             <?php
@@ -153,11 +155,12 @@ if (is_tax($tax)) {
                   } else {
                         ?>
                         <li>
-                              <h1><?php _e('No Posts Found.', 'attitude'); ?></h1>
+                              <h2><?php _e('No Posts Found.', 'attitude'); ?></h2>
 
                         </li>
                         <?php
                   }
+                  /* ---------- //END MAIN AGENDA QUERY              */
                   ?>
             </ul>
             <div class="clearfix ml15 mt30 mb15 mr15 bold meddium" >
@@ -170,6 +173,110 @@ if (is_tax($tax)) {
                         </li>
                   </ul>
             </div>
+
+            <?php
+            /*   LESS THAN 3 EVENTS        */
+            if ($wp_query->found_posts < 5) {
+                  /* wp_reset_postdata(); */
+                  /* d('less than 5 results -> query nexts'); */
+
+                  $args = array(
+                      'post_type' => 'agenda',
+                      'post__not_in' => $main_posts_id,
+                      'posts_per_page' => 5,
+                      'order' => 'ASC',
+                      'orderby' => 'meta_value_num',
+                      'meta_key' => 'wpcf-event_begin_date',
+                  );
+
+                  if ($city) {
+                        $args[$tax] = $city;
+                  }
+
+                  $wp_query = new WP_Query($args);
+                  if (have_posts()) {
+                        ?>
+                        <h1 class="ml5">
+                              Próximos eventos
+                              <?php
+                              if ($city) {
+                                    echo " en {$city}";
+                              }
+                              ?>
+                        </h1>
+                        <ul>
+
+                              <?php
+                              while (have_posts()) {
+                                    the_post();
+                                    ?>
+                                    <li class="pr">
+
+                                          <section class="bg-50 block-5 mb15" >
+                                                <article>
+                                                      <header>
+                                                            <h1 class="mt5" style="">
+                                                                  <a class="ml5" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                                                                        <?php
+                                                                        $mytitle = get_the_title();
+                                                                        if (strlen($mytitle) > 65) {
+                                                                              $mytitle = substr($mytitle, 0, 65) . '...';
+                                                                        }
+                                                                        echo $mytitle;
+                                                                        ?>
+                                                                  </a>
+                                                            </h1>
+                                                      </header>
+                                                      <hr class="pb5">
+                                                      <div class="fl ml5 col-2-4 ">
+                                                            <div class="meddium" style="">
+                                                                  <div><?php echo wp_trim_words(get_the_content(), 20); ?></div>
+                                                            </div>
+
+                                                            <div class="event-date" style="position: absolute; right: 0; bottom: 0;">
+                                                                  <?php
+                                                                  echo date('d/m/y - H:i', get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true));
+
+                                                                  if ($term = wp_get_post_terms(get_the_ID(), $tax)[0]->name) {
+                                                                        $link = get_term_link($term, $tax);
+                                                                        echo " <a href='{$link}'>en {$term}</a>";
+                                                                  }
+                                                                  ?>
+                                                            </div>
+
+
+                                                      </div>
+                                                      <div class="fr col-2-4 nm" >
+                                                            <?php
+                                                            if (has_post_thumbnail()) {
+                                                                  ?>
+                                                                  <a class="featured-image" href="<?php the_permalink() ?>"  style="">
+                                                                        <?php
+                                                                        the_post_thumbnail('430-190-thumb');
+                                                                        ?>
+                                                                  </a>
+                                                                  <?php
+                                                            }
+                                                            ?>
+                                                      </div>
+                                                </article>
+                                                <div style="position: absolute; bottom: 10px;left: 20px;">
+                                                      <a class="readmore" href="<?php the_permalink() ?>" title="<?php the_title() ?>"> <?php echo __('Read more', 'attitude') ?></a>
+                                                </div>
+                                          </section>
+                                    </li>
+                                    <?php
+                              }
+                              ?>
+                        </ul>
+                        <?php
+                  }
+            }
+
+            /*  --------- //END LESS THAN 3 EVENTS        */
+            ?>
+
+
       </div>
       <?php
       wp_reset_postdata();
