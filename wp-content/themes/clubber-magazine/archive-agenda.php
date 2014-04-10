@@ -114,10 +114,9 @@ if (is_tax($tax)) {
                                                 </header>
                                                 <hr class="pb5">
                                                 <div class="fl ml5 col-2-4 ">
-                                                      <div class="meddium" style="">
-                                                            <div><?php echo wp_trim_words(get_the_content(), 20); ?></div>
+                                                      <div class="meddium bold" style="text-align: justify">
+                                                            <p><?php echo wp_trim_words(get_the_content(), 20); ?></p>
                                                       </div>
-
                                                       <div class="event-date" style="position: absolute; right: 0; bottom: 0;">
                                                             <?php
                                                             echo date('d/m/y - H:i', get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true));
@@ -128,8 +127,6 @@ if (is_tax($tax)) {
                                                             }
                                                             ?>
                                                       </div>
-
-
                                                 </div>
                                                 <div class="fr col-2-4 nm" >
                                                       <?php
@@ -229,8 +226,8 @@ if (is_tax($tax)) {
                                                       </header>
                                                       <hr class="pb5">
                                                       <div class="fl ml5 col-2-4 ">
-                                                            <div class="meddium" style="">
-                                                                  <div><?php echo wp_trim_words(get_the_content(), 20); ?></div>
+                                                            <div class="meddium bold" style="text-align: justify">
+                                                                  <p><?php echo wp_trim_words(get_the_content(), 20); ?></p>
                                                             </div>
 
                                                             <div class="event-date" style="position: absolute; right: 0; bottom: 0;">
