@@ -49,7 +49,7 @@ if (isset($_GET['date'])) {
                   firstDay: 1,
                   dayClick: function(date, allDay, jsEvent, view) {
                         var date_str = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
-                        var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('agenda'); ?>', 'date', encodeURIComponent(date_str));
+                        var location = updateQueryStringParameter('<?php echo add_query_arg( NULL, NULL ); ?>', 'date', encodeURIComponent(date_str));
                         window.location = location;
                   },
                   dayRender: function(date, cell) {
@@ -67,7 +67,7 @@ if (isset($_GET['date'])) {
             $('.fc-button-prev span').click(function() {
                   var date = $('#calendar').fullCalendar('prev').fullCalendar('getDate');
                   var date_str = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
-                  var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('agenda'); ?>', 'date', encodeURIComponent(date_str));
+                  var location = updateQueryStringParameter('<?php echo  add_query_arg( NULL, NULL ); ?>', 'date', encodeURIComponent(date_str));
                   window.location = location;
                   /*alert('prev ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());*/
                   return false;
@@ -75,7 +75,7 @@ if (isset($_GET['date'])) {
             $('.fc-button-next span').click(function() {
                   var date = $('#calendar').fullCalendar('next').fullCalendar('getDate');
                   var date_str = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
-                  var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('agenda'); ?>', 'date', encodeURIComponent(date_str));
+                  var location = updateQueryStringParameter('<?php echo add_query_arg( NULL, NULL ); ?>', 'date', encodeURIComponent(date_str));
                   window.location = location;
                   /*                  alert('next ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());*/
                   return false;
