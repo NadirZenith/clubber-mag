@@ -42,7 +42,7 @@ $the_query = new WP_Query($args);
                                                 <hr class="pb5">
                                                 <div class="fl ml5 col-2-4 " style="">
                                                       <div class="meddium bold" style="text-align:justify">
-                                                            <?php the_excerpt() ?>
+                                                            <p><?php echo wp_trim_words(get_the_content(), 20); ?></p>
                                                       </div>
                                                       <p class="">
                                                             <a class="readmore" href="<?php the_permalink() ?>" title="<?php the_title() ?>"> <?php echo __('Read more', 'attitude') ?></a>
