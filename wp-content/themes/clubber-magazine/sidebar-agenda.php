@@ -2,10 +2,18 @@
 
 
 <div class="mt30">&nbsp;</div>
-<div id="sticky">
+<?php
+/*
 
+ * 
+ * 
+
+ *  */
+?>
+<div id="sticky">
       <div id="calendar" class="bg-50 block-5"></div>
       <?php
+      /*    banners       */
       include_once 'banners/right-2-300-300.php';
       ?>
 </div>
@@ -13,7 +21,6 @@
 
 
 <?php
-/*    banners       */
 /*    FACEBOOK LIKE BOX       */
 include_once 'facebook/like-box.php';
 ?>
@@ -47,7 +54,6 @@ if (isset($_GET['date'])) {
 
 
             var start_date = new Date('<?php echo date('r', $start_date) ?>');
-
             $('#calendar').fullCalendar({
                   header: {
                         left: '',
@@ -57,10 +63,8 @@ if (isset($_GET['date'])) {
                   firstDay: 1,
                   dayClick: function(date, allDay, jsEvent, view) {
                         var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-
                         var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('agenda'); ?>', 'date', encodeURIComponent(date_str));
                         window.location = location;
-
                   },
                   dayRender: function(date, cell) {
                         if (date.getDate() === start_date.getDate()
@@ -73,53 +77,45 @@ if (isset($_GET['date'])) {
                   dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
                   dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
             });
-
             $('#calendar').fullCalendar('gotoDate', start_date);
-
             $('.fc-button-prev span').click(function() {
                   var date = $('#calendar').fullCalendar('prev').fullCalendar('getDate');
                   var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
                   var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('agenda'); ?>', 'date', encodeURIComponent(date_str));
                   window.location = location;
-
                   /*alert('prev ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());*/
                   return false;
             });
-
             $('.fc-button-next span').click(function() {
                   var date = $('#calendar').fullCalendar('next').fullCalendar('getDate');
-
                   var date_str = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
                   var location = updateQueryStringParameter('<?php echo get_post_type_archive_link('agenda'); ?>', 'date', encodeURIComponent(date_str));
                   window.location = location;
-
                   /*                  alert('next ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());*/
                   return false;
             });
-
-
             /*     STICKY       */
-/* 
-            $(function() { // document ready
-
-                  var stickyTop = $('#sticky').offset().top; // returns number 
-                  console.log(stickyTop);
-                  $(window).scroll(function() { // scroll event  
-
-                        var windowTop = $(window).scrollTop(); // returns number
-
-                        if ((stickyTop + 500) < windowTop) {
-                              $('#sticky').css({position: 'fixed', top: 30});
-                        }
-                        else {
-                              $('#sticky').css('position', 'static');
-                        }
-
-                  });
-
-            });
+            /* 
+             $(function() { // document ready
+             
+             var stickyTop = $('#sticky').offset().top; // returns number 
+             console.log(stickyTop);
+             $(window).scroll(function() { // scroll event  
+             
+             var windowTop = $(window).scrollTop(); // returns number
+             
+             if ((stickyTop + 500) < windowTop) {
+             $('#sticky').css({position: 'fixed', top: 30});
+             }
+             else {
+             $('#sticky').css('position', 'static');
+             }
+             
+             });
+             
+             });
+             */
       });
 
- */
 
 </script>
