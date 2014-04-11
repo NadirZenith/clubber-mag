@@ -1,10 +1,11 @@
+<?php
 /**
 * Template Name: Archive noticias
 *
 * Displays archive for noticias (posts)
 *
 */
-<?php get_header(); ?>
+get_header(); ?>
 
 <?php
 $args = array(

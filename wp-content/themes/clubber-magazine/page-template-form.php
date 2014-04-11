@@ -1,10 +1,11 @@
+<?php
 /**
 * Template Name: Form Page Template
 *
 * Displays the contact page template.
 *
 */
-<?php get_header(); ?>
+get_header(); ?>
 
 <div id="container">
 

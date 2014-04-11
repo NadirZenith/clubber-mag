@@ -1,3 +1,4 @@
+<?php
 /**
 * Template Name: Registrate Template
 *
@@ -5,7 +6,6 @@
 *
 */
 
-<?php
 if (is_user_logged_in()) {
       $current_user = wp_get_current_user();
       wp_redirect(get_author_posts_url(get_current_user_id()));
