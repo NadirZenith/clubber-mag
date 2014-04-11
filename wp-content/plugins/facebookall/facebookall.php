@@ -102,7 +102,8 @@ add_action('admin_menu', 'facebookall_admin_menu');
 function facebookall_default_options() {
         global $fball_settings;
         add_option('fball_settings', array('login_title' => 'Or',
-              'fbicon_text' => 'Login with Facebook',
+              'fbicon_text' => 'Entra con Facebook',
+              /*'fbicon_text' => 'Login with Facebook',*/
               'loginpage' => '1',
               'registerpage' => '1',
               'commentpage' => '1',
