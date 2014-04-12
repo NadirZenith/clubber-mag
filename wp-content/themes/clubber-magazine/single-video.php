@@ -78,7 +78,7 @@
             </div>
 
             <?php
-            include_once 'banners/footer-728-90.php';
+            /*include_once 'banners/footer-728-90.php';*/
             ?>
 
 
