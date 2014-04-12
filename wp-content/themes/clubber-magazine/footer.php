@@ -9,9 +9,9 @@
                               <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
                         </nav>
 
-                        <div class="featured-image" style="width:150px;position: absolute; bottom: 10px; right: 25px;">
+                        <div class="featured-image" style="position: absolute; bottom: 10px; right: 25px;">
                               <a href="https://www.facebook.com/Clubber.Mag"  target="_blank">
-                                    <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/facebook_footer.png">
+                                    <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/facebook_follow_us.png">
                               </a>
                         </div>
 
