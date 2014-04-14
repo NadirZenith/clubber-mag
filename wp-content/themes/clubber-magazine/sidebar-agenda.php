@@ -82,7 +82,8 @@ if (isset($_GET['date'])) {
             });
             /*     STICKY       */
             /* 
-             $(function() { // document ready
+            
+             $(function() { 
              
              var stickyTop = $('#sticky').offset().top; // returns number 
              console.log(stickyTop);
@@ -100,6 +101,7 @@ if (isset($_GET['date'])) {
              });
              
              });
+
              */
       });
 
