@@ -23,10 +23,12 @@ $the_query = new WP_Query($args);
                         <article>
                               <div class="video-container" style="">
                                     <?php
-                                    $url = types_render_field('youtube-video-url', array('raw' => true));
-                                    parse_str(parse_url($url, PHP_URL_QUERY), $vars);
+                                    /*$url = types_render_field('youtube-video-url', array('raw' => true));*/
+                                    /*parse_str(parse_url($url, PHP_URL_QUERY), $vars);*/
+                                    /*<iframe src="//www.youtube.com/embed/<?php echo $vars['v']; ?>" frameborder="0" allowfullscreen></iframe>*/
+                                    $video = types_render_field( "video-url", array("output" => "html") );
+                                    echo $video;
                                     ?>
-                                    <iframe src="//www.youtube.com/embed/<?php echo $vars['v']; ?>" frameborder="0" allowfullscreen></iframe>
                               </div>
                         </article>
                   </li>
