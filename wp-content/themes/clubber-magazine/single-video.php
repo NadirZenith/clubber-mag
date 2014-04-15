@@ -36,8 +36,8 @@
                                                 </header>
                                                 <div class="video-container">
                                                         <?php
-                                                        $url = get_post_meta(get_the_ID(), 'wpcf-youtube-video-url', true);
-                                                        parse_str(parse_url($url, PHP_URL_QUERY), $vars);
+                                                        /*$url = get_post_meta(get_the_ID(), 'wpcf-youtube-video-url', true);*/
+                                                        /*parse_str(parse_url($url, PHP_URL_QUERY), $vars);*/
                                                         /* <iframe width="390" height="490" src="//www.youtube.com/embed/<?php echo $vars['v']; ?>" frameborder="0" allowfullscreen></iframe> */
 
                                                         $video = types_render_field("video-url", array("output" => "html"));

@@ -57,8 +57,8 @@ do_action('attitude_before_main_container');
                                                                 <div class="fr mt5 col-2-4 nm" >
                                                                         <div class="video-container">
                                                                                 <?php
-                                                                                $url = get_post_meta(get_the_ID(), 'wpcf-youtube-video-url', true);
-                                                                                parse_str(parse_url($url, PHP_URL_QUERY), $vars);
+                                                                                /*$url = get_post_meta(get_the_ID(), 'wpcf-youtube-video-url', true);*/
+                                                                                /*parse_str(parse_url($url, PHP_URL_QUERY), $vars);*/
                                                                                 /* <iframe src="//www.youtube.com/embed/<?php echo $vars['v']; ?>" frameborder="0" allowfullscreen></iframe> */
 
                                                                                 $video = types_render_field("video-url", array("output" => "html"));
