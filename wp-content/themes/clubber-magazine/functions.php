@@ -47,7 +47,7 @@ function attitude_constants() {
       define('ATTITUDE_WIDGETS_DIR', ATTITUDE_LIBRARY_DIR . '/widgets');
 
       /*  CLUBBER CONSTANTS    */
-      define('CLUBBER_DEV', FALSE);
+      define('CLUBBER_DEV', TRUE);
       define('CLUBBER_PLUGIN_DIR', ATTITUDE_PARENT_DIR . '/plugins');
       define('CLUBBER_PLUGIN_URL', get_site_url() . '/wp-content/themes/clubber-magazine/plugins');
 
@@ -99,7 +99,7 @@ function attitude_load_files() {
       (CLUBBER_DEV) ? NULL : define('ACF_LITE', true);
 
       require_once( CLUBBER_PLUGIN_DIR . '/advanced-custom-fields/acf.php' );
-      require_once( CLUBBER_PLUGIN_DIR . '/acf-field-date-time-picker/acf-date_time_picker.php' );
+      /*require_once( CLUBBER_PLUGIN_DIR . '/acf-field-date-time-picker/acf-date_time_picker.php' );*/
       require_once( CLUBBER_PLUGIN_DIR . '/acf-gallery/gallery.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php' );
       require_once( CLUBBER_PLUGIN_DIR . '/ml-slider/ml-slider.php' );
