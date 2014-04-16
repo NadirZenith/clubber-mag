@@ -38,6 +38,7 @@
 
                                     <?php
                                     $map = get_field('map');
+                                    d($map);
                                     /* d($map); */
                                     if ($map) {
                                           ?>  
