@@ -19,7 +19,7 @@ if (isset($vars['tipo'])) {
 
                         break;
                 case 'cool-place':
-                        $content = do_shortcode('[gravityform id=5 title=false description=false ajax=true]');
+                        $content = do_shortcode('[gravityform id=4 title=false description=false ajax=true]');
                         $title = 'Nuevo Cool-Place';
 
                         break;
