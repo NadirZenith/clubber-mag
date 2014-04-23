@@ -40,6 +40,7 @@ function query_by_first_letter() {
       $sql = $wpdb->prepare("
                   SELECT      * FROM $wpdb->posts
                   WHERE $wpdb->posts.post_type = 'artistas'
+                  and $wpdb->posts.post_status = 'publish'
                   and $wpdb->posts.post_title REGEXP %s
                   ORDER BY $wpdb->posts.post_title ASC
                   ", $query_letter);
