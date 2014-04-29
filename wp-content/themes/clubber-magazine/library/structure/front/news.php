@@ -7,7 +7,7 @@ $args = array(
 $the_query = new WP_Query($args);
 ?>
 <h1>
-      <a class="ml5" href="<?php echo get_permalink(get_page_by_title('News')); ?>"> <?php echo $args['label_name'] ?></a>
+      <a class="ml5" href="<?php echo get_permalink(get_page_by_title('noticias')); ?>"> <?php echo $args['label_name'] ?></a>
 </h1>
 
 <ul>
