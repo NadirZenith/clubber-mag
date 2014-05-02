@@ -43,7 +43,7 @@ section:hover h1 a{
 }
 
 .top-banner{
-    margin-left: 140px; margin-top: 30px;
+    margin-left: 100px; margin-top: 30px;
 }
 
 
@@ -138,6 +138,95 @@ section:hover h1 a{
     right: 25px;
     background-image: url("../images/facebook_follow_us.png"); 
 }
+/* GRAVITY FORMS COMMON*/
+.gfield{
+    /*margin-left: 5px;*/
+}
+.gform_fields .small{
+    width: 30%;
+    margin-left: 5px;
+}
+.gform_fields .medium{
+    width: 70%;
+    margin-left: 5px;
+}
+.gform_fields .large{
+    width: 90%;
+    margin-left: 5px;
+}
+.gfield_label {
+    margin-left: 5px;
+}
+.gfield_required{
+    margin-left: 5px;
+    /*color: ;*/
+}
+.gfield_description{
+    margin-left: 5px;
+    color: #bbb;
+}
+.gfield:hover .gfield_description{
+    color: #ddd;
+}
+.validation_error, .gfield .validation_message {
+    color: blue;
+}
+.gform_validation_container{
+    display: none;
+}
+
+.gform_button{
+    clear: both;
+    margin: 5px;
+}
+
+.ginput_left {
+    float: left;
+    width: 40%;
+    margin-left: 5px;
+}
+.ginput_right {
+    float: left;
+    width: 40%;
+    margin-left: 5px;
+}
+.gfield_password_strength{
+    float: right;
+    width: 200px;
+    text-align: center;
+    vertical-align: central;
+    clear: both;
+    height: 25px;
+    background-color: #aaa;
+    margin: 5px;
+    border-radius: 3px;
+    border: 1px solid;
+}
+.gfield_password_strength.short{
+    background-color: #ffa0a0;
+    border-color: #f04040;
+    color: #333;
+}
+.gfield_password_strength.bad{
+    background-color: #ffb78c;
+    border-color: #ff853c;
+    color: #333;
+}
+.gfield_password_strength.good{
+    background-color: #ffec8b;
+    border-color: #fc0;
+    color: #333;
+}
+.gfield_password_strength.strong{
+    background-color: #c3ff88;
+    border-color: #8dff1c;
+    color: #333;
+}
+.gfield_password_strength.mismatch{
+    background-color: red;
+    color: #333;
+}
+
 /* =Responsive Structure
 ----------------------------------------------- */
 /* All Tablet Portrait size smaller than standard 1079 (devices and browsers) */
