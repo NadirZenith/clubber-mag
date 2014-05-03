@@ -34,6 +34,3 @@ function initMenus() {
 	);
 }
 jQuery(document).ready(function() {initMenus();});
-jQuery(document).ready(function() {	
-	jQuery('div.add-buttons-title').append('<span class="add-buttons-caret-down"><i class="fa fa-caret-down"></i></span>');
-});
