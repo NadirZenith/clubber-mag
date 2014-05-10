@@ -40,7 +40,7 @@ function attitude_constants() {
         define('ATTITUDE_JS_DIR', ATTITUDE_LIBRARY_DIR . '/js');
         define('ATTITUDE_CSS_DIR', ATTITUDE_LIBRARY_DIR . '/css');
         define('ATTITUDE_FUNCTIONS_DIR', ATTITUDE_LIBRARY_DIR . '/functions');
-        define('ATTITUDE_SHORTCODES_DIR', ATTITUDE_LIBRARY_DIR . '/shortcodes');
+        /*define('ATTITUDE_SHORTCODES_DIR', ATTITUDE_LIBRARY_DIR . '/shortcodes');*/
         define('ATTITUDE_STRUCTURE_DIR', ATTITUDE_LIBRARY_DIR . '/structure');
         if (!defined('ATTITUDE_LANGUAGES_DIR')) /** So we can define with a child theme */
                 define('ATTITUDE_LANGUAGES_DIR', ATTITUDE_LIBRARY_DIR . '/languages');
@@ -106,6 +106,7 @@ function attitude_load_files() {
         require_once( CLUBBER_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php' );
         require_once( CLUBBER_PLUGIN_DIR . '/ml-slider/ml-slider.php' );
         require_once( CLUBBER_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php');
+        require_once( CLUBBER_PLUGIN_DIR . '/nz-database-functions.php');
 
         /** Load Shortcodes */
         /* require_once( ATTITUDE_SHORTCODES_DIR . '/attitude-shortcodes.php' ); */
@@ -116,10 +117,12 @@ function attitude_load_files() {
         require_once( ATTITUDE_STRUCTURE_DIR . '/sidebar-extensions.php' );
         require_once( ATTITUDE_STRUCTURE_DIR . '/footer-extensions.php' );
         require_once( ATTITUDE_STRUCTURE_DIR . '/content-extensions.php' );
+        require_once( ATTITUDE_STRUCTURE_DIR . '/relation-events-users.php' );
 
         /** CLUBBER FORMS      */
         require_once( CLUBBER_FORMS_DIR . '/event.php' );
         require_once( CLUBBER_FORMS_DIR . '/artist.php' );
+        require_once( CLUBBER_FORMS_DIR . '/user-profile-edit.php' );
 
         /*   images   */
         require_once( ATTITUDE_STRUCTURE_DIR . '/images-extensions.php' );
@@ -248,98 +251,27 @@ function recover_password_url($url) {
 add_filter('wppb_recover_password_message1', '__return_empty_string');
 
 
-function enqueue_scripts_styles_init() {
-        /* wp_enqueue_script( 'ajax-script', get_stylesheet_directory_uri().'/js/script.js', array('jquery'), 1.0 ); // jQuery will be included automatically */
-        // get_template_directory_uri() . '/js/script.js'; // Inside a parent theme
-        // get_stylesheet_directory_uri() . '/js/script.js'; // Inside a child theme
-        // plugins_url( '/js/script.js', __FILE__ ); // Inside a plugin
-        wp_localize_script('ajax-script', 'ajax_object', array('ajaxurl' => admin_url('admin-ajax.php'))); // setting ajaxurl
+add_filter('wp_nav_menu_items', 'add_loginout_link', 10, 2);
+
+function add_loginout_link($items, $args) {
+
+        if (is_user_logged_in() && $args->theme_location == 'primary') {
+                $class = is_author() ? ' current-menu-item ' : '';
+                $avatar = get_avatar(get_current_user_id(), 55);
+                $items .= '<li class="' . $class . '"><a style="height:55px;padding:0;border-radius:8px;overflow:hidden" href="' . get_author_posts_url(get_current_user_id()) . '">' . $avatar . '<span style="margin-left:5px;line-height:3.5">Perfil</span></a></li>';
+        } elseif (!is_user_logged_in() && $args->theme_location == 'primary') {
+                $class = is_page('registrate') ? ' current-menu-item ' : '';
+                $login_url = get_permalink(get_page_by_path('registrate'));
+                $items .= '<li class="' . $class . '"><a href="' . $login_url . '">Regístrate / Entra</a></li>';
+        }
+        return $items;
 }
 
-/* add_action('init', 'enqueue_scripts_styles_init'); */
-
-/* AJAX FORM SUBIR PAGE */
-/*
-  0                       1                       2
-  name            "10.jpg"                "11.jpg"                "12.jpg"
-  type            "image/jpeg"            "image/jpeg"            "image/jpeg"
-  tmp_name	"/tmp/phpEEgeso"        "/tmp/php1tJUYu"        "/tmp/phpeh8gxB"
-  error           0                       0                       0
-  size            111430                  277446                  460072
- */
-
-function ajax_nz_debug() {
-        echo 'ok';
-        die();
-        //upload files !
-        $mime = array("image/jpg", "image/jpeg", "image/png");
-        $uploads = wp_upload_dir();
-        $upload_files_url = array();
-        foreach ($_FILES['files']['name'] as $key => $value_data) {
-               
-                $errors_founds = '';
-
-                if ($_FILES['files']['error'][$key] != UPLOAD_ERR_OK)
-                        $errors_founds .= 'Error uploading the file!<br />';
-
-                if (!in_array(trim($_FILES['files']['type'][$key]), $mime))
-                        $errors_founds .= 'Invalid file type!<br />';
-
-                if ($_FILES['files']['size'][$key] == 0)
-                        $errors_founds .= 'Image file it\'s empty!<br />';
-
-                 if ($_FILES['files']['size'][$key] > 524288) 
-                 $errors_founds .= 'Image file to large, maximus size is 500Kb!<br />'; 
-
-                if (!is_uploaded_file($_FILES['files']['tmp_name'][$key]))
-                        $errors_founds .= 'Error uploading the file on the server!<br />';
-
-                if ($errors_founds == '') {
-                        //Sanitize the filename (See note below)
-                        $remove_these = array(' ', '`', '"', '\'', '\\', '/');
-                        $newname = str_replace($remove_these, '', $_FILES['files']['name'][$key]);
-                        //Make the filename unique
-                        $newname = time() . '-' . $newname;
-                        //Save the uploaded the file to another location
-
-                        $upload_path = $uploads['path'] . "/$newname";
-                        move_uploaded_file($_FILES['files']['tmp_name'][$key], $upload_path);
-                        $upload_files_url[$upload_path] = $uploads['url'] . "/$newname";
-                }
-        }
-
-        if (count($upload_files_url) > 0) {
-                $attachs = array();
-                $i = 0;
-                foreach ($upload_files_url as $filename_path => $upload_file_url) {
-                        $i++;
-                        $wp_filetype = wp_check_filetype(basename($filename_path), null);
-                        $attachment = array(
-                              'post_mime_type' => $wp_filetype['type'],
-                              'post_title' => preg_replace('/\.[^.]+$/', '', basename($filename_path)),
-                              'post_content' => '',
-                              'post_status' => 'inherit'
-                        );
-                        $attach_id = wp_insert_attachment($attachment, $filename_path);
-
-                        // you must first include the image.php file
-                        // for the function wp_generate_attachment_metadata() to work
-                        require_once(ABSPATH . 'wp-admin/includes/image.php');
-                        $attach_data = wp_generate_attachment_metadata($attach_id, $filename_path);
-                        wp_update_attachment_metadata($attach_id, $attach_data);
-                        
-                        $attachs[$i]['id'] = $attach_id;
-                        /*$attachs[$i]['url'] = wp_get_attachment_url($attach_id);*/
-                        $attachs[$i]['src'] = wp_get_attachment_image_src($attach_id, array('290','160'));
-                        /*$attachs[$i]['sizes'] = get_intermediate_image_sizes();*/
-                }
-        }
-        echo json_encode($attachs);
-        die(); // stop executing script
+//to use get_query_var( 'action' );
+function add_query_vars_filter($vars) {
+        $vars[] = "action";
+        return $vars;
 }
 
-add_action('wp_ajax_nz_debug', 'ajax_nz_debug');
-// ajax for logged in users
-add_action('wp_ajax_nopriv_nz_debug', 'ajax_nz_debug'); 
-// ajax for not logged in users 
+add_filter('query_vars', 'add_query_vars_filter');
 ?>

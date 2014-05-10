@@ -63,7 +63,7 @@ $wp_query = new WP_Query($args);
                                                         <?php
                                                 }
                                                 ?>
-                                                <li >
+                                                <li>
                                                         <article class="fl col-1-4">
                                                                 <div class="hover-2" style="">
                                                                         <h2 class="ml5" style="line-height: normal">

@@ -7,6 +7,14 @@
  * @since Attitude 1.0
  */
 ?>
+<?php
+/* wp_enqueue_style('clubber-style', get_template_directory_uri() . '/css/common.css', $deps, $ver, $media); */
+/* wp_enqueue_style('common', get_template_directory_uri() . '/css/common.css', $deps, $ver, $media); */
+
+wp_enqueue_style('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.css', $deps, $ver, $media);
+
+wp_enqueue_script('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.pack.js', array('jquery'));
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
         <head>
@@ -22,21 +30,12 @@
                 <?php
                 do_action('attitude_links');
 
-                /**
-                 * This hook is important for wordpress plugins and other many things
-                 */
                 wp_head();
                 ?>
                 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
                 <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 
-
-                <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fullcalendar/fullcalendar.css" type="text/css">
-                <script type="text/javascript" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fullcalendar/fullcalendar.min.js"></script>
-
-                <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fancybox/source/jquery.fancybox.css" type="text/css">
-                <script type="text/javascript" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fancybox/source/jquery.fancybox.pack.js"></script>
 
                 <?php
                 /* <body <?php body_class(); ?>> */
@@ -108,3 +107,5 @@
                         do_action('attitude_before_main');
                         ?>
                         <div id="main" class="container clearfix">
+
+                                

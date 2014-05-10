@@ -1,4 +1,18 @@
 <?php
+/*add_action('wp_head', 'pluginname_ajaxurl');*/
+
+function pluginname_ajaxurl() {
+        ?>
+        <script type="text/javascript">
+                var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+        </script>
+        <?php
+}
+
+/*wp_enqueue_script('jquery-form-plugin', get_template_directory_uri() . '/js/jquery.form.js', array('jquery'));*/
+/*wp_enqueue_script('ajax-form-handler', get_template_directory_uri() . '/js/send_form.js?ver=01', array('jquery'));*/
+
+
 $url = add_query_arg(null, null);
 parse_str(parse_url($url, PHP_URL_QUERY), $vars);
 if (isset($vars['tipo'])) {
@@ -14,7 +28,7 @@ if (isset($vars['tipo'])) {
 
         switch ($vars['tipo']) {
                 case 'artista':
-                        $content = do_shortcode('[gravityform id=3 title=false description=false ajax=true]');
+                        $content = do_shortcode('[gravityform id=6 title=false description=false ajax=false]');
                         $title = 'Nuevo Artista';
 
                         break;
@@ -36,12 +50,15 @@ if (isset($vars['tipo'])) {
 <?php get_header(); ?>
 
 <div id="container">
-
+<?php 
+/*        
         <script type="text/javascript">
                 jQuery(document).ready(function($) {
 
                 });
         </script>
+*/
+?>
         <style>
 
                 .gform_fields .small{
@@ -74,7 +91,7 @@ if (isset($vars['tipo'])) {
                         color: blue;
                 }
 
-                
+
                 .gform_confirmation_wrapper {
                         font-size: 150%;
                         font-weight: 700;
@@ -95,7 +112,7 @@ if (isset($vars['tipo'])) {
 
         </style>
         <?php
-        /*d('page-subir');*/
+        /* d('page-subir'); */
         ?>
         <section class="bg-50 block-5" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <header class="">
@@ -105,20 +122,16 @@ if (isset($vars['tipo'])) {
                 </header>
                 <div class="mt5 ml5 meddium mr5 cb">
                         <?php
-                       if($content){
-                               echo $content;
-                       } else {
-                               echo 'Los campos marcados con * son obligatorios';
-                       }
+                        if ($content) {
+                                echo $content;
+                        } else {
+                                echo 'Los campos marcados con * son obligatorios';
+                        }
                         ?>
-
                 </div>
 
         </section>
-        <?php
-        ?>
-
-
+        
 </div><!-- #container -->
 
 <?php get_footer(); ?>

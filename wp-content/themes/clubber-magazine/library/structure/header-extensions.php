@@ -135,7 +135,10 @@ function attitude_headerdetails() {
                         </h1>
                   </hgroup><!-- #site-logo -->
 
-                  <section class="fr" id="social-profiles">
+                  <section class="fr" >
+                          <div class="fb-like" style="height:18; vertical-align:middle; margin-top: 25px;" data-href="https://www.facebook.com/Clubber.Mag" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="tahoma"></div>
+                          <div id="social-profiles">
+                                  
                         <ul>
                               <li>
                                     <a href="https://www.facebook.com/Clubber.Mag"  target="_blank">
@@ -153,6 +156,7 @@ function attitude_headerdetails() {
                                     </a>
                               </li> 
                         </ul>
+                          </div>
                         <?php ?>
                   </section>
                   <div class="fl top-banner"> 

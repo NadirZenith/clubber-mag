@@ -10,12 +10,6 @@
 
 <?php get_header(); ?>
 
-<?php
-/**
- * attitude_before_main_container hook
- */
-do_action('attitude_before_main_container');
-?>
 <div id="container">
         <div id="primary">
                 <h1>

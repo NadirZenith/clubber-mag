@@ -1,7 +1,7 @@
 <?php
 
 /* add_filter("gform_field_content", "image_upload_preview", 10, 5); */
-add_filter("gform_field_input", "image_upload_preview", 10, 5);
+/*add_filter("gform_field_input", "image_upload_preview", 10, 5);*/
 
 function image_upload_preview($input, $field, $value, $lead_id, $form_id) {
         //hidden input field to convert = 4
@@ -36,9 +36,9 @@ function image_upload_preview($input, $field, $value, $lead_id, $form_id) {
         return $input;
 }
 
-add_action("gform_after_submission", "set_post_content", 10, 2);
+/*add_action("gform_after_submission", "set_post_content_6", 10, 2);*/
 
-function set_post_content($entry, $form) {
+function set_post_content_6($entry, $form) {
         $post_id= $entry['post_id'];
         $attach_id = $entry[4];
         add_post_meta($post_id, '_thumbnail_id', $attach_id, true);
