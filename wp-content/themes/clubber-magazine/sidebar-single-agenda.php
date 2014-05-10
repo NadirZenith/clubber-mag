@@ -45,6 +45,7 @@
         
         $event = get_the_ID();
         $NZRelation = New NZRelation('events_to_users', 'event_id', 'user_id');
+        $NZRelation->install_table();
         $event_participants = $NZRelation->getRelationFrom($event);
         $user_subscribed = $NZRelation->hasRelationFrom($event, get_current_user_id());
 
@@ -61,6 +62,7 @@
         /* $view_participants_url = add_query_arg(array('action' => 'get_event_users', 'event' => get_the_ID()), admin_url('admin-ajax.php')); */
         ?>
 <!--        
+-->
         <div id='nz-relate-user-to-event' class='nz-relate big'>
                 <a id="relate_user_to_event" class="<?php echo $class ?>" href="#participar" >
                         <span class="nzr-icon"></span>
@@ -72,13 +74,12 @@
                 </a>
 
         </div>
--->
 
         <script type="text/javascript">
 
                 jQuery(document).ready(function($) {
-                        /*$('#relate_user_to_event').on('click', nzr_process_relation);*/
-                        /*$("#get-event-users").on('click', nzr_process_get_relation);*/
+                        $('#relate_user_to_event').on('click', nzr_process_relation);
+                        $("#get-event-users").on('click', nzr_process_get_relation);
 
 
                         function nzr_process_relation(e) {
