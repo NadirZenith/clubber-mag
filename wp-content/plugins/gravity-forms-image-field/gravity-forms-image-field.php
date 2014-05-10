@@ -219,7 +219,7 @@ if (!function_exists('nz_ajaxurl')) {
 add_action('wp_ajax_nz_gform_image_upload', 'ajax_nz_gform_image_upload');
 
 //// ajax for not logged in users 
-/* add_action('wp_ajax_nopriv_nz_gform_image_upload', 'ajax_nz_gform_image_upload'); */
+ add_action('wp_ajax_nopriv_nz_gform_image_upload', 'ajax_nz_gform_image_upload'); 
 
 //ajax receive action
 function ajax_nz_gform_image_upload() {
