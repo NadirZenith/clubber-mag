@@ -10,7 +10,7 @@ function relate_user_to_event() {
 
 
         $NZRelation = New NZRelation('events_to_users', 'event_id', 'user_id');
-         $result = $NZRelation->install_table(); 
+         /*$result = $NZRelation->install_table(); */
         if ($arg == 'relate') {
 
                 $result = $NZRelation->setRelationFrom($event, get_current_user_id());
