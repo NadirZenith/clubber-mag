@@ -15,11 +15,11 @@ wp_enqueue_script('jquery-ui-sliderAccess', get_template_directory_uri() . '/js/
 
         <script type="text/javascript">
                 jQuery(document).ready(function($) {
-                        $('#input_9_3').datetimepicker({
+                        $('#input_7_3').datetimepicker({
                                 addSliderAccess: true,
                                 sliderAccessArgs: {touchonly: false}
                         });
-                        $('#input_9_19').datetimepicker({
+                        $('#input_7_19').datetimepicker({
                                 addSliderAccess: true,
                                 sliderAccessArgs: {touchonly: false}
                         });
@@ -29,10 +29,10 @@ wp_enqueue_script('jquery-ui-sliderAccess', get_template_directory_uri() . '/js/
 
                
 
-                #field_9_18 .gfield_description a{
+                #field_7_18 .gfield_description a{
                         font-weight: bold;
                 }
-                #field_9_18 .gfield_description{
+                #field_7_18 .gfield_description{
                         color: #0583F2;
                 }
                 .gform_button{
@@ -56,7 +56,7 @@ wp_enqueue_script('jquery-ui-sliderAccess', get_template_directory_uri() . '/js/
                         
 
                         <?php
-                        $event_form_id = 9;
+                        $event_form_id = 7;
                         echo do_shortcode('[gravityform id="' . $event_form_id . '" name="Evento" title="false" description="false" ajax="false"]');
                         ?>
                 </div>

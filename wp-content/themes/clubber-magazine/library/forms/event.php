@@ -4,7 +4,7 @@
 add_filter("gform_post_data", "event_change_date_format", 10, 3);
 
 function event_change_date_format($post_data, $form, $entry) {
-        if ($form["id"] != 9) {
+        if ($form["id"] != 7) {
                 return $post_data;
         }
         $user_input_date = $post_data['post_custom_fields']['wpcf-event_begin_date'];
@@ -24,8 +24,7 @@ function event_change_date_format($post_data, $form, $entry) {
         return $post_data;
 }
 
-
-add_filter("gform_pre_render_9", "remove_protected_fields");
+add_filter("gform_pre_render_7", "remove_protected_fields");
 
 function remove_protected_fields($form) {
 
@@ -58,7 +57,7 @@ function remove_protected_fields($form) {
         return $form;
 }
 
-add_action("gform_after_submission_9", "proccess_admin_fields", 10, 2);
+add_action("gform_after_submission_7", "proccess_admin_fields", 10, 2);
 
 function proccess_admin_fields($entry, $form) {
 
