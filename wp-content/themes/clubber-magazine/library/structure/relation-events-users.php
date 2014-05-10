@@ -18,7 +18,7 @@ function relate_user_to_event() {
         if ($arg == 'unrelate') {
                 $result = $NZRelation->removeRelationFrom($event, get_current_user_id());
         }
-        echo $result;
+        /*echo $result;*/
 
         die();
 }
