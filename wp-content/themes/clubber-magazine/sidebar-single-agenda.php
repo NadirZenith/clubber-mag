@@ -41,11 +41,9 @@
 </style>
 <div class="bg-50 block-5 pb5 mt15 ">
         <?php
-       
-        
         $event = get_the_ID();
         $NZRelation = New NZRelation('events_to_users', 'event_id', 'user_id');
-        /*$NZRelation->install_table();*/
+        /* $NZRelation->install_table(); */
         $event_participants = $NZRelation->getRelationFrom($event);
         $user_subscribed = $NZRelation->hasRelationFrom($event, get_current_user_id());
 
@@ -61,8 +59,8 @@
         $total_style = ($total_participants == 0) ? 'style="visibility:hidden"' : '';
         /* $view_participants_url = add_query_arg(array('action' => 'get_event_users', 'event' => get_the_ID()), admin_url('admin-ajax.php')); */
         ?>
-<!--        
--->
+        <!--        
+        -->
         <div id='nz-relate-user-to-event' class='nz-relate big'>
                 <a id="relate_user_to_event" class="<?php echo $class ?>" href="#participar" >
                         <span class="nzr-icon"></span>
@@ -124,6 +122,11 @@
                                         url: ajaxurl,
                                         data: settings,
                                         type: 'GET',
+                                        success: function(data, status, xhr) {
+                                                $.fancybox({
+                                                        'content': xhr.responseText
+                                                });
+                                        },
                                         error: function(xhr) {
                                                 $.fancybox({
                                                         'content': xhr.responseText
