@@ -124,7 +124,7 @@
                                         type: 'GET',
                                         success: function(data, status, xhr) {
                                                 $.fancybox({
-                                                        'content': xhr.responseText
+                                                        'content': data
                                                 });
                                         },
                                         error: function(xhr) {
