@@ -43,7 +43,7 @@
         <?php
         $event = get_the_ID();
         $NZRelation = New NZRelation('events_to_users', 'event_id', 'user_id');
-        /* $NZRelation->install_table(); */
+        $NZRelation->install_table();
         $event_participants = $NZRelation->getRelationFrom($event);
         $user_subscribed = $NZRelation->hasRelationFrom($event, get_current_user_id());
 
@@ -124,6 +124,14 @@
                                         type: 'GET',
                                         success: function(data, status, xhr) {
                                                 $.fancybox({
+                                                        'transitionIn': 'elastic',
+                                                        'transitionOut': 'elastic',
+                                                        'speedIn': 600,
+                                                        'speedOut': 200,
+                                                        'overlayShow': false,
+                                                        'width': '80%',
+                                                        'height': '80%',
+                                                        'autoSize': false,
                                                         'content': data
                                                 });
                                         },
