@@ -78,6 +78,9 @@
 
                 </div>
         </section>
+        <?php 
+        
+/*      
         <div class="bg-50 block-5 mt5 meddium">
 
                 <div class="ml5">
@@ -106,6 +109,8 @@
 
 
         </div>
+   */
+        ?>
 </div>
 
 <?php
