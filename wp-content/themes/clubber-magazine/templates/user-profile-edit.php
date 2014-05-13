@@ -1,13 +1,14 @@
 
-<?php 
-?>
+<?php ?>
 <section class="bg-50 block-5">
-         <div class="ml15 cb group" >
+        <div class="ml15 cb group" >
 
                 <h1 class="fl">
-                        <?php echo $curauth->get('display_name'); ?>
+                        <a href="<?php echo get_author_posts_url($curauth->ID); ?>">
+                                <?php echo $curauth->get('display_name'); ?>
+                        </a>
                 </h1>
-                
+
         </div>
         <div class="mt5 ml5 meddium mr5 cb">
                 <style>
@@ -21,7 +22,7 @@
                                 float: left;
                                 width: 50px;
                                 margin-left: 5px;
-                                
+
                         }
                 </style>
 

@@ -23,6 +23,9 @@
 
         <?php
         wp_footer();
+        
+        /*nz_debug_page_request();*/
+        /*nz_debug_rewrite_rules();*/
         ?>
 
         </body>

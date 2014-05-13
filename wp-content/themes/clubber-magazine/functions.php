@@ -40,7 +40,7 @@ function attitude_constants() {
         define('ATTITUDE_JS_DIR', ATTITUDE_LIBRARY_DIR . '/js');
         define('ATTITUDE_CSS_DIR', ATTITUDE_LIBRARY_DIR . '/css');
         define('ATTITUDE_FUNCTIONS_DIR', ATTITUDE_LIBRARY_DIR . '/functions');
-        /*define('ATTITUDE_SHORTCODES_DIR', ATTITUDE_LIBRARY_DIR . '/shortcodes');*/
+        /* define('ATTITUDE_SHORTCODES_DIR', ATTITUDE_LIBRARY_DIR . '/shortcodes'); */
         define('ATTITUDE_STRUCTURE_DIR', ATTITUDE_LIBRARY_DIR . '/structure');
         if (!defined('ATTITUDE_LANGUAGES_DIR')) /** So we can define with a child theme */
                 define('ATTITUDE_LANGUAGES_DIR', ATTITUDE_LIBRARY_DIR . '/languages');
@@ -223,21 +223,30 @@ function revcon_change_post_object() {
         $labels->name_admin_bar = 'News item'; //admin top bar
 }
 
-/*    PROFILE BUILDER   */
 /*    CHANGE HOME/author/name to HOME/perfil/name */
 add_action('init', 'change_author_base');
 
 function change_author_base() {
+        $query_var_name = 'action';
+        $author_slug = 'perfil'; 
+        $author_edit_slug = 'editar';
+        $regex = sprintf('^%s/([^/]+)/(%s)/?$', $author_slug, $author_edit_slug);
+        $redirect = sprintf('index.php?author_name=$matches[1]&%s=$matches[2]', $query_var_name);
+
+
         global $wp_rewrite;
-        $author_slug = 'perfil'; // change slug name
+        $wp_rewrite->add_rule($regex, $redirect);
         $wp_rewrite->author_base = $author_slug;
+
 }
 
 /** PROFILE BUILDER PRO */
-add_filter('wppb_register_content_name1', '__return_empty_string');
-add_filter('wppb_register_content_info1', '__return_empty_string');
-add_filter('wppb_register_content_about_yourself1', '__return_empty_string');
-add_filter('wppb_register_confirmation_email_form', '__return_empty_string');
+/*
+  add_filter('wppb_register_content_name1', '__return_empty_string');
+  add_filter('wppb_register_content_info1', '__return_empty_string');
+  add_filter('wppb_register_content_about_yourself1', '__return_empty_string');
+  add_filter('wppb_register_confirmation_email_form', '__return_empty_string');
+ */
 
 add_filter('wppb_pre_login_url_filter', 'recover_password_url');
 
@@ -274,4 +283,12 @@ function add_query_vars_filter($vars) {
 }
 
 add_filter('query_vars', 'add_query_vars_filter');
+
+
+/*
+ *  
+ *      TESTES 
+ * 
+ * * */
+/* add_filter('init', 'nz_flush_rewrite_rules'); */
 ?>

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Gravity Forms User Registration\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-16 05:47-0500\n"
-"PO-Revision-Date: 2011-07-16 05:53-0500\n"
-"Last-Translator: David Smith <david@rocketgenius.com>\n"
+"PO-Revision-Date: 2014-05-13 22:11+0100\n"
+"Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: Rocket Genius <david@rocketgenius.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,7 +57,7 @@ msgstr ""
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:224
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:660
 msgid "Username"
-msgstr ""
+msgstr "Nombre de usuário"
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:224
 msgid "Select the form field that should be used for the user's username."
@@ -66,7 +66,7 @@ msgstr ""
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:225
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:665
 msgid "First Name"
-msgstr ""
+msgstr "Primero Nombre"
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:225
 msgid "Select the form field that should be used for the user's first name."
@@ -75,7 +75,7 @@ msgstr ""
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:226
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:670
 msgid "Last Name"
-msgstr ""
+msgstr "Último Nombre"
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:226
 msgid "Select the form field that should be used for the user's last name."
@@ -84,7 +84,7 @@ msgstr ""
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:227
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:675
 msgid "Email Address"
-msgstr ""
+msgstr "Email"
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:227
 msgid "Select the form field that should be used for the user's email address."
@@ -93,7 +93,7 @@ msgstr ""
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:228
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:680
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:228
 msgid "Select the form field that should be used for the user's password."
@@ -398,15 +398,15 @@ msgstr ""
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:1787
 msgid "The username can not be empty"
-msgstr ""
+msgstr "El nombre de usuario no puede estar vacio"
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:1793
 msgid "This email address is already registered"
-msgstr ""
+msgstr "Este email ya esta regístrado"
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:1796
 msgid "The email address can not be empty"
-msgstr ""
+msgstr "El email no puede estar vacio"
 
 #: C:\xampp\htdocs\wp-content\plugins\gravityformsuserregistration/userregistration.php:1800
 msgid "Passwords may not contain the character \"\\\""
