@@ -33,7 +33,7 @@ function get_event_users() {
                 $login_url = get_permalink(get_page_by_path('registrate'));
                 ?>
                 <div>
-                        <h1><a href="<?php echo $login_url ?>">Registrate para aceder</a></h1>
+                        <h1><a href="<?php echo $login_url ?>">Registrate para acceder</a></h1>
                 </div>
                 <?php
                 die();

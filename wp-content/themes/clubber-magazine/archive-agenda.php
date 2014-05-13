@@ -1,15 +1,10 @@
 <?php 
-/*
- * 
-                <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fullcalendar/fullcalendar.css" type="text/css">
-                <script type="text/javascript" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/js/fullcalendar/fullcalendar.min.js"></script>
-
-wp_enqueue_script('jquery-ui', 'http://code.jquery.com/ui/1.10.4/jquery-ui.min.js', array('jquery'));
- */
 
 wp_enqueue_style('fullcalendar', get_template_directory_uri() . '/js/fullcalendar/fullcalendar.css', $deps, $ver, $media);
 
 wp_enqueue_script('fullcalendar', get_template_directory_uri() .'/js/fullcalendar/fullcalendar.min.js', array('jquery'));
+
+/*wp_enqueue_script('jsticky', get_template_directory_uri() .'/js/jsticky/jquery.jsticky.min.js', array('jquery'));*/
 
 ?>
 <?php get_header(); ?>

@@ -41,15 +41,16 @@
 </style>
 <div class="bg-50 block-5 pb5 mt15 ">
         <?php
+        d($_COOKIE);
         $event = get_the_ID();
         $NZRelation = New NZRelation('events_to_users', 'event_id', 'user_id');
-        /*$NZRelation->install_table();*/
+        /* $NZRelation->install_table(); */
         $event_participants = $NZRelation->getRelationFrom($event);
         $user_subscribed = $NZRelation->hasRelationFrom($event, get_current_user_id());
 
         if ($user_subscribed) {
                 $class = 'nzr-active';
-                $name = 'Participaré';
+                $name = 'Asistiré';
         } else {
                 $class = '';
                 $name = 'Me apunto!';
@@ -68,7 +69,7 @@
                 </a>
 
                 <a id="get-event-users" class="fancybox.ajax nz-get-relation" href="#participantes" <?php echo $total_style ?>>
-                        (<span class="nzr-total"><?php echo count($event_participants) ?></span>)
+                        (<span class="nzr-total"><?php echo $total_participants ?></span>)
                 </a>
 
         </div>
@@ -155,10 +156,11 @@
                                 nzr_ajax(data);
                         }
 
-                        function nzr_set_relation_from(state = true) {
+                        function nzr_set_relation_from(state) {
+                                state = typeof state === false ? 'unrelate' : 'relate';
                                 data = {
                                         action: 'relate_user_to_event',
-                                        arg: (state) ? 'relate' : 'unrelate'
+                                        arg: state
                                 };
                                 nzr_ajax(data);
                         }

@@ -80,29 +80,36 @@ if (isset($_GET['date'])) {
                         /*                  alert('next ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear());*/
                         return false;
                 });
-                /*     STICKY       */
+                /*     STICKY       
+                 * */
                 /* 
+                 $('#sticky').sticky({
+                 topSpacing: 10,
+                 zIndex: 100,
+                 stopper: '#site-footer'
+                 });
                  
-                $(function() {
-
-                        var stickyTop = $('#sticky').offset().top; // returns number 
-                        console.log(stickyTop);
-                        $(window).scroll(function() { // scroll event  
-
-                                var windowTop = $(window).scrollTop(); // returns number
-
-                                if ((stickyTop + 500) < windowTop) {
-                                        $('#sticky').css({position: 'fixed', top: 30});
-                                }
-                                else {
-                                        $('#sticky').css('position', 'static');
-                                }
-
-                        });
-
-                });
-
+                 
+                 $(function() {
+                 
+                 var stickyTop = $('#sticky').offset().top; // returns number 
+                 console.log(stickyTop);
+                 $(window).scroll(function() { // scroll event  
+                 
+                 var windowTop = $(window).scrollTop(); // returns number
+                 
+                 if ((stickyTop + 500) < windowTop) {
+                 $('#sticky').css({position: 'fixed', top: 30});
+                 }
+                 else {
+                 $('#sticky').css('position', 'static');
+                 }
+                 
+                 });
+                 
+                 });
                  */
+
         });
 
 
