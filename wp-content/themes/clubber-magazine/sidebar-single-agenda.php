@@ -10,22 +10,34 @@
 <style>
         .nz-relate{
                 margin: 5%;
-                background-color:#777;
-                padding: 5px 5px 10px 5px;
-                text-align:center;
-                border-radius:3px;
+                /*padding: 5px 5px 10px 5px;*/
+                position:relative;
         }
         .nz-relate a{
                 text-decoration: none;
-        }
 
+        }
+        .nz-relate a.nz-relate-btn{
+                text-align:center;
+                border-radius:3px;
+                background-color:#777;
+                display:block;
+        }
+        .nz-relate a.nz-relate-btn:hover{
+                background-color:#ccc;
+        }
+        .nz-relate a.nz-get-relation{
+                position:absolute;
+                right: 5px;
+                top:0;
+        }
 
         .nz-relate .nzr-icon{
                 background: url(<?php echo get_template_directory_uri() . '/images/btn/clubber-mag-icons.png' ?>) no-repeat ;
                 width:30px;
                 height:30px;
                 overflow: hidden;
-                display:block;
+                /*display:block;*/
                 float:left;
                 margin-top:5px;
         }
@@ -33,15 +45,9 @@
                 background-position: -30px;
         }
 
-        .nz-get-relation{
-                /*display:none;       */
-        }
-
-
 </style>
 <div class="bg-50 block-5 pb5 mt15 ">
         <?php
-        d($_COOKIE);
         $event = get_the_ID();
         $NZRelation = New NZRelation('events_to_users', 'event_id', 'user_id');
         /* $NZRelation->install_table(); */
@@ -63,7 +69,7 @@
         <!--        
         -->
         <div id='nz-relate-user-to-event' class='nz-relate big'>
-                <a id="relate_user_to_event" class="<?php echo $class ?>" href="#participar" >
+                <a id="relate_user_to_event" class="nz-relate-btn <?php echo $class ?>" href="#participar" >
                         <span class="nzr-icon"></span>
                         <span class="nzr-text"><?php echo $name ?></span>
                 </a>
@@ -88,7 +94,7 @@
                                 $relation_count = $relation.find('.nzr-total');
                                 if (!$btn.hasClass('nzr-active')) {
                                         //relate
-                                        $btn.find('.nzr-text').html('Participaré');
+                                        $btn.find('.nzr-text').html('Asistiré');
                                         $relation.css('visibility', 'visible');
                                         $relation.find('.nzr-total').html(parseInt($relation_count.text()) + 1);
                                         nzr_set_relation_from();
@@ -114,7 +120,6 @@
 
 
                         function nzr_ajax(data) {
-                                /*alert('ajax central');*/
                                 defaults = {
                                         event: '<?php echo get_the_ID() ?>'
                                 };
@@ -157,7 +162,7 @@
                         }
 
                         function nzr_set_relation_from(state) {
-                                state = typeof state === false ? 'unrelate' : 'relate';
+                                state = state === false ? 'unrelate' : 'relate';
                                 data = {
                                         action: 'relate_user_to_event',
                                         arg: state
