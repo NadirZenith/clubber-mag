@@ -48,19 +48,25 @@ jQuery(document).ready(function($) {
         var $formContainer = $('<div></div>', {css: {'position': 'absolute', 'top': '-500px'}}).appendTo('body');
         $formContainer.append($form);
 
-        $("#fileUploadInput").on('change', sendForm);
+        /*$("#fileUploadInput").on('change', sendForm);*/
+        $("#fileUploadInput").on('change', function() {
+            sendForm(this);
+        });
 
     }
 
-    function sendForm() {
+    function sendForm(input) {
+        readURL(input);
+
         var bar = $('#preview-' + nz_gform_image_preview_id + ' .bar');
         /*var percent = $('.percent');*/
         var options = {
             success: showResponse,
             uploadProgress: function(event, position, total, percentComplete) {
                 var percentVal = percentComplete + '%';
-                console.log(percentVal);
+                /*console.log(percentVal);*/
                 bar.width(percentVal);
+                $('#nz-gform-image-preview-' + nz_gform_image_preview_id).css('opacity', percentVal);
                 /*percent.html(percentVal);*/
             }
         };
@@ -76,9 +82,9 @@ jQuery(document).ready(function($) {
         switch (nz_gform_image_preview_type) {
             case 'multiple':
                 preview_container = $('#preview-' + nz_gform_image_preview_id);
-                console.log(response);
+                /*console.log(response);*/
                 $.each(response, function(index, value) {
-                    console.log(index);
+                    /*console.log(index);*/
                     console.log(value);
                     $('<img/>', {'src': value.src}).appendTo(preview_container);
                 });
@@ -90,5 +96,19 @@ jQuery(document).ready(function($) {
 
         }
     }
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result).css('opacity', 0.5);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
 
 });
