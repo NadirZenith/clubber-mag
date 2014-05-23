@@ -146,6 +146,7 @@ function nz_image_preview_field_input($input, $field, $value, $lead_id, $form_id
                         . '</div>'
                         . '<input type="button" id="%1$s-button" class="nz-gform-image-preview-upload-button nz-upload-button" value="Subir Photo" data-type="single" />', $id, $image_url);
 
+                $value = apply_filters('nz_image_preview_input_value_' . $form_id . '_' . $field['id'], $value);
                 $input = sprintf(
                         '<input name="input_%s" id="%s" class="%s" ' . $tabindex . ' type="hidden" value="%s"  />', //input
                         $field["id"], //name
@@ -153,6 +154,7 @@ function nz_image_preview_field_input($input, $field, $value, $lead_id, $form_id
                         $field["type"] . ' ' . esc_attr($css), //class
                         esc_html($value)//value
                 );
+
 
                 $input = '<div class="ginput_container">' . $preview_container . $input . '</div>';
         }
@@ -219,7 +221,7 @@ if (!function_exists('nz_ajaxurl')) {
 add_action('wp_ajax_nz_gform_image_upload', 'ajax_nz_gform_image_upload');
 
 //// ajax for not logged in users 
- add_action('wp_ajax_nopriv_nz_gform_image_upload', 'ajax_nz_gform_image_upload'); 
+add_action('wp_ajax_nopriv_nz_gform_image_upload', 'ajax_nz_gform_image_upload');
 
 //ajax receive action
 function ajax_nz_gform_image_upload() {
@@ -314,12 +316,10 @@ function nz_associate_image_to_post($entry, $form) {
                         }
 
                         //set featured image
-                        if ($field['nz_set_featured']) {
-
+                        if ($field['nz_set_featured'] && !isset($field_value['1']['attach_id'])) {
 
                                 $uploads = wp_upload_dir();
                                 $destination_path = $uploads['path'] . "/$img_name";
-
 
                                 $attachment = array(
                                       'post_mime_type' => $wp_filetype['type'],
@@ -337,10 +337,8 @@ function nz_associate_image_to_post($entry, $form) {
                                 $attach_data = wp_generate_attachment_metadata($attach_id, $destination_path);
                                 wp_update_attachment_metadata($attach_id, $attach_data);
 
-                                add_post_meta($entry['post_id'], '_thumbnail_id', $attach_id, true);
-                                /*
-
-                                 */
+                                /* add_post_meta($entry['post_id'], '_thumbnail_id', $attach_id, true); */
+                                update_post_meta($entry['post_id'], '_thumbnail_id', $attach_id);
                         }
                 }
         }

@@ -1,13 +1,9 @@
 jQuery(document).ready(function($) {
     var nz_gform_image_preview_id, nz_gform_image_preview_type;
     $('.gform_wrapper').on('click', '.nz-upload-button', selectFile);
-
+    createForm();
     function selectFile(e) {
-        if (!selectFile.form) {
-            createForm();
-            $("#fileUploadInput").on('change', sendForm);
-            selectFile.form = true;
-        }
+
         nz_gform_image_preview_id = e.target.id.replace('-button', '');
         nz_gform_image_preview_type = $(e.target).data('type');
         switch (nz_gform_image_preview_type) {
@@ -19,10 +15,16 @@ jQuery(document).ready(function($) {
                 $("#fileUploadInput").removeAttr('multiple');
 
         }
-        $("#fileUploadInput").click();
+
+        $btn = $("#fileUploadInput");
+        $btn.click();
     }
 
     function createForm() {
+        if (document.getElementById("fileUploadForm")) {
+            return;
+        }
+
         var $form = $('<form>', {
             'action': ajaxurl,
             'method': 'POST',
@@ -43,8 +45,10 @@ jQuery(document).ready(function($) {
             'value': 'submit'
         }));
 
-        var $formContainer = $('<div></div>', {css: {'display': 'none'}}).appendTo('body');
+        var $formContainer = $('<div></div>', {css: {'position': 'absolute', 'top': '-500px'}}).appendTo('body');
         $formContainer.append($form);
+
+        $("#fileUploadInput").on('change', sendForm);
 
     }
 
@@ -67,7 +71,7 @@ jQuery(document).ready(function($) {
 
     function showResponse(responseText, statusText, xhr, $form) {
         $('#' + nz_gform_image_preview_id).val(responseText);
-        
+
         var response = $.parseJSON(responseText);
         switch (nz_gform_image_preview_type) {
             case 'multiple':
