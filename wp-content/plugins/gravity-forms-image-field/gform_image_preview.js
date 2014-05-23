@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
     }
 
     function sendForm(input) {
-        /*readURL(input);*/
+        readURL(input);
 
         var bar = $('#preview-' + nz_gform_image_preview_id + ' .bar');
         /*var percent = $('.percent');*/
@@ -98,15 +98,20 @@ jQuery(document).ready(function($) {
     }
 
     function readURL(input) {
-
         if (input.files && input.files[0]) {
-            var reader = new FileReader();
 
-            reader.onload = function(e) {
-                $('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result).css('opacity', 0.5);
+            try {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result).css('opacity', 0.5);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            } catch (e) {
+                console.log(e.message);
             }
 
-            reader.readAsDataURL(input.files[0]);
         }
     }
 
