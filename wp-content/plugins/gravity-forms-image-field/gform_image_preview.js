@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
     }
 
     function sendForm(input) {
-        readURL(input);
+        /*readURL(input);*/
 
         var bar = $('#preview-' + nz_gform_image_preview_id + ' .bar');
         /*var percent = $('.percent');*/
