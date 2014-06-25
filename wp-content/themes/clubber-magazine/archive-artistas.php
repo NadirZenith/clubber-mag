@@ -11,16 +11,18 @@
 function menu_a_z() {
         global $wp;
         $this_page = home_url() . '/' . $wp->request;
+        $query_letter = ($_GET['first-letter']) ? $_GET['first-letter'] : 'A';
+        d($query_letter);
         ?>
 
-        <ul class="group mb15">
+        <ul class="group mb15 meddium">
                 <?php
                 for ($i = 0; $i < 26; ++$i) {
                         $this_letter = chr(ord('A') + $i);
                         $letter_link = add_query_arg('first-letter', $this_letter, $this_page);
                         ?>
                         <li>
-                                <a class="fl ml5" href="<?php echo $letter_link; ?>" title="letter-<?php echo $this_letter; ?>"> [ <?php echo $this_letter; ?> ] </a>
+                                <a class="fl ml5 <?php echo ($query_letter == $this_letter) ? 'sc-eee' : ''; ?>" href="<?php echo $letter_link; ?>" title="letter-<?php echo $this_letter; ?>"> [ <?php echo $this_letter; ?> ] </a>
                         </li>
                         <?php
                 }
@@ -69,10 +71,16 @@ function query_by_first_letter() {
                                                         </header>
                                                         <hr class="pb5">
 
-                                                        <div class="fl featured-image" style="width: 100%">
+                                                        <div class="fl"  style="width: 100%">
                                                                 <?php
                                                                 if (has_post_thumbnail()) {
-                                                                        the_post_thumbnail('290-160-thumb');
+                                                                        ?>
+                                                                        <a class="featured-image" href="<?php the_permalink() ?>">
+                                                                                <?php
+                                                                                the_post_thumbnail('290-160-thumb');
+                                                                                ?>
+                                                                        </a>
+                                                                        <?php
                                                                 }
                                                                 ?>
                                                         </div>
@@ -109,30 +117,29 @@ function sort_all_by_first_letter() {
               'posts_per_page' => -1,
         );
         $query = new WP_Query($args);
-        d($query);
         if ($query->have_posts()) {
                 ?>
-                <ul class="group mt15">
+
+                <div class="group mt15">
                         <?php
                         while ($query->have_posts()) {
                                 $query->the_post();
                                 $first_letter = strtoupper(substr(get_the_title(), 0, 1));
                                 //IF NEW LETTER
-                                if ($first_letter != $curr_letter) {
-                                        if ($open_ul) {
-                                                echo '</ul>';
-                                                $open_ul = false;
-                                        }
-                                        echo '<ul class="fl bg-50 block-5" style="width:150px;">';
-                                        $open_ul = true;
-                                        $letter_link = add_query_arg('first-letter', $first_letter, $this_page);
-                                        ?>
-                                        <lh style="">
-                                                <h1 class="ml5"><a href="<?php echo $letter_link ?>"><?php echo $first_letter ?></a></h1>
-                                                <hr class="pb5">
-                                        </lh>
+                                if ($curr_letter != $first_letter) {
 
-                                        <?php
+                                        if ($open_section) {
+                                                echo '</ul>';
+                                                echo '</section>';
+                                                $open_section = false;
+                                        }
+                                        $letter_link = add_query_arg('first-letter', $first_letter);
+                                        echo '<section class="fl bg-50 block-5" style="width:150px;">';
+                                        echo '<h1 class="ml5"><a href="' . $letter_link . '">' . $first_letter . '</a></h1>';
+                                        echo '<hr class="pb5">';
+                                        echo '<ul>';
+
+                                        $open_section = true;
                                         $curr_letter = $first_letter;
                                 }
                                 ?>
@@ -145,7 +152,7 @@ function sort_all_by_first_letter() {
                         }//END WHILE
                         echo '</ul>';
                         ?>
-                </ul><!-- End id='a-z' -->
+                </div>
 
                 <?php
         } else {
@@ -160,15 +167,14 @@ function sort_all_by_first_letter() {
 <?php get_header(); ?>
 
 <div id="container">
-
         <?php
-//call MENU
+        //call MENU
         menu_a_z();
         ?>
         <div class="cb"></div>
 
         <?php
-//QUERY BY FIRST LETTER
+        //QUERY BY FIRST LETTER
         query_by_first_letter();
          
         ?>
@@ -176,10 +182,9 @@ function sort_all_by_first_letter() {
         <div class="cb"></div>
 
         <?php
-//sort_all_by_first_letter
+        //sort_all_by_first_letter
         sort_all_by_first_letter();
         ?>
-
-</div><!-- #container -->
+</div>
 
 <?php get_footer(); ?>
