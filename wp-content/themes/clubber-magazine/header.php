@@ -12,8 +12,10 @@
 /* wp_enqueue_style('common', get_template_directory_uri() . '/css/common.css', $deps, $ver, $media); */
 
 wp_enqueue_style('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.css', $deps, $ver, $media);
-
 wp_enqueue_script('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.pack.js', array('jquery'));
+
+wp_enqueue_style('slicknav', get_template_directory_uri() . '/js/slicknav/slicknav.css', $deps, $ver, $media);
+wp_enqueue_script('slicknav', get_template_directory_uri() . '/js/slicknav/jquery.slicknav.min.js', array('jquery'));
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -32,16 +34,18 @@ wp_enqueue_script('fancybox', get_template_directory_uri() . '/js/fancybox/sourc
 
                 wp_head();
                 ?>
-                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
                 <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 
-
+                <?php if (1 == get_current_user_id()) { ?>
+                        <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/debug.css" type="text/css">
+                <?php } ?>
+                        
                 <?php
-                /* <body <?php body_class(); ?>> */
+                /* <body> */
                 ?>
         </head>
-        <body>
+        <body <?php body_class(); ?>> 
                 <div id="fb-root"></div>
                 <script>
                         (function(d, s, id) {
@@ -108,4 +112,3 @@ wp_enqueue_script('fancybox', get_template_directory_uri() . '/js/fancybox/sourc
                         ?>
                         <div id="main" class="container clearfix">
 
-                                
