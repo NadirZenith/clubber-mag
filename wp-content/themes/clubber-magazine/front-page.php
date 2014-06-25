@@ -29,7 +29,7 @@
                         <?php require_once 'library/structure/front/news.php'; ?>
                   </section>
 
-                  <div class="banner-side" >
+                  <div class="banner-side featured-image" >
                         <?php
                         echo do_shortcode('[sam id=2]');
                         ?>
@@ -41,7 +41,7 @@
                         <?php require_once 'library/structure/front/music.php'; ?>
                   </section>
 
-                  <div class="banner-side">
+                  <div class="banner-side featured-image">
                         <?php
                         echo do_shortcode('[sam id=3]');
                         ?>
