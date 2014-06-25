@@ -25,20 +25,13 @@ function nz_debug_rewrite_rules() {
 
 function nz_debug_page_request() {
         global $wp, $template;
-        define("D4P_EOL", "rn");
-
-        echo '<div style="background-color:red">';
-        echo '<h2> request: ';
-        echo empty($wp->request) ? "None" : esc_html($wp->request);
-        echo '</h2>';
-        echo '<h2> Matched Rewrite Rule: ';
-        echo empty($wp->matched_rule) ? "None" : esc_html($wp->matched_rule);
-        echo '</h2>';
-        echo '<h2> Matched Rewrite Query: ';
-        echo empty($wp->matched_query) ? "None" : esc_html($wp->matched_query);
-        echo '</h2>';
-        echo '<h2> template: ';
-        echo basename($template);
-        echo '</h2>';
-        echo '</div>' . D4P_EOL;
+        ?>
+        <div style="clear: both; background-color: #aaa;">
+                <h2> <span style="color: #333"> Request: </span><?php echo empty($wp->request) ? "None" : esc_html($wp->request); ?> </h2>
+                <h2> <span style="color: #333"> Matched Rewrite Rule: </span><?php echo empty($wp->matched_rule) ? "None" : esc_html($wp->matched_rule); ?> </h2>
+                <h2> <span style="color: #333"> Matched Rewrite Query: </span><?php echo empty($wp->matched_query) ? "None" : esc_html($wp->matched_query); ?> </h2>
+                <h2> <span style="color: #333"> Template: </span><?php echo basename($template); ?> </h2>
+        </div>
+        <?php
+       
 }

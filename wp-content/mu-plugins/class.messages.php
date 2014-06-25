@@ -238,6 +238,9 @@ class NZFlashMessages {
 if (!session_id()) {
         session_start();
 }
+
+$NZFM = new NZFlashMessages();
+
 /*
   $nzfm = new NZFlashMessages();
   $nzfm->add('s', 'This is a success message');
