@@ -1,16 +1,13 @@
-<?php 
-
+<?php
 wp_enqueue_style('fullcalendar', get_template_directory_uri() . '/js/fullcalendar/fullcalendar.css', $deps, $ver, $media);
 
-wp_enqueue_script('fullcalendar', get_template_directory_uri() .'/js/fullcalendar/fullcalendar.min.js', array('jquery'));
+wp_enqueue_script('fullcalendar', get_template_directory_uri() . '/js/fullcalendar/fullcalendar.min.js', array('jquery'));
 
-/*wp_enqueue_script('jsticky', get_template_directory_uri() .'/js/jsticky/jquery.jsticky.min.js', array('jquery'));*/
-
+/* wp_enqueue_script('jsticky', get_template_directory_uri() .'/js/jsticky/jquery.jsticky.min.js', array('jquery')); */
 ?>
 <?php get_header(); ?>
 
 <?php
-do_action('attitude_before_main_container');
 $tax = 'city';
 if (is_tax($tax)) {
         global $wp_query;
@@ -71,17 +68,10 @@ if (is_tax($tax)) {
 
                 $wp_query = new WP_Query($args);
                 ?>
+                <?php
+                include (locate_template('templates/agenda/date-pagination.php'));
+                ?>
 
-                <div class="clearfix ml15 mt15 mb15 mr15 bold meddium">
-                        <ul>
-                                <li class="fl">
-                                        <a href="<?php echo add_query_arg(array('date' => date('d-m-Y', $prev_date))) ?>"> <span class="meddium sc-3">&#8678; </span>Semana anterior</a>
-                                </li>
-                                <li class="fr" >
-                                        <a href="<?php echo add_query_arg(array('date' => date('d-m-Y', $end_date))) ?>">Próxima semana<span class="meddium sc-3"> &#8680;</span></a>
-                                </li>
-                        </ul>
-                </div>
                 <ul class="cb archive-list ">
                         <?php
                         /*    MAIN AGENDA QUERY              */
@@ -168,17 +158,10 @@ if (is_tax($tax)) {
                         /* ---------- //END MAIN AGENDA QUERY              */
                         ?>
                 </ul>
-                <div class="clearfix ml15 mt30 mb15 mr15 bold meddium" >
-                        <ul>
-                                <li class="fl">
-                                        <a href="<?php echo add_query_arg(array('date' => date('d-m-Y', $prev_date))) ?>"> <span class="meddium sc-3">&#8678; </span>Semana anterior</a>
-                                </li>
-                                <li class="fr">
-                                        <a href="<?php echo add_query_arg(array('date' => date('d-m-Y', $end_date))) ?>">Próxima semana<span class="meddium sc-3"> &#8680;</span></a>
-                                </li>
-                        </ul>
-                </div>
-
+                <?php
+                include (locate_template('templates/agenda/date-pagination.php'));
+                ?>
+                
                 <?php
                 /*   LESS THAN 3 EVENTS        */
                 if ($wp_query->found_posts < 5) {
