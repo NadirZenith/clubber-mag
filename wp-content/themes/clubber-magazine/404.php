@@ -10,15 +10,11 @@
 
 <?php get_header(); ?>
 
-<?php
-	/** 
-	 * attitude_404_content hook
-	 *
-	 * HOOKED_FUNCTION_NAME PRIORITY
-	 *
-	 * attitude_display_404_page_content 10
-	 */
-	do_action( 'attitude_404_content' );
-?>
 
+<div id="container">
+        <div style="text-align: center">
+                <h1>Página no encontrada!</h1>
+
+        </div>
+</div>
 <?php get_footer(); ?>
