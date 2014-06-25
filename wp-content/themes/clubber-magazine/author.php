@@ -12,8 +12,6 @@ $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : g
 
 /* $edit_perfil_url = add_query_arg(array('action' => 'edit'), get_author_posts_url($curauth->ID)); */
 //http://lab.dev/clubber-mag-dev/perfil/{current_author}/?action=edit
-$edit_perfil_url = get_author_posts_url($curauth->ID) . 'editar';
-//http://lab.dev/clubber-mag-dev/perfil/{current_author}/edit
 
 
 /* $curusr = wp_get_current_user(); */
@@ -21,26 +19,40 @@ $edit_perfil_url = get_author_posts_url($curauth->ID) . 'editar';
 /* if ($curusr && $curusr->data->user_login != 'clubber-mag') {wp_redirect(home_url()); } */
 ?>
 
-
-
 <?php get_header(); ?>
 
 <div id="container">
         <?php
-        global $wp_rewrite;
-        /*d($wp_rewrite->get_author_permastruct());*/
+        nzs_display_messages(FALSE);
+        /* global $wp_rewrite; */
         $action = get_query_var('action');
+        /*d($action);*/
         switch ($action) {
+                case '':
+                        include (locate_template('templates/user-profile-main.php'));
+                        
+                        break;
+
                 case 'editar':
-                        include (locate_template('templates/user-profile-edit.php'));
+                        include (locate_template('templates/user-profile/user-profile-edit.php'));
+
+                        break;
+                
+                case 'agenda':
+                        include (locate_template('templates/user/user-agenda-list.php'));
+
+                        break;
+                
+                case 'mis-eventos':
+                        include (locate_template('templates/user/user-promoter-list.php'));
+
                         break;
 
                 default:
-                        include (locate_template('templates/user-profile.php'));
+                        echo '404';
                         break;
         }
         ?>
 
 </div>
-
 <?php get_footer(); ?>
