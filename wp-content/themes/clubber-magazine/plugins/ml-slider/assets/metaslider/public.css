@@ -18,7 +18,8 @@
 
 .metaslider .caption {
     padding: 8px 10px;
-    font-size: 30px;
+    font-size: 150%;
+    /*font-size: 30px;*/
     line-height: 1.2;
 }
 
