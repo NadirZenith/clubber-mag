@@ -51,13 +51,15 @@
                 <div class="meddium" style="text-align:justify; padding: 5px;">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
                         <?php
-                        echo get_the_author_meta('description');
+                        /*echo get_the_author_meta('description');*/
                         ?>
                 </div>
 
         </div>
 
         <!--<div class="col-2-4 bg-50 block-5 mt5 meddium">-->
+        
+<!--        
         <div class="">
 
                 <div class="ml5">
@@ -86,6 +88,7 @@
 
 
         </div>
+-->
 </section>
 
 <?php
