@@ -93,7 +93,9 @@
                         wp_reset_query();
                         ?>
                 </ul>
-
+                <?php
+                include (locate_template('templates/pagination.php'));
+                ?>
 
         </div>
 

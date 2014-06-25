@@ -1,21 +1,17 @@
-section{
-    background-color: #99CCFF !important;
-}
-article{
-    background-color: #73FF73 !important;
-}
-header{
-    background-color: #FFB399 !important;
-}
-li{
-    /*border: solid 1px red;*/
-}
+    .col-0{
+        background-color: blueviolet;
+    }
+
 
 /* =Responsive Structure
 ----------------------------------------------- */
 /* All Tablet Portrait size smaller than standard 1079 (devices and browsers) */
 @media only screen and (max-width: 1078px) {
-   
+
+    .col-0{
+        background-color: green;
+    }
+
 }
 
 
@@ -23,16 +19,25 @@ li{
 /* All Mobile Portrait size smaller than 768 (devices and browsers) */
 @media only screen and (max-width: 767px) {
 
+    .col-0{
+        background-color: yellow;
+    }
+
 }
 
 /* All Mobile landscape size and All Mini Tablet Portrait size smaller than standard 768 and larger than 480 (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
+    .col-0{
+        background-color: blue;
+    }
 
 }
 
 
 /* All Mobile size smaller than standard 320 (devices and browsers) */
 @media only screen and (max-width: 319px) {
-
+    .col-0{
+        background-color: red;
+    }
 }

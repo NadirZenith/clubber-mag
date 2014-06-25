@@ -20,7 +20,7 @@ function attitude_scripts_styles_method() {
         /**
          * Register JQuery cycle js for photo gallery featured
          */
-        wp_register_script('jquery_cycle', ATTITUDE_JS_URL . '/jquery.cycle.all.min.js', array('jquery'), '2.9999.5', true);
+        /*wp_register_script('jquery_cycle', ATTITUDE_JS_URL . '/jquery.cycle.all.min.js', array('jquery'), '2.9999.5', true);*/
 
         /**
          * Enqueue Slider setup js file.
@@ -33,7 +33,7 @@ function attitude_scripts_styles_method() {
          *  */
         wp_enqueue_script('metaslider-' . 'flexslider' . '-slider', METASLIDER_ASSETS_URL . 'sliders/flexslider/jquery.flexslider-min.js', array('jquery'), METASLIDER_VERSION);
 
-        wp_enqueue_script('tinynav', ATTITUDE_JS_URL . '/tinynav.js', array('jquery'));
+        /*wp_enqueue_script('tinynav', ATTITUDE_JS_URL . '/tinynav.js', array('jquery'));*/
         wp_enqueue_script('backtotop', ATTITUDE_JS_URL . '/backtotop.js', array('jquery'));
 }
 

@@ -1,10 +1,28 @@
 <?php
 
+global $nz;
+
+$nz['form.event'] = array(
+      'id' => 7,
+      'ajax' => 1
+);
+
+$nz['event_form'] = function($nz) {
+        $form = $nz['form.event'];
+
+        $shortcode = sprintf($nz['shortcode.gform'], $form['id'], $form['ajax']);
+
+        return do_shortcode($shortcode);
+};
+
+
 /** change gform event date to unix timestamp */
 add_filter("gform_post_data", "event_change_date_format", 10, 3);
 
 function event_change_date_format($post_data, $form, $entry) {
-        if ($form["id"] != 7) {
+        global $nz;
+
+        if ($form["id"] != $nz['form.event']['id']) {
                 return $post_data;
         }
         $user_input_date = $post_data['post_custom_fields']['wpcf-event_begin_date'];
@@ -24,7 +42,7 @@ function event_change_date_format($post_data, $form, $entry) {
         return $post_data;
 }
 
-add_filter("gform_pre_render_7", "remove_protected_fields");
+add_filter("gform_pre_render_" . $nz['form.event']['id'], "remove_protected_fields");
 
 function remove_protected_fields($form) {
 
@@ -57,27 +75,27 @@ function remove_protected_fields($form) {
         return $form;
 }
 
-add_action("gform_after_submission_7", "proccess_admin_fields", 10, 2);
+add_action("gform_after_submission_" . $nz['form.event']['id'], "after_event_submission", 10, 2);
 
-function proccess_admin_fields($entry, $form) {
+function after_event_submission($entry, $form) {
 
-        /*
-          d($entry);
-          d($form);
-         */
-        $publish_checkbox_id = '21.1';
-        $featured_checkbox_id = '23.1';
+        $user = wp_get_current_user();
 
-        $current_user = wp_get_current_user();
-        if (!($current_user instanceof WP_User))
+        update_user_meta($user->ID, 'is_promoter', 'true');
+
+        //handle admin checkboxes
+        if (!($user instanceof WP_User))
                 return;
 
-        $roles = $current_user->roles;  //$roles is an array
+        $roles = $user->roles;  //$roles is an array
 
         if (
                 (in_array('administrator', $roles))
         /* || (!in_array('author', $roles)) */
         ) {
+
+                $publish_checkbox_id = '21.1';
+                $featured_checkbox_id = '23.1';
                 $post = array();
 
                 if ($entry[$publish_checkbox_id] != '') {

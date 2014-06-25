@@ -16,6 +16,9 @@ if (is_user_logged_in()) {
 <div id="container">
 
         <?php
+        nzs_display_messages(FALSE);
+
+
         $action = get_query_var('action');
         //recover password
         if ($action == 'lostpassword') {
@@ -46,7 +49,7 @@ if (is_user_logged_in()) {
         } else {
 
                 if (!is_user_logged_in()) {
-                        include (locate_template('templates/user-profile-login.php'));
+                        include (locate_template('templates/user-profile/user-profile-login.php'));
                         ?>
 
                         <?php

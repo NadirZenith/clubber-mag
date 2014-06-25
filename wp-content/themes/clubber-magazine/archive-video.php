@@ -6,6 +6,12 @@
  * @subpackage Attitude
  * @since Attitude 1.0
  */
+$args = array(
+      'posts_per_page' => -1,
+      'post_type' => 'video',
+        /* 'label_name' => 'Últimas noticias' */
+);
+/* $the_query = new WP_Query($args); */
 ?>
 
 <?php get_header(); ?>
@@ -51,7 +57,6 @@
                                                                 <div class="fr mt5 col-2-4 nm" >
                                                                         <div class="video-container">
                                                                                 <?php
-                                                                               
                                                                                 $video = types_render_field("video-url", array("output" => "html"));
                                                                                 echo $video;
                                                                                 ?>
@@ -63,9 +68,10 @@
 
 
                                         <?php
-                                        ?>
-                                        <?php
                                 }
+                                ?>
+
+                                <?php
                         } else {
                                 ?>
                                 <li class=""><?php _e('No Posts Found.', 'attitude'); ?></li>
@@ -73,6 +79,10 @@
                         }
                         ?>
                 </ul>
+                <?php
+                include (locate_template('templates/pagination.php'));
+                ?>
+
         </div>
 
         <div id="secondary">

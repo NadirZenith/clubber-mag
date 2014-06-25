@@ -1,47 +1,82 @@
 <?php
 
-/* add_filter("gform_field_content", "image_upload_preview", 10, 5); */
-/*add_filter("gform_field_input", "image_upload_preview", 10, 5);*/
+global $nz;
 
-function image_upload_preview($input, $field, $value, $lead_id, $form_id) {
-        //hidden input field to convert = 4
-        if (6 === $form_id &&
-                4 === (int) $field['id']) {
 
-                if ($value && is_numeric($value)) {
-                        $attach = wp_get_attachment_image_src($value, array('290', '160'));
-                        if ($attach) {
-                                $image_url = $attach[0];
-                        }
-                } else {
-                        $image_url = get_template_directory_uri() . '/images/preview-290-160.png';
-                }
-                /* '<label class="gfield_label" for="input_6_4">Photo<span class="gfield_required">*</span></label>' */
-                $input = '<div class="ginput_container">'
-                        //image preview placeholder
-                        . '<img id="imagePreview" src="' . $image_url . '" alt="preview image" style="width:290px; height:160px; background-color:yellowgreen;"/>'
-                        //progress bar
-                        . '<div class="progress" style="width:290px; height:15px;margin-bottom: 10px;border-bottom:1px solid #111;">'
-                        . '<div class="bar" style="width:2%; height:15px;background-color:#333"></div>'
-                        . '</div>'
-                        //hidden field stores images ids
-                        /* . '<input name="input_4" id="input_6_4" type="number" step="any" value="" class="medium" tabindex="3"   />' */
-                        . '<input name="input_4" id="input_6_4" type="hidden" value="' . $value . '"  />'
-                        //image upload trigger button
-                        . '<input type="button" id="upload-image-button" value="Subir Photo" />'
-                        . '</div>';
-                /* return $input; */
+$nz['form.artist'] = array(
+      'id' => 3,
+      'ajax' => 1
+);
+
+$nz['artist_form'] = function($nz) {
+
+        $shortcode = sprintf($nz['shortcode.gform'], $nz['form.artist']['id'], $nz['form.artist']['ajax']);
+
+        return do_shortcode($shortcode);
+};
+
+add_action("gform_after_submission_" . $nz['form.artist']['id'], "relate_user_to_artist", 10, 2);
+
+function relate_user_to_artist($entry, $form) {
+        //if exist label id its not a artist page alone but a label artist
+        if (empty($entry['11'])) {
+
+                $user = wp_get_current_user();
+                $post_id = $entry['post_id'];
+
+                update_user_meta($user->ID, 'artist_page', $post_id);
         }
-
-        return $input;
+        global $NZS;
+        $NZS->getFlashBag()->add('success', $form['confirmation']['message']);
+        wp_redirect(get_author_posts_url(get_current_user_id()));
+        exit();
 }
 
-/*add_action("gform_after_submission", "set_post_content_6", 10, 2);*/
+add_filter('nz_image_preview_placeholder_' . $nz['form.artist']['id'] . '_3', 'set_artist_preview_image');
 
-function set_post_content_6($entry, $form) {
-        $post_id= $entry['post_id'];
-        $attach_id = $entry[4];
-        add_post_meta($post_id, '_thumbnail_id', $attach_id, true);
-        /*d($entry);*/
-        /*d($form);*/
+function set_artist_preview_image($img) {
+        $post_id = $_GET['gform_post_id'];
+        $thumb = get_the_post_thumbnail($post_id);
+        if ($thumb) {
+                $img = wp_get_attachment_url(get_post_thumbnail_id($post_id));
+        }
+        return $img;
+}
+
+add_filter('nz_image_preview_input_value_' . $nz['form.artist']['id'] . '_3', 'set_artist_preview_value');
+
+function set_artist_preview_value($value) {
+        $post_id = $_GET['gform_post_id'];
+
+        $post = get_post($post_id, $output, $filter);
+        if ($post && $post->post_type == 'artistas') {
+
+                $thumb = get_the_post_thumbnail($post->ID);
+
+                if ($thumb) {
+                        $value = array();
+                        $img = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+                        $value[1]['src'] = $img;
+                        $value[1]['attach_id'] = get_post_thumbnail_id($post->ID);
+                        $return = json_encode($value);
+                        return $return;
+                }
+        }
+        return $value;
+}
+
+add_filter("gform_field_content", "remove_artist_title_edit", 10, 5);
+
+function remove_artist_title_edit($content, $field, $value, $lead_id, $form_id) {
+        global $nz;
+        if (
+                $nz['form.artist']['id'] == $form_id &&
+                $field['id'] == 1 &&
+                $value != ''
+        ) {
+                $content = str_replace("type='text'", "type='hidden'", $content);
+                $content .= sprintf('<h2 class="ml5 bold">%s</h2>', $value);
+        }
+
+        return $content;
 }

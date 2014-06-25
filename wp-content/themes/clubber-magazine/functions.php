@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Attitude defining constants, adding files and WordPress core functionality.
  *
@@ -113,16 +112,20 @@ function attitude_load_files() {
 
         /** Load Structure */
         require_once( ATTITUDE_STRUCTURE_DIR . '/header-extensions.php' );
-        require_once( ATTITUDE_STRUCTURE_DIR . '/searchform-extensions.php' );
+        /* require_once( ATTITUDE_STRUCTURE_DIR . '/searchform-extensions.php' ); */
         require_once( ATTITUDE_STRUCTURE_DIR . '/sidebar-extensions.php' );
         require_once( ATTITUDE_STRUCTURE_DIR . '/footer-extensions.php' );
-        require_once( ATTITUDE_STRUCTURE_DIR . '/content-extensions.php' );
+        /* require_once( ATTITUDE_STRUCTURE_DIR . '/content-extensions.php' ); */
         require_once( ATTITUDE_STRUCTURE_DIR . '/relation-events-users.php' );
 
         /** CLUBBER FORMS      */
-        require_once( CLUBBER_FORMS_DIR . '/event.php' );
-        require_once( CLUBBER_FORMS_DIR . '/artist.php' );
+        require_once( CLUBBER_FORMS_DIR . '/common.php' );
         require_once( CLUBBER_FORMS_DIR . '/user-profile-edit.php' );
+        require_once( CLUBBER_FORMS_DIR . '/event.php' );
+
+        require_once( CLUBBER_FORMS_DIR . '/artist.php' );
+        require_once( CLUBBER_FORMS_DIR . '/label.php' );
+        require_once( CLUBBER_FORMS_DIR . '/cool-place.php' );
 
         /*   images   */
         require_once( ATTITUDE_STRUCTURE_DIR . '/images-extensions.php' );
@@ -139,20 +142,24 @@ add_action('attitude_init', 'attitude_core_functionality', 20);
  * @since 1.0
  */
 function attitude_core_functionality() {
+        global $nz;
+        $nz['shortcode.gform'] = function($nz) {
+                return '[gravityform id="%d" title="false" description="false" ajax="%d"]';
+        };
 
 
-        // Add default posts and comments RSS feed links to head
+// Add default posts and comments RSS feed links to head
         add_theme_support('automatic-feed-links');
 
-        // This theme uses Featured Images (also known as post thumbnails) for per-post/per-page.
+// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page.
         add_theme_support('post-thumbnails');
 
         clubber_register_image_sizes();
 
-        // Remove WordPress version from header for security concern
+// Remove WordPress version from header for security concern
         remove_action('wp_head', 'wp_generator');
 
-        // This theme uses wp_nav_menu() in header menu location.
+// This theme uses wp_nav_menu() in header menu location.
         register_nav_menu('primary', __('Primary Menu', 'attitude'));
         register_nav_menu('footer', __('Footer Menu', 'attitude'));
 }
@@ -164,14 +171,7 @@ function attitude_core_functionality() {
  */
 do_action('attitude_init');
 
-/*                ----------------------------              */
-
-
-
-
-
-
-/*                ----------------------------              */
+/*                ---------------------------- ---------------------------- ----------------------------              */
 
 //add custom post types to feed
 add_filter('request', 'myfeed_request');
@@ -227,17 +227,30 @@ function revcon_change_post_object() {
 add_action('init', 'change_author_base');
 
 function change_author_base() {
+        global $wp_rewrite;
         $query_var_name = 'action';
-        $author_slug = 'perfil'; 
+        $author_slug = 'perfil';
         $author_edit_slug = 'editar';
+
+        $wp_rewrite->author_base = $author_slug;
+
+//editar perfil
         $regex = sprintf('^%s/([^/]+)/(%s)/?$', $author_slug, $author_edit_slug);
         $redirect = sprintf('index.php?author_name=$matches[1]&%s=$matches[2]', $query_var_name);
 
-
-        global $wp_rewrite;
         $wp_rewrite->add_rule($regex, $redirect);
-        $wp_rewrite->author_base = $author_slug;
 
+//agenda list
+        $regex = sprintf('^%s/([^/]+)/(%s)/?$', $author_slug, 'agenda');
+        $redirect = sprintf('index.php?author_name=$matches[1]&%s=$matches[2]', $query_var_name);
+
+        $wp_rewrite->add_rule($regex, $redirect);
+
+//promoter list
+        $regex = sprintf('^%s/([^/]+)/(%s)/?$', $author_slug, 'mis-eventos');
+        $redirect = sprintf('index.php?author_name=$matches[1]&%s=$matches[2]', $query_var_name);
+
+        $wp_rewrite->add_rule($regex, $redirect);
 }
 
 /** PROFILE BUILDER PRO */
@@ -267,7 +280,12 @@ function add_loginout_link($items, $args) {
         if (is_user_logged_in() && $args->theme_location == 'primary') {
                 $class = is_author() ? ' current-menu-item ' : '';
                 $avatar = get_avatar(get_current_user_id(), 55);
-                $items .= '<li class="' . $class . '"><a style="height:55px;padding:0;border-radius:8px;overflow:hidden" href="' . get_author_posts_url(get_current_user_id()) . '">' . $avatar . '<span style="margin-left:5px;line-height:3.5">Perfil</span></a></li>';
+                $items .= '<li class="' . $class . '">'
+                        . '<a style="height:55px;padding:0;border-radius:8px;overflow:hidden" href="' . get_author_posts_url(get_current_user_id()) . '">'
+                        . '<span style="margin-right:10px;line-height:3.5">Perfil</span>'
+                        . $avatar
+                        . '</a>'
+                        . '</li>';
         } elseif (!is_user_logged_in() && $args->theme_location == 'primary') {
                 $class = is_page('registrate') ? ' current-menu-item ' : '';
                 $login_url = get_permalink(get_page_by_path('registrate'));
@@ -276,19 +294,297 @@ function add_loginout_link($items, $args) {
         return $items;
 }
 
-//to use get_query_var( 'action' );
-function add_query_vars_filter($vars) {
-        $vars[] = "action";
+add_filter('query_vars', 'add_used_vars');
+
+//to use get_query_var( 'action' ) && TYPE;
+function add_used_vars($vars) {
+        $vars[] = "action"; //
+        $vars[] = "type"; //
         return $vars;
 }
 
-add_filter('query_vars', 'add_query_vars_filter');
+//PAGE RECURSOS REWRITE 
+add_filter('page_rewrite_rules', 'rewrite_page_recursos');
 
+function rewrite_page_recursos($rules) {
+        $query_var_name = 'type';
+        $page_slug = 'recursos';
+
+        /* d($rules); */
+        $rules['^recursos/([^/]+)?'] = 'index.php?pagename=recursos&type=$matches[1]';
+        /* $rules['^recursos/([^/]+)/?([^/]+)?'] = 'index.php?pagename=recursos&type=$matches[1]&gform_post_id=$matches[2]'; */
+        return $rules;
+}
+
+/*
+ *  
+ *      DEV 
+ * 
+ * * */
+
+add_action('show_user_profile', 'clubber_mag_extra_profile_fields');
+add_action('edit_user_profile', 'clubber_mag_extra_profile_fields');
+
+function clubber_mag_extra_profile_fields($user) {
+        ?>
+
+        <h3>CLUBBER MAG USER INFORMATION</h3>
+
+        <table class="form-table">
+
+
+                <!--  Image               -->
+
+                <tr>
+                        <th><label>User images</label></th>
+                        <td>
+                                <div style="position:relative">
+
+                                        <div style="float:left">
+                                                <?php
+                                                $url = nz_get_user_image($curauth->ID, 'background');
+                                                ?>
+                                                <img src="<?php echo $url ?>" alt="clubber-mag-background-picture" width="589" height="200">
+                                        </div>
+                                        <div style="position: absolute;top: 20px;">
+                                                <?php
+                                                $url = nz_get_user_image($curauth->ID, 'profile');
+                                                ?>
+                                                <img src="<?php echo $url ?>" alt="clubber-mag-profile-picture" width="160" height="160">
+                                        </div>
+                                </div>
+
+
+                        </td>
+                </tr>
+                <!--  COOL PLACES               -->
+                <tr>
+                        <th><label>CoolPlaces</label></th>
+                        <td>
+                                <?php
+                                if (get_user_meta($user->ID, 'has_coolplace', true)) {
+                                        $NZRelation = New NZRelation('coolplaces_to_users', 'coolplace_id', 'user_id');
+                                        $coolplaces = $NZRelation->getRelationTo($user->ID, true);
+                                        $args = array(
+                                              'post_type' => 'cool-place',
+                                              'post_status' => 'any',
+                                              'posts_per_page' => -1,
+                                              'post__in' => $coolplaces,
+                                              'order' => 'ASC',
+                                        );
+
+                                        $wp_query = new WP_Query($args);
+                                        if ($wp_query->have_posts()) {
+                                                ?>
+                                                <ul>
+                                                        <?php
+                                                        while ($wp_query->have_posts()) {
+                                                                $wp_query->the_post();
+                                                                ?>
+                                                                <li>
+                                                                        <?php echo the_post_thumbnail(array(50, 50)) ?>
+
+                                                                        <a href="<?php echo get_edit_post_link(get_the_ID()) ?>"><?php the_title(); ?></a>
+                                                                        (<?php echo get_post()->post_status ?>)
+                                                                </li>
+                                                                <?php
+                                                        }
+                                                        ?>
+                                                </ul>
+                                                <?php
+                                        } else {
+                                                echo 'delete relation!';
+                                        }
+                                } else {
+                                        echo 'no coool places';
+                                }
+                                ?>
+                                <?php
+                                wp_reset_postdata();
+                                ?>
+                        </td>
+                </tr>
+                <!--  ARTIST PAGE       -->
+                <tr>
+                        <th><label>Artist Page</label></th>
+                        <td>
+                                <?php
+                                if ($artist_page_id = get_user_meta($user->ID, 'artist_page', true)) {
+                                        $artist_page = get_post($artist_page_id);
+                                        /* var_dump($artist_page); */
+                                        ?>
+                                        <?php echo get_the_post_thumbnail($artist_page->ID, array(50, 50)) ?>
+                                        <a href="<?php echo get_edit_post_link($artist_page->ID) ?>"><?php echo $artist_page->post_title; ?></a>
+                                        (<?php echo get_post()->post_status ?>)
+                                        <?php
+                                } else {
+                                        echo 'no artist page';
+                                }
+                                ?>
+                        </td>
+                </tr>
+                <!--  LABEL PAGE       -->
+                <tr>
+                        <th><label>Label page</label></th>
+                        <td>
+                                <?php
+                                if ($label_page_id = get_user_meta($user->ID, 'label_page', true)) {
+                                        $label_page = get_post($label_page_id);
+                                        ?>
+                                        <?php echo get_the_post_thumbnail($label_page->ID, array(50, 50)) ?>
+
+                                        <a href="<?php echo get_edit_post_link($label_page->ID) ?>"><?php echo $label_page->post_title; ?></a>
+                                        (<?php echo get_post()->post_status ?>)
+                                        <?php
+                                        $args = array(
+                                              'post_type' => 'artistas',
+                                              'posts_per_page' => -1,
+                                              'post_status' => 'any',
+                                              'order' => 'ASC',
+                                              'orderby' => 'post_title',
+                                              /* 'meta_key' => 'wpcf-label-id', */
+                                              'meta_query' => array(
+                                                    array(
+                                                          'key' => 'wpcf-label-id',
+                                                          'value' => $label_page->ID,
+                                                          'type' => 'NUMERIC',
+                                                          'compare' => '='
+                                                    )
+                                              )
+                                        );
+
+                                        $wp_query = new WP_Query($args);
+                                        if ($wp_query->have_posts()) {
+                                                ?>
+                                                <div style="margin-left: 30px;">
+                                                        <h4 style="margin: 3px;">Artistas</h4>
+                                                        <ul style="border-left: 1px solid #333; padding-left: 5px;">
+                                                                <?php
+                                                                while ($wp_query->have_posts()) {
+                                                                        $wp_query->the_post();
+                                                                        ?>
+                                                                        <li>
+                                                                                <?php echo get_the_post_thumbnail(get_the_ID(), array(50, 50)) ?>
+                                                                                <a href="<?php echo get_edit_post_link(get_the_ID()) ?>"><?php the_title(); ?></a>
+                                                                                (<?php echo get_post()->post_status ?>)
+                                                                        </li>
+                                                                        <?php
+                                                                }
+                                                                ?>
+                                                        </ul>
+                                                </div>
+                                                <?php
+                                        }
+                                } else {
+                                        echo 'no label page';
+                                }
+                                ?>
+                        </td>
+                </tr>
+
+                <!--       USER AGENDA         -->
+                <tr>
+                        <th><label>User Agenda</label></th>
+                        <td>
+                                <?php
+                                $NZRelation = New NZRelation('events_to_users', 'event_id', 'user_id');
+                                $user_events = $NZRelation->getRelationTo($user->ID, TRUE);
+                                $start_date = strtotime("now");
+                                $args = array(
+                                      'post_type' => 'agenda',
+                                      'posts_per_page' => 3,
+                                      'post__in' => $user_events,
+                                      'order' => 'ASC',
+                                      'orderby' => 'meta_value_num',
+                                      'meta_key' => 'wpcf-event_begin_date',
+                                      'meta_query' => array(
+                                            array(
+                                                  'key' => 'wpcf-event_begin_date',
+                                                  'value' => $start_date,
+                                                  'type' => 'NUMERIC',
+                                                  'compare' => '>='
+                                            )
+                                      )
+                                );
+
+                                $wp_query = new WP_Query($args);
+                                if ($wp_query->have_posts()) {
+                                        ?>
+                                        <ul style="">
+
+                                                <?php
+                                                while ($wp_query->have_posts()) {
+                                                        $wp_query->the_post();
+                                                        ?>
+                                                        <li>
+                                                                <?php echo get_the_post_thumbnail(get_the_ID(), array(50, 50)) ?>
+                                                                <a href="<?php echo get_edit_post_link(get_the_ID()) ?>"><?php the_title(); ?></a>
+                                                                (<?php echo get_post()->post_status ?>)
+                                                        </li>
+                                                        <?php
+                                                }
+                                                ?>
+                                        </ul>
+                                        <?php
+                                }
+                                ?>
+                        </td>
+                </tr>
+
+        </table>
+        <?php
+}
+
+/*
+  add_action('personal_options_update', 'clubber_mag_save_extra_profile_fields');
+  add_action('edit_user_profile_update', 'clubber_mag_save_extra_profile_fields');
+ */
+
+function clubber_mag_save_extra_profile_fields($user_id) {
+
+        if (!current_user_can('edit_user', $user_id))
+                return false;
+
+        /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
+        update_usermeta($user_id, 'twitter', $_POST['twitter']);
+}
 
 /*
  *  
  *      TESTES 
  * 
  * * */
-/* add_filter('init', 'nz_flush_rewrite_rules'); */
+
+/*add_filter('init', 'nz_flush_rewrite_rules');*/
+/*
+
+  add_filter('gform_update_post_options', 'gform_update_post_custom_options');
+
+  function gform_update_post_custom_options($options) {
+
+  $options['capabilities']['update'] = 'author';
+  return $options;
+  }
+
+ */
+
+function my_post_queries($wp_query) {
+
+        // do not alter the query on wp-admin pages and only alter it if it's the main query
+        if (!is_admin() && $wp_query->is_main_query()) {
+
+                /* $wp_query->set('posts_per_page', get_option('posts_per_page')); */
+        }
+}
+
+/* add_action('pre_get_posts', 'my_post_queries'); */
+
+/*add_action('init', 'change_page_name', 1000);*/
+
+function change_page_name(){
+        global $wp_rewrite;
+        /*d($wp_rewrite);*/
+        $wp_rewrite->pagination_base = 'pagina';
+        /*d($wp_rewrite);*/
+}
 ?>

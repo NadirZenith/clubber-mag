@@ -9,27 +9,32 @@ get_header();
 ?>
 
 <?php
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = array(
-      /*'posts_per_page' => -1,*/
       'post_type' => 'post',
-      'label_name' => 'Últimas noticias'
+      'paged' => $paged,
 );
-$the_query = new WP_Query($args);
+/* $the_query = new WP_Query($args); */
+global $wp_query;
+/* $wp_query_temp = $wp_query; */
+unset($wp_query);
+$wp_query = new WP_Query($args);
 ?>
 <div id="container">
         <div id="primary">
                 <h1>
-                        NOTICIAS
+                        <?php
+                        echo strtoupper(get_the_title());
+                        ?>
                 </h1>
 
                 <ul class="archive-list">
-
                         <?php
-                        global $post;
+                        /* global $post; */
 
-                        if ($the_query->have_posts()) {
-                                while ($the_query->have_posts()) {
-                                        $the_query->the_post();
+                        if ($wp_query->have_posts()) {
+                                while ($wp_query->have_posts()) {
+                                        $wp_query->the_post();
                                         ?>
                                         <li>
                                                 <section class="bg-50 block-5 mb15">
@@ -50,7 +55,7 @@ $the_query = new WP_Query($args);
                                                                         </p>
 
                                                                         <div  style="color: #666;">
-                <?php echo get_the_date() ?>
+                                                                                <?php echo get_the_date() ?>
 
                                                                         </div>
                                                                 </div>
@@ -89,7 +94,7 @@ $the_query = new WP_Query($args);
         </div>
 
         <div id="secondary">
-<?php get_sidebar('right'); ?>
+                <?php get_sidebar('right'); ?>
         </div><!-- #secondary -->
 
 </div><!-- #container -->

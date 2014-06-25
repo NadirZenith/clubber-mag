@@ -31,7 +31,8 @@
     padding: 0 5px;
 }
 /*.home-list */
-section:hover h1 a{
+section:hover h1 a,
+section:hover h1 span{
     color: #eee;
 }
 
@@ -39,13 +40,19 @@ section:hover h1 a{
 .home-list .banner-side{
     background-color: #DDD;
     margin:5px;
-    height: 130px; 
+    /*height: 130px; */
+    overflow: hidden
 }
 
 .top-banner{
-    margin-left: 100px; margin-top: 30px;
+    margin-left: 100px; margin-top: 50px;
 }
-
+div.slicknav_menu{
+    display: none;
+}
+#social-top .fb-like{
+        display: block;
+    }
 
 /*  ---- CALENDAR ----*/
 #calendar{
@@ -176,6 +183,7 @@ section:hover h1 a{
 }
 
 .gform_button{
+    float: left;
     clear: both;
     margin: 5px;
 }
@@ -233,6 +241,13 @@ section:hover h1 a{
 @media only screen and (max-width: 1078px) {
 
 
+    nav#access{
+        display: none;
+    }
+    div.slicknav_menu{
+        display: block;
+    }
+
     .home-list .col-1{
         width: 50%;
     }
@@ -264,7 +279,9 @@ section:hover h1 a{
 
 /* All Mobile Portrait size smaller than 768 (devices and browsers) */
 @media only screen and (max-width: 767px) {
-
+    #social-top .fb-like{
+        display: none;
+    }
     .home-list .col-1{
         width: 100%;
     }
@@ -300,6 +317,9 @@ section:hover h1 a{
 
 /* All Mobile size smaller than standard 320 (devices and browsers) */
 @media only screen and (max-width: 319px) {
+    #social-top .fb-like{
+        display: none;
+    }
     .home-list .col-3{
         width: 100%;
     }

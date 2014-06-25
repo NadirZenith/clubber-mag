@@ -1,3 +1,0 @@
-<?php
-
-$nz = new Pimple();

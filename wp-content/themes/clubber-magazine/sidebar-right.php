@@ -1,5 +1,5 @@
 
-<div class="mt15">&nbsp;</div>
+<!--<div class="mt15">&nbsp;</div>-->
 
 <?php
 include_once 'facebook/like-box.php';

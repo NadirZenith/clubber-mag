@@ -300,6 +300,9 @@ a.more-link:hover {
     margin-bottom: 5px;
     margin-left: 30px;
 }
+#site-logo a{
+    width: 180px;
+}
 
 #social-profiles{
     float: right;
@@ -317,30 +320,6 @@ a.more-link:hover {
     width: 40px;
     height: 40px;
 }
-#site-title {
-    /*font: 36px 'Philosopher', sans-serif;*/
-    /*line-height: 42px;*/
-}
-#site-title a {
-    /*color: #555;	*/
-}
-#site-title a img {
-    /*vertical-align: inherit;*/
-    /*max-width: 978px;	*/
-}
-#site-title a span, #site-title a:hover, #site-title a:focus, #site-title a:active {
-    /*color: #333;*/
-}
-#site-description {
-    /*font: 13px 'PT Sans', sans-serif;*/
-    /*line-height: 20px;*/
-    /*color: #777;*/
-}
-.hgroup-right {
-    /*float: right;*/
-    /*margin-top: 10px;*/
-}
-
 
 
 /* =Menu
@@ -583,35 +562,25 @@ li.default-menu {
 
 
     #branding {
-        margin-top: 10px;	
+        margin-top: 30px;	
     }
     .hgroup-wrap {
-        padding-bottom: 15px;
-        padding-top: 0;
+        /*padding-bottom: 15px;*/
+        /*padding-top: 0;*/
     }
     .hgroup-right {
-        margin-top: 10px;
+        /*margin-top: 10px;*/
     }
     .hgroup-right .social-profiles {
-        display: none;
+        /*display: none;*/
     }	
-    #site-logo {
-        margin-top: 25px;
-    }
-    #site-title a img {
-        max-width: 280px;	
-    }
-
-    #main {
-        /*padding-top: 40px;*/
-    }
-
-
+  
 }
 
 
 /* All Mobile landscape size and All Mini Tablet Portrait size smaller than standard 768 and larger than 480 (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
+    
     input.s:focus {
         width: 375px;
     }
@@ -627,26 +596,24 @@ li.default-menu {
         width: 100%;
     }
     #branding {
-        margin-top: 20px;	
+        /*margin-top: 30px;	*/
     }
     .hgroup-wrap {
-        padding-bottom: 15px;
+        /*padding-bottom: 15px;*/
     }
     .hgroup-right {
-        margin-top: 10px;
+        /*margin-top: 10px;*/
     } 
-    #site-logo {
-        /*margin-top: 30px;*/
-        padding-bottom: 30px;
-    }
-    #site-title a img {
-        max-width: 420px;	
-    }
+    
 
 }
 
 /* All Mobile size smaller than standard 320 (devices and browsers) */
 @media only screen and (max-width: 319px) {
+    
+     #site-logo a{
+        width: 160px;
+    }
     .one-column-template .wrapper, 
     .wrapper,
     .one-column-template .container,
