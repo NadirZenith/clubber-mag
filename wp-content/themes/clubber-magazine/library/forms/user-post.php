@@ -1,34 +1,57 @@
 <?php
+
 global $nz;
 
-$nz['form.label'] = array(
-      'id' => 8,
+$nz['form.userpost'] = array(
+      'id' => 11,
       'ajax' => 1
 );
 
-$nz['label_form'] = function($nz) {
-        $form = $nz['form.label'];
+$nz['userpost_form'] = function($nz) {
+        $form = $nz['form.userpost'];
 
         $shortcode = sprintf($nz['shortcode.gform'], $form['id'], $form['ajax']);
 
         return do_shortcode($shortcode);
 };
 
-add_action("gform_after_submission_" . $nz['form.label']['id'], "relate_user_to_label", 10, 2);
+add_action("gform_after_submission_" . $nz['form.userpost']['id'], "relate_user_and_resource_to_post", 10, 2);
 
-function relate_user_to_label($entry, $form) {
+function relate_user_and_resource_to_post($entry, $form) {
         $user = wp_get_current_user();
-        $label_id = $entry['post_id'];
+        $user_post_id = $entry['post_id'];
 
-        update_user_meta($user->ID, 'label_page', $label_id);
-        
+        $type = get_query_var('type'); // artista || sellos-discograficos
+
+        switch ($type) {
+                case 'artista':
+                        $parent_id = get_user_meta($user->ID, 'artist_page', true);
+
+
+                        break;
+                case 'sello':
+                        $parent_id = get_user_meta($user->ID, 'label_page', true);
+
+
+                        break;
+
+                default:
+                        die('403');
+                        break;
+        }
+
+        if ($parent_id) {
+                update_post_meta($user_post_id, 'parent', $parent_id);
+        }
+
         global $NZS;
         $NZS->getFlashBag()->add('success', $form['confirmation']['message']);
-        wp_redirect(get_author_posts_url(get_current_user_id()));
+        wp_redirect(get_author_posts_url($user->ID));
         exit();
 }
 
-add_filter('nz_image_preview_placeholder_' . $nz['form.label']['id'] . '_2', 'set_label_preview_image');
+/*
+add_filter('nz_image_preview_placeholder_' . $nz['form.userpost']['id'] . '_2', 'set_label_preview_image');
 
 function set_label_preview_image($img) {
         $post_id = $_GET['gform_post_id'];
@@ -39,7 +62,7 @@ function set_label_preview_image($img) {
         return $img;
 }
 
-add_filter('nz_image_preview_input_value_' . $nz['form.label']['id'] . '_2', 'set_label_preview_value');
+add_filter('nz_image_preview_input_value_' . $nz['form.userpost']['id'] . '_2', 'set_label_preview_value');
 
 function set_label_preview_value($value) {
 
@@ -60,18 +83,4 @@ function set_label_preview_value($value) {
         }
         return $value;
 }
-
-add_filter("gform_field_content", "remove_label_title_edit", 10, 5);
-
-function remove_label_title_edit($content, $field, $value, $lead_id, $form_id) {
-        global $nz;
-        if (
-                $nz['form.label']['id'] == $form_id &&
-                $field['id'] == 1 &&
-                $value != ''
-        ) {
-                $content = str_replace("type='text'", "type='hidden'", $content);
-                $content .= sprintf('<h2 class="ml5 bold">%s</h2>', $value);
-        }
-        return $content;
-}
+ */

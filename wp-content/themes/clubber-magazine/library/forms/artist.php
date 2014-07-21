@@ -4,7 +4,7 @@ global $nz;
 
 
 $nz['form.artist'] = array(
-      'id' => 3,
+      'id' => 8,
       'ajax' => 1
 );
 
@@ -18,14 +18,12 @@ $nz['artist_form'] = function($nz) {
 add_action("gform_after_submission_" . $nz['form.artist']['id'], "relate_user_to_artist", 10, 2);
 
 function relate_user_to_artist($entry, $form) {
-        //if exist label id its not a artist page alone but a label artist
-        if (empty($entry['11'])) {
 
-                $user = wp_get_current_user();
-                $post_id = $entry['post_id'];
+        $user = wp_get_current_user();
+        $post_id = $entry['post_id'];
 
-                update_user_meta($user->ID, 'artist_page', $post_id);
-        }
+        update_user_meta($user->ID, 'artist_page', $post_id);
+        
         global $NZS;
         $NZS->getFlashBag()->add('success', $form['confirmation']['message']);
         wp_redirect(get_author_posts_url(get_current_user_id()));

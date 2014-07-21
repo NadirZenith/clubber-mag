@@ -4,7 +4,7 @@ global $nz;
 
 
 $nz['form.coolplace'] = array(
-      'id' => 9,
+      'id' => 10,
       'ajax' => 1
 );
 
@@ -21,17 +21,15 @@ function relate_user_to_coolplace($entry, $form) {
         $user = wp_get_current_user();
         $coolplace_id = $entry['post_id'];
 
-        $NZRelation = New NZRelation('coolplaces_to_users', 'coolplace_id', 'user_id');
-        $NZRelation->install_table();
+        $user_coolplaces = get_user_meta($user->ID, 'coolplaces_ids', true);
 
-        $NZRelation->setRelationFrom($coolplace_id, $user->ID);
+        $user_coolplaces[] = $coolplace_id;
 
-        update_user_meta($user->ID, 'has_coolplace', 'true');
+        update_user_meta($user->ID, 'coolplaces_ids', array_unique($user_coolplaces));
 
         //set cool place type!
         $term = array((int) $entry['5']);
         wp_set_object_terms($coolplace_id, $term, 'cool_place_type');
-
 
         global $NZS;
         $NZS->getFlashBag()->add('success', $form['confirmation']['message']);

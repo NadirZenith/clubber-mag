@@ -4,14 +4,14 @@ global $nz;
 
 $nz['form.event'] = array(
       'id' => 7,
-      'ajax' => 1
+      'ajax' => 'true'
 );
 
 $nz['event_form'] = function($nz) {
         $form = $nz['form.event'];
 
         $shortcode = sprintf($nz['shortcode.gform'], $form['id'], $form['ajax']);
-
+        /* return $shortcode; */
         return do_shortcode($shortcode);
 };
 
@@ -78,34 +78,47 @@ function remove_protected_fields($form) {
 add_action("gform_after_submission_" . $nz['form.event']['id'], "after_event_submission", 10, 2);
 
 function after_event_submission($entry, $form) {
-
         $user = wp_get_current_user();
 
-        update_user_meta($user->ID, 'is_promoter', 'true');
-
         //handle admin checkboxes
-        if (!($user instanceof WP_User))
-                return;
+        if (($user instanceof WP_User && $user->ID != 0)) {
+                df($user);
 
-        $roles = $user->roles;  //$roles is an array
+                update_user_meta($user->ID, 'is_promoter', 'true');
 
-        if (
-                (in_array('administrator', $roles))
-        /* || (!in_array('author', $roles)) */
-        ) {
+                $roles = $user->roles;  //$roles is an array
 
-                $publish_checkbox_id = '21.1';
-                $featured_checkbox_id = '23.1';
-                $post = array();
+                if (
+                        (in_array('administrator', $roles))
+                /* || (!in_array('author', $roles)) */
+                ) {
 
-                if ($entry[$publish_checkbox_id] != '') {
-                        $post['ID'] = $entry['post_id'];
-                        $post['post_status'] = 'publish';
-                        wp_update_post($post);
+                        $publish_checkbox_id = '21.1';
+                        $featured_checkbox_id = '23.1';
+                        $post = array();
+
+                        if ($entry[$publish_checkbox_id] != '') {
+                                $post['ID'] = $entry['post_id'];
+                                $post['post_status'] = 'publish';
+                                wp_update_post($post);
+                        }
+
+                        if ($entry[$featured_checkbox_id] != '') {
+                                update_post_meta($post['ID'], 'wpcf-event_displayed', 1);
+                        }
                 }
 
-                if ($entry[$featured_checkbox_id] != '') {
-                        update_post_meta($post['ID'], 'wpcf-event_displayed', 1);
-                }
+                global $NZS;
+                $NZS->getFlashBag()->add('success', $form['confirmation']['message']);
+                wp_redirect(get_author_posts_url($user->ID));
+                exit();
         }
+        global $NZS;
+        $form_message = $form['confirmation']['message'];
+        $form_message .= '<br>' . 'Registrate para guardares tus eventos!';
+
+        $NZS->getFlashBag()->add('success', $form_message);
+        $register_link = add_query_arg(array('action' => 'event_' . $entry['post_id']), get_permalink(get_page_by_path('registrate')));
+        wp_redirect($register_link);
+        exit();
 }
