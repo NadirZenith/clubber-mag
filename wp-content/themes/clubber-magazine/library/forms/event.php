@@ -82,7 +82,6 @@ function after_event_submission($entry, $form) {
 
         //handle admin checkboxes
         if (($user instanceof WP_User && $user->ID != 0)) {
-                df($user);
 
                 update_user_meta($user->ID, 'is_promoter', 'true');
 
