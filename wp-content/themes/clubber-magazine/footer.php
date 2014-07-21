@@ -27,13 +27,38 @@ wp_footer();
 <?php
 /*
   if (1 == get_current_user_id()) {
+
   d(wp_get_current_user());
   nz_debug_page_request();
   global $nz;
   d($nz);
-  global $wp_query;
-  d($wp_query->query_vars['action']);
-  d($wp_query->query_vars);
+  global $wp_query, $wp_rewrite;
+  d($wp_query);
+  d($wp_rewrite);
+
+
+
+  $nz_get_image_sizes = nz_get_image_sizes();
+  d(
+  $nz_get_image_sizes
+  );
+  unset($nz_get_image_sizes['thumbnail']);
+  unset($nz_get_image_sizes['medium']);
+  unset($nz_get_image_sizes['large']);
+  if (is_single()) {
+  foreach ($nz_get_image_sizes as $key => $value) {
+  //d($key);
+
+  echo get_the_post_thumbnail(get_the_ID(), $key);
+
+  //d($value);
+  }
+  }
+
+  $user_coolplaces = get_user_meta(get_current_user_id(), 'coolplaces_ids');
+
+  d($user_coolplaces);
+
   }
  */
 ?>
