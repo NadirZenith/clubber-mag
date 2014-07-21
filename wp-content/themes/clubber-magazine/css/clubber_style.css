@@ -51,8 +51,8 @@ div.slicknav_menu{
     display: none;
 }
 #social-top .fb-like{
-        display: block;
-    }
+    display: block;
+}
 
 /*  ---- CALENDAR ----*/
 #calendar{
@@ -147,7 +147,9 @@ div.slicknav_menu{
 }
 /* GRAVITY FORMS COMMON*/
 .gfield{
-    /*margin-left: 5px;*/
+    margin-top: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .gform_fields .small{
     width: 30%;
@@ -176,6 +178,7 @@ div.slicknav_menu{
     color: #ddd;
 }
 .validation_error, .gfield .validation_message {
+    margin: 10px;
     color: blue;
 }
 .gform_validation_container{
@@ -233,6 +236,10 @@ div.slicknav_menu{
 .gfield_password_strength.mismatch{
     background-color: red;
     color: #333;
+}
+.gfield_radio li {
+    float: left;
+    margin: 5px;
 }
 
 /* =Responsive Structure
