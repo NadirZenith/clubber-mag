@@ -118,7 +118,7 @@ add_action("gform_field_input", "nz_gform_google_maps_field_input", 10, 5);
 function nz_gform_google_maps_field_input($input, $field, $value, $lead_id, $form_id) {
 
         if ($field["type"] == "google_maps") {
-                $value = apply_filters('nz_gform_google_maps_value_'. $form_id. '_' . $field['id'], $value);
+                $value = apply_filters('nz_gform_google_maps_value_' . $form_id . '_' . $field['id'], $value);
                 $id = 'input_' . $form_id . '_' . $field['id'];
                 $input_field = '<input id="' . $id . '" name="input_' . $field['id'] . '" value="' . $value . '" type="text" placeholder="Type in an address" class="medium" size="30" />';
 
@@ -147,13 +147,13 @@ function nz_gform_google_maps_enqueue_scripts($form, $ajax) {
         // cycle through fields to see if image_preview is being used
         foreach ($form['fields'] as $field) {
                 if ($field['type'] == 'google_maps') {
-                        add_action('wp_footer', 'nz_gform_google_maps_script', 10 ,2);
+                        add_action('wp_footer', 'nz_gform_google_maps_script', 10, 2);
 
                         // Register the script first.
                         wp_register_script('nz_gform_google_maps_geocomplete', plugins_url('jquery.geocomplete.min.js', __FILE__), array("jquery"));
 
                         // The script can be enqueued now or later.
-                        wp_enqueue_script('nz_gform_google_maps_api');
+                        /*wp_enqueue_script('nz_gform_google_maps_api');*/
                         wp_enqueue_script('nz_gform_google_maps_geocomplete');
 
                         break;
@@ -170,28 +170,33 @@ function nz_gform_google_maps_script() {
                         height: 300px; 
                 }
         </style>
-        <script type="text/javascript"
-                src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">
-        </script>
-
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=true"></script>
+        <?php
+        /*
+         * 
+          <script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">
+          </script>
+         */
+        ?>
         <script>
-                jQuery(function($) {
-                        $field = $("#input_9_4");
-                        console.log($field);
-                        console.log($field.val());
-                       
-                        if (!$field.val()) {
-                                $field.geocomplete({
-                                        map: ".map_canvas"
-                                });
-                        } else {
-                                $field.geocomplete({
-                                        map: ".map_canvas",
-                                        location: $field.val()
-                                });
+                                jQuery(function($) {
+                                        $field = $("#input_10_4");
+                                        console.log($field);
+                                        console.log($field.val());
 
-                        }
-                });
+                                        if (!$field.val()) {
+                                                $field.geocomplete({
+                                                        map: ".map_canvas"
+                                                });
+                                        } else {
+                                                $field.geocomplete({
+                                                        map: ".map_canvas",
+                                                        location: $field.val()
+                                                });
+
+                                        }
+                                });
         </script>
         <?php
 }
