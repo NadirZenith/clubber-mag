@@ -118,14 +118,22 @@ function attitude_load_files() {
         /* require_once( ATTITUDE_STRUCTURE_DIR . '/content-extensions.php' ); */
         require_once( ATTITUDE_STRUCTURE_DIR . '/relation-events-users.php' );
 
+        /** CLUBBER POST TYPES      */
+        require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-userpost.php' );
+        require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-sello.php' );
+        require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-cool-place.php' );
+        require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-artista.php' );
+
+
         /** CLUBBER FORMS      */
         require_once( CLUBBER_FORMS_DIR . '/common.php' );
         require_once( CLUBBER_FORMS_DIR . '/user-profile-edit.php' );
         require_once( CLUBBER_FORMS_DIR . '/event.php' );
 
         require_once( CLUBBER_FORMS_DIR . '/artist.php' );
-        require_once( CLUBBER_FORMS_DIR . '/label.php' );
+        require_once( CLUBBER_FORMS_DIR . '/sello.php' );
         require_once( CLUBBER_FORMS_DIR . '/cool-place.php' );
+        require_once( CLUBBER_FORMS_DIR . '/user-post.php' );
 
         /*   images   */
         require_once( ATTITUDE_STRUCTURE_DIR . '/images-extensions.php' );
@@ -144,9 +152,8 @@ add_action('attitude_init', 'attitude_core_functionality', 20);
 function attitude_core_functionality() {
         global $nz;
         $nz['shortcode.gform'] = function($nz) {
-                return '[gravityform id="%d" title="false" description="false" ajax="%d"]';
+                return '[gravityform id="%d" title="false" description="false" ajax=%d]';
         };
-
 
 // Add default posts and comments RSS feed links to head
         add_theme_support('automatic-feed-links');
@@ -247,10 +254,12 @@ function change_author_base() {
         $wp_rewrite->add_rule($regex, $redirect);
 
 //promoter list
-        $regex = sprintf('^%s/([^/]+)/(%s)/?$', $author_slug, 'mis-eventos');
+        $regex = sprintf('^%s/([^/]+)/(%s)/?$', $author_slug, 'eventos');
         $redirect = sprintf('index.php?author_name=$matches[1]&%s=$matches[2]', $query_var_name);
 
         $wp_rewrite->add_rule($regex, $redirect);
+
+        /* d($wp_rewrite); */
 }
 
 /** PROFILE BUILDER PRO */
@@ -300,6 +309,7 @@ add_filter('query_vars', 'add_used_vars');
 function add_used_vars($vars) {
         $vars[] = "action"; //
         $vars[] = "type"; //
+        $vars[] = "child"; //
         return $vars;
 }
 
@@ -311,16 +321,10 @@ function rewrite_page_recursos($rules) {
         $page_slug = 'recursos';
 
         /* d($rules); */
-        $rules['^recursos/([^/]+)?'] = 'index.php?pagename=recursos&type=$matches[1]';
-        /* $rules['^recursos/([^/]+)/?([^/]+)?'] = 'index.php?pagename=recursos&type=$matches[1]&gform_post_id=$matches[2]'; */
+        /* $rules['^recursos/([^/]+)?'] = 'index.php?pagename=recursos&type=$matches[1]'; */
+        $rules['^recursos/([^/]+)?/?([^/]+)?'] = 'index.php?pagename=recursos&type=$matches[1]&action=$matches[2]';
         return $rules;
 }
-
-/*
- *  
- *      DEV 
- * 
- * * */
 
 add_action('show_user_profile', 'clubber_mag_extra_profile_fields');
 add_action('edit_user_profile', 'clubber_mag_extra_profile_fields');
@@ -436,45 +440,6 @@ function clubber_mag_extra_profile_fields($user) {
                                         <a href="<?php echo get_edit_post_link($label_page->ID) ?>"><?php echo $label_page->post_title; ?></a>
                                         (<?php echo get_post()->post_status ?>)
                                         <?php
-                                        $args = array(
-                                              'post_type' => 'artistas',
-                                              'posts_per_page' => -1,
-                                              'post_status' => 'any',
-                                              'order' => 'ASC',
-                                              'orderby' => 'post_title',
-                                              /* 'meta_key' => 'wpcf-label-id', */
-                                              'meta_query' => array(
-                                                    array(
-                                                          'key' => 'wpcf-label-id',
-                                                          'value' => $label_page->ID,
-                                                          'type' => 'NUMERIC',
-                                                          'compare' => '='
-                                                    )
-                                              )
-                                        );
-
-                                        $wp_query = new WP_Query($args);
-                                        if ($wp_query->have_posts()) {
-                                                ?>
-                                                <div style="margin-left: 30px;">
-                                                        <h4 style="margin: 3px;">Artistas</h4>
-                                                        <ul style="border-left: 1px solid #333; padding-left: 5px;">
-                                                                <?php
-                                                                while ($wp_query->have_posts()) {
-                                                                        $wp_query->the_post();
-                                                                        ?>
-                                                                        <li>
-                                                                                <?php echo get_the_post_thumbnail(get_the_ID(), array(50, 50)) ?>
-                                                                                <a href="<?php echo get_edit_post_link(get_the_ID()) ?>"><?php the_title(); ?></a>
-                                                                                (<?php echo get_post()->post_status ?>)
-                                                                        </li>
-                                                                        <?php
-                                                                }
-                                                                ?>
-                                                        </ul>
-                                                </div>
-                                                <?php
-                                        }
                                 } else {
                                         echo 'no label page';
                                 }
@@ -535,6 +500,7 @@ function clubber_mag_extra_profile_fields($user) {
         <?php
 }
 
+/* @todo: allow admin to remove associations */
 /*
   add_action('personal_options_update', 'clubber_mag_save_extra_profile_fields');
   add_action('edit_user_profile_update', 'clubber_mag_save_extra_profile_fields');
@@ -551,40 +517,52 @@ function clubber_mag_save_extra_profile_fields($user_id) {
 
 /*
  *  
+ *      DEV 
+ * 
+ * * */
+
+add_filter('rewrite_rules_array', 'nz_child_route');
+
+// Adding a new rule
+function nz_child_route($rules) {
+        $newrules = array();
+        $newrules['artista/([^/]+)/([^/]+)/?$'] = 'index.php?artista=$matches[1]&child=$matches[2]';
+        $newrules['sello/([^/]+)/([^/]+)/?$'] = 'index.php?sello=$matches[1]&child=$matches[2]';
+        return $newrules + $rules;
+}
+
+/* -- */
+
+add_action('pre_get_posts', 'nz_child_query');
+
+function nz_child_query($query) {
+
+        //only front end && main query
+        if (is_admin() || !$query->is_main_query())
+                return;
+
+
+        if (in_array($query->get('post_type'), array('artista', 'sello'))) {
+
+                if ($query->get($query->get('post_type'))) {
+
+                        if ($query->get('child')) {
+                                $query->set('post_type', 'userpost');
+                                $query->set('userpost', $query->get('child'));
+
+                                add_filter('single_template', function($single) {
+                                        return TEMPLATEPATH . '/single-child.php';
+                                });
+                        }
+                }
+        }
+}
+
+/*
+ *  
  *      TESTES 
  * 
  * * */
 
-/*add_filter('init', 'nz_flush_rewrite_rules');*/
-/*
-
-  add_filter('gform_update_post_options', 'gform_update_post_custom_options');
-
-  function gform_update_post_custom_options($options) {
-
-  $options['capabilities']['update'] = 'author';
-  return $options;
-  }
-
- */
-
-function my_post_queries($wp_query) {
-
-        // do not alter the query on wp-admin pages and only alter it if it's the main query
-        if (!is_admin() && $wp_query->is_main_query()) {
-
-                /* $wp_query->set('posts_per_page', get_option('posts_per_page')); */
-        }
-}
-
-/* add_action('pre_get_posts', 'my_post_queries'); */
-
-/*add_action('init', 'change_page_name', 1000);*/
-
-function change_page_name(){
-        global $wp_rewrite;
-        /*d($wp_rewrite);*/
-        $wp_rewrite->pagination_base = 'pagina';
-        /*d($wp_rewrite);*/
-}
+add_filter('init', 'nz_flush_rewrite_rules');
 ?>
