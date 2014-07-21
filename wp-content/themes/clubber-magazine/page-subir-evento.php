@@ -15,11 +15,11 @@ wp_enqueue_script('jquery-ui-sliderAccess', get_template_directory_uri() . '/js/
 
         <script type="text/javascript">
                 jQuery(document).ready(function($) {
-                        $('#input_7_3').datetimepicker({
+                        $('#input_<?php echo $nz['form.event']['id'];?>_3').datetimepicker({
                                 addSliderAccess: true,
                                 sliderAccessArgs: {touchonly: false}
                         });
-                        $('#input_7_19').datetimepicker({
+                        $('#input_<?php echo $nz['form.event']['id'];?>_19').datetimepicker({
                                 addSliderAccess: true,
                                 sliderAccessArgs: {touchonly: false}
                         });
@@ -27,19 +27,7 @@ wp_enqueue_script('jquery-ui-sliderAccess', get_template_directory_uri() . '/js/
         </script>
         <style>
 
-               
 
-                #field_7_18 .gfield_description a{
-                        font-weight: bold;
-                }
-                #field_7_18 .gfield_description{
-                        color: #0583F2;
-                }
-                .gform_button{
-                        margin: 15px;
-                        /*clear: both;*/
-                        float: right;
-                }
                 .gform_confirmation_wrapper {
                         font-size: 150%;
                         font-weight: 700;
@@ -52,12 +40,14 @@ wp_enqueue_script('jquery-ui-sliderAccess', get_template_directory_uri() . '/js/
 
         <section class="bg-50 block-5">
                
-                <div class="mt5 ml5 meddium mr5 cb">
-                        
+                <div class="col-3-4" style="margin: auto">
 
                         <?php
-                        $event_form_id = 7;
+                                                echo $nz['event_form'];
+/*
+                        $event_form_id = 10;
                         echo do_shortcode('[gravityform id="' . $event_form_id . '" name="Evento" title="false" description="false" ajax="false"]');
+ */
                         ?>
                 </div>
         </section>
