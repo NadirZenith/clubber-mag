@@ -16,7 +16,7 @@
 
                               <div class="meddium bold">
                                     <p>
-                                          Mira, búscate y comparte las fotografías de los eventos más importantes de tu cuidad.
+                                          Mira, búscate y comparte las fotografías de los eventos más importantes de tu ciudad.
                                     </p>
                               </div>
                               <a class="readmore mr5" href="<?php echo get_post_type_archive_link('photo'); ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
@@ -24,7 +24,7 @@
                         <div class="fl col-1-4 nm">
                               <a class="featured-image" href="<?php echo get_post_type_archive_link('photo'); ?>">
                                     <?php
-                                    $img_src = get_site_url() . '/wp-content/themes/clubber-magazine/images/photo_review.png';
+                                    $img_src = get_site_url() . '/wp-content/themes/clubber-magazine/images/types/photo_review.jpg';
                                     ?>
                                     <img src="<?php echo $img_src ?>"/>
                               </a>
@@ -45,7 +45,7 @@
 
                               <div class="meddium bold">
                                     <p>
-                                          Revive los eventos más destacados en tú cuidad con nosotros.
+                                          Revive los eventos más destacados en tú ciudad con nosotros.
                                     </p>
                               </div>
                               <a class="readmore mr5" href="<?php echo get_post_type_archive_link('video'); ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
@@ -53,7 +53,7 @@
                         <div class="fl col-1-4 nm">
                               <a class="featured-image" href="<?php echo get_post_type_archive_link('video'); ?>">
                                     <?php
-                                    $img_src = get_site_url() . '/wp-content/themes/clubber-magazine/images/video_review.png';
+                                    $img_src = get_site_url() . '/wp-content/themes/clubber-magazine/images/types/video_review.jpg';
                                     ?>
                                     <img src="<?php echo $img_src ?>"/>
                               </a>
