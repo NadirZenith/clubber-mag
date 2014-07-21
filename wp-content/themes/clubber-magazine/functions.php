@@ -564,5 +564,5 @@ function nz_child_query($query) {
  * 
  * * */
 
-add_filter('init', 'nz_flush_rewrite_rules');
+/*add_filter('init', 'nz_flush_rewrite_rules');*/
 ?>
