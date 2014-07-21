@@ -29,7 +29,7 @@ $wp_query = new WP_Query($args);
 <section class="bg-50 block-5 pb15">
         <div class="ml5 cb group">
                 <?php
-                $user_promoter_list_url = get_author_posts_url($curauth->ID) . 'mis-eventos';
+                $user_promoter_list_url = get_author_posts_url($curauth->ID) . 'eventos';
                 ?>
                 <h1 class="fl"><a href="<?php echo $user_promoter_list_url ?>" title="Ver todos mis eventos">Mis Eventos</a></h1>
                 <?php
