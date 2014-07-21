@@ -77,6 +77,7 @@ function cool_place_type_taxonomy() {
               'show_admin_column' => true,
               'show_in_nav_menus' => true,
               'show_tagcloud' => true,
+              'rewrite' => array('slug' => 'cool-places')
                 /* 'update_count_callback' => 'dump_this', */
         );
 
