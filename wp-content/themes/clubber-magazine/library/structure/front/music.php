@@ -8,7 +8,7 @@ $the_query = new WP_Query($args);
 
 <h1>
       <a class="ml5" href="<?php echo get_post_type_archive_link($args['post_type']); ?>">
-            Musica
+            Música
       </a>
 </h1>
 
