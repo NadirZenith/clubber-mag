@@ -49,10 +49,17 @@ function remove_protected_fields($form) {
         $publish_checkbox_id = 21;
         $featured_checkbox_id = 23;
 
-
+        
         $current_user = wp_get_current_user();
         if (!($current_user instanceof WP_User))
                 return;
+
+        if ($current_user->data != null) {
+                foreach ($form["fields"] as &$field)
+                        if ($field["id"] == 17) {
+                                $field['defaultValue'] = $current_user->data->user_email;
+                        }
+        }
 
         $roles = $current_user->roles;  //$roles is an array
         if (
@@ -78,6 +85,10 @@ function remove_protected_fields($form) {
 add_action("gform_after_submission_" . $nz['form.event']['id'], "after_event_submission", 10, 2);
 
 function after_event_submission($entry, $form) {
+
+        wp_set_post_terms($entry['post_id'], $entry['12'], 'city', 'false');
+
+
         $user = wp_get_current_user();
 
         //handle admin checkboxes
@@ -112,10 +123,10 @@ function after_event_submission($entry, $form) {
                 wp_redirect(get_author_posts_url($user->ID));
                 exit();
         }
-        global $NZS;
         $form_message = $form['confirmation']['message'];
         $form_message .= '<br>' . 'Registrate para guardares tus eventos!';
 
+        global $NZS;
         $NZS->getFlashBag()->add('success', $form_message);
         $register_link = add_query_arg(array('action' => 'event_' . $entry['post_id']), get_permalink(get_page_by_path('registrate')));
         wp_redirect($register_link);
