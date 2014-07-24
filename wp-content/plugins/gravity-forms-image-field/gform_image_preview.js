@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
     var nz_gform_image_preview_id, nz_gform_image_preview_type;
-    $('.gform_wrapper').on('click', '.nz-upload-button, .gform_image_preview', selectFile);
+    $('.gform_wrapper').on('click', '.nz-upload-button', selectFile);
+    /*$('.gform_wrapper').on('click', '.nz-upload-button, .gform_image_preview', selectFile);*/
     createForm();
     function selectFile(e) {
 
