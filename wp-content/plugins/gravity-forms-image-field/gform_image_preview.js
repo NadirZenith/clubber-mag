@@ -72,11 +72,6 @@ jQuery(document).ready(function($) {
                 bar.width(percentVal);
                 prc.html(percentVal);
                 /*$('#nz-gform-image-preview-' + nz_gform_image_preview_id).css('opacity', percentVal);*/
-            },
-            success: function(responseText, statusText, xhr, $form) {
-                /*console.log('success');*/
-                /*bar.css('background-color', 'green');*/
-                result_pannel.css('display', 'none');
             }
         };
 
@@ -86,6 +81,7 @@ jQuery(document).ready(function($) {
 
     function showResponse(responseText, statusText, xhr, $form) {
         $('#' + nz_gform_image_preview_id).val(responseText);
+        $('#preview-' + nz_gform_image_preview_id + ' .result_pannel').css('display', 'none');
 
         var response = $.parseJSON(responseText);
         switch (nz_gform_image_preview_type) {
@@ -112,10 +108,10 @@ jQuery(document).ready(function($) {
             try {
                 var reader = new FileReader();
 
-                 reader.onload = function(e) {
-                 $('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result);
-                 /*$('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result).css('opacity', 0.5);*/
-                 }
+                reader.onload = function(e) {
+                    $('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result);
+                    /*$('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result).css('opacity', 0.5);*/
+                }
 
                 reader.readAsDataURL(input.files[0]);
             } catch (e) {
