@@ -113,12 +113,12 @@ function coolplace_singularize_taxonomy($form) {
         foreach ($form["fields"] as &$field) {
 
                 if ($field["id"] == $coolplace_type_field_id) {
-                        d($field['choices']);
+                        /*d($field['choices']);*/
                         $field['choices'][0]['text'] = 'Bar';
                         $field['choices'][1]['text'] = 'Club';
                         $field['choices'][2]['text'] = 'Restaurant';
                         
-                        d($field['choices']);
+                        /*d($field['choices']);*/
                 }
         }
 
