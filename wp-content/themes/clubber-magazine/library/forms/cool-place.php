@@ -17,6 +17,14 @@ $nz['coolplace_form'] = function($nz) {
 add_action("gform_after_submission_" . $nz['form.coolplace']['id'], "relate_user_to_coolplace", 10, 2);
 
 function relate_user_to_coolplace($entry, $form) {
+        //set cool place type!
+        $cool_places_types = array(
+              intval($entry['7.1']),
+              intval($entry['7.2']),
+              intval($entry['7.3'])
+        );
+
+        $return = wp_set_object_terms($entry['post_id'], $cool_places_types, 'cool_place_type');
 
         $user = wp_get_current_user();
         $coolplace_id = $entry['post_id'];
@@ -26,10 +34,6 @@ function relate_user_to_coolplace($entry, $form) {
         $user_coolplaces[] = $coolplace_id;
 
         update_user_meta($user->ID, 'coolplaces_ids', array_unique($user_coolplaces));
-
-        //set cool place type!
-        $term = array((int) $entry['5']);
-        wp_set_object_terms($coolplace_id, $term, 'cool_place_type');
 
         global $NZS;
         $NZS->getFlashBag()->add('success', $form['confirmation']['message']);
@@ -113,17 +117,11 @@ function coolplace_singularize_taxonomy($form) {
         foreach ($form["fields"] as &$field) {
 
                 if ($field["id"] == $coolplace_type_field_id) {
-                        /*d($field['choices']);*/
                         $field['choices'][0]['text'] = 'Bar';
                         $field['choices'][1]['text'] = 'Club';
                         $field['choices'][2]['text'] = 'Restaurant';
-                        
-                        /*d($field['choices']);*/
                 }
         }
 
         return $form;
 }
-
-/*
- */
