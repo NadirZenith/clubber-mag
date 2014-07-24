@@ -104,5 +104,26 @@ function process_coolplace_map($arg) {
         update_post_meta($post_id, 'mapa', $arg['entry']['4']);
 }
 
+add_filter("gform_pre_render_" . $nz['form.coolplace']['id'], "coolplace_singularize_taxonomy");
+
+function coolplace_singularize_taxonomy($form) {
+
+        $coolplace_type_field_id = 7;
+
+        foreach ($form["fields"] as &$field) {
+
+                if ($field["id"] == $coolplace_type_field_id) {
+                        d($field['choices']);
+                        $field['choices'][0]['text'] = 'Bar';
+                        $field['choices'][1]['text'] = 'Club';
+                        $field['choices'][2]['text'] = 'Restaurant';
+                        
+                        d($field['choices']);
+                }
+        }
+
+        return $form;
+}
+
 /*
  */
