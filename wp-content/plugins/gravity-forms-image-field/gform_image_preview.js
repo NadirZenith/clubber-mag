@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
     var nz_gform_image_preview_id, nz_gform_image_preview_type;
-    $('.gform_wrapper').on('click', '.nz-upload-button', selectFile);
+    $('.gform_wrapper').on('click', '.nz-upload-button, .gform_image_preview', selectFile);
     createForm();
     function selectFile(e) {
 
@@ -59,15 +59,23 @@ jQuery(document).ready(function($) {
         readURL(input);
 
         var bar = $('#preview-' + nz_gform_image_preview_id + ' .bar');
+        var prc = $('#preview-' + nz_gform_image_preview_id + ' .prc');
+        var result_pannel = $('#preview-' + nz_gform_image_preview_id + ' .result_pannel');
         /*var percent = $('.percent');*/
         var options = {
             success: showResponse,
             uploadProgress: function(event, position, total, percentComplete) {
-                var percentVal = percentComplete + '%';
                 /*console.log(percentVal);*/
+                result_pannel.css('display', 'block');
+                var percentVal = percentComplete + '%';
                 bar.width(percentVal);
-                $('#nz-gform-image-preview-' + nz_gform_image_preview_id).css('opacity', percentVal);
-                /*percent.html(percentVal);*/
+                prc.html(percentVal);
+                /*$('#nz-gform-image-preview-' + nz_gform_image_preview_id).css('opacity', percentVal);*/
+            },
+            success: function(responseText, statusText, xhr, $form) {
+                /*console.log('success');*/
+                /*bar.css('background-color', 'green');*/
+                result_pannel.css('display', 'none');
             }
         };
 
@@ -103,9 +111,10 @@ jQuery(document).ready(function($) {
             try {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
-                    $('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result).css('opacity', 0.5);
-                }
+                 reader.onload = function(e) {
+                 $('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result);
+                 /*$('#nz-gform-image-preview-' + nz_gform_image_preview_id).attr('src', e.target.result).css('opacity', 0.5);*/
+                 }
 
                 reader.readAsDataURL(input.files[0]);
             } catch (e) {

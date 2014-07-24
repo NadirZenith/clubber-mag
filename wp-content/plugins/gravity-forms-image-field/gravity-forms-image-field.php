@@ -140,8 +140,14 @@ function nz_image_preview_field_input($input, $field, $value, $lead_id, $form_id
                 $preview_container = sprintf(
                         '<div id="preview-%1$s">'
                         . '<img id="nz-gform-image-preview-%1$s" class="gform_image_preview" src="%2$s" alt="preview image" style="width:' . $image_size[0] . 'px; height:' . $image_size[1] . 'px;"/>'
+                        . '<div class="result_pannel" style="display:none">'
+                        
                         . '<div class="progress" style="width:' . $image_size[0] . 'px; height:5px;margin-bottom: 10px;border-bottom:1px solid #111;">'
+                        
                         . '<div class="bar" style="width:1%%; height:5px;background-color:#333"></div>'
+                        . '<div class="prc" style="float:right"></div>'
+                        . '</div>'
+                        
                         . '</div>'
                         . '</div>'
                         . '<input type="button" id="%1$s-button" class="nz-gform-image-preview-upload-button nz-upload-button" value="Subir Photo" data-type="single" />', $id, $image_url);
