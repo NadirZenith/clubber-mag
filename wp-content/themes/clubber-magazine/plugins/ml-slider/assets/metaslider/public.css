@@ -20,7 +20,16 @@
     padding: 8px 10px;
     font-size: 150%;
     /*font-size: 30px;*/
-    line-height: 1.2;
+    /*line-height: 1.2;*/
+    line-height: 120%;
+}
+
+@media only screen and (max-width: 767px) {
+    .metaslider .caption {
+        font-size: 120%;
+        line-height: 100%;
+    }
+
 }
 
 .metaslider img {

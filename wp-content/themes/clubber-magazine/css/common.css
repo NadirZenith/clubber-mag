@@ -505,7 +505,15 @@ hr {
 
 /* All Mobile landscape size and All Mini Tablet Portrait size smaller than standard 768 and larger than 480 (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-
+    h1 {
+        font-size: 140%;
+        line-height: 150%;
+    }
+    h2 {
+        font-size: 150%;
+        color: #eee;
+        line-height: 110%;
+    }
 
 }
 
