@@ -70,6 +70,12 @@ html[xmlns] .slides {display: block;}
 .flex-control-thumbs img:hover {opacity: 1;}
 .flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
 
+@media only screen and (max-width: 767px) {
+
+.flex-control-paging li a {width: 5px; height: 5px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; box-shadow: inset 0 0 3px rgba(0,0,0,0.3);}
+
+}
+
 @media screen and (max-width: 860px) {
     .flex-direction-nav .flex-prev {opacity: 1; left: 0;}
     .flex-direction-nav .flex-next {opacity: 1; right: 0;}
