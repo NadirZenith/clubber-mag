@@ -1,7 +1,15 @@
 .nz-debug{
+    position: absolute;
+    margin-left: auto;  margin-right: auto;
+    left: 0;    right: 0;    top: 45px;
+    height: 40px;   width: 150px;
+}
+.nz-debug{
     background-color: blueviolet;
 }
-
+.nz-debug::before{
+    content: 'DEFAULT';
+}
 
 /* =Responsive Structure
 ----------------------------------------------- */
@@ -10,6 +18,9 @@
 
     .nz-debug{
         background-color: green;
+    }
+    .nz-debug::before{
+        content: 'max-width: 1078px';
     }
 
 }
@@ -22,7 +33,9 @@
     .nz-debug{
         background-color: yellow;
     }
-
+    .nz-debug::before{
+        content: 'max-width: 767px';
+    }
 }
 
 /* All Mobile landscape size and All Mini Tablet Portrait size smaller than standard 768 and larger than 480 (devices and browsers) */
@@ -30,6 +43,9 @@
 
     .nz-debug{
         background-color: blue;
+    }
+    .nz-debug::before{
+        content: '(min-width: 480px) and (max-width: 767px)';
     }
 
 }
@@ -39,5 +55,8 @@
 @media only screen and (max-width: 319px) {
     .nz-debug{
         background-color: red;
+    }
+    .nz-debug::before{
+        content: 'max-width: 319px';
     }
 }

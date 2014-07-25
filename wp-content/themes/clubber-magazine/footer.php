@@ -64,7 +64,7 @@ wp_footer();
 ?>
 <?php if (1 == get_current_user_id()) { ?>
         <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/debug.css" type="text/css">
-        <div class="nz-debug" style="height: 20px;">
+        <div class="nz-debug" style="">
         </div>
 <?php } ?>
 

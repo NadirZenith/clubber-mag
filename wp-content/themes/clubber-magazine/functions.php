@@ -48,6 +48,7 @@ function attitude_constants() {
         /*  CLUBBER CONSTANTS    */
         define('CLUBBER_DEV', TRUE);
         define('CLUBBER_PLUGIN_DIR', ATTITUDE_PARENT_DIR . '/plugins');
+        define('CLUBBER_ADDONS_DIR', ATTITUDE_PARENT_DIR . '/add-ons');
         define('CLUBBER_PLUGIN_URL', get_site_url() . '/wp-content/themes/clubber-magazine/plugins');
 
         define('CLUBBER_CUSTOM_FIELDS_DIR', ATTITUDE_LIBRARY_DIR . '/custom-fields');
@@ -119,12 +120,16 @@ function attitude_load_files() {
         require_once( ATTITUDE_STRUCTURE_DIR . '/relation-events-users.php' );
 
         /** CLUBBER POST TYPES      */
-        require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-userpost.php' );
-        require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-sello.php' );
+        /*require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-evento.php' );*/
         require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-cool-place.php' );
         require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-artista.php' );
+        require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-sello.php' );
+        require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-userpost.php' );
 
 
+        /** CLUBBER add-ons      */
+        require_once( CLUBBER_ADDONS_DIR . '/todo-pending-posts.php' );
+        
         /** CLUBBER FORMS      */
         require_once( CLUBBER_FORMS_DIR . '/common.php' );
         require_once( CLUBBER_FORMS_DIR . '/user-profile-edit.php' );
