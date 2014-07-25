@@ -476,6 +476,10 @@ hr {
         width: 99%;
         margin: 0.5%;
     }
+    .col-2-4.nm{
+        width: 100%;
+        margin: 0;
+    }
     .col-3-4.col-min{
         width: 99%;
         margin: 0.5%;

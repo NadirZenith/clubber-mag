@@ -25,7 +25,7 @@
 /* All Tablet Portrait size smaller than standard 1079 (devices and browsers) */
 @media only screen and (max-width: 1078px) {
 
-    .nz-debug{
+    .nz-debug.active{
         background-color: green;
     }
     .nz-debug::before{
@@ -39,7 +39,7 @@
 /* All Mobile Portrait size smaller than 768 (devices and browsers) */
 @media only screen and (max-width: 767px) {
 
-    .nz-debug{
+    .nz-debug.active{
         background-color: orange;
     }
     .nz-debug::before{
@@ -50,7 +50,7 @@
 /* All Mobile landscape size and All Mini Tablet Portrait size smaller than standard 768 and larger than 480 (devices and browsers) */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
-    .nz-debug{
+    .nz-debug.active{
         background-color: blue;
     }
     .nz-debug::before{
@@ -62,7 +62,7 @@
 
 /* All Mobile size smaller than standard 320 (devices and browsers) */
 @media only screen and (max-width: 319px) {
-    .nz-debug{
+    .nz-debug.active{
         background-color: red;
     }
     .nz-debug::before{

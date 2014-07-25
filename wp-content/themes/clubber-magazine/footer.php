@@ -66,7 +66,7 @@ wp_footer();
         <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/debug.css" type="text/css">
         <div id="nz-debug" class="nz-debug active" style="">
                 
-                <?php echo uniqid();?>
+                <!--<?php echo uniqid();?>-->
         </div>
         <script>
                 jQuery(document).ready(function($) {
