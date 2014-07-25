@@ -135,21 +135,19 @@ img {
 /*videos*/
 .video-container {
     position: relative;
-    /*padding-bottom: 56.25%;*/
-    padding-bottom: 54.00%;
-    padding-top: 30px; height: 0; overflow: hidden;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
 }
-
 .video-container iframe,
 .video-container object,
-.video-container embed {
+.video-container embed  {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
-
 /*  ---- hover ----  */
 .pr, article{
     position: relative;

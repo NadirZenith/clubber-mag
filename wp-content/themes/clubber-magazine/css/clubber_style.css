@@ -15,15 +15,6 @@
     width: 500px;
 }
 
-.home-list section.photo article{
-    width: 490px;
-    height: 280px;
-}
-.home-list section.video article{
-    width: 490px;
-    height: 295px;
-}
-
 
 .event-date{
     font-weight: 700;
@@ -265,10 +256,7 @@ div.slicknav_menu{
     .home-list .col-3{
         width: 668px;
     }
-    .home-list section.photo article{
-        width: 655px;
-        height: 380px;
-    }
+   
     .top-banner{
         margin-left: 0;
         margin-top: 0px;
@@ -298,10 +286,7 @@ div.slicknav_menu{
     .home-list .col-3{
         width: 280px;
     }
-    .home-list section.photo article{
-        width: 270px;
-        height: 180px;
-    }
+   
 
 
 }
@@ -312,11 +297,6 @@ div.slicknav_menu{
     .home-list .col-3{
         width: 420px;
     }
-    .home-list section.photo article{
-        width: 410px;
-        height: 190px;
-    }
-
 
 
 }
@@ -331,9 +311,5 @@ div.slicknav_menu{
         width: 100%;
     }
 
-    .home-list section.photo article{
-        width: 250px;
-        height: 170px;
-    }
 
 }
