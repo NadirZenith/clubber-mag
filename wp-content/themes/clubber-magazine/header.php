@@ -38,7 +38,7 @@ wp_enqueue_script('slicknav', get_template_directory_uri() . '/js/slicknav/jquer
                 <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 
                 <?php if (1 == get_current_user_id()) { ?>
-                        <!--<link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/debug.css" type="text/css">-->
+                        <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/debug.css" type="text/css">
                 <?php } ?>
                         
                 <?php

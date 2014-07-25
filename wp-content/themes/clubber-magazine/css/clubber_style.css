@@ -287,7 +287,7 @@ div.slicknav_menu{
 /* All Mobile Portrait size smaller than 768 (devices and browsers) */
 @media only screen and (max-width: 767px) {
     #social-top .fb-like{
-        display: none;
+        /*display: none;*/
     }
     .home-list .col-1{
         width: 100%;
@@ -325,7 +325,7 @@ div.slicknav_menu{
 /* All Mobile size smaller than standard 320 (devices and browsers) */
 @media only screen and (max-width: 319px) {
     #social-top .fb-like{
-        display: none;
+        /*display: none;*/
     }
     .home-list .col-3{
         width: 100%;
