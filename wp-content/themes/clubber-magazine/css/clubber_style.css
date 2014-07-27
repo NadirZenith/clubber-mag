@@ -261,7 +261,8 @@ section:hover h1 span{
     }
     #mobile-menu{
         display: block;
-        position: fixed;
+        /*position: fixed;*/
+        position: absolute;
         top: 0;
         width: 100%;
         z-index: 100;
