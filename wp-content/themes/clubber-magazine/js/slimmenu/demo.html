@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery slimMenu</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+        <link rel="stylesheet" type="text/css" href="slimmenu.css">
+        <style>
+            body {
+                font-family: 'Lucida Sans Unicode', 'Lucida Console', sans-serif;
+                padding: 0;
+            }
+            a, a:active { text-decoration: none }
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <ul class="slimmenu">
+            <li>
+                <a href="#">Slim Menu 1</a>
+                <ul>
+                    <li>
+                        <a href="#">Slim Menu 1.1</a>
+                        <ul>
+                            <li><a href="#">Slim Menu 1.1.1</a></li>
+                            <li>
+                                <a href="#">Slim Menu 1.1.2</a>
+                                <ul>
+                                    <li><a href="#">Slim Menu 1.1.2.1</a></li>
+                                    <li><a href="#">Slim Menu 1.1.2.2</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Slim Menu 1.2</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Slim Menu 2</a></li>
+            <li>
+                <a href="#">Slim Menu 3</a>
+                <ul>
+                    <li>
+                        <a href="#">Slim Menu 3.1</a>
+                        <ul>
+                            <li><a href="#">Slim Menu 3.1.1</a></li>
+                            <li><a href="#">Slim Menu 3.1.2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Slim Menu 3.2</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Slim Menu 4</a></li>
+        </ul>
+
+        <!--    -->
+
+
+        <ul class="" id="slimmenu">
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4" id="menu-item-4">
+                <a href="http://www.clubber-mag.com/">CLUBBER-MAG</a>
+            </li>
+            <li class="menu-item menu-item-type-post_type_archive menu-item-object-agenda menu-item-has-children menu-item-733" id="menu-item-733"><a href="http://lab.dev/clubber-mag-dev/agenda/">Eventos</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-city menu-item-487" id="menu-item-487"><a href="http://lab.dev/clubber-mag-dev/ciudad/barcelona/">Barcelona</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-city menu-item-684" id="menu-item-684"><a href="http://lab.dev/clubber-mag-dev/ciudad/ibiza/">Ibiza</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-city menu-item-488" id="menu-item-488"><a href="http://lab.dev/clubber-mag-dev/ciudad/madrid/">Madrid</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-489" id="menu-item-489"><a href="http://lab.dev/clubber-mag-dev/subir-evento/">Subir evento</a></li>
+                </ul>
+            </li>
+            <li class="menu-item menu-item-type-post_type_archive menu-item-object-musica menu-item-has-children current-menu-item menu-item-734" id="menu-item-734"><a href="http://lab.dev/clubber-mag-dev/musica/">Musica</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-post_type_archive menu-item-object-artista menu-item-2609" id="menu-item-2609"><a href="http://lab.dev/clubber-mag-dev/artista/">Artistas</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-music_type menu-item-476" id="menu-item-476"><a href="http://lab.dev/clubber-mag-dev/categoria-musica/entrevistas/">Entrevistas</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-music_type menu-item-477" id="menu-item-477"><a href="http://lab.dev/clubber-mag-dev/categoria-musica/podcasts/">Podcasts</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-music_type menu-item-478" id="menu-item-478"><a href="http://lab.dev/clubber-mag-dev/categoria-musica/reviews/">Reviews</a></li>
+                </ul>
+            </li>
+            <li class="menu-item menu-item-type-post_type_archive menu-item-object-cool-place menu-item-has-children menu-item-736" id="menu-item-736"><a href="http://lab.dev/clubber-mag-dev/cool-place/">Cool places</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-cool_place_type menu-item-482" id="menu-item-482"><a href="http://lab.dev/clubber-mag-dev/cool-places/bares/">Bares</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-cool_place_type menu-item-483" id="menu-item-483"><a href="http://lab.dev/clubber-mag-dev/cool-places/clubs/">Clubs</a></li>
+                    <li class="menu-item menu-item-type-taxonomy menu-item-object-cool_place_type menu-item-484" id="menu-item-484"><a href="http://lab.dev/clubber-mag-dev/cool-places/restaurantes/">Restaurantes</a></li>
+                </ul>
+            </li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-486" id="menu-item-486"><a href="http://lab.dev/clubber-mag-dev/noticias/">Noticias</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-485" id="menu-item-485"><a href="http://lab.dev/clubber-mag-dev/event-reviews/">Event Reviews</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-post_type_archive menu-item-object-photo menu-item-480" id="menu-item-480"><a href="http://lab.dev/clubber-mag-dev/photo/">Photo galleries</a></li>
+                    <li class="menu-item menu-item-type-post_type_archive menu-item-object-video menu-item-481" id="menu-item-481"><a href="http://lab.dev/clubber-mag-dev/video/">Video galleries</a></li>
+                </ul>
+            </li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-492" id="menu-item-492"><a href="http://lab.dev/clubber-mag-dev/sobre-nosotros/">Sobre Nosotros</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-737" id="menu-item-737"><a href="http://lab.dev/clubber-mag-dev/contacto/">Contacto</a>
+                <ul class="sub-menu">
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-491" id="menu-item-491"><a href="http://lab.dev/clubber-mag-dev/contacto/publicidad-en-clubbermag/">Publicidad en ClubberMag</a></li>
+                </ul>
+            </li>
+            <li class=""><a href="http://lab.dev/clubber-mag-dev/registrate/">Regístrate / Entra</a></li></ul>
+
+
+        <!--    -->
+
+        <script src="jquery.slimmenu.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script>
+            $('ul.slimmenu').slimmenu(
+                    {
+                        resizeWidth: '800'
+                                /*collapserTitle: 'Main Menu',*/
+                                /*easingEffect:'easeInOutQuint',*/
+                                /*animSpeed:'medium',*/
+                                /*indentChildren: true,*/
+                                /*childrenIndenter: '&raquo;'*/
+                    }
+            );
+        </script>
+    </body>
+</html>
