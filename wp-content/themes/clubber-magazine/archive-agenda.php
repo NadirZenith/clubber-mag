@@ -3,7 +3,7 @@ wp_enqueue_style('fullcalendar', get_template_directory_uri() . '/js/fullcalenda
 
 wp_enqueue_script('fullcalendar', get_template_directory_uri() . '/js/fullcalendar/fullcalendar.min.js', array('jquery'));
 
-/* wp_enqueue_script('jsticky', get_template_directory_uri() .'/js/jsticky/jquery.jsticky.min.js', array('jquery')); */
+ /*wp_enqueue_script('stickymojo', get_template_directory_uri() .'/js/stickymojo/stickyMojo.js', array('jquery')); */
 ?>
 <?php get_header(); ?>
 
