@@ -298,8 +298,14 @@ function add_loginout_link($items, $args) {
                         . '<a style="" href="' . get_author_posts_url(get_current_user_id()) . '">'
                         . '<span style="padding: 16px 0 0;">Perfil</span>'
                         . $avatar
-                        . '</a>'
-                        . '</li>';
+                        . '</a>';
+                if (is_super_admin()) {
+                        $items .= '<ul class="sub-menu">';
+                        $items .= '<li><a href="' . admin_url() . '">ADMIN</a></li>';
+                        $items .= '</ul>';
+                }
+
+                $items .= '</li>';
         } elseif (!is_user_logged_in() && $args->theme_location == 'primary') {
                 $class = is_page('registrate') ? ' current-menu-item ' : '';
                 $login_url = get_permalink(get_page_by_path('registrate'));
@@ -391,7 +397,7 @@ function clubber_mag_extra_profile_fields($user) {
                                                                 $wp_query->the_post();
                                                                 ?>
                                                                 <li>
-                                <?php echo the_post_thumbnail(array(50, 50)) ?>
+                                                                        <?php echo the_post_thumbnail(array(50, 50)) ?>
 
                                                                         <a href="<?php echo get_edit_post_link(get_the_ID()) ?>"><?php the_title(); ?></a>
                                                                         (<?php echo get_post()->post_status ?>)
@@ -422,7 +428,7 @@ function clubber_mag_extra_profile_fields($user) {
                                         $artist_page = get_post($artist_page_id);
                                         /* var_dump($artist_page); */
                                         ?>
-                <?php echo get_the_post_thumbnail($artist_page->ID, array(50, 50)) ?>
+                                        <?php echo get_the_post_thumbnail($artist_page->ID, array(50, 50)) ?>
                                         <a href="<?php echo get_edit_post_link($artist_page->ID) ?>"><?php echo $artist_page->post_title; ?></a>
                                         (<?php echo get_post()->post_status ?>)
                                         <?php
@@ -440,7 +446,7 @@ function clubber_mag_extra_profile_fields($user) {
                                 if ($label_page_id = get_user_meta($user->ID, 'label_page', true)) {
                                         $label_page = get_post($label_page_id);
                                         ?>
-                <?php echo get_the_post_thumbnail($label_page->ID, array(50, 50)) ?>
+                                        <?php echo get_the_post_thumbnail($label_page->ID, array(50, 50)) ?>
 
                                         <a href="<?php echo get_edit_post_link($label_page->ID) ?>"><?php echo $label_page->post_title; ?></a>
                                         (<?php echo get_post()->post_status ?>)
@@ -487,7 +493,7 @@ function clubber_mag_extra_profile_fields($user) {
                                                         $wp_query->the_post();
                                                         ?>
                                                         <li>
-                        <?php echo get_the_post_thumbnail(get_the_ID(), array(50, 50)) ?>
+                                                                <?php echo get_the_post_thumbnail(get_the_ID(), array(50, 50)) ?>
                                                                 <a href="<?php echo get_edit_post_link(get_the_ID()) ?>"><?php the_title(); ?></a>
                                                                 (<?php echo get_post()->post_status ?>)
                                                         </li>
