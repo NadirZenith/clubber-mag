@@ -120,7 +120,7 @@ function attitude_load_files() {
         require_once( ATTITUDE_STRUCTURE_DIR . '/relation-events-users.php' );
 
         /** CLUBBER POST TYPES      */
-        /*require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-evento.php' );*/
+        /* require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-evento.php' ); */
         require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-cool-place.php' );
         require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-artista.php' );
         require_once( ATTITUDE_LIBRARY_DIR . '/post-types/post-type-sello.php' );
@@ -129,7 +129,7 @@ function attitude_load_files() {
 
         /** CLUBBER add-ons      */
         require_once( CLUBBER_ADDONS_DIR . '/todo-pending-posts.php' );
-        
+
         /** CLUBBER FORMS      */
         require_once( CLUBBER_FORMS_DIR . '/common.php' );
         require_once( CLUBBER_FORMS_DIR . '/user-profile-edit.php' );
@@ -294,9 +294,9 @@ function add_loginout_link($items, $args) {
         if (is_user_logged_in() && $args->theme_location == 'primary') {
                 $class = is_author() ? ' current-menu-item ' : '';
                 $avatar = get_avatar(get_current_user_id(), 55);
-                $items .= '<li class="' . $class . '">'
-                        . '<a style="height:55px;padding:0;border-radius:8px;overflow:hidden" href="' . get_author_posts_url(get_current_user_id()) . '">'
-                        . '<span style="margin-right:10px;line-height:3.5">Perfil</span>'
+                $items .= '<li class="menu-profile-picture ' . $class . '">'
+                        . '<a style="" href="' . get_author_posts_url(get_current_user_id()) . '">'
+                        . '<span style="padding: 16px 0 0;">Perfil</span>'
                         . $avatar
                         . '</a>'
                         . '</li>';
@@ -391,7 +391,7 @@ function clubber_mag_extra_profile_fields($user) {
                                                                 $wp_query->the_post();
                                                                 ?>
                                                                 <li>
-                                                                        <?php echo the_post_thumbnail(array(50, 50)) ?>
+                                <?php echo the_post_thumbnail(array(50, 50)) ?>
 
                                                                         <a href="<?php echo get_edit_post_link(get_the_ID()) ?>"><?php the_title(); ?></a>
                                                                         (<?php echo get_post()->post_status ?>)
@@ -422,7 +422,7 @@ function clubber_mag_extra_profile_fields($user) {
                                         $artist_page = get_post($artist_page_id);
                                         /* var_dump($artist_page); */
                                         ?>
-                                        <?php echo get_the_post_thumbnail($artist_page->ID, array(50, 50)) ?>
+                <?php echo get_the_post_thumbnail($artist_page->ID, array(50, 50)) ?>
                                         <a href="<?php echo get_edit_post_link($artist_page->ID) ?>"><?php echo $artist_page->post_title; ?></a>
                                         (<?php echo get_post()->post_status ?>)
                                         <?php
@@ -440,7 +440,7 @@ function clubber_mag_extra_profile_fields($user) {
                                 if ($label_page_id = get_user_meta($user->ID, 'label_page', true)) {
                                         $label_page = get_post($label_page_id);
                                         ?>
-                                        <?php echo get_the_post_thumbnail($label_page->ID, array(50, 50)) ?>
+                <?php echo get_the_post_thumbnail($label_page->ID, array(50, 50)) ?>
 
                                         <a href="<?php echo get_edit_post_link($label_page->ID) ?>"><?php echo $label_page->post_title; ?></a>
                                         (<?php echo get_post()->post_status ?>)
@@ -487,7 +487,7 @@ function clubber_mag_extra_profile_fields($user) {
                                                         $wp_query->the_post();
                                                         ?>
                                                         <li>
-                                                                <?php echo get_the_post_thumbnail(get_the_ID(), array(50, 50)) ?>
+                        <?php echo get_the_post_thumbnail(get_the_ID(), array(50, 50)) ?>
                                                                 <a href="<?php echo get_edit_post_link(get_the_ID()) ?>"><?php the_title(); ?></a>
                                                                 (<?php echo get_post()->post_status ?>)
                                                         </li>
@@ -569,5 +569,21 @@ function nz_child_query($query) {
  * 
  * * */
 
-/*add_filter('init', 'nz_flush_rewrite_rules');*/
+/* add_filter('init', 'nz_flush_rewrite_rules'); */
+
+if (NZ_USE_LIVE_DB || (isset($_GET['action']) && $_GET['action'] == 'live')) {
+
+        add_filter('wp_get_attachment_image_attributes', 'correct_localhost_live_path');
+
+        function correct_localhost_live_path($attr) {
+
+                $attr['src'] = str_replace('http://lab.dev/clubber-mag-dev', 'http://www.clubber-mag.com/clubber-mag', $attr['src']);
+
+                return $attr;
+        }
+
+}
+
+// Removing front end admin bar because it's ugly
+/*add_filter('show_admin_bar', '__return_false');*/
 ?>
