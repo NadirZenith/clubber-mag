@@ -182,7 +182,7 @@ function attitude_headerdetails() {
                 </div>
         </nav>
         <?php
-        $img = '<img src="' . get_site_url() . "/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png" . '" width="235" height="50" alt="Clubber-Mag">';
+        $img = '<img style="margin-left:-25px;margin-top:3px" width="230" height="50" alt="Clubber-Mag" src="' . get_site_url() . "/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png" . '">';
         $logo = '<a href="' . esc_url(home_url('/')) . '" title="Clubber-Mag" rel="home">' . $img . '</a>';
         ?>
         <script type="text/javascript">
