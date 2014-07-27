@@ -585,5 +585,5 @@ if (NZ_USE_LIVE_DB || (isset($_GET['action']) && $_GET['action'] == 'live')) {
 }
 
 // Removing front end admin bar because it's ugly
-/*add_filter('show_admin_bar', '__return_false');*/
+add_filter('show_admin_bar', '__return_false');
 ?>
