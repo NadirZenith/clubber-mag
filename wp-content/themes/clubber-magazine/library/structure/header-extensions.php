@@ -137,7 +137,7 @@ function attitude_headerdetails() {
                                 </hgroup>
 
                                 <section id="social-wrapper" class="fr">
-                                                <div class="fb-like mt15" data-href="https://www.facebook.com/Clubber.Mag" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="tahoma"></div>
+                                        <div class="fb-like mt15" data-href="https://www.facebook.com/Clubber.Mag" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="tahoma"></div>
                                         <div id="social-profiles">
                                                 <ul id="social-profiles-list" class="">
                                                         <li>
@@ -187,6 +187,17 @@ function attitude_headerdetails() {
         ?>
         <script type="text/javascript">
                 jQuery(document).ready(function($) {
+                        /* drop down*/
+                        $('nav#access li').hover(
+                                function() {
+                                        $('ul', this).stop().slideDown(200);
+                                },
+                                function() {
+                                        $('ul', this).stop().slideUp(200);
+                                }
+                        );
+
+                        /* mobile menu */
                         $("<div></div>").attr('id', 'mobile-menu').prependTo('body');
 
                         $('#main-menu').clone().attr({

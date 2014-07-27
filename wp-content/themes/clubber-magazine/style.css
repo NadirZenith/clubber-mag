@@ -400,7 +400,7 @@ li.default-menu {
 #access ul ul ul li:hover ul, 
 #access ul ul ul ul li:hover ul,
 #access ul ul ul ul ul li:hover ul {
-    display:block;
+    /*display:block;*/
 }
 #access ul li ul {
     position: absolute;
@@ -431,7 +431,9 @@ li.default-menu {
     color: #777;
     text-transform: capitalize;
 }
-#access ul li ul li a:hover, #access ul li ul li:hover > a, #access ul li.current-menu-item ul li a:hover {
+#access ul li ul li a:hover, 
+#access ul li ul li:hover > a, 
+#access ul li.current-menu-item ul li a:hover {
     background-color: #F9F9F9;
     /*color: #333;*/
     color: #333;
