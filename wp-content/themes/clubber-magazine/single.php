@@ -85,7 +85,7 @@
 
         </div>
 
-        <div id="secondary" class="no-margin-left">
+        <div id="secondary">
                 <?php get_sidebar('right'); ?>
         </div><!-- #secondary -->
 
