@@ -37,20 +37,20 @@ $args = array(
             )
       )
 );
-$wp_query = new WP_Query($args);
+$query = new WP_Query($args);
 ?>
 <div id="flexslider-featured-events" class="">
 
         <ul class="slides">
                 <?php
-                if ($wp_query->have_posts()) {
+                if ($query->have_posts()) {
                         $count = 0;
                         ?> 
                         <li>
                                 <ul>
                                         <?php
-                                        while ($wp_query->have_posts()) {
-                                                $wp_query->the_post();
+                                        while ($query->have_posts()) {
+                                                $query->the_post();
                                                 if ($count % 4 == 0) {
                                                         
                                                 }
@@ -125,22 +125,6 @@ $wp_query = new WP_Query($args);
 
 <?php
 wp_reset_postdata();
-
-/*           
- * slideshowSpeed:4000,
-                animation:"fade",
-                controlNav:1,
-                directionNav:true,
-                pauseOnHover:false,
-                direction:"horizontal",
-                reverse:false,
-                animationSpeed:600,
-                prevText:"<",
-                nextText:">",
-                easing:"linear",
-                slideshow:true,
-                useCSS:false             
- */
 
 ?>
 
