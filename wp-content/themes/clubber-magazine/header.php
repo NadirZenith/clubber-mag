@@ -14,34 +14,25 @@
 wp_enqueue_style('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.css', $deps, $ver, $media);
 wp_enqueue_script('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.pack.js', array('jquery'));
 
-/*
-  wp_enqueue_style('slicknav', get_template_directory_uri() . '/js/slicknav/slicknav.css', $deps, $ver, $media);
-  wp_enqueue_script('slicknav', get_template_directory_uri() . '/js/slicknav/jquery.slicknav.min.js', array('jquery'));
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
- */
+
 wp_enqueue_style('slimmenu', get_template_directory_uri() . '/js/slimmenu/slimmenu.min.css', $deps, $ver, $media);
 wp_enqueue_script('slimmenu', get_template_directory_uri() . '/js/slimmenu/jquery.slimmenu.min.js', array('jquery'));
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
         <head>
-
                 <?php
-                do_action('attitude_title');
-
-
                 do_action('attitude_meta');
                 ?>
                 <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/common.css" type="text/css">
                 <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/clubber_style.css" type="text/css">
-                <?php
-                do_action('attitude_links');
 
+                <?php
+                /* <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />	 */
                 wp_head();
                 ?>
 
                 <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
-
 
         </head>
         <body <?php body_class(); ?>> 
