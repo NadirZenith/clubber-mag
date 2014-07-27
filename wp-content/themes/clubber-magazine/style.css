@@ -301,7 +301,7 @@ a.more-link:hover {
     margin-left: 30px;
 }
 #site-logo a{
-    width: 180px;
+    /*width: 180px;*/
 }
 
 #social-profiles{
@@ -562,7 +562,8 @@ li.default-menu {
 
 
     #branding {
-        margin-top: 30px;	
+        margin-top: 50px;	
+        padding-top: 15px;	
     }
     .hgroup-wrap {
         /*padding-bottom: 15px;*/

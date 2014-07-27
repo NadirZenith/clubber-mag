@@ -127,40 +127,40 @@ function attitude_headerdetails() {
         ?>
         <div class="container clearfix">
                 <div class="hgroup-wrap clearfix">
-                        <hgroup id="site-logo" class="clearfix">
-                                <h1> 
-                                        <a class="featured-image mt15 mb15" href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
-                                                <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/clubber-mag-logo.png" class="" width="" height="" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
-                                        </a>	
-                                </h1>
-                        </hgroup><!-- #site-logo -->
+                        <div class="hide-767">
+                                <hgroup id="site-logo" class="clearfix">
+                                        <h1> 
+                                                <a class="featured-image mt15 mb15" href="<?php echo esc_url(home_url('/')); ?>" title="Clubber-Mag" rel="home">
+                                                        <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/clubber-mag-logo-v2.png" class="" width="180" height="164" alt="Clubber-Mag">
+                                                </a>	
+                                        </h1>
+                                </hgroup>
 
-                        <section id="social-top" class="fr">
-                                <div class="hide-767">
-                                        <div class="fb-like" style="margin-top: 15px;" data-href="https://www.facebook.com/Clubber.Mag" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="tahoma"></div>
-                                </div>
-                                <div id="social-profiles">
+                                <section id="social-wrapper" class="fr">
+                                                <div class="fb-like mt15" data-href="https://www.facebook.com/Clubber.Mag" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="tahoma"></div>
+                                        <div id="social-profiles">
+                                                <ul id="social-profiles-list" class="">
+                                                        <li>
+                                                                <a href="https://www.facebook.com/Clubber.Mag"  target="_blank">
+                                                                        <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/facebook.png">
+                                                                </a>
+                                                        </li> 
+                                                        <li>
+                                                                <a href="https://twitter.com/ClubberMag" target="_blank">
+                                                                        <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/twitter.png">
+                                                                </a>
+                                                        </li> 
+                                                        <li>
+                                                                <a href="https://www.youtube.com/channel/UCVEK0H-FgtXo45AfdEDN61g" target="_blank">
+                                                                        <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/youtube.png">
+                                                                </a>
+                                                        </li> 
+                                                </ul>
+                                        </div>
+                                        <?php ?>
+                                </section>
+                        </div>
 
-                                        <ul>
-                                                <li>
-                                                        <a href="https://www.facebook.com/Clubber.Mag"  target="_blank">
-                                                                <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/facebook.png">
-                                                        </a>
-                                                </li> 
-                                                <li>
-                                                        <a href="https://twitter.com/ClubberMag" target="_blank">
-                                                                <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/twitter.png">
-                                                        </a>
-                                                </li> 
-                                                <li>
-                                                        <a href="https://www.youtube.com/channel/UCVEK0H-FgtXo45AfdEDN61g" target="_blank">
-                                                                <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/social/youtube.png">
-                                                        </a>
-                                                </li> 
-                                        </ul>
-                                </div>
-                                <?php ?>
-                        </section>
                         <div class="fl top-banner featured-image"> 
                                 <?php
                                 echo do_shortcode('[sam id=1]');
@@ -175,22 +175,41 @@ function attitude_headerdetails() {
                         $args = array(
                               'theme_location' => 'primary',
                               'container' => '',
-                              'items_wrap' => '<ul id="slicknav" class="">%3$s</ul>'
-                                /* 'items_wrap' => '<ul id="slicknav" class="root">%3$s</ul>' */
+                              'items_wrap' => '<ul id="main-menu" class="">%3$s</ul>'
                         );
-                        wp_nav_menu($args);
                         ?>
+                        <div id="desktop-menu"><?php wp_nav_menu($args); ?></div>
                 </div>
-                <script type="text/javascript">
-                        jQuery(document).ready(function($) {
-                                $('#slicknav').slicknav({
-                                        duplicate: true,
-                                        /*prependTo: '#mobileMenu'*/
-                                        allowParentLinks: true
-                                });
-                        });
-                </script>
         </nav>
+        <?php
+        $img = '<img src="' . get_site_url() . "/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png" . '" width="235" height="50" alt="Clubber-Mag">';
+        $logo = '<a href="' . esc_url(home_url('/')) . '" title="Clubber-Mag" rel="home">' . $img . '</a>';
+        ?>
+        <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                        $("<div></div>").attr('id', 'mobile-menu').prependTo('body');
+
+                        $('#main-menu').clone().attr({
+                                'class': 'slimmenu',
+                                'id': 'slimmenu'
+                        }).prependTo('#mobile-menu');
+
+                        /*title = '<div style="text-align:center; width:100%;"><img src="<?php echo $logo ?>" class="" width="235" height="50" alt="Clubber-Mag">' + $('#social-profiles2').html() + '</div>';*/
+
+                        $('#slimmenu').slimmenu(
+                                {
+                                        resizeWidth: '1078',
+                                        collapserTitle: '<div style="text-align:center;"><?php echo $logo ?></div>',
+                                        easingEffect: 'easeInOutQuint',
+                                        animSpeed: 'medium',
+                                        indentChildren: true,
+                                        childrenIndenter: '&raquo; '
+                                }
+                        );
+
+
+                });
+        </script>
         <?php
 }
 

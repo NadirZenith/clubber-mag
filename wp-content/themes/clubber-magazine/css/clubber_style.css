@@ -38,10 +38,28 @@ section:hover h1 span{
 .top-banner{
     margin-left: 100px; margin-top: 50px;
 }
-div.slicknav_menu{
+#mobile-menu{
     display: none;
 }
-#social-top .fb-like{
+.menu-profile-picture img{
+    position: relative;
+    top: -16px;
+    margin-left: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#mobile-menu .menu-profile-picture img{
+    height: 40px;
+    width:  40px;
+    top: -10px;
+}
+/*
+#mobile-menu #social-profiles-list, 
+#mobile-menu #social-profiles-list li{
+    float: left;
+}
+*/
+#social-wrapper .fb-like{
     display: block;
 }
 
@@ -238,13 +256,18 @@ div.slicknav_menu{
 /* All Tablet Portrait size smaller than standard 1079 (devices and browsers) */
 @media only screen and (max-width: 1078px) {
 
-
-    nav#access{
+    nav #desktop-menu{
         display: none;
     }
-    div.slicknav_menu{
+    #mobile-menu{
         display: block;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
     }
+    /*
+    */
 
     .home-list .col-1{
         width: 50%;
@@ -274,7 +297,7 @@ div.slicknav_menu{
 
 /* All Mobile Portrait size smaller than 768 (devices and browsers) */
 @media only screen and (max-width: 767px) {
-    #social-top .fb-like{
+    #social-wrapper .fb-like{
         /*display: none;*/
     }
     .home-list .col-1{
@@ -304,7 +327,7 @@ div.slicknav_menu{
 
 /* All Mobile size smaller than standard 320 (devices and browsers) */
 @media only screen and (max-width: 319px) {
-    #social-top .fb-like{
+    #social-wrapper .fb-like{
         /*display: none;*/
     }
     .home-list .col-3{

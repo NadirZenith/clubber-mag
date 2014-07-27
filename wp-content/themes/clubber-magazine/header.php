@@ -14,8 +14,13 @@
 wp_enqueue_style('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.css', $deps, $ver, $media);
 wp_enqueue_script('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.pack.js', array('jquery'));
 
-wp_enqueue_style('slicknav', get_template_directory_uri() . '/js/slicknav/slicknav.css', $deps, $ver, $media);
-wp_enqueue_script('slicknav', get_template_directory_uri() . '/js/slicknav/jquery.slicknav.min.js', array('jquery'));
+/*
+  wp_enqueue_style('slicknav', get_template_directory_uri() . '/js/slicknav/slicknav.css', $deps, $ver, $media);
+  wp_enqueue_script('slicknav', get_template_directory_uri() . '/js/slicknav/jquery.slicknav.min.js', array('jquery'));
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+ */
+wp_enqueue_style('slimmenu', get_template_directory_uri() . '/js/slimmenu/slimmenu.min.css', $deps, $ver, $media);
+wp_enqueue_script('slimmenu', get_template_directory_uri() . '/js/slimmenu/jquery.slimmenu.min.js', array('jquery'));
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -37,15 +42,12 @@ wp_enqueue_script('slicknav', get_template_directory_uri() . '/js/slicknav/jquer
 
                 <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 
-               
-                        
-                <?php
-                /* <body> */
-                ?>
+
         </head>
         <body <?php body_class(); ?>> 
                 <div id="fb-root"></div>
                 <script>
+                        /* facebook */
                         (function(d, s, id) {
                                 var js, fjs = d.getElementsByTagName(s)[0];
                                 if (d.getElementById(id))
@@ -55,9 +57,9 @@ wp_enqueue_script('slicknav', get_template_directory_uri() . '/js/slicknav/jquer
                                 js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1467286160155560";
                                 fjs.parentNode.insertBefore(js, fjs);
                         }(document, 'script', 'facebook-jssdk'));
-                </script>
 
-                <script>
+                        /* google analytics */
+
                         (function(i, s, o, g, r, a, m) {
                                 i['GoogleAnalyticsObject'] = r;
                                 i[r] = i[r] || function() {
