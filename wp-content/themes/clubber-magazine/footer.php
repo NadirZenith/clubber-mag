@@ -1,29 +1,44 @@
 
 </div><!-- #main -->
-
+<?php
+/*
+  // BREADCRUMBS
+  <style>
+  #breadcrumbs{
+  margin-bottom: 0px;
+  margin-left: 20px;
+  }
+  #breadcrumbs a{
+  color: #666;
+  }
+  #breadcrumbs span{
+  color: #333;
+  }
+  </style>
+  <?php
+  if (function_exists('yoast_breadcrumb') && !is_home() && !is_front_page()) {
+  yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
+  }
+  ?>
+ */
+?>
 <footer id="site-footer" class="pr clearfix pb15">
-
-
         <nav id="footer-menu" class="hide-767">
-
                 <?php wp_nav_menu(array('theme_location' => 'footer')); ?>
         </nav>
-        <!--
-        -->
         <a class="" href="https://www.facebook.com/Clubber.Mag"  target="_blank">
                 <span class="follow-us"></span>
         </a>
-
         <div class="back-to-top">
                 <a href="#branding"><?php echo __('Back to Top', 'attitude'); ?></a>
         </div>
 </footer>
 </div><!-- .wrapper -->
 
-<?php
-wp_footer();
-?>
+<?php wp_footer(); ?>
 
+</body>
+</html>
 <?php
 /*
   if (1 == get_current_user_id()) {
@@ -62,20 +77,24 @@ wp_footer();
   }
  */
 ?>
-<?php if (1 == get_current_user_id()) { ?>
-        <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/debug.css" type="text/css">
-        <div id="nz-debug" class="nz-debug active" style="">
-                
-                <!--<?php echo uniqid();?>-->
-        </div>
-        <script>
-                jQuery(document).ready(function($) {
-                        $('#nz-debug').on('click', function(e){
-                                $( this ).toggleClass( "active" );
-                        });
-                });
-        </script>
-<?php } ?>
 
-</body>
-</html>
+<?php
+/*
+  if (1 == get_current_user_id()) {
+  ?>
+  <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/debug.css" type="text/css">
+  <div id="nz-debug" class="nz-debug active" style="">
+
+  <!--<?php echo uniqid(); ?>-->
+  </div>
+  <script>
+  jQuery(document).ready(function($) {
+  $('#nz-debug').on('click', function(e) {
+  $(this).toggleClass("active");
+  });
+  });
+  </script>
+  <?php
+  }
+ */
+?>
