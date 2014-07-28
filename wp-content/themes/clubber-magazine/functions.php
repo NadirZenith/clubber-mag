@@ -576,6 +576,8 @@ function nz_child_query($query) {
  * * */
 
 /* add_filter('init', 'nz_flush_rewrite_rules'); */
+// Removing front end admin bar because it's ugly
+/* add_filter('show_admin_bar', '__return_false'); */
 
 if (NZ_USE_LIVE_DB || (isset($_GET['action']) && $_GET['action'] == 'live')) {
 
@@ -589,7 +591,4 @@ if (NZ_USE_LIVE_DB || (isset($_GET['action']) && $_GET['action'] == 'live')) {
         }
 
 }
-
-// Removing front end admin bar because it's ugly
-add_filter('show_admin_bar', '__return_false');
 ?>
