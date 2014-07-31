@@ -11,6 +11,12 @@
 /* wp_enqueue_style('clubber-style', get_template_directory_uri() . '/css/common.css', $deps, $ver, $media); */
 /* wp_enqueue_style('common', get_template_directory_uri() . '/css/common.css', $deps, $ver, $media); */
 
+wp_enqueue_style('attitude_style', get_stylesheet_uri());
+
+/* see plugins/ml-slider/inc/slider/metaslider.class.php *line 451*/
+wp_enqueue_script('metaslider-' . 'flexslider' . '-slider', METASLIDER_ASSETS_URL . 'sliders/flexslider/jquery.flexslider-min.js', array('jquery'), METASLIDER_VERSION);
+wp_enqueue_script('backtotop', ATTITUDE_JS_URL . '/backtotop.js', array('jquery'));
+
 wp_enqueue_style('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.css', $deps, $ver, $media);
 wp_enqueue_script('fancybox', get_template_directory_uri() . '/js/fancybox/source/jquery.fancybox.pack.js', array('jquery'));
 

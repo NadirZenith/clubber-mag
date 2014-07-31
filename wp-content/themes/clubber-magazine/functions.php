@@ -87,14 +87,14 @@ function attitude_load_files() {
 
         /** Load functions */
         require_once( ATTITUDE_FUNCTIONS_DIR . '/i18n.php' );
-        require_once( ATTITUDE_FUNCTIONS_DIR . '/custom-header.php' );
-        require_once( ATTITUDE_FUNCTIONS_DIR . '/functions.php' );
+        /*require_once( ATTITUDE_FUNCTIONS_DIR . '/custom-header.php' );*/
+        /*require_once( ATTITUDE_FUNCTIONS_DIR . '/functions.php' );*/
 
         /** ADMIN      */
-        require_once( ATTITUDE_ADMIN_DIR . '/attitude-themeoptions-defaults.php' );
-        require_once( ATTITUDE_ADMIN_DIR . '/theme-options.php' );
+        /*require_once( ATTITUDE_ADMIN_DIR . '/attitude-themeoptions-defaults.php' );*/
+        /*require_once( ATTITUDE_ADMIN_DIR . '/theme-options.php' );*/
         /* require_once( ATTITUDE_ADMIN_DIR . '/attitude-metaboxes.php' ); */
-        require_once( ATTITUDE_ADMIN_DIR . '/attitude-show-post-id.php' );
+        /*require_once( ATTITUDE_ADMIN_DIR . '/attitude-show-post-id.php' );*/
 
         /*    CLUBBER PLUGINS  */
         (CLUBBER_DEV) ? NULL : define('ACF_LITE', true);
@@ -340,7 +340,7 @@ function rewrite_page_recursos($rules) {
 
 /** add inline meta userprofile */
 function nz_add_contactmethods($contactmethods) {
-        /*d($contactmethods);*/
+        /* d($contactmethods); */
         // Remove Yahoo IM
         if (isset($contactmethods['yim']))
                 unset($contactmethods['yim']);
@@ -630,6 +630,28 @@ function clubber_mag_save_extra_profile_fields($user_id) {
  *      DEV 
  * 
  * * */
+
+// unregister all widgets
+function nz_unregister_default_widgets() {
+        unregister_widget('WP_Widget_Pages');
+        unregister_widget('WP_Widget_Calendar');
+        unregister_widget('WP_Widget_Archives');
+        unregister_widget('WP_Widget_Links');
+        unregister_widget('WP_Widget_Meta');
+        unregister_widget('WP_Widget_Search');
+        unregister_widget('WP_Widget_Text');
+        unregister_widget('WP_Widget_Categories');
+        unregister_widget('WP_Widget_Recent_Posts');
+        unregister_widget('WP_Widget_Recent_Comments');
+        unregister_widget('WP_Widget_RSS');
+        unregister_widget('WP_Widget_Tag_Cloud');
+        unregister_widget('WP_Nav_Menu_Widget');
+        unregister_widget('Twenty_Eleven_Ephemera_Widget');
+}
+
+add_action('widgets_init', 'nz_unregister_default_widgets', 11);
+
+
 
 add_filter('rewrite_rules_array', 'nz_child_route');
 
