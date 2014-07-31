@@ -34,16 +34,16 @@ if (is_tax($tax)) {
                 </h1>
 
                 <?php
-                if (isset($_GET['date'])) {
-                        $DateTime = date_create_from_format('d-m-Y', $_GET['date']);
+                $date = get_query_var('date');
 
-                        if ($DateTime) {
-                                $DateTime->setTime(0, 0, 0); //to avoid date problems
-                                $start_date = $DateTime->getTimestamp();
-                        }
+                $DateTime = DateTime::createFromFormat('d-m-Y', $date);
+                if ($DateTime) {
+                        $DateTime->setTime(0, 0, 0); //to avoid date problems
+                        $start_date = $DateTime->getTimestamp();
                 } else {
                         $start_date = strtotime("now");
                 }
+
                 $end_date = strtotime('+ 1 week', $start_date);
                 $prev_date = strtotime('- 1 week', $start_date);
 
