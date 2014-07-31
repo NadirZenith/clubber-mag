@@ -2,11 +2,13 @@
 <style>
         #user-profile-picture{
                 position: absolute;
-                background-color: #fff;
                 top: 20px;
                 left: 0;
                 width: 25%;
                 height: 25%;
+        }
+        #user-profile-picture img{
+                background-color: #fff;
         }
 
 </style>
