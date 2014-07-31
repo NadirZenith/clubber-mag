@@ -1,4 +1,6 @@
-
+<?php 
+/** @todo nz move this to stylesheet */
+?>
 <style>
         #user-profile-picture{
                 position: absolute;
