@@ -47,6 +47,7 @@ section:hover h1 span{
     margin-left: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    background-color: #fff;
 }
 #mobile-menu .menu-profile-picture img{
     height: 40px;
