@@ -251,7 +251,9 @@ section:hover h1 span{
     float: left;
     margin: 5px;
 }
-
+.gform_image_preview img{
+    background-color: #fff;
+}
 /* =Responsive Structure
 ----------------------------------------------- */
 /* All Tablet Portrait size smaller than standard 1079 (devices and browsers) */
