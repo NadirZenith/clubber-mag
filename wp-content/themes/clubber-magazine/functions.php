@@ -372,7 +372,6 @@ function clubber_mag_extra_profile_fields($user) {
         ?>
 
         <h3>CLUBBER MAG USER INFORMATION</h3>
-        <?php d($user); ?>
         <table class="form-table">
 
 
