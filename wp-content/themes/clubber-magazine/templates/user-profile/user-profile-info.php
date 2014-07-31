@@ -52,13 +52,13 @@
                 </div>
                 <div class="meddium" style="text-align:justify; padding: 5px;">
                         <?php
-                        echo get_the_author_meta('description');
+                        echo get_user_meta($curauth->ID,'description', true);
                         ?>
                 </div>
 
                 <ul class="ml5">
                         <?php
-                        $website = get_the_author_meta('website');
+                        $website = get_user_meta($curauth->ID,'website',true);
                         if ($website) {
                                 ?>
                                 <li class="">
@@ -71,7 +71,7 @@
                         }
                         ?>
                         <?php
-                        $facebook = get_the_author_meta('facebook');
+                        $facebook = get_user_meta($curauth->ID,'facebook',true);
                         if ($facebook) {
                                 ?>
                                 <li class="">
@@ -84,7 +84,7 @@
                         }
                         ?>
                         <?php
-                        $twitter = get_the_author_meta('twitter');
+                        $twitter = get_user_meta($curauth->ID,'twitter',true);
                         if ($twitter) {
                                 ?>
                                 <li class="">
@@ -97,7 +97,7 @@
                         }
                         ?>
                         <?php
-                        $youtube = get_the_author_meta('youtube');
+                        $youtube = get_user_meta($curauth->ID,'youtube',true);
                         if ($youtube) {
                                 ?>
                                 <li class="">
