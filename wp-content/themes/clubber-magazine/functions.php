@@ -319,6 +319,7 @@ add_filter('query_vars', 'add_used_vars');
 //to use get_query_var( 'action' ) && TYPE;
 function add_used_vars($vars) {
         $vars[] = "action"; //
+        $vars[] = "date"; //
         $vars[] = "type"; //
         $vars[] = "child"; //
         return $vars;
