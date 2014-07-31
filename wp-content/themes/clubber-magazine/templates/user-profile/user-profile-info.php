@@ -2,7 +2,7 @@
 <style>
         #user-profile-picture{
                 position: absolute;
-                /*background-color: blueviolet;*/
+                background-color: #fff;
                 top: 20px;
                 left: 0;
                 width: 25%;
@@ -10,8 +10,6 @@
         }
 
 </style>
-<!--<div id="" class="" style="" >-->
-<!--<div class="group fl">-->
 
 <section class="bg-50 block-5">
         <div class="ml5 cb group">
@@ -49,46 +47,69 @@
 
                 </div>
                 <div class="meddium" style="text-align:justify; padding: 5px;">
-                        <!--Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. -->
                         <?php
-                        /*echo get_the_author_meta('description');*/
+                        echo get_the_author_meta('description');
                         ?>
                 </div>
 
-        </div>
-
-        <!--<div class="col-2-4 bg-50 block-5 mt5 meddium">-->
-        
-<!--        
-        <div class="">
-
-                <div class="ml5">
-                        <ul>
+                <ul class="ml5">
+                        <?php
+                        $website = get_the_author_meta('website');
+                        if ($website) {
+                                ?>
                                 <li class="">
                                         <span class="bold">Web: </span>
-                                        <a href="http://www.clubber-mag.com" target="_blank" rel="nofollow">
-                                                http://www.xxx.com
+                                        <a href="<?php echo $website ?>" target="_blank" rel="nofollow">
+                                                <?php echo $website ?>
                                         </a>
-                                </li>
+                                </li>  
+                                <?php
+                        }
+                        ?>
+                        <?php
+                        $facebook = get_the_author_meta('facebook');
+                        if ($facebook) {
+                                ?>
+                                <li class="">
+                                        <span class="bold">Facebook: </span>
+                                        <a href="<?php echo $facebook ?>" target="_blank" rel="nofollow">
+                                                <?php echo $facebook ?>
+                                        </a>
+                                </li>  
+                                <?php
+                        }
+                        ?>
+                        <?php
+                        $twitter = get_the_author_meta('twitter');
+                        if ($twitter) {
+                                ?>
                                 <li class="">
                                         <span class="bold">Twitter: </span>
-                                        <a href="https://facebook.com/clubber-mag" target="_blank" rel="nofollow">
-                                                https://facebook.com/xxx
+                                        <a href="<?php echo $twitter ?>" target="_blank" rel="nofollow">
+                                                <?php echo $twitter ?>
                                         </a>
-                                </li>
+                                </li>  
+                                <?php
+                        }
+                        ?>
+                        <?php
+                        $youtube = get_the_author_meta('youtube');
+                        if ($youtube) {
+                                ?>
                                 <li class="">
-                                        <span class="bold"> Facebook: </span>
-                                        <a href="https://twitter.com/clubber-mag" target="_blank" rel="nofollow">
-                                                https://twitter.com/xxx
+                                        <span class="bold">Youtube: </span>
+                                        <a href="<?php echo $youtube ?>" target="_blank" rel="nofollow">
+                                                <?php echo $youtube ?>
                                         </a>
-                                </li>
+                                </li>  
+                                <?php
+                        }
+                        ?>
 
-                        </ul>
-                </div>
-
-
+                </ul>
         </div>
--->
+
+
 </section>
 
 <?php
