@@ -337,6 +337,34 @@ function rewrite_page_recursos($rules) {
         return $rules;
 }
 
+/** add inline meta userprofile */
+function nz_add_contactmethods($contactmethods) {
+        // Remove Yahoo IM
+        if (isset($contactmethods['yim']))
+                unset($contactmethods['yim']);
+
+        // Add Youtube
+        if (!isset($contactmethods['youtube']))
+                $contactmethods['youtube'] = 'youtube';
+        // Add Country
+        if (!isset($contactmethods['country']))
+                $contactmethods['country'] = 'country';
+        // Add city
+        if (!isset($contactmethods['city']))
+                $contactmethods['city'] = 'city';
+        // Add gender
+        if (!isset($contactmethods['gender']))
+                $contactmethods['gender'] = 'gender';
+        // Add birthday
+        if (!isset($contactmethods['birthday']))
+                $contactmethods['birthday'] = 'birthday';
+
+
+        return $contactmethods;
+}
+
+add_filter('user_contactmethods', 'nz_add_contactmethods', 10, 1);
+
 add_action('show_user_profile', 'clubber_mag_extra_profile_fields');
 add_action('edit_user_profile', 'clubber_mag_extra_profile_fields');
 
@@ -344,11 +372,11 @@ function clubber_mag_extra_profile_fields($user) {
         ?>
 
         <h3>CLUBBER MAG USER INFORMATION</h3>
-
+        <?php d($user); ?>
         <table class="form-table">
 
 
-                <!--  Image               -->
+                <!--  Images               -->
 
                 <tr>
                         <th><label>User images</label></th>
@@ -357,19 +385,86 @@ function clubber_mag_extra_profile_fields($user) {
 
                                         <div style="float:left">
                                                 <?php
-                                                $url = nz_get_user_image($curauth->ID, 'background');
+                                                $url = nz_get_user_image($user->ID, 'background');
                                                 ?>
                                                 <img src="<?php echo $url ?>" alt="clubber-mag-background-picture" width="589" height="200">
                                         </div>
                                         <div style="position: absolute;top: 20px;">
                                                 <?php
-                                                $url = nz_get_user_image($curauth->ID, 'profile');
+                                                $url = nz_get_user_image($user->ID, 'profile');
                                                 ?>
-                                                <img src="<?php echo $url ?>" alt="clubber-mag-profile-picture" width="160" height="160">
+                                                <img style="background-color: #fff" src="<?php echo $url ?>" alt="clubber-mag-profile-picture" width="160" height="160">
                                         </div>
                                 </div>
 
 
+                        </td>
+                </tr>
+                <!--  info -->
+                <tr>
+                        <th><label>User info</label></th>
+                        <td>
+                                <?php echo get_user_meta($user->ID, 'description', TRUE); ?>
+                        </td>
+                </tr>
+                <tr>
+                        <th><label>User meta</label></th>
+                        <td>
+                                <ul class="m">
+                                        <?php
+                                        $website = get_user_meta($user->ID, 'website', true);
+                                        if ($website) {
+                                                ?>
+                                                <li class="">
+                                                        <span class="bold">Web: </span>
+                                                        <a href="<?php echo $website ?>" target="_blank" rel="nofollow">
+                                                                <?php echo $website ?>
+                                                        </a>
+                                                </li>  
+                                                <?php
+                                        }
+                                        ?>
+                                        <?php
+                                        $facebook = get_user_meta($user->ID, 'facebook', true);
+                                        if ($facebook) {
+                                                ?>
+                                                <li class="">
+                                                        <span class="bold">Facebook: </span>
+                                                        <a href="<?php echo $facebook ?>" target="_blank" rel="nofollow">
+                                                                <?php echo $facebook ?>
+                                                        </a>
+                                                </li>  
+                                                <?php
+                                        }
+                                        ?>
+                                        <?php
+                                        $twitter = get_user_meta($user->ID, 'twitter', true);
+                                        if ($twitter) {
+                                                ?>
+                                                <li class="">
+                                                        <span class="bold">Twitter: </span>
+                                                        <a href="<?php echo $twitter ?>" target="_blank" rel="nofollow">
+                                                                <?php echo $twitter ?>
+                                                        </a>
+                                                </li>  
+                                                <?php
+                                        }
+                                        ?>
+                                        <?php
+                                        $youtube = get_user_meta($user->ID, 'youtube', true);
+                                        if ($youtube) {
+                                                ?>
+                                                <li class="">
+                                                        <span class="bold">Youtube: </span>
+                                                        <a href="<?php echo $youtube ?>" target="_blank" rel="nofollow">
+                                                                <?php echo $youtube ?>
+                                                        </a>
+                                                </li>  
+                                                <?php
+                                        }
+                                        ?>
+
+                                </ul>
                         </td>
                 </tr>
                 <!--  COOL PLACES               -->
