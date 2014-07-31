@@ -339,6 +339,7 @@ function rewrite_page_recursos($rules) {
 
 /** add inline meta userprofile */
 function nz_add_contactmethods($contactmethods) {
+        /*d($contactmethods);*/
         // Remove Yahoo IM
         if (isset($contactmethods['yim']))
                 unset($contactmethods['yim']);
@@ -358,6 +359,9 @@ function nz_add_contactmethods($contactmethods) {
         // Add birthday
         if (!isset($contactmethods['birthday']))
                 $contactmethods['birthday'] = 'birthday';
+        // Add website
+        if (!isset($contactmethods['website']))
+                $contactmethods['website'] = 'website';
 
 
         return $contactmethods;
