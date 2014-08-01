@@ -113,7 +113,7 @@ if (is_tax($tax)) {
                                                 </li>
                                                 <?php
                                                 /* \LI */
-                                        }
+                                        }//END WHILE
                                         echo '</ul>';
                                         echo '</section>';
                                 } else {
