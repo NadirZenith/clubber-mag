@@ -71,7 +71,7 @@ if (is_tax($tax)) {
                                 $main_posts_id = array();
                                 /*    MAIN AGENDA QUERY              */
                                 if (have_posts()) {
-                                        $first = FALSE;
+                                        $first = TRUE;
                                         while (have_posts()) {
                                                 the_post();
                                                 $main_posts_id[] = get_the_ID();
