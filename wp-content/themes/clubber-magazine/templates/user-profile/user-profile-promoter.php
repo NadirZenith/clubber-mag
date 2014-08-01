@@ -30,12 +30,14 @@ $wp_query = new WP_Query($args);
         <div class="ml5 cb group">
                 <?php
                 $user_promoter_list_url = get_author_posts_url($curauth->ID) . 'eventos';
-                ?>
-                <h1 class="fl"><a href="<?php echo $user_promoter_list_url ?>" title="Ver todos mis eventos">Mis Eventos</a></h1>
-                <?php
                 if ($curauth->ID == get_current_user_id()) {
                         ?>
+                        <h1 class="fl"><a href="<?php echo $user_promoter_list_url ?>" title="Ver todos los eventos">Mis Eventos</a></h1>
                         <span class="fr mr5 mt5">[ <a href="<?php echo get_permalink(get_page_by_path('subir-evento')) ?>">Subir evento</a> ]</span>
+                        <?php
+                } else {
+                        ?>
+                        <h1 class="fl"><a href="<?php echo $user_promoter_list_url ?>" title="Ver todos los eventos">Eventos</a></h1>
                         <?php
                 }
                 ?>
