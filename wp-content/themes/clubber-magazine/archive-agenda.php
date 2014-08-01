@@ -105,11 +105,14 @@ if (is_tax($tax)) {
                                                 }
                                                 $last_date = $post_date;
                                                 /* LI */
-                                                include (locate_template('templates/agenda/event-archive-item.php'));
-                                                /* \LI */
                                                 ?>
-
+                                                <li class="">
+                                                        <?php
+                                                        include (locate_template('templates/agenda/event-archive-item.php'));
+                                                        ?>
+                                                </li>
                                                 <?php
+                                                /* \LI */
                                         }
                                         echo '</ul>';
                                         echo '</section>';
@@ -148,7 +151,15 @@ if (is_tax($tax)) {
                                                         <?php
                                                         while ($query2->have_posts()) {
                                                                 $query2->the_post();
-                                                                include (locate_template('templates/agenda/event-archive-item.php'));
+                                                                /* LI */
+                                                                ?>
+                                                                <li class="">
+                                                                        <?php
+                                                                        include (locate_template('templates/agenda/event-archive-item.php'));
+                                                                        ?>
+                                                                </li>
+                                                                <?php
+                                                                /* \LI */
                                                         }
                                                         ?>
                                                 </ul>
