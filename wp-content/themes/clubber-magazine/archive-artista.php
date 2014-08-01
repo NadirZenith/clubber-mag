@@ -12,7 +12,6 @@ function menu_a_z() {
         global $wp;
         $this_page = home_url() . '/' . $wp->request;
         $query_letter = ($_GET['first-letter']) ? $_GET['first-letter'] : 'A';
-        d($query_letter);
         ?>
 
         <ul class="group mb15 meddium">
@@ -49,26 +48,25 @@ function query_by_first_letter() {
 
         $posts = $wpdb->get_results($sql);
         ?>
-        <ul class="">
+        <section>
+                <ul class="">
 
-                <?php
-                if ($posts) {
-                        global $post;
-                        foreach ($posts as $post) {
-                                setup_postdata($post);
+                        <?php
+                        if ($posts) {
+                                global $post;
+                                foreach ($posts as $post) {
+                                        setup_postdata($post);
 
-                                $float = 'left';
-                                $terms = wp_get_post_terms(get_the_ID(), 'music_type');
-                                ?>
-                                <li>
-
-                                        <section class="bg-50 block-5 fl col-1-4"  >
-                                                <article>
-                                                        <header class="">
-                                                                <h1 class="ml5">
-                                                                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-                                                                </h1>
-                                                        </header>
+                                        $float = 'left';
+                                        $terms = wp_get_post_terms(get_the_ID(), 'music_type');
+                                        ?>
+                                        <li>
+                                                <article class="bg-50 block-5 fl col-1-4">
+                                                        <!--<header class="">-->
+                                                        <h1 class="ml5">
+                                                                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+                                                        </h1>
+                                                        <!--</header>-->
                                                         <hr class="pb5">
 
                                                         <div class="fl"  style="width: 100%">
@@ -90,26 +88,25 @@ function query_by_first_letter() {
                                                         <a class="readmore mr15 mb15" href="<?php the_permalink() ?>" title="<?php the_title() ?>"> <?php echo __('Read more', 'attitude') ?></a>
 
                                                 </article>
-                                        </section>
-                                </li>
-
+                                        </li>
+                                        <?php
+                                }//end while
+                        } else {
+                                ?>
+                                <h1 class=""><?php _e('No Posts Found.', 'attitude'); ?></h1>
                                 <?php
-                        }//end while
-                } else {
+                        }
                         ?>
-                        <h1 class=""><?php _e('No Posts Found.', 'attitude'); ?></h1>
-                        <?php
-                }
-                ?>
 
-        </ul>
+                </ul>
+        </section>
         <?php
         wp_reset_postdata();
 }
 
 //sort_all_by_first_letter
 function sort_all_by_first_letter() {
-        /* $posts_per_row = 3; */
+
         $args = array(
               'post_type' => 'artista',
               'orderby' => 'title',
@@ -118,44 +115,60 @@ function sort_all_by_first_letter() {
         );
         $query = new WP_Query($args);
         if ($query->have_posts()) {
+                $first = true;
                 ?>
 
-                <div class="group mt15">
-                        <?php
-                        while ($query->have_posts()) {
-                                $query->the_post();
-                                $first_letter = strtoupper(substr(get_the_title(), 0, 1));
-                                //IF NEW LETTER
-                                if ($curr_letter != $first_letter) {
+                <?php
+                while ($query->have_posts()) {
+                        $query->the_post();
+                        $first_letter = strtoupper(substr(get_the_title(), 0, 1));
 
-                                        if ($open_section) {
-                                                echo '</ul>';
-                                                echo '</section>';
-                                                $open_section = false;
-                                        }
-                                        $letter_link = add_query_arg('first-letter', $first_letter);
+                        //IF NEW LETTER
+                        if ($curr_letter != $first_letter) {
+                                $letter_link = add_query_arg('first-letter', $first_letter);
+                                if ($first) {
                                         echo '<section class="fl bg-50 block-5" style="width:150px;">';
-                                        echo '<h1 class="ml5"><a href="' . $letter_link . '">' . $first_letter . '</a></h1>';
-                                        echo '<hr class="pb5">';
+                                        ?> 
+                                        <header>
+                                                <h2 class="ml5 bold sc-3">
+                                                        <?php echo '<a href="' . $letter_link . '">' . $first_letter . '</a>'; ?> 
+                                                </h2> 
+                                                <hr class="pb5">
+                                        </header>
+                                        <?php
                                         echo '<ul>';
-
-                                        $open_section = true;
-                                        $curr_letter = $first_letter;
+                                        $first = FALSE;
+                                } else {
+                                        echo '</ul>';
+                                        echo '</section>';
+                                        echo '<section class="fl bg-50 block-5" style="width:150px;">';
+                                        ?>
+                                        <header>
+                                                <h2 class="ml5 bold sc-3">
+                                                        <?php echo '<a href="' . $letter_link . '">' . $first_letter . '</a>'; ?> 
+                                                </h2> 
+                                                <hr class="pb5">
+                                        </header>
+                                        <?php
+                                        echo '<ul>';
                                 }
-                                ?>
-
-                                <li class="ml5" style="">
-                                        <a href="<?php the_permalink() ?>" style="color: #eee" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-                                </li>
-
-                                <?php
-                        }//END WHILE
-                        echo '</ul>';
+                                $curr_letter = $first_letter;
+                        }
+                        // LI
                         ?>
-                </div>
+                        <li class="ml5" style="">
+                                <a href="<?php the_permalink() ?>" style="color: #eee" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+                        </li>
+                        <?php
+                        // \LI
+                }//END WHILE
+                echo '</ul>';
+                echo '</section>';
+                ?>
 
                 <?php
-        } else {
+        }// END HAVE POSTS 
+        else {
                 echo "<h2>Sorry, no posts were found!</h2>";
         }
         wp_reset_postdata();
@@ -185,6 +198,8 @@ function sort_all_by_first_letter() {
         //sort_all_by_first_letter
         sort_all_by_first_letter();
         ?>
+
+
 </div>
 
 <?php get_footer(); ?>
