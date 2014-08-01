@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** @todo nz move this to stylesheet */
 ?>
 <style>
@@ -32,7 +32,7 @@
                 ?>
         </div>
         <div id="user-profile-main" class="" >
-                <div id="user-profile-images" class="" >
+                <div id="user-profile-images" class="" style="border-bottom:1px solid #aaa">
                         <div class="pr">
 
                                 <div id="user-profile-background" class="featured-image">
@@ -52,13 +52,14 @@
                 </div>
                 <div class="meddium" style="text-align:justify; padding: 5px;">
                         <?php
-                        echo get_user_meta($curauth->ID,'description', true);
+                        echo get_user_meta($curauth->ID, 'description', true);
                         ?>
                 </div>
+                <hr class="pb5" style="border-color: #aaa">
 
                 <ul class="ml5">
                         <?php
-                        $website = get_user_meta($curauth->ID,'website',true);
+                        $website = get_user_meta($curauth->ID, 'website', true);
                         if ($website) {
                                 ?>
                                 <li class="">
@@ -71,7 +72,7 @@
                         }
                         ?>
                         <?php
-                        $facebook = get_user_meta($curauth->ID,'facebook',true);
+                        $facebook = get_user_meta($curauth->ID, 'facebook', true);
                         if ($facebook) {
                                 ?>
                                 <li class="">
@@ -84,7 +85,7 @@
                         }
                         ?>
                         <?php
-                        $twitter = get_user_meta($curauth->ID,'twitter',true);
+                        $twitter = get_user_meta($curauth->ID, 'twitter', true);
                         if ($twitter) {
                                 ?>
                                 <li class="">
@@ -97,7 +98,7 @@
                         }
                         ?>
                         <?php
-                        $youtube = get_user_meta($curauth->ID,'youtube',true);
+                        $youtube = get_user_meta($curauth->ID, 'youtube', true);
                         if ($youtube) {
                                 ?>
                                 <li class="">
