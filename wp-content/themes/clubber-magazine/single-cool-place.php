@@ -25,11 +25,7 @@
                                                         the_post_thumbnail();
                                                         ?>
                                                 </div>
-                                                <div class="fr mt5 mr5 cb">
-                                                        <span class=""style="color: #666;">
-                                                                <?php echo get_the_date(); ?>
-                                                        </span>
-                                                </div>
+
                                                 <div class="mt5 ml5 meddium cb">
                                                         <?php
                                                         the_content();
@@ -37,8 +33,8 @@
                                                 </div>
 
                                                 <?php
-                                                /*d(get_field('map'));*/
-                                                /*d(get_post_meta(get_the_ID(), 'map', 1));*/
+                                                /* d(get_field('map')); */
+                                                 /*d(get_post_meta(get_the_ID(), 'mapa', 1)); */
                                                 /* $map = get_field('map'); */
                                                 /* d($map); */
                                                 if ($map) {
