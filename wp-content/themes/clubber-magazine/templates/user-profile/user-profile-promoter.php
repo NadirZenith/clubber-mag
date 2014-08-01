@@ -60,6 +60,9 @@ $wp_query = new WP_Query($args);
                                                 </h2>
                                                 <div class="event-date" style="position: absolute; right: 0; top: 0px; opacity: 0.8">
                                                         <?php
+                                                        if ($post->post_status != 'publish') {
+                                                                echo '<span style="color:red" title="pendiente de revision"> ! </span>';
+                                                        }
                                                         $date = get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true);
                                                         echo date('d/m/y', $date);
                                                         $tax = 'city';
