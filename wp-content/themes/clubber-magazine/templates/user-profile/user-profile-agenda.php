@@ -77,11 +77,10 @@ $wp_query = new WP_Query($args);
         } else {
                 if ($curauth->ID == get_current_user_id()) {
                         ?>
-                        <h2 class="ml5">Subscribete a eventos!</h2>
+                        <h2 class="ml5">Apúntate a eventos en nuestra agenda!</h2>
                         <?php
                 } else {
                         ?>
-                        <h2 class="ml5">Este usuário no subscribio a ningun evento</h2>
                         <?php
                 }
                 ?>
