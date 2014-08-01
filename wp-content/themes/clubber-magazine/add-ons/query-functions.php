@@ -32,25 +32,41 @@ function menu_a_z($default = null) {
 /**
  *      Query post type by first letter
  */
-function query_by_first_letter($post_type = null, $letter = null) {
+function query_by_first_letter($post_type = null, $letter = null, $term = null) {
 
         if (!$letter) {
-                return;
+                /* return; */
         }
 
         $query_letter = (ctype_alpha($letter)) ? ucfirst($letter) : 'A';
 
         $query_letter = '^' . $query_letter; // Prefix with caret to match beginning of string.
         global $wpdb;
+        if (!$term) {
 
-        $sql = $wpdb->prepare("
+                $sql = $wpdb->prepare("
                   SELECT      * FROM $wpdb->posts
                   WHERE $wpdb->posts.post_type = %s
                   and $wpdb->posts.post_status = 'publish'
                   and $wpdb->posts.post_title REGEXP %s
                   ORDER BY $wpdb->posts.post_title ASC
                   ", $post_type, $query_letter);
-
+        } else {
+                /* d($wpdb); */
+                /* d($term); */
+                $sql = $wpdb->prepare("
+                  SELECT      * FROM $wpdb->posts
+                LEFT JOIN $wpdb->term_relationships ON ($wpdb->posts.ID = $wpdb->term_relationships.object_id)
+                LEFT JOIN $wpdb->term_taxonomy ON ($wpdb->term_relationships.term_taxonomy_id = $wpdb->term_taxonomy.term_taxonomy_id)
+                        LEFT JOIN $wpdb->terms ON($wpdb->term_taxonomy.term_id = $wpdb->terms.term_id)
+                  WHERE $wpdb->posts.post_type = %s
+                  AND $wpdb->posts.post_status = 'publish'
+                  AND $wpdb->posts.post_title REGEXP %s
+                  AND $wpdb->term_taxonomy.taxonomy = %s
+                  AND $wpdb->terms.slug = %s
+                  ORDER BY $wpdb->posts.post_title ASC
+                  ", $post_type, $query_letter, $term->taxonomy, $term->slug);
+        }
         $posts = $wpdb->get_results($sql);
         ?>
         <?php
@@ -126,7 +142,7 @@ function query_by_first_letter($post_type = null, $letter = null) {
 /**
  *      Sort all post type by first letter
  */
-function sort_all_by_first_letter($post_type = null) {
+function sort_all_by_first_letter($post_type = null, $term = null) {
 
         if (!$post_type) {
                 return;
@@ -137,6 +153,10 @@ function sort_all_by_first_letter($post_type = null) {
               'order' => 'ASC',
               'posts_per_page' => -1,
         );
+        if ($term) {
+                $args[$term->taxonomy] = $term->name;
+        }
+
         $query = new WP_Query($args);
         if ($query->have_posts()) {
                 $first = true;
