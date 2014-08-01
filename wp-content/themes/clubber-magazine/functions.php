@@ -87,14 +87,14 @@ function attitude_load_files() {
 
         /** Load functions */
         require_once( ATTITUDE_FUNCTIONS_DIR . '/i18n.php' );
-        /*require_once( ATTITUDE_FUNCTIONS_DIR . '/custom-header.php' );*/
-        /*require_once( ATTITUDE_FUNCTIONS_DIR . '/functions.php' );*/
+        /* require_once( ATTITUDE_FUNCTIONS_DIR . '/custom-header.php' ); */
+        /* require_once( ATTITUDE_FUNCTIONS_DIR . '/functions.php' ); */
 
         /** ADMIN      */
-        /*require_once( ATTITUDE_ADMIN_DIR . '/attitude-themeoptions-defaults.php' );*/
-        /*require_once( ATTITUDE_ADMIN_DIR . '/theme-options.php' );*/
+        /* require_once( ATTITUDE_ADMIN_DIR . '/attitude-themeoptions-defaults.php' ); */
+        /* require_once( ATTITUDE_ADMIN_DIR . '/theme-options.php' ); */
         /* require_once( ATTITUDE_ADMIN_DIR . '/attitude-metaboxes.php' ); */
-        /*require_once( ATTITUDE_ADMIN_DIR . '/attitude-show-post-id.php' );*/
+        /* require_once( ATTITUDE_ADMIN_DIR . '/attitude-show-post-id.php' ); */
 
         /*    CLUBBER PLUGINS  */
         (CLUBBER_DEV) ? NULL : define('ACF_LITE', true);
@@ -114,8 +114,8 @@ function attitude_load_files() {
         /** Load Structure */
         require_once( ATTITUDE_STRUCTURE_DIR . '/header-extensions.php' );
         /* require_once( ATTITUDE_STRUCTURE_DIR . '/searchform-extensions.php' ); */
-        require_once( ATTITUDE_STRUCTURE_DIR . '/sidebar-extensions.php' );
-        require_once( ATTITUDE_STRUCTURE_DIR . '/footer-extensions.php' );
+        /* require_once( ATTITUDE_STRUCTURE_DIR . '/sidebar-extensions.php' ); */
+        /* require_once( ATTITUDE_STRUCTURE_DIR . '/footer-extensions.php' ); */
         /* require_once( ATTITUDE_STRUCTURE_DIR . '/content-extensions.php' ); */
         require_once( ATTITUDE_STRUCTURE_DIR . '/relation-events-users.php' );
 
@@ -129,6 +129,7 @@ function attitude_load_files() {
 
         /** CLUBBER add-ons      */
         require_once( CLUBBER_ADDONS_DIR . '/todo-pending-posts.php' );
+        require_once( CLUBBER_ADDONS_DIR . '/query-functions.php' );
 
         /** CLUBBER FORMS      */
         require_once( CLUBBER_FORMS_DIR . '/common.php' );
@@ -646,7 +647,7 @@ function nz_unregister_default_widgets() {
         unregister_widget('WP_Widget_RSS');
         unregister_widget('WP_Widget_Tag_Cloud');
         unregister_widget('WP_Nav_Menu_Widget');
-        unregister_widget('Twenty_Eleven_Ephemera_Widget');
+        /* unregister_widget('Twenty_Eleven_Ephemera_Widget'); */
 }
 
 add_action('widgets_init', 'nz_unregister_default_widgets', 11);
