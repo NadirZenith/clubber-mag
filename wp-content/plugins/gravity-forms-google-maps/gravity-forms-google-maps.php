@@ -118,12 +118,24 @@ add_action("gform_field_input", "nz_gform_google_maps_field_input", 10, 5);
 function nz_gform_google_maps_field_input($input, $field, $value, $lead_id, $form_id) {
 
         if ($field["type"] == "google_maps") {
-                $value = apply_filters('nz_gform_google_maps_value_' . $form_id . '_' . $field['id'], $value);
-                $id = 'input_' . $form_id . '_' . $field['id'];
-                $input_field = '<input id="' . $id . '" name="input_' . $field['id'] . '" value="' . $value . '" type="text" placeholder="Type in an address" class="medium" size="30" />';
+                /* d($input); */
+                /* d($field); */
 
-                $map_canvas = '<div class="map_canvas"></div>';
-                $input = '<div class="ginput_container">' . $input_field . $map_canvas . '</div>';
+                $value = apply_filters('nz_gform_google_maps_value_' . $form_id . '_' . $field['id'], $value);
+                /* d($value); */
+
+                $street = json_decode($value);
+                /* d($street); */
+
+                if ($street)
+                        $street = $street->address;
+
+                $id = 'input_' . $form_id . '_' . $field['id'];
+                $input_field = '<input type="hidden" id="' . $id . '" name="input_' . $field['id'] . '" value="' . htmlspecialchars($value) . '" size="30" />';
+                $search_field = '<input type="text" name="_nz_coolplace_address_search" id="_nz_coolplace_address_search" value="' . htmlspecialchars($street) . '" placeholder="Type in an address" class="medium" size="30" />';
+
+                $map_canvas = '<div id="map_canvas" class="map_canvas"></div>';
+                $input = '<div class="ginput_container">' . $input_field . $search_field . $map_canvas . '</div>';
         }
 
         return $input;
@@ -150,11 +162,11 @@ function nz_gform_google_maps_enqueue_scripts($form, $ajax) {
                         add_action('wp_footer', 'nz_gform_google_maps_script', 10, 2);
 
                         // Register the script first.
-                        wp_register_script('nz_gform_google_maps_geocomplete', plugins_url('jquery.geocomplete.min.js', __FILE__), array("jquery"));
+                        /* wp_register_script('nz_gform_google_maps_geocomplete', plugins_url('jquery.geocomplete.min.js', __FILE__), array("jquery")); */
 
                         // The script can be enqueued now or later.
-                        /*wp_enqueue_script('nz_gform_google_maps_api');*/
-                        wp_enqueue_script('nz_gform_google_maps_geocomplete');
+                        /* wp_enqueue_script('nz_gform_google_maps_api'); */
+                        /* wp_enqueue_script('nz_gform_google_maps_geocomplete'); */
 
                         break;
                 }
@@ -163,40 +175,91 @@ function nz_gform_google_maps_enqueue_scripts($form, $ajax) {
 
 function nz_gform_google_maps_script() {
         ?>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=true"></script>
         <style>
-                .map_canvas { 
+                .map_canvas {
                         width: 98%;
                         margin: 5px auto;
-                        height: 300px; 
+                        height: 300px;
                 }
         </style>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=true"></script>
-        <?php
-        /*
-         * 
-          <script type="text/javascript"
-          src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">
-          </script>
-         */
-        ?>
         <script>
-                                jQuery(function($) {
-                                        $field = $("#input_10_4");
-                                        console.log($field);
-                                        console.log($field.val());
-
-                                        if (!$field.val()) {
-                                                $field.geocomplete({
-                                                        map: ".map_canvas"
-                                                });
-                                        } else {
-                                                $field.geocomplete({
-                                                        map: ".map_canvas",
-                                                        location: $field.val()
-                                                });
-
+                        jQuery(function($) {
+                                $('#gform_10').bind("keyup keypress", function(e) {
+                                        var code = e.keyCode || e.which;
+                                        if (code == 13) {
+                                                e.preventDefault();
+                                                return false;
                                         }
                                 });
+                                /* $field = $("#input_10_4");                               
+                                 */
+                                //get current address from hidden field
+                                $input = $('#input_10_4');
+                                jsonAdress = $.parseJSON($input.val());
+                                //if is not empty build LatLng
+                                //else default to bcn
+                                if (jsonAdress) {
+                                        currentLatlng = new google.maps.LatLng(jsonAdress.lat, jsonAdress.long);
+                                        /*$('#_nz_coolplace_address_search').val(jsonAdress.address);*/
+                                } else {
+                                        currentLatlng = new google.maps.LatLng(41.382573, 2.175293);
+                                }
+
+                                // vars
+                                var args = {
+                                        zoom: 15,
+                                        center: currentLatlng,
+                                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                                };
+
+                                // create map
+                                map = new google.maps.Map(document.getElementById("map_canvas"), args);
+                                console.log(map);
+
+                                var autocomplete = new google.maps.places.Autocomplete(document.getElementById('_nz_coolplace_address_search'));
+                                autocomplete.map = map;
+                                autocomplete.bindTo('bounds', map);
+
+                                var marker = new google.maps.Marker({
+                                        position: currentLatlng,
+                                        map: map
+                                });
+
+                                //process place change
+                                google.maps.event.addListener(autocomplete, 'place_changed', function(e) {
+                                        var place = autocomplete.getPlace();
+
+                                        //if no place
+                                        if (!place.geometry) {
+                                                $input.val('');
+                                                return;
+                                        }
+
+                                        // If the place has a geometry, then present it on a map. ??
+                                        if (place.geometry.viewport) {
+                                                map.fitBounds(place.geometry.viewport);
+                                        } else {
+                                                map.setCenter(place.geometry.location);
+                                                map.setZoom(17);  // Why 17? Because it looks good.
+                                        }
+
+                                        //build json to save full address latlong
+                                        var save = {
+                                                lat: place.geometry.location.k,
+                                                long: place.geometry.location.B,
+                                                address: place.formatted_address
+                                        };
+
+                                        $input.val(JSON.stringify(save));
+
+                                        marker.setPosition(place.geometry.location);
+                                        marker.setVisible(true);
+
+                                });
+
+
+                        });
         </script>
         <?php
 }
