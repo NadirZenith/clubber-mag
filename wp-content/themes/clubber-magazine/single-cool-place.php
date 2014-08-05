@@ -33,51 +33,55 @@
                                                 </div>
 
                                                 <?php
-                                                /* d(get_field('map')); */
-                                                 /*d(get_post_meta(get_the_ID(), 'mapa', 1)); */
-                                                /* $map = get_field('map'); */
-                                                /* d($map); */
-                                                if ($map) {
-                                                        ?>  
-                                                        <style>
-                                                                #map-canvas {
-                                                                        height: 300px;
-                                                                        width: 80%;
-                                                                        margin: 10px auto;
-                                                                }
-                                                        </style>
-                                                        <script>
+                                                $mapa = get_post_meta(get_the_ID(), 'mapa', true);
+                                                if ($mapa) {
 
-                                                                function initialize() {
-                                                                        var myLatlng = new google.maps.LatLng(<?php echo $map['lat'] ?>, <?php echo $map['lng'] ?>);
-                                                                        var mapOptions = {
-                                                                                zoom: 16,
-                                                                                center: myLatlng
+                                                        $json_mapa = json_decode($mapa);
+                                                        if (is_object($json_mapa)) {
+
+                                                                /* d($json_mapa); */
+                                                                ?>  
+                                                                <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=true"></script>
+
+                                                                <style>
+                                                                        #map-canvas {
+                                                                                height: 300px;
+                                                                                width: 90%;
+                                                                                margin: 10px auto;
                                                                         }
-                                                                        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+                                                                </style>
+                                                                <script>
 
-                                                                        var marker = new google.maps.Marker({
-                                                                                position: myLatlng,
-                                                                                map: map,
-                                                                                title: '<?php the_title() ?>'
-                                                                        });
-                                                                }
+                                                                        function initialize() {
+                                                                                var myLatlng = new google.maps.LatLng(<?php echo $json_mapa->lat ?>, <?php echo $json_mapa->long ?>);
+                                                                                var mapOptions = {
+                                                                                        zoom: 16,
+                                                                                        center: myLatlng
+                                                                                }
+                                                                                var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-                                                                var map;
-                                                                function initialize2() {
-                                                                        var mapOptions = {
-                                                                                zoom: 15,
-                                                                                center: new google.maps.LatLng(<?php echo $map['lat'] ?>, <?php echo $map['lng'] ?>)
-                                                                        };
-                                                                        map = new google.maps.Map(document.getElementById('map-canvas'),
-                                                                                mapOptions);
-                                                                }
+                                                                                var marker = new google.maps.Marker({
+                                                                                        position: myLatlng,
+                                                                                        map: map,
+                                                                                        title: '<?php the_title() ?>'
+                                                                                });
+                                                                        }
 
-                                                                google.maps.event.addDomListener(window, 'load', initialize);
+                                                                        google.maps.event.addDomListener(window, 'load', initialize);
 
-                                                        </script>
-                                                        <div id="map-canvas"></div>
-                                                        <?php
+                                                                </script>
+                                                                <div id="map-canvas"></div>
+                                                                <div style="text-align:center">
+                                                                        <?php echo $json_mapa->address ?>
+                                                                </div>
+                                                                <?php
+                                                        } else {
+                                                                ?>
+                                                                <div style="text-align:center">
+                                                                        <?php echo $mapa ?>
+                                                                </div>
+                                                                <?php
+                                                        }
                                                 }
                                                 ?>
                                                 <?php
