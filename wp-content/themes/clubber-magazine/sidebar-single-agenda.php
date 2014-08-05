@@ -20,11 +20,11 @@
         .nz-relate a.nz-relate-btn{
                 text-align:center;
                 border-radius:3px;
-                background-color:#777;
+                background-color:#ccc;
                 display:block;
         }
         .nz-relate a.nz-relate-btn:hover{
-                background-color:#ccc;
+                background-color:#777;
         }
         .nz-relate a.nz-get-relation{
                 position:absolute;
@@ -68,7 +68,7 @@
         ?>
         <!--        
         -->
-        <div id='nz-relate-user-to-event' class='nz-relate big'>
+        <div id="nz-relate-user-to-event" class="nz-relate big">
                 <a id="relate_user_to_event" class="nz-relate-btn <?php echo $class ?>" href="#participar" >
                         <span class="nzr-icon"></span>
                         <span class="nzr-text"><?php echo $name ?></span>
