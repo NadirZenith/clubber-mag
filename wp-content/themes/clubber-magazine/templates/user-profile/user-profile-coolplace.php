@@ -1,5 +1,5 @@
 <?php
-$coolplaces = get_user_meta(get_current_user_id(), 'coolplaces_ids', true);
+/* $coolplaces = get_user_meta(get_current_user_id(), 'coolplaces_ids', true); */
 ?>
 <?php
 $args = array(
@@ -42,15 +42,27 @@ $recursos_link = get_permalink(get_page_by_path('recursos'));
                                                                 <div class="event-date" style="position: absolute;right: 0;top: 0" title="Pendiente de revisión"><?php echo 'pendiente' ?> </div>
                                                         <?php } ?>
                                                 </div>
-                                                <div class="col-2-4 fl ml5">
+                                                <div class="col-2-4 fl ml5" >
                                                         <?php
-                                                        /*$coolplace_edit_url = add_query_arg(array('gform_post_id' => get_the_ID()), $recursos_link . 'cool-place');*/
+                                                        /* $coolplace_edit_url = add_query_arg(array('gform_post_id' => get_the_ID()), $recursos_link . 'cool-place'); */
                                                         $coolplace_edit_url = apply_filters('gform_update_post/edit_url', get_the_ID(), $recursos_link . 'cool-place');
                                                         ?>
                                                         <span class="fr mr5 mt5">[ <a href="<?php echo $coolplace_edit_url ?>">editar</a> ]</span>
-                                                        <h2 class="big" style="line-height: 1.5;"><a href="<?php echo get_permalink(get_the_ID()) ?>"><?php the_title() ?></a></h2>
-                                                        <p> <?php echo substr(get_the_content(), 0, 100) . '...'; ?></p>
-                                                        <p> <?php echo get_post_meta(get_the_ID(), 'mapa', TRUE) ?></p>
+                                                        <h2 class="big" style="line-height: 1.5;"><a href="<?php echo get_permalink(get_the_ID()) ?>"><?php echo ucfirst(get_the_title()) ?></a></h2>
+                                                        <p style="text-align: justify"><?php echo mb_strimwidth(get_the_content(), 0, 80, ' ...'); ?></p>
+                                                        <?php
+                                                        $mapa = get_post_meta(get_the_ID(), 'mapa', TRUE);
+                                                        if ($mapa) {
+                                                                $json_mapa = json_decode($mapa);
+                                                                if (is_object($json_mapa))
+                                                                        $address = $json_mapa->address;
+                                                                else
+                                                                        $address = '';
+                                                        } else {
+                                                                $address = '';
+                                                        }
+                                                        ?>
+                                                        <p> <?php echo $address ?></p>
                                                 </div>
                                         </article>
                                 </li>
