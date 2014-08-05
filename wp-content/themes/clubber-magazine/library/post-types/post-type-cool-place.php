@@ -118,7 +118,6 @@ function nz_coolplace_meta() {
                         $street = $street->address;
                 else
                         $street = '';
-                        
         }
 
         // Echo out the field
@@ -182,11 +181,16 @@ function coolplace_meta_scripts() {
                                 }
                         });
                         //get current address from hidden field
-                        /*jsonAdress = $.parseJSON($('#_nz_coolplace_address').val());*/
+                        try {
+                                jsonAdress = $.parseJSON($('#_nz_coolplace_address').val());
+                        } catch (e) {
+                                console.log("error: " + e);
+                        }
+                        ;
 
                         //if is not empty build LatLng
                         //else default to bcn
-                        if (typeof jsonAdress =='object') {
+                        if (typeof jsonAdress == 'object') {
                                 currentLatlng = new google.maps.LatLng(jsonAdress.lat, jsonAdress.long);
                                 /*$('#_nz_coolplace_address_search').val(jsonAdress.address);*/
                         } else {
