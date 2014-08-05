@@ -182,7 +182,7 @@ function coolplace_meta_scripts() {
                                 }
                         });
                         //get current address from hidden field
-                        jsonAdress = $.parseJSON($('#_nz_coolplace_address').val());
+                        /*jsonAdress = $.parseJSON($('#_nz_coolplace_address').val());*/
 
                         //if is not empty build LatLng
                         //else default to bcn
