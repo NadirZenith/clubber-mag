@@ -50,7 +50,7 @@ function attitude_headerdetails() {
                                 </hgroup>
 
                                 <section id="social-wrapper" class="fr">
-                                        <div class="fb-like mt15" data-href="https://www.facebook.com/Clubber.Mag" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="tahoma"></div>
+                                        <iframe class="fb-like mt15" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FClubber.Mag&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width: 90px;" allowTransparency="true"></iframe>
                                         <div id="social-profiles">
                                                 <ul id="social-profiles-list" class="">
                                                         <li>
@@ -94,13 +94,13 @@ function attitude_headerdetails() {
                         <div id="desktop-menu"><?php wp_nav_menu($args); ?></div>
                 </div>
         </nav>
-        <?php
-        $img = '<img style="margin-left:-25px;margin-top:3px" width="230" height="50" alt="Clubber-Mag" src="' . get_site_url() . "/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png" . '">';
-        $logo = '<a href="' . esc_url(home_url('/')) . '" title="Clubber-Mag" rel="home">' . $img . '</a>';
-        ?>
-        <script type="text/javascript">
+        <script>
                 jQuery(document).ready(function($) {
-                        /* drop down*/
+
+                        //append searchform inside desktop menu
+                        $('ul#main-menu').append($('<li></li>').html($('.search-form').clone()));
+
+                        /* desktop drop down*/
                         $('nav#access li').hover(
                                 function() {
                                         $('ul', this).stop().slideDown(200);
@@ -109,6 +109,72 @@ function attitude_headerdetails() {
                                         $('ul', this).stop().slideUp(200);
                                 }
                         );
+                });
+        </script>
+
+        <?php
+        $img = '<img style="margin-left:-25px;margin-top:3px" width="230" height="50" alt="Clubber-Mag" src="' . get_site_url() . "/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png" . '">';
+        $logo = '<a href="' . esc_url(home_url('/')) . '" title="Clubber-Mag" rel="home">' . $img . '</a>';
+        ?>
+        <style>
+                #mobile-menu-title{
+                        display: none;
+                }
+                #open-search-bar{
+                        background: url(<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/search.png) #0e0e0e 11px 9px no-repeat;
+                        width: 35px; height: 35px; position: absolute; top: 15%;left: 5px;cursor: pointer;border-radius: 4px;
+                }
+                #open-search-bar.active{
+                        background-color: #666;
+                }
+                #mobile-menu .search-form{
+                        height: 45px;width: 100%; position: absolute;top: 55px;left: 0px;display: none;background-color: #464d52;
+                }
+                #mobile-menu .search-form input{
+                 margin-left: 5px;       
+                }
+                
+                #main-menu .search-form{
+                        margin-top: 10px;
+                }
+
+        </style>
+        <div id="mobile-menu-title">
+                <div style='text-align: center'>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" title="Clubber-Mag" rel="home">
+                                <img style="margin-left:-25px;margin-top:3px" width="230" height="50" alt="Clubber-Mag" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png">
+                        </a>
+                </div>
+                <a id="open-search-bar" ></a>
+                <div class="search-form" style="">
+                        <form action="<?php echo esc_url(home_url('/')); ?>" class="" method="get">
+                                <input type="text" placeholder="Busca personas, fiestas, clubes, artistas..." class="s field" name="s" value="<?php echo get_query_var('s', '')?>">
+                        </form><!-- .searchform -->
+
+                </div>
+        </div>
+        <script type="text/javascript">
+                jQuery(document).ready(function($) {
+
+
+                        //mobile menu search form slide efect
+                        $('body').on('click', '#open-search-bar', function() {
+                                $btn = $(this);
+                                $search = $btn.siblings('.search-form');
+
+                                if ($search.is(':hidden')) {
+                                        $btn.addClass('active');
+                                        $search.slideDown("fast").find('input').focus();
+
+                                } else {
+                                        $btn.removeClass('active');
+                                        $search.slideUp("fast");
+
+                                }
+                        });
+
+
+
 
                         /* mobile menu */
                         $("<div></div>").attr('id', 'mobile-menu').prependTo('body');
@@ -118,23 +184,24 @@ function attitude_headerdetails() {
                                 'id': 'slimmenu'
                         }).prependTo('#mobile-menu');
 
-                        /*title = '<div style="text-align:center; width:100%;"><img src="<?php echo $logo ?>" class="" width="235" height="50" alt="Clubber-Mag">' + $('#social-profiles2').html() + '</div>';*/
-
                         $('#slimmenu').slimmenu(
                                 {
                                         resizeWidth: '1078',
-                                        collapserTitle: '<div style="text-align:center;"><?php echo $logo ?></div>',
-                                        /*easingEffect: 'easeInOutQuint',*/
+                                        /*collapserTitle: $('#mobile-menu-title').html(),*/
+                                        /*collapserTitle: '<div style="text-align:center;"><?php echo $logo ?></div>',*/
+                                        collapserTitle: '',
                                         animSpeed: 'medium',
                                         indentChildren: true,
                                         childrenIndenter: '&raquo; '
                                 }
                         );
 
+                        $('#mobile-menu .menu-collapser').prepend($('#mobile-menu-title').css('display','block'));
+
+
 
                 });
         </script>
         <?php
 }
-
 ?>
