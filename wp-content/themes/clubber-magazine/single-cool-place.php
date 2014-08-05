@@ -26,7 +26,7 @@
                                                         ?>
                                                 </div>
 
-                                                <div class="mt5 ml5 meddium cb">
+                                                <div class="mt5 ml5 meddium cb" style="text-align: justify">
                                                         <?php
                                                         the_content();
                                                         ?>
