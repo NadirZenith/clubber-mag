@@ -130,6 +130,7 @@ function attitude_load_files() {
         /** CLUBBER add-ons      */
         require_once( CLUBBER_ADDONS_DIR . '/todo-pending-posts.php' );
         require_once( CLUBBER_ADDONS_DIR . '/query-functions.php' );
+        require_once( CLUBBER_ADDONS_DIR . '/search-query.php' );
 
         /** CLUBBER FORMS      */
         require_once( CLUBBER_FORMS_DIR . '/common.php' );
@@ -296,7 +297,7 @@ function add_loginout_link($items, $args) {
                 $class = is_author() ? ' current-menu-item ' : '';
                 $avatar = get_avatar(get_current_user_id(), 55);
                 $items .= '<li class="menu-profile-picture ' . $class . '">'
-                        . '<a style="" href="' . get_author_posts_url(get_current_user_id()) . '">'
+                        . '<a href="' . get_author_posts_url(get_current_user_id()) . '">'
                         . '<span style="padding: 16px 0 0;">Perfil</span>'
                         . $avatar
                         . '</a>';
