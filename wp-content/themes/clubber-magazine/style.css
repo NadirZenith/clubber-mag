@@ -130,6 +130,8 @@ textarea:focus {
 }
 input.s {
     background: url(images/search.png) no-repeat right 6px #fff;
+/*    
+*/
     -webkit-transition-duration: 400ms;
     -webkit-transition-property: width, background;
     -webkit-transition-timing-function: ease;
@@ -139,7 +141,7 @@ input.s {
     -o-transition-duration: 400ms;
     -o-transition-property: width, background;
     -o-transition-timing-function: ease;
-    width: 0;
+    width: 150px;
     padding: 3px 33px 3px 0;
     height: 22px;
     color: #bbb;
@@ -147,13 +149,13 @@ input.s {
     margin: 0;
     border-color: transparent;
     cursor: pointer;
-    text-indent: 25px;
+    text-indent: 5px;
 }
 input.s:focus {
-    width: 100px;
-    padding-left: 10px;
+    width: 240px;
+    /*padding-left: 10px;*/
     border-color: #eaeaea;
-    text-indent: 0;
+    /*text-indent: 5px;*/
 }
 input[type="reset"], 
 input[type="button"], 
