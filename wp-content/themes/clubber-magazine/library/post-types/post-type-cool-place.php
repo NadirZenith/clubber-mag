@@ -105,12 +105,27 @@ function nz_coolplace_meta() {
         // Noncename needed to verify where the data originated
         echo '<input type="hidden" name="coolplacemeta_noncename" id="coolplacemeta_noncename" value="' .
         wp_create_nonce(basename(__FILE__)) . '" />';
+
+
         // Get the location data if its already been entered
-        $address = get_post_meta($post->ID, 'mapa', true);
+        $mapa = get_post_meta($post->ID, 'mapa', true);
+        echo $mapa;
+        /* d($mapa); */
+        $street = json_decode($mapa);
+        /* d($street); */
+        if ($street) {
+                if (is_object($street))
+                        $street = $street->address;
+                else
+                        $street = '';
+                        
+        }
+
         // Echo out the field
         echo '<p>Address</p>';
-        echo '<input type="text" name="_nz_coolplace_address" id="_nz_coolplace_address" value="' . $address . '" class="widefat" />';
-        echo '<div class="map_canvas"></div>';
+        echo '<input type="text" name="_nz_coolplace_address" id="_nz_coolplace_address" value="' . htmlspecialchars($mapa) . '" class="widefat" />';
+        echo '<input type="text" name="_nz_coolplace_address_search" id="_nz_coolplace_address_search" value="' . $street . '" class="widefat" />';
+        echo '<div id="map_canvas" class="map_canvas"></div>';
         add_action('admin_footer', 'coolplace_meta_scripts');
         ?>
 
@@ -118,7 +133,7 @@ function nz_coolplace_meta() {
 
 }
 
-// Save the Metabox 1 
+// Save the Metabox 1
 add_action('save_post', 'nz_save_coolplace_meta', 1, 2); // save the custom fields
 
 function nz_save_coolplace_meta($post_id, $post) {
@@ -127,27 +142,21 @@ function nz_save_coolplace_meta($post_id, $post) {
         if (!wp_verify_nonce($_POST['coolplacemeta_noncename'], basename(__FILE__))) {
                 return $post->ID;
         }
+        if ($post->post_type == 'revision') {
+                return;
+        }
 
         // Is the user allowed to edit the post or page?
         if (!current_user_can('edit_post', $post->ID)) {
                 return $post->ID;
         }
 
-        // OK, we're authenticated: we need to find and save the data
-        // We'll put it into an array to make it easier to loop though.
-        $coolplace_meta['mapa'] = $_POST['_nz_coolplace_address'];
-        // Add values of $events_meta as custom fields
-        foreach ($coolplace_meta as $key => $value) { // Cycle through the $events_meta array!
-                if ($post->post_type == 'revision')
-                        return; // Don't store custom data twice
-                $value = implode(',', (array) $value); // If $value is an array, make it a CSV (unlikely)
-                if (get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
-                        update_post_meta($post->ID, $key, $value);
-                } else { // If the custom field doesn't have a value
-                        add_post_meta($post->ID, $key, $value);
-                }
-                if (!$value)
-                        delete_post_meta($post->ID, $key); // Delete if blank
+        $mapa = $_POST['_nz_coolplace_address'];
+
+        if (!empty($mapa)) {
+                update_post_meta($post->ID, 'mapa', $mapa);
+        } else {
+                delete_post_meta($post->ID, 'mapa'); // Delete if blank
         }
 }
 
@@ -155,38 +164,90 @@ function coolplace_meta_scripts() {
         ?>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=true"></script>
         <style>
-                .map_canvas { 
+                .map_canvas {
                         width: 98%;
                         margin: 5px auto;
-                        height: 300px; 
+                        height: 300px;
                 }
         </style>
         <script>
                 jQuery(function($) {
+                        //do not sent form on enter
+                        //allow to select address with keyboard
+                        $('#post').bind("keyup keypress", function(e) {
+                                var code = e.keyCode || e.which;
+                                if (code == 13) {
+                                        e.preventDefault();
+                                        return false;
+                                }
+                        });
+                        //get current address from hidden field
+                        jsonAdress = $.parseJSON($('#_nz_coolplace_address').val());
 
-                        $field = $("#_nz_coolplace_address");
-
-                        if (!$field.val()) {
-                                $field.geocomplete({
-                                        map: ".map_canvas"
-                                });
+                        //if is not empty build LatLng
+                        //else default to bcn
+                        if (jsonAdress) {
+                                currentLatlng = new google.maps.LatLng(jsonAdress.lat, jsonAdress.long);
+                                /*$('#_nz_coolplace_address_search').val(jsonAdress.address);*/
                         } else {
-                                $field.geocomplete({
-                                        map: ".map_canvas",
-                                        location: $field.val()
-                                });
-
+                                currentLatlng = new google.maps.LatLng(41.382573, 2.175293);
                         }
+
+                        // vars
+                        var args = {
+                                zoom: 15,
+                                center: currentLatlng,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+
+                        // create map
+                        map = new google.maps.Map(document.getElementById("map_canvas"), args);
+
+                        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('_nz_coolplace_address_search'));
+                        autocomplete.map = map;
+                        autocomplete.bindTo('bounds', map);
+
+                        var marker = new google.maps.Marker({
+                                position: currentLatlng,
+                                map: map
+                        });
+
+                        //process place change
+                        google.maps.event.addListener(autocomplete, 'place_changed', function(e) {
+                                var place = autocomplete.getPlace();
+
+                                //if no place
+                                if (!place.geometry) {
+                                        $('#_nz_coolplace_address').val('');
+                                        return;
+                                }
+
+                                // If the place has a geometry, then present it on a map. ??
+                                if (place.geometry.viewport) {
+                                        map.fitBounds(place.geometry.viewport);
+                                } else {
+                                        map.setCenter(place.geometry.location);
+                                        map.setZoom(17);  // Why 17? Because it looks good.
+                                }
+
+                                //build json to save full address latlong
+                                var save = {
+                                        lat: place.geometry.location.k,
+                                        long: place.geometry.location.B,
+                                        address: place.formatted_address
+                                };
+
+                                $('#_nz_coolplace_address').val(JSON.stringify(save));
+
+                                marker.setPosition(place.geometry.location);
+                                marker.setVisible(true);
+
+                        });
+
+
                 });
         </script>
 
         <?php
 
-        wp_enqueue_script(
-                'jquery.geocomplete', //slug
-                get_template_directory_uri() . '/js/jquery.geocomplete.min.js', //path
-                array('jquery'), //dependencies
-                false, //version
-                true                                                  //footer
-        );
 }
