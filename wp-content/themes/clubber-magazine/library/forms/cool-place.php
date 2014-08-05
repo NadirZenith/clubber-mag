@@ -94,11 +94,16 @@ add_filter("nz_gform_google_maps_value_" . $nz['form.coolplace']['id'] . '_4', "
 
 function pre_value_map_coolplace($value) {
         $post_id = (int) $_GET['gform_post_id'];
-        $direction = get_post_meta($post_id, 'mapa', true);
+        if ($post_id != 0) {
 
-        if ($direction) {
-                return $direction;
+                $direction = get_post_meta($post_id, 'mapa', true);
+                 /*d($direction);*/
+                
+                if ($direction) {
+                        return $direction;
+                }
         }
+        return $value;
 }
 
 add_filter("nz_gform_google_maps_after_submission_" . $nz['form.coolplace']['id'] . '_4', "process_coolplace_map", 10, 5);
@@ -120,6 +125,7 @@ function coolplace_singularize_taxonomy($form) {
                         $field['choices'][0]['text'] = 'Bar';
                         $field['choices'][1]['text'] = 'Club';
                         $field['choices'][2]['text'] = 'Restaurant';
+                        $field['choices'][3]['text'] = 'Otro';
                 }
         }
 
