@@ -186,7 +186,7 @@ function coolplace_meta_scripts() {
 
                         //if is not empty build LatLng
                         //else default to bcn
-                        if (jsonAdress) {
+                        if (jsonAdress.lat) {
                                 currentLatlng = new google.maps.LatLng(jsonAdress.lat, jsonAdress.long);
                                 /*$('#_nz_coolplace_address_search').val(jsonAdress.address);*/
                         } else {
