@@ -121,12 +121,12 @@ function attitude_headerdetails() {
                         display: none;
                 }
                 #open-search-bar{
-                        background: url(<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/search.png) #0e0e0e 13px 7px no-repeat;
+                        background: url(<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/search.png) #0e0e0e 14px 7px no-repeat;
                         position: absolute;
-                        height: 30px; 
+                        height: 31px; 
                         left: 5px;
-                        top: 25%;
-                        width: 40px;
+                        top: 24%;
+                        width: 42px;
                         cursor: pointer;
                         border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
                         border-radius: 4px;
@@ -154,7 +154,7 @@ function attitude_headerdetails() {
         <div id="mobile-menu-title">
                 <div style='text-align: center'>
                         <a href="<?php echo esc_url(home_url('/')); ?>" title="Clubber-Mag" rel="home">
-                                <img style="margin-left:-25px;margin-top:3px" width="230" height="50" alt="Clubber-Mag" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png">
+                                <img style="margin-left:-25px;margin-top:3px" width="220" height="50" alt="Clubber-Mag" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png">
                         </a>
                 </div>
                 <a id="open-search-bar"></a>
