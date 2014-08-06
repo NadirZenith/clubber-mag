@@ -160,7 +160,7 @@ function attitude_headerdetails() {
                 <a id="open-search-bar"></a>
                 <div class="search-form">
                         <form action="<?php echo esc_url(home_url('/')); ?>" class="" method="get">
-                                <input type="text" placeholder="Busca personas, fiestas, clubes, artistas..." class="s field" name="s" value="<?php echo get_query_var('s', '') ?>">
+                                <input type="text" placeholder="Busca fiestas, clubes, artistas, personas..." class="s field" name="s" value="<?php echo get_query_var('s', '') ?>">
                         </form><!-- .searchform -->
 
                 </div>
