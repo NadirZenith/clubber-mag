@@ -121,8 +121,20 @@ function attitude_headerdetails() {
                         display: none;
                 }
                 #open-search-bar{
-                        background: url(<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/search.png) #0e0e0e 11px 9px no-repeat;
-                        width: 35px; height: 35px; position: absolute; top: 15%;left: 5px;cursor: pointer;border-radius: 4px;
+                        background: url(<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/search.png) #0e0e0e 13px 7px no-repeat;
+                        position: absolute;
+                        height: 30px; 
+                        left: 5px;
+                        top: 25%;
+                        width: 40px;
+                        cursor: pointer;
+                        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+                        border-radius: 4px;
+                        border-style: solid;
+                        border-width: 1px;
+                        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.075);
+                        box-sizing: border-box;
+                        /*transform: translate(0px, -50%);*/
                 }
                 #open-search-bar.active{
                         background-color: #666;
@@ -131,9 +143,9 @@ function attitude_headerdetails() {
                         height: 45px;width: 100%; position: absolute;top: 55px;left: 0px;display: none;background-color: #464d52;
                 }
                 #mobile-menu .search-form input{
-                 margin-left: 5px;       
+                        margin-left: 5px;       
                 }
-                
+
                 #main-menu .search-form{
                         margin-top: 10px;
                 }
@@ -145,10 +157,10 @@ function attitude_headerdetails() {
                                 <img style="margin-left:-25px;margin-top:3px" width="230" height="50" alt="Clubber-Mag" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png">
                         </a>
                 </div>
-                <a id="open-search-bar" ></a>
-                <div class="search-form" style="">
+                <a id="open-search-bar"></a>
+                <div class="search-form">
                         <form action="<?php echo esc_url(home_url('/')); ?>" class="" method="get">
-                                <input type="text" placeholder="Busca personas, fiestas, clubes, artistas..." class="s field" name="s" value="<?php echo get_query_var('s', '')?>">
+                                <input type="text" placeholder="Busca personas, fiestas, clubes, artistas..." class="s field" name="s" value="<?php echo get_query_var('s', '') ?>">
                         </form><!-- .searchform -->
 
                 </div>
@@ -196,7 +208,7 @@ function attitude_headerdetails() {
                                 }
                         );
 
-                        $('#mobile-menu .menu-collapser').prepend($('#mobile-menu-title').css('display','block'));
+                        $('#mobile-menu .menu-collapser').prepend($('#mobile-menu-title').css('display', 'block'));
 
 
 
