@@ -50,7 +50,7 @@ function attitude_headerdetails() {
                                 </hgroup>
 
                                 <section id="social-wrapper" class="fr">
-                                        <iframe class="fb-like mt15" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FClubber.Mag&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width: 110px;" allowTransparency="true"></iframe>
+                                        <iframe class="fb-like mt15" src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FClubber.Mag&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width: 120px;" allowTransparency="true"></iframe>
                                         <div id="social-profiles">
                                                 <ul id="social-profiles-list" class="">
                                                         <li>
