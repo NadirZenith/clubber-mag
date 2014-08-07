@@ -108,7 +108,7 @@ function nz_cool_place_meta() {
         // Get the location data if its already been entered
         $mapa = '';
         $street = '';
-        if (!$post->post_status == 'auto-draft') {
+        /*if (!$post->post_status == 'auto-draft') {*/
                 $mapa = get_post_meta($post->ID, 'mapa', true);
                 if ($mapa) {
                         $mapa = json_decode($mapa);
@@ -116,7 +116,7 @@ function nz_cool_place_meta() {
                 }
                 printf($mapa);
                 printf($street);
-        }
+        /*}*/
         ?>
         <p>Address</p>
         <input type="hidden" name="coolplacemeta_noncename" id="coolplacemeta_noncename" value="<?php echo wp_create_nonce(basename(__FILE__)) ?>"/>
