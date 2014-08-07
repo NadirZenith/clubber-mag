@@ -115,8 +115,6 @@ function nz_cool_place_meta() {
                         $street = $mapa->address;
                 }
         }
-        var_dump($mapa);
-        var_dump($street);
         ?>
         <p>Address</p>
         <input type="hidden" name="coolplacemeta_noncename" id="coolplacemeta_noncename" value="<?php echo wp_create_nonce(basename(__FILE__)) ?>"/>
@@ -131,14 +129,12 @@ function nz_cool_place_meta() {
          *      featured
          */
         $featured = get_post_meta($post->ID, 'featured', true);
-        d($featured);
+        /*d($featured);*/
         if ($featured) {
-                d('featured');
                 ?>
                 <input type="checkbox" name="featured" value="1" checked="true">
                 <?php
         } else {
-                d('not');
                 ?>
                 <input type="checkbox" name="featured" value="1" >
                 <?php
