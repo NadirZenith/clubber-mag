@@ -1,15 +1,14 @@
 <?php
-
 /**
  *      REGISTER CUSTOM POST TYPE
  *      TYPE: cool-place
  * 
  *  */
 // Hook into the 'init' action
-add_action('init', 'register_post_type_coolplace', 0);
+add_action('init', 'register_post_type_cool_place', 0);
 
 // Register User Post Type
-function register_post_type_coolplace() {
+function register_post_type_cool_place() {
 
         $labels = array(
               'name' => 'Cool Places',
@@ -93,49 +92,64 @@ add_action('init', 'cool_place_type_taxonomy', 0);
 // Add Meta Boxes
 /*
  */
-add_action('add_meta_boxes', 'coolplace_meta_boxes');
+add_action('add_meta_boxes', 'cool_place_meta_boxes');
 
-function coolplace_meta_boxes() {
-        add_meta_box('nz_coolplace_meta', 'Meta', 'nz_coolplace_meta', 'cool-place', 'advanced', 'default');
+function cool_place_meta_boxes() {
+        add_meta_box('nz_coolplace_meta', 'Meta', 'nz_cool_place_meta', 'cool-place', 'advanced', 'default');
 }
 
 // user post Metabox 1
-function nz_coolplace_meta() {
+function nz_cool_place_meta() {
         global $post;
-        // Noncename needed to verify where the data originated
-        echo '<input type="hidden" name="coolplacemeta_noncename" id="coolplacemeta_noncename" value="' .
-        wp_create_nonce(basename(__FILE__)) . '" />';
 
-
+        /**
+         *      mapa
+         */
         // Get the location data if its already been entered
-        $mapa = get_post_meta($post->ID, 'mapa', true);
-        echo $mapa;
-        /* d($mapa); */
-        $street = json_decode($mapa);
-        /* d($street); */
-        if ($street) {
-                if (is_object($street))
-                        $street = $street->address;
-                else
-                        $street = '';
+        $mapa = '';
+        $street = '';
+        if (!$post->post_status == 'auto-draft') {
+                $mapa = get_post_meta($post->ID, 'mapa', true);
+                if ($mapa) {
+                        $mapa = json_decode($mapa);
+                        $street = $mapa->address;
+                }
         }
-
-        // Echo out the field
-        echo '<p>Address</p>';
-        echo '<input type="text" name="_nz_coolplace_address" id="_nz_coolplace_address" value="' . htmlspecialchars($mapa) . '" class="widefat" />';
-        echo '<input type="text" name="_nz_coolplace_address_search" id="_nz_coolplace_address_search" value="' . $street . '" class="widefat" />';
-        echo '<div id="map_canvas" class="map_canvas"></div>';
-        add_action('admin_footer', 'coolplace_meta_scripts');
         ?>
+        <p>Address</p>
+        <input type="hidden" name="coolplacemeta_noncename" id="coolplacemeta_noncename" value="<?php echo wp_create_nonce(basename(__FILE__)) ?>"/>
+        <input type="text" name="_nz_coolplace_address" id="_nz_coolplace_address" value="<?php echo htmlspecialchars($mapa) ?>" class="widefat" />
+        <input type="text" name="_nz_coolplace_address_search" id="_nz_coolplace_address_search" value="<?php echo htmlspecialchars($street) ?>" class="widefat" />
+        <div id="map_canvas" class="map_canvas"></div>
 
         <?php
+        add_action('admin_footer', 'cool_place_meta_scripts');
 
+        /**
+         *      featured
+         */
+        $featured = get_post_meta($post->ID, 'featured', true);
+        d($featured);
+        if ($featured) {
+                d('featured');
+                ?>
+                <input type="checkbox" name="featured" value="1" checked="true">
+                <?php
+        } else {
+                d('not');
+                ?>
+                <input type="checkbox" name="featured" value="1" >
+                <?php
+        }
+        ?>
+        <p>Featured</p>
+        <?php
 }
 
 // Save the Metabox 1
-add_action('save_post', 'nz_save_coolplace_meta', 1, 2); // save the custom fields
+add_action('save_post', 'nz_save_cool_place_meta', 1, 2); // save the custom fields
 
-function nz_save_coolplace_meta($post_id, $post) {
+function nz_save_cool_place_meta($post_id, $post) {
         // verify this came from the our screen and with proper authorization,
         // because save_post can be triggered at other times
         if (!wp_verify_nonce($_POST['coolplacemeta_noncename'], basename(__FILE__))) {
@@ -157,9 +171,23 @@ function nz_save_coolplace_meta($post_id, $post) {
         } else {
                 delete_post_meta($post->ID, 'mapa'); // Delete if blank
         }
+
+
+        $featured = $_POST['featured'];
+        if ($featured) {
+                $return = update_post_meta($post->ID, 'featured', 1);
+                /*d($return);*/
+/*               
+                d('update');
+                d($featured);
+ *  */
+        } else {
+               delete_post_meta($post->ID, 'featured'); // Delete if blank
+        }
+        /* d($_POST); */
 }
 
-function coolplace_meta_scripts() {
+function cool_place_meta_scripts() {
         ?>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=true"></script>
         <style>
@@ -171,6 +199,9 @@ function coolplace_meta_scripts() {
         </style>
         <script>
                 jQuery(function($) {
+                        /*            
+                         * 
+                         */
                         //do not sent form on enter
                         //allow to select address with keyboard
                         $('#post').bind("keyup keypress", function(e) {
@@ -183,16 +214,17 @@ function coolplace_meta_scripts() {
                         //get current address from hidden field
                         try {
                                 jsonAdress = $.parseJSON($('#_nz_coolplace_address').val());
+                                console.log('aqui');
                         } catch (e) {
-                                console.log("error: " + e);
+                                console.log("nz - error: " + e);
                         }
                         ;
-
+                        /*console.log(jsonAddress);*/
                         //if is not empty build LatLng
                         //else default to bcn
-                        if (typeof jsonAdress == 'object') {
+                        if (jsonAdress !== null && typeof jsonAdress === 'object') {
                                 currentLatlng = new google.maps.LatLng(jsonAdress.lat, jsonAdress.long);
-                                /*$('#_nz_coolplace_address_search').val(jsonAdress.address);*/
+                                //$('#_nz_coolplace_address_search').val(jsonAdress.address);
                         } else {
                                 currentLatlng = new google.maps.LatLng(41.382573, 2.175293);
                         }
@@ -253,5 +285,4 @@ function coolplace_meta_scripts() {
         </script>
 
         <?php
-
 }
