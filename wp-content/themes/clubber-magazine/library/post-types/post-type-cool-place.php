@@ -114,6 +114,8 @@ function nz_cool_place_meta() {
                         $mapa = json_decode($mapa);
                         $street = $mapa->address;
                 }
+                var_dump($mapa);
+                var_dump($street);
         }
         ?>
         <p>Address</p>
