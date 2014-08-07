@@ -114,8 +114,8 @@ function nz_cool_place_meta() {
                         $mapa = json_decode($mapa);
                         $street = $mapa->address;
                 }
-                var_dump($mapa);
-                var_dump($street);
+                printf($mapa);
+                printf($street);
         }
         ?>
         <p>Address</p>
@@ -131,7 +131,7 @@ function nz_cool_place_meta() {
          *      featured
          */
         $featured = get_post_meta($post->ID, 'featured', true);
-        /*d($featured);*/
+        /* d($featured); */
         if ($featured) {
                 ?>
                 <input type="checkbox" name="featured" value="1" checked="true">
@@ -176,13 +176,13 @@ function nz_save_cool_place_meta($post_id, $post) {
         $featured = $_POST['featured'];
         if ($featured) {
                 $return = update_post_meta($post->ID, 'featured', 1);
-                /*d($return);*/
-/*               
-                d('update');
-                d($featured);
- *  */
+                /* d($return); */
+                /*
+                  d('update');
+                  d($featured);
+                 *  */
         } else {
-               delete_post_meta($post->ID, 'featured'); // Delete if blank
+                delete_post_meta($post->ID, 'featured'); // Delete if blank
         }
         /* d($_POST); */
 }
