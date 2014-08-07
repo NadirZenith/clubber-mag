@@ -111,8 +111,8 @@ function nz_cool_place_meta() {
         /*if (!$post->post_status == 'auto-draft') {*/
                 $mapa = get_post_meta($post->ID, 'mapa', true);
                 if ($mapa) {
-                        $mapa = json_decode($mapa);
-                        $street = $mapa->address;
+                        $mapa_object = json_decode($mapa);
+                        $street = $mapa_object->address;
                 }
                 print_r($mapa);
                 print_r($street);
