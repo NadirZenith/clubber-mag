@@ -3,7 +3,7 @@
 
 <div id="container">
         <?php
-        /*get_template_part('templates/featured-cool-places');*/
+        get_template_part('templates/featured-cool-places');
         ?>
 
 
