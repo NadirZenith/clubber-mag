@@ -134,7 +134,9 @@ function coolplace_singularize_taxonomy($form) {
                         $field['choices'][0]['text'] = 'Bar';
                         $field['choices'][1]['text'] = 'Club';
                         $field['choices'][2]['text'] = 'Restaurant';
+                        //add new field -> otro
                         $field['choices'][3]['text'] = 'Otro';
+                        $field['choices'][3]['value'] = 'Otro';
                 }
         }
 
