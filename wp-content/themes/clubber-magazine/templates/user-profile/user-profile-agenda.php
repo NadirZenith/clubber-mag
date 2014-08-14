@@ -24,24 +24,28 @@ $args = array(
       )
 );
 
-$wp_query = new WP_Query($args);
+$query = new WP_Query($args);
 ?>
 <section class="bg-50 block-5  pb15">
         <div class="ml5 cb group">
                 <?php
                 $user_agenda_url = get_author_posts_url($curauth->ID) . 'agenda';
                 ?>
-                <h1 class="fl"><a href="<?php echo $user_agenda_url?>" title="Ver agenda de usuário">Agenda</a></h1>
-                <span class="fr mr5 mt5">[ <a href="<?php echo get_permalink(get_page_by_path('subir-evento')) ?>">Subir evento</a> ]</span>
+                <h1 class="fl"><a href="<?php echo $user_agenda_url ?>" title="Ver agenda de usuário">Agenda</a></h1>
+                <?php if ($curauth->ID == get_current_user_id()) { ?>
+                        <div  class="fr mr5 mt5">
+                                <span>[ <a href="<?php echo get_post_type_archive_link('agenda') ?>">Apúntate a eventos</a> ]</span>
+                        </div>
+                <?php } ?>
         </div>
 
         <?php
-        if (have_posts()) {
+        if ($query->have_posts()) {
                 ?>
                 <ul>
                         <?php
-                        while (have_posts()) {
-                                the_post();
+                        while ($query->have_posts()) {
+                                $query->the_post();
                                 ?>
                                 <li class="col-1-3 fl">
                                         <article>

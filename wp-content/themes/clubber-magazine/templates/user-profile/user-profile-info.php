@@ -112,6 +112,11 @@
                         ?>
 
                 </ul>
+
+                <div class="cb m15 p15">
+                        <div class="fb-like" data-href="<?php echo get_author_posts_url($curauth->ID) ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
+
         </div>
 
 

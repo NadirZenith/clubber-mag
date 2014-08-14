@@ -24,7 +24,7 @@ $args = array(
       )
 );
 
-$wp_query = new WP_Query($args);
+$query = new WP_Query($args);
 ?>
 <section class="bg-50 block-5 pb15">
         <div class="ml5 cb group">
@@ -44,12 +44,12 @@ $wp_query = new WP_Query($args);
         </div>
 
         <?php
-        if (have_posts()) {
+        if ($query->have_posts()) {
                 ?>
                 <ul>
                         <?php
-                        while (have_posts()) {
-                                the_post();
+                        while ($query->have_posts()) {
+                                $query->the_post();
                                 ?>
                                 <li class="col-1-3 fl">
                                         <article>
