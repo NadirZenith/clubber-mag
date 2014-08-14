@@ -30,19 +30,19 @@ $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : g
         switch ($action) {
                 case '':
                         include (locate_template('templates/user-profile-main.php'));
-                        
+
                         break;
 
                 case 'editar':
                         include (locate_template('templates/user-profile/user-profile-edit.php'));
 
                         break;
-                
+
                 case 'agenda':
                         include (locate_template('templates/user/user-agenda-list.php'));
 
                         break;
-                
+
                 case 'eventos':
                         include (locate_template('templates/user/user-promoter-list.php'));
 
