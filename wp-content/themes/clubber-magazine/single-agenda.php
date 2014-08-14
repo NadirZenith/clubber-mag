@@ -61,8 +61,9 @@
                                                                 <div class="event-date" style="position: absolute; right: 0; top: 0px;font-size: 20px;padding: 2px;">
                                                                         <?php ?>
                                                                         <a  class="sc-eee" href="<?php echo add_query_arg(array('date' => urlencode(date('d-m-Y', $post_timestamp))), get_post_type_archive_link('agenda')) ?>">
-                                                                                <?php echo date('l d/m/y - H:i', $post_timestamp); ?>
+                                                                                <?php echo date('l d/m/y', $post_timestamp); ?>
                                                                         </a>
+                                                                        <?php echo ' - ' . date('H:i', $post_timestamp); ?>
 
                                                                         <?php
                                                                         if ($event_end_date = get_post_meta(get_the_ID(), 'wpcf-event_end_date', true)) {
