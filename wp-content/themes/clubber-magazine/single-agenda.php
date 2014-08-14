@@ -24,10 +24,12 @@
                                 the_post();
                                 $event_end_date = get_post_meta(get_the_ID(), 'wpcf-event_end_date', true);
                                 $post_timestamp = get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true);
+
                                 $taxonomy = 'city';
-                                $term = wp_get_post_terms(get_the_ID(), $taxonomy)[0]->name;
-                                if ($term = wp_get_post_terms(get_the_ID(), $taxonomy)[0]->name) {
-                                        $link = get_term_link($term, $taxonomy);
+                                $term = wp_get_post_terms(get_the_ID(), $taxonomy);
+                                if (!is_wp_error($term) && ($term = $term[0])) {
+                                        $link = get_term_link($term);
+                                        $city_name = $term->name;
                                 }
                                 ?>
 
@@ -71,10 +73,12 @@
                                                                 <div class="post-meta meddium" >
                                                                         <div class="fl col-2-4">
                                                                                 <ul>
-                                                                                        <li class="event-city">
-                                                                                                <span class="bold">Ciudad: </span>
-                                                                                                <?php echo "<a href='{$link}' title='Eventos en {$term}'>{$term}</a>"; ?> 
-                                                                                        </li>
+                                                                                        <?php if ($city_name) { ?>
+                                                                                                <li class="event-city">
+                                                                                                        <span class="bold">Ciudad: </span>
+                                                                                                        <?php echo "<a href='{$link}' title='Eventos en {$city_name}'>{$city_name}</a>"; ?> 
+                                                                                                </li>
+                                                                                        <?php } ?>
                                                                                         <li class="event-place-name">
                                                                                                 <span class="bold">Lugar: </span>
                                                                                                 <?php echo get_post_meta(get_the_ID(), 'wpcf-event_place_name', true); ?>
@@ -111,7 +115,7 @@
                                                                 <div class="cb">
 
                                                                 </div>
-                                                                <div class="mt30 cb" style="font-size:19px; text-align: justify;">
+                                                                <div class="mt30 cb meddium" style="text-align: justify;">
                                                                         <?php
                                                                         the_content();
                                                                         ?> 
