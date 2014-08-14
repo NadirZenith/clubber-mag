@@ -22,8 +22,15 @@ function relate_user_to_artist($entry, $form) {
         $user = wp_get_current_user();
         $post_id = $entry['post_id'];
 
+        //check for user main resource
+        $main_resource = get_user_meta($user->ID, 'main_resource', true);
+
+        if (!$main_resource) {
+                update_user_meta($user->ID, 'main_resource', 'artist');
+        }
+
         update_user_meta($user->ID, 'artist_page', $post_id);
-        
+
         global $NZS;
         $NZS->getFlashBag()->add('success', $form['confirmation']['message']);
         wp_redirect(get_author_posts_url(get_current_user_id()));

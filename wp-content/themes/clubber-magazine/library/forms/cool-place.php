@@ -17,6 +17,24 @@ $nz['coolplace_form'] = function($nz) {
 add_action("gform_after_submission_" . $nz['form.coolplace']['id'], "relate_user_to_coolplace", 10, 2);
 
 function relate_user_to_coolplace($entry, $form) {
+
+        $user = wp_get_current_user();
+        $coolplace_id = $entry['post_id'];
+
+        //check for user main resource
+        $main_resource = get_user_meta($user->ID, 'main_resource', true);
+
+        if (!$main_resource) {
+                update_user_meta($user->ID, 'main_resource', 'cool-place');
+        }
+        
+        //relate cool-place to user
+        $user_coolplaces = get_user_meta($user->ID, 'coolplaces_ids', true);
+
+        $user_coolplaces[] = $coolplace_id;
+
+        update_user_meta($user->ID, 'coolplaces_ids', array_unique($user_coolplaces));
+
         //set cool place type!
         $cool_places_types = array(
               intval($entry['7.1']),
@@ -24,16 +42,7 @@ function relate_user_to_coolplace($entry, $form) {
               intval($entry['7.3'])
         );
 
-        $return = wp_set_object_terms($entry['post_id'], $cool_places_types, 'cool_place_type');
-
-        $user = wp_get_current_user();
-        $coolplace_id = $entry['post_id'];
-
-        $user_coolplaces = get_user_meta($user->ID, 'coolplaces_ids', true);
-
-        $user_coolplaces[] = $coolplace_id;
-
-        update_user_meta($user->ID, 'coolplaces_ids', array_unique($user_coolplaces));
+        $return = wp_set_object_terms($coolplace_id, $cool_places_types, 'cool_place_type');
 
         global $NZS;
         $NZS->getFlashBag()->add('success', $form['confirmation']['message']);
@@ -97,8 +106,8 @@ function pre_value_map_coolplace($value) {
         if ($post_id != 0) {
 
                 $direction = get_post_meta($post_id, 'mapa', true);
-                 /*d($direction);*/
-                
+                /* d($direction); */
+
                 if ($direction) {
                         return $direction;
                 }
