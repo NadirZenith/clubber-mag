@@ -8,10 +8,9 @@
  */
 ?>
 <?php
-/* wp_enqueue_style('clubber-style', get_template_directory_uri() . '/css/common.css', $deps, $ver, $media); */
-/* wp_enqueue_style('common', get_template_directory_uri() . '/css/common.css', $deps, $ver, $media); */
 
-wp_enqueue_style('attitude_style', get_stylesheet_uri());
+wp_enqueue_style('clubber-mag', get_stylesheet_uri(),null, '1.0');
+wp_enqueue_style('font-russo-one', 'http://fonts.googleapis.com/css?family=Russo+One');
 
 /* see plugins/ml-slider/inc/slider/metaslider.class.php *line 451 */
 wp_enqueue_script('metaslider-' . 'flexslider' . '-slider', METASLIDER_ASSETS_URL . 'sliders/flexslider/jquery.flexslider-min.js', array('jquery'), METASLIDER_VERSION);
@@ -30,15 +29,10 @@ wp_enqueue_script('slimmenu', get_template_directory_uri() . '/js/slimmenu/jquer
                 <?php
                 do_action('attitude_meta');
                 ?>
-                <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/common.css" type="text/css">
-                <link rel="stylesheet" href="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/css/clubber_style.css" type="text/css">
 
                 <?php
-                /* <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />	 */
                 wp_head();
                 ?>
-
-                <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 
         </head>
         <body <?php body_class(); ?>> 
