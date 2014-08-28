@@ -23,7 +23,7 @@ if ($query->have_posts()) {
                                 <h1 class="fl"><a href="<?php echo get_permalink(get_the_ID()) ?>">Artista: <?php the_title() ?></a></h1>
                                 <?php
                                 if ($curauth->ID == get_current_user_id()) {
-                                        $artist_edit_url = apply_filters('gform_update_post/edit_url', $artist_page_id, get_permalink(get_page_by_path('recursos')) . 'artista');
+                                        $artist_edit_url = apply_filters('gform_update_post/edit_url', get_the_ID(), get_permalink(get_page_by_path('recursos')) . 'artista');
                                         $artist_post_url = add_query_arg(array(), get_permalink(get_page_by_path('recursos')) . 'artista/' . 'nuevo-contenido');
                                         ?>
                                         <span class="fr mr5 mt5" title="Editar página de artista">[ <a href="<?php echo $artist_edit_url ?>">editar</a> ]</span>
