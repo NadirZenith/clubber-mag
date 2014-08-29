@@ -25,7 +25,7 @@ if (is_tax($tax)) {
 
         <div id="primary">
                 <h1 class="ml5">
-                        Eventos esta semana <?php echo ($city) ? "en {$city}" : ''; ?>
+                        Fiestas y Eventos esta semana <?php echo ($city) ? "en {$city}" : ''; ?>
                 </h1>
 
                 <?php
@@ -144,7 +144,7 @@ if (is_tax($tax)) {
                                         <section>
                                                 <header>
                                                         <h1 class="ml5">
-                                                                Próximos eventos <?php echo ($city) ? "en {$city}" : ''; ?>
+                                                                Próximas Fiestas y Eventos <?php echo ($city) ? "en {$city}" : ''; ?>
                                                         </h1>
                                                 </header>
                                                 <ul>
