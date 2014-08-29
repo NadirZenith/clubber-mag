@@ -11,52 +11,47 @@ if (is_user_logged_in()) {
         exit;
 }
 ?>
-<?php get_header(); ?>
-
-<div id="container">
-
-        <?php
-        nzs_display_messages(FALSE);
 
 
-        $action = get_query_var('action');
-        //recover password
-        if ($action == 'lostpassword') {
-                ?>
-                <style>
-                        .user-forms .submit{
-                                margin-top: 30px;
-                        }
-                        .user-forms p
-                        {
-                                width: 50%;
-                        }
-                </style>
+<?php
+nzs_display_messages(FALSE);
 
-                <div class="col-2-4 fl pb15 pt5 mt15 bg-50 block-5">
-                        <div class="ml5 pb15">
-                                <h1 class="">Recupera tu password</h1>
-                        </div>
-                        <div class="ml5">
 
-                                <?php
-                                echo do_shortcode('[wppb-recover-password]');
-                                ?>
-                        </div>
+$action = get_query_var('action');
+//recover password
+if ($action == 'lostpassword') {
+        ?>
+        <style>
+                .user-forms .submit{
+                        margin-top: 30px;
+                }
+                .user-forms p
+                {
+                        width: 50%;
+                }
+        </style>
+
+        <div class="col-2-4 fl pb15 pt5 mt15 bg-50 block-5">
+                <div class="ml5 pb15">
+                        <h1 class="">Recupera tu password</h1>
                 </div>
-                <?php
-                //login & register
-        } else {
-
-                if (!is_user_logged_in()) {
-                        include (locate_template('templates/user-profile/user-profile-login.php'));
-                        ?>
+                <div class="ml5">
 
                         <?php
-                }
+                        echo do_shortcode('[wppb-recover-password]');
+                        ?>
+                </div>
+        </div>
+        <?php
+        //login & register
+} else {
+
+        if (!is_user_logged_in()) {
+                include (locate_template('templates/user-profile/user-profile-login.php'));
+                ?>
+
+                <?php
         }
-        ?>
+}
+?>
 
-</div><!-- #container -->
-
-<?php get_footer(); ?>

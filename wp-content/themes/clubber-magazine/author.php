@@ -1,5 +1,6 @@
 
 <?php
+
 $login_url = get_permalink(get_page_by_path('registrate'));
 $logout_url = wp_logout_url(home_url());
 /*
@@ -19,40 +20,35 @@ $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : g
 /* if ($curusr && $curusr->data->user_login != 'clubber-mag') {wp_redirect(home_url()); } */
 ?>
 
-<?php get_header(); ?>
+<?php
 
-<div id="container">
-        <?php
-        nzs_display_messages(FALSE);
-        /* global $wp_rewrite; */
-        $action = get_query_var('action');
-        /*d($action);*/
-        switch ($action) {
-                case '':
-                        include (locate_template('templates/user-profile-main.php'));
+nzs_display_messages(FALSE);
+/* global $wp_rewrite; */
+$action = get_query_var('action');
+/* d($action); */
+switch ($action) {
+        case '':
+                include (locate_template('templates/user-profile-main.php'));
 
-                        break;
+                break;
 
-                case 'editar':
-                        include (locate_template('templates/user-profile/user-profile-edit.php'));
+        case 'editar':
+                include (locate_template('templates/user-profile/user-profile-edit.php'));
 
-                        break;
+                break;
 
-                case 'agenda':
-                        include (locate_template('templates/user/user-agenda-list.php'));
+        case 'agenda':
+                include (locate_template('templates/user/user-agenda-list.php'));
 
-                        break;
+                break;
 
-                case 'eventos':
-                        include (locate_template('templates/user/user-promoter-list.php'));
+        case 'eventos':
+                include (locate_template('templates/user/user-promoter-list.php'));
 
-                        break;
+                break;
 
-                default:
-                        echo '404';
-                        break;
-        }
-        ?>
-
-</div>
-<?php get_footer(); ?>
+        default:
+                echo '404';
+                break;
+}
+?>

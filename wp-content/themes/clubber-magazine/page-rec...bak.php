@@ -6,6 +6,8 @@
  *      UN LABEL POR USUÁRIO
  * 
  *      VÁRIOS LOCALES POR USUÁRIO
+ * 
+ *      @todo nz move this to before html output, redirection message error
  */
 $action = get_query_var('action'); // '' , 'nuevo contenido'
 $type = get_query_var('type'); // 'artista' , 'cool-place', 'sellos'

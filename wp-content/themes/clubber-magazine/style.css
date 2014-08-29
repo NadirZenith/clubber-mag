@@ -426,18 +426,18 @@ hr {
            -moz-box-shadow:    0px 0px 30px 5px rgba(50, 50, 50, 1);
            box-shadow:         0px 0px 30px 5px rgba(50, 50, 50, 1);
 }
-/*.message a.closeMessage { margin: -14px -8px 0 0; display:none; width: 16px; height: 16px; float: right; background: url(../images/messages/close.png) no-repeat; }*/
-.nzs-messages a.closeMessage {margin-right: 10%; float: right; width: 16px; height: 16px; background: url(../images/messages/close.png) no-repeat; }
+/*.message a.closeMessage { margin: -14px -8px 0 0; display:none; width: 16px; height: 16px; float: right; background: url(images/messages/close.png) no-repeat; }*/
+.nzs-messages a.closeMessage {margin-right: 10%; float: right; width: 16px; height: 16px; background: url(images/messages/close.png) no-repeat; }
 .message p { margin: 3px 0 3px 10px !important; padding: 0 10px 0 23px !important; font-size: 14px; line-height: 16px; }
 .message.error { border: 1px solid #C42608; color: #c00 !important; background: #FFF0EF; }
-.message.error p { background: url(../images/messages/cross.png ) no-repeat 0px 50%; color:#c00 !important; }
+.message.error p { background: url(images/messages/cross.png ) no-repeat 0px 50%; color:#c00 !important; }
 /*.message.success {background: #E0FBCC; border: 1px solid #6DC70C; } */
-/*.message.success p { background: url(../images/messages/help.png) no-repeat 0px 50%; color: #2B6301 !important; }*/
+/*.message.success p { background: url(images/messages/help.png) no-repeat 0px 50%; color: #2B6301 !important; }*/
 /*.message.warning { background: #FFFCD3; border: 1px solid #EBCD41; color: #000; }*/
-/*.message.warning p { background: url(../images/messages/warning.png ) no-repeat 0px 50%; color: #5F4E01; }*/
+/*.message.warning p { background: url(images/messages/warning.png ) no-repeat 0px 50%; color: #5F4E01; }*/
 .message.success { background: #DFEBFB; border: 1px solid #0583f2; }
-.message.success p { background: url(../images/messages/success.png) no-repeat 0px 50% / 2%; color: #0583f2; }
-.message.information a { text-decoration: underline; }
+.message.success p { background: url(images/messages/success.png) no-repeat 0px 50% / 2%; color: #0583f2; }
+/*.message.information a { text-decoration: underline; }*/
 /** @todo nz only error & success*/
 
 /* =Responsive Structure

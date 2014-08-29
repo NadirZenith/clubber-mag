@@ -8,13 +8,7 @@
  */
 ?>
 
-<?php get_header(); ?>
+<div style="text-align: center">
+        <h1>Página no encontrada!</h1>
 
-
-<div id="container">
-        <div style="text-align: center">
-                <h1>Página no encontrada!</h1>
-
-        </div>
 </div>
-<?php get_footer(); ?>

@@ -45,19 +45,19 @@ function more_resources_header() {
         /* d($curauth . 'hasdf'); */
         $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
         ?>
-<!--
-        <div style="height: 300px; background-color: red;width: 100%;clear: both">
+        <!--
+                <div style="height: 300px; background-color: red;width: 100%;clear: both">
 
-                <?php
-                d(get_userdata(intval($author)));
-                d(get_user_by('slug', $author_name));
-                d(
-                        get_query_var('author')
-                );
-                d($_GET['author_name']);
-                ?>
-        </div>
--->
+        <?php
+        d(get_userdata(intval($author)));
+        d(get_user_by('slug', $author_name));
+        d(
+                get_query_var('author')
+        );
+        d($_GET['author_name']);
+        ?>
+                </div>
+        -->
         <div class="cb ml5 mr5">
                 <?php
                 if (get_query_var('author') == get_current_user_id()) {
@@ -124,22 +124,5 @@ if (
         $first = false;
 }
 ?>
-<?php
-/*
-  if (current_user_can('manage_options')) {
-  ?>
-  <div class="cb">
-
-  <?php
-  d(get_post_types());
-  ?>
-  </div>
-  <?php
-  }
- */
-?>
-
-
-
 
 

@@ -1,18 +1,7 @@
 <?php
-/*add_action('wp_head', 'pluginname_ajaxurl');*/
-
-function pluginname_ajaxurl() {
-        ?>
-        <script type="text/javascript">
-                var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-        </script>
-        <?php
-}
-
-/*wp_enqueue_script('jquery-form-plugin', get_template_directory_uri() . '/js/jquery.form.js', array('jquery'));*/
-/*wp_enqueue_script('ajax-form-handler', get_template_directory_uri() . '/js/send_form.js?ver=01', array('jquery'));*/
-
-
+/**
+ * @todo nz move this to before head
+ */
 $url = add_query_arg(null, null);
 parse_str(parse_url($url, PHP_URL_QUERY), $vars);
 if (isset($vars['tipo'])) {
