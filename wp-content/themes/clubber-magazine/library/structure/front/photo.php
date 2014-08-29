@@ -1,7 +1,7 @@
 <?php
 $args = array(
       'post_type' => 'photo',
-      'label_name' => 'Photo review',
+      'label_name' => 'Galería de Fotos',
       'post_status' => 'publish',
       /* 'name' => $wp_query->query_vars['name'], */
       'posts_per_page' => 3

@@ -2,11 +2,11 @@
         <?php
         if (is_archive()) {
                 ?>
-                <span class="ml5">Eventos destacados</span>
+                <span class="ml5">Fiestas y Eventos Recomendados</span>
                 <?php
         } else {
                 ?>
-                <a class="ml5" href="<?php echo get_post_type_archive_link('agenda'); ?>">Eventos destacados</a>
+                <a class="ml5" href="<?php echo get_post_type_archive_link('agenda'); ?>">Fiestas y Eventos Recomendados</a>
                 <?php
         }
         ?>
