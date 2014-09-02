@@ -1,4 +1,7 @@
 <?php
+$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+$login_url = get_permalink(get_page_by_path('registrate'));
+$logout_url = wp_logout_url(home_url());
 /** @todo nz move this to stylesheet */
 ?>
 <style>
