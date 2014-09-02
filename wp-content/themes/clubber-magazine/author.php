@@ -1,54 +1,119 @@
-
 <?php
-
-$login_url = get_permalink(get_page_by_path('registrate'));
-$logout_url = wp_logout_url(home_url());
-/*
-  if (!is_user_logged_in()) {
-  wp_redirect($login_url);
-  exit;
-  }
- */
-$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
-
-/* $edit_perfil_url = add_query_arg(array('action' => 'edit'), get_author_posts_url($curauth->ID)); */
-//http://lab.dev/clubber-mag-dev/perfil/{current_author}/?action=edit
-
-
-/* $curusr = wp_get_current_user(); */
-
-/* if ($curusr && $curusr->data->user_login != 'clubber-mag') {wp_redirect(home_url()); } */
+nzs_display_messages( FALSE );
 ?>
 
+
+<!--   USER PROFILE INFO     -->
+<div class="fl col-2-4">
+      <?php
+      include (locate_template( 'templates/user-profile/user-profile-info.php' ));
+      ?>
+</div>
+<ul class="fl col-2-4">
+      <?php
+      $main_resource = get_user_meta( $curauth->ID, 'main_resource', true );
+      if ( $main_resource ) {
+            ?>
+            <li>
+                  <?php
+                  include (locate_template( 'templates/user-profile/user-profile-resource-' . $main_resource . '.php' ));
+                  ?>
+            </li>
+            <?php
+      }
+      ?>
+
+      <?php
+      if ( get_user_meta( $curauth->ID, 'is_promoter', true ) ) {
+            ?>
+            <!--   USER EVENTS     -->
+            <li>
+                  <?php
+                  include (locate_template( 'templates/user-profile/user-profile-resource-promoter.php' ));
+                  ?>
+            </li>
+            <?php
+      }
+      ?>
+
+      <!--   USER AGENDA     -->
+      <li>
+            <?php
+            include (locate_template( 'templates/user-profile/user-profile-agenda.php' ));
+            ?>
+      </li>
+</ul>
 <?php
 
-nzs_display_messages(FALSE);
-/* global $wp_rewrite; */
-$action = get_query_var('action');
-/* d($action); */
-switch ($action) {
-        case '':
-                include (locate_template('templates/user-profile-main.php'));
+function more_resources_header() {
+      $curauth = (isset( $_GET[ 'author_name' ] )) ? get_user_by( 'slug', $author_name ) : get_userdata( intval( $author ) );
+      ?>
 
-                break;
+      <div class="cb ml5 mr5">
+            <?php
+            if ( get_query_var( 'author' ) == get_current_user_id() ) {
+                  ?>
+                  <h1>Mis otros recursos</h1>
+                  <?php
+            } else {
+                  ?>
+                  <h1>Otros recursos Clubber-Mag</h1>
+                  <?php
+            }
+            ?>
+            <hr class="p5">
+      </div>
+      <?php
+}
 
-        case 'editar':
-                include (locate_template('templates/user-profile/user-profile-edit.php'));
+$first = true;
+/*      cool-place   */
+if (
+          get_user_meta( $curauth->ID, 'coolplaces_ids', true ) &&
+          $main_resource != 'cool-place'
+ ) {
+      ($first) ? more_resources_header() : null;
+      ?>
+      <div class="fl col-2-4">
+            <?php
+            include (locate_template( 'templates/user-profile/user-profile-resource-cool-place.php' ));
+            ?>
+      </div>
+      <?php
+      $first = false;
+}
 
-                break;
+/*      SELLO */
+if (
+          get_user_meta( $curauth->ID, 'label_page', true ) &&
+          $main_resource != 'sello'
+ ) {
+      ($first) ? more_resources_header() : null;
+      ?>
+      <div class="fl col-2-4">
+            <?php
+            include (locate_template( 'templates/user-profile/user-profile-resource-sello.php' ));
+            ?>
+      </div>
+      <?php
+      $first = false;
+}
 
-        case 'agenda':
-                include (locate_template('templates/user/user-agenda-list.php'));
-
-                break;
-
-        case 'eventos':
-                include (locate_template('templates/user/user-promoter-list.php'));
-
-                break;
-
-        default:
-                echo '404';
-                break;
+/*      ARTIST */
+if (
+          get_user_meta( $curauth->ID, 'artist_page', true ) &&
+          $main_resource != 'artist'
+ ) {
+      ($first) ? more_resources_header() : null;
+      ?>
+      <div class="fl col-2-4">
+            <?php
+            include (locate_template( 'templates/user-profile/user-profile-resource-artist.php' ));
+            ?>
+      </div>
+      <?php
+      $first = false;
 }
 ?>
+
+
