@@ -5,7 +5,8 @@ global $nz;
 
 $nz['form.artist'] = array(
       'id' => 8,
-      'ajax' => 1
+      'ajax' => 1,
+      'post_type' => 'artista'
 );
 
 $nz['artist_form'] = function($nz) {
@@ -54,7 +55,9 @@ function set_artist_preview_value($value) {
         $post_id = $_GET['gform_post_id'];
 
         $post = get_post($post_id, $output, $filter);
-        if ($post && $post->post_type == 'artistas') {
+        
+      global $nz;
+        if ($post && $post->post_type == $nz['form.artist']['post_type']) {
 
                 $thumb = get_the_post_thumbnail($post->ID);
 
