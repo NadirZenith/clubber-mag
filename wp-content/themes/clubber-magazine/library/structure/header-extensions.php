@@ -154,7 +154,7 @@ function attitude_headerdetails() {
         <div id="mobile-menu-title">
                 <div style='text-align: center'>
                         <a href="<?php echo esc_url(home_url('/')); ?>" title="Clubber-Mag" rel="home">
-                                <img style="margin-left:-5px;margin-top:3px" width="220" height="50" alt="Clubber-Mag" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png">
+                                <img style="margin-left:-5px;margin-top:3px" width="200" height="50" alt="Clubber-Mag" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/images/clubber-mag-logo-inline-v2.png">
                         </a>
                 </div>
                 <a id="open-search-bar"></a>
