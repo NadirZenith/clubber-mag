@@ -33,9 +33,9 @@
               'meta_query' => array(
                     array(
                           'key' => 'wpcf-event_begin_date',
-                          'value' => array($start_date, $end_date),
+                          'value' => $start_date,
                           'type' => 'NUMERIC',
-                          'compare' => 'BETWEEN'
+                          'compare' => '>'
                     ),
                     array(
                           'key' => 'wpcf-event_type',
@@ -114,7 +114,8 @@
 
                 <?php
                 /*   LESS THAN 5 EVENTS        */
-                if ($wp_query->found_posts < 5) {
+                if (false) {
+                /*if ($wp_query->found_posts < 5) {*/
                         /* d($args); */
                         $args['post__not_in'] = $main_posts_id;
                         $args['posts_per_page'] = 5;
