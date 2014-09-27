@@ -10,7 +10,7 @@ $events = $NZRelation->getRelationTo( $curauth->ID, true );
 $start_date = strtotime( "now" );
 $args = array(
       'post_type' => 'agenda',
-      'posts_per_page' => 3,
+      /* 'posts_per_page' => 3, */
       'post__in' => $events,
       'order' => 'ASC',
       'orderby' => 'meta_value_num',
@@ -91,6 +91,11 @@ $wp_query = new WP_Query( $args );
                   ?>
                   <?php
             }
+            ?>
+      </section>
+      <section class="event bg-50 block-5">
+            <?php
+            require_once locate_template( 'library/structure/front/event.php' );
             ?>
       </section>
 
