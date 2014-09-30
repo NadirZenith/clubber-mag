@@ -29,8 +29,7 @@ $roots_includes = array(
 
 
       /* nz files */
-      'lib/nz/pages/recursos.php', // Page recursos specific queries
-      'lib/nz/archives/author.php', // Archive author specific queries
+      'lib/nz/main-includes.php'
 );
 
 foreach ( $roots_includes as $file ) {
