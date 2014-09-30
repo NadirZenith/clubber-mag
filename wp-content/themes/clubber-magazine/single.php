@@ -78,7 +78,7 @@
       $args = array(
             'post_type' => get_post_type(),
             'posts_per_page' => 4,
-            'post__not_in'        => get_the_ID(),
+            'post__not_in'        => array(get_the_ID()),
             /*'orderby' => 'RAND',*/
       );
 
