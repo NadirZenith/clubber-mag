@@ -156,7 +156,7 @@
       $args = array(
             'post_type' => get_post_type(),
             'posts_per_page' => 4,
-            'order' => 'RAND',
+            'order' => 'ASC',
             'orderby' => 'meta_value_num',
             'meta_key' => 'wpcf-event_begin_date',
             'meta_query' => array(
@@ -197,7 +197,7 @@
       $loop = new NzTplLoop( $tpl_loop );
       ?>
       <div class="cb bg-50  block-5">
-            <h1 class="ml5">Relacionado</h1>
+            <h1 class="ml5">También te puede interesar</h1>
             <hr class="pb5">
 
             <?php echo $loop->render(); ?>
