@@ -5,7 +5,7 @@
 
 <div class="bg-50 block-5 pb5 mt15 ">
       <div class="mt5" style="color:#333; text-align: center; font-size: 18px;font-family: 'Russo One', sans-serif;">
-            Zona de interacción  
+            Participa y Compártelo
       </div>
       <hr class="ml5 mr5">
       <?php
