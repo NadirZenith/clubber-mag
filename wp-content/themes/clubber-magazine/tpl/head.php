@@ -1,5 +1,8 @@
 <?php
-wp_enqueue_style('clubber-mag', get_stylesheet_uri(), null, '1.0');
+/*wp_enqueue_style('clubber-mag', get_stylesheet_uri(), null, '1.0');*/
+/*wp_enqueue_style('clubber-mag-dev', get_template_directory_uri(). '/assets/css/main.css', null, '1.0');*/
+
+/*font*/
 wp_enqueue_style('font-russo-one', 'http://fonts.googleapis.com/css?family=Russo+One');
 
 /* see plugins/ml-slider/inc/slider/metaslider.class.php *line 451 */
