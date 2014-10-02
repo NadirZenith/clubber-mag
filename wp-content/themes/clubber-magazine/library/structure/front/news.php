@@ -1,30 +1,30 @@
 <?php
 $args = array(
-    'posts_per_page' => 3,
-    'post_type' => 'post',
-    'label_name' => 'Últimas noticias'
+      'posts_per_page' => 4,
+      'post_type' => 'post',
+      'label_name' => 'Últimas noticias'
 );
-$the_query = new WP_Query($args);
+$the_query = new WP_Query( $args );
 ?>
 <h1>
-      <a class="ml5" href="<?php echo get_permalink(get_page_by_title('noticias')); ?>"> <?php echo $args['label_name'] ?></a>
+      <a class="ml5" href="<?php echo get_permalink( get_page_by_title( 'noticias' ) ); ?>"> <?php echo $args[ 'label_name' ] ?></a>
 </h1>
 
 <ul>
       <?php
-      if ($the_query->have_posts()) {
-            while ($the_query->have_posts()) {
+      if ( $the_query->have_posts() ) {
+            while ( $the_query->have_posts() ) {
                   $the_query->the_post();
                   ?>
-                  <li class="pr" style="margin-bottom: 7px;">
+                  <li class="mb5">
                         <article>
                               <div class="hover">
                                     <h2>
                                           <a class="ml5"  href="<?php the_permalink() ?>">
                                                 <?php
                                                 $mytitle = get_the_title();
-                                                if (strlen($mytitle) > 40) {
-                                                      $mytitle = substr($mytitle, 0, 40) . '...';
+                                                if ( strlen( $mytitle ) > 40 ) {
+                                                      $mytitle = substr( $mytitle, 0, 40 ) . '...';
                                                 }
                                                 echo $mytitle;
                                                 ?>
@@ -33,7 +33,7 @@ $the_query = new WP_Query($args);
                               </div>
 
                               <a class="featured-image" href="<?php the_permalink() ?>" >
-                                    <?php the_post_thumbnail('340-155-thumb'); ?>
+                                    <?php the_post_thumbnail( '340-155-thumb' ); ?>
                               </a>
 
                         </article>
@@ -50,3 +50,5 @@ $the_query = new WP_Query($args);
 <?php
 wp_reset_postdata();
 ?>
+
+<a class="fr" href="<?php echo get_permalink( get_page_by_title( 'noticias' ) ); ?>">ver más...</a>

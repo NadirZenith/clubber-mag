@@ -19,9 +19,9 @@ $the_query = new WP_Query($args);
             while ($the_query->have_posts()) {
                   $the_query->the_post();
                   ?>
-                  <li style="">
+                  <li>
                         <article>
-                              <div class="video-container" style="">
+                              <div class="video-container">
                                     <?php
                                     /*$url = types_render_field('youtube-video-url', array('raw' => true));*/
                                     /*parse_str(parse_url($url, PHP_URL_QUERY), $vars);*/
