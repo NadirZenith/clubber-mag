@@ -43,6 +43,10 @@
             <?php
             nz_fb_like();
             ?>
+            <div class="mt15"></div>
+            <?php
+            nz_tt_tweet();
+            ?>
       </div>
 
       <script type="text/javascript">

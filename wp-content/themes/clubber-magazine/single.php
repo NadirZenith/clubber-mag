@@ -46,9 +46,7 @@
                                     }
                                     ?>
                               </div>
-                              <?php
-                              include_once 'facebook/like-single.php';
-                              ?>
+
 
                         </article>
                   </section>
@@ -65,21 +63,44 @@
                   </style>
                   <?php
             }
-      } else {
-            ?>
-            <h1 class="entry-title"><?php _e( 'No Posts Found.', 'attitude' ); ?></h1>
-            <?php
       }
       ?>
 
+      <div class="cb bg-50  block-5 mt15">
+            <h1 class="ml5">Comentarios</h1>
+            <?php
+            include_once 'facebook/comments.php';
+            ?>
+      </div>
 
+      <?php
+      $tags = wp_get_post_tags( get_the_ID(), $args );
+      if ( !empty( $tags ) ) {
+            if ( !is_wp_error( $tags ) ) {
+                  ?>
+                  <div class="cb bg-50  block-5 mt15">
+                        <div class="tag-list">
+                              <span class="tags-icon"></span>
+                              <ul>
+                                    <?php
+                                    foreach ( $tags as $tag ) {
+                                          echo '<li><a href="' . get_term_link( $tag ) . '">' . $tag->name . '</a></li>';
+                                    }
+                                    ?>
+                              </ul>
+                        </div>
+                  </div>
+                  <?php
+            }
+      }
+      ?>
 
       <?php
       $args = array(
             'post_type' => get_post_type(),
             'posts_per_page' => 4,
-            'post__not_in'        => array(get_the_ID()),
-            /*'orderby' => 'RAND',*/
+            'post__not_in' => array( get_the_ID() ),
+                /* 'orderby' => 'RAND', */
       );
 
       $query = new WP_Query( $args );
@@ -103,20 +124,14 @@
 
       $loop = new NzTplLoop( $tpl_loop );
       ?>
-      <div class="cb bg-50  block-5">
-            <h1 class="ml5">Relacionado</h1>
+      <div class="cb bg-50  block-5 mt15">
+            <h1 class="ml5">Contenidos relacionados</h1>
             <hr class="pb5">
 
             <?php echo $loop->render(); ?>
       </div>
 
-      <div class="cb bg-50  block-5 mt15">
-            <h1 class="ml5">Comentarios</h1>
-            <hr class="pb5">
-            <?php
-            include_once 'facebook/comments.php';
-            ?>
-      </div>
+
 </div>
 
 <div id="secondary">

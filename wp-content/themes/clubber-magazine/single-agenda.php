@@ -31,7 +31,7 @@
                   }
                   ?>
 
-                  <section class="bg-50 block-5 " style="overflow:visible">
+                  <section class="bg-50 block-5 group" style="overflow:visible">
                         <article style="">
                               <div class="col-2-4 fl nm">
                                     <?php if ( has_post_thumbnail( $post->ID ) ): ?>
@@ -134,75 +134,13 @@
                                     }
                                     ?>
                               </div>
-
-
-                              <?php
-                              include_once 'facebook/like-single.php';
-                              ?>
-
+                              
                         </article>
                   </section>
                   <?php
             }
-      } else {
-            ?>
-            <h1 class="entry-title"><?php _e( 'No Posts Found.', 'attitude' ); ?></h1>
-            <?php
       }
-      /* the_meta(); */
       ?>
-
-      <?php
-      $args = array(
-            'post_type' => get_post_type(),
-            'posts_per_page' => 4,
-            'order' => 'ASC',
-            'orderby' => 'meta_value_num',
-            'meta_key' => 'wpcf-event_begin_date',
-            'meta_query' => array(
-                  /*'relation' => 'AND',*/
-                  /*array(
-                        'key' => 'wpcf-event_displayed',
-                        'value' => 1,
-                        'compare' => '=',
-                  ),
-                   */
-                  array(
-                        'key' => 'wpcf-event_begin_date',
-                        'value' => time(),
-                        'type' => 'NUMERIC',
-                        'compare' => '>='
-                  )
-            )
-      );
-      $query = new WP_Query( $args );
-      $tpl_loop = array(
-            'query' => $query,
-            'container' => array(
-                  'tag' => 'ul',
-                  'id' => '',
-                  'class' => ''
-            ),
-            'item_container' => array(
-                  'tag' => 'li',
-                  'id' => '',
-                  'class' => ''
-            ),
-            'item_template' => array(
-                  'template_part' => 'tpl/archive/related-list-item'
-            )
-      );
-
-
-      $loop = new NzTplLoop( $tpl_loop );
-      ?>
-      <div class="cb bg-50  block-5">
-            <h1 class="ml5">También te puede interesar</h1>
-            <hr class="pb5">
-
-            <?php echo $loop->render(); ?>
-      </div>
-
       <div class="bg-50  block-5" >
 
             <h1 class="ml5">Comentarios</h1>
@@ -210,6 +148,79 @@
             include_once 'facebook/comments.php';
             ?>
 
+      </div>
+
+      <?php
+      $tags = wp_get_post_tags( get_the_ID(), $args );
+      if ( !empty( $tags ) ) {
+            if ( !is_wp_error( $tags ) ) {
+                  ?>
+                  <div class="cb bg-50  block-5 mb15">
+                        <div class="tag-list">
+                              <span class="tags-icon"></span>
+                              <ul>
+                                    <?php
+                                    foreach ( $tags as $tag ) {
+                                          echo '<li><a href="' . get_term_link( $tag ) . '">' . $tag->name . '</a></li>';
+                                    }
+                                    ?>
+                              </ul>
+                        </div>
+                  </div>
+                  <?php
+            }
+      }
+      ?>
+
+      <div class="cb bg-50  block-5">
+            <h1 class="ml5">También te puede interesar</h1>
+            <hr class="pb5">
+            <?php
+            $args = array(
+                  'post_type' => get_post_type(),
+                  'posts_per_page' => 4,
+                  'order' => 'ASC',
+                  'orderby' => 'meta_value_num',
+                  'meta_key' => 'wpcf-event_begin_date',
+                  'meta_query' => array(
+                        /* 'relation' => 'AND', */
+                        /* array(
+                          'key' => 'wpcf-event_displayed',
+                          'value' => 1,
+                          'compare' => '=',
+                          ),
+                         */
+                        array(
+                              'key' => 'wpcf-event_begin_date',
+                              'value' => time(),
+                              'type' => 'NUMERIC',
+                              'compare' => '>='
+                        )
+                  )
+            );
+            $query = new WP_Query( $args );
+            $tpl_loop = array(
+                  'query' => $query,
+                  'container' => array(
+                        'tag' => 'ul',
+                        'id' => '',
+                        'class' => ''
+                  ),
+                  'item_container' => array(
+                        'tag' => 'li',
+                        'id' => '',
+                        'class' => ''
+                  ),
+                  'item_template' => array(
+                        'template_part' => 'tpl/archive/related-list-item'
+                  )
+            );
+
+
+            $loop = new NzTplLoop( $tpl_loop );
+            ?>
+
+            <?php echo $loop->render(); ?>
       </div>
 
 </div>
