@@ -26,7 +26,7 @@
  */
 $roots_includes = array(
       'lib/wrapper.php', // Theme wrapper class
-
+      'lib/scripts.php', // scripts styles etc
 
       /* nz files */
       'lib/nz/main-includes.php'
