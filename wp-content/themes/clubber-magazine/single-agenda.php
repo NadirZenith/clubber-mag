@@ -161,7 +161,8 @@
                               <ul>
                                     <?php
                                     foreach ( $tags as $tag ) {
-                                          echo '<li><a href="' . get_term_link( $tag ) . '">' . $tag->name . '</a></li>';
+                                          echo '<li>' . $tag->name . '</li>';
+                                          /*echo '<li><a href="' . get_term_link( $tag ) . '">' . $tag->name . '</a></li>';*/
                                     }
                                     ?>
                               </ul>
