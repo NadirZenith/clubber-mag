@@ -13,7 +13,7 @@
 
                               <div class="meddium bold">
                                     <p>
-                                          Mira, búscate y comparte las fotografías de los eventos más importantes de tu ciudad.
+                                          Mira, búscate y comparte las fotografías de los eventos más importantes.
                                     </p>
                               </div>
                               <a class="readmore mr5" href="<?php echo get_post_type_archive_link('photo'); ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
@@ -42,7 +42,7 @@
 
                               <div class="meddium bold">
                                     <p>
-                                          Revive los eventos más destacados en tú ciudad con nosotros.
+                                          Revive los eventos más destacados con nosotros.
                                     </p>
                               </div>
                               <a class="readmore mr5" href="<?php echo get_post_type_archive_link('video'); ?>" title=""> <?php echo __('Read more', 'attitude') ?></a>
