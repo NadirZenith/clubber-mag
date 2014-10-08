@@ -19,7 +19,7 @@
               ),
               'label' => array(
                     'title' => 'Sellos discográficos',
-                    'description' => 'Promociona tus artistas, sus noticas y  música en Clubber Magazine!',
+                    'description' => 'Promociona tus artistas, sus noticias y  música en Clubber Magazine!',
                     'img' => 'recurso_label.jpg',
                     'url' => 'sello'
               ),
