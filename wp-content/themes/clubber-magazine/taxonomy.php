@@ -2,7 +2,7 @@
 <div id="primary">
         <?php
         $taxonomy_type['music_type'] = array(
-              'title' => 'Musica',
+              'title' => 'Música',
               'terms' => array(
                     'reviews' => 'Reviews',
                     'podcasts' => 'Podcasts',
