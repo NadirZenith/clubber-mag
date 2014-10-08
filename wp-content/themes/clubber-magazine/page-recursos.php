@@ -6,13 +6,13 @@
         <?php
         $recursos = array(
               'artista' => array(
-                    'title' => 'Artista',
+                    'title' => 'Artistas',
                     'description' => 'Comparte tu música, biografía, noticias y fechas!',
                     'img' => 'recurso_artista.jpg',
                     'url' => 'artista'
               ),
               'promotor' => array(
-                    'title' => 'Promotor',
+                    'title' => 'Promotores',
                     'description' => 'Produces eventos y te gustaría promocionarlos? Compártelos en Clubber-mag!',
                     'img' => 'recurso_promotor.jpg',
                     'url' => '/subir-evento'
