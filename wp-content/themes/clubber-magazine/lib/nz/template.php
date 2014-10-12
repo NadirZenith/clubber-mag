@@ -56,6 +56,7 @@ class NzTplLoop {
 
             $buffer = '';
             while ( $query->have_posts() ) : $query->the_post();
+                  /* setup_postdata($query->post); */
                   ob_start();
                   get_template_part( $this->item_template[ 'template_part' ] );
                   $buffer .= sprintf( $item_container, ob_get_clean() );
@@ -63,7 +64,7 @@ class NzTplLoop {
 
             $container = $this->_get_container( $this->container_options );
             $loop = sprintf( $container, $buffer );
-
+            wp_reset_postdata();
             return $loop;
       }
 
