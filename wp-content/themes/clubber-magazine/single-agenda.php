@@ -134,7 +134,7 @@
                                     }
                                     ?>
                               </div>
-                              
+
                         </article>
                   </section>
                   <?php
@@ -162,7 +162,7 @@
                                     <?php
                                     foreach ( $tags as $tag ) {
                                           echo '<li><span>' . $tag->name . '</span></li>';
-                                          /*echo '<li><a href="' . get_term_link( $tag ) . '">' . $tag->name . '</a></li>';*/
+                                          /* echo '<li><a href="' . get_term_link( $tag ) . '">' . $tag->name . '</a></li>'; */
                                     }
                                     ?>
                               </ul>
@@ -229,5 +229,12 @@
 <div id="secondary" >
       <?php
       get_sidebar( 'single-agenda' );
+      ?>
+</div>
+
+<div class="cb"></div>
+<div class="featured-image banner-bottom"> 
+      <?php
+      echo do_shortcode( '[sam id=5]' );
       ?>
 </div>
