@@ -55,6 +55,21 @@
       </li>
 
 </ul>
+<?php
+$user = wp_get_current_user();
+
+if ( $user->id == 1 ) {
+      ?>
+      <div class="cb"></div>
+      <div class="featured-image banner-bottom"> 
+            <?php
+            echo do_shortcode( '[sam id=1]' );
+            ?>
+      </div>
+      <?php
+}
+?>
+
 <?php 
 /*
 ?>
