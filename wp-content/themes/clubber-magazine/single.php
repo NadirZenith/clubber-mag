@@ -1,4 +1,4 @@
-
+<?php ?>
 <div id="primary">
       <?php
       /* d('single ' . get_post_type()); */
@@ -128,10 +128,16 @@
             <h1 class="ml5">Contenidos relacionados</h1>
             <hr class="pb5">
 
-            <?php echo $loop->render(); ?>
+            <?php
+            echo $loop->render();
+            ?>
       </div>
 
-
+      <div class="featured-image banner-bottom" > 
+            <?php
+            echo do_shortcode( '[sam id=5]' );
+            ?>
+      </div>
 </div>
 
 <div id="secondary">
