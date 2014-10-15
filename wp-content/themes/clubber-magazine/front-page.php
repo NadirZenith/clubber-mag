@@ -63,7 +63,7 @@ if ( $user->id == 1 ) {
       <div class="cb"></div>
       <div class="featured-image banner-bottom"> 
             <?php
-            echo do_shortcode( '[sam id=1]' );
+            echo do_shortcode( '[sam id=5]' );
             ?>
       </div>
       <?php
