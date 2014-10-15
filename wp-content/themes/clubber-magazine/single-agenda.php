@@ -224,17 +224,18 @@
             <?php echo $loop->render(); ?>
       </div>
 
+
+      <div class="cb"></div>
+      <div class="featured-image banner-bottom" > 
+            <?php
+            echo do_shortcode( '[sam id=5]' );
+            ?>
+      </div>
+
 </div>
 
 <div id="secondary" >
       <?php
       get_sidebar( 'single-agenda' );
-      ?>
-</div>
-
-<div class="cb"></div>
-<div class="featured-image banner-bottom" style="margin-left: 15px;"> 
-      <?php
-      echo do_shortcode( '[sam id=5]' );
       ?>
 </div>
