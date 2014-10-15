@@ -233,7 +233,7 @@
 </div>
 
 <div class="cb"></div>
-<div class="featured-image banner-bottom"> 
+<div class="featured-image banner-bottom" style="margin-left: 15px;"> 
       <?php
       echo do_shortcode( '[sam id=5]' );
       ?>
