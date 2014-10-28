@@ -5,7 +5,7 @@
         $args = array(
               'label_name' => 'Artistas',
               'post_type' => 'artista',
-              'link' => get_post_type_archive_link('artists'),
+              'link' => get_post_type_archive_link('artista'),
               'post_status' => 'publish',
               'posts_per_page' => 1,
         );
