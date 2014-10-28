@@ -30,4 +30,5 @@ if ( is_single() ) {
 <?php
 /*    banners       */
 include_once 'banners/single-event-1.php';
+include_once 'banners/single-event-2.php';
 ?>
