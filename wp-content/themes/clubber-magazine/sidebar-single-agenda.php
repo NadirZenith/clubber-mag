@@ -151,5 +151,9 @@
 </div>
 <?php
 /*    banners       */
-include_once 'banners/right-2-300-300.php';
+include_once 'banners/single-event-1.php';
+?>
+<?php
+/*    banners       */
+include_once 'banners/single-event-2.php';
 ?>

@@ -22,14 +22,9 @@
                         <div id="main" class="container clearfix">
                                 <div id="container">
                                         <?php
-                                        /* d(roots_template_path()); */
+                                        include roots_template_path();
                                         ?>
-                                        <?php
-                                        include
-                                        /*echo   */
-                                        roots_template_path();
-                                        ?>
-
+                                      
                                 </div><!-- #container -->
 
 

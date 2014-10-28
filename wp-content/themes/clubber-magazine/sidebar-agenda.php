@@ -5,7 +5,7 @@
         <div id="calendar" class="bg-50 block-5"></div>
         <?php
         /*    banners       */
-        include_once 'banners/right-2-300-300.php';
+        include_once 'banners/single-event-1.php';
         ?>
 </div>
 

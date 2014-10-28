@@ -10,5 +10,4 @@
 
 <div style="text-align: center">
         <h1>No tienes permiso!</h1>
-
 </div>
