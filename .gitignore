@@ -16,3 +16,12 @@ nbproject/
 /wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
 /wp-content/aiowps_backups/
 /wp-content/themes/clubber-magazine/prueba/
+
+/wp-content/plugins/core-control/
+/wp-content/plugins/debug-*/
+/wp-content/plugins/developer/
+/wp-content/plugins/query-monitor/
+/wp-content/plugins/rewrite-rules-inspector/
+/wp-content/plugins/theme-check/
+/wp-content/plugins/user-switching/
+/wp-content/plugins/wpdevtool/
