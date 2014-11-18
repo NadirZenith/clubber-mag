@@ -149,7 +149,7 @@ function clubber_mag_extra_profile_fields( $user ) {
                   <td>
                         <?php
                         $main_resource = get_user_meta( $user->ID, 'main_resource', true );
-                        d( $main_resource );
+                        /*d( $main_resource );*/
                         //check if main resource exist
                         if ( 'artist' == $main_resource ) {
                               $artist_page_id = ( int ) get_user_meta( $user->ID, 'artist_page', true );
@@ -245,7 +245,7 @@ function clubber_mag_extra_profile_fields( $user ) {
                         <?php
                         if ( $artist_page_id =  get_user_meta( $user->ID, 'artist_page' ) ) {
                               $artist = get_post( $artist_page_id );
-                              d( $artist );
+                              /*d( $artist );*/
                               if ( NULL == $artist /* || $artist->post_type != 'artist' */ ) {
                                     delete_user_meta( $user->ID, 'artist_page' );
                                     unset( $artist_page_id );
@@ -260,7 +260,7 @@ function clubber_mag_extra_profile_fields( $user ) {
                                     <?php
                               }
                         }
-                        d($artist_page_id);
+                        /*d($artist_page_id);*/
                         ?>
                         <select  style="width: 300px;height: 100px" name="user_artist_page" size="8" >
                               <option value="" <?php echo (is_null( $artist_page_id )) ? 'selected ' : null; ?>> - empty - </option>
