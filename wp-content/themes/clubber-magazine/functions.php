@@ -98,9 +98,9 @@ $roots_includes = array(
       //forms /login /register
       'lib/nz/lib/nz-wp-form/nz-wp-forms.php',
       //
-      'lib/nz/lib/debug/nz-url-functions.php',
-      'lib/nz/lib/debug/nz-debug-functions.php',
-      'lib/nz//lib/debug/css-media-queries.php',
+      /*'lib/nz/lib/debug/nz-url-functions.php',*/
+      /*'lib/nz/lib/debug/nz-debug-functions.php',*/
+      /*'lib/nz//lib/debug/css-media-queries.php',*/
       //
       /* CM_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php', */
        /*CM_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php', */

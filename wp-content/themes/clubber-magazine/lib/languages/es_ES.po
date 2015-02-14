@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-14 17:54+0100\n"
-"PO-Revision-Date: 2015-02-14 17:55+0100\n"
+"POT-Creation-Date: 2015-02-14 22:35+0100\n"
+"PO-Revision-Date: 2015-02-14 22:35+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -19,12 +19,13 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: sidebar.php:11
+#: sidebar.php:7
 msgid "Share event"
 msgstr "Compartir Evento"
 
 #: page-layout.php:15
 #: page-template-form.php:22
+#: search.php:149
 msgid "No Posts Found."
 msgstr "Post no encontrado "
 
@@ -32,7 +33,7 @@ msgstr "Post no encontrado "
 msgid "News Archive"
 msgstr "Archivo Músical"
 
-#: functions.php:118
+#: functions.php:117
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr ""
@@ -439,7 +440,7 @@ msgstr ""
 
 #: tpl/home/home-last-photo.php:5
 msgid "Photo Gallery"
-msgstr ""
+msgstr "Galería de Fotos"
 
 #: tpl/home/home-last-photo.php:27
 msgid "see more ..."
@@ -447,11 +448,11 @@ msgstr "Ver más..."
 
 #: tpl/home/home-last-music.php:4
 msgid "Music"
-msgstr "Musica "
+msgstr "Música"
 
 #: tpl/home/home-last-news.php:4
 msgid "Last News"
-msgstr "Notícias "
+msgstr "Últimas Noticias "
 
 #: tpl/home/home-shared-podcasts.php:4
 msgid "Latests podcasts"
@@ -481,7 +482,7 @@ msgstr "Video Review"
 msgid "Agenda"
 msgstr ""
 
-#: lib/api.php:196
+#: lib/api.php:162
 msgid "No users found."
 msgstr "Usuario no encontrado"
 
@@ -523,6 +524,7 @@ msgstr "Información del sello"
 #: lib/forms/contact_form.php:34
 #: lib/forms/coolplace_form.php:74
 #: lib/forms/register_form.php:32
+#: lib/forms/edituser_form.php:81
 msgid "Email is not valid"
 msgstr "Email invalido "
 
@@ -532,46 +534,54 @@ msgstr "Email invalido "
 #: lib/forms/contact_form.php:27
 #: lib/forms/coolplace_form.php:76
 #: lib/forms/register_form.php:28
+#: lib/forms/edituser_form.php:77
 msgid "Email"
 msgstr ""
 
 #: lib/forms/label_form.php:51
 #: lib/forms/artist_form.php:62
 #: lib/forms/coolplace_form.php:79
+#: lib/forms/edituser_form.php:100
 msgid "Link Pagina Oficial"
 msgstr "Enlace Pagina Oficial"
 
 #: lib/forms/label_form.php:52
 #: lib/forms/artist_form.php:63
 #: lib/forms/coolplace_form.php:80
+#: lib/forms/edituser_form.php:101
 msgid "Link Facebook"
 msgstr "Enlace Facebook"
 
 #: lib/forms/label_form.php:53
 #: lib/forms/artist_form.php:64
+#: lib/forms/edituser_form.php:102
 msgid "Link Soundcloud"
 msgstr "Enlace Soundcloud"
 
 #: lib/forms/label_form.php:54
 #: lib/forms/artist_form.php:65
 #: lib/forms/coolplace_form.php:81
+#: lib/forms/edituser_form.php:103
 msgid "Link Instagram"
 msgstr "Enlace Instagram"
 
 #: lib/forms/label_form.php:55
 #: lib/forms/artist_form.php:66
 #: lib/forms/coolplace_form.php:82
+#: lib/forms/edituser_form.php:104
 msgid "Link Google +"
 msgstr "Enlace Google+"
 
 #: lib/forms/label_form.php:56
 #: lib/forms/artist_form.php:67
+#: lib/forms/edituser_form.php:105
 msgid "Link Youtube"
 msgstr "Enlace  Youtube"
 
 #: lib/forms/label_form.php:57
 #: lib/forms/artist_form.php:68
 #: lib/forms/coolplace_form.php:83
+#: lib/forms/edituser_form.php:106
 msgid "Link Twitter"
 msgstr "Enlace Twitter"
 
@@ -588,6 +598,7 @@ msgstr "Enlace Bandpage"
 #: lib/forms/label_form.php:67
 #: lib/forms/artist_form.php:79
 #: lib/forms/coolplace_form.php:92
+#: lib/forms/edituser_form.php:115
 msgid "Url is not valid"
 msgstr "Url Invalidad"
 
@@ -600,6 +611,7 @@ msgstr "Url Invalidad"
 #: lib/forms/event_form.php:231
 #: lib/forms/coolplace_form.php:103
 #: lib/forms/register_form.php:56
+#: lib/forms/edituser_form.php:148
 msgid "Submit"
 msgstr "Enviar"
 
@@ -639,11 +651,13 @@ msgstr ""
 #: lib/forms/login_form.php:16
 #: lib/forms/contact_form.php:33
 #: lib/forms/register_form.php:31
+#: lib/forms/edituser_form.php:80
 msgid "Email is required"
 msgstr "Email Requerido "
 
 #: lib/forms/login_form.php:27
 #: lib/forms/register_form.php:41
+#: lib/forms/edituser_form.php:128
 msgid "Password"
 msgstr "Contraseña"
 
@@ -789,6 +803,7 @@ msgid "Password does not match"
 msgstr "Contraseña no coincide"
 
 #: lib/forms/register_form.php:47
+#: lib/forms/edituser_form.php:135
 msgid "Password is required"
 msgstr "Contraseña requerida"
 
@@ -900,6 +915,9 @@ msgid "test - widget"
 msgstr "Prueba tu Widget"
 
 #: lib/nz/widgets/widget-test.php:76
+#: lib/nz/widgets/widget-newsletter.php:85
+#: lib/nz/widgets/widget-audio.php:216
+#: lib/nz/widgets/widget-soundcloud.php:71
 msgid "Title:"
 msgstr "Titulo "
 
@@ -1104,12 +1122,10 @@ msgid "Success Registration"
 msgstr "Registro con exitoso "
 
 #: lib/nz/lib/nz-wp-form/login-register/views/login-dialog.php:8
-#: lib/nz/lib/nz-wp-form/login-register/views/login-form.php:33
 msgid "Login"
 msgstr "Inicio de sesión   "
 
 #: lib/nz/lib/nz-wp-form/login-register/views/login-dialog.php:9
-#: lib/nz/lib/nz-wp-form/login-register/views/register-dialog.php:8
 msgid "Loading..."
 msgstr "Cargando..."
 
