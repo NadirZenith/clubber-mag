@@ -8,17 +8,22 @@
                   </a>
             </h2>
       </div>
-      <div class="event-date" style="position: absolute; right: 0; top: 0px;">
-            <?php
-            $date = get_post_meta( get_the_ID(), 'wpcf-event_begin_date', true );
-            echo date( 'd/m/y', $date );
-            $tax = 'city';
-            if ( $term = wp_get_post_terms( get_the_ID(), $tax )[ 0 ]->name ) {
-                  $link = get_term_link( $term, $tax );
-                  echo " <a href='{$link}'>{$term}</a>";
-            }
+      <?php
+      if ( $date = get_post_meta( get_the_ID(), 'wpcf-event_begin_date', true ) ) {
             ?>
-      </div>
+            <div class="p-detail">
+                  <?php
+                  echo date( 'd/m/y', $date );
+                  $tax = 'city';
+                  if ( $term = wp_get_post_terms( get_the_ID(), $tax )[ 0 ]->name ) {
+                        $link = get_term_link( $term, $tax );
+                        echo " <a href='{$link}'>{$term}</a>";
+                  }
+                  ?>
+            </div>
+            <?php
+      }
+      ?>
 
       <a class="featured-image" href="<?php echo get_permalink( $event->ID ); ?>"  style="">
             <?php echo get_the_post_thumbnail( get_the_ID(), '290-160-thumb' ); ?>
