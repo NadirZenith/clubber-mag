@@ -5,7 +5,7 @@ class NZ_WP_Form {
       static $post_featured_slug = '_thumbnail_id';
       static $post_file_slug = '_attachment_id';
       static $preview_relative_path = '/cache/preview/';
-      private $img_placeholder_url = 'http://lab.dev/clubber-mag-dev/wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
+      private $img_placeholder_url = 'http://www.clubber-mag.com/wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
       //main
       public $form_name;
       public $post_type;
