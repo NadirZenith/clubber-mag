@@ -1,6 +1,0 @@
-{
-      "require": {
-            "symfony/http-foundation": "3.0.*@dev",
-            "pimple/pimple": "3.0.*@dev"
-      }
-}
