@@ -34,12 +34,12 @@ Class NzWpLang {
             $this->options = wp_parse_args( $options, array(
                   'query_var' => 'lang',
                   'supported' => array(
-                        'en' => 'en_US',
                         'es' => 'es_ES',
+                        'en' => 'en_US'
                   ),
                   'cookie' => array(
-                        /* 'enabled' => true, */
-                        'enabled' => FALSE,
+                         'enabled' => true, 
+                        /*'enabled' => FALSE,*/
                         'name' => 'cm_lang',
                         'expire' => mktime( 0, 5 ),
                         'path' => '/',
