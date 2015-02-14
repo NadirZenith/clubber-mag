@@ -40,7 +40,7 @@
                 <span class="follow-us"></span>
         </a>
         <div class="back-to-top">
-                <a href="#branding"><?php echo __('Back to Top', 'attitude'); ?></a>
+                <a href="#branding"><?php echo __('Back to Top', 'cm'); ?></a>
         </div>
 </footer>
 </div><!-- .wrapper -->

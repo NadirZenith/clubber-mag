@@ -3,7 +3,7 @@
 if (!class_exists('AIO_WP_Security')){
 
 class AIO_WP_Security{
-    var $version = '3.7.2';
+    var $version = '3.8.9';
     var $db_version = '1.6';
     var $plugin_url;
     var $plugin_path;
@@ -14,7 +14,7 @@ class AIO_WP_Security{
     var $user_login_obj;
     var $user_registration_obj;
     var $backup_obj;
-    var $filescan_obj;
+    var $scan_obj;
     var $captcha_obj;
 
     function __construct()
@@ -25,6 +25,7 @@ class AIO_WP_Security{
         $this->loader_operations();
 
         add_action('init', array(&$this, 'wp_security_plugin_init'), 0);
+        add_action('wp_loaded',array(&$this, 'aiowps_wp_loaded_handler'));
         do_action('aiowpsecurity_loaded');
     }
     
@@ -56,7 +57,9 @@ class AIO_WP_Security{
         define('AIO_WP_SECURITY_BACKUPS_DIR_NAME', 'aiowps_backups');
         define('AIO_WP_SECURITY_BACKUPS_PATH', AIO_WP_SECURITY_PATH.'/backups');
         define('AIO_WP_SECURITY_LIB_PATH', AIO_WP_SECURITY_PATH.'/lib');
-        define('AIOWPSEC_MANAGEMENT_PERMISSION', 'manage_options');
+        if (!defined('AIOWPSEC_MANAGEMENT_PERMISSION')){//This will allow the user to define custom capability for this constant in wp-config file
+            define('AIOWPSEC_MANAGEMENT_PERMISSION', 'manage_options');
+        }
         define('AIOWPSEC_MENU_SLUG_PREFIX', 'aiowpsec');
         define('AIOWPSEC_MAIN_MENU_SLUG', 'aiowpsec');
         define('AIOWPSEC_SETTINGS_MENU_SLUG', 'aiowpsec_settings');
@@ -72,6 +75,7 @@ class AIO_WP_Security{
         define('AIOWPSEC_SPAM_MENU_SLUG', 'aiowpsec_spam');
         define('AIOWPSEC_FILESCAN_MENU_SLUG', 'aiowpsec_filescan');
         define('AIOWPSEC_BRUTE_FORCE_MENU_SLUG', 'aiowpsec_brute_force');
+        define('AIOWPSEC_MISC_MENU_SLUG', 'aiowpsec_misc');
         
         global $wpdb;
         define('AIOWPSEC_TBL_LOGIN_LOCKDOWN', $wpdb->prefix . 'aiowps_login_lockdown');
@@ -91,6 +95,7 @@ class AIO_WP_Security{
         include_once('classes/wp-security-utility-ip-address.php');
         include_once('classes/wp-security-utility-file.php');
         include_once('classes/wp-security-general-init-tasks.php');
+        include_once('classes/wp-security-wp-loaded-tasks.php');
         
         include_once('classes/wp-security-user-login.php');
         include_once('classes/wp-security-user-registration.php');
@@ -100,6 +105,7 @@ class AIO_WP_Security{
         include_once('classes/wp-security-cronjob-handler.php');
         include_once('classes/grade-system/wp-security-feature-item.php');
         include_once('classes/grade-system/wp-security-feature-item-manager.php');
+        include_once('classes/wp-security-wp-footer-content.php');
         
         if (is_admin()){ //Load admin side only files
             include_once('classes/wp-security-configure-settings.php');
@@ -121,29 +127,32 @@ class AIO_WP_Security{
     }
     
     static function activate_handler()
-    {   
+    {
         //Only runs when the plugin activates
         include_once ('classes/wp-security-installer.php');
         AIOWPSecurity_Installer::run_installer();
+
         wp_schedule_event(time(), 'hourly', 'aiowps_hourly_cron_event'); //schedule an hourly cron event
-        //wp_schedule_event(time(), 'daily', 'aiowps_daily_cron_event'); //schedule an daily cron event
+        wp_schedule_event(time(), 'daily', 'aiowps_daily_cron_event'); //schedule an daily cron event
+        
+        do_action('aiowps_activation_complete');
     }
     
     static function deactivate_handler()
     {
         //Only runs with the pluign is deactivated
         include_once ('classes/wp-security-deactivation-tasks.php');
-        //AIOWPSecurity_Deactivation::run_deactivation_tasks();
+        AIOWPSecurity_Deactivation::run_deactivation_tasks();
         wp_clear_scheduled_hook('aiowps_hourly_cron_event');
-        //wp_clear_scheduled_hook('aiowps_daily_cron_event');
-        if (AIOWPSecurity_Utility::is_multisite_install())
-        {
+        wp_clear_scheduled_hook('aiowps_daily_cron_event');
+        if (AIOWPSecurity_Utility::is_multisite_install()){
             delete_site_transient('users_online');
         }
-        else
-        {
+        else{
             delete_transient('users_online');
         }
+        
+        do_action('aiowps_deactivation_complete');
     }
     
     function db_upgrade_handler()
@@ -178,19 +187,30 @@ class AIO_WP_Security{
         $this->user_registration_obj = new AIOWPSecurity_User_Registration();//Do the user login operation tasks
         $this->captcha_obj = new AIOWPSecurity_Captcha();//Do the captcha tasks
         $this->backup_obj = new AIOWPSecurity_Backup();//Object to handle backup tasks
-        $this->filescan_obj = new AIOWPSecurity_Filescan();//Object to handle backup tasks 
+        $this->scan_obj = new AIOWPSecurity_Scan();//Object to handle scan tasks 
         $this->cron_handler = new AIOWPSecurity_Cronjob_Handler();
         
         add_action('wp_head',array(&$this, 'aiowps_header_content'));
-                
+        add_action('wp_footer',array(&$this, 'aiowps_footer_content'));
+        
         add_action('wp_login', array('AIOWPSecurity_User_Login', 'wp_login_action_handler'), 10, 2);
         do_action('aiowps_force_logout_check');
         new AIOWPSecurity_General_Init_Tasks();
+    }
+    
+    function aiowps_wp_loaded_handler()
+    {
+        new AIOWPSecurity_WP_Loaded_Tasks();
     }
 
     function aiowps_header_content()
     {
         //NOP
+    }
+    
+    function aiowps_footer_content()
+    {
+        new AIOWPSecurity_WP_Footer_Content();
     }
     
     function do_additional_plugins_loaded_tasks()
@@ -203,16 +223,17 @@ class AIO_WP_Security{
                 $after_logout_url = esc_url($_GET['after_logout']);
                 AIOWPSecurity_Utility::redirect_to_url($after_logout_url);
             }
-            if(isset($_GET['al_additional_data']))//Inspect the payload and do redirect to login page with a msg and redirect url
+            $additional_data = strip_tags($_GET['al_additional_data']);
+            if(isset($additional_data))
             {
-                $payload = strip_tags($_GET['al_additional_data']);
-                $decoded_payload = base64_decode($payload);
-                parse_str($decoded_payload); 
-                if(!empty($redirect_to)){
-                    $login_url = AIOWPSecurity_Utility::add_query_data_to_url(wp_login_url(),'redirect_to',$redirect_to);
+                $login_url = '';
+                //Inspect the payload and do redirect to login page with a msg and redirect url
+                $logout_payload = (AIOWPSecurity_Utility::is_multisite_install() ? get_site_transient('aiowps_logout_payload') : get_transient('aiowps_logout_payload'));
+                if(!empty($logout_payload['redirect_to'])){
+                    $login_url = AIOWPSecurity_Utility::add_query_data_to_url(wp_login_url(),'redirect_to',$logout_payload['redirect_to']);
                 }
-                if(!empty($msg)){
-                    $login_url .= '&'.$msg;
+                if(!empty($logout_payload['msg'])){
+                    $login_url .= '&'.$logout_payload['msg'];
                 }
                 if(!empty($login_url)){
                     AIOWPSecurity_Utility::redirect_to_url($login_url);

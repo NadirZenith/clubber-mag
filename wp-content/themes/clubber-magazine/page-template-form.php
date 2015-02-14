@@ -7,31 +7,17 @@
  */
 ?>
 
-<?php
-global $post;
-if ( have_posts() ) {
-      while ( have_posts() ) {
-            the_post();
 
-            do_action( 'attitude_before_post' );
-            ?>
-            <section class="bg-50 block-5 pb15" id="post-<?php the_ID(); ?>">
-                  <div class="col-3-4" style="margin:auto">
-                        <header>
-                              <h1 class="ml5 mt5 bigger">
-                                    <?php the_title(); ?>
-                              </h1>
-                        </header>
+<?php if ( have_posts() ) : ?>
+      <?php while ( have_posts() ) : the_post(); ?>
+            <section class="ibox-5 box-5">
+                  <article>
                         <?php
-                        the_content()
+                        the_content();
                         ?>
-                  </div>
+                  </article>
             </section>
-            <?php
-      }
-} else {
-      ?>
-      <h1 class="entry-title"><?php _e( 'No Posts Found.', 'attitude' ); ?></h1>
-      <?php
-}
-?>
+      <?php endwhile; ?>
+<?php else: ?>
+      <div class="h1"><?php _e( 'No Posts Found.', 'cm' ); ?></div>
+<?php endif; ?>

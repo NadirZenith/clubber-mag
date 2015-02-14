@@ -26,7 +26,7 @@ if ( post_password_required() )
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+		<h1 class="comments-title">
 			<?php
 				if( 1 == get_comments_number() ) {
 					printf( __( 'One thought on &ldquo;%2$s&rdquo;', 'attitude' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
@@ -35,7 +35,7 @@ if ( post_password_required() )
 					printf( __( '%1$s thoughts on &ldquo;%2$s&rdquo;', 'attitude' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
 				}				
 			?>
-		</h2>
+		</h1>
 
 		<ol class="commentlist">
 			<?php wp_list_comments( array( 'callback' => 'attitude_comment', 'style' => 'ol' ) ); ?>

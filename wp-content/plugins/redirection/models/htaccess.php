@@ -1,14 +1,7 @@
 <?php
 
 class Red_Htaccess {
-	var $settings;
 	var $items;
-
-	function __construct( $settings ) {
-		foreach ( $settings AS $key => $value ) {
-			$this->settings[$key] = $value;
-		}
-	}
 
 	function encode_from( $url )	{
 		return '^'.$this->encode( $url ).'$';
@@ -132,13 +125,13 @@ class Red_Htaccess {
 			$this->$target( $item, $item->match );
 	}
 
-	function generate( $name ) {
-		// Head of redirection section - do not localize this
-		global $redirection;
+	function generate() {
+		$version = get_plugin_data( __FILE__ );
+		$version = $version['Version'];
 
-		$text[] = '# Created by Redirection Module: '.$name;
+		$text[] = '# Created by Redirection';
 		$text[] = '# '.date ('r');
-		$text[] = '# Redirection '.$redirection->version().' - http://urbangiraffe.com/plugins/redirection/';
+		$text[] = '# Redirection '.$version.' - http://urbangiraffe.com/plugins/redirection/';
 		$text[] = '';
 
 		// Default blocked files - I can't think of a reason not to block these
@@ -148,73 +141,11 @@ class Red_Htaccess {
 		$text[] = '</Files>';
 		$text[] = '';
 
-		// PHP options
-		if ( isset( $this->settings['error_level'] ) && $this->settings['error_level'] != 'default' )
-			$text[] = 'php_value error_reporting '.( $this->settings == 'none' ? '0' : 'E_ALL' );
-
-		if ( isset( $this->settings['memory_limit'] ) && $this->settings['memory_limit'] != 0 )
-			$text[] = 'php_value memory_limit '.$this->settings['memory_limit'].'M';
-
-		if ( ( isset( $this->settings['allow_ip'] ) && $this->settings['allow_ip'] ) || ( isset( $this->settings['ban_ip'] ) && $this->settings['ban_ip'] ) ) {
-			$text[] = '';
-			$text[] = 'order allow,deny';
-
-			if ( isset( $this->settings['ban_ip'] ) && $this->settings['ban_ip'] ) {
-				$ips = array_filter( explode( ',', $this->settings['ban_ip'] ) );
-
-				if ( count( $ips ) > 0 ) {
-					foreach ( $ips AS $ip ) {
-						$text[] = 'deny from '.$ip;
-					}
-				}
-			}
-
-			if ( $this->settings['allow_ip'] ) {
-				$ips = array_filter( explode( ',', $this->settings['allow_ip'] ) );
-
-				if ( count( $ips ) > 0 ) {
-					foreach ( $ips AS $ip ) {
-						$text[] = 'allow from '.$ip;
-					}
-				}
-			}
-			else
-				$text[] = 'allow from all';
-		}
-
 		// mod_rewrite section
 		$text[] = '';
 		$text[] = 'Options +FollowSymlinks';
 		$text[] = '';
 		$text[] = '<IfModule mod_rewrite.c>';
-
-		if ( $this->settings['canonical'] != 'default' ) {
-			$text[] = 'RewriteEngine On';
-			$base   = $this->settings['site'];
-
-			if ( $base == '' )
-				$base = get_option( 'home' );
-
-			$parts = parse_url( $base );
-			$base  = str_replace( 'www.', '', $parts['host'] );
-
-			if ( $this->settings['canonical'] == 'nowww' ) {
-				$text[] = 'RewriteCond %{HTTP_HOST} ^www\.'.str_replace( '.', '\\.', $base ).'$ [NC]';
-				$text[] = 'RewriteRule ^(.*)$ http://'.$base.'/$1 [R=301,L]';
-			}
-			elseif ( $this->settings['canonical'] == 'www' ) {
-				$text[] = 'RewriteCond %{HTTP_HOST} ^'.str_replace( '.', '\\.', $base ).'$ [NC]';
-				$text[] = 'RewriteRule ^(.*)$ http://www.'.$base.'/$1 [R=301,L]';
-			}
-
-			$text[] = '';
-		}
-
-		if ( $this->settings['strip_index'] == 'yes' ) {
-			$text[] = 'RewriteCond %{THE_REQUEST} (.*)index\.(php|htm|html)\ HTTP/';
-			$text[] = 'RewriteRule ^(.*)index\.(php|html|htm)$ $1 [R=301,NC,L]';
-			$text[] = '';
-		}
 
 		// Add redirects
 		if ( is_array( $this->items ) )
@@ -223,9 +154,6 @@ class Red_Htaccess {
 		// End of mod_rewrite
 		$text[] = '</IfModule>';
 		$text[] = '';
-
-		if ( isset( $this->settings['raw'] ) && $this->settings['raw'] )
-			$text[] = $this->settings['raw'];
 
 		// End of redirection section
 		$text[] = '# End of Redirection';
@@ -245,7 +173,7 @@ class Red_Htaccess {
 			$existing = @file_get_contents( $filename );
 
 			// Remove any existing Redirection module
-			$text .= preg_replace( '@# Created by Redirection Module: '.$name.'(.*?)# End of Redirection@s', '', $existing );
+			$text .= preg_replace( '@# Created by Redirection(.*?)# End of Redirection@sm', '', $existing );
 		}
 
 		$file = @fopen( $filename, 'w' );

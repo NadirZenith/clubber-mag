@@ -3,11 +3,11 @@ Theme Name: Attitude
 Theme URI: http://themehorse.com/themes/attitude
 Author: Theme Horse
 Author URI: http://themehorse.com
-Description: Attitude is a Simple, Clean and Responsive Retina Ready WordPress Theme which adapts automatically to your tablets and mobile devices. Theme is easily customizable with numerous theme options. Some of the highlighted options are two site layout (Narrow and Wide), 5 layouts for every post/page, 5 Page Templates, 5 widget areas, 4 custom widgets, featured slider to highlight your post/page, 11 social icons and many more. Also has custom background, header, menu, favicon, CSS, webclip icon, and logo. Supports popular plugins like Breadcrumb NavXT, WP-PageNavi and Contact Form 7. It is also translation ready. Available Translation: Traditional Chinese (Taiwan), Spanish, Norwegian (Nynorsk), German and Russian. Get free support on http://themehorse.com/support-forum/
-Version: 1.2.5
+Description: Attitude is a Simple, Clean and Responsive Retina Ready WordPress Theme which adapts automatically to your tablets and mobile devices. Theme is easily customizable with numerous theme options. Some of the highlighted options are two site layout (Narrow and Wide), 5 layouts for every post/page, 5 Page Templates, 5 widget areas, 4 custom widgets, featured slider to highlight your post/page, 11 social icons and many more. Also has custom background, header, menu, favicon, CSS, webclip icon, and logo. Supports popular plugins like Breadcrumb NavXT, WP-PageNavi and Contact Form 7. It is also translation ready. Available Translation: Traditional Chinese (Taiwan), Spanish, Norwegian (Nynorsk), German, Russian, Dutch, Italian and Danish. Get free support on http://themehorse.com/support-forum/
+Version: 1.2.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: white, light, blue, one-column, two-columns, three-columns, left-sidebar, right-sidebar, flexible-width, custom-menu, custom-background, custom-header, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, sticky-post
+Tags: white, light, blue, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fluid-layout, custom-menu, custom-background, custom-header, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, sticky-post
 Text Domain: attitude
 
 Attitude WordPress Theme, Copyright 2013 Theme Horse
@@ -1680,11 +1680,81 @@ ul.default-wp-page li a:active {
 	background-color: inherit;
    border: 1px solid #fff; 
    color: #777;
- }
- .pagination a:hover span {
+}
+.pagination a:hover span {
  	background-color: #f9f9f9;
    border: 1px solid #eaeaea; 
- }
+}
+
+/* =bbPress
+----------------------------------------------- */
+#bbpress-forums ul.bbp-lead-topic,
+#bbpress-forums ul.bbp-topics,
+#bbpress-forums ul.bbp-forums,
+#bbpress-forums ul.bbp-replies,
+#bbpress-forums ul.bbp-search-results {
+	font-size: 13px;
+}
+#bbpress-forums div.bbp-search-form {
+	float: none;
+	text-align: center;
+}
+#bbpress-forums ul,
+#bbpress-forums ol {
+	margin: 0;
+}
+#bbpress-forums #bbp-search-form #bbp_search {
+	width: 70%;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	border-right: 0 none;
+}
+#bbpress-forums #bbp-search-form #bbp_search_submit {
+	padding: 0 3%;
+	height: 42px;
+	margin-left: -4px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	display: inline-block;
+	margin: 0 0 0 -3px;
+}
+#bbpress-forums div.bbp-topic-author a.bbp-author-name,
+#bbpress-forums div.bbp-reply-author a.bbp-author-name {
+	display: inline-block;
+	line-height: 20px;
+	margin-top: 5px;
+}
+div.bbp-search-form input,
+div.bbp-search-form button {
+	padding: 10px;
+}
+#bbpress-forums button {
+	border: 1px solid #0596AF;
+	color: #fff;
+	display: inline-block;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	height: 40px;
+	margin-bottom: 10px;
+	padding: 0px 25px;
+	-moz-appearance: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	cursor: pointer;
+	background: #06B8D7;
+	background: -webkit-linear-gradient(#06B8D7, #05aac6);
+	background: -moz-linear-gradient(#06B8D7, #05aac6);
+	background: -ms-linear-gradient(#06B8D7, #05aac6);
+	background: -o-linear-gradient(#06B8D7, #05aac6);
+	background: -webkit-gradient(#06B8D7, #05aac6);
+	background: linear-gradient(#06B8D7, #05aac6);
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
 
 /* =Widgets
 ----------------------------------------------- */

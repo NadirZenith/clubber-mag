@@ -1,0 +1,1 @@
+/data/sites/www/index/clubber-mag-dev/wp-content/plugins/query-monitor/wp-content/db.php

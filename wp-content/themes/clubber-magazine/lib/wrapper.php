@@ -7,52 +7,84 @@
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
 function roots_template_path() {
-        return Roots_Wrapping::$main_template;
+      return Roots_Wrapping::$main_template;
 }
 
 function roots_sidebar_path() {
-        return new Roots_Wrapping('tpl/sidebar.php');
+      return new Roots_Wrapping( 'sidebar.php' );
+      /* return new Roots_Wrapping( 'tpl/sidebar.php' ); */
 }
 
 class Roots_Wrapping {
 
-        // Stores the full path to the main template file
-        static $main_template;
-        // Stores the base name of the template file; e.g. 'page' for 'page.php' etc.
-        static $base;
+      // Stores the full path to the main template file
+      static $raw = false;
+      // Stores the full path to the main template file
+      static $main_template;
+      // Stores the base name of the template file; e.g. 'page' for 'page.php' etc.
+      static $base;
 
-        public function __construct($template = 'base.php') {
-                $this->slug = basename($template, '.php');//base
-                $this->templates = array($template);
-/*d($this->templates);*/
-                if (self::$base) {
-                        $str = substr($template, 0, -4);
-                        array_unshift($this->templates, sprintf($str . '-%s.php', self::$base));
-                }
-        }
+      public function __construct( $template = 'base.php' ) {
+            $this->slug = basename( $template, '.php' ); //base
+            $this->templates = array( $template );
 
-        public function __toString() {
-                /*d($this->slug);*/
-                $this->templates = apply_filters('roots/wrap_' . $this->slug, $this->templates);
-                /*d($this);*/
-                /*d(locate_template('test_template.php'));*/
-                return locate_template($this->templates);
-                /*return locate_template('test_template.php');*/
-        }
+            if ( self::$base ) {
+                  $str = substr( $template, 0, -4 );
+                  array_unshift( $this->templates, sprintf( $str . '-%s.php', self::$base ) );
+            }
+      }
 
-        static function wrap($main) {
-                //$main is the full template path passed by the filter
-                //pagina contacto -> /../page-template-form.php
-                self::$main_template = $main;// /..FULL../wp-content/themes/clubber-magazine/archive-agenda.php
-                self::$base = basename(self::$main_template, '.php');//?page-recursos, front-page, archive-agenda
-                
-                if (self::$base === 'index') {
-                        self::$base = false;
-                }
+      public function __toString() {
 
-                return new Roots_Wrapping();
-        }
+            $this->templates = apply_filters( 'roots/wrap_' . $this->slug, $this->templates );
+
+            return locate_template( $this->templates );
+      }
+
+      static function wrap( $main ) {
+            self::$main_template = $main;
+            self::$base = basename( self::$main_template, '.php' ); //?page-recursos, front-page, archive-agenda
+
+            if ( self::$base === 'index' ) {
+                  self::$base = false;
+            }
+
+            return new Roots_Wrapping();
+      }
 
 }
 
-add_filter('template_include', array('Roots_Wrapping', 'wrap'), 99);
+add_filter( 'template_include', array( 'Roots_Wrapping', 'wrap' ), 99 );
+
+//return only content in fancybox calls
+add_filter( 'roots/wrap_base', 'nz_fancybox_ajax_template', 99 );
+
+function nz_fancybox_ajax_template( $templates ) {
+
+      if ( nz_is_ajax() ) {
+            /*if ( nz_is_fancybox() ) {*/
+                  if ( is_array( $templates ) ) {
+                        $result = str_replace( 'base-', '', $templates[ 0 ] );
+                        array_unshift( $templates, $result );
+                  }
+            /*}*/
+      }
+      return $templates;
+}
+
+if ( !function_exists( 'nz_is_ajax' ) ) {
+
+      function nz_is_ajax() {
+            $headers = apache_request_headers();
+            return (isset( $headers[ 'X-Requested-With' ] ) && $headers[ 'X-Requested-With' ] == 'XMLHttpRequest');
+      }
+
+}
+if ( !function_exists( 'nz_is_fancybox' ) ) {
+
+      function nz_is_fancybox() {
+            $headers = apache_request_headers();
+            return (isset( $headers[ 'X-fancyBox' ] ) && $headers[ 'X-fancyBox' ] == "true");
+      }
+
+}

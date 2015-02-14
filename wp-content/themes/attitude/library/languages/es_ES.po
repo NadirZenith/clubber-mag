@@ -1,17 +1,16 @@
-# Attitude WordPress Theme. Translation template file.
 # This file is distributed under the same license as the Attitude Theme.
 msgid ""
 msgstr ""
 "Project-Id-Version: Attitude\n"
-"POT-Creation-Date: 2013-07-09 15:27+0100\n"
-"PO-Revision-Date: 2013-07-12 02:44+0100\n"
+"POT-Creation-Date: 2014-06-25 15:24+0545\n"
+"PO-Revision-Date: 2014-06-25 15:24+0545\n"
 "Last-Translator: Joseba Garay <joseba@nireleku.com>\n"
 "Language-Team: Team Horse <support@themehorse.com>\n"
-"Language: English\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.6\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;_x;_n;esc_html__;"
 "esc_html_e\n"
 "X-Poedit-Basepath: ../../\n"
@@ -78,7 +77,7 @@ msgstr "Sin Sidebar"
 msgid "No sidebar, Full Width"
 msgstr "Sin Sidebar, ancho completo"
 
-#: library/admin/attitude-metaboxes.php:56 library/admin/theme-options.php:328
+#: library/admin/attitude-metaboxes.php:56 library/admin/theme-options.php:325
 msgid "No Sidebar, One Column"
 msgstr "Sin sidebar, una columna"
 
@@ -107,242 +106,239 @@ msgstr "http://themehorse.com/"
 msgid "Theme Horse"
 msgstr "Theme Horse"
 
-#: library/admin/theme-options.php:127
-msgid "Confused about something? See"
-msgstr "¿Confundido sobre algo? Vea"
-
 #: library/admin/theme-options.php:128
-msgid "Attitude Theme Instructions"
-msgstr "Opciones del tema Attitude"
-
-#: library/admin/theme-options.php:128
-msgid "Theme Instructions"
-msgstr "las instruciones del tema"
-
-#: library/admin/theme-options.php:129
-msgid "Support Forum"
-msgstr "Foro de soporte tecnico"
-
-#: library/admin/theme-options.php:130
-msgid "Attitude Demo"
-msgstr "Demo del Attitude"
-
-#: library/admin/theme-options.php:130
-msgid "View Demo"
-msgstr "Ver Demo"
-
-#: library/admin/theme-options.php:134
 msgid "Want to add bunch of additional features? Upgrade to Pro version!"
 msgstr ""
 "¿Quieres un montón de catacterísticas adicionales? ¡Actualiza a la versión "
 "Pro!"
 
-#: library/admin/theme-options.php:135
+#: library/admin/theme-options.php:129
 msgid "Upgrade to Pro"
 msgstr "Actualizar a versión Pro"
 
-#: library/admin/theme-options.php:136
+#: library/admin/theme-options.php:130
 msgid "Donate"
 msgstr "Donar"
 
-#: library/admin/theme-options.php:137
-msgid "Review Clean Retina"
-msgstr "Evalua Clean Retina"
+#: library/admin/theme-options.php:131
+#, fuzzy
+msgid "Review Attitude"
+msgstr "Valora Attitude"
 
-#: library/admin/theme-options.php:137
+#: library/admin/theme-options.php:131
 msgid "Rate Attitude"
 msgstr "Valora Attitude"
 
-#: library/admin/theme-options.php:154
+#: library/admin/theme-options.php:132
+msgid "Attitude Theme Instructions"
+msgstr "Opciones del tema Attitude"
+
+#: library/admin/theme-options.php:132
+msgid "Theme Instructions"
+msgstr "las instruciones del tema"
+
+#: library/admin/theme-options.php:133
+msgid "Support Forum"
+msgstr "Foro de soporte tecnico"
+
+#: library/admin/theme-options.php:134
+msgid "Attitude Demo"
+msgstr "Demo del Attitude"
+
+#: library/admin/theme-options.php:134
+msgid "View Demo"
+msgstr "Ver Demo"
+
+#: library/admin/theme-options.php:151
 msgid "Settings saved."
 msgstr "Configuración guardada"
 
-#: library/admin/theme-options.php:160
+#: library/admin/theme-options.php:157
 msgid "Design Options"
 msgstr "Opciones de diseño"
 
-#: library/admin/theme-options.php:161
+#: library/admin/theme-options.php:158
 msgid "Advance Options"
 msgstr "Opciones avanzadas"
 
-#: library/admin/theme-options.php:162
+#: library/admin/theme-options.php:159
 msgid "Featured Post/Page Slider"
 msgstr "Slider de Artículos/Páginas"
 
-#: library/admin/theme-options.php:163
+#: library/admin/theme-options.php:160
 msgid "Social Links"
 msgstr "Redes sociales"
 
-#: library/admin/theme-options.php:164
+#: library/admin/theme-options.php:161
 msgid "Webmaster Tools"
 msgstr "Webmaster tools"
 
-#: library/admin/theme-options.php:170
+#: library/admin/theme-options.php:167
 msgid "Custom Header"
 msgstr "Cabecera personalizada"
 
-#: library/admin/theme-options.php:175 library/admin/theme-options.php:185
+#: library/admin/theme-options.php:172 library/admin/theme-options.php:182
 msgid "Header Logo"
 msgstr "Logo en cabecera"
 
-#: library/admin/theme-options.php:178
+#: library/admin/theme-options.php:175
 msgid "Change Header Logo"
 msgstr "Cambiar logo en cabecera"
 
-#: library/admin/theme-options.php:182 library/admin/theme-options.php:239
-#: library/admin/theme-options.php:270
+#: library/admin/theme-options.php:179 library/admin/theme-options.php:236
+#: library/admin/theme-options.php:267
 msgid "Preview"
 msgstr "Previsualización"
 
-#: library/admin/theme-options.php:190
+#: library/admin/theme-options.php:187
 msgid "Show"
 msgstr "Mostrar"
 
-#: library/admin/theme-options.php:193
+#: library/admin/theme-options.php:190
 msgid "Header Logo Only"
 msgstr "Solo logo en cabezera"
 
-#: library/admin/theme-options.php:196
+#: library/admin/theme-options.php:193
 msgid "Header Text Only"
 msgstr "Solo texto en cabecera"
 
-#: library/admin/theme-options.php:199
+#: library/admin/theme-options.php:196
 msgid "Disable"
 msgstr "Deshabilitar"
 
-#: library/admin/theme-options.php:204
+#: library/admin/theme-options.php:201
 msgid "Need to replace Header Image?"
 msgstr "¿Necesita sustituir la imagen de cabecera?"
 
-#: library/admin/theme-options.php:207 library/admin/theme-options.php:364
+#: library/admin/theme-options.php:204 library/admin/theme-options.php:361
 #, php-format
 msgid "<a class=\"button\" href=\"%s\">Click here</a>"
 msgstr "<a class=\"button\" href=\"%s\">Pulsa aquí</a>"
 
-#: library/admin/theme-options.php:211
+#: library/admin/theme-options.php:208
 msgid "Hide Searchform from Header"
 msgstr "Ocultar el cuadro de busqueda de la cabecera"
 
-#: library/admin/theme-options.php:213
+#: library/admin/theme-options.php:210
 msgid "Check to hide"
 msgstr "Marcar para ocultar"
 
-#: library/admin/theme-options.php:217 library/admin/theme-options.php:248
-#: library/admin/theme-options.php:279 library/admin/theme-options.php:306
-#: library/admin/theme-options.php:350 library/admin/theme-options.php:397
-#: library/admin/theme-options.php:463 library/admin/theme-options.php:481
-#: library/admin/theme-options.php:514 library/admin/theme-options.php:580
-#: library/admin/theme-options.php:606 library/admin/theme-options.php:644
-#: library/admin/theme-options.php:675 library/admin/theme-options.php:705
+#: library/admin/theme-options.php:214 library/admin/theme-options.php:245
+#: library/admin/theme-options.php:276 library/admin/theme-options.php:303
+#: library/admin/theme-options.php:347 library/admin/theme-options.php:394
+#: library/admin/theme-options.php:460 library/admin/theme-options.php:478
+#: library/admin/theme-options.php:511 library/admin/theme-options.php:577
+#: library/admin/theme-options.php:603 library/admin/theme-options.php:656
+#: library/admin/theme-options.php:689
 msgid "Save All Changes"
 msgstr "Guardar todos los cambios"
 
-#: library/admin/theme-options.php:222
+#: library/admin/theme-options.php:219
 msgid "Fav Icon Options"
 msgstr "Opciones Favicon"
 
-#: library/admin/theme-options.php:227
+#: library/admin/theme-options.php:224
 msgid "Disable Favicon"
 msgstr "Deshabilitar favicon"
 
-#: library/admin/theme-options.php:229 library/admin/theme-options.php:260
-#: library/admin/theme-options.php:416 library/admin/theme-options.php:530
+#: library/admin/theme-options.php:226 library/admin/theme-options.php:257
+#: library/admin/theme-options.php:413 library/admin/theme-options.php:527
 msgid "Check to disable"
 msgstr "Marcar para deshabilitar"
 
-#: library/admin/theme-options.php:232
+#: library/admin/theme-options.php:229
 msgid "Fav Icon URL"
 msgstr "URL del Favicon"
 
-#: library/admin/theme-options.php:235
+#: library/admin/theme-options.php:232
 msgid "Change Fav Icon"
 msgstr "Cambiar Favicon"
 
-#: library/admin/theme-options.php:242
+#: library/admin/theme-options.php:239
 msgid "favicon"
 msgstr "favicon"
 
-#: library/admin/theme-options.php:253
+#: library/admin/theme-options.php:250
 msgid "Web Clip Icon Options"
 msgstr "Opciones de iconos Web Clip"
 
-#: library/admin/theme-options.php:258
+#: library/admin/theme-options.php:255
 msgid "Disable Web Clip Icon"
 msgstr "Deshabilitar icono Web Clip"
 
-#: library/admin/theme-options.php:263
+#: library/admin/theme-options.php:260
 msgid "Web Clip Icon URL"
 msgstr "URL de icono Web Clip"
 
-#: library/admin/theme-options.php:266
+#: library/admin/theme-options.php:263
 msgid "Change Web Clip Icon"
 msgstr "Cambiar icono Web Clip"
 
-#: library/admin/theme-options.php:273
+#: library/admin/theme-options.php:270
 msgid "webpage icon"
 msgstr "icono webpage"
 
-#: library/admin/theme-options.php:284
+#: library/admin/theme-options.php:281
 msgid "Site Layout Options"
 msgstr "Opciones de diseño del sitio"
 
-#: library/admin/theme-options.php:289
+#: library/admin/theme-options.php:286
 msgid "Site Layout"
 msgstr "Diseño del sitio web"
 
-#: library/admin/theme-options.php:290
+#: library/admin/theme-options.php:287
 msgid "This change is reflected in whole website"
 msgstr "Este cambio se reflejará en todo el sitio web"
 
-#: library/admin/theme-options.php:295
+#: library/admin/theme-options.php:292
 msgid "Narrow Layout"
 msgstr "Diseño estrecho"
 
-#: library/admin/theme-options.php:300
+#: library/admin/theme-options.php:297
 msgid "Wide Layout"
 msgstr "Diseño ancho"
 
-#: library/admin/theme-options.php:311
+#: library/admin/theme-options.php:308
 msgid "Default Layout Options"
 msgstr "Opciones del diseño por defecto"
 
-#: library/admin/theme-options.php:316
+#: library/admin/theme-options.php:313
 msgid "Default Layout"
 msgstr "Diseñó por defecto"
 
-#: library/admin/theme-options.php:320
+#: library/admin/theme-options.php:317
 msgid "No Sidebar"
 msgstr "Sin sidebar"
 
-#: library/admin/theme-options.php:324
+#: library/admin/theme-options.php:321
 msgid "No Sidebar, Full Width"
 msgstr "Sin sidebar, ancho completo"
 
-#: library/admin/theme-options.php:332 library/widgets/attitude_widgets.php:18
+#: library/admin/theme-options.php:329 library/widgets/attitude_widgets.php:18
 msgid "Left Sidebar"
 msgstr "Sidebar izquierdo"
 
-#: library/admin/theme-options.php:336 library/widgets/attitude_widgets.php:29
+#: library/admin/theme-options.php:333 library/widgets/attitude_widgets.php:29
 msgid "Right Sidebar"
 msgstr "Sidebar derecho"
 
-#: library/admin/theme-options.php:342
+#: library/admin/theme-options.php:339
 msgid "Reset Layout"
 msgstr "Restablecer diseño"
 
-#: library/admin/theme-options.php:345
+#: library/admin/theme-options.php:342
 msgid "Check to reset"
 msgstr "Marcar para restaurar"
 
-#: library/admin/theme-options.php:355
+#: library/admin/theme-options.php:352
 msgid "Custom Background"
 msgstr "Fondo personalizado"
 
-#: library/admin/theme-options.php:361
+#: library/admin/theme-options.php:358
 msgid "Need to replace default background?"
 msgstr "¿Necesita sustituir el fondo por defecto?"
 
-#: library/admin/theme-options.php:367
+#: library/admin/theme-options.php:364
 msgid ""
 "Note: The custom background change will be reflected in the background if "
 "the site layout is set to be narrow layout instead of the wide layout."
@@ -350,99 +346,99 @@ msgstr ""
 "Nota: El cambio del fondo personalizado, se reflejará en el fondo si el "
 "diseño del sitio esta establecido a diseño estrecho en vez de diseño ancho."
 
-#: library/admin/theme-options.php:376
+#: library/admin/theme-options.php:373
 msgid "Custom CSS"
 msgstr "CSS personalizado"
 
-#: library/admin/theme-options.php:381
+#: library/admin/theme-options.php:378
 msgid "Enter your custom CSS styles."
 msgstr "Introducca su estilo CSS personalizado"
 
-#: library/admin/theme-options.php:382
+#: library/admin/theme-options.php:379
 msgid "This CSS will overwrite the CSS of style.css file."
 msgstr "Este CSS prevalecerá sobre CSS del fichero style.css"
 
-#: library/admin/theme-options.php:390
+#: library/admin/theme-options.php:387
 msgid "CSS Tutorial from W3Schools."
 msgstr "Tutorial de CSS de W3Schools."
 
-#: library/admin/theme-options.php:392
+#: library/admin/theme-options.php:389
 msgid "http://www.w3schools.com/css/default.asp"
 msgstr "http://www.w3schools.com/css/default.asp"
 
-#: library/admin/theme-options.php:392
+#: library/admin/theme-options.php:389
 msgid "CSS Tutorial"
 msgstr "Tutorial de CSS"
 
-#: library/admin/theme-options.php:392
+#: library/admin/theme-options.php:389
 msgid "Click Here to Read"
 msgstr "Cliquee aquí para leerlo"
 
-#: library/admin/theme-options.php:407
+#: library/admin/theme-options.php:404
 msgid "Home Slogan Options"
 msgstr "Opciones del eslogan de la página principal"
 
-#: library/admin/theme-options.php:413
+#: library/admin/theme-options.php:410
 msgid "Disable Slogan Part"
 msgstr "Deshabilitar eslogan"
 
-#: library/admin/theme-options.php:419
+#: library/admin/theme-options.php:416
 msgid "Slogan Position"
 msgstr "Posición del eslogan"
 
-#: library/admin/theme-options.php:423
+#: library/admin/theme-options.php:420
 msgid "Above Slider"
 msgstr "Sobre el Slider"
 
-#: library/admin/theme-options.php:427
+#: library/admin/theme-options.php:424
 msgid "Below Slider"
 msgstr "Bajo el Slider"
 
-#: library/admin/theme-options.php:432
+#: library/admin/theme-options.php:429
 msgid "Home Page Slogan1"
 msgstr "Eslogan 1 de la página principal"
 
-#: library/admin/theme-options.php:433 library/admin/theme-options.php:441
+#: library/admin/theme-options.php:430 library/admin/theme-options.php:438
 msgid "The appropriate length of the slogan is around 10 words."
 msgstr "La longitud apropiada del eslogan esta alrededor de 10 palabras."
 
-#: library/admin/theme-options.php:440
+#: library/admin/theme-options.php:437
 msgid "Home Page Slogan2"
 msgstr "Eslogan 2 de la página principal"
 
-#: library/admin/theme-options.php:448
+#: library/admin/theme-options.php:445
 msgid "Redirect Button Text"
 msgstr "Texto del botón"
 
-#: library/admin/theme-options.php:449
+#: library/admin/theme-options.php:446
 msgid "Text to show in Button"
 msgstr "Texto a mostrar en el botón"
 
-#: library/admin/theme-options.php:455
+#: library/admin/theme-options.php:452
 msgid "Redirect Button Link"
 msgstr "Enlace del botón"
 
-#: library/admin/theme-options.php:456
+#: library/admin/theme-options.php:453
 msgid "Link this button to show your special work, portfolio"
 msgstr "Enlace este botón para mostrar su trabajo, portafolio..."
 
-#: library/admin/theme-options.php:468
+#: library/admin/theme-options.php:465
 msgid "Feed Redirect"
 msgstr "Redireccionar Feed"
 
-#: library/admin/theme-options.php:474
+#: library/admin/theme-options.php:471
 msgid "Feed Redirect URL"
 msgstr "URL redireccionar Feed"
 
-#: library/admin/theme-options.php:486
+#: library/admin/theme-options.php:483
 msgid "Homepage / Frontpage Category Setting"
 msgstr "Configuración de categorías de la página princial"
 
-#: library/admin/theme-options.php:492
+#: library/admin/theme-options.php:489
 msgid "Front page posts categories:"
 msgstr "Categorías de artículos de la página principal"
 
-#: library/admin/theme-options.php:494
+#: library/admin/theme-options.php:491
 msgid ""
 "Only posts that belong to the categories selected here will be displayed on "
 "the front page."
@@ -450,76 +446,76 @@ msgstr ""
 "Solo los post que pertenezcan a las categorias aquí serán mostrados en la "
 "página principal."
 
-#: library/admin/theme-options.php:499
+#: library/admin/theme-options.php:496
 msgid "--Disabled--"
 msgstr "--Deshabilitado--"
 
-#: library/admin/theme-options.php:509
+#: library/admin/theme-options.php:506
 msgid "You may select multiple categories by holding down the CTRL key."
 msgstr ""
 "Puedes seleccionar múltiples categorías manteniendo pulsada la tecla CTRL."
 
-#: library/admin/theme-options.php:524
+#: library/admin/theme-options.php:521
 msgid "Slider Options"
 msgstr "Opciones del Slider"
 
-#: library/admin/theme-options.php:528
+#: library/admin/theme-options.php:525
 msgid "Disable Slider"
 msgstr "Deshabilitar Slider"
 
-#: library/admin/theme-options.php:533
+#: library/admin/theme-options.php:530
 msgid "Number of Slides"
 msgstr "Número de Sliders"
 
-#: library/admin/theme-options.php:538
+#: library/admin/theme-options.php:535
 msgid "Transition Effect:"
 msgstr "Efecto de la transición"
 
-#: library/admin/theme-options.php:558 library/admin/theme-options.php:635
+#: library/admin/theme-options.php:555 library/admin/theme-options.php:646
 #, php-format
 msgid "%s"
 msgstr "%s"
 
-#: library/admin/theme-options.php:566
+#: library/admin/theme-options.php:563
 msgid "Transition Delay"
 msgstr "Retraso de transición"
 
-#: library/admin/theme-options.php:569 library/admin/theme-options.php:576
+#: library/admin/theme-options.php:566 library/admin/theme-options.php:573
 msgid "second(s)"
 msgstr "segundo(s)"
 
-#: library/admin/theme-options.php:573
+#: library/admin/theme-options.php:570
 msgid "Transition Length"
 msgstr "Longitud de la transición"
 
-#: library/admin/theme-options.php:585
+#: library/admin/theme-options.php:582
 msgid "Featured Post/Page Slider Options"
 msgstr "Opciones de Artículos / Páginas destacadas"
 
-#: library/admin/theme-options.php:589
+#: library/admin/theme-options.php:586
 msgid "Exclude Slider post from Homepage posts?"
 msgstr "Excluir artículos publicados en el Slider en la página principal"
 
-#: library/admin/theme-options.php:591
+#: library/admin/theme-options.php:588
 msgid "Check to exclude"
 msgstr "Marcar para escluir"
 
-#: library/admin/theme-options.php:596
+#: library/admin/theme-options.php:593
 msgid "Featured Slider Post/Page #"
 msgstr "Slider destacados artículos/página #"
 
-#: library/admin/theme-options.php:598
+#: library/admin/theme-options.php:595
 msgid "Click Here To Edit"
 msgstr "Clique aquí para editar"
 
-#: library/admin/theme-options.php:604
+#: library/admin/theme-options.php:601
 msgid ""
 "<strong>Following are the steps on how to use the featured slider.</"
 "strong><br />* Create Post, Add featured image to the Post.<br />* Add all "
 "the Post ID that you want to use in the featured slider. <br /> &nbsp;(You "
-"can now see the Posts' respective ID in the All Posts' table in last column.)"
-"<br />* Featured Slider will show featured images, Title and excerpt of the "
-"respected added post's IDs."
+"can now see the Posts' respective ID in the All Posts' table in last "
+"column.)<br />* Featured Slider will show featured images, Title and excerpt "
+"of the respected added post's IDs."
 msgstr ""
 "<strong>Estos son los pasos para usar el slider de destacados.</strong><br /"
 ">* Crea un artículo, añade una imagen destacada al artículo<br />* Añade el "
@@ -528,7 +524,7 @@ msgstr ""
 "estacados mostrará la imagen destacada,  El título y el extracto de los "
 "respectivos ID de artículos."
 
-#: library/admin/theme-options.php:605
+#: library/admin/theme-options.php:602
 msgid ""
 "<strong>Note:</strong> You can now add Pages ID too. (You can now see the "
 "Pages' respective ID in the All Pages' table in last column.) ."
@@ -536,208 +532,236 @@ msgstr ""
 "<strong>Nota:</strong> Ahora también puedes añadir los ID de páginas. "
 "(Puedes ver los ID de páginas en la última columna de Todas las Páginas) ."
 
-#: library/admin/theme-options.php:652
-msgid "Site Verification"
-msgstr "Verificación del sitio"
+#: library/admin/theme-options.php:614
+#: library/structure/header-extensions.php:324
+msgid "Facebook"
+msgstr ""
 
-#: library/admin/theme-options.php:657
-msgid "Google Site Verification ID"
-msgstr "ID de verificación de Google"
+#: library/admin/theme-options.php:615
+#: library/structure/header-extensions.php:325
+msgid "Twitter"
+msgstr ""
 
-#: library/admin/theme-options.php:658
-msgid "Enter your Google ID number only"
-msgstr "Introduce solo la ID de Google"
+#: library/admin/theme-options.php:616
+#: library/structure/header-extensions.php:326
+msgid "Google Plus"
+msgstr ""
 
-#: library/admin/theme-options.php:663
-msgid "Yahoo Site Verification ID"
-msgstr "ID de verificación de Yahoo"
+#: library/admin/theme-options.php:617
+#: library/structure/header-extensions.php:327
+msgid "Pinterest"
+msgstr ""
+
+#: library/admin/theme-options.php:618
+#: library/structure/header-extensions.php:328
+msgid "Youtube"
+msgstr ""
+
+#: library/admin/theme-options.php:619
+#: library/structure/header-extensions.php:329
+msgid "Vimeo"
+msgstr ""
+
+#: library/admin/theme-options.php:620
+#: library/structure/header-extensions.php:330
+msgid "LinkedIn"
+msgstr ""
+
+#: library/admin/theme-options.php:621
+#: library/structure/header-extensions.php:331
+msgid "Flickr"
+msgstr ""
+
+#: library/admin/theme-options.php:622
+#: library/structure/header-extensions.php:332
+msgid "Tumblr"
+msgstr ""
+
+#: library/admin/theme-options.php:623
+#: library/structure/header-extensions.php:333
+msgid "Myspace"
+msgstr ""
+
+#: library/admin/theme-options.php:624
+#: library/structure/header-extensions.php:334
+msgid "RSS"
+msgstr ""
 
 #: library/admin/theme-options.php:664
-msgid "Enter your Yahoo ID number only"
-msgstr "Introduce solo la ID de Yahoo"
-
-#: library/admin/theme-options.php:669
-msgid "Bing Site Verification ID"
-msgstr "ID de verificación de Bing"
-
-#: library/admin/theme-options.php:670
-msgid "Enter your Bing ID number only"
-msgstr "Introduce solo la ID de Bing"
-
-#: library/admin/theme-options.php:680
 msgid "Analytics"
 msgstr "Analytics"
 
-#: library/admin/theme-options.php:685
+#: library/admin/theme-options.php:669
 msgid "Code to display on Header"
 msgstr "Código a mostrar en cabecera"
 
-#: library/admin/theme-options.php:691
+#: library/admin/theme-options.php:675
 msgid "Note: Enter your custom header script."
 msgstr "Nota: Introduce tu propio script de cabecera."
 
-#: library/admin/theme-options.php:694
+#: library/admin/theme-options.php:678
 msgid "Code to display on Footer"
 msgstr "Código a mostrar al pie de página"
 
-#: library/admin/theme-options.php:701
+#: library/admin/theme-options.php:685
 msgid "Note: Enter your custom footer script."
 msgstr "Nota: Introduce tu propio script de pie de página."
 
-#: library/functions/functions.php:362 library/functions/functions.php:376
+#: library/functions/functions.php:347 library/functions/functions.php:361
 msgid "Navigation"
-msgstr "Nevegación"
+msgstr "Navegación"
 
 #: library/shortcodes/attitude-shortcodes.php:52
 msgid "WordPress"
 msgstr "WordPress"
 
-#: library/structure/content-extensions.php:147
-#: library/structure/content-extensions.php:308
-#: library/structure/content-extensions.php:464
-#: library/structure/content-extensions.php:577
-#: library/structure/content-extensions.php:692
+#: library/structure/content-extensions.php:148
+#: library/structure/content-extensions.php:311
+#: library/structure/content-extensions.php:467
+#: library/structure/content-extensions.php:580
+#: library/structure/content-extensions.php:695
 msgid "By"
 msgstr "Por"
 
-#: library/structure/content-extensions.php:153
-#: library/structure/content-extensions.php:314
-#: library/structure/content-extensions.php:470
-#: library/structure/content-extensions.php:583
-#: library/structure/content-extensions.php:698
+#: library/structure/content-extensions.php:154
+#: library/structure/content-extensions.php:317
+#: library/structure/content-extensions.php:473
+#: library/structure/content-extensions.php:586
+#: library/structure/content-extensions.php:701
 msgid "No Comments"
 msgstr "Sin comentarios"
 
-#: library/structure/content-extensions.php:153
-#: library/structure/content-extensions.php:314
-#: library/structure/content-extensions.php:470
-#: library/structure/content-extensions.php:583
-#: library/structure/content-extensions.php:698
+#: library/structure/content-extensions.php:154
+#: library/structure/content-extensions.php:317
+#: library/structure/content-extensions.php:473
+#: library/structure/content-extensions.php:586
+#: library/structure/content-extensions.php:701
 msgid "1 Comment"
 msgstr "1 comentario"
 
-#: library/structure/content-extensions.php:153
-#: library/structure/content-extensions.php:314
-#: library/structure/content-extensions.php:470
-#: library/structure/content-extensions.php:583
-#: library/structure/content-extensions.php:698
+#: library/structure/content-extensions.php:154
+#: library/structure/content-extensions.php:317
+#: library/structure/content-extensions.php:473
+#: library/structure/content-extensions.php:586
+#: library/structure/content-extensions.php:701
 msgid "% Comments"
 msgstr "% comentarios"
 
-#: library/structure/content-extensions.php:153
-#: library/structure/content-extensions.php:314
-#: library/structure/content-extensions.php:470
-#: library/structure/content-extensions.php:583
-#: library/structure/content-extensions.php:698
+#: library/structure/content-extensions.php:154
+#: library/structure/content-extensions.php:317
+#: library/structure/content-extensions.php:473
+#: library/structure/content-extensions.php:586
+#: library/structure/content-extensions.php:701
 msgid "Comments Off"
 msgstr "Comentarios deshabilitados"
 
-#: library/structure/content-extensions.php:157
-#: library/structure/content-extensions.php:474
-#: library/structure/content-extensions.php:587
-#: library/structure/content-extensions.php:673
+#: library/structure/content-extensions.php:158
+#: library/structure/content-extensions.php:477
+#: library/structure/content-extensions.php:590
+#: library/structure/content-extensions.php:676
 #: library/widgets/attitude_widgets.php:242
 msgid "Read more"
 msgstr "Leer más"
 
-#: library/structure/content-extensions.php:172
-#: library/structure/content-extensions.php:243
-#: library/structure/content-extensions.php:340
-#: library/structure/content-extensions.php:391
-#: library/structure/content-extensions.php:502
-#: library/structure/content-extensions.php:615
-#: library/structure/content-extensions.php:727
-#: library/structure/content-extensions.php:916
+#: library/structure/content-extensions.php:175
+#: library/structure/content-extensions.php:246
+#: library/structure/content-extensions.php:343
+#: library/structure/content-extensions.php:394
+#: library/structure/content-extensions.php:505
+#: library/structure/content-extensions.php:618
+#: library/structure/content-extensions.php:730
+#: library/structure/content-extensions.php:919
 msgid "No Posts Found."
 msgstr "Ningún artículo encontrado"
 
-#: library/structure/content-extensions.php:212
-#: library/structure/content-extensions.php:296
-#: library/structure/content-extensions.php:676
-#: library/structure/content-extensions.php:890
+#: library/structure/content-extensions.php:215
+#: library/structure/content-extensions.php:299
+#: library/structure/content-extensions.php:679
+#: library/structure/content-extensions.php:893
 msgid "Pages:"
 msgstr "Páginas:"
 
-#: library/structure/content-extensions.php:282
+#: library/structure/content-extensions.php:285
 msgid ", "
 msgstr ", "
 
-#: library/structure/content-extensions.php:288
+#: library/structure/content-extensions.php:291
 msgid "Tagged on: "
 msgstr "Etiquetado en:"
 
-#: library/structure/content-extensions.php:493
-#: library/structure/content-extensions.php:606
-#: library/structure/content-extensions.php:718
-#: library/structure/content-extensions.php:754
+#: library/structure/content-extensions.php:496
+#: library/structure/content-extensions.php:609
+#: library/structure/content-extensions.php:721
+#: library/structure/content-extensions.php:757
 msgid "&laquo; Previous"
 msgstr "&laquo; Previo"
 
-#: library/structure/content-extensions.php:494
-#: library/structure/content-extensions.php:607
-#: library/structure/content-extensions.php:719
-#: library/structure/content-extensions.php:755
+#: library/structure/content-extensions.php:497
+#: library/structure/content-extensions.php:610
+#: library/structure/content-extensions.php:722
+#: library/structure/content-extensions.php:758
 msgid "Next &raquo;"
 msgstr "Siguiente &raquo;"
 
-#: library/structure/content-extensions.php:774
+#: library/structure/content-extensions.php:777
 msgid "&larr; Previous"
 msgstr "&larr; Anterior"
 
-#: library/structure/content-extensions.php:775
+#: library/structure/content-extensions.php:778
 msgid "Next &rarr;"
 msgstr "Siguiente &rarr;"
 
-#: library/structure/content-extensions.php:782
+#: library/structure/content-extensions.php:785
 msgid "&larr;"
 msgstr "&larr;"
 
-#: library/structure/content-extensions.php:783
+#: library/structure/content-extensions.php:786
 msgid "&rarr;"
 msgstr "&rarr;"
 
-#: library/structure/content-extensions.php:821
+#: library/structure/content-extensions.php:824
 msgid "Pingback:"
 msgstr "Pingback:"
 
-#: library/structure/content-extensions.php:821
+#: library/structure/content-extensions.php:824
 msgid "(Edit)"
 msgstr "(Editar)"
 
-#: library/structure/content-extensions.php:836
+#: library/structure/content-extensions.php:839
 msgid "Post author"
 msgstr "Autor"
 
-#: library/structure/content-extensions.php:842
+#. translators: 1: date, 2: time
+#: library/structure/content-extensions.php:845
 #, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s a %2$s"
 
-#: library/structure/content-extensions.php:848
+#: library/structure/content-extensions.php:851
 msgid "Your comment is awaiting moderation."
 msgstr "Tu comentarios esta esperando moderación"
 
-#: library/structure/content-extensions.php:853
+#: library/structure/content-extensions.php:856
 msgid "Edit"
 msgstr "Editar"
 
-#: library/structure/content-extensions.php:857
+#: library/structure/content-extensions.php:860
 msgid "Reply <span>&darr;</span>"
 msgstr "Responder <span>&darr;</span>"
 
-#: library/structure/content-extensions.php:939
+#: library/structure/content-extensions.php:942
 msgid "Error 404-Page NOT Found"
 msgstr "Error 404 - Página no encontrada"
 
-#: library/structure/content-extensions.php:942
+#: library/structure/content-extensions.php:945
 msgid "It seems we can't find what you're looking for."
 msgstr "Parece que no podemos encontar lo que estas buscando."
 
-#: library/structure/content-extensions.php:943
+#: library/structure/content-extensions.php:946
 msgid "This might be because:"
 msgstr "Esta podría ser la causa:"
 
-#: library/structure/content-extensions.php:944
+#: library/structure/content-extensions.php:947
 msgid ""
 "You have typed the web address incorrectly, or the page you were looking for "
 "may have been moved, updated or deleted."
@@ -745,11 +769,11 @@ msgstr ""
 "Has escrito la dirección web incorrectamente, o la página que estas buscando "
 "ha sido movida, actualizada o borrada."
 
-#: library/structure/content-extensions.php:945
+#: library/structure/content-extensions.php:948
 msgid "Please try the following instead:"
 msgstr "Por favor, pruebe lo siguente"
 
-#: library/structure/content-extensions.php:946
+#: library/structure/content-extensions.php:949
 msgid ""
 "Check for a mis-typed URL error, then press the refresh button on your "
 "browser."
@@ -778,16 +802,16 @@ msgstr "Ir arriba"
 msgid "Page %s"
 msgstr "Página %s"
 
-#: library/structure/header-extensions.php:339
+#: library/structure/header-extensions.php:353
 #, php-format
 msgid "%1$s on %2$s"
 msgstr "%1$s en %2$s"
 
-#: library/structure/header-extensions.php:490
+#: library/structure/header-extensions.php:505
 msgid "Page NOT Found"
 msgstr "Página no encontrada"
 
-#: library/structure/header-extensions.php:493
+#: library/structure/header-extensions.php:508
 msgid "Search Results"
 msgstr "Resultados de la busqueda"
 
@@ -895,3 +919,30 @@ msgstr "Nombre:"
 #: library/widgets/attitude_widgets.php:425
 msgid "Byline:"
 msgstr "Autor:"
+
+#~ msgid "Confused about something? See"
+#~ msgstr "¿Confundido sobre algo? Vea"
+
+#~ msgid "Review Clean Retina"
+#~ msgstr "Evalua Clean Retina"
+
+#~ msgid "Site Verification"
+#~ msgstr "Verificación del sitio"
+
+#~ msgid "Google Site Verification ID"
+#~ msgstr "ID de verificación de Google"
+
+#~ msgid "Enter your Google ID number only"
+#~ msgstr "Introduce solo la ID de Google"
+
+#~ msgid "Yahoo Site Verification ID"
+#~ msgstr "ID de verificación de Yahoo"
+
+#~ msgid "Enter your Yahoo ID number only"
+#~ msgstr "Introduce solo la ID de Yahoo"
+
+#~ msgid "Bing Site Verification ID"
+#~ msgstr "ID de verificación de Bing"
+
+#~ msgid "Enter your Bing ID number only"
+#~ msgstr "Introduce solo la ID de Bing"

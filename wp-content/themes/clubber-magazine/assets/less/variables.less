@@ -1,0 +1,75 @@
+//Key	CSS Media Query                         Applies           Classname
+//None	None                                    Always            .col-*
+//sm	@media screen and (min-width: 35.5em)	≥ 568px           .col-sm-*
+//md	@media screen and (min-width: 48em)	≥ 768px           .col-md-*
+//lg	@media screen and (min-width: 64em)	≥ 1024px          .col-lg-*
+//xl	@media screen and (min-width: 80em)	≥ 1280px          .col-xl-*
+
+
+// sm ≥ 568px 
+@media screen and (min-width: 35.5em)
+{}
+// md ≥ 768px 
+@media screen and (min-width: 48em)
+{}
+// lg ≥ 1024px
+@media screen and (min-width: 64em)
+{}
+// xl ≥ 1280px
+@media screen and (min-width: 80em)
+{}
+
+@font-family-base:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//config
+//@debug: true;
+//common layout
+@body-bg-color: #ececec;
+@site-bg-color: #bbb;
+@header-bg-start: #eee;
+@header-bg-end: @site-bg-color;
+@footer-bg-color: #111;
+@section-bg-color: #999;
+@cm-blue-color: #0583F2;
+@text-color:            #eee;
+@line-height-base: 1.4;
+
+@sc-1: #0583F2;//site principal color
+@sc-2 :#333;
+@sc-3: #333;
+@sc-eee: #eee;
+
+
+
+@cm-font-path:        "fonts/russo-one/";
+
+@font-face {
+      font-family: 'Russo One';
+
+      src: url('@{cm-font-path}russo_one-webfont.eot');
+      src: url('@{cm-font-path}russo_one-webfont.eot?#iefix') format('embedded-opentype'),
+            url('@{cm-font-path}russo_one-webfont.woff2') format('woff2'),
+            url('@{cm-font-path}russo_one-webfont.woff') format('woff'),
+            url('@{cm-font-path}russo_one-webfont.ttf') format('truetype'),
+            url('@{cm-font-path}russo_one-webfont.svg#russo_oneregular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+
+}
+
+@font-size-base:          16px;
+//@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+//@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-bigger:        1.9em;
+@font-size-h1:            1.7em;
+@font-size-h2:            1.4em;
+@font-size-h3:            1.17em;
+@font-size-h4:            1em;
+@font-size-h5:            0.83em;
+@font-size-h6:            0.67em;
+
+// Headings
+// -------------------------
+@headings-color: #333;
+@headings-line-height: 1;

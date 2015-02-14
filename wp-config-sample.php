@@ -61,15 +61,6 @@ define('NONCE_SALT', 'pon aquí tu frase aleatoria'); // Cambia esto por tu fras
  */
 $table_prefix  = 'wp_';
 
-/**
- * Idioma de WordPress.
- *
- * Cambia lo siguiente para tener WordPress en tu idioma. El correspondiente archivo MO
- * del lenguaje elegido debe encontrarse en wp-content/languages.
- * Por ejemplo, instala ca_ES.mo copiándolo a wp-content/languages y define WPLANG como 'ca_ES'
- * para traducir WordPress al catalán.
- */
-define('WPLANG', 'es_ES');
 
 /**
  * Para desarrolladores: modo debug de WordPress.

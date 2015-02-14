@@ -72,8 +72,8 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
     function render_tab1()
     {
         echo '<div class="aio_grey_box">';
- 	echo '<p>'.__('For information, updates and documentation, please visit the','aiowpsecurity').' <a href="http://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin" target="_blank">'.__('AIO WP Security & Firewall Plugin','aiowpsecurity').'</a> '.__('Page','aiowpsecurity').'</p>';
-        echo '<p><a href="http://www.tipsandtricks-hq.com/development-center" target="_blank">'.__('Follow us','aiowpsecurity').'</a> on '.__('Twitter, Google+ or via Email to stay up to date about the new security features of this plugin.','aiowpsecurity').'</p>';
+ 	echo '<p>'.__('For information, updates and documentation, please visit the','aiowpsecurity').' <a href="https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin" target="_blank">'.__('AIO WP Security & Firewall Plugin','aiowpsecurity').'</a> '.__('Page','aiowpsecurity').'</p>';
+        echo '<p><a href="https://www.tipsandtricks-hq.com/development-center" target="_blank">'.__('Follow us','aiowpsecurity').'</a> on '.__('Twitter, Google+ or via Email to stay up to date about the new security features of this plugin.','aiowpsecurity').'</p>';
         echo '</div>';
 
         echo "<script type='text/javascript' src='https://www.google.com/jsapi'></script>";//Include the google chart library
@@ -85,6 +85,8 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         $total_security_points_achievable = $feature_mgr->get_total_achievable_points();
         
         ?>
+        <div id="aiowps_dashboard_widget_content">
+            
         <div class="aiowps_dashboard_box_small">
         <div class="postbox">
         <h3><label for="title"><?php _e('Security Strength Meter', 'aiowpsecurity');?></label></h3>
@@ -167,6 +169,25 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         </div></div>
         </div><!-- aiowps_dashboard_box -->
         
+        <div class="aiowps_dashboard_box_small aiowps_spread_the_word_widget">
+        <div class="postbox">
+        <h3><label for="title"><?php _e('Spread the Word', 'aiowpsecurity');?></label></h3>
+        <div class="inside">
+        
+        <p><?php _e('We are working hard to make your WordPress site more secure. Please support us, here is how:', 'aiowpsecurity');?></p>
+        <p>
+            <a href="https://plus.google.com/+Tipsandtricks-hq/" target="_blank">Follow us on Google+</a>
+        </p>
+        <p>
+            <a href="http://twitter.com/intent/tweet?url=https://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin&text=I love the All In One WP Security and Firewall plugin!" target="_blank" class="aio_tweet_link">Post to Twitter</a>
+        </p>
+        <p>
+            <a href="http://wordpress.org/support/view/plugin-reviews/all-in-one-wp-security-and-firewall/" target="_blank" class="aio_rate_us_link">Give us a Good Rating</a>
+        </p>
+        
+        </div></div>
+        </div><!-- aiowps_dashboard_box -->   
+        
         <div class="aiowps_dashboard_box_small">
         <div class="postbox">
         <h3><label for="title"><?php _e('Critical Feature Status', 'aiowpsecurity');?></label></h3>
@@ -247,11 +268,14 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         $login_activity_table = AIOWPSEC_TBL_USER_LOGIN_ACTIVITY;
 
 	/* -- Ordering parameters -- */
-	    //Parameters that are going to be used to order the result
-	$orderby = !empty($_GET["orderby"]) ? mysql_real_escape_string($_GET["orderby"]) : 'login_date';
-	$order = !empty($_GET["order"]) ? mysql_real_escape_string($_GET["order"]) : 'DESC';
+	//Parameters that are going to be used to order the result
+        isset($_GET["orderby"]) ? $orderby = strip_tags($_GET["orderby"]): $orderby = '';
+        isset($_GET["order"]) ? $order = strip_tags($_GET["order"]): $order = '';
 
-	$data = $wpdb->get_results("SELECT * FROM $login_activity_table ORDER BY $orderby $order LIMIT 5", ARRAY_A); //Get the last 50 records
+	$orderby = !empty($orderby) ? $orderby : 'login_date';
+	$order = !empty($order) ? $order : 'DESC';
+
+	$data = $wpdb->get_results($wpdb->prepare("SELECT * FROM $login_activity_table ORDER BY login_date DESC LIMIT %d", 5), ARRAY_A); //Get the last 5 records
         
         if ($data == NULL){
             echo '<p>'.__('No data found!','aiowpsecurity').'</p>';
@@ -454,29 +478,32 @@ class AIOWPSecurity_Dashboard_Menu extends AIOWPSecurity_Admin_Menu
         ?>
         </div></div>
         </div><!-- aiowps_dashboard_box -->        
-        
+
         <div class="aio_clear_float"></div>
         
-        <div class="aiowps_dashboard_box_small aiowps_spread_the_word_widget">
-        <div class="postbox">
-        <h3><label for="title"><?php _e('Spread the Word', 'aiowpsecurity');?></label></h3>
-        <div class="inside">
+        </div>
+<!-- Masonry stuff -->
+<?php
+//wp_enqueue_script('masonry');
+echo '<script type="text/javascript" src="'.AIO_WP_SECURITY_URL.'/js/masonry.pkgd.min.js?ver='.AIO_WP_SECURITY_VERSION.'"></script>';
+?>
+<style>
+.aiowps_dashboard_box_small { 
+    width: 350px;
+}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+var container = document.querySelector('#aiowps_dashboard_widget_content');
+var msnry = new Masonry( container, {
+  // options
+  columnWidth: 100,
+  itemSelector: '.aiowps_dashboard_box_small'
+});
+}
+</script>
+<!-- End Masonry stuff -->
         
-        <p><?php _e('We are working hard to make your WordPress site more secure. Please support us, here is how:', 'aiowpsecurity');?></p>
-        <p>
-            <a href="https://plus.google.com/102469783420435518783/" target="_blank">Follow us on Google+</a>
-        </p>
-        <p>
-            <a href="http://twitter.com/intent/tweet?url=http://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin&text=I love the All In One WP Security and Firewall plugin!" target="_blank" class="aio_tweet_link">Post to Twitter</a>
-        </p>
-        <p>
-            <a href="http://wordpress.org/support/view/plugin-reviews/all-in-one-wp-security-and-firewall/" target="_blank" class="aio_rate_us_link">Give us a Good Rating</a>
-        </p>
-        
-        </div></div>
-        </div><!-- aiowps_dashboard_box -->        
-        
-        <div class="aio_clear_float"></div>
         <?php
     }
    

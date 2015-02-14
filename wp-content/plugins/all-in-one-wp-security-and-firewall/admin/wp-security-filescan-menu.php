@@ -10,6 +10,7 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu
     var $menu_tabs_handler = array(
         'tab1' => 'render_tab1',
         'tab2' => 'render_tab2',
+        'tab3' => 'render_tab3',
         );
     
     function __construct() 
@@ -20,8 +21,9 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu
     function set_menu_tabs() 
     {
         $this->menu_tabs = array(
-        'tab1' => __('File Change Detection','aiowpsecurity'),
-        'tab2' => __('Malware Scan','aiowpsecurity'), 
+            'tab1' => __('File Change Detection','aiowpsecurity'),
+            'tab2' => __('Malware Scan','aiowpsecurity'),
+            'tab3' => __('DB Scan','aiowpsecurity'), 
         );
     }
 
@@ -103,7 +105,7 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu
                 die(__('Nonce check failed for manual file change detection scan operation!','aiowpsecurity'));
             }
 
-            $result = $aio_wp_security->filescan_obj->execute_file_change_detection_scan();
+            $result = $aio_wp_security->scan_obj->execute_file_change_detection_scan();
             //If this is first scan display special message
             if ($result['initial_scan'] == 1)
             {
@@ -197,7 +199,7 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu
                 $aiowps_global_meta_tbl_name = AIOWPSEC_TBL_GLOBAL_META_DATA;
                 $where = array('meta_key1' => 'file_change_detection', 'meta_value1' => 'file_scan_data');
                 $wpdb->delete( $aiowps_global_meta_tbl_name, $where);
-                $result = $aio_wp_security->filescan_obj->execute_file_change_detection_scan();
+                $result = $aio_wp_security->scan_obj->execute_file_change_detection_scan();
                 $new_scan_alert = __('NEW SCAN COMPLETED: The plugin has detected that you have made changes to the "File Types To Ignore" or "Files To Ignore" fields.
                     In order to ensure that future scan results are accurate, the old scan data has been refreshed.', 'aiowpsecurity');
                 $this->show_msg_updated($new_scan_alert);
@@ -340,7 +342,7 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu
             <?php
             echo '<h2>'.__('What is Malware?', 'aiowpsecurity').'</h2>';
             echo '<p>'.__('The word Malware stands for Malicious Software. It can consist of things like trojan horses, adware, worms, spyware and any other undesirable code which a hacker will try to inject into your website.', 'aiowpsecurity').'</p>'.
-            '<p>'.__('Often when malware code has been inserted into your site you will normally not notice anything out of the ordinary based on appearances, but it can have a dramatic effect on your site’s search ranking.', 'aiowpsecurity').'</p>'.
+            '<p>'.__('Often when malware code has been inserted into your site you will normally not notice anything out of the ordinary based on appearances, but it can have a dramatic effect on your site\'s search ranking.', 'aiowpsecurity').'</p>'.
             '<p>'.__('This is because the bots and spiders from search engines such as Google have the capability to detect malware when they are indexing the pages on your site, and consequently they can blacklist your website which will in turn affect your search rankings.', 'aiowpsecurity').'</p>';
 
             $site_scanners_link = '<a href="http://www.site-scanners.com" target="_blank">CLICK HERE</a>';
@@ -365,25 +367,84 @@ class AIOWPSecurity_Filescan_Menu extends AIOWPSecurity_Admin_Menu
 
         <?php
     }
+    
+    function render_tab3()
+    {
+        echo '<div class="aio_blue_box">';
+        echo '<p>'.__('This feature performs a basic database scan which will look for any common suspicious-looking strings and javascript and html code in some of the Wordpress core tables.', 'aiowpsecurity');
+        echo '</div>';
+        
+        echo '<div class="aio_yellow_box">';
+        echo '<p>This feature can give you false positive result. We have temporarily deactivated this feature to make sure you don\'t lose some data on a false positive. We will re-introduced this feature after we rework it.</p>';
+        echo '</div>';
+        
+        return;//This feature is temporarily deactivated while we re-work the interface
+        
+        global $wpdb, $aio_wp_security;
+        $perform_db_scan = false;
+        if (isset($_POST['aiowps_manual_db_scan']))
+        {
+            $nonce=$_REQUEST['_wpnonce'];
+            if (!wp_verify_nonce($nonce, 'aiowpsec-manual-db-scan-nonce'))
+            {
+                $aio_wp_security->debug_logger->log_debug("Nonce check failed for manual db scan operation!",4);
+                die(__('Nonce check failed for manual db scan operation!','aiowpsecurity'));
+            }
+
+            $perform_db_scan = true;
+        }
+
+        
+        ?>
+        <div class="aio_blue_box">
+            <?php
+            $malware_scan = '<a href="admin.php?page='.AIOWPSEC_FILESCAN_MENU_SLUG.'&tab=tab2">Malware Scan</a>';
+            echo '<p>'.__('This feature will perform a basic database scan which will look for any common suspicious-looking strings and javascript and html code in some of the Wordpress core tables.', 'aiowpsecurity').
+            '<br />'.__('If the scan finds anything it will list all "potentially" malicious results but it is up to you to verify whether a result is a genuine example of a hacking attack or a false positive.', 'aiowpsecurity').
+            '<br />'.__('As well as scanning for generic strings commonly used in malicious cases, this feature will also scan for some of the known "pharma" hack entries and if it finds any it will automatically delete them.', 'aiowpsecurity').
+            '<br />'.__('The WordPress core tables scanned by this feature include: posts, postmeta, comments, links, users, usermeta, and options tables.', 'aiowpsecurity').'</p>';
+            ?>
+        </div>
+
+        <div class="postbox">
+        <h3><label for="title"><?php _e('Database Scan', 'aiowpsecurity'); ?></label></h3>
+        <div class="inside">
+        <form action="" method="POST">
+        <?php wp_nonce_field('aiowpsec-manual-db-scan-nonce'); ?>
+        <table class="form-table">
+            <tr valign="top">
+            <span class="description"><?php _e('To perform a database scan click on the button below.', 'aiowpsecurity'); ?></span>                
+            </tr>            
+        </table>
+        <input type="submit" name="aiowps_manual_db_scan" value="<?php _e('Perform DB Scan', 'aiowpsecurity')?>" class="button-primary" />
+        </form>
+        </div></div>
+        <?php
+        if ($perform_db_scan)
+        {
+            
+            $result = $aio_wp_security->scan_obj->execute_db_scan();
+            echo $result;
+//            if ($result == 1)
+//            {
+//            $error_msg = '<p>'.__('The plugin has detected that there are some potentially suspicious entries in your database.', 'aiowpsecurity').'</p>';
+//            $error_msg .= '<p>'.__('Please verify the results listed below to confirm whether the entries detected are genuinely suspicious or if they are false positives.', 'aiowpsecurity').'</p>';
+//            $this->show_msg_error($error_msg);
+//            }else{
+//                $this->show_msg_updated(__('The basic database scan was completed and no suspicious entries were detected.', 'aiowpsecurity'));
+//            }
+        }
+    }
+    
 
     /*
      * Outputs the last scan results in a postbox
      */
     function display_last_scan_results()
     {
-        global $wpdb, $aio_wp_security;
-        //Let's get the results array from the DB
-        $query = "SELECT * FROM ".AIOWPSEC_TBL_GLOBAL_META_DATA." WHERE meta_key1='file_change_detection'";
-        $scan_db_data = $wpdb->get_row($query, ARRAY_A);
-        if ($scan_db_data === NULL)
+        $scan_results_unserialized = AIOWPSecurity_Scan::get_file_change_data();
+        if (!$scan_results_unserialized)
         {
-            $aio_wp_security->debug_logger->log_debug("display_last_scan_results() - DB query for scan results data from global meta table returned NULL!",4);
-            return FALSE;
-        }
-        $date_last_scan = $scan_db_data['date_time'];
-        $scan_results_unserialized = maybe_unserialize($scan_db_data['meta_value5']);
-        if (empty($scan_results_unserialized['files_added']) && empty($scan_results_unserialized['files_removed']) && empty($scan_results_unserialized['files_changed'])){
-            //No file change detected
             return FALSE;
         }
         ?>

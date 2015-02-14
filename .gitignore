@@ -1,4 +1,6 @@
 .htaccess
+clubber-mag.sublime-project
+clubber-mag.sublime-workspace
 wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/
@@ -25,6 +27,7 @@ nbproject/
 /wp-content/plugins/theme-check/
 /wp-content/plugins/user-switching/
 /wp-content/plugins/wpdevtool/
+/wp-content/plugins/crayon-syntax-highlighter/
 
 /wp-content/plugins/myMail/
 /wp-content/plugins/admin-bar-toggle/

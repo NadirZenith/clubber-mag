@@ -110,7 +110,7 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu
         global $aiowps_feature_mgr;
         $aiowps_feature_mgr->output_feature_details_badge("user-accounts-change-admin-user");
         
-        if (AIOWPSecurity_Utility::check_user_exists('admin')) 
+        if (AIOWPSecurity_Utility::check_user_exists('admin') || AIOWPSecurity_Utility::check_user_exists('Admin')) 
         {
             echo '<div class="aio_red_box"><p>'.__('Your site currently has an account which uses the default "admin" username. 
                 It is highly recommended that you change this name to something else. 
@@ -281,10 +281,12 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu
                         //Lets logout the user
                         $aio_wp_security->debug_logger->log_debug("Logging User Out with login ".$user_login. " because they changed their username.");
                         $after_logout_url = AIOWPSecurity_Utility::get_current_page_url();
-                        $after_logout_payload = 'redirect_to='.$after_logout_url.'&msg='.$aio_wp_security->user_login_obj->key_login_msg.'=admin_user_changed';//Place the handle for the login screen message in the URL
-                        $encrypted_payload = base64_encode($after_logout_payload);
+                        $after_logout_payload = array('redirect_to'=>$after_logout_url, 'msg'=>$aio_wp_security->user_login_obj->key_login_msg.'=admin_user_changed', );
+                        //Save some of the logout redirect data to a transient
+                        AIOWPSecurity_Utility::is_multisite_install() ? set_site_transient('aiowps_logout_payload', $after_logout_payload, 30 * 60) : set_transient('aiowps_logout_payload', $after_logout_payload, 30 * 60);
+                        
                         $logout_url = AIOWPSEC_WP_URL.'?aiowpsec_do_log_out=1';
-                        $logout_url = AIOWPSecurity_Utility::add_query_data_to_url($logout_url, 'al_additional_data', $encrypted_payload);
+                        $logout_url = AIOWPSecurity_Utility::add_query_data_to_url($logout_url, 'al_additional_data', '1');
                         AIOWPSecurity_Utility::redirect_to_url($logout_url);
                     }
                 }
@@ -324,7 +326,7 @@ class AIOWPSecurity_User_Accounts_Menu extends AIOWPSecurity_Admin_Menu
             $account_output .= '<tr><th>'.__('Account Login Name', 'aiowpsecurity').'</th></tr>';
             foreach ($admin_users as $entry) {
                 $account_output .= '<tr>';
-                if ($entry->user_login == 'admin') {
+                if (strtolower($entry->user_login) == 'admin') {
                     $account_output .= '<td style="color:red; font-weight: bold;">'.$entry->user_login.'</td>';
                 }else {
                     $account_output .= '<td>'.$entry->user_login.'</td>';

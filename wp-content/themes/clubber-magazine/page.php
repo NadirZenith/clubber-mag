@@ -1,34 +1,12 @@
-
-
-<?php
-global $post;
-if (have_posts()) {
-        while (have_posts()) {
-                the_post();
-
-                do_action('attitude_before_post');
-                ?>
-                <section class="bg-50 block-5" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                        <article class="">
-                                <header class="ml5 mt5">
-                                        <h1 class="bigger">
-                                                <?php the_title(); ?>
-                                        </h1>
-                                </header>
-                                <div class="mt5 ml5 meddium bold">
-                                        <?php
-                                        the_content()
-                                        ?>
-                                </div>
-
-                        </article>
-                </section>
-                <?php
-        }
-} else {
-        ?>
-        <h1 class="entry-title"><?php _e('No Posts Found.', 'attitude'); ?></h1>
-        <?php
-}
-?>
-
+<?php if ( have_posts() ) : ?>
+      <?php while ( have_posts() ) : the_post(); ?>
+            <section <?php post_class( 'ibox-5 box-5' ); ?>>
+                  <article id="post-<?php the_ID(); ?>">
+                      <?php echo get_template_part( 'tpl/parts/page-header')?>
+                        <?php the_content(); ?>
+                  </article>
+            </section>
+      <?php endwhile; ?>
+<?php else: ?>
+      <?php get_template_part( 'tpl/parts/not-found' ); ?>
+<?php endif; ?>

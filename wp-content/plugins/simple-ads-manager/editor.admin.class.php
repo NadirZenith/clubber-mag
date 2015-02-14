@@ -245,7 +245,7 @@ if(!class_exists('SamPlaceEdit')) {
           <ul>
             <li><a href="#tab1"><?php _e('Media Library', SAM_DOMAIN); ?></a></li>
             <li><a href="#tab2"><?php _e('Server', SAM_DOMAIN); ?></a></li>
-            <li><a href="#tab3"><?php _e('Local Computer', SAM_DOMAIN); ?></a></li>
+            <!--<li><a href="#tab3"><?php _e('Local Computer', SAM_DOMAIN); ?></a></li>-->
           </ul>
           <div id="tab1">
             <p>
@@ -266,17 +266,6 @@ if(!class_exists('SamPlaceEdit')) {
             <button id="add-file-button" class="color-btn color-btn-left"><b style="background-color: #0cc77a"></b><?php _e('Apply', SAM_DOMAIN);?></button>
             <p>
               <?php _e("Select file from your blog server.", SAM_DOMAIN); ?>
-            </p>
-          </div>
-          <div id="tab3">
-            <p>
-              <strong><?php _e('Upload File', SAM_DOMAIN); ?></strong>
-            </p>
-            <button id="upload-file-button" class="color-btn color-btn-left"><b style="background-color: #21759b"></b><?php _e('Upload', SAM_DOMAIN);?></button>
-            <img id='load_img' src='<?php echo SAM_IMG_URL ?>loader.gif' style='display: none;'>
-            <span id="uploading"></span>
-            <p>
-              <span id="uploading-help"><?php _e("Select and upload file from your local computer.", SAM_DOMAIN); ?></span>
             </p>
           </div>
         </div>

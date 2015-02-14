@@ -1,0 +1,232 @@
+
+body {
+      font-family: @font-family-base;
+      font-size: @font-size-base;
+      line-height: @line-height-base;
+      color: #111;
+      height:100%;
+      width:100%;
+      background: @body-bg-color;
+      /*background: url("img/body-bg.png") @body-bg-color;*/
+      /*background-color: red;*/
+}
+
+.site { 
+      /*width: 98%;*/
+      width: 100%;
+      margin-top: 60px;
+      margin-bottom: 30px;
+      margin-left: auto;
+      margin-right: auto;
+      -webkit-box-shadow: 0px 7px 13px 0px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow:    0px 7px 13px 0px rgba(50, 50, 50, 0.75);
+      box-shadow:         0px 7px 13px 0px rgba(50, 50, 50, 0.75);
+      background-color: @site-bg-color;
+}
+
+header#header{
+      /*padding-top: 15px;*/
+      background:linear-gradient(0deg, @header-bg-end, @header-bg-start);
+}
+
+#content{
+      margin: 0 auto;
+      width: 98%;
+}
+//sidebar below
+#content .has-sidebar{
+      width: 100%;
+}
+
+#content > aside{
+      width: 100%;
+}
+
+/*FOOTER*/
+footer#footer{
+      background-color: @footer-bg-color;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      /*margin-bottom: 30px;*/
+      width: 100%;
+      overflow: hidden;
+      /*overflow: */
+}
+
+#site-logo {
+
+      float:left;
+      /*width: 15%;*/
+      margin-top: 6px;
+      margin-bottom: 6px;
+      margin-left: 35px;
+
+      img{
+            width: 140px;
+
+      }
+
+}
+
+.home-featured-image{
+      height: 450px;
+      width: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: white;
+      background-size: 100%;
+      position: relative;
+}
+
+.pager-date,
+.menu-all-first-letter,
+.menu-az {
+      a{
+            color: @sc-2;
+      }
+}
+// sm ≥ 568px 
+@media screen and (min-width: 35.5em)
+{
+}
+// md ≥ 768px 
+@media screen and (min-width: 48em)
+{ 
+      .site { 
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+      }
+}
+// lg ≥ 1024px
+//sidebar on side
+@media screen and (min-width: 64em)
+{
+
+      .site{
+            /*width: 1010px;*/
+      }
+      /*#content > main.has-sidebar{*/
+      #content .has-sidebar{
+            float: left;
+            width: 74%;
+      }
+
+      #content > aside{
+            float: left;
+            width: 26%;
+      }
+
+}
+// xl ≥ 1280px
+@media screen and (min-width: 80em)
+{
+
+}
+
+
+
+
+
+
+// sm ≥ 568px 
+@media screen and (min-width: 35.5em){
+
+}
+// md ≥ 768px 
+@media screen and (min-width: 48em){
+
+}
+// lg ≥ 1024px
+@media screen and (min-width: 64em){
+
+}
+// xl ≥ 1280px
+@media screen and  (min-width: 80em){
+
+}
+
+
+
+
+
+.parallax{
+      position: absolute;
+}
+
+#footer-parallax{
+      width: 100%;
+      bottom: 8;
+}
+#footer-parallax img{
+      display: block;
+      /*width: 80%;*/
+      width: 12%;
+      //right
+      float: right;
+      /*margin-right: 20%;*/
+      margin-right: 3%;
+
+      /*      
+      //center
+      margin-left: auto;
+      margin-right: auto;
+      */
+
+}
+
+#breadcrumbs span{
+      color: #fff;
+}
+
+/*BACKGROUND*/ 
+.bg-50{
+      /*background-color: rgba(50, 50, 50, 0.30);*/
+      background-color: @section-bg-color;
+}
+.cm-title,
+.cm-title2,
+.cm-title3{
+      .pl5;
+      .pr5;
+}
+.cm-title{
+      background-color: rgba(100,100,100,1);
+      color: #fff;
+}
+.cm-title2{
+      background-color: @cm-blue-color;
+      color: #111;
+}
+.cm-title3{
+      background-color: #fff;
+      color: @cm-blue-color;
+}
+#user-profile-images{
+      border-bottom:1px solid #aaa;
+}
+#user-profile-picture{
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 25%;
+      height: 25%;
+}
+#user-profile-picture img{
+      width: 100%;
+      height: auto;
+      background-color: #fff;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      overflow: hidden;
+}
+
+body.single-podcast{
+      .the-content{
+            p{
+                  margin-top: 0.2em; 
+                  margin-bottom: 0.2em; 
+            }
+      }
+}
+

@@ -113,9 +113,9 @@ function attitude_theloop_for_archive() {
 			<?php do_action( 'attitude_before_post_header' ); ?>
 
 			<header class="entry-header">
-    			<h2 class="entry-title">
+    			<h1 class="entry-title">
     				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>"><?php the_title(); ?></a>
-    			</h2><!-- .entry-title -->
+    			</h1><!-- .entry-title -->
   			</header>
 
   			<?php do_action( 'attitude_after_post_header' ); ?>
@@ -134,6 +134,7 @@ function attitude_theloop_for_archive() {
 	  			echo $image;
 	  		}
   			?>
+            <?php if (get_the_author() !=''){?>
   			<div class="entry-content clearfix">
     			<?php the_excerpt(); ?>
   			</div>
@@ -157,7 +158,9 @@ function attitude_theloop_for_archive() {
     			echo '<a class="readmore" href="' . get_permalink() . '" title="'.the_title( '', '', false ).'">'.__( 'Read more', 'attitude' ).'</a>';
     			?>
     		</div>
-
+			<?php } else{
+			the_content();	
+				} ?>
     		<?php do_action( 'attitude_after_post_meta' ); ?>
 
 		</article>
@@ -196,9 +199,9 @@ function attitude_theloop_for_page() {
 			<?php do_action( 'attitude_before_post_header' ); ?>
 
 			<header class="entry-header">
-    			<h2 class="entry-title">
+    			<h1 class="entry-title">
     				<?php the_title(); ?>
-    			</h2><!-- .entry-title -->
+    			</h1><!-- .entry-title -->
   			</header>
 
   			<?php do_action( 'attitude_after_post_header' ); ?>
@@ -267,9 +270,9 @@ function attitude_theloop_for_single() {
 			<?php do_action( 'attitude_before_post_header' ); ?>
 
 			<header class="entry-header">
-    			<h2 class="entry-title">
+    			<h1 class="entry-title">
     				<?php the_title(); ?>
-    			</h2><!-- .entry-title -->
+    			</h1><!-- .entry-title -->
   			</header>
 
   			<?php do_action( 'attitude_after_post_header' ); ?>
@@ -302,7 +305,7 @@ function attitude_theloop_for_single() {
                ) );
                ?>
   			</div>
-
+<?php if(get_the_time( get_option( 'date_format' ) )) { ?>
   			<div class="entry-meta-bar clearfix">	        			
     			<div class="entry-meta">
     				<span class="by-author"><?php _e( 'By', 'attitude' ); ?> <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a></span> |
@@ -319,7 +322,7 @@ function attitude_theloop_for_single() {
   			<?php 
 
   			do_action( 'attitude_after_post_content' );
-
+			 }
   			do_action( 'attitude_before_comments_template' ); 
 
          comments_template(); 
@@ -364,9 +367,9 @@ function attitude_theloop_for_search() {
 			<?php do_action( 'attitude_before_post_header' ); ?>
 
 			<header class="entry-header">
-    			<h2 class="entry-title">
+    			<h1 class="entry-title">
     				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>"><?php the_title(); ?></a>
-    			</h2><!-- .entry-title -->
+    			</h1><!-- .entry-title -->
   			</header>
 
   			<?php do_action( 'attitude_after_post_header' ); ?>
@@ -430,9 +433,9 @@ function attitude_theloop_for_template_blog_image_large() {
 			<?php do_action( 'attitude_before_post_header' ); ?>
 
 			<header class="entry-header">
-    			<h2 class="entry-title">
+    			<h1 class="entry-title">
     				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>"><?php the_title(); ?></a>
-    			</h2><!-- .entry-title -->
+    			</h1><!-- .entry-title -->
   			</header>
 
   			<?php do_action( 'attitude_after_post_header' ); ?>
@@ -543,9 +546,9 @@ function attitude_theloop_for_template_blog_image_medium() {
 			<?php do_action( 'attitude_before_post_header' ); ?>
 
 			<header class="entry-header">
-    			<h2 class="entry-title">
+    			<h1 class="entry-title">
     				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>"><?php the_title(); ?></a>
-    			</h2><!-- .entry-title -->
+    			</h1><!-- .entry-title -->
   			</header>
 
   			<?php do_action( 'attitude_after_post_header' ); ?>
@@ -657,9 +660,9 @@ function attitude_theloop_for_template_blog_full_content() {
 			<?php do_action( 'attitude_before_post_header' ); ?>
 
 			<header class="entry-header">
-    			<h2 class="entry-title">
+    			<h1 class="entry-title">
     				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute();?>"><?php the_title(); ?></a>
-    			</h2><!-- .entry-title -->
+    			</h1><!-- .entry-title -->
   			</header>
 
   			<?php do_action( 'attitude_after_post_header' ); ?>

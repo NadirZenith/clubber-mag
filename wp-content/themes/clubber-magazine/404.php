@@ -9,6 +9,6 @@
 ?>
 
 <div style="text-align: center">
-        <h1>Página no encontrada!</h1>
+      <h1>Página no encontrada!</h1>
 
 </div>

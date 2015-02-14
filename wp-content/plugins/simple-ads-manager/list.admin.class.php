@@ -113,8 +113,11 @@ if(!class_exists('SamPlaceList')) {
           }
           if($iaction === 'kill-em-all') $wpdb->query("DELETE FROM {$pTable} WHERE trash=true");
           if($iaction === 'clear-stats') {
-            $wpdb->query("UPDATE $pTable SET $pTable.patch_hits = 0;");
-            $wpdb->query("UPDATE $aTable SET $aTable.ad_hits = 0, $aTable.ad_clicks = 0;");
+            //$wpdb->query("UPDATE $pTable SET $pTable.patch_hits = 0;");
+            //$wpdb->query("UPDATE $aTable SET $aTable.ad_hits = 0, $aTable.ad_clicks = 0;");
+            include_once('sam.tools.php');
+            $cleaner = new SamStatsCleaner($this->settings);
+            $cleaner->clear();
           }
           $trash_num = $wpdb->get_var("SELECT COUNT(*) FROM $pTable WHERE trash = TRUE");
           $active_num = $wpdb->get_var("SELECT COUNT(*) FROM $pTable WHERE trash = FALSE");
@@ -206,7 +209,7 @@ if(!class_exists('SamPlaceList')) {
                       (IFNULL((SELECT SUM(IF(sa.ad_schedule AND sa.per_month > 0, DATEDIFF(CURDATE(), sa.ad_start_date) * sa.per_month / 30, 0)) FROM $aTable sa WHERE sa.pid = sp.id), 0)) AS e_month,
                       sp.trash,
                       (SELECT COUNT(*) FROM $aTable sa WHERE sa.pid = sp.id) AS items
-                    FROM $pTable sp".
+                    FROM {$pTable} sp".
                     (($mode !== 'all') ? " WHERE sp.trash = ".(($mode === 'trash') ? 'TRUE' : 'FALSE') : '').
                     " LIMIT $offset, $places_per_page;";
           $places = $wpdb->get_results($pSql, ARRAY_A);          

@@ -1,172 +1,94 @@
 
 <?php
 $tax = 'city';
-if (is_tax($tax)) {
-        global $wp_query;
-        $term = $wp_query->get_queried_object();
-        $city = ucfirst($term->name);
+if ( is_tax( $tax ) ) {
+      global $wp_query;
+      $term = $wp_query->get_queried_object();
+      $city = ucfirst( $term->name );
 }
 ?>
 
-<section class="event bg-50 block-5">
-        <?php
-        require_once 'library/structure/front/event.php';
-        ?>
-</section>
+<main role="main">
+      <div class="mb30 mt15">
+            <?php
+            get_template_part( 'tpl/parts/featured-events' );
+            ?>
+      </div>
 
-        <div id="primary">
-            <h1 class="ml5">
-                        Fiestas y Eventos esta semana <?php echo ($city) ? "en {$city}" : ''; ?>
-                </h1>
+      <div class="has-sidebar">
+            <div class="ml5">
+                  <h1 class="h2">
+                        <?php _e( 'Party and Events of the week', 'cm' ); ?> <?php echo ($city) ? "en {$city}" : ''; ?> 
+                  </h1>
+            </div>
 
-                <?php
-                $date = get_query_var('date');
+            <?php
+            get_template_part( 'tpl/pager-by-date' );
+            ?>
 
-                $DateTime = DateTime::createFromFormat('d-m-Y', $date);
-                if ($DateTime) {
-                        $DateTime->setTime(0, 0, 0); //to avoid date problems
+            <?php
+            $query = &$wp_query;
+            include('tpl/archive/agenda.php');
+            ?>
+
+            <?php get_template_part( 'tpl/pager-by-date' ); ?>
+
+            <?php
+            /*   LESS THAN 5 EVENTS        */
+            if ( $query->found_posts < 5 ) {
+
+                  $date = get_query_var( 'date' );
+
+                  $DateTime = DateTime::createFromFormat( 'd-m-Y', $date );
+                  if ( $DateTime ) {
+                        $DateTime->setTime( 0, 0, 0 ); //to avoid date problems
                         $start_date = $DateTime->getTimestamp();
-                } else {
-                        $start_date = strtotime("now");
-                }
+                  } else {
+                        $start_date = strtotime( "now" );
+                  }
 
-                $end_date = strtotime('+ 1 week', $start_date);
-                $prev_date = strtotime('- 1 week', $start_date);
+                  $args = array(
+                        'post_type' => 'agenda',
+                        'post__not_in' => $main_posts_id,
+                        'posts_per_page' => 10,
+                        'order' => 'ASC',
+                        'orderby' => 'meta_value_num',
+                        'meta_key' => 'wpcf-event_begin_date',
+                        'meta_query' => array(
+                              array(
+                                    'key' => 'wpcf-event_begin_date',
+                                    'value' => $start_date,
+                                    'compare' => '>='
+                              )
+                        )
+                  );
 
-                $args = array(
-                      'post_type' => 'agenda',
-                      'posts_per_page' => -1,
-                      'order' => 'ASC',
-                      'orderby' => 'meta_value_num',
-                      'meta_key' => 'wpcf-event_begin_date',
-                      'meta_query' => array(
-                            array(
-                                  'key' => 'wpcf-event_begin_date',
-                                  'value' => array($start_date, $end_date),
-                                  'type' => 'NUMERIC',
-                                  'compare' => 'BETWEEN'
-                            )
-                      )
-                );
-                if ($city) {
-                        $args[$tax] = $city;
-                }
+                  /* d( $args ); */
 
-                $wp_query = new WP_Query($args);
-                ?>
-                <div id="archive-list">
-                        <?php include (locate_template('templates/agenda/date-pagination.php')); ?>
-                        <!-- Week events -->
-                        <div class="cb">
-                                <?php
-                                $main_posts_id = array();
-                                /*    MAIN AGENDA QUERY              */
-                                if (have_posts()) {
-                                        $first = TRUE;
-                                        while (have_posts()) {
-                                                the_post();
-                                                $main_posts_id[] = get_the_ID();
-                                                $post_timestamp = get_post_meta(get_the_ID(), 'wpcf-event_begin_date', true); //1394924400
-                                                $post_date = date('l d/m/y', $post_timestamp); //"15/03/14"
-
-                                                if ($last_date != $post_date) {
-                                                        if ($first) {
-                                                                echo '<section>';
-                                                                ?> 
-                                                                <header class="ml5 mr5">
-                                                                        <h2 class=" bold sc-3" style="font-size: 200%;"><?php echo $post_date ?> </h2> 
-                                                                        <hr class="cb pb5">
-                                                                </header>
-                                                                <?php
-                                                                echo '<ul>';
-                                                                $first = FALSE;
-                                                        } else {
-                                                                echo '</ul>';
-                                                                echo '</section>';
-                                                                echo '<section>';
-                                                                ?>
-                                                                <header class="ml5 mr5">
-                                                                        <h2 class=" bold sc-3" style="font-size: 200%;"><?php echo $post_date ?> </h2> 
-                                                                        <hr class="cb pb5">
-                                                                </header>
-
-                                                                <?php
-                                                                echo '<ul>';
-                                                        }
-                                                }
-                                                $last_date = $post_date;
-                                                /* LI */
-                                                ?>
-                                                <li class="">
-                                                        <?php
-                                                        include (locate_template('templates/agenda/event-archive-item.php'));
-                                                        ?>
-                                                </li>
-                                                <?php
-                                                /* \LI */
-                                        }//END WHILE
-                                        echo '</ul>';
-                                        echo '</section>';
-                                } else {
-                                        ?>
-                                        <!-- no posts -->
-                                        <h2 style="text-align: center;"><?php _e('No Posts Found.', 'attitude'); ?></h2>
-                                        <?php
-                                }
-                                /* ---------- //END MAIN AGENDA QUERY              */
-                                ?>
+                  $query = new WP_Query( $args );
+                  if ( $query->found_posts > 0 ) {
+                        ?>
+                        <div class="ml5 mb15">
+                              <h1 class="h2">
+                                    <?php _e( 'Next parties and events', 'cm' ) ?> <?php echo ($city) ? "en {$city}" : ''; ?>               
+                              </h1>
                         </div>
-                        <!-- Week event list close -->
-                        <?php include (locate_template('templates/agenda/date-pagination.php')); ?>
+
+                        <?php include('tpl/agenda/archive.php'); ?>
 
                         <?php
-                        /*   LESS THAN 5 EVENTS        */
-                        if ($wp_query->found_posts < 5) {
-                                /* d($args); */
-                                $args['post__not_in'] = $main_posts_id;
-                                $args['posts_per_page'] = 5;
-                                $args['meta_query'][0]['value'] = $start_date;
-                                $args['meta_query'][0]['compare'] = '>=';
-                                /* d($args); */
+                  }
+            }
+            /*  --------- //END LESS THAN 5 EVENTS        */
+            ?>
+      </div>
 
-                                $query2 = new WP_Query($args);
-                                if ($query2->have_posts()) {
-                                        ?>
-                                        <section>
-                                                <header>
-                                                        <h1 class="ml5">
-                                                                Próximas Fiestas y Eventos <?php echo ($city) ? "en {$city}" : ''; ?>
-                                                        </h1>
-                                                </header>
-                                                <ul>
-                                                        <?php
-                                                        while ($query2->have_posts()) {
-                                                                $query2->the_post();
-                                                                /* LI */
-                                                                ?>
-                                                                <li class="">
-                                                                        <?php
-                                                                        include (locate_template('templates/agenda/event-archive-item.php'));
-                                                                        ?>
-                                                                </li>
-                                                                <?php
-                                                                /* \LI */
-                                                        }
-                                                        ?>
-                                                </ul>
-                                        </section>
-                                        <?php
-                                }
-                        }
-                        /*  --------- //END LESS THAN 5 EVENTS        */
-                        ?>
-                </div>
-
-
-</div>
-<?php
-wp_reset_postdata();
-?>
-<div id="secondary">
-        <?php get_sidebar('agenda'); ?>
-</div>
+</main>
+<aside role="complementary">
+      <?php get_sidebar(); ?>
+      <?php
+      if ( is_active_sidebar( 'banners_sidebar' ) ) {
+            dynamic_sidebar( 'banners_sidebar' );
+      }
+      ?>
+</aside>

@@ -80,7 +80,8 @@ if(!class_exists('SamUpdater')) {
       $add = '';
       $primaryKey = '';
 
-      foreach($defTable as $key => $val) {
+      // Table
+	    foreach($defTable as $key => $val) {
         $add .= ((empty($add)) ? '' : ', ')
           . $key . ' ' . $val['Type']
           . (($val['Null'] == 'NO') ? ' NOT NULL' : '')
@@ -98,7 +99,7 @@ if(!class_exists('SamUpdater')) {
       return $out;
     }
 
-    private function getUpdateSql($table, $defTable) {
+    public function getUpdateSql($table, $defTable) {
       global $wpdb, $charset_collate;
       $dbv = $this->dbVersion;
       $curTable = array();
@@ -135,6 +136,7 @@ if(!class_exists('SamUpdater')) {
             . (($val['Null'] == 'NO') ? ' NOT NULL' : '');
       }
       $add = (!empty($add)) ? "ADD ($add)" : '';
+
       if(!empty($change) && !empty($add)) $add = ', ' . $add;
       if((!empty($add) || !empty($change)) && !empty($modify)) $modify = ', ' . $modify;
 
@@ -230,6 +232,80 @@ if(!class_exists('SamUpdater')) {
       }
     }
 
+    private function removeIndexes() {
+      global $wpdb;
+
+      $prefix = $wpdb->prefix;
+      $pTable = $wpdb->prefix . "sam_places";
+      $aTable = $wpdb->prefix . "sam_ads";
+      $zTable = $wpdb->prefix . "sam_zones";
+      $bTable = $wpdb->prefix . "sam_blocks";
+      $sTable = $wpdb->prefix . "sam_stats";
+      $eTable = $wpdb->prefix . "sam_errors";
+
+      $el = (integer)$this->options['errorlog'];
+
+      $sql = "SHOW INDEX FROM {$pTable} WHERE Key_name != %s;";
+      $data = $wpdb->get_results($wpdb->prepare($sql, "PRIMARY"), ARRAY_A);
+      if(!empty($data)) {
+        $sql = "DROP INDEX UK_{$prefix}places ON {$pTable};";
+        $dbResult = $wpdb->query( $sql );
+
+        if($el) {
+          self::errorWrite($eTable, $pTable, $sql, $dbResult, $wpdb->last_error);
+          $dbResult = null;
+        }
+      }
+
+      $sql = "SHOW INDEX FROM {$aTable} WHERE Key_name != %s;";
+      $data = $wpdb->get_results($wpdb->prepare($sql, "PRIMARY"), ARRAY_A);
+      if(!empty($data)) {
+        $sql = "DROP INDEX UK_{$prefix}ads ON {$aTable};";
+        $dbResult = $wpdb->query( $sql );
+
+        if($el) {
+          self::errorWrite($eTable, $aTable, $sql, $dbResult, $wpdb->last_error);
+          $dbResult = null;
+        }
+      }
+
+      $sql = "SHOW INDEX FROM {$zTable} WHERE Key_name != %s;";
+      $data = $wpdb->get_results($wpdb->prepare($sql, "PRIMARY"), ARRAY_A);
+      if(!empty($data)) {
+        $sql = "DROP INDEX UK_{$prefix}zones ON {$zTable};";
+        $dbResult = $wpdb->query( $sql );
+
+        if($el) {
+          self::errorWrite($eTable, $zTable, $sql, $dbResult, $wpdb->last_error);
+          $dbResult = null;
+        }
+      }
+
+      $sql = "SHOW INDEX FROM {$bTable} WHERE Key_name != %s;";
+      $data = $wpdb->get_results($wpdb->prepare($sql, "PRIMARY"), ARRAY_A);
+      if(!empty($data)) {
+        $sql = "DROP INDEX UK_{$prefix}blocks ON {$bTable};";
+        $dbResult = $wpdb->query( $sql );
+
+        if($el) {
+          self::errorWrite($eTable, $bTable, $sql, $dbResult, $wpdb->last_error);
+          $dbResult = null;
+        }
+      }
+
+      $sql = "SHOW INDEX FROM {$sTable} WHERE Key_name != %s;";
+      $data = $wpdb->get_results($wpdb->prepare($sql, "PRIMARY"), ARRAY_A);
+      if(!empty($data)) {
+        $sql = "DROP INDEX IDX_{$prefix}stats ON {$sTable};";
+        $dbResult = $wpdb->query( $sql );
+
+        if($el) {
+          self::errorWrite($eTable, $sTable, $sql, $dbResult, $wpdb->last_error);
+          $dbResult = null;
+        }
+      }
+    }
+
     public function update() {
       global $wpdb, $charset_collate, $sam_tables_defs;
       $pTable = $wpdb->prefix . "sam_places";
@@ -249,6 +325,8 @@ if(!class_exists('SamUpdater')) {
       $dbResult = null;
 
       if( $dbVersion != SAM_DB_VERSION ) {
+        /*if($dbVersion == '2.7')*/ self::removeIndexes();
+
         if($wpdb->get_var("SHOW TABLES LIKE '$eTable'") != $eTable) {
           $eSql = "CREATE TABLE $eTable (
                     id int(11) NOT NULL AUTO_INCREMENT,

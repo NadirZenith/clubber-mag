@@ -40,15 +40,14 @@ if(!class_exists('SamErrorLog')) {
       if(is_null($active_num)) $active_num = 0;
       if(is_null($resolved_num)) $resolved_num = 0;
       $all_num = $resolved_num + $active_num;
-      $total = (($mode !== 'all') ? (($mode === 'trash') ? $resolved_num : $active_num) : $all_num);
+      $total = (($mode !== 'all') ? (($mode === 'resolved') ? $resolved_num : $active_num) : $all_num);
       $start = $offset = ( $apage - 1 ) * $places_per_page;
 
       $page_links = paginate_links( array(
         'base' => add_query_arg( 'apage', '%#%' ),
-        'format' => '',
         'prev_text' => __('&laquo;'),
         'next_text' => __('&raquo;'),
-        'total' => ceil($total / $places_per_page),
+        'total' => (integer)ceil($total / $places_per_page),
         'current' => $apage
       ));
       ?>
@@ -148,13 +147,13 @@ if(!class_exists('SamErrorLog')) {
             <?php
             if($row['resolved'] == true) {
               ?>
-              <span class="delete"><a href="<?php echo admin_url('admin.php'); ?>?page=sam-errors&action=errors&mode=<?php echo $mode ?>&iaction=untrash&item=<?php echo $row['id'] ?>" title="<?php _e('Restore this Block from the Trash', SAM_DOMAIN) ?>"><?php _e('Not Resolved', SAM_DOMAIN); ?></a> | </span>
-              <span class="delete"><a href="<?php echo admin_url('admin.php'); ?>?page=sam-errors&action=errors&mode=<?php echo $mode ?>&iaction=kill&item=<?php echo $row['id'] ?>" title="<?php _e('Remove this Block permanently', SAM_DOMAIN) ?>"><?php _e('Remove permanently', SAM_DOMAIN); ?></a></span>
+              <span class="delete"><a href="<?php echo admin_url('admin.php'); ?>?page=sam-errors&action=errors&mode=<?php echo $mode ?>&iaction=untrash&item=<?php echo $row['id'] ?>" title="<?php _e('Restore this Error', SAM_DOMAIN) ?>"><?php _e('Not Resolved', SAM_DOMAIN); ?></a> | </span>
+              <span class="delete"><a href="<?php echo admin_url('admin.php'); ?>?page=sam-errors&action=errors&mode=<?php echo $mode ?>&iaction=kill&item=<?php echo $row['id'] ?>" title="<?php _e('Remove permanently', SAM_DOMAIN) ?>"><?php _e('Remove permanently', SAM_DOMAIN); ?></a></span>
             <?php
             }
             else {
               ?>
-              <span class="untrash"><a href="<?php echo admin_url('admin.php'); ?>?page=sam-errors&action=errors&mode=<?php echo $mode ?>&iaction=delete&item=<?php echo $row['id'] ?>" title="<?php _e('Move this Block to the Trash', SAM_DOMAIN) ?>"><?php _e('Resolved', SAM_DOMAIN); ?></a></span>
+              <span class="untrash"><a href="<?php echo admin_url('admin.php'); ?>?page=sam-errors&action=errors&mode=<?php echo $mode ?>&iaction=delete&item=<?php echo $row['id'] ?>" title="<?php _e('Move to Trash', SAM_DOMAIN) ?>"><?php _e('Resolved', SAM_DOMAIN); ?></a></span>
             <?php } ?>
           </div>
         </td>
@@ -179,7 +178,6 @@ if(!class_exists('SamErrorLog')) {
     </div>
   </div>
 </div>
-<div id="dialog" style="display: none;" title="<?php _e('Error Info', SAM_DOMAIN); ?>"></div>
       <?php
       /*$struct = $wpdb->get_results('DESCRIBE wp_sam_blocks;', ARRAY_A);
       foreach($struct as $var) {

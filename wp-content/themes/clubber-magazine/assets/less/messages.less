@@ -1,0 +1,29 @@
+
+
+/* FLASH MESSAGES */
+.nzs-messages {position: relative; z-index: 100;}
+.nzs-messages-wrapper {position: absolute; width: 100%}
+.message { width: 80%; -moz-border-radius: 4px; border-radius: 4px; display: block; padding: 5px 0; margin:10px auto 10px auto; left: 0; right: 0; clear: both;
+           /*           
+                      -webkit-box-shadow: 0px 0px 24px 0px rgba(50, 50, 50, 0.59);
+                      -moz-box-shadow:    0px 0px 24px 0px rgba(50, 50, 50, 0.59);
+                      box-shadow:         0px 0px 24px 0px rgba(50, 50, 50, 0.59); 
+           */
+           -webkit-box-shadow: 0px 0px 30px 5px rgba(50, 50, 50, 1);
+           -moz-box-shadow:    0px 0px 30px 5px rgba(50, 50, 50, 1);
+           box-shadow:         0px 0px 30px 5px rgba(50, 50, 50, 1);
+}
+/*.message a.closeMessage { margin: -14px -8px 0 0; display:none; width: 16px; height: 16px; float: right; background: url(img/messages/close.png) no-repeat; }*/
+.nzs-messages a.closeMessage {margin-right: 10%; float: right; width: 16px; height: 16px; background: url(img/messages/close.png) no-repeat; }
+.message p { margin: 3px 0 3px 10px !important; padding: 0 10px 0 23px !important; font-size: 14px; line-height: 16px; }
+.message.error { border: 1px solid #C42608; color: #c00 !important; background: #FFF0EF; }
+.message.error p { background: url(img/messages/cross.png ) no-repeat 0px 50%; color:#c00 !important; }
+/*.message.success {background: #E0FBCC; border: 1px solid #6DC70C; } */
+/*.message.success p { background: url(img/messages/help.png) no-repeat 0px 50%; color: #2B6301 !important; }*/
+/*.message.warning { background: #FFFCD3; border: 1px solid #EBCD41; color: #000; }*/
+/*.message.warning p { background: url(img/messages/warning.png ) no-repeat 0px 50%; color: #5F4E01; }*/
+.message.success { background: #DFEBFB; border: 1px solid #0583f2; }
+.message.success p { background: url(img/messages/success.png) no-repeat 0px 50% / 2%; color: #0583f2; }
+/*.message.information a { text-decoration: underline; }*/
+/** @todo nz only error & success*/
+

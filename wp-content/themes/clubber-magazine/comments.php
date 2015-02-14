@@ -31,9 +31,9 @@
             <h2 class="">
                   <?php
                   if (1 == get_comments_number()) {
-                        printf(__('One thought XXYY on &ldquo;%2$s&rdquo;', 'attitude'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>');
+                        printf(__('One thought XXYY on &ldquo;%2$s&rdquo;', 'cm'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>');
                   } else {
-                        printf(__('%1$s thoughts on &ldquo;%2$s&rdquo;', 'attitude'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>');
+                        printf(__('%1$s thoughts on &ldquo;%2$s&rdquo;', 'cm'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>');
                   }
                   ?>
             </h2>
@@ -46,9 +46,9 @@
 
             <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // are there comments to navigate through    ?>
                   <ul class="default-wp-page clearfix">
-                        <h1 class="assistive-text section-heading"><?php _e('Comment navigation', 'attitude'); ?></h1>
-                        <li class="previous"><?php previous_comments_link(__('&larr; Older Comments', 'attitude')); ?></li>
-                        <li class="next"><?php next_comments_link(__('Newer Comments &rarr;', 'attitude')); ?></li>
+                        <h1 class="assistive-text section-heading"><?php _e('Comment navigation', 'cm'); ?></h1>
+                        <li class="previous"><?php previous_comments_link(__('&larr; Older Comments', 'cm')); ?></li>
+                        <li class="next"><?php next_comments_link(__('Newer Comments &rarr;', 'cm')); ?></li>
                   </ul>
             <?php endif; // check for comment navigation    ?>
 
@@ -56,7 +56,7 @@
       // If comments are closed and there are comments, let's leave a little note.
       elseif (!comments_open() && '0' != get_comments_number() && post_type_supports(get_post_type(), 'comments')) :
             ?>
-            <p class="nocomments"><?php _e('Comments are closed.', 'attitude'); ?></p>
+            <p class="nocomments"><?php _e('Comments are closed.', 'cm'); ?></p>
       <?php endif; ?>
       <div style="clear: both;">
             <h1>------</h1>

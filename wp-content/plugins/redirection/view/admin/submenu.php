@@ -2,12 +2,12 @@
 
 <ul class="subsubsub">
 	<li>
-		<a <?php if ( !isset( $_GET['sub'] ) || $_GET['sub'] == '' ) echo 'class="current"'; ?> href="<?php echo admin_url( 'tools.php?page=redirection.php' ); ?><?php if ( isset( $_GET['id'] ) ) echo '&amp;id='.intval( $_GET['id'] ) ?>">
+		<a <?php if ( !isset( $_GET['sub'] ) || $_GET['sub'] == '' ) echo 'class="current"'; ?> href="<?php echo admin_url( 'tools.php?page=redirection.php' ); ?>">
 			<?php _e( 'Redirects', 'redirection' ); ?>
 		</a> |
 	</li>
 	<li>
-		<a <?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'groups' ) echo 'class="current"'; ?> href="<?php echo admin_url( 'tools.php?page=redirection.php' ); ?>&amp;sub=groups<?php if ( isset( $_GET['id'] ) ) echo '&amp;id='.intval( $_GET['id'] ) ?>">
+		<a <?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'groups' ) echo 'class="current"'; ?> href="<?php echo admin_url( 'tools.php?page=redirection.php' ); ?>&amp;sub=groups">
 			<?php _e( 'Groups', 'redirection' ); ?>
 		</a> |
 	</li>
@@ -17,7 +17,7 @@
 		</a> |
 	</li>
 
-	<?php if ( isset( $options['log_redirections'] ) && $options['log_redirections'] ) : ?>
+	<?php if ( isset( $options['expire_redirect'] ) && $options['expire_redirect'] >= 0 ) : ?>
 	<li>
 		<a <?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == 'log' ) echo 'class="current"'; ?> href="<?php echo admin_url( 'tools.php?page=redirection.php' ); ?>&amp;sub=log">
 			<?php _e( 'Log', 'redirection' ); ?>
@@ -25,7 +25,7 @@
 	</li>
 	<?php endif; ?>
 
-	<?php if ( isset( $options['log_404s'] ) && $options['log_404s'] ) : ?>
+	<?php if ( isset( $options['expire_404'] ) && $options['expire_404'] >= 0 ) : ?>
 	<li>
 		<a <?php if ( isset( $_GET['sub'] ) && $_GET['sub'] == '404s' ) echo 'class="current"'; ?> href="<?php echo admin_url( 'tools.php?page=redirection.php' ); ?>&amp;sub=404s">
 			<?php if ( isset( $_GET['ip'] ) ) : ?>

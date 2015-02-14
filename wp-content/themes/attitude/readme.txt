@@ -3,11 +3,11 @@ Theme Name: Attitude
 Theme URI: http://themehorse.com/themes/attitude
 Author: Team Horse
 Author URI: http://themehorse.com
-Description: Attitude is a Simple, Clean and Responsive Retina Ready WordPress Theme which adapts automatically to your tablets and mobile devices. Theme is easily customizable with numerous theme options. Some of the highlighted options are two site layout (Narrow and Wide), 5 layouts for every post/page, 5 Page Templates, 5 widget areas, 4 custom widgets, featured slider to highlight your post/page, 11 social icons and many more. Also has custom background, header, menu, favicon, CSS, webclip icon, and logo. Supports popular plugins like Breadcrumb NavXT, WP-PageNavi and Contact Form 7. It is also translation ready. Available Translation: Traditional Chinese (Taiwan), Spanish, Norwegian (Nynorsk), German and Russian. Get free support on http://themehorse.com/support-forum/
-Version: 1.2.5
+Description: Attitude is a Simple, Clean and Responsive Retina Ready WordPress Theme which adapts automatically to your tablets and mobile devices. Theme is easily customizable with numerous theme options. Some of the highlighted options are two site layout (Narrow and Wide), 5 layouts for every post/page, 5 Page Templates, 5 widget areas, 4 custom widgets, featured slider to highlight your post/page, 11 social icons and many more. Also has custom background, header, menu, favicon, CSS, webclip icon, and logo. Supports popular plugins like Breadcrumb NavXT, WP-PageNavi and Contact Form 7. It is also translation ready. Available Translation: Traditional Chinese (Taiwan), Spanish, Norwegian (Nynorsk), German, Russian, Dutch, Italian and Danish. Get free support on http://themehorse.com/support-forum/
+Version: 1.2.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: white, light, blue, one-column, two-columns, three-columns, left-sidebar, right-sidebar, flexible-width, custom-menu, custom-background, custom-header, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, sticky-post
+Tags: white, light, blue, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fluid-layout, custom-menu, custom-background, custom-header, featured-images, full-width-template, theme-options, threaded-comments, translation-ready, sticky-post
 Text Domain: attitude
 
 
@@ -32,6 +32,12 @@ The exceptions to this license are as follows:
 * The script jquery.fancybox-1.3.4.js is dual licensed under GPL & MIT
 * The script jquery.cookie.min.js is dual licensed under GPL & MIT
 * The social media icons are the theme's designer personal creations and are free for personal and commercial use.
+
+Some of the code is derivatived from below themes which is under GNU General Public License v2 or later:
+http://wordpress.org/themes/news
+http://wordpress.org/themes/graphene
+http://wordpress.org/themes/responsive
+http://wordpress.org/themes/simple-catch
 
 == Theme Notes ==
 About the theme in the following link.
@@ -80,6 +86,23 @@ For more instruction you can visit the theme-instruction page of attitude at htt
 If you have still any other questions about the theme you can email at support@themehorse.com for free support.
 
 == Change Log ==
+
+= 1.2.9 =
+* bbPress compatible
+* POT file update
+
+= 1.2.8 =
+* Attitude now available in Danish Language. Thanks to Klaus Walker <web@delenko.dk> for providing us with the translation files.
+
+= 1.2.7 =
+* Heading tag changed for post page title for better SEO
+* Theme Option design modified
+
+= 1.2.6 =
+* Attitude now available in Dutch Language. Thanks to Elselien Dijkstra <elselien.dijkstra@gmail.com> for providing us with the translation files.
+* Theme Option design fixed with respect to new version of WordPress 3.8
+* Attitude now available in Italian Language. Thanks to Cesare Gilento <cesare.gilento@gmail.com> for providing us with the translation files.
+
 = 1.2.5 =
 * Attitude now available in Russian Language. Thanks to Kirill Belotserkovskiy <k.belotserkovskiy@gmail.com>  for providing us with the translation files.
 

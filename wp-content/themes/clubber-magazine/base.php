@@ -1,39 +1,51 @@
+<?php ob_start() ?>
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
-        <?php get_template_part('tpl/head'); ?>
-        <body <?php body_class(); ?> >
-                <?php
-                //facebook and google analytics
-                /** @todo nz move to action get_header / after body */
-                get_template_part('tpl/after_body');
-                ?>
+      <?php get_template_part( 'tpl/base/head' ); ?>
+      <body <?php body_class(); ?> >
 
-                <?php
-                /* do_action('get_header'); */
-                ?>
-                <div class="wrapper">
-                        <header id="branding">
-                                <?php
-                                //the header of page, logo banner menu etc...
-                                get_template_part('tpl/header');
-                                ?>
-                        </header>
+            <?php do_action( 'base_after_body' ) ?>
+            <div class="site">
+                  <header id="header" class="cb" role="banner">
+                        <?php get_template_part( 'tpl/base/header' ); //the header of page, logo banner menu etc...  ?>
+                  </header>
 
-                        <div id="main" class="container clearfix">
-                                <div id="container">
-                                        <?php
-                                        include roots_template_path();
-                                        ?>
-                                      
-                                </div><!-- #container -->
-
-
-                        </div>
-
-                        <?php
-                        get_template_part('tpl/footer');
+                  <?php
+                  if ( is_front_page() ) {
                         ?>
-                </div><!-- /.wrap -->
+                        <section class="featured-posts">
+                              <?php
+                              echo do_shortcode( '[metaslider id=661]' );
+                              ?>
+                        </section>
+                        <?php
+                  } else if ( is_singular( 'artist' ) ) {
 
-        </body>
+                        echo get_template_part( 'tpl/parts/artist-home' );
+                  }
+                  ob_flush();
+                  /* sleep( 1 ); */
+                  ob_start();
+                  ?>
+                  <div id="content" class="container cb group">
+                        <?php nzs_display_messages(); ?>
+                        <?php get_template_part( 'tpl/base/content' ); ?>
+                  </div>
+                  <?php
+                  ob_flush();
+                  /* sleep( 1 ); */
+                  ob_start();
+                  ?>
+
+                  <footer id="footer" class="group pr" role="contentinfo">
+                        <?php get_template_part( 'tpl/base/footer' ); ?>
+                  </footer>
+            </div>
+
+            <?php wp_footer(); ?>
+
+      </body>
 </html>
+<?php
+ob_flush();
+?>
