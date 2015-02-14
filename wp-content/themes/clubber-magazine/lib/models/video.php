@@ -7,7 +7,7 @@ $video = new CPT( array(
       'slug' => 'video'
           ), array(
       'supports' => array( 'title', 'editor', 'thumbnail', 'author', 'custom-fields' ),
-      'has_archive' => TRUE
+      'has_archive' => 'videos'
           )
 );
 

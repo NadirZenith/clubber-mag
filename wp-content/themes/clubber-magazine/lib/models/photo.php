@@ -7,7 +7,7 @@ $photos = new CPT( array(
       'slug' => 'photo'
           ), array(
       'supports' => array( 'title', 'editor', 'thumbnail', 'author', 'custom-fields' ),
-      'has_archive' => TRUE
+      'has_archive' => 'photos'
           )
 );
 

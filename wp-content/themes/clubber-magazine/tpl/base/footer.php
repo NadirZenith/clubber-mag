@@ -115,39 +115,7 @@
                         $obj.css('margin-right', move + '%');
                   }
             });
-            /*
-             cm_logo_resize2 = new CMP({
-             start: 300,
-             end: 30,
-             callback3: function(now, total) {
-             var
-             $img = $('#footer-parallax img'),
-             start = 50,
-             //end = 15,
-             end = 12,
-             gap = start - end,
-             pos = gap * now / total,
-             move = start - pos;
-             
-             $img.css('width', move + '%');
-             },
-             callback2: function(now, total) {
-             var
-             $img = $('#footer-parallax img'),
-             start = 50,
-             //end = 15,
-             end = 12,
-             gap = start - end,
-             pos = gap * now / total,
-             move = start - pos;
-             
-             $img.css('width', move + '%');
-             }
-             });
-             */
 
-            /*
-             */
       });
 </script>
 
@@ -159,7 +127,7 @@ if (
 }
 ?>
 <div  class="nzparallax parallax" id="footer-parallax" >
-      <img class="" src="http://lab.dev/clubber-mag-dev/wp-content/themes/clubber-magazine/assets/css/img/logo-footer2.png" />
+      <img class="" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/assets/css/img/logo-footer2.png" />
 </div>
 <nav id="footer-menu" class="group pb15 pr" style="z-index:20;">
       <?php
