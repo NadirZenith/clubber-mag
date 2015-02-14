@@ -12,7 +12,6 @@
 
 
 define( 'CM_DIR', get_stylesheet_directory_uri() );
-/*define( 'CM_LIBRARY_DIR', '/library' );*/
 define( 'CM_LIB_DIR', '/lib' );
 define( 'CM_ADDONS_DIR', '/lib/nz/add-ons' );
 define( 'CM_MODELS_DIR', CM_LIB_DIR . '/models' );
@@ -46,7 +45,7 @@ define( 'CM_USER_META_RESOURCE_ID', 'main_resource_id');
  * @link https://github.com/roots/roots/pull/1042
  */
 $roots_includes = array(
-      'lib/nz/lib/vendor/autoload.php',
+      'vendor/autoload.php',
       'lib/soil/soil.php',
       'lib/config.php',
       'lib/utils.php',
