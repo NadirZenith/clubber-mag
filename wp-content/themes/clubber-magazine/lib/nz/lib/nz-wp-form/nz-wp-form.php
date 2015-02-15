@@ -5,7 +5,7 @@ class NZ_WP_Form {
       static $post_featured_slug = '_thumbnail_id';
       static $post_file_slug = '_attachment_id';
       static $preview_relative_path = '/cache/preview/';
-      private $img_placeholder_url = 'http://www.clubber-mag.com/wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
+      private $img_placeholder_url;
       //main
       public $form_name;
       public $post_type;
@@ -56,6 +56,7 @@ class NZ_WP_Form {
       public function __construct( $form_name, $post_type = 'post', $atts = array() ) {
             $this->form_name = $form_name;
             $this->post_type = $post_type;
+            $this->img_placeholder_url = get_site_url() . 'wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
 
             $this->form = new Zebra_Form( $this->form_name );
       }
