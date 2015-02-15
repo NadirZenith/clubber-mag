@@ -19,13 +19,13 @@ define( 'CM_MODELS_DIR', CM_LIB_DIR . '/models' );
 
 //pages
 define( 'CM_RESOURCE_EVENT_PAGE_ID', 406 );
-define( 'CM_RESOURCE_MAIN_PAGE_ID', 2610 );
-define( 'CM_RESOURCE_ARTIST_PAGE_ID', 3712 );
-define( 'CM_RESOURCE_LABEL_PAGE_ID', 3747 );
-define( 'CM_RESOURCE_COOLPLACE_PAGE_ID', 3729 );
-define( 'CM_RESOURCE_COOLPLACE_FAST_PAGE_ID', 4654 );
-define( 'CM_RESOURCE_PODCAST_PAGE_ID', 4399 );
 define( 'CM_CONNECT_PAGE_ID', 675 );
+define( 'CM_RESOURCE_MAIN_PAGE_ID', 2610 );
+define( 'CM_RESOURCE_ARTIST_PAGE_ID', 4912 );
+define( 'CM_RESOURCE_LABEL_PAGE_ID', 4913 );
+define( 'CM_RESOURCE_COOLPLACE_PAGE_ID', 4914 );
+define( 'CM_RESOURCE_COOLPLACE_FAST_PAGE_ID', 4915 );
+define( 'CM_RESOURCE_PODCAST_PAGE_ID', 4916 );
 //\pages
 //metafields
 define( 'CM_META_MAPA', 'coolplace_mapaddress');
