@@ -108,9 +108,9 @@ function cm_agenda_custom_fields() {
       ) );
 }
 
-add_action( 'pre_get_posts', 'cm_pre_get_agenda' );
+add_action( 'pre_get_posts', 'cm_pre_get_archive_agenda' );
 
-function cm_pre_get_agenda( $query ) {
+function cm_pre_get_archive_agenda( $query ) {
 
       if (
                 !$query->is_post_type_archive( 'agenda' ) ||
