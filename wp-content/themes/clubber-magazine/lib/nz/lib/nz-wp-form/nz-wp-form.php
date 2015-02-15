@@ -56,7 +56,7 @@ class NZ_WP_Form {
       public function __construct( $form_name, $post_type = 'post', $atts = array() ) {
             $this->form_name = $form_name;
             $this->post_type = $post_type;
-            $this->img_placeholder_url = get_site_url() . 'wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
+            $this->img_placeholder_url = get_site_url() . '/wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
 
             $this->form = new Zebra_Form( $this->form_name );
       }
