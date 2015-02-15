@@ -54,8 +54,8 @@ $roots_includes = array(
       'lib/wrapper.php',
       'lib/scripts.php',
       'lib/sidebar.php',
-      /*'vendor/vafpress-framework/bootstrap.php',*/
-      /*'lib/options/register.php',*/
+      'vendor/vafpress-framework/bootstrap.php',
+      'lib/options/register.php',
       //
       'lib/nz/template.php',
       'lib/nz/security.php',
