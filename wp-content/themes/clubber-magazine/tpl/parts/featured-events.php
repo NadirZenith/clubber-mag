@@ -9,22 +9,20 @@ $args = array(
       'order' => 'ASC',
       'orderby' => 'meta_value_num',
       'meta_key' => 'wpcf-event_begin_date',
-          /*
-            'meta_query' => array(
+      'meta_query' => array(
             'relation' => 'AND',
             array(
-            'key' => 'wpcf-event_featured',
-            'value' => 'on',
-            'compare' => '=',
+                  'key' => 'wpcf-event_featured',
+                  'value' => 'on',
+                  'compare' => '=',
             ),
             array(
-            'key' => 'wpcf-event_begin_date',
-            'value' => time(),
-            'type' => 'NUMERIC',
-            'compare' => '>='
+                  'key' => 'wpcf-event_begin_date',
+                  'value' => time(),
+                  'type' => 'NUMERIC',
+                  'compare' => '>='
             )
-            )
-           */
+      )
 );
 $query = new WP_Query( $args );
 ?>
