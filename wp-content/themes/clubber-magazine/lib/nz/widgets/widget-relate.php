@@ -79,21 +79,36 @@ class Relate_Widget extends WP_Widget {
                   </a>
                   <div class="loading" style="height:3px;"></div>
             </div>
-
             <div class="group mt10 pb10" >
                   <div class="col-1-2 fl oh">
                         <div class="pl30">
                               <?php echo nz_fb_like(); ?>
-
                         </div>
+                  </div>
+                  <div class="col-1-2 fl">
+                        <div class="mt3 pl30">
+                              <?php echo nz_fb_sharer(); ?>
+                        </div>
+                  </div>
+            </div>
+            <div class="group mt10 pb10" >
+                  <div class="col-1-2 fl oh">
+                        <div class="pl30">
+                              <!-- Posicione esta tag no cabeçalho ou imediatamente antes da tag de fechamento do corpo. -->
+                              <script src="https://apis.google.com/js/platform.js" async defer>
+                                    {
+                                          lang: 'es-ES'
+                                    }
+                              </script>
 
+                              <div class="g-plusone" data-annotation="inline" data-width="300"></div>
+                        </div>
                   </div>
                   <div class="col-1-2 fl">
                         <div class="mt3 pl30">
                               <?php nz_tt_tweet(); ?>
                         </div>
                   </div>
-
             </div>
 
             <script type="text/javascript">
