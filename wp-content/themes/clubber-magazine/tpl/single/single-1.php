@@ -81,7 +81,7 @@
 <section class="group m5" >
       <h2 class="m3">
             <span class="cm-title2">
-                  <?php _e( 'Related Content', 'cm' ) ?>
+                  <?php _e( 'Related Contents', 'cm' ) ?>
             </span>
       </h2>
       <ul>
