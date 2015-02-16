@@ -122,7 +122,7 @@ function cm_pre_get_archive_city( $query ) {
       Roots_Wrapping::$raw = TRUE;
 
       $query->set( 'post_type', "agenda" );
-      $query->set( 'post_per_page', -1 );
+      $query->set( 'posts_per_page', -1 );
       $query->set( 'orderby', "meta_value_num" );
       $query->set( 'meta_key', "wpcf-event_begin_date" );
       $query->set( 'order', "ASC" );
@@ -161,7 +161,7 @@ function cm_pre_get_archive_agenda( $query ) {
 
       Roots_Wrapping::$raw = TRUE;
       /* d( $query ); */
-      $query->set( 'post_per_page', -1 );
+      $query->set( 'posts_per_page', -1 );
 
       $query->set( 'orderby', "meta_value_num" );
       $query->set( 'meta_key', "wpcf-event_begin_date" );
