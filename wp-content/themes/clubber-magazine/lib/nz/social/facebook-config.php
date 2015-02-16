@@ -137,7 +137,7 @@ function nz_fb_sharer( $url = null, $atts = array() ) {
              */
             $atts = array_merge(
                       array(
-                  'layout' => 'box_count',
+                  'layout' => 'button_count',
                   'width' => null,
                       ), $atts
             );

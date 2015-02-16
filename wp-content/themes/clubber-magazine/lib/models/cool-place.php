@@ -63,6 +63,12 @@ function cm_coolplace_custom_fields() {
             'description' => 'mapa',
             'display_callback' => 'nz_gmfield_coolplace'
       ) );
+      
+       x_add_metadata_field( 'featured', $post_types, array(
+            'group' => $group,
+            'label' => 'Destacado',
+            'field_type' => 'checkbox',
+      ) );
 }
 
 function nz_gmfield_coolplace( $field_slug, $field, $object_type, $object_id, $value ) {

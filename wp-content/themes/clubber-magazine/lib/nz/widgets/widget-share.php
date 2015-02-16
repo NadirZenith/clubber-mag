@@ -23,9 +23,7 @@ class Share_Widget extends WP_Widget {
       function widget( $args, $instance ) {
             extract( $args, EXTR_SKIP );
             $title = apply_filters( 'widget_title', $instance[ 'title' ] );
-            /* before widget */
             echo $before_widget;
-            /* display title */
             if ( $title )
                   echo $before_title . $title . $after_title;
             /* display the widget */
@@ -33,7 +31,7 @@ class Share_Widget extends WP_Widget {
 
             <div class="h3 tc ibox-5 mt30" >
                   <span class="cm-title3">
-                        <?php _e( 'Share content', 'cm' ) ?>
+                        <?php _e( 'Share this', 'cm' ) ?>
                   </span>
             </div>
             <div class="group mt10 pb10" >
@@ -44,11 +42,29 @@ class Share_Widget extends WP_Widget {
                   </div>
                   <div class="col-1-2 fl">
                         <div class="mt3 pl30">
+                              <?php echo nz_fb_sharer(); ?>
+                        </div>
+                  </div>
+            </div>
+            <div class="group mt10 pb10" >
+                  <div class="col-1-2 fl oh">
+                        <div class="pl30">
+                              <!-- Posicione esta tag no cabeçalho ou imediatamente antes da tag de fechamento do corpo. -->
+                              <script src="https://apis.google.com/js/platform.js" async defer>
+                                    {
+                                          lang: 'es-ES'
+                                    }
+                              </script>
+
+                              <div class="g-plusone" data-annotation="inline" data-width="300"></div>
+                        </div>
+                  </div>
+                  <div class="col-1-2 fl">
+                        <div class="mt3 pl30">
                               <?php nz_tt_tweet(); ?>
                         </div>
                   </div>
             </div>
-
             <?php
             /* after widget */
             echo $after_widget;
