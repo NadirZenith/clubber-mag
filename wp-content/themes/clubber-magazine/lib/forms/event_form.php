@@ -5,7 +5,9 @@ $post_type = 'agenda';
 $prefix = 'wpcf-';
 
 $EventForm = new NZ_WP_Form( $form_name, $post_type );
-/* $EventForm->post_status = 'publish'; */
+if ( is_super_admin() ) {
+      $EventForm->post_status = 'publish';
+}
 
 
 /**
