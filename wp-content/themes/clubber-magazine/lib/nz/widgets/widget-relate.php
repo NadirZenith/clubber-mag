@@ -63,18 +63,18 @@ class Relate_Widget extends WP_Widget {
             ?>
             <div class="h3 tc ibox-5" >
                   <span class="cm-title3">
-                        <?php _e( 'Participa y Compártelo', 'cm' ); ?>
+                        <?php _e( 'Join and share', 'cm' ); ?>
                   </span>
             </div>
 
             <div class="cm-relation" id="cm-relation-<?php echo $relation_type ?>">
 
-                  <a class="relate-btn sc-2 <?php echo $class ?>" title="<?php _e( 'participar', 'cm' ) ?>" >
+                  <a class="relate-btn sc-2 <?php echo $class ?>" >
                         <span class="r-icon"></span>
                         <span class="r-text"><?php echo $name ?></span>
                   </a>
 
-                  <a class="view-relation-btn" title="<?php _e( 'Participantes', 'cm' ) ?>" href="#<?php echo 'participantes' ?>" <?php echo $total_style ?>>
+                  <a class="view-relation-btn" title="<?php _e( 'Going', 'cm' ) ?>" href="#" <?php echo $total_style ?>>
                         <span class="r-count"><?php echo $total ?></span>
                   </a>
                   <div class="loading" style="height:3px;"></div>
@@ -135,9 +135,9 @@ class Relate_Widget extends WP_Widget {
                                           type: relation_type,
                                           from: from,
                                           to: to,
-                                          textRelated: '<?php _e( 'Assistiré!', 'cm' ) ?>',
-                                          textUnRelated: '<?php _e( 'Me apunto!', 'cm' ); ?>',
-                                          textFail: '<?php _e( 'Intente más tarde!', 'cm' ); ?>',
+                                          textRelated: '<?php _e( 'Assisting!', 'cm' ) ?>',
+                                          textUnRelated: '<?php _e( 'Join!', 'cm' ); ?>',
+                                          textFail: '<?php _e( 'Try later!', 'cm' ); ?>',
                                           nonce: '<?php echo wp_create_nonce( $relation_type . $to ) ?>'
                                     };
 
