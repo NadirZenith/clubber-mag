@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-16 15:58+0100\n"
-"PO-Revision-Date: 2015-02-16 15:58+0100\n"
+"POT-Creation-Date: 2015-02-16 17:15+0100\n"
+"PO-Revision-Date: 2015-02-16 17:16+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -43,6 +43,7 @@ msgid "Photo review"
 msgstr ""
 
 #: page-template-resources.php:20
+#: archive-music.php:22
 msgid "Artists"
 msgstr "Artistas"
 
@@ -59,8 +60,8 @@ msgid "Coolplaces"
 msgstr "Coolplaces"
 
 #: archive-cool-place.php:44
-msgid "New place"
-msgstr "Agregar lugar"
+msgid "Add new place"
+msgstr "Agregar nuevo lugar"
 
 #: archive-podcast.php:10
 msgid "Special guests"
@@ -83,8 +84,8 @@ msgid "Next parties and events"
 msgstr "Nuevas fiestas y eventos"
 
 #: archive-artist.php:13
-msgid "New artist"
-msgstr "Nuevos Artistas"
+msgid "Add new artist"
+msgstr "Agregar nuevo artista"
 
 #: comments.php:34
 #, php-format
@@ -2277,6 +2278,10 @@ msgstr "Contenidos Relacionados"
 msgid "Participantes"
 msgstr ""
 
+#: tpl/ajax/connect-to-continue.php:4
+msgid "Sign in to access"
+msgstr "Regístrate para acceder"
+
 #: tpl/home/home-last-photo.php:5
 msgid "Photo Gallery"
 msgstr "Galería de Fotos"
@@ -2713,7 +2718,7 @@ msgstr "Prueba tu Widget"
 #: lib/nz/widgets/widget-soundcloud.php:71
 #: lib/nz/widgets/widget-relate.php:284
 #: lib/nz/widgets/widget-calendar.php:143
-#: lib/nz/widgets/widget-share.php:102
+#: lib/nz/widgets/widget-share.php:144
 msgid "Title:"
 msgstr "Titulo "
 
@@ -3020,6 +3025,10 @@ msgstr "Pais "
 msgid "Countries"
 msgstr "Paises"
 
+#: lib/models/music.php:6
+msgid "Music content"
+msgstr "Música"
+
 #: lib/models/music.php:16
 msgid "Music Category"
 msgstr "Genero Músical  "
@@ -3154,9 +3163,6 @@ msgstr ""
 #: lib/options/cm-options.php:50
 msgid "Alphabet"
 msgstr ""
-
-#~ msgid "Share content"
-#~ msgstr "Compartir Contenido"
 
 #~ msgid "Latests podcasts"
 #~ msgstr "Ultimos Podcasts"

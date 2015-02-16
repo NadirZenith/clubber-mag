@@ -10,7 +10,7 @@ query_by_first_letter( 'artist', $letter );
 <div class="m5 p5 menu-az">
       <?php
       $artist_form_url = get_permalink( cm_lang_get_post( CM_RESOURCE_ARTIST_PAGE_ID ) );
-      $after = '&nbsp;&nbsp;<a class="readmore" href="' . $artist_form_url . '">' . __( 'New artist', 'cm' ) . '</a>';
+      $after = '&nbsp;&nbsp;<a class="readmore" href="' . $artist_form_url . '">' . __( 'Add new artist', 'cm' ) . '</a>';
       //call MENU
       menu_a_z( $letter, '', $after );
       ?>

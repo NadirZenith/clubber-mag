@@ -2,8 +2,8 @@
 
 $music_items = new CPT( array(
       'post_type_name' => 'music',
-      'singular' => 'Music', 'cm',
-      'plural' => 'Music archive', 'cm',
+      'singular' => __( 'Music', 'cm' ),
+      'plural' => __( 'Music content', 'cm' ),
       'slug' => 'musica'
           ), array(
       'supports' => array( 'title', 'editor', 'thumbnail', 'author', 'custom-fields' ),

@@ -7,23 +7,58 @@
 
       <ul>
             <?php
-            $item = array(
-                  'label_name' => 'Artistas',
+            $args = array(
+                  /* 'label_name' => 'Artistas', */
                   'post_type' => 'artist',
-                  'link' => get_post_type_archive_link( 'artista' ),
                   'post_status' => 'publish',
                   'posts_per_page' => 1,
                   'orderby' => 'rand',
-                      /* 'category__not_in' => array( get_cat_ID( 'labels' ) ) */
             );
-            $query = new WP_Query( $item );
+            $query = new WP_Query( $args );
             if ( $query->have_posts() ) {
 
                   while ( $query->have_posts() ) {
                         $query->the_post();
-                        $item[ 'title' ] = '<span class="sc-1">' . Artista . '</span> ' . get_the_title();
+                        $item[ 'title' ] = '<span class="sc-1">' . __( 'Artists', 'cm' ) . '</span> ' . get_the_title();
                         $item[ 'content' ] = wp_trim_words( get_the_content(), 20 );
-                        $item[ 'link' ] = get_the_permalink();
+                        $item[ 'link' ] = get_post_type_archive_link( 'artist' );
+                        $item[ 'thumbnail' ] = get_the_post_thumbnail( null, '340-155-thumb' );
+                        ?>
+                        <li class="ibox-5 col-1">
+                              <?php
+                              include 'tpl/home/list-4.php';
+                              ?>
+                        </li>
+                        <?php
+                  }
+            }
+
+            wp_reset_postdata();
+            $args = array(
+                  'post_type' => 'podcast',
+                  'post_status' => 'publish',
+                  'posts_per_page' => 1,
+                  'orderby' => 'rand',
+                  'meta_query' => array(
+                        'relation' => 'AND',
+                        array(
+                              'key' => 'soundcloud_special_guest',
+                              'compare' => 'EXISTS',
+                        ),
+                        array(
+                              'key' => '_thumbnail_id',
+                              'compare' => 'EXISTS',
+                        )
+                  )
+            );
+            $query = new WP_Query( $args );
+            if ( $query->have_posts() ) {
+
+                  while ( $query->have_posts() ) {
+                        $query->the_post();
+                        $item[ 'title' ] = '<span class="sc-1">' . __( 'Podcasts', 'cm' ) . '</span> ' . get_the_title();
+                        $item[ 'content' ] = wp_trim_words( get_the_content(), 20 );
+                        $item[ 'link' ] = get_post_type_archive_link( 'podcast' );
                         $item[ 'thumbnail' ] = get_the_post_thumbnail( null, '340-155-thumb' );
                         ?>
                         <li class="ibox-5 col-1">

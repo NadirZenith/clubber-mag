@@ -34,37 +34,15 @@ class Share_Widget extends WP_Widget {
                         <?php _e( 'Share this', 'cm' ) ?>
                   </span>
             </div>
-            <div class="group mt10 pb10" >
-                  <div class="col-1-2 fl oh">
-                        <div class="pl30">
-                              <?php echo nz_fb_like(); ?>
-                        </div>
-                  </div>
-                  <div class="col-1-2 fl">
-                        <div class="mt3 pl30">
-                              <?php echo nz_fb_sharer(); ?>
-                        </div>
-                  </div>
+            <div class="group mt10 pb10 ml5" >
+                  <?php get_template_part( 'tpl/parts/sharer' ); ?>
             </div>
             <div class="group mt10 pb10" >
-                  <div class="col-1-2 fl oh">
-                        <div class="pl30">
-                              <!-- Posicione esta tag no cabeçalho ou imediatamente antes da tag de fechamento do corpo. -->
-                              <script src="https://apis.google.com/js/platform.js" async defer>
-                                    {
-                                          lang: 'es-ES'
-                                    }
-                              </script>
+                  <div class="ml10 oh ">
+                        <?php echo nz_fb_like(); ?>
+                  </div>
+            </div>
 
-                              <div class="g-plusone" data-annotation="inline" data-width="300"></div>
-                        </div>
-                  </div>
-                  <div class="col-1-2 fl">
-                        <div class="mt3 pl30">
-                              <?php nz_tt_tweet(); ?>
-                        </div>
-                  </div>
-            </div>
             <?php
             /* after widget */
             echo $after_widget;

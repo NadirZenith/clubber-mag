@@ -41,7 +41,7 @@ if ( !is_tax() )
 
 
       $coolplace_form_url = get_permalink( cm_lang_get_post( CM_RESOURCE_COOLPLACE_PAGE_ID ) );
-      $after .= '&nbsp;&nbsp;<a class="readmore" href="' . $coolplace_form_url . '">' . __( 'New place', 'cm' ) . '</a>';
+      $after .= '&nbsp;&nbsp;<a class="readmore" href="' . $coolplace_form_url . '">' . __( 'Add new place', 'cm' ) . '</a>';
 
       menu_a_z( $letter, '', $after );
       ?>        
