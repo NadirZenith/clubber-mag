@@ -119,7 +119,7 @@
                   <?php
                   $imgs_ids = get_post_meta( get_the_ID(), 'photo-gallery', true );
                   if ( !empty( $imgs_ids ) ):
-                        /*$imgs_ids = array_slice( $imgs_ids, 0, 4 );*/
+                        /* $imgs_ids = array_slice( $imgs_ids, 0, 4 ); */
                         ?>
                         <div class="cb mt10 mb10">
                               <?php
@@ -139,9 +139,11 @@
 
 
       <div class="cb">
-
-            <h2 class="m5">Tambien te puede interesar</h2>
-            <hr class="pb5">
+            <h2 class="m3">
+                  <span class="cm-title2">
+                        <?php _e( 'Related Content', 'cm' ) ?>
+                  </span>
+            </h2>
             <ul>
                   <?php
                   $args = array(

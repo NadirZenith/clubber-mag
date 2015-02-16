@@ -8,12 +8,6 @@ while ( have_posts() ) {
 
                   break;
 
-            case 'artist2':
-                  get_template_part( 'tpl/single/single-2' );
-
-                  break;
-            
-
             default:
                   get_template_part( 'tpl/single/single-0' );
 

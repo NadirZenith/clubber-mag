@@ -67,7 +67,6 @@
                                     <?php
                                     foreach ( $tags as $tag ) {
                                           echo '<li><span>' . $tag->name . '</span></li>';
-                                          /* echo '<li><a href="' . get_term_link( $tag ) . '">' . $tag->name . '</a></li>'; */
                                     }
                                     ?>
                               </ul>
