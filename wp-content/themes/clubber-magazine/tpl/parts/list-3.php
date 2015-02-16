@@ -16,7 +16,7 @@
                         ?>
                   </a>
             </h2>
-            <?php if ( TRUE ) { ?>
+            <?php if ( is_super_admin() ) { ?>
                   <div style="position: absolute; right: 5px;top: 0;">
                         [<a href="<?php echo get_edit_post_link( get_the_ID() ); ?>">
                               editar
