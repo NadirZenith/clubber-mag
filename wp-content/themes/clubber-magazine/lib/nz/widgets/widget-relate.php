@@ -41,11 +41,11 @@ class Relate_Widget extends WP_Widget {
             if ( $p2p_id ) {
                   // connection exists
                   $class = 'relation-active';
-                  $name = __( 'Asistiré', 'cm' );
+                  $name = __( 'Going!', 'cm' );
             } else {
                   // connection doesn't exist
                   $class = '';
-                  $name = __( 'Me apunto!', 'cm' );
+                  $name = __( 'Join!', 'cm' );
             }
 
             $users = get_users( array(
@@ -74,7 +74,7 @@ class Relate_Widget extends WP_Widget {
                         <span class="r-text"><?php echo $name ?></span>
                   </a>
 
-                  <a class="view-relation-btn" title="<?php _e( 'Going', 'cm' ) ?>" href="#" <?php echo $total_style ?>>
+                  <a class="view-relation-btn" title="<?php _e( 'Going!', 'cm' ) ?>" href="#" <?php echo $total_style ?>>
                         <span class="r-count"><?php echo $total ?></span>
                   </a>
                   <div class="loading" style="height:3px;"></div>

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-16 15:52+0100\n"
-"PO-Revision-Date: 2015-02-16 15:52+0100\n"
+"POT-Creation-Date: 2015-02-16 15:58+0100\n"
+"PO-Revision-Date: 2015-02-16 15:58+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2758,28 +2758,23 @@ msgid "relate - widget"
 msgstr ""
 
 #: lib/nz/widgets/widget-relate.php:44
-msgid "Asistiré"
-msgstr ""
+#: lib/nz/widgets/widget-relate.php:77
+#, fuzzy
+msgid "Going!"
+msgstr "Assistentes"
 
 #: lib/nz/widgets/widget-relate.php:48
-msgid "Me apunto!"
-msgstr ""
+#: lib/nz/widgets/widget-relate.php:139
+msgid "Join!"
+msgstr "Me apunto!"
 
 #: lib/nz/widgets/widget-relate.php:66
 msgid "Join and share"
 msgstr "Participa y compártelo"
 
-#: lib/nz/widgets/widget-relate.php:77
-msgid "Going"
-msgstr "Assistentes"
-
 #: lib/nz/widgets/widget-relate.php:138
 msgid "Assisting!"
 msgstr "Assistiré!"
-
-#: lib/nz/widgets/widget-relate.php:139
-msgid "Join!"
-msgstr "Me apunto!"
 
 #: lib/nz/widgets/widget-relate.php:140
 msgid "Try later!"
