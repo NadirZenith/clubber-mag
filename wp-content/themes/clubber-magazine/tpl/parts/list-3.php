@@ -30,7 +30,7 @@
 
 
       <div class="fr nm pr col-1 col-sm-1-2">
-            
+
             <?php
             if ( has_post_thumbnail() ) {
                   ?>
@@ -44,13 +44,15 @@
             ?>
 
             <?php
-            $meta_date = get_post_meta( get_the_ID(), 'wpcf-event_begin_date', true );
-            if ( $meta_date ) {
+            $date = get_post_meta( get_the_ID(), 'wpcf-event_begin_date', true );
+            if ( $date ) {
                   ?>
                   <div class="p-detail">
                         <?php
-                        $date = date( 'd/m/y - H:i', $meta_date );
-                        echo $date;
+                        if ( is_numeric( $date ) && ( int ) $date == $date ) {
+                              echo date( 'd/m/y H:i', $date );
+                        }
+
                         $tax = 'city';
                         $term = wp_get_post_terms( get_the_ID(), $tax )[ 0 ]->name;
                         if ( $term ) {

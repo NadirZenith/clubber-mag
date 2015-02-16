@@ -6,8 +6,11 @@ if ( $query->have_posts() ) {
       while ( $query->have_posts() ) {
             $query->the_post();
             $main_posts_id[] = get_the_ID();
-            $post_timestamp = get_post_meta( get_the_ID(), 'wpcf-event_begin_date', true ); //1394924400
-            $post_date = date( 'l d/m/y', $post_timestamp ); //"15/03/14"
+            $date = get_post_meta( get_the_ID(), 'wpcf-event_begin_date', true ); //1394924400
+            if ( is_numeric( $date ) && ( int ) $date == $date ) {
+                  $post_date = date( 'l d/m/y', $date ); //"15/03/14"
+            /*$post_date = date( 'l d/m/y', $post_timestamp );*/
+            }
             if ( $last_date != $post_date ) {
                   if ( $first ) {
                         echo '<section class="cb">';

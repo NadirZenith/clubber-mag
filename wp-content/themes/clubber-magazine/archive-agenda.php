@@ -73,8 +73,9 @@ if ( is_tax( $tax ) ) {
                                     <?php _e( 'Next parties and events', 'cm' ) ?> <?php echo ($city) ? "en {$city}" : ''; ?>               
                               </h1>
                         </div>
+            
 
-                        <?php include('tpl/agenda/archive.php'); ?>
+                        <?php include('tpl/archive/agenda.php'); ?>
 
                         <?php
                   }
