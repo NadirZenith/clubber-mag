@@ -26,7 +26,7 @@ function nz_toolbar_todo( $wp_admin_bar ) {
                       'show_ui' => true
                 )
       );
-      
+
       unset( $post_types[ 'page' ] );
       unset( $post_types[ 'post' ] );
       unset( $post_types[ 'music' ] );
@@ -45,7 +45,7 @@ function nz_toolbar_todo( $wp_admin_bar ) {
                       array(
                             'posts_per_page' => -1,
                             'post_type' => $value,
-                            'post_status' => 'pending',
+                            'post_status' => array( 'pending', 'draft' ),
                             'suppress_filters' => true
                       )
             );

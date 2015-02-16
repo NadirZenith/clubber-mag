@@ -109,6 +109,18 @@ function cm_agenda_custom_fields() {
 }
 
 add_action( 'pre_get_posts', 'cm_pre_get_archive_agenda' );
+add_action( 'pre_get_posts', 'cm_pre_get_archive_city' );
+
+function cm_pre_get_archive_city( $query ) {
+
+      if (
+                !$query->is_main_query() || $query->is_admin ||
+                !$query->is_tax( 'city' )
+      )
+            return;
+
+      Roots_Wrapping::$raw = TRUE;
+}
 
 function cm_pre_get_archive_agenda( $query ) {
 

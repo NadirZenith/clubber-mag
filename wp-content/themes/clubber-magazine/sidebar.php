@@ -1,6 +1,6 @@
 <?php
 //archive event
-if ( is_post_type_archive( 'agenda' ) ) {
+if ( is_post_type_archive( 'agenda' ) || is_tax( 'city' ) ) {
       $new_event_link = get_permalink( cm_lang_get_post( CM_RESOURCE_EVENT_PAGE_ID ) );
       ?>
       <a class="readmore responsive" href="<?php echo $new_event_link ?>" >

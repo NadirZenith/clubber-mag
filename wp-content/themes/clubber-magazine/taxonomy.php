@@ -9,6 +9,10 @@ switch ( get_query_var( 'taxonomy' ) ) {
             get_template_part( 'archive' );
 
             break;
+      case 'city':
+            get_template_part( 'archive-agenda' );
+
+            break;
 
       default:
             break;
