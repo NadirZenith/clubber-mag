@@ -5,11 +5,11 @@ $args = array(
       'post_type' => 'cool-place',
       'posts_per_page' => $posts_per_row * 1,
       'order' => 'rand',
-      'orderby' => 'meta_value_num',
+      'orderby' => 'meta_valua',
       'meta_query' => array(
             array(
                   'key' => 'featured',
-                  'value' => 1,
+                  'value' => 'on',
                   'compare' => '=',
             )
       )
