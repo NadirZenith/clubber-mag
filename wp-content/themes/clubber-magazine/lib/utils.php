@@ -107,3 +107,31 @@ function cm_lang_get_post( $id ) {
       return get_post( $id );
       /* return pll_get_post( $id ); */
 }
+
+//Add custom column
+add_filter( 'manage_edit-agenda_columns', 'my_columns_head' );
+
+function my_columns_head( $defaults ) {
+      $defaults[ 'event_begin_date' ] = 'event_begin_date';
+      return $defaults;
+}
+
+//Add rows data
+add_action( 'manage_agenda_posts_custom_column', 'my_custom_column', 10, 2 );
+
+function my_custom_column( $column, $post_id ) {
+      switch ( $column ) {
+            case 'event_begin_date':
+                  echo get_post_meta( $post_id, 'wpcf-event_begin_date', true );
+                  break;
+      }
+}
+
+// Make these columns sortable
+function sortable_columns() {
+      return array(
+            'event_begin_date' => 'event_begin_date'
+      );
+}
+
+add_filter( "manage_edit-agenda_sortable_columns", "sortable_columns" );

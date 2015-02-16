@@ -25,7 +25,7 @@
                   'url' => 'https://soundcloud.com/clubber-magazine',
             ),
             'google-plus' => array(
-                  'url' => 'https://www.facebook.com/Clubber.Mag',
+                  'url' => 'https://plus.google.com/+Clubbermagazine',
             ),
       );
       ?>
@@ -63,7 +63,7 @@
       </div>
       <div class="search-form">
             <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
-                  <input type="text" placeholder="Busca fiestas, clubes, artistas, personas..." class="s field sf-2" name="s" value="<?php echo get_query_var( 's', '' ) ?>">
+                  <input type="text" placeholder="<?php _e('Search for parties, clubs, artists...' , 'cm');?>" class="s field sf-2" name="s" value="<?php echo get_query_var( 's', '' ) ?>">
             </form>
       </div>
 </div>

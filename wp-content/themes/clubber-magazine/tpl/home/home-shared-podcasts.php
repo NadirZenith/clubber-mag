@@ -1,7 +1,7 @@
 <section class="m5">
       <div class="mb5">
             <?php
-            cm_home_list_title( 'podcast', __( 'Latests podcasts', 'cm' ) );
+            cm_home_list_title( 'podcast', __( 'Open Frequency Podcasts', 'cm' ) );
             ?>
       </div>
       <div class="homeCustomScroll oh" style="height: 428px;">
@@ -31,7 +31,7 @@
                                     if ( $sc_info_str = get_post_meta( get_the_ID(), CM_META_SOUNDCLOUD, true ) ) {
                                           $sc_info = json_decode( $sc_info_str );
                                           if ( $sc_info ) {
-                                                echo nz_get_soundcloud_iframe( $sc_info->uri, array( 'visual' => true ) );
+                                                echo nz_get_soundcloud_iframe( $sc_info->uri, array( 'visual' => FALSE ) );
                                           }
                                     }
                                     ?>
@@ -113,9 +113,6 @@
                         },
                         live: false,
                         liveSelector: null
-                  });
-
-                  $("body").mCustomScrollbar({
                   });
 
             });

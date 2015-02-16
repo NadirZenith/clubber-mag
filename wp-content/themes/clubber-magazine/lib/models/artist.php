@@ -63,55 +63,11 @@ add_action( 'custom_metadata_manager_init_metadata', 'cm_artist_contact_custom_f
 function cm_artist_contact_custom_fields() {
 
       $post_types = array( 'artista' );
-
+      $prefix = '';
       $metagroup = 'contact_metabox';
       x_add_metadata_group( $metagroup, $post_types, array(
             'label' => 'Contact'
       ) );
-
-      /*
-        $prefix = 'wpcf-';
-        x_add_metadata_field( $prefix . 'link-pagina-oficial', $post_types, array(
-        'group' => 'contact_metabox',
-        'label' => 'Link Pagina Oficial',
-        ) );
-
-
-        x_add_metadata_field( $prefix . 'link-contact', $post_types, array(
-        'group' => 'contact_metabox',
-        'label' => 'Email'
-        ) );
-
-        x_add_metadata_field( $prefix . 'link-soundcloud', $post_types, array(
-        'group' => 'contact_metabox',
-        'label' => 'Link Soundcloud',
-        ) );
-
-        x_add_metadata_field( $prefix . 'link-youtube', $post_types, array(
-        'group' => 'contact_metabox',
-        'label' => 'Link Youtube'
-        ) );
-
-        x_add_metadata_field( $prefix . 'link-facebook', $post_types, array(
-        'group' => 'contact_metabox',
-        'label' => 'Link Facebook'
-        ) );
-
-        x_add_metadata_field( $prefix . 'link-twitter', $post_types, array(
-        'group' => 'contact_metabox',
-        'label' => 'Link Twitter'
-        ) );
-
-        x_add_metadata_field( $prefix . 'link-beatport', $post_types, array(
-        'group' => 'contact_metabox',
-        'label' => 'Link Beatport'
-        ) );
-
-        x_add_metadata_field( $prefix . 'link-bandpage', $post_types, array(
-        'group' => 'contact_metabox',
-        'label' => 'Link Bandpage'
-        ) );
-       */
 
       /* CONTACT FIELDS */
       $socials = array(

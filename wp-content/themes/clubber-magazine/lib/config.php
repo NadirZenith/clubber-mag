@@ -20,6 +20,13 @@ function my_theme_setup() {
 }
 
 /**
+ * option-tree theme enable.
+ */
+/*add_filter( 'ot_theme_mode', '__return_true' );*/
+//option-tree include
+//require( trailingslashit( get_template_directory() ) . 'vendor/option-tree/ot-loader.php' );
+
+/**
  * Configuration values
  */
 define( 'GOOGLE_ANALYTICS_ID', '' ); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
