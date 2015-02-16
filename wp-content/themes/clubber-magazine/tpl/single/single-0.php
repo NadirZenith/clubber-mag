@@ -134,63 +134,32 @@
                   <?php get_template_part( 'tpl/parts/mapa' ); ?>
             </div>
 
+            <?php get_template_part( 'tpl/parts/comments' ); ?>
+
+            <?php get_template_part( 'tpl/parts/post-tags' ); ?>
       </article>
-      <?php get_template_part( 'tpl/parts/comments' ); ?>
-
-
-      <div class="cb">
-            <h2 class="m3">
-                  <span class="cm-title2">
-                        <?php _e( 'Related Contents', 'cm' ) ?>
-                  </span>
-            </h2>
-            <ul>
-                  <?php
-                  $args = array(
-                        'posts_per_page' => 4,
-                        'orderby' => 'rand',
-                        'post_type' => get_post_type(),
-                        'post__not_in' => array( get_queried_object_id() )
-                  );
-                  $query = new WP_Query( $args );
-                  /* d( $query ); */
-                  $ids = array();
-                  while ( $query->have_posts() ) {
-                        $query->the_post();
-                        $ids[] = get_the_ID();
-                        ?>
-                        <li class="col-1-4 fl">
-                              <div class="ibox-3">
-                                    <?php
-                                    get_template_part( 'tpl/home/list-2' );
-                                    ?>
-                              </div>
-                        </li>
-                        <?php
-                  }
-                  ?>
-            </ul>     
-      </div>
 
 </section>
-
-<?php return; ?>
-
-<section class="block-5 group m5" >
-
-      <h2 class="m5">Contenido relacionado</h2>
-      <hr class="pb5">
+<section class="group m5" >
+      <h2 class="m3">
+            <span class="cm-title2">
+                  <?php _e( 'Related Contents', 'cm' ) ?>
+            </span>
+      </h2>
       <ul>
             <?php
             $args = array(
                   'posts_per_page' => 4,
                   'orderby' => 'rand',
                   'post_type' => get_post_type(),
-                  'post__not_in' => array_push( $ids, get_queried_object_id() )
+                  'post__not_in' => array( get_queried_object_id() )
             );
             $query = new WP_Query( $args );
+            /* d( $query ); */
+            $ids = array();
             while ( $query->have_posts() ) {
                   $query->the_post();
+                  $ids[] = get_the_ID();
                   ?>
                   <li class="col-1-4 fl">
                         <div class="ibox-3">
@@ -202,5 +171,5 @@
                   <?php
             }
             ?>
-      </ul> 
+      </ul>     
 </section>
