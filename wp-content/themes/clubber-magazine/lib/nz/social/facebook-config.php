@@ -30,7 +30,7 @@ function nz_facebook_sdk_output() {
                   fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
-      <?php if ( false ) { //has fb login test user status                       ?>
+      <?php if ( false ) { //has fb login test user status?>
                   window.onload = function() {
                         alert('load');
                         FB.getLoginStatus(function(response) {

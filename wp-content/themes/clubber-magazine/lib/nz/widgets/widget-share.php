@@ -33,7 +33,7 @@ class Share_Widget extends WP_Widget {
 
             <div class="h3 tc ibox-5 mt30" >
                   <span class="cm-title3">
-                        Compartir contenido
+                        <?php _e( 'Share content', 'cm' ) ?>
                   </span>
             </div>
             <div class="group mt10 pb10" >

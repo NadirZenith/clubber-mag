@@ -5,7 +5,6 @@
 ?>
 <section class="block-5 group ibox-5" >
       <article class="pr">
-
             <?php if ( get_post_type() != 'artist' ) : ?>
                   <header class="hover" style="z-index: 1000;top:0px; height: 50px;width: 100%; ">
                         <h1 class="p5">
@@ -170,6 +169,7 @@
                   </li>
                   <?php
             }
+            wp_reset_postdata();
             ?>
       </ul>     
 </section>
