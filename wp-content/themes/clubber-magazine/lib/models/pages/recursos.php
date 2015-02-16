@@ -25,7 +25,8 @@ function nz_pre_get_page_recursos( $query ) {
             return;
       }
       $current_page = $query->get_queried_object();
-      $resource_page_id = cm_lang_get_post( $query->get_queried_object_id(), 'es' );
+      /* $resource_page_id = cm_lang_get_post( $query->get_queried_object_id(), 'es' ); */
+      $resource_page_id = $query->get_queried_object_id();
 
       if ( $resource_page_id == CM_RESOURCE_MAIN_PAGE_ID ) {
 
@@ -33,8 +34,9 @@ function nz_pre_get_page_recursos( $query ) {
       } else {
             if ( !is_user_logged_in() ) {
                   global $NZS;
-                  $NZS->getFlashBag()->add( 'success', 'Para manejar los recursos tienes que estar registrado' );
-                  $login_url = get_permalink( get_page_by_path( 'conectar' ) );
+
+                  $NZS->getFlashBag()->add( 'success', __( 'Please login to manage resources', 'cm' ) );
+                  $login_url = get_permalink( CM_CONNECT_PAGE_ID );
 
                   wp_redirect( $login_url );
                   exit();
@@ -51,7 +53,8 @@ function nz_pre_get_page_recursos( $query ) {
             //check for main resource
             if ( !empty( $main_resource ) & $main_resource->post_type != 'artist' ) {
                   global $NZS;
-                  $NZS->getFlashBag()->add( 'success', 'Solo puedes manejar un recurso por usuário!' );
+
+                  $NZS->getFlashBag()->add( 'success', __( 'You can only manage one resource per user' ) );
 
                   $url = get_author_posts_url( get_current_user_id() );
                   wp_redirect( $url );
@@ -61,7 +64,8 @@ function nz_pre_get_page_recursos( $query ) {
             //if there is artist page and is not editing redirect to it
             if ( $main_resource && !$edit_id ) {
                   global $NZS;
-                  $NZS->getFlashBag()->add( 'success', 'Solo puedes tener una página de artista, edita la aqui' );
+                  $NZS->getFlashBag()->add( 'success', sprintf( __( 'You can only manage one %s page per user, edit it here' ), __( 'artist' ) ) );
+
 
                   $path = NZ_WP_Forms::link( $query->get( 'pagename' ), $main_resource_id );
                   $link = home_url( $path );
@@ -77,7 +81,7 @@ function nz_pre_get_page_recursos( $query ) {
             //check for main resource
             if ( !empty( $main_resource ) & $main_resource != 'label' ) {
                   global $NZS;
-                  $NZS->getFlashBag()->add( 'success', 'Solo puedes manejar un recurso por usuário!' );
+                  $NZS->getFlashBag()->add( 'success', __( 'You can only manage one resource per user' ) );
 
                   $url = get_author_posts_url( get_current_user_id() );
                   wp_redirect( $url );
@@ -102,7 +106,7 @@ function nz_pre_get_page_recursos( $query ) {
             // //check for main resource
             if ( !empty( $main_resource ) & $main_resource->post_type != 'cool-place' ) {
                   global $NZS;
-                  $NZS->getFlashBag()->add( 'success', 'Solo puedes manejar un recurso por usuário!' );
+                  $NZS->getFlashBag()->add( 'success', __( 'You can only manage one resource per user' ) );
 
                   $url = get_author_posts_url( get_current_user_id() );
                   wp_redirect( $url );
@@ -166,7 +170,7 @@ function nz_pre_get_page_newpodcast( $query ) {
   }
 
  */
-/*add_action( 'pre_get_posts', 'cm_pre_get_posts_lang' );*/
+/* add_action( 'pre_get_posts', 'cm_pre_get_posts_lang' ); */
 
 function cm_pre_get_posts_lang( $query ) {
 
@@ -175,7 +179,7 @@ function cm_pre_get_posts_lang( $query ) {
       ) {
             return;
       }
-      /*d( $query );*/
+      /* d( $query ); */
       $query->set( 'lang', implode( ' ,', pll_languages_list() ) );
       return;
 

@@ -109,7 +109,7 @@ function cm_agenda_custom_fields() {
 }
 
 add_action( 'pre_get_posts', 'cm_pre_get_archive_agenda' );
-add_action( 'pre_get_posts', 'cm_pre_get_archive_city' );
+/* add_action( 'pre_get_posts', 'cm_pre_get_archive_city' ); */
 
 function cm_pre_get_archive_city( $query ) {
 
@@ -154,39 +154,44 @@ function cm_pre_get_archive_city( $query ) {
 function cm_pre_get_archive_agenda( $query ) {
 
       if (
-                !$query->is_main_query() || $query->is_admin ||
-                !$query->is_post_type_archive( 'agenda' )
+                !$query->is_main_query() || $query->is_admin
       )
             return;
 
-      Roots_Wrapping::$raw = TRUE;
-      /* d( $query ); */
-      $query->set( 'posts_per_page', -1 );
+      if (
+                $query->is_post_type_archive( 'agenda' ) ||
+                $query->is_tax( 'city' )
+      ) {
 
-      $query->set( 'orderby', "meta_value_num" );
-      $query->set( 'meta_key', "wpcf-event_begin_date" );
-      $query->set( 'order', "ASC" );
+            Roots_Wrapping::$raw = TRUE;
+            $query->set( 'posts_per_page', -1 );
+            $query->set( 'post_type', "agenda" );
 
-      $start_date = strtotime( "now" );
+            $query->set( 'orderby', "meta_value_num" );
+            $query->set( 'meta_key', "wpcf-event_begin_date" );
+            $query->set( 'order', "ASC" );
 
-      $date = get_query_var( 'date' );
-      $DateTime = DateTime::createFromFormat( 'd-m-Y', $date );
-      if ( $DateTime ) {
-            $DateTime->setTime( 0, 0, 0 ); //to avoid date problems
-            $start_date = $DateTime->getTimestamp();
+            $start_date = strtotime( "now" );
+
+            $date = get_query_var( 'date' );
+            $DateTime = DateTime::createFromFormat( 'd-m-Y', $date );
+            if ( $DateTime ) {
+                  $DateTime->setTime( 0, 0, 0 ); //to avoid date problems
+                  $start_date = $DateTime->getTimestamp();
+            }
+
+            $end_date = strtotime( '+ 1 week', $start_date );
+            $prev_date = strtotime( '- 1 week', $start_date );
+
+            $meta_query = array(
+                  array(
+                        'key' => 'wpcf-event_begin_date',
+                        'value' => array( $start_date, $end_date ),
+                        'type' => 'NUMERIC',
+                        'compare' => 'BETWEEN'
+                  )
+            );
+
+            $query->set( 'meta_query', $meta_query );
       }
-
-      $end_date = strtotime( '+ 1 week', $start_date );
-      $prev_date = strtotime( '- 1 week', $start_date );
-
-      $meta_query = array(
-            array(
-                  'key' => 'wpcf-event_begin_date',
-                  'value' => array( $start_date, $end_date ),
-                  'type' => 'NUMERIC',
-                  'compare' => 'BETWEEN'
-            )
-      );
-
-      $query->set( 'meta_query', $meta_query );
 }
