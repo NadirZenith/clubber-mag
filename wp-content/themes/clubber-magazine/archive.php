@@ -39,6 +39,6 @@
       }
       ?>
       <?php
-      include (locate_template( 'templates/pagination.php' ));
+      include (locate_template( 'tpl/parts/pagination.php' ));
       ?>
 </section>
