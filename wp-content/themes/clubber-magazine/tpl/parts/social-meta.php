@@ -18,28 +18,27 @@
       }
       ?>
       <div class="fr">
-
             <?php
-            $socials = array(
-                  'facebook' => array(
-                  //'url' => 'https://www.facebook.com/Clubber.Mag',
-                  ),
-                  'twitter' => array(
-                        'url' => 'https://www.facebook.com/Clubber.Mag',
-                  ),
-                  'instagram' => array(
-                        'url' => 'https://www.facebook.com/Clubber.Mag',
-                  ),
-                  'youtube' => array(
-                        'url' => 'https://www.facebook.com/Clubber.Mag',
-                  ),
-                  'soundcloud' => array(
-                        'url' => 'https://www.facebook.com/Clubber.Mag',
-                  ),
-                  'google-plus' => array(
-                        'url' => 'https://www.facebook.com/Clubber.Mag',
-                  ),
+            $meta = get_post_meta(  get_queried_object_id());
+
+            /* CONTACT FIELDS */
+            $all_socials = array(
+                  'home',
+                  'facebook',
+                  'soundcloud',
+                  'instagram',
+                  'google-plus',
+                  'youtube',
+                  'twitter',
+                  /*'beatport',*/
+                  /*'bandpage'*/
             );
+            foreach ( $all_socials as $network ) {
+                  $socials[ $network ] = array(
+                        'url' => (isset( $meta[ $network ] )) ? $meta[ $network ][ 0 ] : null,
+                  );
+            }
+           
             ?>
             <?php nz_fa_social_icons( $socials, 'social-icons-single' ); ?>
       </div>

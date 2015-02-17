@@ -35,11 +35,11 @@
                   this.$select2 = this.$row.children('.select2');
                   console.log(this.$select2);
                   this.$add_new = $(this.options.tpl.add).attr({
-                     href : '#link'    
+                        href: '#link'
                   }).html(this.options.addText);
-                  
+
                   this.$select2.after(this.$add_new);
-                  
+
             },
             // Bind events that trigger methods
             bindEvents: function() {
@@ -80,7 +80,6 @@
 
             },
             templateResult: function(post) {
-                  console.log(post);
                   if (post.loading)
                         return post.text;
 
@@ -92,7 +91,8 @@
                   if (post.meta.address) {
                         markup += '<span style="font-size:11px;line-height: 0px;;">' + post.meta.address + '</span>';
                   } else {
-                        markup += '<div>' + 'escrever mais a baixo' + '</div>';
+                        console.log('no address');
+                        /*markup += '<div>' + 'escrever mais a baixo' + '</div>';*/
                   }
                   '</div>' +
                           '</div>';
@@ -136,9 +136,9 @@
       $.fn.nzwpform_relationTo.defaults = {
             property: 'value',
             onComplete: null,
-            addText : 'new',
+            addText: 'new',
             tpl: {
-                  add :'<a class="nz-addrelation">add</a>',
+                  add: '<a class="nz-addrelation">add</a>',
             }
       };
 

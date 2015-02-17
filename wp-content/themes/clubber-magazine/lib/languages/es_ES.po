@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-17 17:08+0100\n"
-"PO-Revision-Date: 2015-02-17 17:09+0100\n"
+"PO-Revision-Date: 2015-02-17 17:56+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2215,7 +2215,7 @@ msgstr "Cool Places recomendados"
 
 #: tpl/parts/related-podcasts.php:18
 msgid "Latest shared music"
-msgstr "Ultima musica compartida"
+msgstr "Última música compartida"
 
 #: tpl/parts/comments.php:4
 msgid "Comments"
