@@ -3,14 +3,12 @@
  *    @todo nz show all next events, show last events (1 line - pagination) if any
  */
 $curauth = (isset( $_GET[ 'author_name' ] )) ? get_user_by( 'slug', $author_name ) : get_userdata( intval( $author ) );
-/* d( $curauth ); */
 $meta_query = array(
       array(
             'key' => 'wpcf-event_begin_date',
             'value' => time(),
             'type' => 'NUMERIC',
             'compare' => '>='
-      /* 'compare' => '<' */
       )
 );
 $args = array(
@@ -22,10 +20,9 @@ $args = array(
 );
 
 $query2 = new WP_Query( $args );
-/* d( $query2 ); */
 ?>
 
-<main role="main">
+<main role="main" class="has-sidebar">
       <section class="pb15 cb">
 
             <header class="mt5 mb10 ml5 mt15">
