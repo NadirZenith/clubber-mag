@@ -13,7 +13,12 @@ elseif ( get_post_type() == 'label' )
 $query2 = new WP_Query( $args );
 if ( $query2->have_posts() ) {
       ?>
-      <div class="homeCustomScroll oh" style="height: 428px;">
+      <h2 class="">
+            <span class="cm-title" >
+                  <?php _e( 'Latest shared music', 'cm' ); ?>
+            </span>
+      </h2>
+      <div class="homeCustomScroll oh" style="height: 428px;width: 80%; margin: 10px auto;">
             <?php
             while ( $query2->have_posts() ) {
                   $query2->the_post();
