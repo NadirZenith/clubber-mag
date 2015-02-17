@@ -28,7 +28,7 @@ $PodcastForm->addContent( 'hidden', $slug );
 /* $type = 'nzsoundcloud'; */
 $type = 'text';
 $slug = CM_META_SOUNDCLOUD;
-$label = __( 'Podcast Url', 'cm' );
+$label = __( 'Soundcloud Url', 'cm' );
 
 
 $atts = array(
@@ -52,7 +52,7 @@ $PodcastForm->addTitle( 'text', $slug, __( 'Title', 'cm' ), array( 'required' =>
 /**
  * PODCAST submit button
  */
-$PodcastForm->addSubmit( 'btn_submit', __( 'Submit', 'cm' ) );
+$PodcastForm->addSubmit( 'btn_submit', __( 'Share', 'cm' ) );
 /*
  */
 

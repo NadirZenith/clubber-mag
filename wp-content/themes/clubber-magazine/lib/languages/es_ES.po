@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-17 14:40+0100\n"
-"PO-Revision-Date: 2015-02-17 14:58+0100\n"
+"POT-Creation-Date: 2015-02-17 15:56+0100\n"
+"PO-Revision-Date: 2015-02-17 15:57+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -25,7 +25,6 @@ msgstr "Compartir evento"
 
 #: page-layout.php:15
 #: page-template-form.php:22
-#: search.php:144
 msgid "No Posts Found."
 msgstr "Post no encontrado "
 
@@ -33,7 +32,7 @@ msgstr "Post no encontrado "
 msgid "News Archive"
 msgstr "Noticias"
 
-#: functions.php:115
+#: functions.php:116
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr ""
@@ -63,6 +62,14 @@ msgstr "Coolplaces"
 msgid "Add new place"
 msgstr "Agregar nuevo lugar"
 
+#: page-template-festivals.php:26
+msgid "Party and Events of the week"
+msgstr "Fiestas y eventos de la semana"
+
+#: page-template-festivals.php:78
+msgid "Next parties and events"
+msgstr "Nuevas fiestas y eventos"
+
 #: archive-podcast.php:10
 msgid "Special guests"
 msgstr "Invitado Especial "
@@ -78,14 +85,6 @@ msgstr ""
 #: search.php:109
 msgid "Read more"
 msgstr "Leer más"
-
-#: archive-agenda.php:21
-msgid "Party and Events of the week"
-msgstr "Fiestas y eventos de la semana"
-
-#: archive-agenda.php:73
-msgid "Next parties and events"
-msgstr "Nuevas fiestas y eventos"
 
 #: archive-artist.php:13
 msgid "Add new artist"
@@ -1121,7 +1120,7 @@ msgstr ""
 #: vendor/option-tree/includes/ot-meta-box-api.php:223
 #: vendor/option-tree/includes/ot-settings-api.php:610
 msgid "Title"
-msgstr "Titulo "
+msgstr "Título "
 
 #: vendor/option-tree/includes/ot-functions-admin.php:4693
 #, fuzzy
@@ -2238,24 +2237,24 @@ msgstr "Compartir Evento"
 msgid "sign-out"
 msgstr "Salir"
 
-#: tpl/user-profile/user-profile-resource-agenda.php:25
+#: tpl/user-profile/user-profile-resource-agenda.php:24
 msgid "Apúntate a eventos"
 msgstr ""
 
-#: tpl/user-profile/user-profile-resource-agenda.php:34
+#: tpl/user-profile/user-profile-resource-agenda.php:33
 msgid "Ver agenda de usuário"
 msgstr ""
 
-#: tpl/user-profile/user-profile-resource-agenda.php:100
-#: tpl/user-profile/user-profile-resource-agenda.php:108
+#: tpl/user-profile/user-profile-resource-agenda.php:99
+#: tpl/user-profile/user-profile-resource-agenda.php:107
 msgid "¡Apúntate a eventos en nuestra agenda!"
 msgstr ""
 
-#: tpl/user-profile/user-profile-resource-agenda.php:118
+#: tpl/user-profile/user-profile-resource-agenda.php:117
 msgid "Últimos eventos asistidos"
 msgstr ""
 
-#: tpl/user-profile/user-profile-resource-agenda.php:120
+#: tpl/user-profile/user-profile-resource-agenda.php:119
 msgid "Este usuario no se ha apuntado a eventos"
 msgstr ""
 
@@ -2327,7 +2326,7 @@ msgstr ""
 msgid "Video review"
 msgstr "Video Review"
 
-#: tpl/user/user-agenda-list.php:34
+#: tpl/user/user-agenda-list.php:31
 msgid "Agenda"
 msgstr ""
 
@@ -2437,13 +2436,18 @@ msgstr "Nombre del Artista "
 msgid "Name is required!"
 msgstr "Nombre requerido "
 
+#: lib/forms/artist_form.php:32
+msgid "Artist image"
+msgstr "Imagen de artitsta"
+
 #: lib/forms/artist_form.php:47
 msgid "Artist info"
 msgstr "Información del Artista "
 
 #: lib/forms/podcast_form.php:31
-msgid "Podcast Url"
-msgstr "Url Podcast"
+#, fuzzy
+msgid "Soundcloud Url"
+msgstr "SoundCloud URL requerida "
 
 #: lib/forms/podcast_form.php:39
 msgid "Soundcloud Url is required"
@@ -2452,6 +2456,10 @@ msgstr "SoundCloud URL requerida "
 #: lib/forms/podcast_form.php:49
 msgid "Title is required"
 msgstr "Titulo Requerido "
+
+#: lib/forms/podcast_form.php:55
+msgid "Share"
+msgstr "Compartir"
 
 #: lib/forms/podcast_form.php:132
 msgid "Podcast subido"
@@ -2645,6 +2653,10 @@ msgstr "Nombre para mostrar "
 #: lib/forms/edituser_form.php:93
 msgid "Display name is required"
 msgstr "Nombre para mostrar es requerido "
+
+#: lib/forms/edituser_form.php:115
+msgid "Url is not valid, ex: http://www.example.com, don't forget the protocol http://"
+msgstr "La url no es válida, ej: http://www.example.com, no te olvides del protocolo http://"
 
 #: lib/languages/customs.php:4
 msgid "Interviews"
@@ -2938,7 +2950,7 @@ msgstr ""
 msgid "User does not exist or is inactive"
 msgstr "Usuario no existe o es inactivo "
 
-#: lib/nz/lib/nz-wp-form/login-register/register.php:93
+#: lib/nz/lib/nz-wp-form/login-register/register.php:92
 msgid "Success Registration"
 msgstr "Registro con exitoso "
 
@@ -3190,6 +3202,9 @@ msgstr ""
 #: lib/options/cm-options.php:50
 msgid "Alphabet"
 msgstr ""
+
+#~ msgid "Podcast Url"
+#~ msgstr "Url Podcast"
 
 #~ msgid "Allowed characteres "
 #~ msgstr "Caracteres permitidos"

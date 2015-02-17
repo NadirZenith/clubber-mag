@@ -28,17 +28,11 @@
             </div>
       <?php endif; ?>
       <?php
-      /* d(get_post_meta( get_the_ID(), CM_META_SOUNDCLOUD, true )); */
-      if ( $url = get_post_meta( get_the_ID(), CM_META_SOUNDCLOUD, true ) AND strlen( trim( $url ) ) > 10 ) {
-            /* d($url); */
-            //echo do_shortcode( '[soundcloud url="' . $url . '" params="color=ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false" width="100%" height="166" iframe="true" /]' );
-            /* echo do_shortcode( '[soundcloud url="http://api.soundcloud.com/playlists/1595551" ' */
-            echo do_shortcode( '[soundcloud url="http://api.soundcloud.com/tracks/98703651" '
-                      . 'visual="true" '
-                      /* . 'width="100%" ' */
-                      . 'iframe="true" '
-                      . 'show_artwork ="true" '
-                      . '/]' );
+      if ( $sc_info_str = get_post_meta( get_the_ID(), CM_META_SOUNDCLOUD, true ) ) {
+            $sc_info = json_decode( $sc_info_str );
+            if ( $sc_info ) {
+                  echo nz_get_soundcloud_iframe( $sc_info->uri );
+            }
       } else {
             ?>
             <a class="featured-image" href="<?php echo get_permalink( $event->ID ); ?>">

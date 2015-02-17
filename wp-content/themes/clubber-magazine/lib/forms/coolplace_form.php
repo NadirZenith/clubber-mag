@@ -4,7 +4,7 @@ $form_name = 'coolplace_form';
 $post_type = 'cool-place';
 
 $CoolplaceForm = new NZ_WP_Form( $form_name, $post_type );
-$CoolplaceForm->post_status = 'publish';
+/*$CoolplaceForm->post_status = 'publish';*/
 $CoolplaceForm->addNotification( 'gracias por subir su cool place' );
 
 /**

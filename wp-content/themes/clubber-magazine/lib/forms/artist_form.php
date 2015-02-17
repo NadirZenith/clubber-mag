@@ -5,7 +5,6 @@ $post_type = 'artist';
 $prefix = '';
 
 $ArtistForm = new NZ_WP_Form( $form_name, $post_type );
-$ArtistForm->post_status = 'publish';
 
 /**
  * TITLE(text) --------------------------------------------
@@ -29,7 +28,7 @@ $ArtistForm->addTitle( 'text', $slug, $label, $atts, $rule );
  * FEATURED(text) --------------------------------------------
  */
 $slug = 'artist_featured';
-$label = 'Artist Featured image:';
+$label = __( 'Artist image', 'cm' );
 $atts = array(
       // 'value' => 'http://lab.dev/clubber-mag-dev/wp-content/uploads/cache/preview/1419004629-17.jpg',
       'style' => 'display:none',

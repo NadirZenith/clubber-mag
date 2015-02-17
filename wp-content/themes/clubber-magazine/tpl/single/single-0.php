@@ -64,8 +64,6 @@
                         <?php } ?>
                   </div>
                   <?php
-                  /*
-                   */
                   ?>
             <?php endif; //not artist ?>
             <?php if ( in_array( get_post_type(), array( 'artist', 'label' ) ) ): ?>
@@ -91,6 +89,7 @@
             <div class="m5">
                   <?php
                   if ( in_array( get_post_type(), array( 'post', 'music', 'photo', 'podcast' ) ) ) {
+                        //post author info
                         ?>
                         <div class="fr cb" style="min-width: 200px;">
                               <?php
@@ -115,10 +114,10 @@
                   <div class="mt15 tj the-content">
                         <?php the_content(); ?> 
                   </div>
+
                   <?php
                   $imgs_ids = get_post_meta( get_the_ID(), 'photo-gallery', true );
                   if ( !empty( $imgs_ids ) ):
-                        /* $imgs_ids = array_slice( $imgs_ids, 0, 4 ); */
                         ?>
                         <div class="cb mt10 mb10">
                               <?php
@@ -129,6 +128,12 @@
                   endif;
                   ?>
 
+
+                  <?php
+                  if ( in_array( get_post_type(), array( 'artist', 'label' ) ) ) {
+                        get_template_part( 'tpl/parts/related-podcasts' );
+                  }
+                  ?>
 
                   <?php get_template_part( 'tpl/parts/mapa' ); ?>
             </div>

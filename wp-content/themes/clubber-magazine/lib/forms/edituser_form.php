@@ -112,7 +112,7 @@ foreach ( $socials as $network => $description ) {
       $atts = array(
       );
       $rules = array(
-            'url' => array( false, 'error', __( 'Url is not valid', 'cm' ) ),
+            'url' => array( true, 'error', __( 'Url is not valid, ex: http://www.example.com, don\'t forget the protocol http://', 'cm' ) ),
       );
 
       $UserForm->addMeta( 'text', $slug, $label, $atts, $rules );

@@ -92,6 +92,7 @@ $roots_includes = array(
       CM_MODELS_DIR . '/news.php',
       CM_MODELS_DIR . '/podcast.php',
       CM_MODELS_DIR . '/pages/recursos.php', // Page recursos specific queries
+      CM_MODELS_DIR . '/pages/festivals.php', // Page festivals queries
       'lib/nz/lib/nzsession.php',
       //forms /login /register
       'lib/nz/lib/nz-wp-form/nz-wp-forms.php',
