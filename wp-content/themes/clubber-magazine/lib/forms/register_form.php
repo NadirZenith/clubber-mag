@@ -16,7 +16,7 @@ $rules = array(
       'regexp' => array(
             '^[a-zA-Z0-9_-]{3,20}$',
             'error',
-            __( 'Allowed characters a-z and 0-9 _- <br> No spaces. 3-20 characters', 'cm' )
+            __( 'Allowed characters a-z and 0-9 _- No spaces. 3-20 characters', 'cm' )
       )
 );
 

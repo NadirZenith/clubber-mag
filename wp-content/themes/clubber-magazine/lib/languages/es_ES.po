@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-17 13:47+0100\n"
-"PO-Revision-Date: 2015-02-17 13:48+0100\n"
+"POT-Creation-Date: 2015-02-17 14:36+0100\n"
+"PO-Revision-Date: 2015-02-17 14:37+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -25,7 +25,7 @@ msgstr "Compartir evento"
 
 #: page-layout.php:15
 #: page-template-form.php:22
-#: search.php:149
+#: search.php:144
 msgid "No Posts Found."
 msgstr "Post no encontrado "
 
@@ -75,7 +75,7 @@ msgstr "Otros Podcasts"
 msgid "Podcasts"
 msgstr ""
 
-#: search.php:114
+#: search.php:109
 msgid "Read more"
 msgstr "Leer más"
 
@@ -2600,8 +2600,9 @@ msgid "Username is required"
 msgstr "Nombre de usuario requerido "
 
 #: lib/forms/register_form.php:19
-msgid "Allowed characteres "
-msgstr "Caracteres permitidos"
+#, fuzzy
+msgid "Allowed characters a-z and 0-9 _- No spaces. 3-20 characters"
+msgstr "Caracteres permitidos (a-z y 0-9 _-) Sin espacios. 3-20 caracteres"
 
 #: lib/forms/register_form.php:44
 msgid "Password does not match"
@@ -2913,7 +2914,7 @@ msgid "Error creating user"
 msgstr "Error al crear usuario "
 
 #: lib/nz/lib/nz-wp-form/login-register/abstract.php:304
-#: lib/nz/lib/nz-wp-form/login-register/login.php:72
+#: lib/nz/lib/nz-wp-form/login-register/login.php:69
 msgid "Login complete"
 msgstr "Inicio de sesión Completa"
 
@@ -2921,11 +2922,11 @@ msgstr "Inicio de sesión Completa"
 msgid "Registration complete"
 msgstr " Registro completo"
 
-#: lib/nz/lib/nz-wp-form/login-register/login.php:88
+#: lib/nz/lib/nz-wp-form/login-register/login.php:85
 msgid "Invalid credentials."
 msgstr ""
 
-#: lib/nz/lib/nz-wp-form/login-register/login.php:91
+#: lib/nz/lib/nz-wp-form/login-register/login.php:88
 msgid "User does not exist or is inactive"
 msgstr "Usuario no existe o es inactivo "
 
@@ -3191,6 +3192,9 @@ msgstr ""
 #: lib/options/cm-options.php:50
 msgid "Alphabet"
 msgstr ""
+
+#~ msgid "Allowed characteres "
+#~ msgstr "Caracteres permitidos"
 
 #, fuzzy
 #~ msgid "New place"
