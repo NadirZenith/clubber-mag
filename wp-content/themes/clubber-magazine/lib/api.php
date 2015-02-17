@@ -49,11 +49,16 @@ function cm_get_posts() {
             $meta = array();
 
             //mapa
-            $mapa = get_post_meta( get_the_ID(), 'mapa', true );
+            /* $mapa = get_post_meta( get_the_ID(), 'mapa', true ); */
+            $mapa = get_post_meta( get_the_ID(), CM_META_MAPA, true );
 
-            $json_mapa = json_decode( $mapa );
-            if ( $json_mapa ) {
-                  $meta[ 'address' ] = $json_mapa->address;
+            $json_mapa = json_decode( $mapa, TRUE );
+            if (
+                      $json_mapa &&
+                      isset( $json_mapa[ 'components' ] ) &&
+                      isset( $json_mapa[ 'components' ][ 'address' ] )
+            ) {
+                  $meta[ 'address' ] = $json_mapa[ 'components' ][ 'address' ];
             }
 
             $output[] = array(
@@ -74,7 +79,6 @@ function cm_get_posts() {
       echo json_encode( $response );
       exit();
       die();
-
 }
 
 add_action( 'base_after_body', 'cm_ajaxurl' );
