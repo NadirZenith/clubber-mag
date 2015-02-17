@@ -9,7 +9,6 @@
                               single_tag_title();
                         elseif ( is_archive() ) :
                               post_type_archive_title();
-
                         endif;
                         ?>
                   </span>

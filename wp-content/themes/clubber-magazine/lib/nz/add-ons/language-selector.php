@@ -6,9 +6,7 @@ function set_my_locale( $lang ) {
 
       if ( isset( $_GET[ 'lang' ] ) ) {
 
-            /* d( $lang ); */
             if ( 'en' == $_GET[ 'lang' ] ) {
-                  // set to Greenlandic
                   $lang = 'en_US';
             } elseif ( 'es' == $_GET[ 'lang' ] ) {
                   $lang = 'es_ES';
@@ -58,7 +56,6 @@ Class NzWpLang {
 
       function init() {
 
-            add_filter( 'query_vars', array( $this, 'filter_query_vars' ) );
 
             //set browser locale
             $this->browser_lang = $this->_prefered_browser_language( array_keys( $this->options[ 'supported' ] ) );
@@ -106,11 +103,6 @@ Class NzWpLang {
             }
 
             add_filter( 'locale', array( $this, 'filter_get_locale' ) );
-      }
-
-      public function filter_query_vars( $vars ) {
-            $vars[] = $this->options[ 'query_var' ];
-            return $vars;
       }
 
       public function filter_links() {
