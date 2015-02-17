@@ -5,15 +5,14 @@ $meta_query = array(
             'value' => time(),
             'type' => 'NUMERIC',
             'compare' => '>='
-      /* 'compare' => '<' */
       )
 );
 $args = array(
       'post_type' => 'agenda',
       'connected_type' => 'events_to_users',
       'connected_items' => $curauth->ID,
-      /*'nopaging' => true,*/
-      'meta_query' => $meta_query
+      'meta_query' => $meta_query,
+      'posts_per_page' => 6
 );
 
 $query2 = new WP_Query( $args );
