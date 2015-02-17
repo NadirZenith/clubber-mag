@@ -19,7 +19,7 @@ $atts = array(
       'data-placeholder' => __( 'Select a place', 'cm' ),
       'new-resource' => array(
             'url' => get_permalink( cm_lang_get_post( CM_RESOURCE_COOLPLACE_FAST_PAGE_ID ) ),
-            'text' => 'New',
+            'text' => __( 'Add new place', 'cm' ),
             'class' => 'fancybox'
       ),
           /* 'new-resource-url' => get_permalink( cm_lang_get_post( CM_RESOURCE_COOLPLACE_FAST_PAGE_ID ) ) */

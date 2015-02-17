@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-17 12:58+0100\n"
-"PO-Revision-Date: 2015-02-17 13:00+0100\n"
+"PO-Revision-Date: 2015-02-17 13:07+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2509,11 +2509,11 @@ msgstr "Escribe el nombre del evento "
 
 #: lib/forms/event_form.php:40
 msgid "Name of the club or place where the event is"
-msgstr "Nombre del club de tu evento "
+msgstr "Nombre del club o lugar de tu evento "
 
 #: lib/forms/event_form.php:42
 msgid "Select a place"
-msgstr "escoge un lugar"
+msgstr "Selecciona un lugar"
 
 #: lib/forms/event_form.php:51
 msgid "Place is required!"
