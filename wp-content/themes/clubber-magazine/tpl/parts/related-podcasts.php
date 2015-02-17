@@ -18,7 +18,7 @@ if ( $query2->have_posts() ) {
                   <?php _e( 'Latest shared music', 'cm' ); ?>
             </span>
       </h2>
-      <div class="homeCustomScroll oh mt5" style="height: 428px;width: 80%;">
+      <div class="homeCustomScroll oh mt5" style="height: 328px;">
             <?php
             while ( $query2->have_posts() ) {
                   $query2->the_post();
