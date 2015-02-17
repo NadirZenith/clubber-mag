@@ -8,12 +8,9 @@ Class NZ_Login {
 
       public $form_name = null;
       public $ajax = false;
-      private $options = array();
 
-      public function __construct( $options = array() ) {
-            $this->options = wp_parse_args( $options, array(
-                  'form_dir' => false
-            ) );
+      public function __construct( $form_name ) {
+
             $this->form_name = $form_name;
 
             add_action( 'init', array( &$this, 'init' ) );
@@ -22,7 +19,7 @@ Class NZ_Login {
       public function init() {
             // add_action( 'wp_ajax_login_submit', array( &$this, 'login_submit' ) );
             // add_action( 'wp_ajax_nopriv_login_submit', array( &$this, 'login_submit' ) );
-            add_filter( 'nzwp_forms_init_form_' . $this->options[ 'form_dir' ], array( &$this, 'setCallbacks' ) );
+            add_filter( 'nzwp_forms_init_form_' . $this->form_name, array( &$this, 'setCallbacks' ) );
             add_shortcode( 'nzwp_forms_login', array( &$this, 'login_shortcode' ) );
 
             /* add_action( 'wp_ajax_facebook_login', array( &$this, 'facebook_login' ) ); */
@@ -170,11 +167,12 @@ Class NZ_Login {
       }
 
       public function login_shortcode() {
-            $html_form = do_shortcode( "[nz-wp-form name={$this->options[ 'form_dir' ]}]" );
-
-            if ( $this->ajax ) {
-                  $html_form .= $this->ajax_login_script();
-            }
+            $html_form = do_shortcode( "[nz-wp-form name={$this->form_name}]" );
+            /*
+              if ( $this->ajax ) {
+              $html_form .= $this->ajax_login_script();
+              }
+             */
             return $html_form;
       }
 
@@ -374,10 +372,7 @@ Class NZ_Login {
 
 }
 
-new NZ_Login( array(
-      'form_dir' => 'login_form',
-          )
-);
+new NZ_Login( 'login_form' );
 
 
 if ( !function_exists( 'nz_is_ajax' ) ) {

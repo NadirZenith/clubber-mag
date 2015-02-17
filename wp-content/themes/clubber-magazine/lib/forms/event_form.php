@@ -205,6 +205,13 @@ $rules = array(
 
 $EventForm->addMeta( $type, $slug, $label, $atts, $rules );
 
+$atts = array(
+      'caption' => __( 'Price ( Nº + € ) / Free / To announce', 'cm' ),
+      'attach_to' => $slug
+);
+
+$EventForm->addNote( 'note_price', $atts );
+
 /**
  * Event price conditions(text) --------------------------------------------
  */

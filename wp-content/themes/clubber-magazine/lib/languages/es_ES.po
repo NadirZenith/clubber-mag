@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-17 13:15+0100\n"
-"PO-Revision-Date: 2015-02-17 13:34+0100\n"
+"POT-Creation-Date: 2015-02-17 13:47+0100\n"
+"PO-Revision-Date: 2015-02-17 13:48+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2571,11 +2571,15 @@ msgstr ""
 msgid "Price is required"
 msgstr "Precio requerido "
 
-#: lib/forms/event_form.php:213
+#: lib/forms/event_form.php:209
+msgid "Price ( Nº + € ) / Free / To announce"
+msgstr "Precio ( Nº + € ) / Entrada liberada / Por anunciar"
+
+#: lib/forms/event_form.php:220
 msgid "Price conditions"
 msgstr "Condiciones del precio "
 
-#: lib/forms/event_form.php:262
+#: lib/forms/event_form.php:269
 msgid "Thanks for submitting your event"
 msgstr "Gracias por subir tu evento"
 
@@ -2909,7 +2913,7 @@ msgid "Error creating user"
 msgstr "Error al crear usuario "
 
 #: lib/nz/lib/nz-wp-form/login-register/abstract.php:304
-#: lib/nz/lib/nz-wp-form/login-register/login.php:73
+#: lib/nz/lib/nz-wp-form/login-register/login.php:72
 msgid "Login complete"
 msgstr "Inicio de sesión Completa"
 
@@ -2917,11 +2921,11 @@ msgstr "Inicio de sesión Completa"
 msgid "Registration complete"
 msgstr " Registro completo"
 
-#: lib/nz/lib/nz-wp-form/login-register/login.php:89
+#: lib/nz/lib/nz-wp-form/login-register/login.php:88
 msgid "Invalid credentials."
 msgstr ""
 
-#: lib/nz/lib/nz-wp-form/login-register/login.php:92
+#: lib/nz/lib/nz-wp-form/login-register/login.php:91
 msgid "User does not exist or is inactive"
 msgstr "Usuario no existe o es inactivo "
 
