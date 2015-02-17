@@ -48,7 +48,7 @@ $LoginForm->addField( $type, $slug, $label, $atts );
 /**
  * PODCAST submit button
  */
-$LoginForm->addSubmit( 'btn_register', __( 'Submit', 'cm' ) );
+$LoginForm->addSubmit( 'btn_register', __( 'Login', 'cm' ) );
 
 
 return $LoginForm;

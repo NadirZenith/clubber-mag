@@ -53,7 +53,7 @@ $RegisterForm->addUserPass( $slug, $label, $atts, $rules );
 /**
  * PODCAST submit button
  */
-$RegisterForm->addSubmit( 'btn_register', __( 'Submit', 'cm' ) );
+$RegisterForm->addSubmit( 'btn_register', __( 'Register', 'cm' ) );
 
 
 

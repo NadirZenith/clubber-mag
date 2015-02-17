@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-17 14:36+0100\n"
-"PO-Revision-Date: 2015-02-17 14:37+0100\n"
+"POT-Creation-Date: 2015-02-17 14:40+0100\n"
+"PO-Revision-Date: 2015-02-17 14:41+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2472,7 +2472,11 @@ msgstr "Contraseña"
 
 #: lib/forms/login_form.php:44
 msgid "Remember me"
-msgstr "recordarme "
+msgstr "Recordarme "
+
+#: lib/forms/login_form.php:51
+msgid "Login"
+msgstr "Entrar"
 
 #: lib/forms/coolplace_fast_form.php:15
 #: lib/forms/coolplace_form.php:14
@@ -2616,6 +2620,10 @@ msgstr "Contraseña requerida"
 #: lib/forms/register_form.php:48
 msgid "The password must have between 6 and 16 characters"
 msgstr "La contraseña debe tener entre 6 y 16 caracteres "
+
+#: lib/forms/register_form.php:56
+msgid "Register"
+msgstr "Registro"
 
 #: lib/forms/edituser_form.php:12
 #: lib/forms/edituser_form.php:39
@@ -2934,11 +2942,6 @@ msgstr "Usuario no existe o es inactivo "
 msgid "Success Registration"
 msgstr "Registro con exitoso "
 
-#: lib/nz/lib/nz-wp-form/login-register/views/login-dialog.php:8
-#: lib/nz/lib/nz-wp-form/login-register/views/login-form.php:33
-msgid "Login"
-msgstr "Inicio de sesión   "
-
 #: lib/nz/lib/nz-wp-form/login-register/views/login-dialog.php:9
 #: lib/nz/lib/nz-wp-form/login-register/views/register-dialog.php:8
 msgid "Loading..."
@@ -2963,11 +2966,6 @@ msgstr "Confirmar contraseña "
 #: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:39
 msgid "Already registered?"
 msgstr "¿Ya estas registrado?"
-
-#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:41
-#: lib/nz/lib/nz-wp-form/login-register/views/register-dialog.php:7
-msgid "Register"
-msgstr "Registro "
 
 #: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:48
 msgid "Registration is currently closed."
