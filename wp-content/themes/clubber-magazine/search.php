@@ -1,8 +1,5 @@
 
 <?php
-d(
-get_option('relevanssi_index_users')
-          );
 $search = get_query_var( 's' );
 /*$search = 'clubber+mag';*/
 
@@ -32,8 +29,6 @@ $user_query = new WP_User_Query( array(
 $users_found = $user_query->get_results();
 
 
-d( $user_query );
-d( $users_found );
 ?>
 <div class="co-1">
       <section>
@@ -152,6 +147,6 @@ d( $users_found );
             ?>
       </section>
       <?php
-      include (locate_template( 'templates/pagination.php' ));
+      include (locate_template( 'tpl/parts/pagination.php' ));
       ?>
 </div>
