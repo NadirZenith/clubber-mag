@@ -8,8 +8,12 @@ Class NZ_Login {
 
       public $form_name = null;
       public $ajax = false;
+      private $options = array();
 
-      public function __construct( $form_name) {
+      public function __construct( $options = array() ) {
+            $this->options = wp_parse_args($options, array(
+                  'form_dir' => 'false'
+            ));
             $this->form_name = $form_name;
 
             add_action( 'init', array( &$this, 'init' ) );
@@ -18,12 +22,12 @@ Class NZ_Login {
       public function init() {
             // add_action( 'wp_ajax_login_submit', array( &$this, 'login_submit' ) );
             // add_action( 'wp_ajax_nopriv_login_submit', array( &$this, 'login_submit' ) );
-            add_filter( 'nzwp_forms_init_form_' . $this->form_name, array( &$this, 'setCallbacks' ) );
+            add_filter( 'nzwp_forms_init_form_' . $this->options['form_dir'], array( &$this, 'setCallbacks' ) );
+            add_shortcode( 'nzwp_forms_login', array( &$this, 'login_shortcode' ) );
 
             /* add_action( 'wp_ajax_facebook_login', array( &$this, 'facebook_login' ) ); */
             /* add_action( 'wp_ajax_nopriv_facebook_login', array( &$this, 'facebook_login' ) ); */
 
-            add_shortcode( 'nzwp_forms_login', array( &$this, 'login_shortcode' ) );
       }
 
       public function setCallbacks( $nzform ) {
@@ -49,7 +53,7 @@ Class NZ_Login {
                   die( 'Security check' );
             }
 
-             f( $form ); 
+            f( $form );
             $login_creds = array(
                   'user_email' => $form->controls[ 'login-email' ]->submitted_value,
                   'user_password' => $form->controls[ 'login-password' ]->submitted_value,
@@ -167,7 +171,7 @@ Class NZ_Login {
       }
 
       public function login_shortcode() {
-            $html_form = do_shortcode( "[nz-wp-form name={$this->form_name}]" );
+            $html_form = do_shortcode( "[nz-wp-form name={$this->options['form_dir']}]" );
 
             if ( $this->ajax ) {
                   $html_form .= $this->ajax_login_script();
@@ -371,7 +375,10 @@ Class NZ_Login {
 
 }
 
-new NZ_Login( 'login_form' );
+new NZ_Login( array(
+      'form_dir' => 'login_form',
+          )
+);
 
 
 if ( !function_exists( 'nz_is_ajax' ) ) {
