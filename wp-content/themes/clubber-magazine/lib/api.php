@@ -56,9 +56,9 @@ function cm_get_posts() {
             if (
                       $json_mapa &&
                       isset( $json_mapa[ 'components' ] ) &&
-                      isset( $json_mapa[ 'components' ][ 'address' ] )
+                      isset( $json_mapa[ 'components' ][ 'formatted_address' ] )
             ) {
-                  $meta[ 'address' ] = $json_mapa[ 'components' ][ 'address' ];
+                  $meta[ 'address' ] = $json_mapa[ 'components' ][ 'formatted_address' ];
             }
 
             $output[] = array(
