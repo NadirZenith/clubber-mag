@@ -14,9 +14,9 @@ $atts = array();
 $rules = array(
       'required' => array( 'error', __( 'Username is required', 'cm' ) ),
       'regexp' => array(
-            '^[a-z0-9_-]{3,16}$',
+            '^[a-zA-Z0-9_-]{3,20}$',
             'error',
-            __( 'Allowed characteres ', 'cm' ) . '[a-z0-9_-]{3,16}'
+            __( 'Allowed characters a-z and 0-9 _- <br> No spaces. 3-20 characters', 'cm' )
       )
 );
 
