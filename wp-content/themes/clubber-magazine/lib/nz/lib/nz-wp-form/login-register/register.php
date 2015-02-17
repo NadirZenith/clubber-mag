@@ -76,7 +76,6 @@ Class NZ_Register Extends NzAjaxAuth {
 
             $user_id = wp_create_user( $register_user[ 'login' ], $register_user[ 'password' ], $register_user[ 'email' ] );
 
-            /* d( '$user_id', $user_id ); */
             if ( !is_wp_error( $user_id ) ) {
 
                   update_user_meta( $user_id, 'show_admin_bar_front', 'false' );
@@ -100,15 +99,8 @@ Class NZ_Register Extends NzAjaxAuth {
                               $errors[] = $err;
                         }
                   }
-                  /* $errors[] = __( 'Invalid Username', 'ajax_login_register' ); */
+                 
             }
-            /*
-              if ( !email_exists( $register_user[ 'email' ] ) ) {
-              } else {
-              $errors[] = __( 'Invalid Email', 'ajax_login_register' );
-              }
-             */
-
 
             if ( nz_is_ajax() ) {//json
                   if ( empty( $errors ) ) {//SUCCESS

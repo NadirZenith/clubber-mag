@@ -55,6 +55,4 @@ $RegisterForm->addUserPass( $slug, $label, $atts, $rules );
  */
 $RegisterForm->addSubmit( 'btn_register', __( 'Register', 'cm' ) );
 
-
-
 return $RegisterForm;
