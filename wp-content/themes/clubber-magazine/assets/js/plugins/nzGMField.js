@@ -30,7 +30,6 @@
                   var val = this.$element.val();
                   var info = nz_is_json_object(val);
 
-                  console.log(info);
                   if (info) {
 
                         if ('type' in info) {
@@ -63,8 +62,8 @@
                         }
                   } else {
                         /*                        
-                        var $img = map.getImage(this.options.map_options.startLat, this.options.map_options.startLng, true);
-                        this.$map_wrapper.html($img[0]);
+                         var $img = map.getImage(this.options.map_options.startLat, this.options.map_options.startLng, true);
+                         this.$map_wrapper.html($img[0]);
                          * */
                         this.$map_container.slideDown();
 
@@ -288,7 +287,7 @@
       $.fn.nzGMField.defaults = {
             property: 'value',
             onComplete: null,
-            switchText: 'Introducir manual',
+            switchText: 'Si no encuentras la ubicacíon la puedes ingresar manualmente',
             startOn: 'map', //raw
             tpl: {
                   autocomplete: '<input type="text" class="gm-autocomplete control text"/>',

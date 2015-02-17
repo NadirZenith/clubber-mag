@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-17 13:15+0100\n"
-"PO-Revision-Date: 2015-02-17 13:28+0100\n"
+"PO-Revision-Date: 2015-02-17 13:34+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2529,7 +2529,7 @@ msgstr "¡Fecha requerida!"
 
 #: lib/forms/event_form.php:121
 msgid "End date"
-msgstr "Fecha de final "
+msgstr "Fecha de término"
 
 #: lib/forms/event_form.php:124
 msgid "Invalid date!"

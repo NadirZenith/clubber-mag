@@ -11,9 +11,9 @@ Class NZ_Login {
       private $options = array();
 
       public function __construct( $options = array() ) {
-            $this->options = wp_parse_args($options, array(
-                  'form_dir' => 'false'
-            ));
+            $this->options = wp_parse_args( $options, array(
+                  'form_dir' => false
+            ) );
             $this->form_name = $form_name;
 
             add_action( 'init', array( &$this, 'init' ) );
@@ -22,12 +22,11 @@ Class NZ_Login {
       public function init() {
             // add_action( 'wp_ajax_login_submit', array( &$this, 'login_submit' ) );
             // add_action( 'wp_ajax_nopriv_login_submit', array( &$this, 'login_submit' ) );
-            add_filter( 'nzwp_forms_init_form_' . $this->options['form_dir'], array( &$this, 'setCallbacks' ) );
+            add_filter( 'nzwp_forms_init_form_' . $this->options[ 'form_dir' ], array( &$this, 'setCallbacks' ) );
             add_shortcode( 'nzwp_forms_login', array( &$this, 'login_shortcode' ) );
 
             /* add_action( 'wp_ajax_facebook_login', array( &$this, 'facebook_login' ) ); */
             /* add_action( 'wp_ajax_nopriv_facebook_login', array( &$this, 'facebook_login' ) ); */
-
       }
 
       public function setCallbacks( $nzform ) {
@@ -171,7 +170,7 @@ Class NZ_Login {
       }
 
       public function login_shortcode() {
-            $html_form = do_shortcode( "[nz-wp-form name={$this->options['form_dir']}]" );
+            $html_form = do_shortcode( "[nz-wp-form name={$this->options[ 'form_dir' ]}]" );
 
             if ( $this->ajax ) {
                   $html_form .= $this->ajax_login_script();
