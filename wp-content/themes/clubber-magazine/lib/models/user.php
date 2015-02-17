@@ -208,19 +208,21 @@ function cm_pre_get_author_profile( $query ) {
             return;
 
       $action = get_query_var( 'action' ); // '' , 'editar', 'agenda', 'eventos'
-      /*d( $action );*/
+      /* d( $action ); */
       switch ( $action ) {
             case 'editar':
-                  /*$user = wp_get_current_user();*/
+                  /* $user = wp_get_current_user(); */
                   nz_set_main_template( 'tpl/user/user-profile-edit.php' );
 
                   break;
             case 'agenda':
+                  Roots_Wrapping::$raw = TRUE;
                   nz_set_main_template( 'tpl/user/user-agenda-list.php' );
 
                   break;
 
             case 'eventos':
+                  Roots_Wrapping::$raw = TRUE;
                   nz_set_main_template( 'tpl/user/user-promoter-list.php' );
 
                   break;
