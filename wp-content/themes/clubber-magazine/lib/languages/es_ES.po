@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-17 12:58+0100\n"
-"PO-Revision-Date: 2015-02-17 13:07+0100\n"
+"POT-Creation-Date: 2015-02-17 13:15+0100\n"
+"PO-Revision-Date: 2015-02-17 13:28+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2476,8 +2476,8 @@ msgstr "recordarme "
 
 #: lib/forms/coolplace_fast_form.php:15
 #: lib/forms/coolplace_form.php:14
-msgid "Coolplace name"
-msgstr "Nombre Coolplace "
+msgid "Club or place name"
+msgstr "Nombre del club o lugar"
 
 #: lib/forms/coolplace_fast_form.php:32
 #: lib/forms/coolplace_form.php:53
@@ -2490,7 +2490,7 @@ msgid "Coolplace type"
 msgstr "Tipo de Coolplace"
 
 #: lib/forms/coolplace_fast_form.php:48
-#: lib/forms/event_form.php:178
+#: lib/forms/event_form.php:179
 #: lib/forms/coolplace_form.php:66
 msgid "Type is required"
 msgstr "El Tipo es requerido  "
@@ -2500,82 +2500,82 @@ msgid "Info is required"
 msgstr "Información requerida"
 
 #: lib/forms/event_form.php:17
-msgid "Event name"
-msgstr "Nombre del evento "
-
-#: lib/forms/event_form.php:29
-msgid "Write the name of your event"
-msgstr "Escribe el nombre del evento "
-
-#: lib/forms/event_form.php:40
 msgid "Name of the club or place where the event is"
 msgstr "Nombre del club o lugar de tu evento "
 
-#: lib/forms/event_form.php:42
+#: lib/forms/event_form.php:19
 msgid "Select a place"
 msgstr "Selecciona un lugar"
 
-#: lib/forms/event_form.php:51
+#: lib/forms/event_form.php:28
 msgid "Place is required!"
 msgstr "Lugar requerido"
 
-#: lib/forms/event_form.php:62
+#: lib/forms/event_form.php:38
+msgid "Event name"
+msgstr "Nombre del evento "
+
+#: lib/forms/event_form.php:50
+msgid "Write the name of your event"
+msgstr "Escribe el nombre del evento "
+
+#: lib/forms/event_form.php:63
 msgid "Begin date"
 msgstr "Fecha de inicio "
 
-#: lib/forms/event_form.php:65
+#: lib/forms/event_form.php:66
 msgid "Date is required!"
 msgstr "¡Fecha requerida!"
 
-#: lib/forms/event_form.php:120
+#: lib/forms/event_form.php:121
 msgid "End date"
 msgstr "Fecha de final "
 
-#: lib/forms/event_form.php:123
+#: lib/forms/event_form.php:124
 msgid "Invalid date!"
 msgstr "¡Fecha invalida!"
 
-#: lib/forms/event_form.php:133
+#: lib/forms/event_form.php:134
 msgid "Event flyer"
 msgstr "Flyer del evento "
 
-#: lib/forms/event_form.php:135
+#: lib/forms/event_form.php:136
 msgid "Flyer is required"
 msgstr "Flyer requerido "
 
-#: lib/forms/event_form.php:142
+#: lib/forms/event_form.php:143
 msgid "Event back flyer"
 msgstr "Backflyer del evento "
 
-#: lib/forms/event_form.php:154
+#: lib/forms/event_form.php:155
 msgid "Event info"
 msgstr "Información del evento"
 
-#: lib/forms/event_form.php:158
+#: lib/forms/event_form.php:159
 msgid "Content is required"
 msgstr "Contenido requerido "
 
-#: lib/forms/event_form.php:169
+#: lib/forms/event_form.php:170
 msgid "Event type"
 msgstr "Tipo del evento "
 
-#: lib/forms/event_form.php:171
+#: lib/forms/event_form.php:172
 msgid "Party"
 msgstr "Fiesta"
 
-#: lib/forms/event_form.php:172
+#: lib/forms/event_form.php:173
 msgid "Festival"
 msgstr ""
 
-#: lib/forms/event_form.php:202
+#: lib/forms/event_form.php:203
 msgid "Price is required"
 msgstr "Precio requerido "
 
-#: lib/forms/event_form.php:212
+#: lib/forms/event_form.php:213
 msgid "Price conditions"
 msgstr "Condiciones del precio "
 
-#: lib/forms/event_form.php:259
+#: lib/forms/event_form.php:262
 msgid "Thanks for submitting your event"
 msgstr "Gracias por subir tu evento"
 
@@ -3187,6 +3187,10 @@ msgstr ""
 #: lib/options/cm-options.php:50
 msgid "Alphabet"
 msgstr ""
+
+#, fuzzy
+#~ msgid "New place"
+#~ msgstr "Agregar nuevo lugar"
 
 #~ msgid "Latests podcasts"
 #~ msgstr "Ultimos Podcasts"
