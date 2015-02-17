@@ -80,6 +80,7 @@
 
             },
             templateResult: function(post) {
+                  console.log(post);
                   if (post.loading)
                         return post.text;
 
