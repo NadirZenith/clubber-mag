@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-16 19:15+0100\n"
-"PO-Revision-Date: 2015-02-17 00:21+0100\n"
+"POT-Creation-Date: 2015-02-17 12:58+0100\n"
+"PO-Revision-Date: 2015-02-17 13:00+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -154,7 +154,6 @@ msgstr ""
 
 #: vendor/option-tree/assets/theme-mode/demo-meta-boxes.php:50
 #: vendor/option-tree/assets/theme-mode/demo-theme-options.php:273
-#, fuzzy
 msgid "Gallery"
 msgstr "Galería de Fotos"
 
@@ -704,9 +703,8 @@ msgid "Documentation"
 msgstr ""
 
 #: vendor/option-tree/includes/ot-functions-admin.php:227
-#, fuzzy
 msgid "Creating Options"
-msgstr "Opciones Clubber Magazin "
+msgstr "Opciones Clubber Magazine"
 
 #: vendor/option-tree/includes/ot-functions-admin.php:235
 msgid "Function References"
@@ -2635,6 +2633,10 @@ msgstr "Nombre para mostrar "
 msgid "Display name is required"
 msgstr "Nombre para mostrar es requerido "
 
+#: lib/languages/customs.php:4
+msgid "Interviews"
+msgstr ""
+
 #: lib/nz/CPT.php:409
 #: lib/nz/CPT.php:510
 msgid "Add New "
@@ -2907,7 +2909,7 @@ msgid "Error creating user"
 msgstr "Error al crear usuario "
 
 #: lib/nz/lib/nz-wp-form/login-register/abstract.php:304
-#: lib/nz/lib/nz-wp-form/login-register/login.php:69
+#: lib/nz/lib/nz-wp-form/login-register/login.php:73
 msgid "Login complete"
 msgstr "Inicio de sesión Completa"
 
@@ -2915,11 +2917,11 @@ msgstr "Inicio de sesión Completa"
 msgid "Registration complete"
 msgstr " Registro completo"
 
-#: lib/nz/lib/nz-wp-form/login-register/login.php:85
+#: lib/nz/lib/nz-wp-form/login-register/login.php:89
 msgid "Invalid credentials."
 msgstr ""
 
-#: lib/nz/lib/nz-wp-form/login-register/login.php:88
+#: lib/nz/lib/nz-wp-form/login-register/login.php:92
 msgid "User does not exist or is inactive"
 msgstr "Usuario no existe o es inactivo "
 
@@ -3054,6 +3056,10 @@ msgstr ""
 msgid "Some string to translate"
 msgstr ""
 
+#: lib/models/menu.php:16
+msgid "Profile"
+msgstr "Perfil"
+
 #: lib/models/menu.php:29
 msgid "Login / SignUp"
 msgstr "Inicio/Registro "
@@ -3113,22 +3119,22 @@ msgstr "Tipo de lugar "
 msgid "Places types"
 msgstr "Tipos de lugares "
 
-#: lib/models/pages/recursos.php:37
+#: lib/models/pages/recursos.php:38
 msgid "Please login to manage resources"
 msgstr "Por favor regístrate para acceder a los recursos"
 
-#: lib/models/pages/recursos.php:56
-#: lib/models/pages/recursos.php:83
-#: lib/models/pages/recursos.php:108
+#: lib/models/pages/recursos.php:57
+#: lib/models/pages/recursos.php:84
+#: lib/models/pages/recursos.php:109
 msgid "You can only manage one resource per user"
 msgstr "Solo puedes manejar un recurso por usuario!"
 
-#: lib/models/pages/recursos.php:66
+#: lib/models/pages/recursos.php:67
 #, php-format
 msgid "You can only manage one %s page per user, edit it here"
 msgstr "Solo puedes tener una página de %s, edita la aqui"
 
-#: lib/models/pages/recursos.php:66
+#: lib/models/pages/recursos.php:67
 #, fuzzy
 msgid "artist"
 msgstr "Artista"

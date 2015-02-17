@@ -13,7 +13,7 @@ function cm_add_loginout_link( $items, $args ) {
                   $avatar = get_avatar( get_current_user_id(), 40 );
                   $curusr = wp_get_current_user();
                   $user_url = get_author_posts_url( $curusr->ID );
-                  $link_content = "Perfil<br><span>" . $curusr->get( 'display_name' ) . "</span>";
+                  $link_content = __( 'Profile', 'cm' ) . "<br><span>" . $curusr->get( 'display_name' ) . "</span>";
                   $user_link = "<a class=\"user-menu\" href=\"$user_url\">" . $link_content . $avatar . "</a>";
 
                   $sub = '';

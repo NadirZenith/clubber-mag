@@ -9,6 +9,27 @@ if ( is_super_admin() ) {
       $EventForm->post_status = 'publish';
 }
 
+/**
+ * relation(text)meta
+ */
+$post_type = 'cool-place';
+$slug = 'relation-to-coolplace';
+$label = __( 'Name of the club or place where the event is', 'cm' );
+$atts = array(
+      'data-placeholder' => __( 'Select a place', 'cm' ),
+      'new-resource' => array(
+            'url' => get_permalink( cm_lang_get_post( CM_RESOURCE_COOLPLACE_FAST_PAGE_ID ) ),
+            'text' => 'New',
+            'class' => 'fancybox'
+      ),
+          /* 'new-resource-url' => get_permalink( cm_lang_get_post( CM_RESOURCE_COOLPLACE_FAST_PAGE_ID ) ) */
+);
+$rules = array(
+      'required' => array( 'error', __( 'Place is required!', 'cm' ) )
+);
+
+$EventForm->addRelation( $post_type, $slug, $label, $atts, $rules );
+
 
 /**
  * TITLE(text) --------------------------------------------
@@ -32,26 +53,6 @@ $atts = array(
 
 $EventForm->addNote( 'note_title', $atts );
 
-/**
- * relation(text)meta
- */
-$post_type = 'cool-place';
-$slug = 'relation-to-coolplace';
-$label = __( 'Name of the club or place where the event is', 'cm' );
-$atts = array(
-      'data-placeholder' => __( 'Select a place', 'cm' ),
-      'new-resource' => array(
-            'url' => get_permalink( cm_lang_get_post( CM_RESOURCE_COOLPLACE_FAST_PAGE_ID ) ),
-            'text' => 'New',
-            'class' => 'fancybox'
-      ),
-          /* 'new-resource-url' => get_permalink( cm_lang_get_post( CM_RESOURCE_COOLPLACE_FAST_PAGE_ID ) ) */
-);
-$rules = array(
-      'required' => array( 'error', __( 'Place is required!', 'cm' ) )
-);
-
-$EventForm->addRelation( $post_type, $slug, $label, $atts, $rules );
 
 
 /**
@@ -215,17 +216,19 @@ $rules = array();
 
 $EventForm->addMeta( $type, $slug, $label, $atts, $rules );
 
-/**
- * Meta(checkboxes) TESTED WITH ONE --------------------------------------------
- */
-$type = 'checkboxes';
-$slug = $prefix . 'event_featured';
-$label = 'Event featured:';
-$options = array( 'on' => 'featured' );
-$atts = array( 'options' => $options );
-$rules = array();
+if ( is_super_admin() ) {
+      /**
+       * Meta(featured)
+       */
+      $type = 'checkboxes';
+      $slug = $prefix . 'event_featured';
+      $label = 'Event featured:';
+      $options = array( 'on' => 'featured' );
+      $atts = array( 'options' => $options );
+      $rules = array();
 
-/* $EventForm->addMeta( $type, $slug, $label, $atts, $rules ); */
+      $EventForm->addMeta( $type, $slug, $label, $atts, $rules );
+}
 
 /**
  * PODCAST submit button --------------------------------------------
