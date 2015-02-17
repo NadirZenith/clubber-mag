@@ -13,24 +13,46 @@ elseif ( get_post_type() == 'label' )
 $query2 = new WP_Query( $args );
 if ( $query2->have_posts() ) {
       ?>
-      <ul>
+      <div class="homeCustomScroll oh" style="height: 428px;">
             <?php
             while ( $query2->have_posts() ) {
                   $query2->the_post();
                   ?>
-                  <li class="col-1 col-sm-1-2 col-lg-1-5 fl">
-                        <div class="box-3">
-                              <?php
-                              get_template_part( 'tpl/home/list-2' );
-                              ?>
-                        </div>
-                  </li>
+                  <div class="col-1 fl">
+                        <article>
+                              <div class="hover-2">
+                                    <h2 class="ml5 sf-2">
+                                          <a href="<?php the_permalink(); ?>">
+                                                <?php the_title() ?>
+                                          </a>
+                                    </h2>
+                              </div>
+                              <div class="col-1">
+                                    <?php
+                                    if ( $sc_info_str = get_post_meta( get_the_ID(), CM_META_SOUNDCLOUD, true ) ) {
+                                          $sc_info = json_decode( $sc_info_str );
+                                          if ( $sc_info ) {
+                                                echo nz_get_soundcloud_iframe( $sc_info->uri, array( 'visual' => TRUE ) );
+                                          }
+                                    }
+                                    ?>
+                              </div>
+                        </article>
+                  </div>
                   <?php
             } //END while
             // Prevent weirdness
             wp_reset_postdata();
             ?>
-      </ul>
+      </div>
       <?php
 }
 ?>
+
+<script>
+      (function($) {
+            $(window).load(function() {
+                  $(".homeCustomScroll").mCustomScrollbar({});
+            });
+      })(jQuery);
+</script>
