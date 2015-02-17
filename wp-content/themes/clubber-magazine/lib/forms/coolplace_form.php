@@ -11,7 +11,7 @@ $CoolplaceForm->addNotification( 'gracias por subir su cool place' );
  * TITLE(text) --------------------------------------------
  */
 $slug = 'coolplace_name';
-$label = __( 'Coolplace name', 'cm' );
+$label = __( 'Club or place name', 'cm' );
 $atts = array();
 $rule = array(
       'required' => array( 'error', __( 'Name is required', 'cm' ) )

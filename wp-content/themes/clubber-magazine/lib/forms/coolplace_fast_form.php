@@ -12,7 +12,7 @@ $CoolplaceForm->ajax = true;
  * TITLE(text)
  */
 $slug = 'coolplace_name';
-$label = __( 'Coolplace name', 'cm' );
+$label = __( 'Club or place name', 'cm' );
 $atts = array();
 $rule = array(
       'required' => array( 'error', 'Name is required!' )
@@ -29,7 +29,7 @@ $atts = array(
       'class' => 'nzGMField',
 );
 $rules = array(
-      'required' => array( 'error',  __( 'Address is required', 'cm' ) )
+      'required' => array( 'error', __( 'Address is required', 'cm' ) )
 );
 
 $CoolplaceForm->addMetaJson( 'text', $slug, $label, $atts, $rules );
@@ -41,7 +41,7 @@ $CoolplaceForm->addMetaJson( 'text', $slug, $label, $atts, $rules );
  */
 $type = 'checkboxes';
 $slug = 'cool_place_type';
-$label =  __( 'Coolplace type', 'cm' );
+$label = __( 'Coolplace type', 'cm' );
 
 $atts = array();
 $rules = array(

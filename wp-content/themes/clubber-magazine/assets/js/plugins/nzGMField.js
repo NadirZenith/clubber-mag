@@ -35,7 +35,6 @@
 
                         if ('type' in info) {
                               if (info.type == 'map') {
-                                    console.log('set map image from val');
                                     if ('lat' && 'lng' in info.components) {
 
                                           if (this.options.map_options.type == 'image') {
