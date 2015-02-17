@@ -18,7 +18,7 @@ if ( $query2->have_posts() ) {
                   <?php _e( 'Latest shared music', 'cm' ); ?>
             </span>
       </h2>
-      <div class="homeCustomScroll oh" style="height: 428px;width: 80%; margin: 10px auto;">
+      <div class="homeCustomScroll oh mt5" style="height: 428px;width: 80%;">
             <?php
             while ( $query2->have_posts() ) {
                   $query2->the_post();
@@ -37,7 +37,7 @@ if ( $query2->have_posts() ) {
                                     if ( $sc_info_str = get_post_meta( get_the_ID(), CM_META_SOUNDCLOUD, true ) ) {
                                           $sc_info = json_decode( $sc_info_str );
                                           if ( $sc_info ) {
-                                                echo nz_get_soundcloud_iframe( $sc_info->uri, array( 'visual' => TRUE ) );
+                                                echo nz_get_soundcloud_iframe( $sc_info->uri, array( 'visual' => false ) );
                                           }
                                     }
                                     ?>
