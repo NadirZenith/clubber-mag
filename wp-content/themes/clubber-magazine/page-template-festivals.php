@@ -119,9 +119,4 @@
 </main>
 <aside role="complementary">
       <?php get_sidebar(); ?>
-      <?php
-      if ( is_active_sidebar( 'banners_sidebar' ) ) {
-            dynamic_sidebar( 'banners_sidebar' );
-      }
-      ?>
 </aside>
