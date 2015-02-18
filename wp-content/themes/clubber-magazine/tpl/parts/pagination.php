@@ -1,4 +1,4 @@
 <div class="pagination" >
-      <div class="previous fl"><?php previous_posts_link( 'ANTERIOR' ) ?></div>
-      <div class="next fr"><?php next_posts_link( 'SIGUIENTE' ) ?></div>
+      <div class="previous fl bold"><?php previous_posts_link( 'ANTERIOR' ) ?></div>
+      <div class="next fr bold"><?php next_posts_link( 'SIGUIENTE' ) ?></div>
 </div>

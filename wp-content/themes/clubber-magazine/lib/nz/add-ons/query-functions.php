@@ -53,7 +53,7 @@ function query_by_first_letter( $post_type = null, $letter = null, $term = null 
             /* return; */
       }
 
-      $query_letter = (ctype_alpha( $letter )) ? ucfirst( $letter ) : 'A';
+      $query_letter = (ctype_alpha( $letter )) ? ucfirst( $letter ) : '-';
 
       $query_letter = '^' . $query_letter; // Prefix with caret to match beginning of string.
       global $wpdb;
@@ -127,7 +127,7 @@ function query_by_first_letter( $post_type = null, $letter = null, $term = null 
                   ?>
                   <div class="m15 p5 tc">
                         <span class="h2">
-                              <?php _e( 'No Posts Found.', 'cm' ); ?>
+                              <?php _e( 'Not Found.', 'cm' ); ?>
                         </span>
                   </div>
                   <?php
