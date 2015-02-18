@@ -1,6 +1,6 @@
 <?php
 /*
- * single post item (post coolplace news music podcast etc)
+ * single post item (post coolplace news music video photo podcast etc)
  */
 ?>
 <section class="block-5 group ibox-5" >
@@ -20,6 +20,22 @@
                               </div>
                         <?php endif; ?>
                         <?php
+                        if ( get_post_type() == 'video' ) {
+                              $meta_video_url = get_metadata( 'post', get_the_ID(), 'wpcf-video-url', true );
+                              if ( $meta_video_url ) {
+                                    ?>
+                                    <div class="iframe-container">
+                                          <?php
+                                          $shortcode = ' [embed width="640" height="390"]' . $meta_video_url . '[/embed]';
+
+                                          global $wp_embed;
+
+                                          echo $wp_embed->run_shortcode( $shortcode );
+                                          ?>
+                                    </div>
+                                    <?php
+                              }
+                        }
                         if ( get_post_type() == 'podcast' ) {
 
                               $artist = get_posts( array(
