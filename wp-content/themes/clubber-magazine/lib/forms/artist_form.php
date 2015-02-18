@@ -75,7 +75,7 @@ foreach ( $socials as $network => $description ) {
       $atts = array(
       );
       $rules = array(
-            'url' => array( true, 'error', __( 'Url is not valid', 'cm' ) ),
+            'url' => array( true, 'error', __( 'Url is not valid, ex: http://www.example.com, don\'t forget the protocol http://', 'cm' ) ),
       );
 
       $ArtistForm->addMeta( 'text', $slug, $label, $atts, $rules );

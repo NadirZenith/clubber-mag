@@ -4,7 +4,7 @@ $form_name = 'coolplace_form';
 $post_type = 'cool-place';
 
 $CoolplaceForm = new NZ_WP_Form( $form_name, $post_type );
-/*$CoolplaceForm->post_status = 'publish';*/
+/* $CoolplaceForm->post_status = 'publish'; */
 $CoolplaceForm->addNotification( 'gracias por subir su cool place' );
 
 /**
@@ -89,7 +89,7 @@ foreach ( $socials as $network => $description ) {
       $atts = array(
       );
       $rules = array(
-            'url' => array( true, 'error', __( 'Url is not valid', 'cm' ) ),
+            'url' => array( true, 'error', __( 'Url is not valid, ex: http://www.example.com, don\'t forget the protocol http://', 'cm' ) ),
       );
 
       $CoolplaceForm->addMeta( 'text', $slug, $label, $atts, $rules );

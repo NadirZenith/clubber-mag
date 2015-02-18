@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-18 17:12+0100\n"
-"PO-Revision-Date: 2015-02-18 17:12+0100\n"
+"POT-Creation-Date: 2015-02-18 17:13+0100\n"
+"PO-Revision-Date: 2015-02-18 17:27+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2441,7 +2441,7 @@ msgstr "Enlace Bandpage"
 
 #: lib/forms/label_form.php:67
 msgid "Url is not valid"
-msgstr "Url Invalidad"
+msgstr "Url Inválida"
 
 #: lib/forms/label_form.php:78
 msgid "Submit"

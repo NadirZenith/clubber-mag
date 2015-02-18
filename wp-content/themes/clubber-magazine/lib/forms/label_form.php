@@ -27,7 +27,7 @@ $atts = array(
       'style' => 'display:none',
           /* 'data-preview' => 'http://lab.dev/clubber-mag-dev/wp-content/uploads/cache/preview/1419004629-17.jpg' */
 );
-$rules = array('required' => array( 'error', __( 'Image is required', 'cm' ) ));
+$rules = array( 'required' => array( 'error', __( 'Image is required', 'cm' ) ) );
 
 $LabelForm->addFeatured( $slug, $label, $atts, $rules );
 
@@ -64,7 +64,7 @@ foreach ( $socials as $network => $description ) {
       $label = ucfirst( $network ) . ' url:';
       $atts = array();
       $rules = array(
-            'url' => array( true, 'error', __( 'Url is not valid', 'cm' ) ),
+            'url' => array( true, 'error', __( 'Url is not valid, ex: http://www.example.com, don\'t forget the protocol http://', 'cm' ) ),
       );
 
       $LabelForm->addMeta( 'text', $slug, $label, $atts, $rules );
