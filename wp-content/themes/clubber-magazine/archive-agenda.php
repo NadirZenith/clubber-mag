@@ -51,7 +51,7 @@ if ( is_tax( $tax ) ) {
                   $args = array(
                         'post_type' => 'agenda',
                         'post__not_in' => $main_posts_id,
-                        'posts_per_page' => 3,
+                        'posts_per_page' => 5,
                         'order' => 'ASC',
                         'orderby' => 'meta_value_num',
                         'meta_key' => 'wpcf-event_begin_date',

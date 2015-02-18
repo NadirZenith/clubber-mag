@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-18 14:29+0100\n"
-"PO-Revision-Date: 2015-02-18 14:30+0100\n"
+"POT-Creation-Date: 2015-02-18 14:53+0100\n"
+"PO-Revision-Date: 2015-02-18 14:53+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -64,7 +64,7 @@ msgstr "Agregar nuevo lugar"
 
 #: page-template-festivals.php:105
 msgid "Next parties and events"
-msgstr "Nuevas fiestas y eventos"
+msgstr "Próximas fiestas y eventos"
 
 #: archive-podcast.php:10
 msgid "Special guests"
@@ -87,6 +87,7 @@ msgid "Party and Events of the week"
 msgstr "Fiestas y eventos de la semana"
 
 #: archive-agenda.php:23
+#: archive-agenda.php:84
 msgid "in"
 msgstr "en"
 
