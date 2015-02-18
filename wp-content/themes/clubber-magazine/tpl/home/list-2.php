@@ -33,12 +33,24 @@
             if ( $sc_info ) {
                   echo nz_get_soundcloud_iframe( $sc_info->uri );
             }
-      } else {
+      } elseif ( has_post_thumbnail() ) {
             ?>
             <a class="featured-image" href="<?php echo get_permalink( $event->ID ); ?>">
                   <?php the_post_thumbnail( '290-160-thumb' ); ?>
 
             </a>
+            <?php
+      } elseif ( $meta_video_url = get_metadata( 'post', get_the_ID(), 'wpcf-video-url', true ) ) {
+            ?>
+            <div class="iframe-container">
+                  <?php
+                  $shortcode = ' [embed width="640" height="390"]' . $meta_video_url . '[/embed]';
+
+                  global $wp_embed;
+
+                  echo $wp_embed->run_shortcode( $shortcode );
+                  ?>
+            </div>
             <?php
       }
       ?>

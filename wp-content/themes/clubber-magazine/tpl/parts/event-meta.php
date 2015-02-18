@@ -58,9 +58,9 @@ if ( $event_place_id ) {
 
       $mapaddress = get_post_meta( $place->ID, CM_META_MAPA, true );
       $mapaddress = json_decode( $mapaddress, true );
-      d( $mapaddress );
+      /*d( $mapaddress );*/
       if ( isset( $mapaddress, $mapaddress[ 'components' ], $mapaddress[ 'components' ][ 'formatted_address' ] ) ) {
-            d( 'new address' );
+            /*d( 'new address' );*/
             $event_address = $mapaddress[ 'components' ][ 'formatted_address' ];
       }
       /*
