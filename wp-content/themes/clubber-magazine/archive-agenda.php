@@ -18,20 +18,21 @@ if ( is_tax( $tax ) ) {
       <div class="has-sidebar">
             <div class="ml5">
                   <h1 class="h2">
-                        <?php _e( 'Party and Events of the week', 'cm' ); ?> <?php echo ($city) ? "en {$city}" : ''; ?> 
+                        <?php
+                        _e( 'Party and Events of the week', 'cm' );
+                        ($city) ? _e( 'in', 'cm' ) . ' ' . $city : '';
+                        ?> 
                   </h1>
             </div>
 
             <?php
-            get_template_part( 'tpl/pager-by-date' );
-            ?>
-
-            <?php
             $query = &$wp_query;
-            include('tpl/archive/agenda.php');
-            ?>
+            nz_pagination_by_date();
 
-            <?php get_template_part( 'tpl/pager-by-date' ); ?>
+            $main_posts_id = array();
+            include('tpl/archive/agenda.php');
+            nz_pagination_by_date();
+            ?>
 
             <?php
             /*   LESS THAN 5 EVENTS        */
@@ -63,8 +64,6 @@ if ( is_tax( $tax ) ) {
                         )
                   );
 
-                  /* d( $args ); */
-
                   $query = new WP_Query( $args );
                   if ( $query->found_posts > 0 ) {
                         ?>
@@ -73,7 +72,7 @@ if ( is_tax( $tax ) ) {
                                     <?php _e( 'Next parties and events', 'cm' ) ?> <?php echo ($city) ? "en {$city}" : ''; ?>               
                               </h1>
                         </div>
-            
+
 
                         <?php include('tpl/archive/agenda.php'); ?>
 

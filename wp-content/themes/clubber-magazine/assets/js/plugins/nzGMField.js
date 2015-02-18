@@ -215,15 +215,16 @@
                         if (!place.geometry) {
                               return;
                         }
+                        console.log(place.geometry.location);
 
                         var components = map.getAddressComponents(place.address_components);
-                        components['lat'] = place.geometry.location.k;
-                        components['lng'] = place.geometry.location.B;
+                        components['lat'] = place.geometry.location.lat();
+                        components['lng'] = place.geometry.location.lng();
                         components['formatted_address'] = place.formatted_address;
                         plugin.updateValMap(components);
 
                         if (plugin.options.map_options.type == 'image') {
-                              var $img = map.getImage(place.geometry.location.k, place.geometry.location.B, false);
+                              var $img = map.getImage(place.geometry.location.lat(), place.geometry.location.lng(), false);
                               plugin.$map_wrapper.html($img[0]);
                         }
 

@@ -17,30 +17,57 @@
       ?>
 
       <div class="has-sidebar">
-            <div class="ml5">
-                  <h1 class="h2">
-                        <?php _e( 'Festivals', 'cm' ); ?>
-                  </h1>
-            </div>
+
+            <?php echo get_template_part( 'tpl/parts/page-header' ) ?>
 
             <?php
-            //get_template_part( 'tpl/pager-by-date' );
             ?>
 
             <?php
-            
-            $args
-            $query = &$wp_query;
+            $date = get_query_var( 'date' );
+
+            $DateTime = DateTime::createFromFormat( 'd-m-Y', $date );
+            if ( $DateTime ) {
+                  $DateTime->setTime( 0, 0, 0 ); //to avoid date problems
+                  $start_date = $DateTime->getTimestamp();
+            } else {
+                  $start_date = strtotime( "now" );
+            }
+
+            $args = array(
+                  'post_type' => 'agenda',
+                  'posts_per_page' => -1,
+                  'order' => 'ASC',
+                  'orderby' => 'meta_value_num',
+                  'meta_key' => 'wpcf-event_begin_date',
+                  'meta_query' => array(
+                        'relation' => 'AND',
+                        array(
+                              'key' => 'wpcf-event_type',
+                              'compare' => '=',
+                              'value' => 'festival',
+                        ),
+                        array(
+                              'key' => 'wpcf-event_begin_date',
+                              'value' => $start_date,
+                              'type' => 'NUMERIC',
+                              'compare' => '>='
+                        )
+                  )
+            );
+            $query = new WP_Query( $args );
+            $main_posts_id = array();
+
+
+            nz_pagination_by_date( 'month' );
+
             include('tpl/archive/agenda.php');
-            ?>
-
-            <?php
-            //get_template_part( 'tpl/pager-by-date' ); 
+            nz_pagination_by_date( 'month' );
             ?>
 
             <?php
             /*   LESS THAN 5 EVENTS        */
-            if ( $query->found_posts < 5 ) {
+            if ( $query->found_posts < 5 && false ) {
 
                   $date = get_query_var( 'date' );
 

@@ -1,5 +1,4 @@
 <?php
-$main_posts_id = array();
 /*    MAIN AGENDA QUERY              */
 if ( $query->have_posts() ) {
       $first = TRUE;

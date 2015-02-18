@@ -92,7 +92,6 @@
                         markup += '<span style="font-size:11px;line-height: 0px;;">' + post.meta.address + '</span>';
                   } else {
                         console.log('no address');
-                        /*markup += '<div>' + 'escrever mais a baixo' + '</div>';*/
                   }
                   '</div>' +
                           '</div>';
