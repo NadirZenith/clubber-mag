@@ -51,7 +51,7 @@ if ( is_tax( $tax ) ) {
                   $args = array(
                         'post_type' => 'agenda',
                         'post__not_in' => $main_posts_id,
-                        'posts_per_page' => 10,
+                        'posts_per_page' => 3,
                         'order' => 'ASC',
                         'orderby' => 'meta_value_num',
                         'meta_key' => 'wpcf-event_begin_date',
@@ -63,6 +63,16 @@ if ( is_tax( $tax ) ) {
                               )
                         )
                   );
+
+                  if ( is_tax( $tax ) ) {
+                        $args[ 'tax_query' ] = array(
+                              array(
+                                    'taxonomy' => $tax,
+                                    'field' => 'id',
+                                    'terms' => get_queried_object_id()
+                              )
+                        );
+                  }
 
                   $query = new WP_Query( $args );
                   if ( $query->found_posts > 0 ) {
