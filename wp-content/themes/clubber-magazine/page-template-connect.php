@@ -21,11 +21,11 @@ if ( is_user_logged_in() ) {
             <div class="box-5">
                   <h2>
                         <span class="cm-title">
-                              Entra
+                              <?php _e( 'Sign In', 'cm' ) ?>
                         </span>
                   </h2>
                   <p class="tj">
-                        Accede a nuestra plataforma y podrás compartir tus eventos, fotografías y vídeos además de colaborar con contenido en nuestras publicaciones.
+                        <?php _e( 'Sign in and enjoy our community.', 'cm' ) ?>
                   </p>
                   <?php
                   echo do_shortcode( '[nzwp_forms_login]' );
@@ -39,11 +39,11 @@ if ( is_user_logged_in() ) {
             <div class="box-5">
                   <h2>
                         <span class="cm-title">
-                              Regístrate
+                              <?php _e( 'Sign Up', 'cm' ) ?>
                         </span>
                   </h2>
                   <p class="tj">
-                        Si te gusta la música electrónica, eres productor, dj, promotor o un club, regístrate en Clubber Mag y sé parte de nosotros.
+                        <?php _e( 'If you like electronic music, you are a producer, dj, promoter, or a club, signup in Clubber Magazine and enjoy our community.', 'cm' ) ?>
                   </p>
                   <?php
                   echo do_shortcode( '[nzwp_forms_register]' );
