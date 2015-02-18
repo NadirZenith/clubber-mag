@@ -79,7 +79,7 @@ function nz_pre_get_page_recursos( $query ) {
             }
       } elseif ( $resource_page_id == CM_RESOURCE_LABEL_PAGE_ID ) {//IS RESOURCE LABEL
             //check for main resource
-            if ( !empty( $main_resource ) & $main_resource != 'label' ) {
+            if ( !empty( $main_resource ) & $main_resource->post_type != 'label' ) {
                   global $NZS;
                   $NZS->getFlashBag()->add( 'success', __( 'You can only manage one resource per user' ) );
 
@@ -91,10 +91,11 @@ function nz_pre_get_page_recursos( $query ) {
             //if there is label page and is not editing redirect to it
             if ( $main_resource && !$edit_id ) {
                   global $NZS;
-                  $NZS->getFlashBag()->add( 'success', 'Solo puedes tener una página de sello, edita la aqui' );
+                  $NZS->getFlashBag()->add( 'success', sprintf( __( 'You can only manage one %s page per user, edit it here' ), __( 'label' ) ) );
 
-                  $resource_edit_url = NZ_WP_Forms::link( $query->get( 'pagename' ), $main_resource_id );
-                  wp_redirect( $resource_edit_url );
+                  $path = NZ_WP_Forms::link( $query->get( 'pagename' ), $main_resource_id );
+                  $link = home_url( $path );
+                  wp_redirect( $link );
                   exit();
             } elseif ( $edit_id != $main_resource_id ) {
                   //if the artist page is not the user artist page set 404      

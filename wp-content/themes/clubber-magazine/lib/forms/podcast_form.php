@@ -20,7 +20,7 @@ $PodcastForm->post_status = 'publish';
  */
 $slug = 'podcast_content';
 
-$PodcastForm->addContent( 'hidden', $slug );
+$PodcastForm->addContent( 'hidden', $slug,'' );
 
 /**
  * Meta(text)

@@ -8,7 +8,7 @@
                                     c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z"/>
                         </svg>
                   </span>
-                  <span class="rrssb-text">facebook</span>
+                  <span class="rrssb-text">share</span>
             </a>
       </li>
       <li class="rrssb-twitter">
@@ -24,7 +24,7 @@
                                     C26.275,7.229,25.39,8.196,24.253,8.756z"/>
                         </svg>
                   </span>
-                  <span class="rrssb-text">twitter</span>
+                  <span class="rrssb-text">tweet</span>
             </a>
       </li>
       <li class="rrssb-googleplus">
@@ -49,7 +49,7 @@
                               </g>
                         </svg>
                   </span>
-                  <span class="rrssb-text">google+</span>
+                  <span class="rrssb-text">share+</span>
             </a>
       </li>
 </ul>

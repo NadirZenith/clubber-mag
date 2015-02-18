@@ -14,8 +14,9 @@ if ( $NZS->getFlashBag()->peekAll() ) {
 function nzs_display_messages( $auto = true ) {
 
       global $flash_messages;
-
+      d( $flash_messages );
       if ( $flash_messages ) {
+            d( $flash_messages );
             ?>
             <div class="nzs-messages" >
                   <div class="nzs-messages-wrapper">

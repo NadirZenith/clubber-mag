@@ -20,11 +20,9 @@
                         </section>
                         <?php
                   } else if ( is_singular( 'artist' ) ) {
-
                         echo get_template_part( 'tpl/parts/artist-home' );
                   }
                   ob_flush();
-                  /* sleep( 1 ); */
                   ob_start();
                   ?>
                   <div id="content" class="container cb group">
@@ -33,7 +31,6 @@
                   </div>
                   <?php
                   ob_flush();
-                  /* sleep( 1 ); */
                   ob_start();
                   ?>
 
