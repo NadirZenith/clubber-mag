@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-18 13:11+0100\n"
-"PO-Revision-Date: 2015-02-18 13:11+0100\n"
+"POT-Creation-Date: 2015-02-18 14:29+0100\n"
+"PO-Revision-Date: 2015-02-18 14:30+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -62,7 +62,7 @@ msgstr "Coolplaces"
 msgid "Add new place"
 msgstr "Agregar nuevo lugar"
 
-#: page-template-festivals.php:96
+#: page-template-festivals.php:105
 msgid "Next parties and events"
 msgstr "Nuevas fiestas y eventos"
 
@@ -82,9 +82,13 @@ msgstr ""
 msgid "Read more"
 msgstr "Leer más"
 
-#: archive-agenda.php:21
+#: archive-agenda.php:22
 msgid "Party and Events of the week"
 msgstr "Fiestas y eventos de la semana"
+
+#: archive-agenda.php:23
+msgid "in"
+msgstr "en"
 
 #: archive-artist.php:13
 msgid "Add new artist"
@@ -2169,14 +2173,6 @@ msgstr ""
 msgid "No Taxonomies Found"
 msgstr ""
 
-#: tpl/pager-by-date.php:26
-msgid "previous week"
-msgstr "semana anterior"
-
-#: tpl/pager-by-date.php:31
-msgid "next week"
-msgstr "próxima semana"
-
 #: tpl/parts/featured-events.php:33
 msgid "Recommended parties and events"
 msgstr "Eventos y fiestas recomendados "
@@ -2294,6 +2290,7 @@ msgstr "Galería de Fotos"
 #: tpl/home/home-last-photo.php:27
 #: tpl/home/home-last-music.php:26
 #: tpl/home/home-last-news.php:26
+#: tpl/home/home-shared-podcasts.php:46
 msgid "see more ..."
 msgstr "Ver más..."
 
@@ -2346,14 +2343,14 @@ msgid "Footer Menu"
 msgstr ""
 
 #: lib/utils.php:161
-#, php-format
-msgid "previous %s"
-msgstr "%s anterior"
+#, fuzzy
+msgid "previous "
+msgstr "anterior"
 
 #: lib/utils.php:166
-#, php-format
-msgid "next %s"
-msgstr "próxima %"
+#, fuzzy
+msgid "next "
+msgstr "próxima"
 
 #: lib/forms/label_form.php:13
 msgid "Label Name"
@@ -2368,6 +2365,7 @@ msgid "Label image"
 msgstr "Imagen del Sello"
 
 #: lib/forms/label_form.php:30
+#: lib/forms/artist_form.php:38
 msgid "Image is required"
 msgstr "Imagen Requerida"
 
@@ -2376,54 +2374,67 @@ msgid "Label info"
 msgstr "Información del sello"
 
 #: lib/forms/label_form.php:46
+#: lib/forms/artist_form.php:56
 msgid "Email is not valid"
 msgstr "Email invalido "
 
 #: lib/forms/label_form.php:48
+#: lib/forms/artist_form.php:58
 msgid "Email"
 msgstr ""
 
 #: lib/forms/label_form.php:51
+#: lib/forms/artist_form.php:61
 msgid "Link Pagina Oficial"
 msgstr "Enlace Pagina Oficial"
 
 #: lib/forms/label_form.php:52
+#: lib/forms/artist_form.php:62
 msgid "Link Facebook"
 msgstr "Enlace Facebook"
 
 #: lib/forms/label_form.php:53
+#: lib/forms/artist_form.php:63
 msgid "Link Soundcloud"
 msgstr "Enlace Soundcloud"
 
 #: lib/forms/label_form.php:54
+#: lib/forms/artist_form.php:64
 msgid "Link Instagram"
 msgstr "Enlace Instagram"
 
 #: lib/forms/label_form.php:55
+#: lib/forms/artist_form.php:65
 msgid "Link Google +"
 msgstr "Enlace Google+"
 
 #: lib/forms/label_form.php:56
+#: lib/forms/artist_form.php:66
 msgid "Link Youtube"
 msgstr "Enlace  Youtube"
 
 #: lib/forms/label_form.php:57
+#: lib/forms/artist_form.php:67
 msgid "Link Twitter"
 msgstr "Enlace Twitter"
 
 #: lib/forms/label_form.php:58
+#: lib/forms/artist_form.php:68
 msgid "Link Beatport"
 msgstr "Enlace Beatport"
 
 #: lib/forms/label_form.php:59
+#: lib/forms/artist_form.php:69
 msgid "Link Bandpage"
 msgstr "Enlace Bandpage"
 
 #: lib/forms/label_form.php:67
+#: lib/forms/artist_form.php:78
 msgid "Url is not valid"
 msgstr "Url Invalidad"
 
 #: lib/forms/label_form.php:78
+#: lib/forms/artist_form.php:89
 msgid "Submit"
 msgstr "Enviar"
 
@@ -2432,7 +2443,6 @@ msgid "Artist name"
 msgstr "Nombre del Artista "
 
 #: lib/forms/artist_form.php:16
-#: lib/forms/event_form.php:41
 msgid "Name is required!"
 msgstr "Nombre requerido "
 
@@ -2686,6 +2696,14 @@ msgstr "anterior"
 #: lib/languages/customs.php:10
 msgid "previous month"
 msgstr "mes anterior"
+
+#: lib/languages/customs.php:11
+msgid "previous week"
+msgstr "semana anterior"
+
+#: lib/languages/customs.php:12
+msgid "next week"
+msgstr "próxima semana"
 
 #: lib/languages/customs.php:13
 msgid "next month"
@@ -3231,6 +3249,12 @@ msgstr ""
 #: lib/options/cm-options.php:50
 msgid "Alphabet"
 msgstr ""
+
+#~ msgid "previous %s"
+#~ msgstr "%s anterior"
+
+#~ msgid "next %s"
+#~ msgstr "próxima %"
 
 #~ msgid "Festivals"
 #~ msgstr "Festivales"

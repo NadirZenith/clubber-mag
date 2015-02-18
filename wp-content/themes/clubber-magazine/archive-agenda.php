@@ -20,7 +20,7 @@ if ( is_tax( $tax ) ) {
                   <h1 class="h2">
                         <?php
                         _e( 'Party and Events of the week', 'cm' );
-                        echo ($city) ? __( 'in', 'cm' ) . ' ' . $city : '';
+                        echo ($city) ? ' ' . __( 'in', 'cm' ) . ' ' . $city : '';
                         ?> 
                   </h1>
             </div>
