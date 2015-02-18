@@ -4,10 +4,10 @@ if (
           $mapa = get_post_meta( get_the_ID(), CM_META_MAPA, true )
  ) {
       $json_mapa = json_decode( $mapa, true );
-      /* d( $json_mapa ); */
+      /*d( $json_mapa );*/
       if ( isset( $json_mapa, $json_mapa[ 'type' ] ) ) {
 
-            if ( $json_mapa[ 'type' ] == 'map' ) {
+            if ( $json_mapa[ 'type' ] == 'map' && isset( $json_mapa[ 'components' ][ 'lat' ], $json_mapa[ 'components' ][ 'lng' ] ) ) {
                   ?>  
                   <style>
                         #map-canvas {
@@ -39,22 +39,18 @@ if (
                                           });
 
                                     }
-                  <?php
-                  if ( isset( $json_mapa[ 'components' ][ 'lat' ], $json_mapa[ 'components' ][ 'lng' ] ) ) {
-                        ?>
 
-                                          google.maps.event.addDomListener(window, 'load', function() {
-                                                nz_map('map-canvas',
-                        <?php echo $json_mapa[ 'components' ][ 'lat' ] ?>,
-                        <?php echo $json_mapa[ 'components' ][ 'lng' ] ?>,
-                                                        {
-                                                              zoom: 15
-                                                        }
-                                                );
-                                          });
-                        <?php
-                  }
-                  ?>
+
+                                    google.maps.event.addDomListener(window, 'load', function() {
+                                          nz_map('map-canvas',
+                  <?php echo $json_mapa[ 'components' ][ 'lat' ] ?>,
+                  <?php echo $json_mapa[ 'components' ][ 'lng' ] ?>,
+                                                  {
+                                                        zoom: 15
+                                                  }
+                                          );
+                                    });
+
                               });
 
                         </script>
@@ -62,7 +58,7 @@ if (
                         <div id="map-canvas" class="map-canvas mt10"></div>
                         <div class="tc">
                               <span class="smalling">
-                                    <?php echo $json_mapa->address ?>
+                                    <?php echo $json_mapa[ 'components' ]['formatted_address'] ?>
                               </span>
                         </div>
 
