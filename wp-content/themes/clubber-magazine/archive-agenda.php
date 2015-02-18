@@ -69,7 +69,11 @@ if ( is_tax( $tax ) ) {
                         ?>
                         <div class="ml5 mb15">
                               <h1 class="h2">
-                                    <?php _e( 'Next parties and events', 'cm' ) ?> <?php echo ($city) ? "en {$city}" : ''; ?>               
+                                    <?php
+                                    _e( 'Next parties and events', 'cm' );
+                                    echo ($city) ? ' ' . __( 'in', 'cm' ) . ' ' . $city : '';
+                                    ?> 
+
                               </h1>
                         </div>
 
@@ -86,9 +90,4 @@ if ( is_tax( $tax ) ) {
 </main>
 <aside role="complementary">
       <?php get_sidebar(); ?>
-      <?php
-      if ( is_active_sidebar( 'banners_sidebar' ) ) {
-            dynamic_sidebar( 'banners_sidebar' );
-      }
-      ?>
 </aside>
