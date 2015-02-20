@@ -29,7 +29,7 @@
                               ?>
                         </ul>
 
-                        <?php include (locate_template( 'templates/pagination.php' )); ?>
+                        <?php include (locate_template( 'tpl/parts/pagination.php' )); ?>
 
                         <?php
                   }
