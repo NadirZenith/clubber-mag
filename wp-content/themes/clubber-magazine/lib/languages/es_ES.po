@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-18 17:29+0100\n"
-"PO-Revision-Date: 2015-02-18 21:02+0100\n"
+"POT-Creation-Date: 2015-02-20 17:02+0100\n"
+"PO-Revision-Date: 2015-02-20 17:03+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2229,6 +2229,10 @@ msgstr "Cool Places recomendados"
 msgid "Latest shared music"
 msgstr "Última música compartida"
 
+#: tpl/parts/artist-home.php:9
+msgid "Artist"
+msgstr "Artista"
+
 #: tpl/parts/comments.php:4
 msgid "Comments"
 msgstr "Comentarios"
@@ -2322,7 +2326,8 @@ msgid "Music"
 msgstr "Música"
 
 #: tpl/home/home-last-news.php:4
-msgid "Last News"
+#, fuzzy
+msgid "Latest News"
 msgstr "Últimas Noticias "
 
 #: tpl/home/home-shared-podcasts.php:4
@@ -2365,12 +2370,12 @@ msgstr "Menú Principal "
 msgid "Footer Menu"
 msgstr ""
 
-#: lib/utils.php:161
+#: lib/utils.php:133
 #, fuzzy
 msgid "previous "
 msgstr "anterior"
 
-#: lib/utils.php:166
+#: lib/utils.php:138
 #, fuzzy
 msgid "next "
 msgstr "próxima"
@@ -3097,10 +3102,6 @@ msgstr "Mail del Usuario "
 msgid "Keep me logged in"
 msgstr "Mantenme Registrado "
 
-#: lib/models/artist.php:5
-msgid "Artist"
-msgstr "Artista"
-
 #: lib/models/artist.php:18
 msgid "Country"
 msgstr "Pais "
@@ -3206,11 +3207,12 @@ msgstr "Por favor regístrate para acceder a los recursos"
 
 #: lib/models/pages/recursos.php:57
 #: lib/models/pages/recursos.php:84
-#: lib/models/pages/recursos.php:109
+#: lib/models/pages/recursos.php:110
 msgid "You can only manage one resource per user"
 msgstr "Solo puedes manejar un recurso por usuario!"
 
 #: lib/models/pages/recursos.php:67
+#: lib/models/pages/recursos.php:94
 #, php-format
 msgid "You can only manage one %s page per user, edit it here"
 msgstr "Solo puedes tener una página de %s, edita la aqui"
@@ -3219,6 +3221,11 @@ msgstr "Solo puedes tener una página de %s, edita la aqui"
 #, fuzzy
 msgid "artist"
 msgstr "Artista"
+
+#: lib/models/pages/recursos.php:94
+#, fuzzy
+msgid "label"
+msgstr "Sello "
 
 #: lib/options/register.php:17
 #: lib/options/register.php:18

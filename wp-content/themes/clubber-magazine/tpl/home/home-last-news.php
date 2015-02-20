@@ -1,7 +1,7 @@
 <section class="m5">
       <div class="mb5">
             <?php
-            cm_home_list_title( get_permalink( get_page_by_title( 'noticias' ) ), __( 'Last News', 'cm' ), true );
+            cm_home_list_title( get_permalink( get_page_by_title( 'noticias' ) ), __( 'Latest News', 'cm' ), true );
             ?>
       </div>
       <ul>
