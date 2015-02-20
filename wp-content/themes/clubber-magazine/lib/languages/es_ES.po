@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-20 17:02+0100\n"
-"PO-Revision-Date: 2015-02-20 17:03+0100\n"
+"PO-Revision-Date: 2015-02-20 17:06+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -2326,9 +2326,8 @@ msgid "Music"
 msgstr "Música"
 
 #: tpl/home/home-last-news.php:4
-#, fuzzy
 msgid "Latest News"
-msgstr "Últimas Noticias "
+msgstr "Últimas Noticias"
 
 #: tpl/home/home-shared-podcasts.php:4
 msgid "Open Frequency Podcasts"
@@ -2371,12 +2370,10 @@ msgid "Footer Menu"
 msgstr ""
 
 #: lib/utils.php:133
-#, fuzzy
 msgid "previous "
 msgstr "anterior"
 
 #: lib/utils.php:138
-#, fuzzy
 msgid "next "
 msgstr "próxima"
 
@@ -2483,9 +2480,8 @@ msgid "Artist info"
 msgstr "Información del Artista "
 
 #: lib/forms/podcast_form.php:31
-#, fuzzy
 msgid "Soundcloud Url"
-msgstr "SoundCloud URL requerida "
+msgstr ""
 
 #: lib/forms/podcast_form.php:39
 msgid "Soundcloud Url is required"
@@ -2709,7 +2705,6 @@ msgid "year"
 msgstr ""
 
 #: lib/languages/customs.php:8
-#, fuzzy
 msgid "next"
 msgstr "próxima"
 
@@ -2865,7 +2860,6 @@ msgstr ""
 
 #: lib/nz/widgets/widget-relate.php:44
 #: lib/nz/widgets/widget-relate.php:77
-#, fuzzy
 msgid "Going!"
 msgstr "Assistentes"
 
@@ -3218,14 +3212,12 @@ msgid "You can only manage one %s page per user, edit it here"
 msgstr "Solo puedes tener una página de %s, edita la aqui"
 
 #: lib/models/pages/recursos.php:67
-#, fuzzy
 msgid "artist"
 msgstr "Artista"
 
 #: lib/models/pages/recursos.php:94
-#, fuzzy
 msgid "label"
-msgstr "Sello "
+msgstr "Sello"
 
 #: lib/options/register.php:17
 #: lib/options/register.php:18
