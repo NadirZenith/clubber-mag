@@ -1,7 +1,7 @@
 <section class="m5">
       <div class="mb5">
             <?php
-            cm_home_list_title( 'podcast', __( 'Open Frequency Podcasts', 'cm' ) );
+            cm_home_list_title( 'podcast', __( 'Open Frequency', 'cm' ) );
             ?>
       </div>
       <div class="homeCustomScroll oh" style="height: 428px;">

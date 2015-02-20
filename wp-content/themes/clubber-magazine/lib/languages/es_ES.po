@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-20 17:02+0100\n"
-"PO-Revision-Date: 2015-02-20 17:06+0100\n"
+"POT-Creation-Date: 2015-02-20 17:47+0100\n"
+"PO-Revision-Date: 2015-02-20 17:47+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -67,12 +67,12 @@ msgid "Next parties and events"
 msgstr "Próximas fiestas y eventos"
 
 #: archive-podcast.php:10
-msgid "Special guests"
-msgstr "Invitado Especial "
+msgid "Into the Beat Radio"
+msgstr ""
 
 #: archive-podcast.php:44
-msgid "Other Podcasts"
-msgstr "Otros Podcasts"
+msgid "Open Frequency"
+msgstr ""
 
 #: archive-music.php:59
 msgid "Podcasts"
@@ -2329,14 +2329,6 @@ msgstr "Música"
 msgid "Latest News"
 msgstr "Últimas Noticias"
 
-#: tpl/home/home-shared-podcasts.php:4
-msgid "Open Frequency Podcasts"
-msgstr ""
-
-#: tpl/home/home-cm-podcasts.php:4
-msgid "ClubberMag Podcasts"
-msgstr ""
-
 #: tpl/home/home-cm-podcasts.php:63
 msgid "see more..."
 msgstr "Ver más..."
@@ -3267,6 +3259,12 @@ msgstr ""
 #: lib/options/cm-options.php:50
 msgid "Alphabet"
 msgstr ""
+
+#~ msgid "Special guests"
+#~ msgstr "Invitado Especial "
+
+#~ msgid "Other Podcasts"
+#~ msgstr "Otros Podcasts"
 
 #~ msgid "Url is not valid"
 #~ msgstr "Url Inválida"

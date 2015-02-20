@@ -7,7 +7,7 @@
                         <header class="mt15 mb10">
                               <h1>
                                     <span class="cm-title">
-                                          <?php _e( 'Special guests', 'cm' ) ?>
+                                          <?php _e( 'Into the Beat Radio', 'cm' ) ?>
                                     </span>
                               </h1>
                         </header>
@@ -41,7 +41,7 @@
                   <header class="mt15 mb10">
                         <h1 class="h2">
                               <span class="cm-title">
-                                    <?php _e( 'Other Podcasts', 'cm' ) ?>
+                                    <?php _e( 'Open Frequency', 'cm' ) ?>
                               </span>
                         </h1>
                   </header>

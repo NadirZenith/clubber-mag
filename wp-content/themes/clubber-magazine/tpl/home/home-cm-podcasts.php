@@ -1,7 +1,7 @@
 <section class="m5">
       <div class="mb5">
             <?php
-            cm_home_list_title( 'podcast', __( 'ClubberMag Podcasts', 'cm' ) );
+            cm_home_list_title( 'podcast', __( 'Into the Beat Radio', 'cm' ) );
             ?>
       </div>
       <div class="group">
