@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-18 17:13+0100\n"
-"PO-Revision-Date: 2015-02-18 17:27+0100\n"
+"POT-Creation-Date: 2015-02-18 17:29+0100\n"
+"PO-Revision-Date: 2015-02-18 21:02+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -58,7 +58,7 @@ msgstr "Sellos"
 msgid "Coolplaces"
 msgstr "Coolplaces"
 
-#: archive-cool-place.php:31
+#: archive-cool-place.php:40
 msgid "Add new place"
 msgstr "Agregar nuevo lugar"
 
@@ -107,7 +107,7 @@ msgstr "Registro"
 msgid "If you like electronic music, you are a producer, dj, promoter, or a club, signup in Clubber Magazine and enjoy our community."
 msgstr "Si te gusta la música electrónica, eres productor, dj, promotor o un club, regístrate en Clubber Mag y sé parte de nosotros."
 
-#: archive-artist.php:18
+#: archive-artist.php:26
 msgid "Add new artist"
 msgstr "Agregar nuevo artista"
 
@@ -2388,6 +2388,7 @@ msgid "Label image"
 msgstr "Imagen del Sello"
 
 #: lib/forms/label_form.php:30
+#: lib/forms/artist_form.php:38
 msgid "Image is required"
 msgstr "Imagen Requerida"
 
@@ -2396,54 +2397,67 @@ msgid "Label info"
 msgstr "Información del sello"
 
 #: lib/forms/label_form.php:46
+#: lib/forms/artist_form.php:56
 msgid "Email is not valid"
 msgstr "Email invalido "
 
 #: lib/forms/label_form.php:48
+#: lib/forms/artist_form.php:58
 msgid "Email"
 msgstr ""
 
 #: lib/forms/label_form.php:51
+#: lib/forms/artist_form.php:61
 msgid "Link Pagina Oficial"
 msgstr "Enlace Pagina Oficial"
 
 #: lib/forms/label_form.php:52
+#: lib/forms/artist_form.php:62
 msgid "Link Facebook"
 msgstr "Enlace Facebook"
 
 #: lib/forms/label_form.php:53
+#: lib/forms/artist_form.php:63
 msgid "Link Soundcloud"
 msgstr "Enlace Soundcloud"
 
 #: lib/forms/label_form.php:54
+#: lib/forms/artist_form.php:64
 msgid "Link Instagram"
 msgstr "Enlace Instagram"
 
 #: lib/forms/label_form.php:55
+#: lib/forms/artist_form.php:65
 msgid "Link Google +"
 msgstr "Enlace Google+"
 
 #: lib/forms/label_form.php:56
+#: lib/forms/artist_form.php:66
 msgid "Link Youtube"
 msgstr "Enlace  Youtube"
 
 #: lib/forms/label_form.php:57
+#: lib/forms/artist_form.php:67
 msgid "Link Twitter"
 msgstr "Enlace Twitter"
 
 #: lib/forms/label_form.php:58
+#: lib/forms/artist_form.php:68
 msgid "Link Beatport"
 msgstr "Enlace Beatport"
 
 #: lib/forms/label_form.php:59
+#: lib/forms/artist_form.php:69
 msgid "Link Bandpage"
 msgstr "Enlace Bandpage"
 
 #: lib/forms/label_form.php:67
-msgid "Url is not valid"
-msgstr "Url Inválida"
+#: lib/forms/artist_form.php:78
+msgid "Url is not valid, ex: http://www.example.com, don't forget the protocol http://"
+msgstr "La url no es válida, ej: http://www.example.com, no te olvides del protocolo http://"
 
 #: lib/forms/label_form.php:78
+#: lib/forms/artist_form.php:89
 msgid "Submit"
 msgstr "Enviar"
 
@@ -2452,7 +2466,6 @@ msgid "Artist name"
 msgstr "Nombre del Artista "
 
 #: lib/forms/artist_form.php:16
-#: lib/forms/event_form.php:41
 msgid "Name is required!"
 msgstr "Nombre requerido "
 
@@ -2673,10 +2686,6 @@ msgstr "Nombre para mostrar "
 #: lib/forms/edituser_form.php:93
 msgid "Display name is required"
 msgstr "Nombre para mostrar es requerido "
-
-#: lib/forms/edituser_form.php:115
-msgid "Url is not valid, ex: http://www.example.com, don't forget the protocol http://"
-msgstr "La url no es válida, ej: http://www.example.com, no te olvides del protocolo http://"
 
 #: lib/languages/customs.php:4
 msgid "Interviews"
@@ -3259,6 +3268,9 @@ msgstr ""
 #: lib/options/cm-options.php:50
 msgid "Alphabet"
 msgstr ""
+
+#~ msgid "Url is not valid"
+#~ msgstr "Url Inválida"
 
 #~ msgid "Sign in into our platform."
 #~ msgstr "Accede a nuestra comunidad."

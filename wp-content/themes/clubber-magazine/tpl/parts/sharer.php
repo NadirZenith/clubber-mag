@@ -1,6 +1,9 @@
+<?php
+$url = get_permalink();
+?>
 <ul class="rrssb-buttons">
       <li class="rrssb-facebook">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>" class="popup">
+            <a href="#" data-type="facebook" data-url="<?php echo $url ?>" class="csbuttons">
                   <span class="rrssb-icon">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                               <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
@@ -12,7 +15,7 @@
             </a>
       </li>
       <li class="rrssb-twitter">
-            <a href="http://twitter.com/home?status=<?php the_permalink() ?>" class="popup">
+            <a href="#" data-type="twitter" data-url="<?php echo $url ?>" data-txt="<?php the_title() ?>" data-via="ClubberMag" class="csbuttons">
                   <span class="rrssb-icon">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
@@ -28,7 +31,7 @@
             </a>
       </li>
       <li class="rrssb-googleplus">
-            <a href="https://plus.google.com/share?url=<?php the_permalink() ?>">
+            <a href="#" data-type="google"  data-url="<?php echo $url ?>" class="csbuttons">
                   <span class="rrssb-icon">
                         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
                               <g>
@@ -53,3 +56,9 @@
             </a>
       </li>
 </ul>
+<script>
+
+      jQuery(document).ready(function() {
+            $('.csbuttons').cSButtons();
+      });
+</script>

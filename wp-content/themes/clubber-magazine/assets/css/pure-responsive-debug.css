@@ -1,0 +1,84 @@
+/*default < 568px */
+
+/*sm ≥ 568px */
+@media screen and (min-width: 35.5em){
+
+}
+/*md ≥ 768px*/
+@media screen and (min-width: 48em){
+
+}
+/*lg ≥ 1024px*/
+@media screen and (min-width: 64em){
+
+}
+/*xl ≥ 1280px*/
+@media screen and  (min-width: 80em){
+
+}
+/*debug*/
+
+/*default < 568px */
+body:before{
+      display: block;width: 100px;height: 12px;
+      background:#fff;
+      position:fixed;bottom: 0;left: 80%;
+      z-index: 9999999;
+      content: '<568px';
+      line-height:-2px;
+      padding: 2px;
+      font-size: 10px;
+      overflow: visible;
+      color:#111;
+
+}
+
+/*default < 568px */
+body:after{
+      display: block;width: 100px;height: 12px;
+      background:#fff;
+      border-right: 1000px solid greenyellow;
+      position:fixed;bottom: 0;left: 100%;
+      text-indent: -100px;
+      z-index: 9999999;
+      content: ' ';
+      line-height:-2px;
+      padding: 2px;
+      font-size: 10px;
+      overflow: visible;
+      color:#111;
+
+}
+/*sm ≥ 568px */
+@media screen and (min-width: 35.5em){
+      body:before{
+            display: none;
+
+      }
+      body:after{
+            content: "SM ≥ 568px";
+            left: 468px;
+            text-indent:0;
+      }
+}
+/*md ≥ 768px */
+@media screen and (min-width: 48em){
+      body:after{
+            content: "MD ≥ 768px";
+            left: 668px;
+      }
+}
+/*lg ≥ 1024px*/
+@media screen and (min-width: 64em){
+      body:after{
+            content: "LG ≥ 1024px";
+            left: 924px;
+      }
+}
+/*xl ≥ 1280px*/
+@media screen and  (min-width: 80em){
+      body:after{
+            content: "XL ≥ 1280px";
+            left: 1180px;
+      }
+}

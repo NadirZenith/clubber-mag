@@ -24,23 +24,25 @@ function roots_scripts() {
             $assets = array(
                   'css' => '/assets/css/main.css',
                   'js' => '/assets/js/scripts.js',
-                  /*'modernizr' => '/assets/vendor/modernizr/modernizr.js',*/
-                  /*'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'*/
+                  'pure-responsive-debug' => get_template_directory_uri() . '/assets/css/pure-responsive-debug.css',
+                      /* 'modernizr' => '/assets/vendor/modernizr/modernizr.js', */
+                      /* 'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js' */
             );
+            wp_enqueue_style( 'pure-responsive-debug', $assets[ 'pure-responsive-debug' ] );
       } else {
             $get_assets = file_get_contents( get_template_directory() . '/assets/manifest.json' );
             $assets = json_decode( $get_assets, true );
             $assets = array(
                   'css' => '/assets/css/main.min.css?' . $assets[ 'assets/css/main.min.css' ][ 'hash' ],
                   'js' => '/assets/js/scripts.min.js?' . $assets[ 'assets/js/scripts.min.js' ][ 'hash' ],
-                  /*'modernizr' => '/assets/js/vendor/modernizr.min.js',*/
-                  /*'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'*/
-                  /*'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'*/
+                      /* 'modernizr' => '/assets/js/vendor/modernizr.min.js', */
+                      /* 'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' */
+                      /* 'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' */
             );
       }
-      
-      $assets['modernizr'] = '/assets/js/vendor/modernizr.min.js';
-      $assets['jquery'] = '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js';
+
+      $assets[ 'modernizr' ] = '/assets/js/vendor/modernizr.min.js';
+      $assets[ 'jquery' ] = '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js';
 
       wp_enqueue_style( 'roots_css', get_template_directory_uri() . $assets[ 'css' ], false, null );
 
@@ -85,33 +87,33 @@ function roots_jquery_local_fallback( $src, $handle = null ) {
 }
 
 /** @todo nz change this because of assets rewrite */
-/*add_action( 'wp_head', 'roots_jquery_local_fallback' );*/
+/* add_action( 'wp_head', 'roots_jquery_local_fallback' ); */
 
 /**
  * Google Analytics snippet from HTML5 Boilerplate
-function roots_google_analytics() {
-        ?>
-        <script>
-                (function(b, o, i, l, e, r) {
-                        b.GoogleAnalyticsObject = l;
-                        b[l] || (b[l] =
-                                function() {
-                                        (b[l].q = b[l].q || []).push(arguments)
-                                });
-                        b[l].l = +new Date;
-                        e = o.createElement(i);
-                        r = o.getElementsByTagName(i)[0];
-                        e.src = '//www.google-analytics.com/analytics.js';
-                        r.parentNode.insertBefore(e, r)
-                }(window, document, 'script', 'ga'));
-                ga('create', '<?php echo GOOGLE_ANALYTICS_ID; ?>');
-                ga('send', 'pageview');
-        </script>
-
-<?php
-}
-
-if (GOOGLE_ANALYTICS_ID && !current_user_can('manage_options')) {
-        add_action('wp_footer', 'roots_google_analytics', 20);
-}
  */
+function roots_google_analytics() {
+      ?>
+      <script>
+            (function(b, o, i, l, e, r) {
+                  b.GoogleAnalyticsObject = l;
+                  b[l] || (b[l] =
+                          function() {
+                                (b[l].q = b[l].q || []).push(arguments)
+                          });
+                  b[l].l = +new Date;
+                  e = o.createElement(i);
+                  r = o.getElementsByTagName(i)[0];
+                  e.src = '//www.google-analytics.com/analytics.js';
+                  r.parentNode.insertBefore(e, r)
+            }(window, document, 'script', 'ga'));
+            ga('create', '<?php echo GOOGLE_ANALYTICS_ID; ?>');
+            ga('send', 'pageview');
+      </script>
+
+      <?php
+}
+
+if ( GOOGLE_ANALYTICS_ID && !current_user_can( 'manage_options' ) ) {
+      add_action( 'wp_footer', 'roots_google_analytics', 20 );
+}

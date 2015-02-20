@@ -6,7 +6,7 @@ $img = wp_get_attachment_image_src( $tn_id, '750-350-thumb' );
       <div class="hover-3">
             <div class="pod-title">
                   <span class="sc-1">
-                        Artist 
+                        <?php _e( 'Artist', 'cm' ) ?>
                   </span>
                   <span class="sc-eee">
                         <?php the_title() ?> 

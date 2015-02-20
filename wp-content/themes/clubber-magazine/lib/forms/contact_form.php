@@ -17,7 +17,7 @@ if ( is_user_logged_in() ) {
       $atts[ 'value' ] = get_the_author_meta( 'display_name', get_current_user_id() );
 }
 $rule = array(
-      'required' => array( 'error',  __( 'Name is required', 'cm' ) )
+      'required' => array( 'error', __( 'Name is required', 'cm' ) )
 );
 $ContactForm->addField( 'text', $slug, $label, $atts, $rule );
 /**
@@ -30,8 +30,8 @@ if ( is_user_logged_in() ) {
       $atts[ 'value' ] = get_the_author_meta( 'user_email', get_current_user_id() );
 }
 $rule = array(
-      'required' => array( 'error',  __( 'Email is required', 'cm' ) ),
-      'email' => array( 'error',  __( 'Email is not valid', 'cm' ) )
+      'required' => array( 'error', __( 'Email is required', 'cm' ) ),
+      'email' => array( 'error', __( 'Email is not valid', 'cm' ) )
 );
 $ContactForm->addField( 'text', $slug, $label, $atts, $rule );
 
@@ -60,14 +60,15 @@ function nz_wp_contact_form_valid( $nzforms ) {
       add_filter( 'wp_mail_content_type', function($content_type) {
             return 'text/html';
       } );
-      
+
       //send admin email
-      $to = get_option( 'admin_email', '2cb.md2@gmail.com' );
+      $to = get_option( 'admin_email', 'clubbermag@clubber-mag.com' );
+      /* $to = '2cb.md2@gmail.com'; */
       $subject = 'CM Contact From ' . $nzforms->wpform->form->controls[ 'contact_name' ]->submitted_value;
       $content = $nzforms->wpform->form->controls[ 'contact_message' ]->submitted_value;
+      $content.= '<br>From: ' . $nzforms->wpform->form->controls[ 'contact_email' ]->submitted_value;
+      
       $r = wp_mail( $to, $subject, $content );
-      /* $r = wp_mail( 'albertino05@gmail.com', 'Contacto clubber magazine', '$content' ); */
-
       if ( !is_user_logged_in() )
             return;
 

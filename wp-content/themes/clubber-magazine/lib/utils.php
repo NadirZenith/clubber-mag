@@ -69,7 +69,7 @@ function cm_home_list_more( $post_type, $title, $raw = false ) {
 }
 
 /**
- * Video iframe from meta
+ * youtube iframe from url
  */
 function nz_get_youtube_iframe( $url, $args = array() ) {
 
@@ -108,34 +108,6 @@ function cm_lang_get_post( $id ) {
       /* return pll_get_post( $id ); */
 }
 
-//Add custom column
-add_filter( 'manage_edit-agenda_columns', 'my_columns_head' );
-
-function my_columns_head( $defaults ) {
-      $defaults[ 'event_begin_date' ] = 'event_begin_date';
-      return $defaults;
-}
-
-//Add rows data
-add_action( 'manage_agenda_posts_custom_column', 'my_custom_column', 10, 2 );
-
-function my_custom_column( $column, $post_id ) {
-      switch ( $column ) {
-            case 'event_begin_date':
-                  echo get_post_meta( $post_id, 'wpcf-event_begin_date', true );
-                  break;
-      }
-}
-
-// Make these columns sortable
-function sortable_columns() {
-      return array(
-            'event_begin_date' => 'event_begin_date'
-      );
-}
-
-add_filter( "manage_edit-agenda_sortable_columns", "sortable_columns" );
-
 function nz_pagination_by_date( $interval = 'week' ) {
 
       $date = get_query_var( 'date' );
@@ -171,4 +143,17 @@ function nz_pagination_by_date( $interval = 'week' ) {
             </div>
             <?php
       }
+}
+
+/**
+ * inser image to editor with class fancybox
+ */
+add_filter( 'image_send_to_editor', 'html5_insert_image', 10, 9 );
+
+function html5_insert_image( $html, $id, $caption, $title, $align, $url ) {
+
+      $html5 = "<a href='$url' id='media-$id' class='align-$align fancybox'>";
+      $html5 .= "<img src='$url' alt='$title' />";
+      $html5 .= "</a>";
+      return $html5;
 }
