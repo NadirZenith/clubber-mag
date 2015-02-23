@@ -28,7 +28,6 @@ function nz_pre_get_page_recursos( $query ) {
                   wp_redirect( $login_url );
                   exit();
             }
-
       }
       $main_resource_id = get_user_meta( get_current_user_id(), CM_USER_META_RESOURCE_ID, true );
 
@@ -61,7 +60,8 @@ function nz_pre_get_page_recursos( $query ) {
                   //if the artist page is not the user artist page set 404      
                   status_header( 403 );
                   $query->set_404();
-                  die( 'artist - 403' );
+                  return;
+                  /* die( 'artist - 403' ); */
             }
       } elseif ( $resource_page_id == CM_RESOURCE_LABEL_PAGE_ID ) {//IS RESOURCE LABEL
             //check for main resource
@@ -121,7 +121,7 @@ function nz_pre_get_page_recursos( $query ) {
 /**
  *      filter for pre get page_recursos
  */
-add_action( 'pre_get_posts', 'cm_pre_get_page_new_podcast' );
+/* add_action( 'pre_get_posts', 'cm_pre_get_page_new_podcast' ); */
 
 function cm_pre_get_page_new_podcast( $query ) {
       if (
