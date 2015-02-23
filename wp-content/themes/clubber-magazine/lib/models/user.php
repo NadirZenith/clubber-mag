@@ -211,9 +211,11 @@ function cm_pre_get_author_profile( $query ) {
       /* d( $action ); */
       switch ( $action ) {
             case 'editar':
-                  /* $user = wp_get_current_user(); */
-                  nz_set_main_template( 'tpl/user/user-profile-edit.php' );
-
+                  if ( $_REQUEST[ NZ_WP_Forms::$edit_query_var ] == get_current_user_id() ) {
+                        nz_set_main_template( 'tpl/user/user-profile-edit.php' );
+                  } else {
+                        $query->set_404();
+                  }
                   break;
             case 'agenda':
                   Roots_Wrapping::$raw = TRUE;
