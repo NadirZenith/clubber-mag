@@ -1,6 +1,6 @@
 <?php
 $tn_id = get_post_thumbnail_id( get_the_ID() );
-$img = wp_get_attachment_image_src( $tn_id, '750-350-thumb' );
+$img = wp_get_attachment_image_src( $tn_id, '1000-450-thumb' );
 ?>
 <div class="home-featured-image"style="background-image:url('<?php echo $img[ 0 ] ?>'); " >
       <div class="hover-3">
