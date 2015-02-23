@@ -167,5 +167,5 @@ function clubber_register_image_sizes() {
 
       add_image_size( '630-250-thumb', 630, 250, true ); //podcast photo
       //add_image_size( 'single-thumb', 700, 300, false ); // single
-      add_image_size( '1000-450-thumb', 700, 350, true ); // single
+      add_image_size( '1000-450-thumb', 1000, 450, true ); // single
 }
