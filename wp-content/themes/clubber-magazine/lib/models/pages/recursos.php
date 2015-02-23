@@ -1,18 +1,5 @@
 <?php
 
-//PAGE RECURSOS REWRITE 
-/* add_filter( 'page_rewrite_rules', 'rewrite_page_recursos' ); */
-//using pages instead!
-function rewrite_page_recursos( $rules ) {
-      $query_var_name = 'type';
-      $page_slug = 'recursos';
-
-      /* d($rules); */
-      /* $rules['^recursos/([^/]+)?'] = 'index.php?pagename=recursos&type=$matches[1]'; */
-      $rules[ '^recursos/([^/]+)?/?([^/]+)?' ] = 'index.php?pagename=recursos&type=$matches[1]&action=$matches[2]';
-      return $rules;
-}
-
 /**
  *      filter for pre get page_recursos
  */
@@ -42,7 +29,6 @@ function nz_pre_get_page_recursos( $query ) {
                   exit();
             }
 
-            /* $current_user = wp_get_current_user(); */
       }
       $main_resource_id = get_user_meta( get_current_user_id(), CM_USER_META_RESOURCE_ID, true );
 
@@ -135,9 +121,9 @@ function nz_pre_get_page_recursos( $query ) {
 /**
  *      filter for pre get page_recursos
  */
-/* add_action( 'pre_get_posts', 'nz_pre_get_page_newpodcast' ); */
+add_action( 'pre_get_posts', 'cm_pre_get_page_new_podcast' );
 
-function nz_pre_get_page_newpodcast( $query ) {
+function cm_pre_get_page_new_podcast( $query ) {
       if (
                 !$query->is_main_query() || !is_page( CM_RESOURCE_PODCAST_PAGE_ID )
       ) {
@@ -148,49 +134,25 @@ function nz_pre_get_page_newpodcast( $query ) {
             $query->set_404();
             return;
       }
-
-      $uid = get_current_user_id();
-      $main_resource_id = get_user_meta( $uid, CM_USER_META_RESOURCE_ID, true );
-      $resource = get_post( $main_resource_id );
-
-      if ( !$resource ||
-                !in_array( $resource->post_type, array( 'artist', 'label' ) ) ||
-                !check_ajax_referer( 'podcast-from-' . $resource->ID )
-      ) {
-            $query->set_404();
-            return;
+      if ( isset( $_REQUEST[ NZ_WP_Forms::$edit_query_var ] ) ) {
+            $post = get_post( $_REQUEST[ NZ_WP_Forms::$edit_query_var ] );
+            if ( $post->post_author != get_current_user_id() || $post->post_type != 'podcast' )
+                  $query->set_404();
       }
-
-      /* d( $query ); */
 }
 
-/*
-  function nz_form_roots_main_template( $wrap ) {
-  Roots_Wrapping::$main_template = locate_template( 'templates/nz_form.php' );
-  return $wrap;
-  }
+add_action( 'pre_get_posts', 'cm_pre_get_page_new_event' );
 
- */
-/* add_action( 'pre_get_posts', 'cm_pre_get_posts_lang' ); */
-
-function cm_pre_get_posts_lang( $query ) {
-
+function cm_pre_get_page_new_event( $query ) {
       if (
-                !$query->is_main_query()
+                !$query->is_main_query() || !is_page( CM_RESOURCE_EVENT_PAGE_ID )
       ) {
             return;
       }
-      /* d( $query ); */
-      $query->set( 'lang', implode( ' ,', pll_languages_list() ) );
-      return;
 
-      if ( !is_user_logged_in() ) {
-            $query->set_404();
-            return;
+      if ( isset( $_REQUEST[ NZ_WP_Forms::$edit_query_var ] ) ) {
+            $post = get_post( $_REQUEST[ NZ_WP_Forms::$edit_query_var ] );
+            if ( $post->post_author != get_current_user_id() )
+                  $query->set_404();
       }
-
-      $uid = get_current_user_id();
-
-
-      /* d( $query ); */
 }
