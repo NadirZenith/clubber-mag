@@ -3,28 +3,7 @@
  * podcast archive single item
  */
 ?>
-<article class="">
-      <?php
-      if ( is_post_type_archive( 'podcast' ) ) {
-            ?>
-            <header class="m5">
-                  <h2>
-                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                              <?php
-                              $mytitle = get_the_title();
-                              if ( strlen( $mytitle ) > 65 ) {
-                                    $mytitle = substr( $mytitle, 0, 65 ) . '...';
-                              }
-                              echo $mytitle;
-                              ?>
-                        </a>
-                  </h2>
-            </header>
-
-            <hr class="pb5">
-            <?php
-      }
-      ?>
+<article>
       <?php
       $special = get_post_meta( get_the_ID(), 'soundcloud_special_guest', true );
       if ( $special ) {
@@ -43,56 +22,13 @@
                   ?>
                   <i class="clubbermag-podcast-wm"></i>
                   <?php
-/*                  
-                  $post_id = cm_lang_get_post( get_the_ID() );
-                  d( $post_id );
-                  if ( !$post_id ) {
-                        global $polylang;
-                        echo $polylang->get_post_language( get_the_ID() )->slug;
-                        $test = get_posts( array(
-                              'lang' => 'es',
-                              'post_type' => 'podcast',
-                              'p' => get_the_ID()
-                                  ) );
-                        setup_postdata( $test );
-                        d( 'false cargar' );
-                        d( $test );
-                        $related = p2p_type( 'artists_to_podcasts' )->get_connected( $test[ 0 ] );
-                        d( $related->post->post_title );
-                  }
-
-
-
- */
-                  $tpost = get_post();
-                  /* d( $tpost ); */
-                  /* d( get_post_meta( get_the_ID() ) ); */
-                   /*wp_set_object_terms( get_the_ID(), array( 'es', 'en' ), 'language' ); */
-                   /*wp_set_object_terms( get_the_ID(), array( 'es' ), 'language' ); */
-                  $terms = get_the_terms( get_post(), 'language' );
-                  /* d( $terms ); */
-                  /* die(); */
-
-
-                  /*
-                   */
                   $args = array(
                         'post_type' => 'artist',
                         'lang' => 'es',
-                        /* 'lang' => implode( ', ', pll_languages_list() ), */
-                        /* 'posts_per_page' => 1, */
+                        'posts_per_page' => 1,
                         'connected_items' => get_post(),
                         'nopaging' => true,
                         'connected_type' => 'artists_to_podcasts',
-                            /*
-                              'tax_query' => array(
-                              array(
-                              'taxonomy' => 'language',
-                              'field' => 'slug',
-                              'terms' => implode( ', ', pll_languages_list() )
-                              )
-                              )
-                             */
                   );
 
 
