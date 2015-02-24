@@ -79,9 +79,9 @@
                               <?php } ?>
                         <?php } ?>
                   </div>
-                  <?php
-                  ?>
+
             <?php endif; //not artist ?>
+
             <?php if ( in_array( get_post_type(), array( 'artist', 'label' ) ) ): ?>
                   <?php get_template_part( 'tpl/parts/social-meta' ) ?>
             <?php endif; ?>
@@ -95,7 +95,7 @@
                         <?php
                         $sc_info = json_decode( $sc_info_str );
                         if ( $sc_info ) {
-                              echo nz_get_soundcloud_iframe( $sc_info->uri, array( 'visual' => true, 'height' => 250 ) );
+                              echo nz_get_soundcloud_iframe( $sc_info->uri, array( 'visual' => false ) );
                         }
                         ?>
                   </div>
