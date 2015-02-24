@@ -32,7 +32,8 @@ function cm_artists_connections() {
       p2p_register_connection_type( array(
             'name' => 'artists_to_podcasts',
             'from' => 'artist',
-            'to' => 'podcast'
+            'to' => 'podcast',
+            'admin_column' => 'any'
       ) );
 }
 
