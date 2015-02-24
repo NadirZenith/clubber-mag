@@ -35,7 +35,7 @@
                         ?>
                         <a class="featured-image" href="<?php the_permalink() ?>" >
                               <?php
-                              the_post_thumbnail( '430-190-thumb' );
+                              the_post_thumbnail( '650-300-thumb' );
                               ?>
                         </a>
                         <?php
