@@ -17,12 +17,14 @@
             $query2 = new WP_Query( $args );
             ?>
             <header class="m5">
-                  <div class="fr">
-                        by
-                        <a class="bold" href="<?php echo get_permalink( $query2->post->ID ); ?>">
-                              <?php echo $query2->post->post_title ?>
-                        </a>
-                  </div>
+                  <?php if ( $query2->have_posts() ): ?>
+                        <div class="fr">
+                              <?php _e( 'by', 'cm' ) ?>
+                              <a class="bold" href="<?php echo get_permalink( $query2->post->ID ); ?>">
+                                    <?php echo $query2->post->post_title ?>
+                              </a>
+                        </div>
+                  <?php endif; ?>
                   <h2>
                         <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
                               <?php
