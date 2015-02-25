@@ -9,7 +9,7 @@ $podcasts = new CPT( array(
             'title',
             'editor',
             'thumbnail',
-            'author',
+            /*'author',*/
             'custom-fields'
       ),
       'has_archive' => 'podcasts'
@@ -25,7 +25,7 @@ $into_the_beat = new CPT( array(
             'title',
             'editor',
             'thumbnail',
-            'author',
+            /*'author',*/
             'custom-fields'
       ),
       'has_archive' => true
@@ -40,7 +40,7 @@ $open_frequency = new CPT( array(
           ), array(
       'supports' => array(
             'title',
-            'author',
+            /*'author',*/
             'custom-fields'
       ),
       'has_archive' => true

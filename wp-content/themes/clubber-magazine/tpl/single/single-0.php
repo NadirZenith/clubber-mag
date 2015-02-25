@@ -20,22 +20,6 @@
                               </div>
                         <?php endif; ?>
                         <?php
-                        if ( get_post_type() == 'video' ) {
-                              $meta_video_url = get_metadata( 'post', get_the_ID(), 'wpcf-video-url', true );
-                              if ( $meta_video_url ) {
-                                    ?>
-                                    <div class="iframe-container">
-                                          <?php
-                                          $shortcode = ' [embed width="640" height="390"]' . $meta_video_url . '[/embed]';
-
-                                          global $wp_embed;
-
-                                          echo $wp_embed->run_shortcode( $shortcode );
-                                          ?>
-                                    </div>
-                                    <?php
-                              }
-                        }
                         if ( in_array( get_post_type(), array( 'into-the-beat', 'open-frequency' ) ) ) {
 
                               $args = array(
@@ -55,7 +39,7 @@
 
                               if ( !empty( $artist ) ) {
                                     $artist = $artist[ 0 ];
-                                    if ( $artist->post_type == 'into-the-beat' ) {
+                                    if ( get_post_type() == 'open-frequency' ) {
                                           ?>
                                           <div class="featured-image col-1 cb">
                                                 <?php
@@ -70,7 +54,7 @@
                                           <div class="pod-title">
                                                 <a href="<?php echo get_permalink( $artist ) ?>">
                                                       <span class="sc-1">
-                                                            <?php if ( $artist->post_type == 'into-the-beat' ) : ?>
+                                                            <?php if ( get_post_type() == 'into-the-beat' ) : ?>
                                                                   Special Guest
                                                             <?php else: ?>
                                                                   Open Signal
@@ -86,9 +70,27 @@
 
                               <?php } ?>
                         <?php } ?>
+                        <?php
+                        if ( get_post_type() == 'video' ) {
+                              $meta_video_url = get_metadata( 'post', get_the_ID(), 'wpcf-video-url', true );
+                              if ( $meta_video_url ) {
+                                    ?>
+                                    <div class="iframe-container">
+                                          <?php
+                                          $shortcode = ' [embed width="640" height="390"]' . $meta_video_url . '[/embed]';
+
+                                          global $wp_embed;
+
+                                          echo $wp_embed->run_shortcode( $shortcode );
+                                          ?>
+                                    </div>
+                                    <?php
+                              }
+                        }
+                        ?>
                   </div>
 
-            <?php endif; //not artist  ?>
+            <?php endif; //not artist    ?>
 
             <?php if ( in_array( get_post_type(), array( 'artist', 'label' ) ) ): ?>
                   <?php get_template_part( 'tpl/parts/social-meta' ) ?>

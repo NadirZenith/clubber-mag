@@ -289,3 +289,53 @@ function debugbreadcumbs( $val ) {
       d( $val );
       return $val;
 }
+
+/* --------------------------- */
+foreach ( array( 'edit.php', 'post.php' ) as $hook )
+      add_action( "load-$hook", 'wpse39084_replace_post_meta_author' );
+
+/* Show Subscribers in post author dropdowns - edit and quickEdit */
+
+function wpse39084_replace_post_meta_author() {
+      global $typenow;
+      if ( 'open-frequency' != $typenow )
+            return;
+
+      add_action( 'admin_menu', 'wpse50827_author_metabox_remove' );
+      add_action( 'post_submitbox_misc_actions', 'wpse50827_author_metabox_move' );
+      add_filter( 'wp_dropdown_users', 'wpse39084_showme_dropdown_users' );
+}
+
+/* Modify authors dropdown */
+
+function wpse39084_showme_dropdown_users( $args = '' ) {
+      $post = get_post();
+      $selected = $post->post_author;
+      $siteusers = get_users( 'orderby=nicename&order=ASC' ); // you can pass filters and option
+      $re = '';
+      if ( count( $siteusers ) > 0 ) {
+            $re = '<select name="post_author_override" id="post_author_override">';
+            foreach ( $siteusers as $user ) {
+                  $re .= '<option value="' . $user->ID . '">' . $user->user_nicename . '</option>';
+            }
+            $re .= '</select>';
+            $re = str_replace( 'value="' . $selected . '"', 'value="' . $selected . '" selected="selected"', $re );
+      }
+      echo $re;
+}
+
+/* Remove Author meta box from post editing */
+
+function wpse50827_author_metabox_remove() {
+      remove_meta_box( 'authordiv', 'post', 'normal' );
+}
+
+/* Move Author meta box inside Publish Actions meta box */
+
+function wpse50827_author_metabox_move() {
+      global $post;
+
+      echo '<div id="author" class="misc-pub-section" style="border-top-style:solid; border-top-width:1px; border-top-color:#EEEEEE; border-bottom-width:0px;">Author: ';
+      post_author_meta_box( $post );
+      echo '</div>';
+}
