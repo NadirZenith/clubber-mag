@@ -121,7 +121,7 @@ function nz_pre_get_page_recursos( $query ) {
 /**
  *      filter for pre get page_recursos
  */
-/* add_action( 'pre_get_posts', 'cm_pre_get_page_new_podcast' ); */
+add_action( 'pre_get_posts', 'cm_pre_get_page_new_podcast' );
 
 function cm_pre_get_page_new_podcast( $query ) {
       if (
@@ -134,9 +134,10 @@ function cm_pre_get_page_new_podcast( $query ) {
             $query->set_404();
             return;
       }
+
       if ( isset( $_REQUEST[ NZ_WP_Forms::$edit_query_var ] ) ) {
             $post = get_post( $_REQUEST[ NZ_WP_Forms::$edit_query_var ] );
-            if ( $post->post_author != get_current_user_id() || $post->post_type != 'podcast' )
+            if ( $post->post_author != get_current_user_id() || $post->post_type != 'open-frequency' )
                   $query->set_404();
       }
 }
