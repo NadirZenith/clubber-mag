@@ -7,11 +7,11 @@
       <?php
       if ( is_post_type_archive( 'open-frequency' ) ) {
             $args = array(
-                  'post_type' => 'artist',
+                  'post_type' => array( 'artist', 'label' ),
                   'post_status' => 'any',
                   'posts_per_page' => 1,
                   'connected_items' => get_post(),
-                  'connected_type' => 'open-frequency-to-artist',
+                  'connected_type' => array( 'open-frequency-to-artist', 'open-frequency-to-label' ),
             );
 
             $query2 = new WP_Query( $args );
