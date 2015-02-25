@@ -1,4 +1,4 @@
-<section>
+<section class="m5">
       <header class="mt15 mb10">
             <h1>
                   <span class="cm-title">
@@ -22,22 +22,35 @@
                   <?php
                   while ( have_posts() ) {
                         the_post();
-                        ?>
-                        <li class="col-1">
-                              <?php
-                              get_template_part( 'tpl/parts/list-3' );
+                        if ( in_array( get_post_type(), array( 'into-the-beat', 'open-frequency' ) ) ) {
+                              $class = (get_post_type() == 'into-the-beat') ? 'col-md-1-2 fl' : '';
                               ?>
-                        </li>
-                        <?php
+                              <li class="col-1 <?php echo $class ?>">
+                                    <div class="box-3">
+                                          <?php
+                                          get_template_part( 'tpl/parts/list-5' );
+                                          ?>
+                                    </div>
+                              </li>
+                              <?php
+                        } else {
+                              ?>
+                              <li class="col-1">
+                                    <?php
+                                    get_template_part( 'tpl/parts/list-3' );
+                                    ?>
+                              </li>
+                              <?php
+                        }
                   }
                   ?>
             </ul>
             <?php
+            include (locate_template( 'tpl/parts/pagination.php' ));
       } else {
             get_template_part( 'tpl/parts/not-found' );
       }
       ?>
       <?php
-      include (locate_template( 'tpl/parts/pagination.php' ));
       ?>
 </section>

@@ -4,7 +4,7 @@ $artists = new CPT( array(
       'post_type_name' => 'artist',
       'singular' => __( 'Artist', 'cm' ),
       'plural' => __( 'Artists', 'cm' ),
-          /* 'slug' => 'agenda' */
+      'slug' => 'artista'
           ), array(
       'supports' => array( 'title', 'editor', 'thumbnail', 'author'
             , 'custom-fields'
@@ -28,12 +28,6 @@ function cm_artists_connections() {
             'name' => 'artists_to_labels',
             'from' => 'artist',
             'to' => 'label'
-      ) );
-      p2p_register_connection_type( array(
-            'name' => 'artists_to_podcasts',
-            'from' => 'artist',
-            'to' => 'podcast',
-            'admin_column' => 'any'
       ) );
 }
 

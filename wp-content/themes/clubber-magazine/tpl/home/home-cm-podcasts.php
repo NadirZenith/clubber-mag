@@ -1,7 +1,7 @@
 <section class="m5">
       <div class="mb5">
             <?php
-            cm_home_list_title( 'podcast', __( 'Into the Beat Radio', 'cm' ) );
+            cm_home_list_title( 'into-the-beat', __( 'Into the Beat Radio', 'cm' ) );
             ?>
       </div>
       <div class="group">
@@ -10,14 +10,9 @@
                   <ul class="slides">
                         <?php
                         $args = array(
-                              'post_type' => 'podcast',
+                              'post_type' => 'into-the-beat',
                               'posts_per_page' => 1,
                               'meta_query' => array(
-                                    'relation' => 'AND',
-                                    array(
-                                          'key' => 'soundcloud_special_guest',
-                                          'compare' => 'EXISTS',
-                                    ),
                                     array(
                                           'key' => '_thumbnail_id',
                                           'compare' => 'EXISTS',
@@ -60,6 +55,6 @@
                   });
             });
       </script>    
-      <?php cm_home_list_more( 'podcast', __( 'see more...', 'cm' ) ) ?>
+      <?php cm_home_list_more( 'into-the-beat', __( 'see more...', 'cm' ) ) ?>
 
 </section>

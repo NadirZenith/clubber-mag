@@ -1,24 +1,22 @@
 <?php
 $args = array(
-      'post_type' => 'podcast',
+      'post_type' => 'into-the-beat',
       'posts_per_page' => 5,
       'connected_items' => get_queried_object(),
+      'connected_type' => 'into-the-beat-to-artist'
 );
-
-if ( get_post_type() == 'artist' )
-      $args[ 'connected_type' ] = 'artists_to_podcasts';
-elseif ( get_post_type() == 'label' )
-      $args[ 'connected_type' ] = 'labels_to_podcasts';
 
 $query2 = new WP_Query( $args );
 if ( $query2->have_posts() ) {
       ?>
+      <div class="mt15 cb"></div>
       <h2 class="">
             <span class="cm-title" >
-                  <?php _e( 'Latest shared music', 'cm' ); ?>
+                  <?php //_e( 'Latest shared music', 'cm' ); ?>
+                  Into the beat
             </span>
       </h2>
-      <div class="homeCustomScroll oh mt5" style="height: 328px;">
+      <div class="homeCustomScroll oh mt5" style="max-height: 328px;">
             <?php
             while ( $query2->have_posts() ) {
                   $query2->the_post();

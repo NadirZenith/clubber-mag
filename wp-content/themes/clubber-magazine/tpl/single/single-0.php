@@ -36,18 +36,26 @@
                                     <?php
                               }
                         }
-                        if ( get_post_type() == 'podcast' ) {
+                        if ( in_array( get_post_type(), array( 'into-the-beat', 'open-frequency' ) ) ) {
 
-                              $artist = get_posts( array(
-                                    'connected_type' => 'artists_to_podcasts',
+                              $args = array(
                                     'connected_items' => get_queried_object(),
                                     'nopaging' => true,
                                     'posts_per_page' => 1,
                                     'suppress_filters' => false
-                                        ) );
+                              );
+
+                              if ( get_post_type() == 'into-the-beat' ) {
+                                    $args[ 'connected_type' ] = 'into-the-beat-to-artist';
+                              } elseif ( get_post_type() == 'open-frequency' ) {
+                                    $args[ 'connected_type' ] = 'open-frequency-to-artist';
+                              }
+
+                              $artist = get_posts( $args );
+
                               if ( !empty( $artist ) ) {
                                     $artist = $artist[ 0 ];
-                                    if ( !get_post_meta( get_the_ID(), 'soundcloud_special_guest', true ) ) {
+                                    if ( $artist->post_type == 'into-the-beat' ) {
                                           ?>
                                           <div class="featured-image col-1 cb">
                                                 <?php
@@ -62,7 +70,7 @@
                                           <div class="pod-title">
                                                 <a href="<?php echo get_permalink( $artist ) ?>">
                                                       <span class="sc-1">
-                                                            <?php if ( get_post_meta( get_the_ID(), 'soundcloud_special_guest', true ) ) : ?>
+                                                            <?php if ( $artist->post_type == 'into-the-beat' ) : ?>
                                                                   Special Guest
                                                             <?php else: ?>
                                                                   Open Signal
@@ -80,7 +88,7 @@
                         <?php } ?>
                   </div>
 
-            <?php endif; //not artist ?>
+            <?php endif; //not artist  ?>
 
             <?php if ( in_array( get_post_type(), array( 'artist', 'label' ) ) ): ?>
                   <?php get_template_part( 'tpl/parts/social-meta' ) ?>
@@ -104,26 +112,9 @@
             ?>
             <div class="m5">
                   <?php
-                  if ( in_array( get_post_type(), array( 'post', 'music', 'photo', 'podcast' ) ) ) {
+                  if ( in_array( get_post_type(), array( 'post', 'music', 'photo', 'into-the-beat', 'open-frequency' ) ) ) {
                         //post author info
-                        ?>
-                        <div class="fr cb" style="min-width: 200px;">
-                              <?php
-                              $default = get_template_directory_uri() . '/assets/images/user/user-profile-ph.jpg';
-                              $url = nz_get_user_image( get_the_author_meta( 'ID' ), 'profile', $default );
-                              ?>
-                              <img class="fr ml5" src="<?php echo $url ?>" alt="clubber-mag-profile-picture" width="45" height="45">
-                              <div class="fr" style="text-align: right;line-height: 1;">
-                                    <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-                                          <?php the_author_meta( 'display_name' ); ?> 
-                                    </a>
-                                    <br>
-                                    <span class="sc-2 " style="font-size: 80%;">
-                                          on <?php echo get_the_date(); ?>
-                                    </span>
-                              </div>
-                        </div>
-                        <?php
+                        get_template_part( 'tpl/parts/post-author-info' );
                   }
                   ?>
 
@@ -143,11 +134,13 @@
                         <?php
                   endif;
                   ?>
-
-
                   <?php
+                  if ( get_post_type() == 'artist' ) {
+                        get_template_part( 'tpl/parts/related-into-the-beat' );
+                  }
+
                   if ( in_array( get_post_type(), array( 'artist', 'label' ) ) ) {
-                        get_template_part( 'tpl/parts/related-podcasts' );
+                        get_template_part( 'tpl/parts/related-open-frequency' );
                   }
                   ?>
 
@@ -160,37 +153,41 @@
       </article>
 
 </section>
-<section class="group m5" >
-      <h2 class="m3">
-            <span class="cm-title2">
-                  <?php _e( 'Related Contents', 'cm' ) ?>
-            </span>
-      </h2>
-      <ul>
-            <?php
-            $args = array(
-                  'posts_per_page' => 4,
-                  'orderby' => 'rand',
-                  'post_type' => get_post_type(),
-                  'post__not_in' => array( get_queried_object_id() )
-            );
-            $query = new WP_Query( $args );
-            /* d( $query ); */
-            $ids = array();
-            while ( $query->have_posts() ) {
-                  $query->the_post();
-                  $ids[] = get_the_ID();
-                  ?>
-                  <li class="col-1-4 fl">
-                        <div class="ibox-3">
-                              <?php
-                              get_template_part( 'tpl/home/list-2' );
-                              ?>
-                        </div>
-                  </li>
+
+<?php
+$args = array(
+      'posts_per_page' => 4,
+      'orderby' => 'rand',
+      'post_type' => get_post_type(),
+      'post__not_in' => array( get_queried_object_id() )
+);
+$query = new WP_Query( $args );
+if ( $query->have_posts() ) {
+      ?>
+      <section class="group m5" >
+            <h2 class="m3">
+                  <span class="cm-title2">
+                        <?php _e( 'Related Contents', 'cm' ) ?>
+                  </span>
+            </h2>
+            <ul>
                   <?php
-            }
-            wp_reset_postdata();
-            ?>
-      </ul>     
-</section>
+                  while ( $query->have_posts() ) {
+                        $query->the_post();
+                        ?>
+                        <li class="col-1-4 fl">
+                              <div class="ibox-3">
+                                    <?php
+                                    get_template_part( 'tpl/home/list-2' );
+                                    ?>
+                              </div>
+                        </li>
+                        <?php
+                  }
+                  wp_reset_postdata();
+                  ?>
+            </ul>     
+      </section>
+      <?php
+}
+?>

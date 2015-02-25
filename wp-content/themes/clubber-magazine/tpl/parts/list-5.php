@@ -5,8 +5,43 @@
 ?>
 <article>
       <?php
-      $special = get_post_meta( get_the_ID(), 'soundcloud_special_guest', true );
-      if ( $special ) {
+      if ( is_post_type_archive( 'open-frequency' ) ) {
+            $args = array(
+                  'post_type' => 'artist',
+                  'post_status' => 'any',
+                  'posts_per_page' => 1,
+                  'connected_items' => get_post(),
+                  'connected_type' => 'open-frequency-to-artist',
+            );
+
+            $query2 = new WP_Query( $args );
+            ?>
+            <header class="m5">
+                  <div class="fr">
+                        by
+                        <a class="bold" href="<?php echo get_permalink( $query2->post->ID ); ?>">
+                              <?php echo $query2->post->post_title ?>
+                        </a>
+                  </div>
+                  <h2>
+                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+                              <?php
+                              $mytitle = get_the_title();
+                              if ( strlen( $mytitle ) > 65 ) {
+                                    $mytitle = substr( $mytitle, 0, 65 ) . '...';
+                              }
+                              echo $mytitle;
+                              ?>
+                        </a>
+                  </h2>
+            </header>
+
+            <hr class="pb5 cb">
+            <?php
+      }
+      ?>
+      <?php
+      if ( get_post_type() == 'into-the-beat' ) {
             ?>
             <div class="pr col-1">
                   <?php
@@ -24,11 +59,10 @@
                   <?php
                   $args = array(
                         'post_type' => 'artist',
-                        'lang' => 'es',
                         'posts_per_page' => 1,
                         'connected_items' => get_post(),
                         'nopaging' => true,
-                        'connected_type' => 'artists_to_podcasts',
+                        'connected_type' => 'into-the-beat-to-artist',
                   );
 
 

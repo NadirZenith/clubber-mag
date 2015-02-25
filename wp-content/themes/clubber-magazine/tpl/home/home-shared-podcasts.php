@@ -1,16 +1,14 @@
 <section class="m5">
       <div class="mb5">
             <?php
-            cm_home_list_title( 'podcast', __( 'Open Frequency', 'cm' ) );
+            cm_home_list_title( 'open-frequency', __( 'Open Frequency', 'cm' ) );
             ?>
       </div>
-      <div class="homeCustomScroll oh" style="height: 428px;">
+      <div class="homeCustomScroll oh" style="max-height: 455px;">
             <?php
             $args = array(
-                  'post_type' => 'podcast',
+                  'post_type' => 'open-frequency',
                   'posts_per_page' => 3,
-                  'meta_key' => 'soundcloud_special_guest',
-                  'meta_compare' => 'NOT EXISTS',
             );
             $query2 = new WP_Query( $args );
 
@@ -22,7 +20,13 @@
                               <div class="hover-2">
                                     <h2 class="ml5 sf-2">
                                           <a href="<?php the_permalink(); ?>">
-                                                <?php the_title() ?>
+                                                <?php
+                                                if ( get_the_title() ) {
+                                                      the_title();
+                                                } else {
+                                                      echo 'no name';
+                                                }
+                                                ?>
                                           </a>
                                     </h2>
                               </div>
@@ -43,7 +47,7 @@
             ?>
             <?php wp_reset_postdata(); ?>
       </div>
-      <?php cm_home_list_more( 'podcast', __( 'see more ...', 'cm' ) ) ?>
+      <?php cm_home_list_more( 'open-frequency', __( 'see more ...', 'cm' ) ) ?>
 
 </section>
 <script>

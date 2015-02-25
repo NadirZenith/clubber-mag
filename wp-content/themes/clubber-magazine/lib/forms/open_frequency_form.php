@@ -1,7 +1,7 @@
 <?php
 
-$form_name = 'podcast_form';
-$post_type = 'podcast';
+$form_name = 'open_frequency_form';
+$post_type = 'open-frequency';
 
 $PodcastForm = new NZ_WP_Form( $form_name, $post_type );
 /* $PodcastForm->addConfirmation( 'Sucesso' ); */
@@ -20,7 +20,7 @@ $PodcastForm->post_status = 'publish';
  */
 $slug = 'podcast_content';
 
-$PodcastForm->addContent( 'hidden', $slug,'' );
+$PodcastForm->addContent( 'hidden', $slug, '' );
 
 /**
  * Meta(text)
@@ -59,7 +59,6 @@ $PodcastForm->addSubmit( 'btn_submit', __( 'Share', 'cm' ) );
 /**
  *    render Callback
  */
-/* add_filter( 'nzwp_forms_shortcode_' . $form_name, 'nz_wp_podcast_form_render',10,2 ); */
 $PodcastForm->addCallback( 'render', 'nz_wp_podcast_form_render' );
 
 function nz_wp_podcast_form_render( $formhtml ) {
@@ -121,7 +120,15 @@ function nz_wp_podcast_form_valid( $nzforms ) {
       $uid = get_current_user_id();
       $main_resource_id = ( int ) get_user_meta( $uid, CM_USER_META_RESOURCE_ID, true );
 
-      $result = p2p_type( 'artists_to_podcasts' )->connect( $main_resource_id, $podcast_id, array(
+      $resource = get_post( $main_resource_id );
+
+      if ( $resource->post_type == 'label' ) {
+            $relation_type = 'open-frequency-to-label';
+      } elseif ( $resource->post_type == 'artist' ) {
+            $relation_type = 'open-frequency-to-artist';
+      }
+
+      $result = p2p_type( $relation_type )->connect( $main_resource_id, $podcast_id, array(
             'date' => current_time( 'mysql' )
                 ) );
 

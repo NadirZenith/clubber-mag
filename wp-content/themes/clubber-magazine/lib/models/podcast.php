@@ -15,14 +15,54 @@ $podcasts = new CPT( array(
       'has_archive' => 'podcasts'
           )
 );
-
-$podcasts->register_taxonomy( array(
-      'taxonomy_name' => 'podcast_type',
-      'singular' => __( 'Podcast type', 'cm' ),
-      'plural' => __( 'Podcast types', 'cm' ),
-      'slug' => 'podcasts'
+$into_the_beat = new CPT( array(
+      'post_type_name' => 'into-the-beat',
+      'singular' => __( 'Into the beat', 'cm' ),
+      'plural' => __( 'Into the beat', 'cm' ),
+      'slug' => 'into-the-beat'
+          ), array(
+      'supports' => array(
+            'title',
+            'editor',
+            'thumbnail',
+            'author',
+            'custom-fields'
+      ),
+      'has_archive' => true
           )
 );
+
+$open_frequency = new CPT( array(
+      'post_type_name' => 'open-frequency',
+      'singular' => __( 'Open Frequency', 'cm' ),
+      'plural' => __( 'Open Frequency', 'cm' ),
+      'slug' => 'open-frequency'
+          ), array(
+      'supports' => array(
+            'title',
+            'author',
+            'custom-fields'
+      ),
+      'has_archive' => true
+          )
+);
+add_action( 'p2p_init', 'cm_podcasts_connections' );
+
+function cm_podcasts_connections() {
+      p2p_register_connection_type( array(
+            'name' => 'into-the-beat-to-artist',
+            'from' => 'into-the-beat',
+            'to' => 'artist',
+            'admin_column' => 'from'
+      ) );
+
+      p2p_register_connection_type( array(
+            'name' => 'open-frequency-to-artist',
+            'from' => 'open-frequency',
+            'to' => 'artist',
+            'admin_column' => 'from'
+      ) );
+}
 
 //add soundcloud field scripts
 add_action( 'admin_enqueue_scripts', 'cm_podcast_load_scripts' );
@@ -34,15 +74,7 @@ function cm_podcast_load_scripts( $hook ) {
 
       // Register the script
       wp_register_script( 'soundcloud-api', 'http://connect.soundcloud.com/sdk.js' );
-
       wp_register_script( 'nzSCField', get_template_directory_uri() . '/assets/js/plugins/nzSCField.js' );
-
-      // Localize the script with new data
-      $translation_array = array(
-            'some_string' => __( 'Some string to translate', 'plugin-domain' ),
-            'a_value' => '10'
-      );
-      wp_localize_script( 'nzSCField', 'nzSCField_options', $translation_array );
 
       // Enqueued script with localized data.
       wp_enqueue_script( 'soundcloud-api' );
@@ -57,7 +89,7 @@ add_action( 'custom_metadata_manager_init_metadata', 'cm_podcast_custom_fields' 
 function cm_podcast_custom_fields() {
 
       $group = 'podcast_metabox';
-      $post_type = 'podcast';
+      $post_type = array( 'open-frequency', 'into-the-beat' );
 
       x_add_metadata_group( $group, $post_type, array(
             'label' => 'Podcast field group'
@@ -70,13 +102,6 @@ function cm_podcast_custom_fields() {
             'description' => 'Soundcloud Field',
             'display_callback' => 'nz_scfield_podcast',
                 /* 'display_column' => true */
-      ) );
-
-      x_add_metadata_field( 'soundcloud_special_guest', $post_type, array(
-            'group' => $group,
-            'field_type' => 'checkbox',
-            'label' => 'Special guest',
-            'display_column' => true
       ) );
 }
 
@@ -136,31 +161,3 @@ function nz_scfield_podcast( $field_slug, $field, $object_type, $object_id, $val
        */
 }
 
-/**
- * pre get podcast
- */
-add_action( 'pre_get_posts', 'cm_pre_get_podcast_archive' );
-
-function cm_pre_get_podcast_archive( $query ) {
-
-      if (
-                !$query->is_post_type_archive( 'podcast' ) ||
-                !$query->is_main_query() || $query->is_admin
-      )
-            return;
-      Roots_Wrapping::$raw = TRUE;
-      $query->set( 'orderby', "meta_value_num" );
-      /* $query->set( 'order', "ASC" ); */
-      $query->set( 'meta_key', "soundcloud_special_guest" );
-
-
-      $meta_query = array(
-            array(
-                  'key' => 'soundcloud_special_guest',
-                  'value' => 'on',
-                  'compare' => '='
-            )
-      );
-
-      $query->set( 'meta_query', $meta_query );
-}

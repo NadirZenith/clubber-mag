@@ -54,7 +54,7 @@ function nz_unregister_default_widgets() {
       unregister_widget( 'WP_Widget_Links' );
       unregister_widget( 'WP_Widget_Meta' );
       unregister_widget( 'WP_Widget_Search' );
-      /*unregister_widget( 'WP_Widget_Text' );*/
+      /* unregister_widget( 'WP_Widget_Text' ); */
       unregister_widget( 'WP_Widget_Categories' );
       unregister_widget( 'WP_Widget_Recent_Posts' );
       unregister_widget( 'WP_Widget_Recent_Comments' );
@@ -72,20 +72,20 @@ function cm_widgets_init() {
       register_sidebar( array(
             'id' => 'singular_sidebar',
             'name' => 'Singular sidebar',
-            'before_widget' => '<div class="ibox-5 mb15">',
-            'after_widget' => '</div>',
+            'before_widget' => '<div class="mb15 col-1 col-sm-1-2 col-md-1-3 col-lg-1 fl"><div class="ibox-5">',
+            'after_widget' => '</div></div>',
             'before_title' => '<h3 class="mb3">',
             'after_title' => '</h3>',
       ) );
       register_sidebar( array(
             'id' => 'banners_sidebar',
             'name' => 'Banners sidebar',
-            'before_widget' => '<div class="ibox-5 mb15">',
-            'after_widget' => '</div>',
+            'before_widget' => '<div class="mb15 col-1 col-sm-1-2 col-md-1-3 col-lg-1 fl"><div class="ibox-5">',
+            'after_widget' => '</div></div>',
             'before_title' => '<h3 class="mb3">',
             'after_title' => '</h3>',
       ) );
-      
+
       register_sidebar( array(
             'id' => 'archive_event_sidebar',
             'name' => 'Agenda sidebar',
@@ -94,7 +94,7 @@ function cm_widgets_init() {
             'before_title' => '<h3 class="mb3">',
             'after_title' => '</h3>',
       ) );
-      
+
       register_sidebar( array(
             'id' => 'single_event_sidebar',
             'name' => 'Event sidebar',

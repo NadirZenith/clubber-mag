@@ -1,19 +1,25 @@
 <?php
-$args = array(
-      'post_type' => 'podcast',
-      /* 'lang' => implode( ' ,', pll_languages_list() ), */
-      'posts_per_page' => 5,
-      'connected_items' => $resource,
-);
-
 if ( $resource->post_type == 'artist' )
-      $args[ 'connected_type' ] = 'artists_to_podcasts';
+      $connected_type = 'open-frequency-to-artist';
 elseif ( $resource->post_type == 'label' )
-      $args[ 'connected_type' ] = 'labels_to_podcasts';
+      $connected_type = 'open-frequency-to-label';
 
-if ( $curauth->ID == get_current_user_id() )
-      $args[ 'post_status' ] = 'any';
+$connections = p2p_get_connections( $connected_type, array(
+      'direction' => 'from',
+      'from' => 'any',
+      'to' => $resource,
+      'fields' => 'p2p_from',
+          ) );
 
+if ( empty( $connections ) )
+      return;
+
+$args = array(
+      'post_type' => array( 'open-frequency' ),
+      'posts_per_page' => 5,
+      'post__in' => $connections,
+      'post_author' => $curauth->ID,
+);
 $query2 = new WP_Query( $args );
 if ( $query2->have_posts() ) {
       ?>
@@ -38,7 +44,7 @@ if ( $query2->have_posts() ) {
                                                 <a class="fancybox" data-fancybox-type="ajax" href="<?php echo $resource_edit_url ?>" title="<?php _e( 'edit', 'cm' ) ?>"><i class="fa fa-pencil-square-o"></i></a> 
                                           </div>
                                     <?php } ?>
-                                   
+
                                     <div class="hover">
                                           <h2 class="ml5 sf-2">
                                                 <a href="<?php the_permalink(); ?>">
@@ -75,72 +81,6 @@ if ( $query2->have_posts() ) {
                   $(window).load(function() {
 
                         $(".homeCustomScroll").mCustomScrollbar();
-
-                        $(".homeCustomScroll2").mCustomScrollbar({
-                              setWidth: false,
-                              setHeight: false,
-                              setTop: 0,
-                              setLeft: 0,
-                              axis: "y",
-                              scrollbarPosition: "inside",
-                              scrollInertia: 950,
-                              autoDraggerLength: true,
-                              autoHideScrollbar: false,
-                              autoExpandScrollbar: false,
-                              alwaysShowScrollbar: 0,
-                              snapAmount: null,
-                              snapOffset: 0,
-                              mouseWheel: {
-                                    enable: true,
-                                    scrollAmount: "auto",
-                                    axis: "y",
-                                    preventDefault: false,
-                                    deltaFactor: "auto",
-                                    normalizeDelta: false,
-                                    invert: false,
-                                    disableOver: ["select", "option", "keygen", "datalist", "textarea"]
-                              },
-                              scrollButtons: {
-                                    enable: true,
-                                    /*scrollType: "stepped",*/
-                                    scrollType: "stepless",
-                                    scrollAmount: "auto"
-                                            /*scrollAmount: 100*/
-                              },
-                              keyboard: {
-                                    enable: true,
-                                    scrollType: "stepless",
-                                    scrollAmount: "auto"
-                              },
-                              contentTouchScroll: 25,
-                              advanced: {
-                                    autoExpandHorizontalScroll: false,
-                                    autoScrollOnFocus: "input,textarea,select,button,datalist,keygen,a[tabindex],area,object,[contenteditable='true']",
-                                    updateOnContentResize: true,
-                                    updateOnImageLoad: true,
-                                    updateOnSelectorChange: false,
-                                    releaseDraggableSelectors: false
-                              },
-                              theme: "light",
-                              callbacks: {
-                                    onInit: false,
-                                    onScrollStart: false,
-                                    onScroll: false,
-                                    onTotalScroll: false,
-                                    onTotalScrollBack: false,
-                                    whileScrolling: false,
-                                    onTotalScrollOffset: 0,
-                                    onTotalScrollBackOffset: 0,
-                                    alwaysTriggerOffsets: true,
-                                    onOverflowY: false,
-                                    onOverflowX: false,
-                                    onOverflowYNone: false,
-                                    onOverflowXNone: false
-                              },
-                              live: false,
-                              liveSelector: null
-                        });
-
 
                   });
             })(jQuery);

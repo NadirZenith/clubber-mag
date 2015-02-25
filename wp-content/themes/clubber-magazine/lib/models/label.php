@@ -15,9 +15,9 @@ $labels = new CPT( array(
 add_action( 'p2p_init', 'cm_labels_connections' );
 
 function cm_labels_connections() {
-     p2p_register_connection_type( array(
-            'name' => 'labels_to_podcasts',
-            'from' => 'label',
-            'to' => 'podcast'
+      p2p_register_connection_type( array(
+            'name' => 'open-frequency-to-labels',
+            'from' => 'open-frequency',
+            'to' => 'label'
       ) );
 }
