@@ -130,7 +130,7 @@ function cm_pre_get_page_new_podcast( $query ) {
             return;
       }
 
-      if ( !is_user_logged_in() ) {
+      if ( !is_user_logged_in() || !nz_is_ajax() ) {
             $query->set_404();
             return;
       }
