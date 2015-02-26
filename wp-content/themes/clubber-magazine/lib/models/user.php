@@ -298,7 +298,7 @@ foreach ( array( 'edit.php', 'post.php' ) as $hook )
 
 function wpse39084_replace_post_meta_author() {
       global $typenow;
-      if ( 'open-frequency' != $typenow )
+      if ( !in_array( $typenow, array( 'open-frequency', 'artist', 'label', 'cool-place', 'agenda' ) ) )
             return;
 
       add_action( 'admin_menu', 'wpse50827_author_metabox_remove' );
