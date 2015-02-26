@@ -7,7 +7,7 @@
       <link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/assets/images/favicon.ico" type="image/x-icon" />
 
       <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
-
+      <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 
       <?php
       wp_head();
@@ -15,7 +15,7 @@
 </head>
 <?php
 /*
-      <link rel="stylesheet" type="text/css" href="//cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css"/>
+  <link rel="stylesheet" type="text/css" href="//cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css"/>
   //spot th v3.exp from experimental
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
   //attitude
