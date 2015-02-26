@@ -6,7 +6,7 @@ $labels = new CPT( array(
       'plural' => __( 'Labels', 'cm' ),
       'slug' => 'label'
           ), array(
-      'supports' => array( 'title', 'editor', 'thumbnail', 'author' ),
+      'supports' => array( 'title', 'editor', 'thumbnail' ),
       'has_archive' => 'labels'
           )
 );

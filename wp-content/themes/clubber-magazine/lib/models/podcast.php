@@ -1,20 +1,4 @@
 <?php
-$podcasts = new CPT( array(
-      'post_type_name' => 'podcast',
-      'singular' => __( 'Podcast', 'cm' ),
-      'plural' => __( 'Podcasts', 'cm' ),
-      'slug' => 'podcast'
-          ), array(
-      'supports' => array(
-            'title',
-            'editor',
-            'thumbnail',
-            /*'author',*/
-            'custom-fields'
-      ),
-      'has_archive' => 'podcasts'
-          )
-);
 $into_the_beat = new CPT( array(
       'post_type_name' => 'into-the-beat',
       'singular' => __( 'Into the beat', 'cm' ),
@@ -25,7 +9,7 @@ $into_the_beat = new CPT( array(
             'title',
             'editor',
             'thumbnail',
-            /*'author',*/
+            'author',
             'custom-fields'
       ),
       'has_archive' => true
@@ -40,7 +24,6 @@ $open_frequency = new CPT( array(
           ), array(
       'supports' => array(
             'title',
-            /*'author',*/
             'custom-fields'
       ),
       'has_archive' => true
@@ -160,4 +143,3 @@ function nz_scfield_podcast( $field_slug, $field, $object_type, $object_id, $val
         $scripts .= '}); </script>';
        */
 }
-

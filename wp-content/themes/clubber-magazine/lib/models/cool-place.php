@@ -5,7 +5,7 @@ $cool_places = new CPT( array(
       'plural' => __( 'Cool Places', 'cm' ),
       'slug' => 'cool-place'
           ), array(
-      'supports' => array( 'title', 'editor', 'thumbnail', 'author', 'custom-fields' ),
+      'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
       'has_archive' => 'cool-places'
           )
 );
