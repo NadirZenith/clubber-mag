@@ -8,7 +8,6 @@
 
       <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
 
-      <link rel="stylesheet" type="text/css" href="//cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css"/>
 
       <?php
       wp_head();
@@ -16,6 +15,7 @@
 </head>
 <?php
 /*
+      <link rel="stylesheet" type="text/css" href="//cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css"/>
   //spot th v3.exp from experimental
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
   //attitude
