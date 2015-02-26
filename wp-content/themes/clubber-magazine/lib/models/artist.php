@@ -6,7 +6,7 @@ $artists = new CPT( array(
       'plural' => __( 'Artists', 'cm' ),
       'slug' => 'artista'
           ), array(
-      'supports' => array( 'title', 'editor', 'thumbnail', 'author'
+      'supports' => array( 'title', 'editor', 'thumbnail'
             , 'custom-fields'
       ),
       'has_archive' => 'artistas'
