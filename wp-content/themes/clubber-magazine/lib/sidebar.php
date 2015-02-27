@@ -44,65 +44,17 @@ class Roots_Sidebar {
 
 }
 
-// unregister default widgets
-add_action( 'widgets_init', 'nz_unregister_default_widgets', 11 );
-
-function nz_unregister_default_widgets() {
-      unregister_widget( 'WP_Widget_Pages' );
-      unregister_widget( 'WP_Widget_Calendar' );
-      unregister_widget( 'WP_Widget_Archives' );
-      unregister_widget( 'WP_Widget_Links' );
-      unregister_widget( 'WP_Widget_Meta' );
-      unregister_widget( 'WP_Widget_Search' );
-      /* unregister_widget( 'WP_Widget_Text' ); */
-      unregister_widget( 'WP_Widget_Categories' );
-      unregister_widget( 'WP_Widget_Recent_Posts' );
-      unregister_widget( 'WP_Widget_Recent_Comments' );
-      unregister_widget( 'WP_Widget_RSS' );
-      unregister_widget( 'WP_Widget_Tag_Cloud' );
-      unregister_widget( 'WP_Nav_Menu_Widget' );
-}
-
 /**
- * Register our sidebars and widgetized areas.
- *
+ * .main classes
  */
-function cm_widgets_init() {
+function roots_main_class() {
+      if ( roots_display_sidebar() ) {
+            // Classes on pages with the sidebar
+            $class = 'has-sidebar';
+      } else {
+            // Classes on full width pages
+            $class = 'no-sidebar';
+      }
 
-      register_sidebar( array(
-            'id' => 'singular_sidebar',
-            'name' => 'Singular sidebar',
-            'before_widget' => '<div class="mb15 col-1 col-sm-1-2 col-md-1-3 col-lg-1 fl"><div class="ibox-5">',
-            'after_widget' => '</div></div>',
-            'before_title' => '<h3 class="mb3">',
-            'after_title' => '</h3>',
-      ) );
-      register_sidebar( array(
-            'id' => 'banners_sidebar',
-            'name' => 'Banners sidebar',
-            'before_widget' => '<div class="mb15 col-1 col-sm-1-2 col-md-1-3 col-lg-1 fl"><div class="ibox-5">',
-            'after_widget' => '</div></div>',
-            'before_title' => '<h3 class="mb3">',
-            'after_title' => '</h3>',
-      ) );
-
-      register_sidebar( array(
-            'id' => 'archive_event_sidebar',
-            'name' => 'Agenda sidebar',
-            'before_widget' => '<div class="ibox-5 mb15">',
-            'after_widget' => '</div>',
-            'before_title' => '<h3 class="mb3">',
-            'after_title' => '</h3>',
-      ) );
-
-      register_sidebar( array(
-            'id' => 'single_event_sidebar',
-            'name' => 'Event sidebar',
-            'before_widget' => '<div class="ibox-5 mb15">',
-            'after_widget' => '</div>',
-            'before_title' => '<h3 class="mb3">',
-            'after_title' => '</h3>',
-      ) );
+      return apply_filters( 'roots/main_class', $class );
 }
-
-add_action( 'widgets_init', 'cm_widgets_init' );

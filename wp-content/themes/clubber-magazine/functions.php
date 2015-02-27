@@ -28,11 +28,11 @@ define( 'CM_RESOURCE_COOLPLACE_FAST_PAGE_ID', 4915 );
 define( 'CM_RESOURCE_PODCAST_PAGE_ID', 4916 );
 //\pages
 //metafields
-define( 'CM_META_MAPA', 'coolplace_mapaddress');
-define( 'CM_META_SOUNDCLOUD', 'soundcloud_url');
+define( 'CM_META_MAPA', 'coolplace_mapaddress' );
+define( 'CM_META_SOUNDCLOUD', 'soundcloud_url' );
 
 //user meta
-define( 'CM_USER_META_RESOURCE_ID', 'main_resource_id');
+define( 'CM_USER_META_RESOURCE_ID', 'main_resource_id' );
 //\metafields
 /**
  * Roots includes
@@ -97,13 +97,14 @@ $roots_includes = array(
       //forms /login /register
       'lib/nz/lib/nz-wp-form/nz-wp-forms.php',
       //
-      /*'lib/nz/lib/debug/nz-url-functions.php',*/
-      /*'lib/nz/lib/debug/nz-debug-functions.php',*/
-      /*'lib/nz//lib/debug/css-media-queries.php',*/
+      /* 'lib/nz/lib/debug/nz-url-functions.php', */
+      /* 'lib/nz/lib/debug/nz-debug-functions.php', */
+      /* 'lib/nz//lib/debug/css-media-queries.php', */
       //
       /* CM_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php', */
-       /*CM_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php', */
+      /* CM_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php', */
       /** CLUBBER add-ons      */
+      CM_ADDONS_DIR . '/nz-start-msgs/NzStartMsgs.php',
       CM_ADDONS_DIR . '/todo-pending-posts.php',
       CM_ADDONS_DIR . '/query-functions.php',
       CM_ADDONS_DIR . '/search-query.php',

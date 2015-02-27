@@ -35,7 +35,7 @@ $query2 = new WP_Query( $args );
                   </a>
             </h2>
       </header>
-      <div class="bg-50 block-5">
+      <div id="user-profile-agenda" class="bg-50 block-5">
 
             <?php
             if ( $query2->have_posts() ) {

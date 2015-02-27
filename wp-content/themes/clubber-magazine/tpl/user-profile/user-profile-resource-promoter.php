@@ -48,7 +48,7 @@ if ( $query->have_posts() ) {
                   </h2>
             </header>
 
-            <div class="bg-50 block-5">
+            <div id="user-profile-promoter" class="bg-50 block-5">
                   <ul class="group">
                         <?php
                         while ( $query->have_posts() ) {

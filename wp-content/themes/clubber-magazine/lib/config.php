@@ -7,7 +7,9 @@ add_theme_support( 'soil-clean-up' );         // Enable clean up from Soil
 add_theme_support( 'soil-nice-search' );      // Enable /?s= to /search/ redirect from Soil
 add_theme_support( 'soil-disable-trackbacks' );      // disables X-Pingback header 
 add_theme_support( 'jquery-cdn' );            // Enable to load jQuery from the Google CDN 
+add_theme_support( 'post-thumbnails' );
 /* add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil. See :https://yoast.com/relative-urls-issues/ */
+//add_theme_support( 'automatic-feed-links' );
 /* add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery] */
 /* add_theme_support('html5', array('gallery'));     // Enable NZ Bootstrap Gallery */
 //add_theme_support( 'nz-bootstrap-gallery' );     // Enable NZ Bootstrap Gallery
@@ -31,20 +33,6 @@ function my_theme_setup() {
  */
 define( 'GOOGLE_ANALYTICS_ID', 'UA-49721787-1' ); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
 
-/**
- * .main classes
- */
-function roots_main_class() {
-      if ( roots_display_sidebar() ) {
-            // Classes on pages with the sidebar
-            $class = 'has-sidebar';
-      } else {
-            // Classes on full width pages
-            $class = 'no-sidebar';
-      }
-
-      return apply_filters( 'roots/main_class', $class );
-}
 
 /**
  * .sidebar classes
@@ -114,13 +102,6 @@ function add_used_vars( $vars ) {
 }
 
 // Add default posts and comments RSS feed links to head
-//add_theme_support( 'automatic-feed-links' );
-// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page.
-add_theme_support( 'post-thumbnails' );
-
-
-// Remove WordPress version from header for security concern
-remove_action( 'wp_head', 'wp_generator' );
 
 // This theme uses wp_nav_menu() in header menu location.
 register_nav_menu( 'primary', __( 'Primary Menu', 'cm' ) );
@@ -170,3 +151,48 @@ function clubber_register_image_sizes() {
       add_image_size( '650-300-thumb', 650, 300, true ); //podcast photo
       add_image_size( '1000-450-thumb', 1000, 450, true ); // single
 }
+
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ */
+add_action( 'widgets_init', 'cm_widgets_init' );
+
+function cm_widgets_init() {
+
+      register_sidebar( array(
+            'id' => 'singular_sidebar',
+            'name' => 'Singular sidebar',
+            'before_widget' => '<div class="mb15 col-1 col-sm-1-2 col-md-1-3 col-lg-1 fl"><div class="ibox-5">',
+            'after_widget' => '</div></div>',
+            'before_title' => '<h3 class="mb3">',
+            'after_title' => '</h3>',
+      ) );
+      register_sidebar( array(
+            'id' => 'banners_sidebar',
+            'name' => 'Banners sidebar',
+            'before_widget' => '<div class="mb15 col-1 col-sm-1-2 col-md-1-3 col-lg-1 fl"><div class="ibox-5">',
+            'after_widget' => '</div></div>',
+            'before_title' => '<h3 class="mb3">',
+            'after_title' => '</h3>',
+      ) );
+
+      register_sidebar( array(
+            'id' => 'archive_event_sidebar',
+            'name' => 'Agenda sidebar',
+            'before_widget' => '<div class="ibox-5 mb15">',
+            'after_widget' => '</div>',
+            'before_title' => '<h3 class="mb3">',
+            'after_title' => '</h3>',
+      ) );
+
+      register_sidebar( array(
+            'id' => 'single_event_sidebar',
+            'name' => 'Event sidebar',
+            'before_widget' => '<div class="ibox-5 mb15 single_event_sidebar_item">',
+            'after_widget' => '</div>',
+            'before_title' => '<h3 class="mb3">',
+            'after_title' => '</h3>',
+      ) );
+}
+

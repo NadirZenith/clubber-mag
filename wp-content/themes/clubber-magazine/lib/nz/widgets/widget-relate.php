@@ -66,18 +66,19 @@ class Relate_Widget extends WP_Widget {
                         <?php _e( 'Join and share', 'cm' ); ?>
                   </span>
             </div>
+            <div id="user-event-signin">
+                  <div class="cm-relation" id="cm-relation-<?php echo $relation_type ?>">
 
-            <div class="cm-relation" id="cm-relation-<?php echo $relation_type ?>">
+                        <a class="relate-btn sc-2 <?php echo $class ?>" >
+                              <span class="r-icon"></span>
+                              <span class="r-text"><?php echo $name ?></span>
+                        </a>
 
-                  <a class="relate-btn sc-2 <?php echo $class ?>" >
-                        <span class="r-icon"></span>
-                        <span class="r-text"><?php echo $name ?></span>
-                  </a>
-
-                  <a class="view-relation-btn" title="<?php _e( 'Going!', 'cm' ) ?>" href="#" <?php echo $total_style ?>>
-                        <span class="r-count"><?php echo $total ?></span>
-                  </a>
-                  <div class="loading" style="height:3px;"></div>
+                        <a class="view-relation-btn" title="<?php _e( 'Going!', 'cm' ) ?>" href="#" <?php echo $total_style ?>>
+                              <span class="r-count"><?php echo $total ?></span>
+                        </a>
+                        <div class="loading" style="height:3px;"></div>
+                  </div>
             </div>
             <div class="group mt10 pb10 ml10" >
                   <?php get_template_part( 'tpl/parts/sharer' ); ?>

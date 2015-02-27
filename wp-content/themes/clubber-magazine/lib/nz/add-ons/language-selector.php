@@ -1,21 +1,5 @@
 <?php
 
-/* add_filter( 'locale', 'set_my_locale', 19 ); */
-
-function set_my_locale( $lang ) {
-
-      if ( isset( $_GET[ 'lang' ] ) ) {
-
-            if ( 'en' == $_GET[ 'lang' ] ) {
-                  $lang = 'en_US';
-            } elseif ( 'es' == $_GET[ 'lang' ] ) {
-                  $lang = 'es_ES';
-            }
-      }
-
-      return $lang;
-}
-
 Class NzWpLang {
 
       public $options;
@@ -252,9 +236,3 @@ function nz_wp_language_selector( $args = array() ) {
       /* $("#lang_choice").select2(); */
 }
 
-/* add_filter('locale', 'test_locale'); */
-
-function test_locale() {
-      return 'es_ES';
-      return 'en_US';
-}
