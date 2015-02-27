@@ -54,6 +54,7 @@ class NzStartMsgs {
             </script>
             <style>
                   .nz-start-msg-wrap{
+                        clear: both;
                         width: 95%;
                         margin: 5px auto;
                         padding: 5px;
