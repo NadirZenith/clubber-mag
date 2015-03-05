@@ -236,8 +236,9 @@ function cm_start_msgs() {
             'msgs' => array(
                   array(
                         'container' => '#user-profile-promoter',
-                        'msg' => 'mensagem acerca de los eventos de usuário',
-                        'btnText' => 'finish',
+                        'msg' => '<p>Aquí encontrarás tú recurso de usuario.  Como Promotor podrás crear y compartir tus eventos '
+                        . 'de forma directa con la comunidad.</p>',
+                        'btnText' => '¡Vale, gracias! Voy a crear más eventos.',
                   )
             )
       );
