@@ -10,7 +10,7 @@ $resource_type = get_post_type_object( $resource->post_type );
                   </a>
             </h2>
       </header>
-      <div class="bg-50 block-5">
+      <div id="user-profile-<?php echo $resource->post_type ?>" class="bg-50 block-5">
             <article class="mb5 cb group pr">
                   <div class="col-1-2 fl pr">
                         <a class="featured-image" href="<?php echo get_permalink( $resource->ID ) ?>">
@@ -26,7 +26,7 @@ $resource_type = get_post_type_object( $resource->post_type );
                                     /* $link = get_permalink( cm_lang_get_post( constant( CM_RESOURCE_ . strtoupper( str_replace( '-', '', $resource->post_type ) ) . _PAGE_ID ) ) ); */
                                     $resource_edit_url = NZ_WP_Forms::link( $link, $resource->ID );
                                     ?>
-                                    <a href="<?php echo $resource_edit_url ?>" title="<?php _e( 'edit', 'cm')?>"><i class="fa fa-pencil-square-o"></i></a> 
+                                    <a href="<?php echo $resource_edit_url ?>" title="<?php _e( 'edit', 'cm' ) ?>"><i class="fa fa-pencil-square-o"></i></a> 
                               <?php endif; ?>
                         </div>
                   </div>
@@ -81,5 +81,3 @@ $resource_type = get_post_type_object( $resource->post_type );
       </div>
 
 </section>
-<?php
-?>
