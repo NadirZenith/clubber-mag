@@ -532,7 +532,7 @@ class CPT {
 
             // merge default options with user submitted options
             $options = array_replace_recursive( $defaults, $options );
-/*d($options);*/
+
             // add the taxonomy to the object array
             // this is used to add columns and filters to admin pannel
             $this->taxonomies[] = $taxonomy_name;
