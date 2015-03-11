@@ -9,13 +9,3 @@ License URI: http://www.clubber-mag.com
 Tags: electronic music, 
 Text Domain: cm
 
-
-//change post type names
-UPDATE `wp_posts`
-SET `post_type` = REPLACE(`post_type`,'old','new')
-WHERE `post_type` LIKE '%old%'
-
-//next
-UPDATE `wp_posts`
-SET `guid` = REPLACE(`guid`,'old','new')
-WHERE `guid` LIKE '%old%'
