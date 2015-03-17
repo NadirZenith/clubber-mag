@@ -19,10 +19,10 @@ $cool_places->register_taxonomy( array(
 );
 
 $cool_places->register_taxonomy( array(
-      'taxonomy_name' => 'city',
-      'singular' => __( 'City', 'cm' ),
-      'plural' => __( 'Cities', 'cm' ),
-      'slug' => 'ciudad' )
+      'taxonomy_name' => 'location',
+      'singular' => __( 'Location', 'cm' ),
+      'plural' => __( 'Locations', 'cm' ),
+      'slug' => 'location' )
 );
 
 //add map field scripts
@@ -63,8 +63,8 @@ function cm_coolplace_custom_fields() {
             'description' => 'mapa',
             'display_callback' => 'nz_gmfield_coolplace'
       ) );
-      
-       x_add_metadata_field( 'featured', $post_types, array(
+
+      x_add_metadata_field( 'featured', $post_types, array(
             'group' => $group,
             'label' => 'Destacado',
             'field_type' => 'checkbox',
@@ -147,6 +147,10 @@ function cm_coolplace_set_category( $post_ID ) {
 }
 
 function set_map_terms( $map_info, $post_id ) {
+      $taxonomy = 'location';
+      $current_terms = wp_get_object_terms( $post_id, $taxonomy );
+      if ( !empty( $current_terms ) )
+            return;
 
       $city = (isset( $map_info[ 'components' ][ 'city' ] )) ? $map_info[ 'components' ][ 'city' ] : null;
       $county = (isset( $map_info[ 'components' ][ 'county' ] )) ? $map_info[ 'components' ][ 'county' ] : null;
@@ -154,7 +158,6 @@ function set_map_terms( $map_info, $post_id ) {
 
       //user input city
       if ( $city ) {
-            $taxonomy = 'city';
             $city_term = term_exists( strtolower( $city ), $taxonomy );
             if ( !$city_term ) {
                   $city_term = wp_insert_term(

@@ -1,0 +1,121 @@
+AD:Andorra
+AT:Austria
+BE:Belgium
+BG:Bulgaria
+HR:Croatia
+CZ:Czech Republic
+DK:Denmark
+EE:Estonia
+FI:Finland
+FR:France
+DE:Germany
+GI:Gibraltar
+GR:Greece
+HU:Hungary
+IS:Iceland
+IE:Ireland
+IT:Italy
+LU:Luxembourg
+MC:Monaco
+NL:Netherlands
+NO:Norway
+PL:Poland
+PT:Portugal
+RO:Romania
+RU:Russia
+ES:Spain
+SE:Sweden
+CH:Switzerland
+UA:Ukraine
+GB:United Kingdom
+AU:Australia
+NZ:New Zealand
+ZA:South Africa
+AR:Argentina
+UY:Uruguay
+BR:Brazil
+CA:Canada
+CL:Chile
+CO:Colombia
+JM:Jamaica
+PY:Paraguay
+MX:Mexico
+PE:Peru
+IN:India
+IL:Israel
+JP:Japan
+KW:Kuwait
+TH:Thailand
+#DZ:Algeria
+#AO:Angola
+#EG:Egypt
+#KE:Kenya
+#MW:Malawi
+#MU:Mauritius
+#MA:Morocco
+#MZ:Mozambique
+#NG:Nigeria
+#SC:Seychelles
+#TZ:Tanzania
+#TN:Tunisia
+#UG:Uganda
+#ZW:Zimbabwe
+#BS:Bahamas
+#BB:Barbados
+#BZ:Belize
+#BM:Bermuda
+#BO:Bolivia
+#KY:Cayman Islands
+#CR:Costa Rica
+#CU:Cuba
+#DO:Dominican Republic
+#EC:Ecuador
+#SV:El Salvador
+#GT:Guatemala
+#HN:Honduras
+#NI:Nicaragua
+#PA:Panama
+#PR:Puerto Rico
+#VE:Venezuela
+#AM:Armenia
+#AZ:Azerbaijan
+#BH:Bahrain
+#BD:Bangladesh
+#KH:Cambodia
+#CN:China
+#CY:Cyprus
+#GE:Georgia
+#ID:Indonesia
+#IR:Iran
+#JO:Jordan
+#KZ:Kazakhstan
+#LB:Lebanon
+#MY:Malaysia
+#MN:Mongolia
+#NP:Nepal
+#OM:Oman
+#PK:Pakistan
+#PH:Philippines
+#QA:Qatar
+#SA:Saudi Arabia
+#SG:Singapore
+#KR:South Korea
+#LK:Sri Lanka
+#TW:Taiwan
+#TR:Turkey
+#AE:United Arab Emirates
+#UZ:Uzbekistan
+#VN:Vietnam
+#AL:Albania
+#BY:Belarus
+#BA:Bosnia and Herzegovina
+#LV:Latvia
+#LT:Lithuania
+#MK:Macedonia
+#MT:Malta
+#MD:Moldova
+#ME:Montenegro
+#RS:Serbia
+#SK:Slovakia
+#SI:Slovenia
+#GU:Guam

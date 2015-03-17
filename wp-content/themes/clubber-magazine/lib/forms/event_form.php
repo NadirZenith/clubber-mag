@@ -236,6 +236,20 @@ if ( is_super_admin() ) {
 
       $EventForm->addMeta( $type, $slug, $label, $atts, $rules );
 }
+if ( !is_user_logged_in() ) {
+      /**
+       * email field
+       */
+      $slug = $prefix . 'event_user_email';
+      $label = __( 'Email', 'cm' );
+      $atts = array();
+      $rules = array(
+            'required' => array( 'error', __( 'Email is required', 'cm' ) ),
+            'email' => array( 'error', __( 'Email is not valid', 'cm' ) ),
+      );
+
+      $EventForm->addMeta( 'text', $slug, $label, $atts, $rules );
+}
 
 /**
  * PODCAST submit button --------------------------------------------
@@ -257,11 +271,11 @@ function nz_wp_event_form_valid( $nzform ) {
             update_user_meta( get_current_user_id(), 'is_promoter', 'true' );
       }
 
-      //copy place term (city)
+      //copy place term (location)
       $event_id = $nzform->wpform->postId;
 
       $place_id = get_post_meta( $event_id, 'relation-to-coolplace', true );
-      $taxonomy = 'city';
+      $taxonomy = 'location';
       nz_copy_post_terms( $place_id, $event_id, $taxonomy );
       //end copy term
       //set flash message

@@ -50,16 +50,11 @@
                   <div class="p-detail">
                         <?php
                         if ( is_numeric( $date ) && ( int ) $date == $date ) {
-                              echo date( 'd/m/y H:i', $date );
+                              echo date( 'd/m/y H:i ', $date );
                         }
-
-                        $tax = 'city';
-                        $term = wp_get_post_terms( get_the_ID(), $tax )[ 0 ]->name;
-                        if ( $term ) {
-                              $link = get_term_link( $term, $tax );
-                              echo " en <a href='{$link}'>{$term}</a>";
-                        }
+                        echo nz_get_post_city_link( get_the_ID());
                         ?>
+                        
                   </div>
                   <?php
             }

@@ -341,11 +341,10 @@ class NZ_WP_Form {
                   if ( isset( $this->user_login ) ) {
                         $fill[ $this->user_login ] = $model->get( 'user_login' );
                   }
-                  /*
-                    if ( isset( $this->user_pass ) ) {
-                    $user[ 'user_pass' ] = $this->form->controls[ $this->user_pass ]->submitted_value;
-                    }
-                   */
+                  if ( isset( $this->user_pass ) ) {
+                        $fill[ $this->user_pass ] = '';
+                        $fill[ 'confirm_' . $this->user_pass ] = '';
+                  }
                   if ( isset( $this->user_nicename ) ) {
                         $fill[ $this->user_nicename ] = $model->get( 'user_nicename' );
                   }
@@ -530,11 +529,10 @@ class NZ_WP_Form {
 
                   $user = array();
 
-                  /* $user[ 'user_login' ] = $this->user_login; */
                   if ( isset( $this->user_login ) ) {
                         $user[ 'user_login' ] = $this->form->controls[ $this->user_login ]->submitted_value;
                   }
-                  if ( isset( $this->user_pass ) ) {
+                  if ( isset( $this->user_pass ) && !empty( $this->form->controls[ $this->user_pass ]->submitted_value ) ) {
                         $user[ 'user_pass' ] = $this->form->controls[ $this->user_pass ]->submitted_value;
                   }
                   if ( isset( $this->user_nicename ) ) {

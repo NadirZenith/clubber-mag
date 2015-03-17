@@ -11,20 +11,21 @@ $events = new CPT( array(
       'has_archive' => TRUE
           )
 );
+/*
+  $events->register_taxonomy( array(
+  'taxonomy_name' => 'city',
+  'singular' => __( 'City', 'cm' ),
+  'plural' => __( 'Cities', 'cm' ),
+  'slug' => 'ciudad'
+  )
+  );
+ */
 
 $events->register_taxonomy( array(
-      'taxonomy_name' => 'city',
-      'singular' => __( 'City', 'cm' ),
-      'plural' => __( 'Cities', 'cm' ),
-      'slug' => 'ciudad'
-          )
-);
-
-$events->register_taxonomy( array(
-      'taxonomy_name' => 'country',
-      'singular' => __( 'Country', 'cm' ),
-      'plural' => __( 'Countries', 'cm' ),
-      'slug' => 'country'
+      'taxonomy_name' => 'location',
+      'singular' => __( 'Location', 'cm' ),
+      'plural' => __( 'Locations', 'cm' ),
+      'slug' => 'location'
           )
 );
 
@@ -113,44 +114,63 @@ add_action( 'pre_get_posts', 'cm_pre_get_archive_agenda' );
 function cm_pre_get_archive_agenda( $query ) {
 
       if (
-                !$query->is_main_query() || $query->is_admin
+                !$query->is_main_query() || $query->is_admin || !$query->is_post_type_archive( 'agenda' )
       )
             return;
 
-      if (
-                $query->is_post_type_archive( 'agenda' ) ||
-                $query->is_tax( 'city' )
-      ) {
 
-            Roots_Wrapping::$raw = TRUE;
-            $query->set( 'posts_per_page', -1 );
-            $query->set( 'post_type', "agenda" );
+      Roots_Wrapping::$raw = TRUE;
+      $query->set( 'posts_per_page', -1 );
+      $query->set( 'post_type', "agenda" );
 
-            $query->set( 'orderby', "meta_value_num" );
-            $query->set( 'meta_key', "wpcf-event_begin_date" );
-            $query->set( 'order', "ASC" );
+      $query->set( 'orderby', "meta_value_num" );
+      $query->set( 'meta_key', "wpcf-event_begin_date" );
+      $query->set( 'order', "ASC" );
 
-            $start_date = strtotime( "now" );
+      $start_date = strtotime( "now" );
 
-            $date = get_query_var( 'date' );
-            $DateTime = DateTime::createFromFormat( 'd-m-Y', $date );
-            if ( $DateTime ) {
-                  $DateTime->setTime( 0, 0, 0 ); //to avoid date problems
-                  $start_date = $DateTime->getTimestamp();
-            }
-
-            $end_date = strtotime( '+ 1 week', $start_date );
-            $prev_date = strtotime( '- 1 week', $start_date );
-
-            $meta_query = array(
-                  array(
-                        'key' => 'wpcf-event_begin_date',
-                        'value' => array( $start_date, $end_date ),
-                        'type' => 'NUMERIC',
-                        'compare' => 'BETWEEN'
-                  )
-            );
-
-            $query->set( 'meta_query', $meta_query );
+      $date = get_query_var( 'date' );
+      $DateTime = DateTime::createFromFormat( 'd-m-Y', $date );
+      if ( $DateTime ) {
+            $DateTime->setTime( 0, 0, 0 ); //to avoid date problems
+            $start_date = $DateTime->getTimestamp();
       }
+
+      $end_date = strtotime( '+ 1 week', $start_date );
+
+      $date_meta_query = array(
+            'key' => 'wpcf-event_begin_date',
+            'value' => array( $start_date, $end_date ),
+            'type' => 'NUMERIC',
+            'compare' => 'BETWEEN'
+      );
+
+      $meta_query = array(
+            $date_meta_query,
+      );
+      $query->set( 'meta_query', $meta_query );
+
+      $taxonomy = 'location';
+      $country_slug = get_query_var( 'country', 'es' );
+
+      $country = get_term_by( 'slug', $country_slug, $taxonomy );
+      $cities = get_terms( $taxonomy, array( 'parent' => $country->term_id, 'hide_empty' => FALSE, 'orderby' => 'count', 'order' => 'DESC' ) );
+      $query->set( '_cities', $cities );
+
+      $city = get_query_var( 'city' );
+      if ( empty( $city ) ) {
+            $city = $cities[ 0 ]->slug;
+      }
+
+      $city_tax_query = array(
+            'taxonomy' => $taxonomy,
+            'field' => 'slug',
+            'terms' => $city
+      );
+
+      $tax_query = array(
+            $city_tax_query,
+      );
+
+      $query->set( 'tax_query', $tax_query );
 }

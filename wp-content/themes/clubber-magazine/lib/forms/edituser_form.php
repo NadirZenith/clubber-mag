@@ -61,6 +61,24 @@ function cm_set_user_background_image( $file ) {
 $UserForm->addImage( $slug, $label, $atts );
 
 /**
+ * pass field(unrelated to post)
+ */
+$slug = 'edit_password';
+$label = __( 'Password', 'cm' );
+$atts = array(
+      /* 'value' => '', */
+      'confirm' => true,
+      'confirm_error' => __( 'Password does not match', 'cm' ),
+);
+$rules = array(
+      /* 'required' => array( 'error', __( 'Password is required', 'cm' ) ), */
+      'length' => array( 6, 16, 'error', __( 'The password must have between 6 and 16 characters', 'cm' ) ),
+);
+
+$UserForm->addUserPass( $slug, $label, $atts, $rules );
+
+
+/**
  * Description field
  */
 $slug = 'edit_description';
@@ -119,12 +137,21 @@ foreach ( $socials as $network => $description ) {
 }
 
 /* END CONTACT FIELDS */
-
+$slug = 'lang';
+$label = __( 'Locale', 'cm' );
+$atts = array(
+      'value' => 'test',
+      'options' => array(
+            'es_ES' => 'espanhol',
+            'en_US' => 'english'
+      )
+);
+$UserForm->addMeta( 'radios', $slug, $label, $atts );
 
 /* * _nz_user_profile_images
  * pass field(unrelated to post)
  */
-$slug = 'register_password';
+$slug = 'edit_password';
 $label = __( 'Password', 'cm' );
 $atts = array(
       'confirm' => true,

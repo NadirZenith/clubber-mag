@@ -97,6 +97,9 @@ function add_used_vars( $vars ) {
       $vars[] = "action"; //
       $vars[] = "date"; //
       $vars[] = "type"; //
+      $vars[] = "country"; //
+      $vars[] = "city"; //
+
       //$vars[] = "child"; //
       return $vars;
 }

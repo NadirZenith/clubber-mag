@@ -1,22 +1,22 @@
-
-<?php
-$tax = 'city';
-if ( is_tax( $tax ) ) {
-      global $wp_query;
-      $term = $wp_query->get_queried_object();
-      $city = ucfirst( $term->name );
-}
-?>
-
 <main role="main">
       <div class="mb30 mt15">
-            <?php
-            get_template_part( 'tpl/parts/featured-events' );
-            ?>
+            <section class="m5">
+                  <div class="mb5">
+                        <?php
+                        cm_home_list_title( 'agenda', __( 'Recommended parties and events', 'cm' ) );
+                        ?>
+                  </div>
+                  <?php
+                  get_template_part( 'tpl/parts/featured-events-new' );
+                  ?>
+            </section>
       </div>
 
       <div class="has-sidebar">
             <div class="ml5">
+                  <?php
+                  get_template_part( 'tpl/parts/filter-by-location' );
+                  ?>
                   <h1 class="h2">
                         <?php
                         _e( 'Party and Events of the week', 'cm' );
@@ -31,6 +31,7 @@ if ( is_tax( $tax ) ) {
 
             $main_posts_id = array();
             include('tpl/archive/agenda.php');
+            
             nz_pagination_by_date();
             ?>
 

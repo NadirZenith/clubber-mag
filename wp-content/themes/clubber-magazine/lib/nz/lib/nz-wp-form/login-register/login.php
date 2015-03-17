@@ -13,7 +13,7 @@ Class NZ_Login {
 
             $this->form_name = $form_name;
 
-            add_action( 'init', array( &$this, 'init' ) );
+            add_action( 'init', array( $this, 'init' ) );
       }
 
       public function init() {
@@ -48,53 +48,68 @@ Class NZ_Login {
             if ( !wp_verify_nonce( $nonce, 'nz-login' ) ) {
                   die( 'Security check' );
             }
+            if ( isset( $_GET[ 'recover' ] ) ) {
 
-            f( $form );
-            $login_creds = array(
-                  'user_email' => $form->controls[ 'login-email' ]->submitted_value,
-                  'user_password' => $form->controls[ 'login-password' ]->submitted_value,
-                  'remember' => $form->controls[ 'remember_1' ]->submitted_value
-            );
-            $real_user = get_user_by( 'email', $login_creds[ 'user_email' ] );
+                  if ( empty( $_GET[ 'recover' ] ) ) {
+                        $user_email = $form->controls[ 'recover-email' ]->submitted_value;
 
-            if ( isset( $real_user, $real_user->user_login, $real_user->user_status ) && 0 === ( int ) $real_user->user_status ) {
-                  $login_creds[ 'user_login' ] = $real_user->user_login;
+                        $user = get_user_by( 'email', $user_email );
+                        if ( !$user ) {
+                              $error = __( 'User does not exist' );
+                        } else {
+                              $hash = wp_generate_password();
+                              update_user_meta( $user->ID, 'nz_recover_hash', $hash );
 
-                  $user = wp_signon( $login_creds, true );
-                  if ( !is_wp_error( $user ) ) {
-                        wp_set_current_user( $user->ID );
-                        wp_set_auth_cookie( $user->ID, $login_creds[ 'remember' ] ); //if is admin??
+                              wp_mail( $user_email, 'Clubber Mag recover password', get_permalink( CM_CONNECT_PAGE_ID ) . '?recover=' . $hash );
 
-                        $success = array(
-                              'description' => __( 'Login complete', 'ajax_login_register' ),
-                              'redirect' => true,
-                              'url' => get_author_posts_url( get_current_user_id() ),
-                        );
+                              return;
+                        }
                   } else {
-                        /*
-                         * wp error return recover pass url link
-                         * cant apply lostpassword_url filter
-                          foreach ( $user->errors as $errors ) {
-                          d( $errors );
-                          foreach ( $errors as $err ) {
-                          $error = $err;
-                          }
-                          }
-                         */
+                        $users = get_users( array( 'meta_key' => 'nz_recover_hash', 'meta_value' => $_GET[ 'recover' ] ) );
+                        $new_pass = $form->controls[ 'recover-pass' ]->submitted_value;
+                        if ( !empty( $users ) && $user = $users[ 0 ] ) {
+                              $user_id = wp_update_user( array( 'ID' => $user->ID, 'user_pass' => $new_pass ) );
 
-                        $error = __( 'Invalid credentials.', 'ajax_login_register' );
+                              if ( !is_wp_error( $user_id ) ) {
+                                    delete_user_meta( $user_id, 'nz_recover_hash' );
+                              }
+
+                              wp_safe_redirect( get_permalink( CM_CONNECT_PAGE_ID ) );
+                              return;
+                        }
+                        $error = __( 'User does not exist' );
                   }
             } else {
-                  $error = __( 'User does not exist or is inactive', 'ajax_login_register' );
+
+                  $login_creds = array(
+                        'user_email' => $form->controls[ 'login-email' ]->submitted_value,
+                        'user_password' => $form->controls[ 'login-password' ]->submitted_value,
+                        'remember' => $form->controls[ 'remember_1' ]->submitted_value
+                  );
+                  $real_user = get_user_by( 'email', $login_creds[ 'user_email' ] );
+
+                  if ( isset( $real_user, $real_user->user_login, $real_user->user_status ) && 0 === ( int ) $real_user->user_status ) {
+                        $login_creds[ 'user_login' ] = $real_user->user_login;
+
+                        $user = wp_signon( $login_creds, true );
+                        if ( !is_wp_error( $user ) ) {
+                              wp_set_current_user( $user->ID );
+                              wp_set_auth_cookie( $user->ID, $login_creds[ 'remember' ] ); //if is admin??
+
+                              $success = array(
+                                    'description' => __( 'Login complete', 'ajax_login_register' ),
+                                    'redirect' => true,
+                                    'url' => get_author_posts_url( get_current_user_id() ),
+                              );
+                        } else {
+
+
+                              $error = __( 'Invalid credentials.', 'ajax_login_register' );
+                        }
+                  } else {
+                        $error = __( 'User does not exist or is inactive', 'ajax_login_register' );
+                  }
             }
-            /*
-              if ( !empty( $real_user ) ) {
-              } else {
-              $error = __( 'Invalid credentials', 'ajax_login_register' );
-              }
-             */
-
-
 
             if ( nz_is_ajax() ) {//json
                   if ( FALSE === $error ) {//SUCCESS

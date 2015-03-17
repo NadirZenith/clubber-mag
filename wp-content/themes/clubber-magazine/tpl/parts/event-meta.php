@@ -58,9 +58,9 @@ if ( $event_place_id ) {
 
       $mapaddress = get_post_meta( $place->ID, CM_META_MAPA, true );
       $mapaddress = json_decode( $mapaddress, true );
-      /*d( $mapaddress );*/
+      /* d( $mapaddress ); */
       if ( isset( $mapaddress, $mapaddress[ 'components' ], $mapaddress[ 'components' ][ 'formatted_address' ] ) ) {
-            /*d( 'new address' );*/
+            /* d( 'new address' ); */
             $event_address = $mapaddress[ 'components' ][ 'formatted_address' ];
       }
       /*
@@ -79,16 +79,8 @@ if ( $event_place_id ) {
                   <?php _e( 'City', 'cm' ) ?>:
                   <b>
                         <?php
-                        $taxonomy = 'city';
-                        $term = wp_get_post_terms( get_the_ID(), $taxonomy );
-                        if ( !is_wp_error( $term ) && ($term = $term[ 0 ]) ) {
-                              $link = get_term_link( $term );
-                              $city_name = $term->name;
-                        }
+                        echo nz_get_post_city_link( get_the_ID() );
                         ?>
-                        <?php if ( $city_name ) { ?>
-                              <?php echo "<a href='{$link}' title='Eventos en {$city_name}'>{$city_name}</a>"; ?> 
-                        <?php } ?>
                   </b>
             </div>
             <div class="fl col-1-2">
@@ -144,3 +136,6 @@ if ( $event_place_id ) {
 
 </div>
 <hr>
+<?php 
+
+?>

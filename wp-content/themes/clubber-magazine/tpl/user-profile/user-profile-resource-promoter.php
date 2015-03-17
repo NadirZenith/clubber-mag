@@ -67,12 +67,8 @@ if ( $query->have_posts() ) {
                                                 <div class="p-detail">
                                                       <?php if ( $date = get_post_meta( get_the_ID(), 'wpcf-event_begin_date', true ) ): ?>
                                                             <?php
-                                                            echo date( 'd/m/y', $date );
-                                                            $tax = 'city';
-                                                            if ( $term = wp_get_post_terms( get_the_ID(), $tax )[ 0 ]->name ) {
-                                                                  $link = get_term_link( $term, $tax );
-                                                                  echo " <a href='{$link}'>{$term}</a>";
-                                                            }
+                                                            echo date( 'd/m/y ', $date );
+                                                            echo nz_get_post_city_link( get_the_ID());
                                                             ?>
                                                       <?php endif; ?>
                                                       <?php if ( $curauth->ID == get_current_user_id() ): ?>

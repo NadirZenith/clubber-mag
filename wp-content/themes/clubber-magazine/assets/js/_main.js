@@ -75,6 +75,8 @@
                               autoSize: false,
                               width: "80%"
                         });
+                        jQuery(".gallery-icon a").fancybox().attr('rel', 'wp-gallery-fancybox');
+                        
                         /*
                          * 
                          $('.nzSCField_newpodcast').nzSCField({
@@ -97,13 +99,11 @@
             // Home page
             home: {
                   init: function() {
-                        console.log('home init');
                   }
             },
             // subir-event page, note the change from subit-evento to subir_evento.
             subir_evento: {
                   init: function() {
-                        console.log('subir evento');
 
                   }
             }

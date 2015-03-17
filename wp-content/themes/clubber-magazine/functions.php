@@ -54,6 +54,7 @@ $roots_includes = array(
       'lib/wrapper.php',
       'lib/scripts.php',
       'lib/sidebar.php',
+      'lib/queries.php',
       //
       'lib/nz/template.php',
       'lib/nz/security.php',

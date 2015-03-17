@@ -157,3 +157,72 @@ function html5_insert_image( $html, $id, $caption, $title, $align, $url ) {
       $html5 .= "</a>";
       return $html5;
 }
+
+function nz_get_post_city_link( $post_id ) {
+      $city_term = nz_get_post_city_term( $post_id );
+      $link = '';
+
+      if ( $city_term ) {
+            $link = "<a href='" . get_term_link( $city_term ) . "'>{$city_term->name}</a>";
+      }
+      return $link;
+}
+
+/**
+ * return city name from taxonomy location
+ */
+function nz_get_post_city_name( $post_id ) {
+      $city = '';
+      $city_term = nz_get_post_city_term( $post_id );
+      if ( $city_term )
+            $city = $city_term->name;
+
+      return $city;
+}
+
+function nz_get_post_city_term( $post_id ) {
+      $terms = get_the_terms( $post_id, 'location' );
+      if ( !is_wp_error( $terms ) && !empty( $terms ) ) {
+            foreach ( $terms as $term ) {
+                  if ( $term->parent === 0 )//is contry
+                        continue;
+                  return $term;
+            }
+      }
+      return FALSE;
+}
+
+/** resources helpers */
+function cm_is_promoter() {
+      if ( !is_user_logged_in() )
+            return false;
+      return true == get_user_meta( get_current_user_id(), 'is_promoter', true );
+}
+
+function cm_has_resource_coolplace() {
+      return cm_has_resource( 'cool-place' );
+}
+
+function cm_has_resource_label() {
+      return cm_has_resource( 'label' );
+}
+
+function cm_has_resource_artist() {
+
+      return cm_has_resource( 'artist' );
+}
+
+function cm_has_resource( $resource_type ) {
+      if ( !is_user_logged_in() )
+            return false;
+
+      $resource_id = get_user_meta( get_current_user_id(), CM_USER_META_RESOURCE_ID, true );
+      if ( $resource_id ) {
+            $resource = get_post( $resource_id );
+            return $resource_type == $resource->post_type;
+      }
+      return FALSE;
+}
+
+
+/*add_filter( 'use_default_gallery_style', '__return_false' );*/

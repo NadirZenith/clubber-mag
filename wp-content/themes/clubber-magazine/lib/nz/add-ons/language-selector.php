@@ -7,6 +7,7 @@ Class NzWpLang {
       public $default_lang;
       public $current_locale;
       public $current_lang;
+      public $user_locale;
       public $browser_lang;
       public $cookie_lang;
       public $query_lang;
@@ -20,8 +21,7 @@ Class NzWpLang {
                         'en' => 'en_US'
                   ),
                   'cookie' => array(
-                         'enabled' => true, 
-                        /*'enabled' => FALSE,*/
+                        'enabled' => true,
                         'name' => 'cm_lang',
                         'expire' => mktime( 0, 5 ),
                         'path' => '/',
@@ -34,13 +34,22 @@ Class NzWpLang {
             $this->default_lang = $this->_get_lang_from_locale( $this->default_locale );
             $this->_change_locale( $this->default_locale );
 
-            /* add_action( 'init', array( $this, 'init' ) ); */
-            $this->init();
+            add_filter( 'locale', array( $this, 'filter_get_locale' ) );
+            add_action( 'user_register', array( $this, 'set_user_locale' ) );
+
+            if ( is_user_logged_in() && !isset($_GET[$this->options['query_var']]) ) {
+                  if ( $this->user_locale = get_user_meta( get_current_user_id(), 'lang', true ) ) {
+                        $this->_change_locale( $this->user_locale );
+                  } else {
+                        $this->init();
+                        $this->set_user_locale( get_current_user_id() );
+                  }
+            } else {
+                  $this->init();
+            }
       }
 
-      function init() {
-
-
+      public function init() {
             //set browser locale
             $this->browser_lang = $this->_prefered_browser_language( array_keys( $this->options[ 'supported' ] ) );
             $this->_change_locale( $this->_get_locale_from_lang( $this->browser_lang ) );
@@ -52,7 +61,7 @@ Class NzWpLang {
                   $this->_change_locale( $locale );
 
 
-                  //if query var lang is deferent from default and browser lang
+                  //if query var lang is diferent from default and browser lang
                   // set link filters to keep locale
                   if (
                             $this->query_lang != $this->default_lang //
@@ -85,8 +94,10 @@ Class NzWpLang {
                         $this->cookie_lang = $this->current_lang;
                   }
             }
+      }
 
-            add_filter( 'locale', array( $this, 'filter_get_locale' ) );
+      public function set_user_locale( $user_id ) {
+            update_user_meta( $user_id, 'lang', $this->current_locale );
       }
 
       public function filter_links() {
@@ -235,4 +246,3 @@ function nz_wp_language_selector( $args = array() ) {
       return $html;
       /* $("#lang_choice").select2(); */
 }
-

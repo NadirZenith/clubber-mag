@@ -201,6 +201,7 @@ function cm_start_msgs() {
       $promoter = '<a href="' . get_permalink( CM_RESOURCE_EVENT_PAGE_ID ) . '">promotor</a>';
       $label = '<a href="' . get_permalink( CM_RESOURCE_LABEL_PAGE_ID ) . '">sello discográfico</a>';
       $coolplace = '<a href="' . get_permalink( CM_RESOURCE_COOLPLACE_PAGE_ID ) . '">cool place</a>';
+      $recurso = '<a href="' . get_permalink( CM_RESOURCE_MAIN_PAGE_ID ) . '">recurso para usuarios Clubber Magazine</a>';
 
       $NzStartMsgs = new NzStartMsgs( );
 
@@ -215,13 +216,13 @@ function cm_start_msgs() {
                         . '<p>Aprende a utilizar tú perfil. Aquí podrás editar tú información de usuario donde podrás agregar '
                         . 'fotografías, tú página web y redes sociales en las que participas. También te podrás apuntar a '
                         . 'eventos y así programar tu agenda.</p> '
-                        . '<p>Si eres un ' . $artist . ', ' . $promoter . ', ' . $label . ' o un ' . $coolplace . ' (Club, Restaurant o bar) puedes '
-                        . 'crear un recurso para usuarios Clubber Magazine y disfrutar de todas las ventajas que ofrecemos.</p>',
+                        . '<p>Si eres un ' . $artist . ', ' . $promoter . ', ' . $label . ' o un ' . $coolplace . ' (Club, bar o restaurant) puedes '
+                        . 'crear un ' . $recurso . ' y disfrutar de todas las ventajas que ofrecemos.</p>',
                         'btnText' => 'Ah!  Vale, lo entiendo.',
                   ),
                   array(
                         'container' => '#user-profile-agenda',
-                        'msg' => '<p>Programa tu agenda y apúntate a los eventos  que quieras asistir.<br>'
+                        'msg' => '<p>Programa tu agenda y apúntate a los eventos que quieras asistir.<br>'
                         . '(Los eventos quedarán guardados en tú perfil para que puedas tener un rápido acceso a ellos)</p>',
                         'btnText' => 'Vale, ¡gracias! Tomaré nota.',
                   )
@@ -238,7 +239,7 @@ function cm_start_msgs() {
                         'container' => '#user-profile-promoter',
                         'msg' => '<p>Aquí encontrarás tú recurso de usuario.  Como Promotor podrás crear y compartir tus eventos '
                         . 'de forma directa con la comunidad.</p>',
-                        'btnText' => '¡Vale, gracias! Voy a crear más eventos.',
+                        'btnText' => '¡Vale, gracias! Lo entiendo.',
                   )
             )
       );
@@ -264,13 +265,13 @@ function cm_start_msgs() {
       $resource_artist_msg = array(
             'id' => 4,
             'name' => 'resource-artist-message',
-            'when' => 'cm_has_resource_artist',
+            'when' => array( 'cm_has_resource', 'artist' ),
             'msgs' => array(
                   array(
                         'container' => '#user-profile-artist',
-                        'msg' => 'Aquí encontrarás tú recurso de usuario. .  Podrás EDITAR y AGREGAR  información a tú página '
+                        'msg' => 'Aquí encontrarás tú recurso de usuario. Podrás EDITAR y AGREGAR  información a tú página '
                         . 'de <b>artista</b> además de <b>COMPARTIR  TÚ MÚSICA</b> con la comunidad.',
-                        'btnText' => '¡Vale, gracias! Compartiré mi música.',
+                        'btnText' => '¡Vale, gracias! Lo entiendo.',
                   )
             )
       );
@@ -286,7 +287,7 @@ function cm_start_msgs() {
                         'container' => '#user-profile-label',
                         'msg' => 'Aquí encontrarás tú recurso de usuario.  Podrás EDITAR y AGREGAR información a tú página de <b>sello '
                         . 'discográfico</b> cuando estimes conveniente además de <b>COMPARTIR  TÚ MÚSICA</b> con la comunidad.',
-                        'btnText' => '¡Vale, gracias! Compartiré mi música.',
+                        'btnText' => '¡Vale, gracias! Lo entiendo.',
                   )
             )
       );
@@ -304,7 +305,7 @@ function cm_start_msgs() {
                         'container' => '#user-event-signin',
                         'msg' => '<p>Haciendo click en “Me apunto” podrás participar y organizar tus eventos en la agenda.<br>'
                         . 'Luego los podrás ver y gestionar en tú página de perfil. </p>',
-                        'btnText' => '¡Vale! Me quiero apuntar.',
+                        'btnText' => '¡Vale! Gracias.',
                   )
             )
       );
@@ -323,22 +324,22 @@ function cron_add_5_minutes( $schedules ) {
       return $schedules;
 }
 
-add_action( 'wp', 'nz_start_msg_renable_messages' );
-
 /**
  * On an early action hook, check if the hook is scheduled - if not, schedule it.
  */
+/*add_action( 'wp', 'nz_start_msg_renable_messages' );*/
+
 function nz_start_msg_renable_messages() {
       if ( !wp_next_scheduled( 'nz_start_msgs_check_states' ) ) {
             wp_schedule_event( time(), 'minutes5', 'nz_start_msgs_check_states' );
       }
 }
 
-add_action( 'nz_start_msgs_check_states', '_nz_start_msgs_check_states' );
-
 /**
  * On the scheduled action hook, run a function.
  */
+add_action( 'nz_start_msgs_check_states', '_nz_start_msgs_check_states' );
+
 function _nz_start_msgs_check_states() {
       $users = get_users( array( 'role' => 'administrator' ) );
 
@@ -347,29 +348,3 @@ function _nz_start_msgs_check_states() {
       }
 }
 
-function cm_is_promoter() {
-      if ( !is_user_logged_in() )
-            return false;
-      return true == get_user_meta( get_current_user_id(), 'is_promoter', true );
-}
-
-function cm_has_resource_coolplace() {
-      if ( !is_user_logged_in() )
-            return false;
-
-      return 'cool-place' == get_user_meta( get_current_user_id(), CM_USER_META_RESOURCE_ID, true );
-}
-
-function cm_has_resource_label() {
-      if ( !is_user_logged_in() )
-            return false;
-
-      return 'label' == get_user_meta( get_current_user_id(), CM_USER_META_RESOURCE_ID, true );
-}
-
-function cm_has_resource_artist() {
-      if ( !is_user_logged_in() )
-            return false;
-
-      return 'artist' == get_user_meta( get_current_user_id(), CM_USER_META_RESOURCE_ID, true );
-}

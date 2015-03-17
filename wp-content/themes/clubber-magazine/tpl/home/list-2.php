@@ -17,13 +17,9 @@
             <div class="p-detail">
                   <?php
                   if ( is_numeric( $date ) && ( int ) $date == $date ) {
-                        echo date( 'd/m/y', $date );
+                        echo date( 'd/m/y ', $date );
                   }
-                  $tax = 'city';
-                  if ( $term = wp_get_post_terms( get_the_ID(), $tax )[ 0 ]->name ) {
-                        $link = get_term_link( $term, $tax );
-                        echo " <a href='{$link}'>{$term}</a>";
-                  }
+                  echo nz_get_post_city_link( get_the_ID());
                   ?>
             </div>
       <?php endif; ?>

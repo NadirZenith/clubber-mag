@@ -13,13 +13,6 @@ $artists = new CPT( array(
           )
 );
 
-$artists->register_taxonomy( array(
-      'taxonomy_name' => 'country',
-      'singular' => __( 'Country', 'cm' ),
-      'plural' => __( 'Countries', 'cm' ),
-      'slug' => 'nation'
-          )
-);
 
 add_action( 'p2p_init', 'cm_artists_connections' );
 
