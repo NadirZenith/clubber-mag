@@ -208,7 +208,7 @@ function cm_start_msgs() {
       $profile_msgs = array(
             'id' => 1,
             'name' => 'profile-message',
-            'when' => 'is_author',
+            'when' => array( 'is_author', array( get_current_user_id() ) ),
             'msgs' => array(
                   array(
                         'container' => '#user-profile-main',
@@ -265,7 +265,7 @@ function cm_start_msgs() {
       $resource_artist_msg = array(
             'id' => 4,
             'name' => 'resource-artist-message',
-            'when' => array( 'cm_has_resource', 'artist' ),
+            'when' => 'cm_has_resource_artist',
             'msgs' => array(
                   array(
                         'container' => '#user-profile-artist',
@@ -313,7 +313,7 @@ function cm_start_msgs() {
       $NzStartMsgs->addMsg( $single_agenda_msgs );
 }
 
-add_filter( 'cron_schedules', 'cron_add_5_minutes' );
+/* add_filter( 'cron_schedules', 'cron_add_5_minutes' ); */
 
 function cron_add_5_minutes( $schedules ) {
       // Adds once weekly to the existing schedules.
@@ -327,7 +327,7 @@ function cron_add_5_minutes( $schedules ) {
 /**
  * On an early action hook, check if the hook is scheduled - if not, schedule it.
  */
-/*add_action( 'wp', 'nz_start_msg_renable_messages' );*/
+/* add_action( 'wp', 'nz_start_msg_renable_messages' ); */
 
 function nz_start_msg_renable_messages() {
       if ( !wp_next_scheduled( 'nz_start_msgs_check_states' ) ) {
@@ -338,7 +338,7 @@ function nz_start_msg_renable_messages() {
 /**
  * On the scheduled action hook, run a function.
  */
-add_action( 'nz_start_msgs_check_states', '_nz_start_msgs_check_states' );
+/* add_action( 'nz_start_msgs_check_states', '_nz_start_msgs_check_states' ); */
 
 function _nz_start_msgs_check_states() {
       $users = get_users( array( 'role' => 'administrator' ) );
@@ -347,4 +347,3 @@ function _nz_start_msgs_check_states() {
             update_user_meta( $user->ID, 'nz_start_msgs', array() );
       }
 }
-

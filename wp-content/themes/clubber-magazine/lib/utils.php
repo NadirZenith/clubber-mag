@@ -192,7 +192,9 @@ function nz_get_post_city_term( $post_id ) {
       return FALSE;
 }
 
-/** resources helpers */
+/**
+ *  resources helpers 
+ */
 function cm_is_promoter() {
       if ( !is_user_logged_in() )
             return false;
@@ -223,6 +225,3 @@ function cm_has_resource( $resource_type ) {
       }
       return FALSE;
 }
-
-
-/*add_filter( 'use_default_gallery_style', '__return_false' );*/

@@ -74,7 +74,7 @@ class Relate_Widget extends WP_Widget {
                               <span class="r-text"><?php echo $name ?></span>
                         </a>
 
-                        <a class="view-relation-btn" title="<?php _e( 'Going!', 'cm' ) ?>" href="#" <?php echo $total_style ?>>
+                        <a class="view-relation-btn" title="<?php _e( 'Attendees', 'cm' ) ?>" href="#" <?php echo $total_style ?>>
                               <span class="r-count"><?php echo $total ?></span>
                         </a>
                         <div class="loading" style="height:3px;"></div>
