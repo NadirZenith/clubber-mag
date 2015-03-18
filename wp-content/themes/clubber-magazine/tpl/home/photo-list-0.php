@@ -17,13 +17,18 @@
             </a>
       </div>
       <?php
-      $imgs_ids = get_post_meta( get_the_ID(), 'photo-gallery', true );
+      $gallery = get_post_gallery( get_the_ID(), FALSE );
+      if ( $gallery ):
+            $imgs_ids = explode( ',', $gallery[ 'ids' ] );
+      else:
+            $imgs_ids = get_post_meta( get_the_ID(), 'photo-gallery', true );
+      endif;
       if ( !empty( $imgs_ids ) ):
             $imgs_ids = array_slice( $imgs_ids, 0, 4 );
             ?>
             <div class="cb mt10 mb10">
                   <?php
-                  include(locate_template( 'tpl/parts/gallery-list-preview.php' ));
+                  include(locate_template( 'tpl/parts/acf-gallery-list-preview.php' ));
                   ?>
             </div>
             <?php

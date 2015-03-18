@@ -130,7 +130,7 @@
                         ?>
                         <div class="cb mt10 mb10">
                               <?php
-                              include(locate_template( 'tpl/parts/gallery-list-preview.php' ));
+                              include(locate_template( 'tpl/parts/acf-gallery-list-preview.php' ));
                               ?>
                         </div>
                         <?php

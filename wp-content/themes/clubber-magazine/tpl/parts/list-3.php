@@ -52,9 +52,9 @@
                         if ( is_numeric( $date ) && ( int ) $date == $date ) {
                               echo date( 'd/m/y H:i ', $date );
                         }
-                        echo nz_get_post_city_link( get_the_ID());
+                        echo nz_get_post_city_link( get_the_ID() );
                         ?>
-                        
+
                   </div>
                   <?php
             }
@@ -78,13 +78,12 @@
       </div>
       <div class="fl col-1 col-sm-1-2 pb15">
             <div class="m5 bold tj">
-                  <?php echo wp_trim_words( get_the_content(), 20 ); ?>
+                  <?php echo wp_trim_words( strip_shortcodes( get_the_content() ), 20 ); ?>
             </div>
 
             <?php
             if ( $sc_info_str = get_post_meta( get_the_ID(), CM_META_SOUNDCLOUD, true ) ) {
                   $sc_info = json_decode( $sc_info_str );
-                  /* d( $sc_info_str, $sc_info ); */
                   if ( $sc_info ) {
                         echo nz_get_soundcloud_iframe( $sc_info->uri, array( 'visual' => true ) );
                   }
@@ -92,13 +91,18 @@
             ?>
 
             <?php
-            $imgs_ids = get_post_meta( get_the_ID(), 'photo-gallery', true );
+            $gallery = get_post_gallery( get_the_ID(), FALSE );
+            if ( $gallery ):
+                  $imgs_ids = explode( ',', $gallery[ 'ids' ] );
+            else:
+                  $imgs_ids = get_post_meta( get_the_ID(), 'photo-gallery', true );
+            endif;
             if ( !empty( $imgs_ids ) ):
                   $imgs_ids = array_slice( $imgs_ids, 0, 4 );
                   ?>
                   <div class="cb mt10 mb10">
                         <?php
-                        include(locate_template( 'tpl/parts/gallery-list-preview.php' ));
+                        include(locate_template( 'tpl/parts/acf-gallery-list-preview.php' ));
                         ?>
                   </div>
                   <?php

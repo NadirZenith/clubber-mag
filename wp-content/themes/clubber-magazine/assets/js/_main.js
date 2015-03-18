@@ -70,13 +70,13 @@
                         $('#mobile-menu .menu-collapser').prepend($('#mobile-menu-title').css('display', 'block'));
 
 
-                        //------
-                        $('.fancybox').fancybox({
+                        //------ fancybox
+                        $('.single .fancybox').fancybox({
                               autoSize: false,
                               width: "80%"
                         });
-                        jQuery(".gallery-icon a").fancybox().attr('rel', 'wp-gallery-fancybox');
-                        
+                        jQuery(".single .gallery-icon a").fancybox().attr('rel', 'wp-gallery-fancybox');
+
                         /*
                          * 
                          $('.nzSCField_newpodcast').nzSCField({
