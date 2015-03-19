@@ -5,7 +5,7 @@
             ?>
       </div>
       <div class="group">
-            <div class="home-clubbermag-podcasts1 oh" >
+            <div class="home-clubbermag-podcasts oh" >
 
                   <ul class="slides">
                         <?php
