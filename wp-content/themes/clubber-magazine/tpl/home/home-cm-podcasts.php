@@ -11,7 +11,7 @@
                         <?php
                         $args = array(
                               'post_type' => 'into-the-beat',
-                              'posts_per_page' => 1,
+                              'posts_per_page' => 3,
                               'meta_query' => array(
                                     array(
                                           'key' => '_thumbnail_id',
