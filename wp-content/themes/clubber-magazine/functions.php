@@ -10,12 +10,10 @@
  */
 /* --------------------------- */
 
-
 define( 'CM_DIR', get_stylesheet_directory_uri() );
 define( 'CM_LIB_DIR', '/lib' );
 define( 'CM_ADDONS_DIR', '/lib/nz/add-ons' );
 define( 'CM_MODELS_DIR', CM_LIB_DIR . '/models' );
-
 
 //pages
 define( 'CM_RESOURCE_EVENT_PAGE_ID', 406 );
@@ -109,7 +107,6 @@ $roots_includes = array(
       CM_ADDONS_DIR . '/location-taxonomy/contry-list.php',
       CM_ADDONS_DIR . '/todo-pending-posts.php',
       CM_ADDONS_DIR . '/query-functions.php',
-      CM_ADDONS_DIR . '/search-query.php',
       CM_ADDONS_DIR . '/language-selector.php',
       'tpl/shortcodes/layout-shortcodes.php'
 );

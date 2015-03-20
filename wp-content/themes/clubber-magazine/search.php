@@ -1,7 +1,7 @@
 
 <?php
 $search = get_query_var( 's' );
-/*$search = 'clubber+mag';*/
+/* $search = 'clubber+mag'; */
 
 $search_string = esc_attr( trim( get_query_var( 's' ) ) );
 $user_query = new WP_User_Query( array(
@@ -27,8 +27,6 @@ $user_query = new WP_User_Query( array(
       )
           ) );
 $users_found = $user_query->get_results();
-
-
 ?>
 <div class="co-1">
       <section>
@@ -76,10 +74,9 @@ $users_found = $user_query->get_results();
 </div>
 <div class="col-1 mt15">
       <section>
-
-            <header class="">
+            <header>
                   <h2>
-                        Otros resultados
+                        <?php _e( 'Other results', 'cm' ) ?>
                   </h2>
                   <hr class="cb pb5">
             </header>
@@ -92,46 +89,9 @@ $users_found = $user_query->get_results();
                               the_post();
                               ?>
                               <li>
-
-                                    <section class="bg-50 block-5 mb15">
-                                          <article>
-                                                <header>
-                                                      <h1 class="mt5">
-                                                            <a class="ml5" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-                                                      </h1>
-                                                </header>
-                                                <hr class="pb5">
-                                                <div class="fl ml5 col-2-4 ">
-                                                      <div class="" style="text-align:justify">
-                                                            <?php the_excerpt() ?>
-                                                      </div>
-                                                      <p class="">
-                                                            <a class="readmore" href="<?php the_permalink() ?>" title="<?php the_title() ?>"> <?php echo __( 'Read more', 'cm' ) ?></a>
-                                                      </p>
-
-                                                      <div  style="color: #666;">
-                                                            <?php echo get_the_date() ?>
-                                                      </div>
-                                                </div>
-
-
-
-                                                <div class="fr col-2-4 nm" >
-                                                      <?php
-                                                      if ( has_post_thumbnail() ) {
-                                                            ?>
-                                                            <a class="featured-image" href="<?php the_permalink() ?>" >
-                                                                  <?php
-                                                                  the_post_thumbnail( '430-190-thumb' );
-                                                                  ?>
-                                                            </a>
-                                                            <?php
-                                                      }
-                                                      ?>
-                                                </div>
-
-                                          </article>
-                                    </section>
+                                    <?php
+                                    get_template_part( 'tpl/parts/list-3' );
+                                    ?>
                               </li>
 
                               <?php
