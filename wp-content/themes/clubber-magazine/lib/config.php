@@ -31,7 +31,8 @@ function my_theme_setup() {
 /**
  * Configuration values
  */
-define( 'GOOGLE_ANALYTICS_ID', 'UA-49721787-1' ); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
+//define( 'GOOGLE_ANALYTICS_ID', 'UA-49721787-1' ); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
+define( 'GOOGLE_ANALYTICS_ID', 'UA-61017860-1' ); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
 
 
 /**
