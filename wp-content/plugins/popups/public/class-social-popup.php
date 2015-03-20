@@ -603,7 +603,7 @@ class SocialPopup {
 				include( 'views/popup.php');
 
 			} //endforeach
-			echo '<div id="fb-root" class=" fb_reset"></div>';
+			/*echo '<div id="fb-root" class=" fb_reset"></div>';*/
 			
 		}			
 	
