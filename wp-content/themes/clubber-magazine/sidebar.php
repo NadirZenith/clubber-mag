@@ -1,5 +1,4 @@
-<div class="cm-sticky-sidebar">
-
+<div class="cm-sticky-sidebar oh">
       <?php
 //archive event
       if ( is_post_type_archive( 'agenda' ) ) {
@@ -11,7 +10,6 @@
             </a>
             <?php
             dynamic_sidebar( 'archive_event_sidebar' );
-
 //Single
       } else if ( is_singular() ) {
 
@@ -19,7 +17,6 @@
 
                   dynamic_sidebar( 'single_event_sidebar' );
             } else {
-
                   dynamic_sidebar( 'singular_sidebar' );
             }
       }
@@ -33,17 +30,16 @@ if ( is_super_admin() ) {
             (function($) {
 
                   jQuery(document).ready(function($) {
-                        return;
 
                         var sticky = new Waypoint.Sticky({
                               element: $('.cm-sticky-sidebar')[0],
                               offset: 30,
                               handler: function() {
-                                    console.log('handler');
+                                    console.log(arguments);
                               }
                         })
 
-                        /*window.onresize = setSickWidth;*/
+                        window.onresize = setSickWidth;
 
                         function setSickWidth()
                         {
@@ -53,11 +49,10 @@ if ( is_super_admin() ) {
                                       );
 
                         }
-                        /*setSickWidth();*/
+                        setSickWidth();
                   });
 
             })(jQuery);
       </script>
-
       <?php
 }
