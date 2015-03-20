@@ -14,9 +14,11 @@
 
       <div class="has-sidebar">
             <div class="ml5">
-                  <?php
-                  get_template_part( 'tpl/parts/filter-by-location' );
-                  ?>
+                  <div class="group cb mb15">
+                        <?php
+                        echo NzWpLocationTerms::get_location_filter();
+                        ?>
+                  </div>
                   <h1 class="h2">
                         <?php
                         _e( 'Party and Events of the week', 'cm' );
@@ -26,12 +28,12 @@
             </div>
 
             <?php
-            $query = &$wp_query;
+            $query = $wp_query;
             nz_pagination_by_date();
 
             $main_posts_id = array();
             include('tpl/archive/agenda.php');
-            
+
             nz_pagination_by_date();
             ?>
 
@@ -64,16 +66,13 @@
                               )
                         )
                   );
-
-                  if ( is_tax( $tax ) ) {
-                        $args[ 'tax_query' ] = array(
-                              array(
-                                    'taxonomy' => $tax,
-                                    'field' => 'id',
-                                    'terms' => get_queried_object_id()
-                              )
-                        );
-                  }
+                  $args[ 'tax_query' ] = array(
+                        array(
+                              'taxonomy' => NzWpLocationTerms::$taxonomy,
+                              'field' => 'slug',
+                              'terms' => NzWpLocationTerms::$current_country
+                        )
+                  );
 
                   $query = new WP_Query( $args );
                   if ( $query->found_posts > 0 ) {
@@ -82,15 +81,11 @@
                               <h1 class="h2">
                                     <?php
                                     _e( 'Next parties and events', 'cm' );
-                                    echo ($city) ? ' ' . __( 'in', 'cm' ) . ' ' . $city : '';
                                     ?> 
 
                               </h1>
                         </div>
-
-
                         <?php include('tpl/archive/agenda.php'); ?>
-
                         <?php
                   }
             }

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-18 12:42+0100\n"
-"PO-Revision-Date: 2015-03-18 12:42+0100\n"
+"POT-Creation-Date: 2015-03-18 17:31+0100\n"
+"PO-Revision-Date: 2015-03-18 17:32+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: sidebar.php:9
-msgid "Share event"
-msgstr "Compartir evento"
+msgid "Upload and share event"
+msgstr "Sube y comparte tú evento"
 
 #: page-layout.php:15
 #: page-template-form.php:22
@@ -88,7 +88,6 @@ msgid "Party and Events of the week"
 msgstr "Fiestas y eventos de la semana"
 
 #: archive-agenda.php:23
-#: archive-agenda.php:85
 msgid "in"
 msgstr "en"
 
@@ -143,7 +142,6 @@ msgid "Back to Top"
 msgstr ""
 
 #: 404.php:2
-#, fuzzy
 msgid "Page not found"
 msgstr "Página no encontrada"
 
@@ -231,7 +229,6 @@ msgstr ""
 
 #: vendor/option-tree/assets/theme-mode/demo-theme-options.php:48
 #: vendor/option-tree/includes/ot-functions-admin.php:2410
-#, fuzzy
 msgid "Background"
 msgstr "Imagen de fondo"
 
@@ -295,7 +292,6 @@ msgstr ""
 #: vendor/option-tree/assets/theme-mode/demo-theme-options.php:138
 #: vendor/option-tree/assets/theme-mode/demo-theme-options.php:510
 #: vendor/option-tree/assets/theme-mode/demo-theme-options.php:562
-#, fuzzy
 msgid "No"
 msgstr "No "
 
@@ -2265,6 +2261,10 @@ msgstr "Comentarios"
 msgid "Not Found."
 msgstr "No encontrado "
 
+#: tpl/archive/agenda.php:56
+msgid "Sorry! Currently we don´t have events available in this region. You can upload your events in the following link"
+msgstr "¡Lo sentimos! Actualmente no hay eventos disponibles en esta región. Puedes subir tus eventos en el siguiente enlace. "
+
 #: tpl/base/header.php:66
 msgid "Search for parties, clubs, artists..."
 msgstr "Busca fiestas, clubes, artistas, personas..."
@@ -2379,11 +2379,11 @@ msgstr ""
 msgid "No users found."
 msgstr "Usuario no encontrado"
 
-#: lib/config.php:110
+#: lib/config.php:108
 msgid "Primary Menu"
 msgstr "Menú Principal "
 
-#: lib/config.php:111
+#: lib/config.php:109
 msgid "Footer Menu"
 msgstr ""
 
@@ -3184,6 +3184,56 @@ msgstr "Mantenme Registrado "
 msgid "5 minutes"
 msgstr ""
 
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:89
+#, fuzzy
+msgid "Locations"
+msgstr "Condiciones "
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:90
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:99
+msgid "Location"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:91
+#, fuzzy
+msgid "Search Locations"
+msgstr "Condiciones "
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:92
+#, fuzzy
+msgid "All Locations"
+msgstr "Condiciones "
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:93
+#, fuzzy
+msgid "Parent Location"
+msgstr "Condiciones "
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:94
+#, fuzzy
+msgid "Parent Location:"
+msgstr "Condiciones "
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:95
+#, fuzzy
+msgid "Edit Location"
+msgstr "Condiciones "
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:96
+#, fuzzy
+msgid "Update Location"
+msgstr "Condiciones "
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:97
+#, fuzzy
+msgid "Add New Location"
+msgstr "Agregar nuevo "
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:98
+#, fuzzy
+msgid "New Location Name"
+msgstr "Condiciones "
+
 #: lib/models/music.php:6
 msgid "Music content"
 msgstr "Música"
@@ -3228,17 +3278,6 @@ msgstr "Eventos "
 #: lib/models/event.php:7
 msgid "Events"
 msgstr ""
-
-#: lib/models/event.php:26
-#: lib/models/cool-place.php:23
-msgid "Location"
-msgstr ""
-
-#: lib/models/event.php:27
-#: lib/models/cool-place.php:24
-#, fuzzy
-msgid "Locations"
-msgstr "Condiciones "
 
 #: lib/models/news.php:9
 #: lib/models/news.php:10
@@ -3301,6 +3340,7 @@ msgstr "Opciones de ejemplos "
 
 #: lib/options/register.php:38
 #: lib/options/register.php:39
+#: lib/options/cm-options.php:4
 msgid "CM Options"
 msgstr "Opciones Clubber Magazin "
 
@@ -3341,6 +3381,9 @@ msgstr ""
 #: lib/options/cm-options.php:50
 msgid "Alphabet"
 msgstr ""
+
+#~ msgid "Share event"
+#~ msgstr "Compartir evento"
 
 #~ msgid "Latest shared music"
 #~ msgstr "Última música compartida"

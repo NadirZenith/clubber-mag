@@ -159,37 +159,15 @@ function html5_insert_image( $html, $id, $caption, $title, $align, $url ) {
 }
 
 function nz_get_post_city_link( $post_id ) {
-      $city_term = nz_get_post_city_term( $post_id );
+      $city_term = NzWpLocationTerms::get_post_city_term( $post_id );
       $link = '';
 
       if ( $city_term ) {
-            $link = "<a href='" . get_term_link( $city_term ) . "'>{$city_term->name}</a>";
+            $archive_link = get_post_type_archive_link( get_post_type() );
+            $query_arg = add_query_arg( array( 'city' => $city_term->name ), $archive_link );
+            $link = "<a href='" . $query_arg . "'>{$city_term->name}</a>";
       }
       return $link;
-}
-
-/**
- * return city name from taxonomy location
- */
-function nz_get_post_city_name( $post_id ) {
-      $city = '';
-      $city_term = nz_get_post_city_term( $post_id );
-      if ( $city_term )
-            $city = $city_term->name;
-
-      return $city;
-}
-
-function nz_get_post_city_term( $post_id ) {
-      $terms = get_the_terms( $post_id, 'location' );
-      if ( !is_wp_error( $terms ) && !empty( $terms ) ) {
-            foreach ( $terms as $term ) {
-                  if ( $term->parent === 0 )//is contry
-                        continue;
-                  return $term;
-            }
-      }
-      return FALSE;
 }
 
 /**

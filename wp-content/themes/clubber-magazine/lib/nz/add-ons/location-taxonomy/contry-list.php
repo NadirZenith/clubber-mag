@@ -1,320 +1,280 @@
 <?php
+if ( is_admin() && current_user_can( 'manage_options' ) ) {
+      include_once('tax-tools.php');
+}
 
-class NzTermContryList {
+Class NzWpLocationTerms {
 
-      public function __construct() {
+      static $taxonomy;
+      private $options;
+      static $current_country;
+      static $current_city;
 
-            if ( is_admin() && current_user_can( 'manage_options' ) ) {
-                  /* d('ad'); */
-                  add_action( 'admin_menu', array( $this, 'add_menu' ) );
-                  add_action( 'wp_ajax_nz_install_contry_terms', array( $this, 'ajax_install_terms' ) );
-                  add_action( 'wp_ajax_nz_change_tax_name', array( $this, 'ajax_change_tax_name' ) );
-                  add_action( 'wp_ajax_nz_set_terms_parent', array( $this, 'ajax_set_terms_parent' ) );
-                  add_action( 'wp_ajax_nz_add_object_term', array( $this, 'ajax_add_object_term' ) );
-            }
-            ;
+      public function __construct( $options ) {
+
+            $this->options = wp_parse_args( $options, array(
+                  'post_type' => 'post',
+                  'taxonomy' => 'location',
+                  'default_country_slug' => 'es',
+                  'default_city_slug' => 'barcelona'
+                      ) );
+
+            self::$taxonomy = $this->options[ 'taxonomy' ];
+
+            add_action( 'init', array( $this, 'init' ) );
+
+            add_action( 'pre_get_posts', array( $this, 'pre_get_posts_archive' ) );
+            add_action( 'query_vars', array( $this, 'add_location_vars' ) );
       }
 
-      public function ajax_add_object_term() {
-            $taxonomy = $_GET[ 'taxonomy' ];
-            $post_types = explode( ',', $_GET[ 'post_types' ] );
-            $original_terms = explode( ',', $_GET[ 'original_terms' ] );
-            $new_term = get_term_by( 'slug', $_GET[ 'new_term' ], $taxonomy );
-            if ( !$new_term )
-                  wp_die( 'new term does not exist' );
+      public function init() {
+            $this->registerTaxonomy();
+      }
+
+      public function pre_get_posts_archive( $query ) {
+            if (
+                      !$query->is_main_query() || $query->is_admin || !$query->is_post_type_archive( $this->options[ 'post_type' ] )
+            )
+                  return;
+
+            //set current country and city
+            $city = get_query_var( 'city' );
+            $country = get_query_var( 'country' );
+
+            if ( !empty( $city ) && !empty( $country ) ) {
+                  //both set
+                  $country_term = get_term_by( 'slug', $country, $this->options[ 'taxonomy' ] );
+                  if ( !$country_term ) {
+                        $query->set_404();
+                        return;
+                  }
+
+                  $city_term = get_term_by( 'slug', $city, $this->options[ 'taxonomy' ] );
+                  if ( $city_term && $city_term->parent != $country_term->term_id ) {
+                        $query->set_404();
+                        return;
+                  }
+            } elseif ( !empty( $country ) && empty( $city ) ) {
+                  //country set
+                  $country_term = get_term_by( 'slug', $country, $this->options[ 'taxonomy' ] );
+                  if ( !$country_term ) {
+                        $query->set_404();
+                        return;
+                  }
+
+                  $city_terms = get_terms( $this->options[ 'taxonomy' ], array( 'parent' => $country_term->term_id ) );
+
+                  $city_term = (!empty( $city_terms )) ? $city_terms[ 0 ] : false;
+            } elseif ( !empty( $city ) && empty( $country ) ) {
+                  //city set
+                  $city_term = get_term_by( 'slug', $city, $this->options[ 'taxonomy' ] );
+                  if ( !$city_term || is_wp_error( $city_term ) ) {
+                        $query->set_404();
+                        return;
+                  }
+
+                  $country_term = get_term_by( 'id', $city_term->parent, $this->options[ 'taxonomy' ] );
+            } else {
+                  //none set
+                  $country_term = get_term_by( 'slug', $this->options[ 'default_country_slug' ], $this->options[ 'taxonomy' ] );
+                  $city_term = get_term_by( 'slug', $this->options[ 'default_city_slug' ], $this->options[ 'taxonomy' ] );
+
+                  if ( !$country_term || !$city_term ) {
+                        $query->set_404();
+                        return;
+                  }
+            }
+
+            self::$current_country = $country_term;
+            self::$current_city = $city_term;
+
+            $countries = get_terms( $this->options[ 'taxonomy' ], array(
+                  'parent' => 0,
+                  'hide_empty' => FALSE
+                      )
+            );
+            $query->set( '_countries', $countries );
+
+            $cities = get_terms( $this->options[ 'taxonomy' ], array(
+                  'parent' => self::$current_country->term_id,
+                  'hide_empty' => FALSE,
+                  'orderby' => 'count',
+                  'order' => 'DESC'
+                      )
+            );
+
+            $query->set( '_cities', $cities );
+
+            $city_tax_query = array(
+                  'taxonomy' => $this->options[ 'taxonomy' ],
+                  'field' => 'slug',
+                  'terms' => self::$current_city->slug
+            );
+
+            $tax_query = array(
+                  $city_tax_query,
+            );
+
+            $query->set( 'tax_query', $tax_query );
+      }
+
+      public function add_location_vars( $vars ) {
+
+            $vars[] = "country"; //
+            $vars[] = "city"; //
+
+            return $vars;
+      }
+
+      private function registerTaxonomy() {
+            // Add new taxonomy, make it hierarchical (like categories)
+            $labels = array(
+                  'name' => _x( 'Locations', 'taxonomy general name' ),
+                  'singular_name' => _x( 'Location', 'taxonomy singular name' ),
+                  'search_items' => __( 'Search Locations' ),
+                  'all_items' => __( 'All Locations' ),
+                  'parent_item' => __( 'Parent Location' ),
+                  'parent_item_colon' => __( 'Parent Location:' ),
+                  'edit_item' => __( 'Edit Location' ),
+                  'update_item' => __( 'Update Location' ),
+                  'add_new_item' => __( 'Add New Location' ),
+                  'new_item_name' => __( 'New Location Name' ),
+                  'menu_name' => __( 'Location' ),
+            );
 
             $args = array(
-                  'post_type' => $post_types,
-                  'posts_per_page' => -1,
-                  'tax_query' => array(
-                        array(
-                              'taxonomy' => $taxonomy,
-                              'field' => 'slug',
-                              'terms' => $original_terms
-                        )
-                  )
+                  'hierarchical' => true,
+                  'labels' => $labels,
+                  'show_ui' => true,
+                  'show_admin_column' => true,
+                  'query_var' => true,
+                  'rewrite' => array( 'slug' => 'location' ),
             );
-            $the_query = new WP_Query( $args );
 
-            if ( $the_query->have_posts() ) {
-                  ini_set( 'memory_limit', '512M' );
-                  ini_set( 'max_execution_time', 300 );
-                  $response = array();
-                  while ( $the_query->have_posts() ) {
-                        $the_query->the_post();
-                        $current_terms = wp_get_object_terms( get_the_ID(), $taxonomy );
-                        $new_terms = array( $new_term->term_id );
-                        foreach ( $current_terms as $ct ) {
-                              $new_terms[] = $ct->term_id;
-                        }
+            register_taxonomy( $this->options[ 'taxonomy' ], $this->options[ 'post_type' ], $args );
+      }
 
-                        $r = wp_set_object_terms( get_the_id(), $new_terms, 'location' );
-                        if ( is_wp_error( $r ) )
-                              $response[ 'errors' ][] = $r;
-                        else
-                              $response[ 'terms' ][] = $r;
+      static function get_post_city_name( $post_id ) {
+            $city = '';
+            $city_term = self::get_post_city_term( $post_id );
+            if ( $city_term )
+                  $city = $city_term->name;
+
+            return $city;
+      }
+
+      static function get_post_city_term( $post_id ) {
+            $terms = get_the_terms( $post_id, self::$taxonomy );
+            if ( !is_wp_error( $terms ) && !empty( $terms ) ) {
+                  foreach ( $terms as $term ) {
+                        if ( $term->parent === 0 )//is contry
+                              continue;
+                        return $term; //return first city
                   }
-            } else {
-                  wp_die( 'no posts found' );
             }
-
-
-            wp_die( json_encode( $response ) );
+            return FALSE;
       }
 
-      public function ajax_set_terms_parent() {
-            $taxonomy = $_GET[ 'taxonomy' ];
-            $child_terms_slug = $_GET[ 'childs' ];
-            $child_terms_slug = explode( ',', $child_terms_slug );
-            $parent_term_slug = $_GET[ 'parent' ];
-
-            $parent_term = get_term_by( 'slug', $parent_term_slug, $taxonomy );
-
-            if ( !$parent_term )
-                  wp_die( 'parent term does not exits' );
-
-            $response = array();
-            foreach ( $child_terms_slug as $term_slug ) {
-                  $child_term = get_term_by( 'slug', $term_slug, $taxonomy );
-                  if ( !$child_term )
-                        continue;
-
-                  $new_term = wp_update_term( $child_term->term_id, $taxonomy, array( 'parent' => $parent_term->term_id ) );
-
-                  if ( is_wp_error( $new_term ) )
-                        $response[ 'error' ][] = $new_term;
-                  else
-                        $response[ 'updated' ][] = $new_term;
-            }
-
-            echo json_encode( $response );
-            wp_die();
-      }
-
-      public function ajax_change_tax_name() {
-            if ( isset( $_GET[ 'current_name' ] ) && isset( $_GET[ 'new_name' ] ) ) {
-                  $current_name = $_GET[ 'current_name' ];
-                  $new_name = $_GET[ 'new_name' ];
-                  $query = 'UPDATE  `wp_term_taxonomy` SET  `taxonomy` =  "' . $new_name . '" WHERE  `taxonomy` = "' . $current_name . '";';
-                  global $wpdb;
-                  $x = $wpdb->query( $query );
-
-                  wp_die( 'rows affected ' . $x );
-            }
-            wp_die( 'missing arguments' );
-      }
-
-      public function ajax_install_terms() {
-
-            /* nz_delete_all_tax( $taxonomy ); */
-            $taxonomy = $_GET[ 'tax_name' ];
-            if ( empty( $taxonomy ) ) {
-                  echo json_encode( 'not a valid tax name(empty)' );
-                  wp_die();
-            }
-
-            $contry_list = $this->nz_get_file_contry_list();
-
-            $added = $this->nz_add_terms( $contry_list, $taxonomy );
-
-            echo json_encode( $added );
-            wp_die();
-      }
-
-      public function add_menu() {
-            add_options_page( 'Nz Term Contry List', 'Nz Term Contry List', 'manage_options', 'nz-term-contry-list', array( $this, 'options_page' ) );
-      }
-
-      public function options_page() {
+      static function get_location_filter( $options = array() ) {
+            global $wp_query;
+            $countries = $wp_query->get( '_countries' );
             ?>
-            <div class="wrap">
-                  <p>current taxonomies</p>
+            <div class="location-filter-wrap">
+                  <div class="country-select-wrap fl">
+                        <select name="contry-select" id="contry-select" style="visibility: hidden">
+                              <?php
+                              foreach ( $countries as $country ) {
+                                    ?>
+                                    <option value="<?php echo $country->slug ?>" <?php echo ($country->slug == self::$current_country->slug ) ? 'selected' : ''; ?> >
+                                          <?php echo $country->name ?>
+                                    </option> 
+                                    <?php
+                              }
+                              ?>
+                        </select>
+                  </div>
                   <?php
-                  var_dump( get_taxonomies() );
+                  $cities = $wp_query->get( '_cities' );
+                  if ( !empty( $cities ) ) {
+                        ?>
+                        <div class="city-select-wrap fl">
+                              <select name="city-select" id="city-select" style="visibility: hidden">
+                                    <?php
+                                    foreach ( $cities as $city ) {
+                                          ?>
+                                          <option value="<?php echo $city->slug ?>" <?php echo ($city->slug == self::$current_city->slug ) ? 'selected' : ''; ?> >
+                                                <?php echo $city->name ?>
+                                          </option> 
+                                          <?php
+                                    }
+                                    ?>
+                              </select>
+                        </div>
+                        <?php
+                  }
                   ?>
-                  <div id="change-tax-name-wrap">
-                        <p>Change taxonomy name</p>
-                        <label for="tax-current-name">
-                              current
-                              <input type="text" name="tax-current-name" class="tax-current-name"/>
-                        </label>
-                        <label for="tax-new-name">
-                              new
-                              <input type="text"  name="tax-new-name" class="tax-new-name"/>
-                        </label>
-                        <a class="button action">change tax name</a>
-                  </div>
-                  <hr>
-
-                  <label for="install-tax-name">
-                        Install terms in tax
-                        <input type="text" id="install-tax-name" name="install-tax-name"/>
-                  </label>
-                  <a id="install-terms" class="button action">install terms</a>
-                  <hr>
-
-                  <div id="set-terms-parent-wrap">
-                        <p>Bulk set parent term</p>
-                        <label for="current-tax">
-                              Taxonomy
-                              <input type="text" class="taxonomy" name="taxonomy"/>
-                        </label><br>
-                        <label for="child-term-name">
-                              child term slug(city name: ex. barcelona, madrid)
-                              <input type="text" class="child-terms-slug" name="child-terms-slug"/>
-                        </label>
-                        <label for="parent-term-slug">
-                              parent term slug(contry code: ex. es|fr|en)
-                              <input type="text" class="parent-term-slug" name="parent-term-slug"/>
-                        </label>
-                        <a class="button action">set terms parent</a>
-                  </div>
-                  <hr>
-                  <div id="add-object-term-wrap">
-                        <p>Bulk add object term</p>
-                        <label for="current-tax">
-                              Taxonomy
-                              <input type="text" class="taxonomy" name="taxonomy"/>
-                        </label>
-                        <label for="post-types">
-                              post types(ex: agenda, cool-place)
-                              <input type="text" class="post-types" name="post-types"/>
-                        </label><br>
-                        <label for="original-terms">
-                              original-terms(ex: madrid, barcelona)
-                              <input type="text" class="original-terms" name="original-terms"/>
-                        </label>
-                        <label for="new-term">
-                              new term(ex: es, fr)
-                              <input type="text" class="new-term" name="new-term"/>
-                        </label>
-                        <a class="button action">add object terms</a>
-                  </div>
             </div>
-            <script>
-                  jQuery(document).ready(function($) {
-                        $('#change-tax-name-wrap .button').on('click', function() {
-                              var $btn = $(this);
-                              var current_name = $btn.parent().find(".tax-current-name").val();
-                              var new_name = $btn.parent().find(".tax-new-name").val();
-                              console.log(current_name, new_name);
-                              $.get(ajaxurl + "?action=nz_change_tax_name&current_name=" + current_name + "&new_name=" + new_name, function(data) {
-                                    $btn.after(data);
+            <script type="text/javascript">
+                  (function() {
+                        $(function() {
+                              $("#contry-select").selectbox({
+                                    onChange: function(val, inst) {
+                                          var country_url = UpdateQueryString('city', null, window.location.href);
+                                          window.location.href = UpdateQueryString('country', val, country_url);
+                                    }
                               });
                         });
-                        $('#install-terms').on('click', function() {
-                              var $btn = $(this);
-                              var tax_name = $('#install-tax-name').val();
-                              $.get(ajaxurl + "?action=nz_install_contry_terms&tax_name=" + tax_name, function(data) {
-                                    $btn.after(data);
+                        $(function() {
+                              $("#city-select").selectbox({
+                                    onChange: function(val, inst) {
+                                          var country_url = UpdateQueryString('country', $("#contry-select").val(), window.location.href);
+                                          window.location.href = UpdateQueryString('city', val, country_url);
+                                    }
                               });
+                        });
+                        function UpdateQueryString(key, value, url) {
+                              if (!url)
+                                    url = window.location.href;
+                              var re = new RegExp("([?&])" + key + "=.*?(&|#|$)(.*)", "gi"),
+                                      hash;
 
-                        });
-                        $('#set-terms-parent-wrap .button').on('click', function() {
-                              var $btn = $(this);
-                              var taxonomy = $btn.parent().find('.taxonomy').val();
-                              var child_terms_slug = $btn.parent().find('.child-terms-slug').val();
-                              var parent_term_slug = $btn.parent().find('.parent-term-slug').val();
-                              $.get(ajaxurl + "?action=nz_set_terms_parent&childs=" + child_terms_slug + "&parent=" + parent_term_slug + "&taxonomy=" + taxonomy, function(data) {
-                                    $btn.after(data);
-                              });
-                        });
-                        $('#add-object-term-wrap .button').on('click', function() {
-                              var $btn = $(this);
-                              var taxonomy = $btn.parent().find('.taxonomy').val();
-                              var post_types = $btn.parent().find('.post-types').val();
-                              var original_terms = $btn.parent().find('.original-terms').val();
-                              var new_term = $btn.parent().find('.new-term').val();
-
-                              $.get(ajaxurl + "?action=nz_add_object_term&taxonomy=" + taxonomy + "&post_types=" + post_types + "&original_terms=" + original_terms + "&new_term=" + new_term, function(data) {
-                                    $btn.after(data);
-                              });
-                        });
-                  });
+                              if (re.test(url)) {
+                                    if (typeof value !== 'undefined' && value !== null)
+                                          return url.replace(re, '$1' + key + "=" + value + '$2$3');
+                                    else {
+                                          hash = url.split('#');
+                                          url = hash[0].replace(re, '$1$3').replace(/(&|\?)$/, '');
+                                          if (typeof hash[1] !== 'undefined' && hash[1] !== null)
+                                                url += '#' + hash[1];
+                                          return url;
+                                    }
+                              }
+                              else {
+                                    if (typeof value !== 'undefined' && value !== null) {
+                                          var separator = url.indexOf('?') !== -1 ? '&' : '?';
+                                          hash = url.split('#');
+                                          url = hash[0] + separator + key + '=' + value;
+                                          if (typeof hash[1] !== 'undefined' && hash[1] !== null)
+                                                url += '#' + hash[1];
+                                          return url;
+                                    }
+                                    else
+                                          return url;
+                              }
+                        }
+                  })();
             </script>
+            <style>
+                  .country-select-wrap .sbOptions{
+                        min-height: 300px;
+                        height: 350px;
+                  }
+            </style>
             <?php
       }
-
-      //delete tax terms
-      public function nz_delete_all_tax( $taxonomy ) {
-            ini_set( 'memory_limit', '512M' );
-            ini_set( 'max_execution_time', 300 );
-            $terms = get_terms( $taxonomy, array( 'fields' => 'ids', 'hide_empty' => false ) );
-            foreach ( $terms as $value ) {
-                  /* d($value); */
-                  wp_delete_term( $value, $taxonomy );
-            }
-      }
-
-      private function nz_add_terms( $terms = array(), $taxonomy = 'post_tag' ) {
-            ini_set( 'memory_limit', '512M' );
-            ini_set( 'max_execution_time', 300 );
-
-            $errors = array();
-            $added = array();
-            foreach ( $terms as $term ) {
-                  $new_term = wp_insert_term( $term[ 'name' ], $taxonomy, $term[ 'options' ] );
-                  if ( is_wp_error( $new_term ) )
-                        $errors[] = $new_term;
-                  else {
-                        $added[] = $new_term;
-                  }
-            }
-            return array(
-                  'terms' => $added,
-                  'errors' => $errors
-            );
-      }
-
-      private function nz_get_file_contry_list() {
-
-            $list_src = __DIR__ . '/resources/contry-list.txt';
-            $contry_list = array();
-            $i = 0;
-            $handle = fopen( $list_src, "r" );
-            if ( $handle ) {
-                  while ( ($line = fgets( $handle )) !== false ) {
-                        if ( strpos( $line, '#' ) !== false ) {
-                              continue;
-                        }
-                        list($slug, $name ) = explode( ':', $line );
-
-                        $contry_list[ $i ][ 'name' ] = ucfirst( trim( $name ) );
-                        $contry_list[ $i ][ 'options' ] = array(
-                              'slug' => strtolower( $slug )
-                        );
-
-                        $i++;
-                  }
-
-                  fclose( $handle );
-            } else {
-                  $contry_list = array();
-            }
-
-            return $contry_list;
-      }
-
 }
 
-new NzTermContryList();
-
-/* add_action( 'init', '_nz_location_terms_insert' ); */
-
-function _nz_location_terms_insert() {
-
-      $taxonomy = 'location';
-      /* nz_delete_all_tax( $taxonomy ); */
-      $contry_list = nz_get_file_contry_list();
-      /* d( $contry_list ); */
-
-      $added = nz_add_terms( $contry_list, $taxonomy );
-      d( $added );
-
-
-
-
-
-      /* $cities = get_terms( 'location', array( 'hide_empty' => FALSE ) ); */
-      /* d( $cities ); */
-}
+New NzWpLocationTerms( array(
+      'post_type' => array( 'agenda', 'cool-place' )
+          )
+);

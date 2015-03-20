@@ -2,15 +2,17 @@
       /*background-color: #2d2d2d;*/
       background-color: #646464;
       border: solid 1px #515151;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
+      /*font-family: Arial, sans-serif;*/
+      font-family: 'Russo One', sans-serif;
+
+      font-size: 20px;
       font-weight: normal;
       height: 30px;
       position: relative;
       width: 200px;
 }
 .sbHolder:focus .sbSelector{
-
+      /*color:@cm-blue-color;*/
 }
 .sbSelector{
       display: block;
@@ -27,9 +29,11 @@
 .sbSelector:link, .sbSelector:visited, .sbSelector:hover{
       /*color: #EBB52D;*/
       color: #fff;
-      /*color: @cm-blue-color;*/
       outline: none;
       text-decoration: none;
+}
+.sbSelector:hover{
+      color: @cm-blue-color;
 }
 .sbToggle{
       background: url(selectbox/select-icons.png) 0 -116px no-repeat;
@@ -74,6 +78,7 @@
       width: 200px;
       z-index: 1;
       overflow-y: auto;
+      
 }
 .sbOptions li{
       padding: 0 7px;
@@ -86,7 +91,7 @@
 }
 .sbOptions a:link, .sbOptions a:visited{
       /*color: #ddd;*/
-      color: #111;
+      color: #333;
       text-decoration: none;
 }
 .sbOptions a:hover,

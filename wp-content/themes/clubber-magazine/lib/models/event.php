@@ -11,23 +11,6 @@ $events = new CPT( array(
       'has_archive' => TRUE
           )
 );
-/*
-  $events->register_taxonomy( array(
-  'taxonomy_name' => 'city',
-  'singular' => __( 'City', 'cm' ),
-  'plural' => __( 'Cities', 'cm' ),
-  'slug' => 'ciudad'
-  )
-  );
- */
-
-$events->register_taxonomy( array(
-      'taxonomy_name' => 'location',
-      'singular' => __( 'Location', 'cm' ),
-      'plural' => __( 'Locations', 'cm' ),
-      'slug' => 'location'
-          )
-);
 
 /* relation to users */
 add_action( 'p2p_init', 'cm_events_connections' );
@@ -118,7 +101,6 @@ function cm_pre_get_archive_agenda( $query ) {
       )
             return;
 
-
       Roots_Wrapping::$raw = TRUE;
       $query->set( 'posts_per_page', -1 );
       $query->set( 'post_type', "agenda" );
@@ -149,28 +131,4 @@ function cm_pre_get_archive_agenda( $query ) {
             $date_meta_query,
       );
       $query->set( 'meta_query', $meta_query );
-
-      $taxonomy = 'location';
-      $country_slug = get_query_var( 'country', 'es' );
-
-      $country = get_term_by( 'slug', $country_slug, $taxonomy );
-      $cities = get_terms( $taxonomy, array( 'parent' => $country->term_id, 'hide_empty' => FALSE, 'orderby' => 'count', 'order' => 'DESC' ) );
-      $query->set( '_cities', $cities );
-
-      $city = get_query_var( 'city' );
-      if ( empty( $city ) ) {
-            $city = $cities[ 0 ]->slug;
-      }
-
-      $city_tax_query = array(
-            'taxonomy' => $taxonomy,
-            'field' => 'slug',
-            'terms' => $city
-      );
-
-      $tax_query = array(
-            $city_tax_query,
-      );
-
-      $query->set( 'tax_query', $tax_query );
 }

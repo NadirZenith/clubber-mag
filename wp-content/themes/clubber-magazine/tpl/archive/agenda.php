@@ -8,7 +8,7 @@ if ( $query->have_posts() ) {
             $date = get_post_meta( get_the_ID(), 'wpcf-event_begin_date', true ); //1394924400
             if ( is_numeric( $date ) && ( int ) $date == $date ) {
                   $post_date = date( 'l d/m/y', $date ); //"15/03/14"
-            /*$post_date = date( 'l d/m/y', $post_timestamp );*/
+                  /* $post_date = date( 'l d/m/y', $post_timestamp ); */
             }
             if ( $last_date != $post_date ) {
                   if ( $first ) {
@@ -50,6 +50,17 @@ if ( $query->have_posts() ) {
             }
       }//END WHILE
 } else {
-      get_template_part( 'tpl/parts/not-found' );
+      $new_event_link = get_permalink( cm_lang_get_post( CM_RESOURCE_EVENT_PAGE_ID ) );
+      ?>
+      <p class="tc">
+            <?php _e( 'Sorry! Currently we don´t have events available in this region. You can upload your events in the following link', 'cm' ) ?>
+      </p>
+      <p class="tc">
+            <a class="readmore" href="<?php echo $new_event_link ?>" >
+                  <span><?php _e( 'Upload and share event', 'cm' ) ?></span>&nbsp;
+                  <i class="fa fa-users" style="color: #0583F2"></i>
+            </a>
+      </p>
+      <?php
 }
 ?>

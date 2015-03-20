@@ -18,13 +18,6 @@ $cool_places->register_taxonomy( array(
           )
 );
 
-$cool_places->register_taxonomy( array(
-      'taxonomy_name' => 'location',
-      'singular' => __( 'Location', 'cm' ),
-      'plural' => __( 'Locations', 'cm' ),
-      'slug' => 'location' )
-);
-
 //add map field scripts
 add_action( 'admin_enqueue_scripts', 'cm_coolplace_load_scripts' );
 

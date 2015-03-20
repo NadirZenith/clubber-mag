@@ -2,11 +2,11 @@
 
       <?php
 //archive event
-      if ( is_post_type_archive( 'agenda' ) || is_tax( 'city' ) ) {
+      if ( is_post_type_archive( 'agenda' ) ) {
             $new_event_link = get_permalink( cm_lang_get_post( CM_RESOURCE_EVENT_PAGE_ID ) );
             ?>
             <a class="readmore responsive" href="<?php echo $new_event_link ?>" >
-                  <span class=""><?php _e( 'Share event', 'cm' ) ?></span>&nbsp;
+                  <span class=""><?php _e( 'Upload and share event', 'cm' ) ?></span>&nbsp;
                   <i class="fa fa-users" style="color: #0583F2"></i>
             </a>
             <?php
@@ -33,7 +33,7 @@ if ( is_super_admin() ) {
             (function($) {
 
                   jQuery(document).ready(function($) {
-
+                        return;
 
                         var sticky = new Waypoint.Sticky({
                               element: $('.cm-sticky-sidebar')[0],
@@ -43,7 +43,7 @@ if ( is_super_admin() ) {
                               }
                         })
 
-                        window.onresize = setSickWidth;
+                        /*window.onresize = setSickWidth;*/
 
                         function setSickWidth()
                         {
@@ -53,7 +53,7 @@ if ( is_super_admin() ) {
                                       );
 
                         }
-                        setSickWidth();
+                        /*setSickWidth();*/
                   });
 
             })(jQuery);
