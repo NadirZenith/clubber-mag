@@ -27,7 +27,9 @@
     ?>
 
     <div class="m5 p5 menu-az">
-
+        <div class="group cb mb15">
+            <?php echo NzWpLocationTerms::get_location_filter(); ?>
+        </div>
         <?php
         //call MENU
         $after = '';
@@ -55,8 +57,72 @@
     <div class="cb"></div>
     <div class="m5 p5 menu-all-first-letter">
         <?php
-//sort_all_by_first_letter
-        sort_all_by_first_letter('cool-place', $term);
+        //sort_all_by_first_letter
+        /* sort_all_by_first_letter('cool-place', $term); */
+        /*        -----------------------       */
+
+        if (have_posts()) {
+            $first = true;
+            /** @todo: nz mobile version col-1-6 */
+            /* $section_open_tag = '<section class="fl" style="width:16%;margin:0.3%">'; */
+            $section_open_tag = '<section class="fl" style="width:150px;margin:5px">';
+            ?>
+
+            <?php
+            while (have_posts()) {
+                the_post();
+                $first_letter = strtoupper(substr(get_the_title(), 0, 1));
+
+                //IF NEW LETTER
+                if ($curr_letter != $first_letter) {
+                    $letter_link = add_query_arg('first-letter', $first_letter);
+                    if ($first) {
+                        echo $section_open_tag;
+                        ?> 
+                        <header>
+                            <h2 class="m5">
+                                <?php echo '<a class="cm-title" href="' . $letter_link . '">' . $first_letter . '</a>'; ?> 
+                            </h2> 
+                        </header>
+                        <?php
+                        echo '<ul>';
+                        $first = FALSE;
+                    } else {
+                        echo '</ul>';
+                        echo '</section>';
+                        echo $section_open_tag;
+                        ?>
+                        <header>
+                            <h2 class="m5">
+                                <?php echo '<a class="cm-title" href="' . $letter_link . '">' . $first_letter . '</a>'; ?> 
+                            </h2> 
+                        </header>
+                        <?php
+                        echo '<ul>';
+                    }
+                    $curr_letter = $first_letter;
+                }
+                // LI
+                ?>
+                <li class="ml5" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden">
+                    <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </li>
+                <?php
+                // \LI
+            }//END WHILE
+            echo '</ul>';
+            echo '</section>';
+            ?>
+
+            <?php
+        }// END HAVE POSTS 
+        else {
+            _e('No coolplaces found', 'cm');
+        }
+
+        /*        -----------------------       */
         ?>
     </div>
 
@@ -122,7 +188,7 @@
                 if (places[i]['url']) {
                     preloads[i] = places[i]['url'];
                 } else {
-                    preloads[i] = 'http://lab.dev/clubber-mag-dev/wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
+                    preloads[i] = 'http://www.clubber-mag.com/clubber-mag/wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
                 }
 
                 //infowindow content

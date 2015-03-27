@@ -108,7 +108,7 @@ function cm_coolplace_custom_fields() {
     ));
 
     x_add_metadata_field('featured', $post_types, array(
-        'group' => $group,
+        'group' => $metagroup,
         'label' => 'Destacado',
         'field_type' => 'checkbox',
     ));
@@ -213,4 +213,23 @@ function set_map_terms($map_info, $post_id) {
             $r = wp_set_object_terms($post_id, $term_id, $taxonomy);
         }
     }
+}
+
+add_action('pre_get_posts', 'cm_pre_get_archive_coolplace');
+
+function cm_pre_get_archive_coolplace($query) {
+    
+
+    if (
+        !$query->is_main_query() || $query->is_admin || !$query->is_post_type_archive('cool-place')
+    )
+        return;
+    
+    $query->set('orderby', 'title');
+    $query->set('order', 'ASC');
+    $query->set('posts_per_page', -1);
+    
+    
+    
+
 }
