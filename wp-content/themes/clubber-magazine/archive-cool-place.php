@@ -133,7 +133,14 @@
         'post_type' => 'cool-place',
         'orderby' => 'title',
         'order' => 'ASC',
-        'posts_per_page' => 10
+        'posts_per_page' => -1,
+        'meta_query' => array(
+            array(
+                'key' => CM_META_MAPA,
+                'value' => 'map',
+                'compare' => 'LIKE'
+            )
+        )
     );
 
     $query = new WP_Query($args);
