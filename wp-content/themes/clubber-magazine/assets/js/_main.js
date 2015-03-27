@@ -88,7 +88,6 @@
                  }
                  });
                  */
-                console.log('parallax');
                 /* 
                  * footer parallax
                  * */
