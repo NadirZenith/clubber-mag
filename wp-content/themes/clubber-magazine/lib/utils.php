@@ -164,7 +164,7 @@ function nz_get_post_city_link( $post_id ) {
 
       if ( $city_term ) {
             $archive_link = get_post_type_archive_link( get_post_type() );
-            $query_arg = add_query_arg( array( 'city' => $city_term->name ), $archive_link );
+            $query_arg = add_query_arg( array( 'city' => $city_term->slug ), $archive_link );
             $link = "<a href='" . $query_arg . "'>{$city_term->name}</a>";
       }
       return $link;
