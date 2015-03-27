@@ -75,6 +75,9 @@ function nz_fancybox_ajax_template( $templates ) {
 if ( !function_exists( 'nz_is_ajax' ) ) {
 
       function nz_is_ajax() {
+            if (php_sapi_name() == "cli")
+              return false;
+          
             $headers = apache_request_headers();
             return (isset( $headers[ 'X-Requested-With' ] ) && $headers[ 'X-Requested-With' ] == 'XMLHttpRequest');
       }
@@ -83,6 +86,9 @@ if ( !function_exists( 'nz_is_ajax' ) ) {
 if ( !function_exists( 'nz_is_fancybox' ) ) {
 
       function nz_is_fancybox() {
+          if (php_sapi_name() == "cli")
+              return false;
+          
             $headers = apache_request_headers();
             return (isset( $headers[ 'X-fancyBox' ] ) && $headers[ 'X-fancyBox' ] == "true");
       }
