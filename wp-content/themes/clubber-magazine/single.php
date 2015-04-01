@@ -16,8 +16,8 @@ while (have_posts()) {
 }
 ?>
 
-
 <?php
+//related content
 $args = array(
     'post_type' => get_post_type(),
     'posts_per_page' => 4,
@@ -40,10 +40,16 @@ if (get_post_type() == 'agenda') {
         )
     );
 } else {
+
     $args['meta_query'] = array(
         array(
             'key' => '_thumbnail_id',
             'compare' => 'EXISTS',
+        )
+    );
+    $args['date_query'] = array(
+        array(
+            'after' => '-1 month',
         )
     );
 }
