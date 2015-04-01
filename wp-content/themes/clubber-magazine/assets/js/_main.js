@@ -73,6 +73,10 @@
                     autoSize: false,
                     width: "80%"
                 });
+                $('.fancybox.ajax').fancybox({
+                    autoSize: false,
+                    width: "80%"
+                });
                 jQuery(".single .gallery-icon a").fancybox().attr('rel', 'wp-gallery-fancybox');
 
                 /*

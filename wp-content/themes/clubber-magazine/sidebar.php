@@ -15,7 +15,7 @@
         $podcast_form_url = get_permalink(CM_RESOURCE_PODCAST_PAGE_ID);
         ?>
         <div class="mt15 mb15">
-            <a class="readmore responsive fancybox" data-fancybox-type="ajax" href="<?php echo $podcast_form_url ?>"> 
+            <a class="readmore responsive fancybox ajax" data-fancybox-type="ajax" href="<?php echo $podcast_form_url ?>"> 
                 <?php _e('Share your', 'cm') ?>&nbsp;&nbsp;<i class="fa fa-soundcloud" style="color: #f50;"></i>
             </a>
         </div>

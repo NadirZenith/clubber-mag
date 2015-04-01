@@ -45,9 +45,8 @@ $resource_type = get_post_type_object( $resource->post_type );
                                     case 'artist':
                                     case 'label':
                                           $podcast_form_url = get_permalink( CM_RESOURCE_PODCAST_PAGE_ID );
-                                          /* $podcast_form_url = get_permalink( cm_lang_get_post( CM_RESOURCE_PODCAST_PAGE_ID ) ); */
                                           ?>
-                                          <a class="readmore responsive fancybox" data-fancybox-type="ajax" href="<?php echo $podcast_form_url ?>"> 
+                                          <a class="readmore responsive fancybox ajax" data-fancybox-type="ajax" href="<?php echo $podcast_form_url ?>"> 
                                                 <?php _e( 'Share your', 'cm' ) ?>&nbsp;&nbsp;<i class="fa fa-soundcloud" style="color: #f50;"></i>
                                           </a>
                                           <?php
