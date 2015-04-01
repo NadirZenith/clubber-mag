@@ -1,7 +1,7 @@
 <section class="m5">
       <div class="mb5">
             <?php
-            cm_home_list_title( 'photo', __( 'Music', 'cm' ) );
+            cm_home_list_title( 'music', __( 'Music', 'cm' ) );
             ?>
       </div>
 
