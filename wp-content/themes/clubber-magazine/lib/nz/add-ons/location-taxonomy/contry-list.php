@@ -2,22 +2,23 @@
 if (is_admin() && current_user_can('manage_options')) {
     include_once('tax-tools.php');
 }
-
-Class NzWpLocationTerms {
-
+Class NzWpLocationTerms
+{
     static $taxonomy;
     private $options;
     static $current_country;
     static $current_city;
 
-    public function __construct($options) {
+    public function __construct($options)
+    {
 
         $this->options = wp_parse_args($options, array(
             'post_type' => 'post',
             'taxonomy' => 'location',
             'default_country_slug' => 'es',
-            'default_city_slug' => 'barcelona'
-            ));
+            'default_city_slug' => 'barcelona',
+            'custom_pre_get_posts' => false
+        ));
 
         self::$taxonomy = $this->options['taxonomy'];
 
@@ -27,16 +28,41 @@ Class NzWpLocationTerms {
         add_action('query_vars', array($this, 'add_location_vars'));
     }
 
-    public function init() {
+    public function init()
+    {
         $this->registerTaxonomy();
     }
 
-    public function pre_get_posts_archive($query) {
+    public function pre_get_posts_archive($query)
+    {
         if (
-            !$query->is_main_query() || $query->is_admin || !$query->is_post_type_archive($this->options['post_type'])
+            !$query->is_main_query() || $query->is_admin
         )
             return;
 
+
+        if ($query->is_post_type_archive($this->options['post_type'])) {
+            return $this->_apply_query_filter($query);
+        }
+
+        if ($this->options['custom_pre_get_posts']) {
+            if ($this->_check_conditional_tag()) {
+                return $this->_apply_query_filter($query);
+            }
+        }
+    }
+
+    private function _check_conditional_tag()
+    {
+        if (is_array($this->options['custom_pre_get_posts'])) {
+            return $this->options['custom_pre_get_posts'][0]($this->options['custom_pre_get_posts'][1]);
+        } else {
+            return $this->options['custom_pre_get_posts']();
+        }
+    }
+
+    private function _apply_query_filter($query)
+    {
         //set current country and city
         $city = get_query_var('city');
         $country = get_query_var('country');
@@ -118,7 +144,8 @@ Class NzWpLocationTerms {
         $query->set('tax_query', $tax_query);
     }
 
-    public function add_location_vars($vars) {
+    public function add_location_vars($vars)
+    {
 
         $vars[] = "country"; //
         $vars[] = "city"; //
@@ -126,7 +153,8 @@ Class NzWpLocationTerms {
         return $vars;
     }
 
-    private function registerTaxonomy() {
+    private function registerTaxonomy()
+    {
         // Add new taxonomy, make it hierarchical (like categories)
         $labels = array(
             'name' => _x('Locations', 'taxonomy general name', 'cm'),
@@ -154,7 +182,8 @@ Class NzWpLocationTerms {
         register_taxonomy($this->options['taxonomy'], $this->options['post_type'], $args);
     }
 
-    static function get_post_city_name($post_id) {
+    static function get_post_city_name($post_id)
+    {
         $city = '';
         $city_term = self::get_post_city_term($post_id);
         if ($city_term)
@@ -163,7 +192,8 @@ Class NzWpLocationTerms {
         return $city;
     }
 
-    static function get_post_city_term($post_id) {
+    static function get_post_city_term($post_id)
+    {
         $terms = get_the_terms($post_id, self::$taxonomy);
         if (!is_wp_error($terms) && !empty($terms)) {
             foreach ($terms as $term) {
@@ -175,7 +205,8 @@ Class NzWpLocationTerms {
         return FALSE;
     }
 
-    static function get_location_filter($options = array()) {
+    static function get_location_filter($options = array())
+    {
         global $wp_query;
         $countries = $wp_query->get('_countries');
         ?>
@@ -186,7 +217,7 @@ Class NzWpLocationTerms {
                     foreach ($countries as $country) {
                         ?>
                         <option value="<?php echo $country->slug ?>" <?php echo ($country->slug == self::$current_country->slug ) ? 'selected' : ''; ?> >
-                            <?php echo $country->name ?>
+                        <?php echo $country->name ?>
                         </option> 
                         <?php
                     }
@@ -203,7 +234,7 @@ Class NzWpLocationTerms {
                         foreach ($cities as $city) {
                             ?>
                             <option value="<?php echo $city->slug ?>" <?php echo ($city->slug == self::$current_city->slug ) ? 'selected' : ''; ?> >
-                                <?php echo $city->name ?>
+                            <?php echo $city->name ?>
                             </option> 
                             <?php
                         }
@@ -272,10 +303,10 @@ Class NzWpLocationTerms {
         </style>
         <?php
     }
-
 }
 
 New NzWpLocationTerms(array(
-    'post_type' => array('agenda', 'cool-place')
+    'post_type' => array('agenda', 'cool-place'),
+    'custom_pre_get_posts' => array('is_tax', 'cool_place_type')
     )
 );

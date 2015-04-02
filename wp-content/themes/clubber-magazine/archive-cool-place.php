@@ -57,7 +57,7 @@
     <div class="cb"></div>
     <div class="m5 p5 menu-all-first-letter">
         <?php
-        //sort_all_by_first_letter
+//sort_all_by_first_letter
         /* sort_all_by_first_letter('cool-place', $term); */
         /*        -----------------------       */
 
