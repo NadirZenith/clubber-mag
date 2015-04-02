@@ -192,7 +192,7 @@ Class NZ_Login {
       }
 
       public function lostpasswordUrl() {
-            d( 'passei' );
+            /*d( 'passei' );*/
             return the_permalink();
       }
 

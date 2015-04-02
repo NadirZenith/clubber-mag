@@ -86,7 +86,9 @@ class NZ_WP_Forms_Handler extends NZ_WP_Forms {
                               if ( $this->isAjax ) {//&& $this->wpform->ajax
                                     wp_send_json_success( array( 'redirectTo' => $this->wpform->redirectTo ) );
                               } else {
-                                    wp_safe_redirect( $this->wpform->redirectTo );
+                                    /*wp_safe_redirect( $this->wpform->redirectTo );*/
+                                    wp_redirect( $this->wpform->redirectTo );
+                                    exit();
                               }
                         } elseif ( !empty( $this->wpform->confirmations ) ) {
 
