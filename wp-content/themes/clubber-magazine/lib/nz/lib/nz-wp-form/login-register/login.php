@@ -57,7 +57,7 @@ Class NZ_Login {
                         if ( !$user ) {
                               $error = __( 'User does not exist' );
                         } else {
-                              $hash = wp_generate_password();
+                              $hash = wp_generate_password(30,FALSE);
                               update_user_meta( $user->ID, 'nz_recover_hash', $hash );
 
                               wp_mail( $user_email, 'Clubber Mag recover password', get_permalink( CM_CONNECT_PAGE_ID ) . '?recover=' . $hash );
