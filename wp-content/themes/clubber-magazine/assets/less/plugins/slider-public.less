@@ -7,125 +7,95 @@
 
 /* general resets */
 .metaslider {
-      position: relative;
+    position: relative;
 }
 .metaslider.nav-hidden .flexslider {
-      margin-bottom: 0;
+    margin-bottom: 0;
 }
 .metaslider.nav-hidden.add-margin .flexslider {
-      margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .metaslider img {
-      height: auto;
-      padding: 0;
+    height: auto;
+    padding: 0;
 }
-.metaslider .theme-default .nivoSlider {
-      -webkit-box-shadow: 0 0 0;
-      -moz-box-shadow: 0 0 0;
-      box-shadow: 0 0 0;
-}
+
 
 .metaslider li:before,
 .metaslider li:after {
-      content: "" !important;
-      display: block !important;
-      bottom: auto !important;
-      margin: 0 !important;
+    content: "" !important;
+    display: block !important;
+    bottom: auto !important;
+    margin: 0 !important;
 }
 /**@todo nz -------------------------- */
 .metaslider .caption:before ,
 .metaslider .caption-wrap ,
 .metaslider .caption:after{
-      position: absolute;
+    position: absolute;
+}
+.metaslider .caption-wrap {
+    bottom: 5px;
+    background: url(img/podcast/mid.png) repeat;
+    font-size: 15px;
+    /*left: 20px;*/
+    left: 15%;
+
 }
 .metaslider .caption:before ,
 .metaslider .caption:after{
-      width: 20px;
-      height: 100%;
-      content: '';
-      top: 0;
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-}
-.metaslider .caption-wrap {
-      bottom: 5px;
-      background: url(img/podcast/mid.png) repeat;
-      font-size: 15px;
-      left: 20px;
-
+    width: 20px;
+    height: 100%;
+    content: '';
+    top: 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 .metaslider .caption:before {
-      left: -20px;
-      background-image: url(img/podcast/bef.png);
-      /*background: url(img/podcast/bef-up-2.png) no-repeat;*/
+    left: -20px;
+    background-image: url(img/podcast/bef.png);
 }
 .metaslider .caption:after {
-      right: -20px;
-      background-image: url(img/podcast/aft-up-2.png);
-      /*background: url(img/podcast/aft-down-3.png) no-repeat;*/
+    right: -20px;
+    background-image: url(img/podcast/aft-up-2.png);
 }
 
 .metaslider .caption {
-      color: white;
-      text-align: center;
-      /*font-family: 'Russo One', sans-serif;*/
+    color: white;
+    text-align: center;
 }
 
-// sm ≥ 568px 
-@media screen and (min-width: 35.5em)
-{
-
+/*
+* mobile
+* li.ms-image > a > img
+* li is relative 
+* a has no class
+* and img is with 100 
+*/
+section.featured-posts{
+    position: relative;
+    left: -20%;
+    width: 140%;
 }
+
 // md ≥ 768px 
 @media screen and (min-width: 48em)
 {
-      .metaslider .caption-wrap {
-            font-size: 30px;
-            bottom: 20px;
-            /*height: 40px;*/
 
-      }
-     
+    section.featured-posts{
+        position: relative;
+        left: 0;
+        width: 100%;
+        /*overflow: hidden;*/
+    }
+
+    .metaslider .caption-wrap {
+         font-size: 30px;
+        bottom: 20px;
+        left: 20px;
+    }
 }
-// lg ≥ 1024px
-@media screen and (min-width: 64em)
-{
-
-}
-// xl ≥ 1280px
-@media screen and (min-width: 80em)
-{}
-
-/*
-.metaslider .caption-wrap {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      line-height: 30px;
-}
-
-.metaslider .caption {
-      position: relative;
-      background: rgba(1,1,1,0.5);
-      color: white;
-      text-align: center;
-      left: -50%;
-      padding: 5px 7px;
-      font-size: 150%;
-      line-height: 120%;
-}
-
-@media only screen and (max-width: 767px) {
-      .metaslider .caption {
-            font-size: 100%;
-            line-height: 100%;
-      }
-
-}
-
-*/
-
 /** quick resets **/
 .article .metaslider ol,
 .art-article .metaslider img,
@@ -147,22 +117,22 @@
 .metaslider .flexslider .flex-direction-nav li,
 .entry-content .metaslider .flexslider ol.flex-control-nav
 {
-      border: 0;
-      border-top: 0;
-      border-right: 0;
-      border-bottom: 0;
-      border-left: 0;
-      margin: 0;
-      margin-top: 0;
-      margin-right: 0;
-      margin-bottom: 0;
-      margin-left: 0;
-      list-style-type: none;
-      list-style: none;
-      padding: 0;
-      line-height: normal;
+    border: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    margin: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    list-style-type: none;
+    list-style: none;
+    padding: 0;
+    line-height: normal;
 }
 .metaslider .slides img {
-      width: 100%;
-      display: block;
+    width: 100%;
+    display: block;
 }
