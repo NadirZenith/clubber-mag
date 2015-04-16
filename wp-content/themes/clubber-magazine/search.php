@@ -1,8 +1,8 @@
 
 <?php
 $search = get_query_var('s');
-$search_string = esc_attr(trim($search));
 
+$search = str_replace(' ', '-', $search);
 $search_params = array(
     'search' => "*{$search}*",
     'search_columns' => array(
