@@ -13,11 +13,13 @@
                   <?php
                   if ( is_front_page() ) {
                         ?>
+                <div class="oh">
                         <section class="featured-posts">
                               <?php
                               echo do_shortcode( '[metaslider id=661]' );
                               ?>
                         </section>
+                </div>
                         <?php
                   } else if ( is_singular( 'artist' ) ) {
                         echo get_template_part( 'tpl/parts/artist-home' );
