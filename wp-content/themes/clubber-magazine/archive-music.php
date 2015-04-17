@@ -1,6 +1,6 @@
 <section class="m5">
       <header class="mt5 ml5 mb10">
-            <h1>
+          <h1 class="sc-2">
                   <?php _e( post_type_archive_title( '', false ), 'cm' ); ?>     
             </h1>
       </header>

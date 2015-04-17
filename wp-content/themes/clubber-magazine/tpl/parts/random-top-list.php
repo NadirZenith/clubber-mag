@@ -26,7 +26,7 @@ if ( is_tax( $tax ) ) {
 
 $query = new WP_Query( $args );
 ?>
-<section class="ibox-5 mt15">
+<section class="mt15">
       <div class="cb">
             <ul class="slides">
                   <?php

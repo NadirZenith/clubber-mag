@@ -7,7 +7,7 @@ Class NzWpLocationTerms
     static $taxonomy;
     private $options;
     static $current_country;
-    static $current_city;
+    public static $current_city;
 
     public function __construct($options)
     {
@@ -71,12 +71,14 @@ Class NzWpLocationTerms
             //both set
             $country_term = get_term_by('slug', $country, $this->options['taxonomy']);
             if (!$country_term) {
+                //contry does not exits
                 $query->set_404();
                 return;
             }
 
             $city_term = get_term_by('slug', $city, $this->options['taxonomy']);
             if ($city_term && $city_term->parent != $country_term->term_id) {
+                //city does not exist
                 $query->set_404();
                 return;
             }
@@ -191,6 +193,10 @@ Class NzWpLocationTerms
 
         return $city;
     }
+    
+    public function get_current_city(){
+        
+    }
 
     static function get_post_city_term($post_id)
     {
@@ -304,8 +310,7 @@ Class NzWpLocationTerms
         <?php
     }
 }
-
-New NzWpLocationTerms(array(
+$NzLocationsTerms = New NzWpLocationTerms(array(
     'post_type' => array('agenda', 'cool-place'),
     'custom_pre_get_posts' => array('is_tax', 'cool_place_type')
     )

@@ -17,7 +17,7 @@ $args = array(
 
 $query = new WP_Query( $args );
 ?>
-<section class="ibox-5 mt15">
+<section class="mt15">
       <header class="mb3 ml3">
             <h1 class="h2">
                   <span class="cm-title" >

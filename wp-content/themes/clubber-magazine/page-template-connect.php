@@ -19,14 +19,17 @@ if (is_user_logged_in()) {
 <div class="col-1 col-sm-1-2 fl">
     <div class="ibox-5">
         <div class="box-5">
-            <h2>
-                <span class="cm-title">
-                    <?php _e('Sign In', 'cm') ?>
-                </span>
-            </h2>
-            <p class="tj">
-                <?php _e('Sign in and enjoy our community.', 'cm') ?>
-            </p>
+            <?php if (!isset($_GET['recover'])) { ?>
+                <h2>
+                    <span class="cm-title">
+                        <?php _e('Sign In', 'cm') ?>
+                    </span>
+                </h2>
+                <p class="tj">
+                    <?php _e('Sign in and enjoy our community.', 'cm') ?>
+                </p>
+            <?php } ?>
+
             <?php
             echo do_shortcode('[nzwp_forms_login]');
             ?>

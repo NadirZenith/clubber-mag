@@ -62,7 +62,7 @@
                 nextText: "&gt;",
                 easing: "linear",
                 slideshow: true,
-                useCSS: true
+                useCSS: false
             });
         });
 
