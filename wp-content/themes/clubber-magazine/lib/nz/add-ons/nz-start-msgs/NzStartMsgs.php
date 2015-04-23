@@ -213,8 +213,8 @@ function cm_start_msgs() {
                   array(
                         'container' => '#user-profile-main',
                         'msg' => '<span class="msg-title">¡Te damos la bienvenida a la comunidad Clubber Magazine!</span><br>'
-                        . '<p>Aprende a utilizar tú perfil. Aquí podrás editar tú información de usuario donde podrás agregar '
-                        . 'fotografías, tú página web y redes sociales en las que participas. También te podrás apuntar a '
+                        . '<p>Aprende a utilizar tu perfil. Aquí podrás editar tu información de usuario donde podrás agregar '
+                        . 'fotografías, tu página web y redes sociales en las que participas. También te podrás apuntar a '
                         . 'eventos y así programar tu agenda.</p> '
                         . '<p>Si eres un ' . $artist . ', ' . $promoter . ', ' . $label . ' o un ' . $coolplace . ' (Club, bar o restaurant) puedes '
                         . 'crear un ' . $recurso . ' y disfrutar de todas las ventajas que ofrecemos.</p>',
