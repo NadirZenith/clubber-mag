@@ -142,8 +142,8 @@ $label = __( 'Locale', 'cm' );
 $atts = array(
       'value' => 'test',
       'options' => array(
-            'es_ES' => 'espanhol',
-            'en_US' => 'english'
+            'es_ES' => 'Castellano',
+            'en_US' => 'English'
       )
 );
 $UserForm->addMeta( 'radios', $slug, $label, $atts );
