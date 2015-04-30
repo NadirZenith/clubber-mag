@@ -147,7 +147,7 @@ function cm_relation_to_coolplace_metafield($field_slug, $field, $object_type, $
     );
 
     printf('<select id="%s" class="custom-metadata-select2" name="%s">', esc_attr($field_slug), esc_attr($field_slug));
-    echo '<option>OTRO - wpcf-event_place_address / name</option>';
+    echo '<option value="">OTRO - wpcf-event_place_address / name</option>';
     foreach ($posts as $post) {
         printf('<option value="%s"%s>', esc_attr($post->ID), selected($post->ID, $value[0], false));
         echo $post->post_title;
