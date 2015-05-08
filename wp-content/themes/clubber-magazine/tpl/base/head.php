@@ -6,7 +6,7 @@
       <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/assets/images/apple-touch-icon.png" />
       <link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/assets/images/favicon.ico" type="image/x-icon" />
 
-      <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=places"></script>
       <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 
       <?php
