@@ -62,7 +62,7 @@ function nz_fb_like_iframe($url = null)
     if (FACEBOOK_APP_ID && $url) {
         $url = urlencode($url);
         $content = '<div class="nz-fblike-iframe">'
-            . '<iframe src="//www.facebook.com/plugins/like.php?href=' . $url . '&amp;width=100&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=' . FACEBOOK_APP_ID . '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;"></iframe>'
+            . '<iframe src="//www.facebook.com/plugins/like.php?href=' . $url . '&amp;width=100&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=' . FACEBOOK_APP_ID . '" scrolling="no" style="border:none; overflow:hidden; height:21px;"></iframe>'
             . '</div>';
         /* $content = '<h1>asdf</h1>'; */
         return $content;
