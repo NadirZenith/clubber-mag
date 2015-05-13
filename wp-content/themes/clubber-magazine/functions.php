@@ -105,6 +105,7 @@ $roots_includes = array(
       /** CLUBBER add-ons      */
       CM_ADDONS_DIR . '/nz-start-msgs/NzStartMsgs.php',
       CM_ADDONS_DIR . '/location-taxonomy/contry-list.php',
+      CM_ADDONS_DIR . '/col-shortcodes/col-shortcodes.php',
       CM_ADDONS_DIR . '/todo-pending-posts.php',
       CM_ADDONS_DIR . '/query-functions.php',
       CM_ADDONS_DIR . '/language-selector.php',
