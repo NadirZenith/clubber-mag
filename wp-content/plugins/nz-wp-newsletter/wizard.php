@@ -57,7 +57,9 @@ class NzWpNewsletterWizard
 
 
         add_option('nz_wp_newsletter_db_version', NzWpNewsletter::VERSION);
-        var_dump($r);
-        var_dump($wpdb->last_error);
+        if (current_user_can('manage_options')) {
+            var_dump($r);
+            var_dump($wpdb->last_error);
+        }
     }
 }
