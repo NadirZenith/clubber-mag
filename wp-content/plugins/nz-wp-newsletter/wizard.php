@@ -46,7 +46,7 @@ class NzWpNewsletterWizard
         $sql = "CREATE TABLE $table_name (
               id mediumint(9) NOT NULL AUTO_INCREMENT,
               time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-              user_id int,
+              user_id mediumint(9),
               email varchar(55) NOT NULL,
               UNIQUE KEY email (email)
         ) $charset_collate;";
@@ -58,5 +58,6 @@ class NzWpNewsletterWizard
 
         add_option('nz_wp_newsletter_db_version', NzWpNewsletter::VERSION);
         var_dump($r);
+        var_dump($wpdb->last_error);
     }
 }
