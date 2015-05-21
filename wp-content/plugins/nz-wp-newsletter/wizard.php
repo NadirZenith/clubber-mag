@@ -53,8 +53,10 @@ class NzWpNewsletterWizard
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-        dbDelta($sql);
+        $r = dbDelta($sql);
+
 
         add_option('nz_wp_newsletter_db_version', NzWpNewsletter::VERSION);
+        var_dump($r);
     }
 }
