@@ -1,9 +1,10 @@
 <?php
 if (WP_ENV === 'development') {
-    define('FACEBOOK_APP_ID', '1549701461914029'); // facebook app id development
+    /* define('FACEBOOK_APP_ID', '1549701461914029'); // facebook app id development */
 } else {
-    define('FACEBOOK_APP_ID', '1467286160155560'); // facebook app id 
+    
 }
+define('FACEBOOK_APP_ID', '1467286160155560'); // facebook app id 
 
 function nz_facebook_sdk_output()
 {
@@ -31,7 +32,7 @@ function nz_facebook_sdk_output()
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-    <?php if (false) { //has fb login test user status      ?>
+    <?php if (false) { //has fb login test user status        ?>
             window.onload = function () {
                 alert('load');
                 FB.getLoginStatus(function (response) {
@@ -83,19 +84,18 @@ function nz_fb_like($url = null, $options = array())
         'width' => 200
         ), $options
     );
-    $content = '<div class="nz-fblike">'
+    $content = ''
+        . '<div class="nz-fblike">'
         . '<div class="fb-like" data-href="' . $url . '" '
         . 'data-layout="' . $atts['layout'] . '" '
         . 'data-like="' . $atts['like'] . '" '
         . 'data-show-faces="' . $atts['show-faces'] . '" '
         . 'data-share="' . $atts['share'] . '" '
         . 'data-width="' . $atts['width'] . '" >'
-        . '</div></div>';
+        . '</div>'
+        . '</div>';
 
-    if (current_user_can('manage_options')) {
-        var_dump($url);
-        var_dump($content);
-    }
+
     return $content;
 }
 
