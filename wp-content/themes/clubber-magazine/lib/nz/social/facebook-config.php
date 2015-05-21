@@ -31,7 +31,7 @@ function nz_facebook_sdk_output()
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-    <?php if (false) { //has fb login test user status  ?>
+    <?php if (false) { //has fb login test user status      ?>
             window.onload = function () {
                 alert('load');
                 FB.getLoginStatus(function (response) {
@@ -92,6 +92,10 @@ function nz_fb_like($url = null, $options = array())
         . 'data-width="' . $atts['width'] . '" >'
         . '</div></div>';
 
+    if (current_user_can('manage_options')) {
+        var_dump($url);
+        var_dump($content);
+    }
     return $content;
 }
 
