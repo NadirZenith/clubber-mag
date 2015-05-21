@@ -13,10 +13,10 @@ class NzWpNewsletterWizard
 
     function update_db_check()
     {
-        $this->install();
         if (get_site_option('nz_wp_newsletter_db_version') != NzWpNewsletter::VERSION) {
             
         }
+        $this->install();
     }
 
     public function uninstall()
@@ -51,8 +51,17 @@ class NzWpNewsletterWizard
               UNIQUE KEY email (email)
         ) $charset_collate;";
 
-        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
+        $sql = "CREATE TABLE $table_name (
+  id mediumint(9) NOT NULL AUTO_INCREMENT,
+  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+  name tinytext NOT NULL,
+  text text NOT NULL,
+  url varchar(55) DEFAULT '' NOT NULL,
+  UNIQUE KEY id (id)
+) $charset_collate;";
+
+        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         $r = dbDelta($sql);
 
 
