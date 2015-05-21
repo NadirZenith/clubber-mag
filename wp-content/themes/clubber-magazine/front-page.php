@@ -17,7 +17,10 @@
 
         <?php get_template_part('tpl/home/home-video'); ?>
 
-        <?php get_template_part('tpl/home/newsletter'); ?>
+        <?php
+        //php get_template_part('tpl/home/newsletter'); 
+        echo do_shortcode('[nzwpnewsletter]');
+        ?>        
     </li>
 
     <li class="col-1">

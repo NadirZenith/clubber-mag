@@ -10,27 +10,27 @@
  */
 /* --------------------------- */
 
-define( 'CM_DIR', get_stylesheet_directory_uri() );
-define( 'CM_LIB_DIR', '/lib' );
-define( 'CM_ADDONS_DIR', '/lib/nz/add-ons' );
-define( 'CM_MODELS_DIR', CM_LIB_DIR . '/models' );
+define('CM_DIR', get_stylesheet_directory_uri());
+define('CM_LIB_DIR', '/lib');
+define('CM_ADDONS_DIR', '/lib/nz/add-ons');
+define('CM_MODELS_DIR', CM_LIB_DIR . '/models');
 
 //pages
-define( 'CM_RESOURCE_EVENT_PAGE_ID', 406 );
-define( 'CM_CONNECT_PAGE_ID', 675 );
-define( 'CM_RESOURCE_MAIN_PAGE_ID', 2610 );
-define( 'CM_RESOURCE_ARTIST_PAGE_ID', 4912 );
-define( 'CM_RESOURCE_LABEL_PAGE_ID', 4913 );
-define( 'CM_RESOURCE_COOLPLACE_PAGE_ID', 4914 );
-define( 'CM_RESOURCE_COOLPLACE_FAST_PAGE_ID', 4915 );
-define( 'CM_RESOURCE_PODCAST_PAGE_ID', 4916 );
+define('CM_RESOURCE_EVENT_PAGE_ID', 406);
+define('CM_CONNECT_PAGE_ID', 675);
+define('CM_RESOURCE_MAIN_PAGE_ID', 2610);
+define('CM_RESOURCE_ARTIST_PAGE_ID', 4912);
+define('CM_RESOURCE_LABEL_PAGE_ID', 4913);
+define('CM_RESOURCE_COOLPLACE_PAGE_ID', 4914);
+define('CM_RESOURCE_COOLPLACE_FAST_PAGE_ID', 4915);
+define('CM_RESOURCE_PODCAST_PAGE_ID', 4916);
 //\pages
 //metafields
-define( 'CM_META_MAPA', 'coolplace_mapaddress' );
-define( 'CM_META_SOUNDCLOUD', 'soundcloud_url' );
+define('CM_META_MAPA', 'coolplace_mapaddress');
+define('CM_META_SOUNDCLOUD', 'soundcloud_url');
 
 //user meta
-define( 'CM_USER_META_RESOURCE_ID', 'main_resource_id' );
+define('CM_USER_META_RESOURCE_ID', 'main_resource_id');
 //\metafields
 /**
  * Roots includes
@@ -43,85 +43,92 @@ define( 'CM_USER_META_RESOURCE_ID', 'main_resource_id' );
  * @link https://github.com/roots/roots/pull/1042
  */
 $roots_includes = array(
-      'vendor/autoload.php',
-      'lib/soil/soil.php',
-      'lib/config.php',
-      'lib/utils.php',
-      'lib/api.php',
-      'lib/nav.php',
-      'lib/wrapper.php',
-      'lib/scripts.php',
-      'lib/sidebar.php',
-      'lib/queries.php',
-      //
-      'lib/nz/template.php',
-      'lib/nz/security.php',
-      'lib/nz/NzAjaxResponse.php',
-      //widgets
-      /* 'lib/nz/widgets/widget-audio.php', */
-      /* 'lib/nz/widgets/widget-test.php', */
-      'lib/nz/widgets/widget-soundcloud.php',
-      'lib/nz/widgets/widget-calendar.php',
-      'lib/nz/widgets/widget-relate.php',
-      'lib/nz/widgets/widget-share.php',
-      'lib/nz/widgets/widget-newsletter.php',
-      //shortcode
-      'lib/nz/shortcodes/shortcode-soundcloud.php',
-      //social
-      'lib/nz/social/social-icons-list.php',
-      'lib/nz/social/facebook-config.php',
-      'lib/nz/social/soundcloud-config.php',
-      'lib/nz/social/twitter-config.php',
-      //
+    'vendor/autoload.php',
+    'lib/soil/soil.php',
+    'lib/config.php',
+    'lib/utils.php',
+    'lib/api.php',
+    'lib/nav.php',
+    'lib/wrapper.php',
+    'lib/scripts.php',
+    'lib/sidebar.php',
+    'lib/queries.php',
+    //
+    'lib/nz/template.php',
+    'lib/nz/security.php',
+    'lib/nz/NzAjaxResponse.php',
+    //widgets
+    /* 'lib/nz/widgets/widget-audio.php', */
+    /* 'lib/nz/widgets/widget-test.php', */
+    'lib/nz/widgets/widget-soundcloud.php',
+    'lib/nz/widgets/widget-calendar.php',
+    'lib/nz/widgets/widget-relate.php',
+    'lib/nz/widgets/widget-share.php',
+    'lib/nz/widgets/widget-newsletter.php',
+    //shortcode
+    'lib/nz/shortcodes/shortcode-soundcloud.php',
+    //social
+    'lib/nz/social/social-icons-list.php',
+    'lib/nz/social/facebook-config.php',
+    'lib/nz/social/soundcloud-config.php',
+    'lib/nz/social/twitter-config.php',
+    //
 
-      /** CLUBBER POST TYPES      */
-      'lib/nz/CPT.php', //library to create custom post and terms
-      /*
-       */
-      CM_MODELS_DIR . '/user.php',
-      CM_MODELS_DIR . '/menu.php',
-      CM_MODELS_DIR . '/artist.php',
-      CM_MODELS_DIR . '/label.php',
-      CM_MODELS_DIR . '/cool-place.php',
-      CM_MODELS_DIR . '/event.php',
-      CM_MODELS_DIR . '/music.php',
-      CM_MODELS_DIR . '/video.php',
-      CM_MODELS_DIR . '/photo.php',
-      CM_MODELS_DIR . '/page.php',
-      CM_MODELS_DIR . '/news.php',
-      CM_MODELS_DIR . '/podcast.php',
-      CM_MODELS_DIR . '/pages/recursos.php', // Page recursos specific queries
-      CM_MODELS_DIR . '/pages/festivals.php', // Page festivals queries
-      'lib/nz/lib/nzsession.php',
-      //forms /login /register
-      'lib/nz/lib/nz-wp-form/nz-wp-forms.php',
-      //
-      /* 'lib/nz/lib/debug/nz-url-functions.php', */
-      /* 'lib/nz/lib/debug/nz-debug-functions.php', */
-      /* 'lib/nz//lib/debug/css-media-queries.php', */
-      //
-      /* CM_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php', */
-      /* CM_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php', */
-      /** CLUBBER add-ons      */
-      CM_ADDONS_DIR . '/nz-start-msgs/NzStartMsgs.php',
-      CM_ADDONS_DIR . '/location-taxonomy/contry-list.php',
-      CM_ADDONS_DIR . '/col-shortcodes/col-shortcodes.php',
-      CM_ADDONS_DIR . '/todo-pending-posts.php',
-      CM_ADDONS_DIR . '/query-functions.php',
-      CM_ADDONS_DIR . '/language-selector.php',
-      'tpl/shortcodes/layout-shortcodes.php'
+    /** CLUBBER POST TYPES      */
+    'lib/nz/CPT.php', //library to create custom post and terms
+    /*
+     */
+    CM_MODELS_DIR . '/user.php',
+    CM_MODELS_DIR . '/menu.php',
+    CM_MODELS_DIR . '/artist.php',
+    CM_MODELS_DIR . '/label.php',
+    CM_MODELS_DIR . '/cool-place.php',
+    CM_MODELS_DIR . '/event.php',
+    CM_MODELS_DIR . '/music.php',
+    CM_MODELS_DIR . '/video.php',
+    CM_MODELS_DIR . '/photo.php',
+    CM_MODELS_DIR . '/page.php',
+    CM_MODELS_DIR . '/news.php',
+    CM_MODELS_DIR . '/podcast.php',
+    CM_MODELS_DIR . '/pages/recursos.php', // Page recursos specific queries
+    CM_MODELS_DIR . '/pages/festivals.php', // Page festivals queries
+    'lib/nz/lib/nzsession.php',
+    //forms /login /register
+    'lib/nz/lib/nz-wp-form/nz-wp-forms.php',
+    //
+    /* 'lib/nz/lib/debug/nz-url-functions.php', */
+    /* 'lib/nz/lib/debug/nz-debug-functions.php', */
+    /* 'lib/nz//lib/debug/css-media-queries.php', */
+    //
+    /* CM_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php', */
+    /* CM_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php', */
+    /** CLUBBER add-ons      */
+    CM_ADDONS_DIR . '/nz-start-msgs/NzStartMsgs.php',
+    CM_ADDONS_DIR . '/location-taxonomy/contry-list.php',
+    CM_ADDONS_DIR . '/col-shortcodes/col-shortcodes.php',
+    CM_ADDONS_DIR . '/todo-pending-posts.php',
+    CM_ADDONS_DIR . '/query-functions.php',
+    CM_ADDONS_DIR . '/language-selector.php',
+    'tpl/shortcodes/layout-shortcodes.php'
 );
 
-foreach ( $roots_includes as $file ) {
-      if ( !$filepath = locate_template( $file ) ) {
-            trigger_error( sprintf( __( 'Error locating %s for inclusion', 'roots' ), $file ), E_USER_ERROR );
-      }
+foreach ($roots_includes as $file) {
+    if (!$filepath = locate_template($file)) {
+        trigger_error(sprintf(__('Error locating %s for inclusion', 'roots'), $file), E_USER_ERROR);
+    }
 
-      require_once $filepath;
+    require_once $filepath;
 }
-unset( $file, $filepath );
+unset($file, $filepath);
 
+/* d($GLOBALS); */
 
+global $nzwpnewsletter;
+
+if (isset($nzwpnewsletter)) {
+    $nzwpnewsletter->setFormTemplate(__DIR__.'/tpl/home/newsletter.php');
+    /*d($nzwpnewsletter);*/
+}
 /*
  *  
  *      DEV 
