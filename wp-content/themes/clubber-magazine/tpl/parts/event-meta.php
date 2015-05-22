@@ -137,9 +137,9 @@ if ($event_place_id) {
 </div>
 <?php
 $eid = get_post_meta(get_the_ID(), 'nzwpcm_ticketscript_event_id', true);
-if ($eid) {
+if ($eid && class_exists('NzWpCmTicketscript')) {
     ?>
-<div id="cm-tickets" style="z-index: 100000; position: relative;">
+    <div id="cm-tickets" style="z-index: 100000; position: relative;">
         <?php
         if (wp_is_mobile()) {
             NzWpCmTicketscript::mobile_iframe($eid);
@@ -157,18 +157,18 @@ if ($eid) {
                 ?>
             </div>
             <script>
-
+                        
                 $('#open-tickets').on('click', function () {
                     var $wrapper = $('.ts-iframe-wrapper');
-
+                            
                     if (($wrapper).is(':visible')) {
                         $wrapper.slideUp();
-
+                                
                     } else {
-
+                                
                         $wrapper.slideDown();
                     }
-
+                            
                 });
             </script>
             <?php
