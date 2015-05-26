@@ -117,7 +117,7 @@
         $eid = get_post_meta(get_the_ID(), 'nzwpcm_ticketscript_event_id', true);
         if ($eid && class_exists('NzWpCmTicketscript')) {
             ?>
-            <a style="color: #0583F2;" class="readmore" href="<?php the_permalink() ?>#open-tickets" title="<?php the_title() ?>"> <?php echo __('Buy tickets', 'cm') ?></a>
+            <a style="color: #0583F2;" class="readmore" href="<?php the_permalink() ?>#open-tickets" title="<?php _e('Get your tickets!') ?>"> <?php echo _e('Get your tickets!', 'cm') ?></a>
             <?php
         }
         ?>
