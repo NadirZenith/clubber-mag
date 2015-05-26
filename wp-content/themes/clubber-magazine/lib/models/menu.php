@@ -58,7 +58,7 @@ function cm_add_ticketscript_menu($items, $args)
 {
     if ($args->theme_location == 'primary') {
         $items .= '<li class="menu-ticketscript">';
-        $items.= '<a style="color: #0583F2;" href="' . get_permalink(CM_TICKETSCRIPT_PAGE_ID) . '">' . get_the_title(CM_TICKETSCRIPT_PAGE_ID) . '</a>';
+        $items.= '<a style="color: #0583F2;" href="' . get_permalink(CM_TICKETSCRIPT_PAGE_ID) . '">' . __('Get your tickets!') . '</a>';
         $items .= '</li>';
     }
     return $items;

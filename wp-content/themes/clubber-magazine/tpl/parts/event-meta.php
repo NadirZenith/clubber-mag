@@ -147,7 +147,7 @@ if ($eid && class_exists('NzWpCmTicketscript')) {
             ?>
             <button id="open-tickets" class="pure-button col-1 meddium">
                 <?php
-                _e('Tickets', 'cm');
+                __('Get your tickets!')
                 ?>
             </button>
 

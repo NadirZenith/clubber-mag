@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-26 16:52+0100\n"
-"PO-Revision-Date: 2015-05-26 16:53+0100\n"
+"POT-Creation-Date: 2015-05-27 00:18+0100\n"
+"PO-Revision-Date: 2015-05-27 00:20+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -204,9 +204,9 @@ msgstr "Precio y condiciones "
 msgid "Address"
 msgstr "Dirección "
 
-#: tpl/parts/event-meta.php:150
-msgid "Tickets"
-msgstr ""
+#: tpl/parts/event-meta.php:150 lib/models/menu.php:61
+msgid "Get your tickets!"
+msgstr "Comprar entradas"
 
 #: tpl/parts/artist-home.php:9 lib/models/artist.php:5
 msgid "Artist"
