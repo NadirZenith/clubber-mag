@@ -145,13 +145,13 @@ if ($eid && class_exists('NzWpCmTicketscript')) {
             NzWpCmTicketscript::mobile_iframe($eid);
         } else {
             ?>
-            <button id="open-tickets" class="pure-button col-1 meddium  ">
+            <button id="open-tickets" class="pure-button col-1 meddium">
                 <?php
                 _e('Tickets', 'cm');
                 ?>
             </button>
 
-            <div class="col-1 oh2 ts-iframe-wrapper " style="z-index: 10000000;display: none; margin-left: -30px; padding-right: 30px" >
+            <div class="col-1 ts-iframe-wrapper" style="z-index: 10000000; margin-left: -40px;display: none" >
                 <?php
                 if (wp_is_mobile()) {
                     NzWpCmTicketscript::get_mobile_iframe('LSSX45SZ', $eid);
@@ -162,18 +162,27 @@ if ($eid && class_exists('NzWpCmTicketscript')) {
             </div>
             <script>
 
-                $('#open-tickets').on('click', function () {
+                (function ($) {
+
                     var $wrapper = $('.ts-iframe-wrapper');
+                    $('#open-tickets').on('click', function () {
 
-                    if (($wrapper).is(':visible')) {
-                        $wrapper.slideUp();
+                        if (($wrapper).is(':visible')) {
+                            $wrapper.slideUp();
 
-                    } else {
+                        } else {
+
+                            $wrapper.slideDown();
+                        }
+
+                    });
+
+                    if (window.location.hash === '#open-tickets') {
 
                         $wrapper.slideDown();
                     }
 
-                });
+                })(jQuery);
             </script>
             <?php
         }
