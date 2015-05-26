@@ -36,13 +36,22 @@ class NzWpCmTicketscript
     {
         include_once __DIR__ . '/meta_box.php';
     }
-    static function get_ticket_script($id = null)
-    {
 
-        $type = 'iframe'; //popup
-        //$type = 'popup'; //popup
-        $channel = "LSSX45SZ";
-        $language = 'es';
+    /**
+     *     
+     * @param string $channel Channel id
+     * @param int $id Event id
+     * @param string $type Iframe / Popup
+     * @param string $lang Language
+     */
+    static function get_web_iframe($channel, $id = null, $options = array())
+    {
+        $options = wp_parse_args($options, [
+            'type' => 'iframe', //popup
+            'lang' => 'en',
+            'width' => 550,
+            'height' => 600
+        ]);
         ?>
         <div id="ts-shop"></div>
         <script type="text/javascript">
@@ -52,17 +61,17 @@ class NzWpCmTicketscript
                 containerId: "ts-shop",
                 channel: "<?php echo $channel; ?>",
                 eventId: "<?php echo $id; ?>",
-                type: "<?php echo $type ?>",
-                language: "<?php echo $language; ?>",
-                width: "500",
-                height: "600"
+                type: "<?php echo $options['type'] ?>",
+                language: "<?php echo $options['lang'] ?>",
+                width: "<?php echo $options['width'] ?>",
+                height: "<?php echo $options['height'] ?>"
             };
         </script>
         <script type="text/javascript" src="https://shop.ticketscript.com/assets/js/ga-embed.js"></script>
         <?php
     }
 
-    static function mobile_iframe($id = null)
+    static function get_mobile_iframe($channel, $id = null, $options = array())
     {
         /*
           <script language="javascript" type="text/javascript">
@@ -70,16 +79,45 @@ class NzWpCmTicketscript
           obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
           }
           </script>
+          src="https://m.ticketscript.com/channel/web2/get-dates/rid/LSSX45SZ/eid/254478/language/es"
+         * 
+          <script language="javascript" type="text/javascript">
+          function resizeIframe(obj) {
+          obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+          alert('loaded');
+          }
+          </script>
+          <iframe name="ts-mobile-iframe" height="1000" width="500" src="https://m.ticketscript.com/channel/web2/get-dates/rid/LSSX45SZ/eid/254478/language/es"
+          frameborder="0"
+          scrolling="no"
+          seamless="seamless"
+          onload="resizeIframe(this);"
+          >
+
+          </iframe>
+
          */
+        $options = wp_parse_args($options, [
+            'type' => 'iframe', //popup
+            'lang' => 'en',
+            'height' => '600px'
+        ]);
+        $url = 'https://m.ticketscript.com/channel/web2/get-dates/rid/' . $channel;
+
+        if ($id) {
+            $url .= '/eid/' . $id;
+        }
+
+        $url.='/language/' . $options['lang']
         ?>
         <style>
             .ts-mobile-iframe{
                 width: 100%;
-                min-height: 300px;
+                min-height: <?php echo $options['height'] ?>;
             }
         </style>
         <iframe name="ts-mobile-iframe" class="ts-mobile-iframe" 
-                src="https://m.ticketscript.com/channel/web2/get-dates/rid/LSSX45SZ/eid/254478/language/es" 
+                src="<?php echo $url ?>" 
                 frameborder="0" 
                 seamless="seamless"
                 >
