@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-27 19:58+0100\n"
-"PO-Revision-Date: 2015-03-27 20:24+0100\n"
+"POT-Creation-Date: 2015-05-26 16:52+0100\n"
+"PO-Revision-Date: 2015-05-26 16:53+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -40,19 +40,15 @@ msgstr "Coolplaces"
 msgid "Photo review"
 msgstr ""
 
-#: archive-agenda.php:6 tpl/parts/featured-events.php:33
-msgid "Recommended parties and events"
-msgstr "Eventos y fiestas recomendados "
-
-#: archive-agenda.php:24
+#: archive-agenda.php:17
 msgid "Party and Events of the week"
 msgstr "Fiestas y eventos de la semana"
 
-#: archive-agenda.php:25
+#: archive-agenda.php:18
 msgid "in"
 msgstr "en"
 
-#: archive-agenda.php:83 page-template-festivals.php:105
+#: archive-agenda.php:76 page-template-festivals.php:105
 msgid "Next parties and events"
 msgstr "Próximas fiestas y eventos"
 
@@ -82,23 +78,23 @@ msgstr "Últimos Comentarios "
 msgid "Comments are closed."
 msgstr "Comentarios cerrados "
 
-#: page-layout.php:15 page-template-form.php:22 search.php:104
+#: page-layout.php:15 page-template-form.php:22
 msgid "No Posts Found."
 msgstr "Post no encontrado "
 
-#: page-template-connect.php:24
+#: page-template-connect.php:25
 msgid "Sign In"
 msgstr "Entrar"
 
-#: page-template-connect.php:28
+#: page-template-connect.php:29
 msgid "Sign in and enjoy our community."
 msgstr "Accede a nuestra comunidad."
 
-#: page-template-connect.php:42
+#: page-template-connect.php:45
 msgid "Sign Up"
 msgstr "Registro"
 
-#: page-template-connect.php:46
+#: page-template-connect.php:49
 msgid ""
 "If you like electronic music, you are a producer, dj, promoter, or a club, "
 "signup in Clubber Magazine and enjoy our community."
@@ -118,11 +114,20 @@ msgstr ""
 msgid "Upload and share event"
 msgstr "Sube y comparte tú evento"
 
-#: archive-cool-place.php:42 lib/forms/event_form.php:22
+#: sidebar.php:19 tpl/user-profile/user-profile-main-resource.php:50
+msgid "Share your"
+msgstr "Compartir tu"
+
+#: archive-cool-place.php:38 lib/forms/event_form.php:22
 msgid "Add new place"
 msgstr "Agregar nuevo lugar"
 
-#: functions.php:116
+#: archive-cool-place.php:118
+#, fuzzy
+msgid "No coolplaces found"
+msgstr "Información Coolplace"
+
+#: functions.php:118
 #, php-format
 msgid "Error locating %s for inclusion"
 msgstr ""
@@ -131,7 +136,7 @@ msgstr ""
 msgid "Page not found"
 msgstr "Página no encontrada"
 
-#: single.php:44
+#: single.php:62
 msgid "Related Contents"
 msgstr "Contenidos Relacionados"
 
@@ -139,14 +144,32 @@ msgstr "Contenidos Relacionados"
 msgid "News Archive"
 msgstr "Noticias"
 
-#: search.php:79
+#: search.php:55
+#, fuzzy
+msgid "No users found"
+msgstr "Usuario no encontrado"
+
+#: search.php:55 search.php:89
+msgid "with"
+msgstr ""
+
+#: search.php:65
 #, fuzzy
 msgid "Other results"
 msgstr "Otros Podcasts"
 
+#: search.php:89
+#, fuzzy
+msgid "No content found"
+msgstr "Ningún evento encontrado"
+
 #: tpl/user/user-agenda-list.php:31
 msgid "Agenda"
 msgstr ""
+
+#: tpl/parts/featured-events.php:4 tpl/parts/featured-events-old.php:4
+msgid "Recommended parties and events"
+msgstr "Eventos y fiestas recomendados "
 
 #: tpl/parts/featured-coolplaces.php:24
 msgid "Featured Cool Places"
@@ -181,19 +204,27 @@ msgstr "Precio y condiciones "
 msgid "Address"
 msgstr "Dirección "
 
+#: tpl/parts/event-meta.php:150
+msgid "Tickets"
+msgstr ""
+
 #: tpl/parts/artist-home.php:9 lib/models/artist.php:5
 msgid "Artist"
 msgstr "Artista"
 
-#: tpl/parts/list-3.php:114 tpl/parts/list-0.php:40 tpl/home/list-4.php:22
+#: tpl/parts/list-3.php:115 tpl/parts/list-0.php:40 tpl/home/list-4.php:22
 msgid "Read more"
 msgstr "Leer más"
+
+#: tpl/parts/list-3.php:120
+msgid "Buy tickets"
+msgstr "Comprar entradas"
 
 #: tpl/parts/not-found.php:3 lib/nz/add-ons/query-functions.php:130
 msgid "Not Found."
 msgstr "No encontrado "
 
-#: tpl/parts/list-5.php:22
+#: tpl/parts/list-5.php:21 tpl/parts/list-5.php:108
 msgid "by"
 msgstr ""
 
@@ -246,11 +277,7 @@ msgstr ""
 msgid "pending review"
 msgstr "Pendiente por Revisión "
 
-#: tpl/user-profile/user-profile-main-resource.php:51
-msgid "Share your"
-msgstr "Compartir tu"
-
-#: tpl/user-profile/user-profile-main-resource.php:61
+#: tpl/user-profile/user-profile-main-resource.php:60
 msgid "Share Event"
 msgstr "Compartir Evento"
 
@@ -274,48 +301,48 @@ msgstr "Busca fiestas, clubes, artistas, personas..."
 msgid "Back to Top"
 msgstr ""
 
-#: tpl/home/home-cm-podcasts.php:4
-msgid "Into the Beat Radio"
-msgstr ""
-
-#: tpl/home/home-cm-podcasts.php:58
-msgid "see more..."
-msgstr "Ver más..."
-
-#: tpl/home/home-last-video.php:4
-msgid "Video review"
-msgstr "Video Review"
-
-#: tpl/home/home-last-video.php:35 tpl/home/home-last-music.php:26
-#: tpl/home/home-last-news.php:26 tpl/home/home-last-photo.php:27
-#: tpl/home/home-shared-podcasts.php:50
-msgid "see more ..."
-msgstr "Ver más..."
-
-#: tpl/home/home-last-music.php:4 lib/models/music.php:5
-msgid "Music"
-msgstr "Música"
-
-#: tpl/home/home-last-news.php:4
+#: tpl/home/home-news.php:4
 msgid "Latest News"
 msgstr "Últimas Noticias"
 
-#: tpl/home/newsletter.php:9
-msgid "Insert your email to receive our newsletter"
-msgstr ""
+#: tpl/home/home-news.php:26 tpl/home/home-photo.php:27
+#: tpl/home/home-video.php:35 tpl/home/home-open-frequency.php:32
+#: tpl/home/home-music.php:26
+msgid "see more ..."
+msgstr "Ver más..."
 
-#: tpl/home/newsletter.php:16
-msgid "Send"
-msgstr ""
-
-#: tpl/home/home-last-photo.php:5
+#: tpl/home/home-photo.php:5
 msgid "Photo Gallery"
 msgstr "Galería de Fotos"
 
-#: tpl/home/home-shared-podcasts.php:4 lib/models/podcast.php:21
+#: tpl/home/home-video.php:4
+msgid "Video review"
+msgstr "Video Review"
+
+#: tpl/home/home-open-frequency.php:4 lib/models/podcast.php:21
 #: lib/models/podcast.php:22
 msgid "Open Frequency"
 msgstr ""
+
+#: tpl/home/home-into-the-beat.php:4
+msgid "Into the Beat Radio"
+msgstr ""
+
+#: tpl/home/home-into-the-beat.php:58
+msgid "see more..."
+msgstr "Ver más..."
+
+#: tpl/home/newsletter.php:11
+msgid "Insert your email to receive our newsletter"
+msgstr ""
+
+#: tpl/home/newsletter.php:15
+msgid "Send"
+msgstr ""
+
+#: tpl/home/home-music.php:4 lib/models/music.php:5
+msgid "Music"
+msgstr "Música"
 
 #: tpl/archive/agenda.php:56
 msgid ""
@@ -729,7 +756,7 @@ msgstr ""
 #: vendor/option-tree/includes/ot-functions-option-types.php:1485
 #: vendor/option-tree/includes/ot-functions-option-types.php:2222
 #: vendor/option-tree/includes/ot-functions-option-types.php:2387
-#: lib/nz/CPT.php:408 lib/models/event.php:11
+#: lib/nz/CPT.php:408 lib/models/event.php:11 lib/models/cool-place.php:10
 msgid "Add New"
 msgstr "Agregar nuevo "
 
@@ -3090,50 +3117,50 @@ msgstr "Fecha"
 msgid "5 minutes"
 msgstr ""
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:132
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:162
 #, fuzzy
 msgid "Locations"
 msgstr "Condiciones "
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:133
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:142
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:163
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:172
 msgid "Location"
 msgstr ""
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:134
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:164
 #, fuzzy
 msgid "Search Locations"
 msgstr "Condiciones "
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:135
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:165
 #, fuzzy
 msgid "All Locations"
 msgstr "Condiciones "
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:136
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:166
 #, fuzzy
 msgid "Parent Location"
 msgstr "Condiciones "
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:137
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:167
 #, fuzzy
 msgid "Parent Location:"
 msgstr "Condiciones "
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:138
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:168
 #, fuzzy
 msgid "Edit Location"
 msgstr "Condiciones "
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:139
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:169
 msgid "Update Location"
 msgstr "Condiciones "
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:140
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:170
 msgid "Add New Location"
 msgstr "Agregar nuevo local"
 
-#: lib/nz/add-ons/location-taxonomy/contry-list.php:141
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:171
 msgid "New Location Name"
 msgstr "New Location Name"
 
@@ -3237,8 +3264,8 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr "No tiene los suficientes permisos para acceder a esta pagina"
 
-#: lib/nz/lib/nz-wp-form/nz-wp-forms.php:175
-#: lib/nz/lib/nz-wp-form/nz-wp-forms.php:278
+#: lib/nz/lib/nz-wp-form/nz-wp-forms.php:177
+#: lib/nz/lib/nz-wp-form/nz-wp-forms.php:280
 msgid "Error locating form "
 msgstr ""
 
@@ -3646,21 +3673,121 @@ msgstr "Ningún evento en la basura"
 msgid "Videos"
 msgstr ""
 
-#: lib/models/cool-place.php:4
-msgid "Cool Place"
-msgstr "Cool Place"
-
-#: lib/models/cool-place.php:5
+#: lib/models/cool-place.php:6 lib/models/cool-place.php:8
 msgid "Cool Places"
 msgstr "Cool Places "
 
+#: lib/models/cool-place.php:7 lib/models/cool-place.php:9
+msgid "Cool Place"
+msgstr "Cool Place"
+
+#: lib/models/cool-place.php:11
+#, fuzzy
+msgid "Add New Cool Place"
+msgstr "Cool Place"
+
+#: lib/models/cool-place.php:12
+#, fuzzy
+msgid "New Cool Place"
+msgstr "Cool Place"
+
+#: lib/models/cool-place.php:13
+#, fuzzy
+msgid "Edit Cool Place"
+msgstr "Cool Place"
+
+#: lib/models/cool-place.php:14
+#, fuzzy
+msgid "View Cool Place"
+msgstr "Cool Place"
+
 #: lib/models/cool-place.php:15
-msgid "Place type"
-msgstr "Tipo de lugar "
+#, fuzzy
+msgid "All Cool Places"
+msgstr "Cool Places "
 
 #: lib/models/cool-place.php:16
+#, fuzzy
+msgid "Search Cool Places"
+msgstr "Cool Places recomendados"
+
+#: lib/models/cool-place.php:17
+#, fuzzy
+msgid "Parent Cool Places:"
+msgstr "Cool Places recomendados"
+
+#: lib/models/cool-place.php:18
+#, fuzzy
+msgid "No cool places found."
+msgstr "Usuario no encontrado"
+
+#: lib/models/cool-place.php:19
+#, fuzzy
+msgid "No cool places found in Trash."
+msgstr "Ningún evento en la basura"
+
+#: lib/models/cool-place.php:40 lib/models/cool-place.php:55
 msgid "Places types"
 msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:41
+#, fuzzy
+msgid "Places type"
+msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:42
+#, fuzzy
+msgid "Search Places types"
+msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:43
+#, fuzzy
+msgid "Popular Places types"
+msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:44
+#, fuzzy
+msgid "All Places types"
+msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:47
+#, fuzzy
+msgid "Edit Places type"
+msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:48
+#, fuzzy
+msgid "Update Places type"
+msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:49
+#, fuzzy
+msgid "Add New Places type"
+msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:50
+#, fuzzy
+msgid "New Places type Name"
+msgstr "Tipos de lugares "
+
+#: lib/models/cool-place.php:51
+msgid "Separate places types with commas"
+msgstr ""
+
+#: lib/models/cool-place.php:52
+#, fuzzy
+msgid "Add or remove places types"
+msgstr "Agregar o remover "
+
+#: lib/models/cool-place.php:53
+#, fuzzy
+msgid "Choose from the most used places types"
+msgstr "Escoger "
+
+#: lib/models/cool-place.php:54
+#, fuzzy
+msgid "No places types found."
+msgstr "Usuario no encontrado"
 
 #: lib/models/news.php:9 lib/models/news.php:10 lib/models/news.php:21
 msgid "News"
@@ -3674,11 +3801,11 @@ msgstr "Agregar nuevo ítems "
 msgid "News tags"
 msgstr "Nuevas etiquetas "
 
-#: lib/models/menu.php:16
+#: lib/models/menu.php:17
 msgid "Profile"
 msgstr "Perfil"
 
-#: lib/models/menu.php:29
+#: lib/models/menu.php:30
 msgid "Login / SignUp"
 msgstr "Inicio/Registro "
 
@@ -3690,7 +3817,7 @@ msgstr "Imagen "
 msgid "Photos"
 msgstr ""
 
-#: lib/models/pages/recursos.php:25
+#: lib/models/pages/recursos.php:25 lib/models/pages/recursos.php:135
 msgid "Please login to manage resources"
 msgstr "Por favor regístrate para acceder a los recursos"
 
@@ -4021,6 +4148,9 @@ msgstr "Imagen Coolplace"
 #: lib/forms/coolplace_form.php:37
 msgid "Coolplace info"
 msgstr "Información Coolplace"
+
+#~ msgid "Place type"
+#~ msgstr "Tipo de lugar "
 
 #~ msgid "Share event"
 #~ msgstr "Compartir evento"
