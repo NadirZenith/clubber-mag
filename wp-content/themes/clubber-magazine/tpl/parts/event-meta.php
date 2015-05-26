@@ -153,22 +153,26 @@ if ($eid && class_exists('NzWpCmTicketscript')) {
 
             <div class="col-1 oh2 ts-iframe-wrapper " style="z-index: 10000000;display: none; margin-left: -30px; padding-right: 30px" >
                 <?php
-                NzWpCmTicketscript::get_ticket_script($eid);
+                if (wp_is_mobile()) {
+                    NzWpCmTicketscript::get_mobile_iframe('LSSX45SZ', $eid);
+                } else {
+                    NzWpCmTicketscript::get_web_iframe('LSSX45SZ', $eid);
+                }
                 ?>
             </div>
             <script>
-                        
+
                 $('#open-tickets').on('click', function () {
                     var $wrapper = $('.ts-iframe-wrapper');
-                            
+
                     if (($wrapper).is(':visible')) {
                         $wrapper.slideUp();
-                                
+
                     } else {
-                                
+
                         $wrapper.slideDown();
                     }
-                            
+
                 });
             </script>
             <?php

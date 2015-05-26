@@ -24,6 +24,7 @@ define('CM_RESOURCE_LABEL_PAGE_ID', 4913);
 define('CM_RESOURCE_COOLPLACE_PAGE_ID', 4914);
 define('CM_RESOURCE_COOLPLACE_FAST_PAGE_ID', 4915);
 define('CM_RESOURCE_PODCAST_PAGE_ID', 4916);
+define('CM_TICKETSCRIPT_PAGE_ID', 7521);
 //\pages
 //metafields
 define('CM_META_MAPA', 'coolplace_mapaddress');
