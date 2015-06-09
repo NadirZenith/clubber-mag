@@ -145,7 +145,7 @@ if ($eid && class_exists('NzWpCmTicketscript')) {
             NzWpCmTicketscript::mobile_iframe($eid);
         } else {
             ?>
-            <button id="open-tickets" class="pure-button col-1 meddium">
+            <button id="open-tickets" class="buy-tickets pure-button col-1 meddium">
                 <?php
                 _e('Get your tickets!','cm');
                 ?>
@@ -191,4 +191,4 @@ if ($eid && class_exists('NzWpCmTicketscript')) {
     <?php
 }
 ?>
-<hr>
+<!--<hr>-->

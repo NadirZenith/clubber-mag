@@ -112,13 +112,21 @@
     </div>
 
     <div style="position: absolute; bottom: 10px;left: 20px;">
-        <a class="readmore" href="<?php the_permalink() ?>" title="<?php the_title() ?>"> <?php echo __('Read more', 'cm') ?></a>
+        <!--<a class="readmore" href="<?php the_permalink() ?>" title="<?php the_title() ?>"> <?php echo __('Read more', 'cm') ?></a>-->
+        <a class="pure-button" href="<?php the_permalink() ?>" title="<?php the_title() ?>">
+            <?php echo __('Read more', 'cm') ?>
+        </a>
         <?php
         $eid = get_post_meta(get_the_ID(), 'nzwpcm_ticketscript_event_id', true);
         if ($eid && class_exists('NzWpCmTicketscript')) {
             ?>
-            <a style="color: #0583F2;" class="readmore" href="<?php the_permalink() ?>#open-tickets" title="<?php _e('Get your tickets!') ?>"> <?php echo _e('Get your tickets!', 'cm') ?></a>
+            <a href="<?php the_permalink() ?>#open-tickets">
+                <button  class="buy-tickets pure-button">
+                    <?php echo _e('Get your tickets!', 'cm') ?>
+                </button>
+            </a>
             <?php
+            /* <a style="color: #0583F2;" class="readmore" href="<?php the_permalink() ?>#open-tickets" title="<?php _e('Get your tickets!') ?>"> <?php echo _e('Get your tickets!', 'cm') ?></a> */
         }
         ?>
     </div>
