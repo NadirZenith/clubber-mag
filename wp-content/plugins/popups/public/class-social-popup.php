@@ -23,7 +23,7 @@ class SocialPopup {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.2.3.3';
+	const VERSION = SPU_VERSION;
 
 	/**
 	 * Popups to use acrros files
@@ -84,7 +84,8 @@ class SocialPopup {
 			'hook'				=> SPU_PLUGIN_HOOK,
 			'version'			=> self::VERSION,
 			'upgrade_version'	=> '1.6.4.3',
-		);	
+			'wpml_lang'	        => defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : '',
+		);
 
 		$this->load_dependencies();
 
@@ -100,7 +101,7 @@ class SocialPopup {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
-		if( !isset($this->spu_settings['ajax_mode'] ) ) {
+		if( empty($this->spu_settings['ajax_mode'] ) ) {
 			//print boxes
 			add_action( 'wp_footer', array( $this, 'print_boxes' ) );
 		}
@@ -119,6 +120,7 @@ class SocialPopup {
 
 		//Register shortcodes
 		add_shortcode( 'spu-facebook', array( $this, 'facebook_shortcode' ) );
+		add_shortcode( 'spu-facebook-page', array( $this, 'facebook_page_shortcode' ) );
 		add_shortcode( 'spu-twitter', array( $this, 'twitter_shortcode' ) );
 		add_shortcode( 'spu-google', array( $this, 'google_shortcode' ) );
 		add_shortcode( 'spu-close', array( $this, 'close_shortcode' ) );
@@ -293,6 +295,14 @@ class SocialPopup {
 			);
 			wp_insert_post( $defaults, $wp_error );
 		}
+
+		$upgrader = new SocialPopup_Upgrader();
+		$upgrader->upgrade_plugin();
+
+		update_option('spu-version', SPU_VERSION);
+
+		do_action( 'spu/activate' );
+
 	}
 
 	/**
@@ -340,11 +350,11 @@ class SocialPopup {
 		
 		wp_register_script( 'spu-public', $js_url, array( 'jquery' ), self::VERSION, true );
 		
-		wp_register_script( 'spu-facebook', 'http://connect.facebook.net/'.get_locale().'/all.js#xfbml=1', array('jquery'), self::VERSION, FALSE);
+		wp_register_script( 'spu-facebook', '//connect.facebook.net/'.get_locale().'/sdk.js#xfbml=1&version=v2.3', array('jquery'), null, FALSE);
 
-		wp_register_script( 'spu-twitter', 'http://platform.twitter.com/widgets.js', array('jquery'), self::VERSION, FALSE);
+		wp_register_script( 'spu-twitter', '//platform.twitter.com/widgets.js', array('jquery'), self::VERSION, FALSE);
 		
-		wp_register_script( 'spu-google', 'https://apis.google.com/js/plusone.js', array('jquery'), self::VERSION, FALSE);
+		wp_register_script( 'spu-google', '//apis.google.com/js/plusone.js', array('jquery'), self::VERSION, FALSE);
 
 	}
 
@@ -362,33 +372,35 @@ class SocialPopup {
 		$spu_rules = new Spu_Rules();
 
 		//Grab all popups ids
-		$spu_ids = $wpdb->get_results( "SELECT ID, post_content FROM $wpdb->posts WHERE post_type='spucpt' AND post_status='publish'");
-		
-		foreach( $spu_ids as $spu ) {
-			
-			$spu_id = $this->get_real_spu_id($spu->ID);
-			
-			$rules 	= get_post_meta( $spu_id, 'spu_rules' ,true );
+		$spu_ids = $this->get_spu_ids();
 
-			$match  = $spu_rules->check_rules( $rules );
-			if( $match ) {
-				$spu_matches[] = $spu_id;
+		if( !empty($spu_ids) ) {
+			foreach ( $spu_ids as $spu ) {
+
+				$rules = get_post_meta( $spu->ID, 'spu_rules', true );
+
+				$match = $spu_rules->check_rules( $rules );
+				if ( $match ) {
+					$spu_matches[] = $spu->ID;
+				}
 			}
 		}
-
 		return $spu_matches;
 	}
 
 	/**
-	 * Used to get wpml real ids if wpml installed
-	 * @param  int $id popup id
-	 * @return int     return id
+	 * Return array of popups ids
 	 */
-	function get_real_spu_id($id) {
-		if( !function_exists('icl_object_id') )	
-			return $id;
-
-		return icl_object_id($id,'spucpt');
+	function get_spu_ids() {
+		global $wpdb;
+		// IF wpml is active and spucpt is translated get correct ids for language
+		if( function_exists('icl_object_id') ) {
+			$spu_ids = $this->get_wpml_ids();
+			if(!empty($spu_ids)) {
+				return $spu_ids;
+			}
+		}
+		return $wpdb->get_results( "SELECT ID, post_content FROM $wpdb->posts WHERE post_type='spucpt' AND post_status='publish'");
 	}
 
 	/**
@@ -406,9 +418,12 @@ class SocialPopup {
 				'safe_mode'						=> isset( $this->spu_settings['safe'] ) ? $this->spu_settings['safe'] : '',
 				'ajax_mode'						=> isset( $this->spu_settings['ajax_mode'] ) ? $this->spu_settings['ajax_mode'] :'',
 				'ajax_url'						=> admin_url('admin-ajax.php'),
-				'ajax_mode_url'					=> site_url('/?spu_action=spu_load'),
+				'ajax_mode_url'					=> site_url('/?spu_action=spu_load&lang='.$this->info['wpml_lang']),
 				'pid'						    => get_queried_object_id(),
 				'is_front_page'				    => is_front_page(),
+				'is_category'				    => is_category(),
+				'site_url'				        => site_url(),
+				'is_archive'				    => is_archive(),
 				'seconds_confirmation_close'	=> apply_filters( 'spu/spuvar/seconds_confirmation_close', 5 ),
 			)
 		);
@@ -420,7 +435,7 @@ class SocialPopup {
 	 * @since   1.3
 	 */
 	private function enqueue_social_shortcodes(){
-		global $wpdb;
+		global $wpdb,$spuvar_social;
 
 		$spuvar_social = '';
 
@@ -455,14 +470,13 @@ class SocialPopup {
 			}
 
 		}
-		/*wp_localize_script( 'jquery', 'spuvar_social', $spuvar_social);*/
-                wp_localize_script( 'spu-public', 'spuvar_social', $spuvar_social);
+		wp_localize_script( 'spu-public', 'spuvar_social', $spuvar_social);
+
 
 		//also include gravity forms if needed
 		if( $gf = $wpdb->get_var( "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key ='spu_gravity' " ) ) {
-
-			gravity_form_enqueue_scripts($gf, true);
-
+			if( function_exists('gravity_form_enqueue_scripts'))
+				gravity_form_enqueue_scripts($gf, true);
 		}
 	}
 
@@ -499,6 +513,30 @@ class SocialPopup {
 		}
 
 		return '<div class="spu-facebook spu-shortcode"><div class="fb-like" data-width="'.strtolower( trim( $width ) ).'" data-href="'. $href .'" data-layout="'.$layout.'" data-action="'.$action.'" data-show-faces="'.strtolower( trim( $show_faces ) ).'" data-share="'.strtolower( trim( $share ) ).'"></div></div>';
+
+	}
+
+	/**
+	 * Shortcode for facebook page
+	 *
+	 * @param $atts
+	 * @param $content
+	 *
+	 * @internal param $ $content [description] $content [description]
+	 * @internal param $atts    [description] $atts    [description]
+	 * @return string          [description]
+	 */
+	function facebook_page_shortcode( $atts, $content ) {
+
+		extract( shortcode_atts( array(
+			'href' 			=> 'https://www.facebook.com/pages/Timersys/146687622031640',
+			'name' 	 	    => 'Timersys',
+			'show_faces' 	=> 'true', // false
+			'hide_cover' 	=> 'false', // true
+			'width'			=> '500',
+		), $atts ) );
+
+		return '<div class="spu-facebook-page"><div class="fb-page" data-href="'. $href .'" data-width="'.strtolower( trim( $width ) ).'" data-hide-cover="'.strtolower( trim( $hide_cover ) ).'" data-show-facepile="'.strtolower( trim( $show_faces ) ).'" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="'. $href .'"><a href="'. $href .'">'.esc_attr( $name ).'</a></blockquote></div></div></div>';
 
 	}
 
@@ -603,7 +641,7 @@ class SocialPopup {
 				include( 'views/popup.php');
 
 			} //endforeach
-			/*echo '<div id="fb-root" class=" fb_reset"></div>';*/
+			echo '<div id="fb-root" class=" fb_reset"></div>';
 			
 		}			
 	
@@ -636,18 +674,42 @@ class SocialPopup {
 	 * @return  mixed Prints all spus
 	 */
 	function register_spu_ajax() {
-  		
-	  	if ( empty( $_REQUEST['spu_action'] ) || $_REQUEST['spu_action'] != 'spu_load' ) 
+
+	  	if ( empty( $_REQUEST['spu_action'] ) || $_REQUEST['spu_action'] != 'spu_load' )
     		return;
-	 	
-	  	
+
 	  	define( 'DOING_AJAX', TRUE );
 
-	  
   		$this->print_boxes();	
-  		
 
-  		die();		
+  		die();
+	}
+
+
+	/**
+	 * Return popups for current language
+	 * @return bool | array of ids
+	 */
+	protected function get_wpml_ids( ) {
+		global $wpdb;
+		$wpml_settings = get_option( 'icl_sitepress_settings', true);
+
+		if ( ! empty( $wpml_settings['custom_posts_sync_option']['spucpt'] ) ) {
+
+			$sql = "select DISTINCT * from $wpdb->posts as a
+ 					LEFT JOIN {$wpdb->prefix}icl_translations as b
+					ON a.ID = b.element_id
+					WHERE a.post_status = 'publish'
+					AND a.post_type = 'spucpt'
+					AND b.language_code = '" . esc_sql( ICL_LANGUAGE_CODE ) . "'
+					GROUP BY ID";
+
+			$ids = $wpdb->get_results( $sql );
+			if( !empty($ids) )
+				return $ids;
+		}
+
+		return false;
 	}
 
 }

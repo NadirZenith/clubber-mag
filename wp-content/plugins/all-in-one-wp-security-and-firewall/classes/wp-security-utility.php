@@ -70,8 +70,11 @@ class AIOWPSecurity_Utility
         }
         
         //check users table
-        $user = $wpdb->get_var( "SELECT user_login FROM `" . $wpdb->users . "` WHERE user_login='" . sanitize_text_field( $username ) . "';" );
-        $userid = $wpdb->get_var( "SELECT ID FROM `" . $wpdb->users . "` WHERE ID='" . sanitize_text_field( $username ) . "';" );
+        //$user = $wpdb->get_var( "SELECT user_login FROM `" . $wpdb->users . "` WHERE user_login='" . sanitize_text_field( $username ) . "';" );
+        $sql_1 = $wpdb->prepare("SELECT user_login FROM $wpdb->users WHERE user_login=%s", sanitize_text_field( $username ));
+        $user = $wpdb->get_var( $sql_1 );
+        $sql_2 = $wpdb->prepare("SELECT ID FROM $wpdb->users WHERE ID=%s", sanitize_text_field( $username ));
+        $userid = $wpdb->get_var( $sql_2 );
 
         if ( $user == $username || $userid == $username ) {
             return true;
@@ -109,6 +112,22 @@ class AIOWPSecurity_Utility
     {
         //Charecters present in table prefix
         $allowed_chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $string = '';
+        //Generate random string
+        for ($i = 0; $i < $string_length; $i++) {
+            $string .= $allowed_chars[rand(0, strlen($allowed_chars) - 1)];
+        }
+        return $string;
+    }
+    
+    
+    /*
+     * Generates a random number using a-z characters
+     */
+    static function generate_alpha_random_string($string_length)
+    {
+        //Charecters present in table prefix
+        $allowed_chars = 'abcdefghijklmnopqrstuvwxyz';
         $string = '';
         //Generate random string
         for ($i = 0; $i < $string_length; $i++) {
@@ -405,7 +424,7 @@ class AIOWPSecurity_Utility
         if ($result > 0)
         {
         }
-        else if ($result == FALSE)
+        else if ($result === FALSE)
         {
             $aio_wp_security->debug_logger->log_debug("lock_IP: Error inserting record into ".$login_lockdown_table,4);//Log the highly unlikely event of DB error
         }
@@ -457,5 +476,40 @@ class AIOWPSecurity_Utility
         return ($result === false)?false:true;
     }
 
+    //Gets server type. Returns -1 if server is not supported
+    static function get_server_type()
+    {
+        //figure out what server they're using
+        if (strstr(strtolower(filter_var($_SERVER['SERVER_SOFTWARE'], FILTER_SANITIZE_STRING)), 'apache'))
+        {
+            return 'apache';
+        } 
+        else if (strstr(strtolower(filter_var($_SERVER['SERVER_SOFTWARE'], FILTER_SANITIZE_STRING)), 'nginx'))
+        {
+            return 'nginx';
+        } 
+        else if (strstr(strtolower(filter_var($_SERVER['SERVER_SOFTWARE'], FILTER_SANITIZE_STRING)), 'litespeed'))
+        {
+            return 'litespeed';
+        }
+        else 
+        { //unsupported server
+            return -1;
+        }
+        
+    }
+    
+    /*
+     * Checks if the string exists in the array key value of the provided array. If it doesn't exist, it returns the first key element from the valid values.
+     */
+    static function sanitize_value_by_array($to_check, $valid_values)
+    {
+        $keys = array_keys($valid_values);
+        $keys = array_map('strtolower', $keys);
+        if ( in_array( $to_check, $keys ) ) {
+            return $to_check;
+        }
+        return reset($keys);//Return he first element from the valid values
+    }
     
 }

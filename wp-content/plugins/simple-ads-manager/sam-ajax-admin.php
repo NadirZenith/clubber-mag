@@ -9,22 +9,44 @@
 define('DOING_AJAX', true);
 
 if (!isset( $_REQUEST['action'])) die('-1');
-if (isset( $_REQUEST['level'] )) {
-  $rootLevel = intval($_REQUEST['level']);
-  $root = dirname( __FILE__ );
-  for( $i = 0; $i < $rootLevel; $i++ ) $root = dirname( $root );
+
+function samCheckLevel() {
+	$level = 0;
+	$upPath = '';
+	$file = 'wp-load.php';
+	$fe = false;
+
+	while(!$fe && $level < 6) {
+		$fe = file_exists($upPath . $file);
+		if(!$fe) {
+			$upPath .= '../';
+			$level++;
+		}
+	}
+	if($fe) return realpath($upPath . $file);
+	else return dirname(dirname(dirname(dirname(__FILE__))));
 }
-else $root = dirname(dirname(dirname(dirname(__FILE__))));
+
+$wpLoadPath = samCheckLevel();
 
 ini_set('html_errors', 0);
+$notShortInit = array('load_combo_data', 'load_users', 'load_authors');
 
-define('SHORTINIT', true);
+$validUri = '';
+$validRequest = false;
+if( ! in_array($_REQUEST['action'], $notShortInit)) define('SHORTINIT', true);
 
-require_once( $root . '/wp-load.php' );
+require_once( $wpLoadPath );
 
 function random_string($chars = 12) {
 	$letters = 'abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ';
 	return substr(str_shuffle($letters), 0, $chars);
+}
+
+$action = !empty($_REQUEST['action']) ? 'sam_ajax_' . stripslashes($_REQUEST['action']) : false;
+if( ! SHORTINIT ) {
+	$validUri = admin_url('admin.php') . '?page=sam-edit';
+	$validRequest = strpos($_SERVER['HTTP_REFERER'], $validUri);
 }
 
 global $wpdb;
@@ -36,6 +58,7 @@ $uTable = $wpdb->base_prefix . "users";
 $umTable = $wpdb->base_prefix . "usermeta";
 $postTable = $wpdb->prefix . "posts";
 $eTable = $wpdb->prefix . 'sam_errors';
+$aTable = $wpdb->prefix . 'sam_ads';
 $userLevel = $wpdb->base_prefix . 'user_level';
 
 $oTable = $wpdb->prefix . 'options';
@@ -49,7 +72,10 @@ $charset = $wpdb->get_var($oSql);
 send_nosniff_header();
 nocache_headers();
 
-$action = !empty($_REQUEST['action']) ? 'sam_ajax_' . stripslashes($_REQUEST['action']) : false;
+function sam_esc_sql( $data ) {
+	global $wpdb;
+	return $wpdb->_escape($data);
+}
 
 //A bit of security
 $allowed_actions = array(
@@ -61,7 +87,6 @@ $allowed_actions = array(
   'sam_ajax_load_users',
   'sam_ajax_load_combo_data',
   'sam_ajax_get_error',
-  'sam_ajax_upload_ad_image',
   'sam_ajax_load_stats'
 );
 $out = array();
@@ -103,7 +128,8 @@ if(in_array($action, $allowed_actions)) {
       break;
 
     case 'sam_ajax_load_authors':
-      $sql = "SELECT
+      if($validRequest !== false) {
+	      $sql = "SELECT
                 wu.id,
                 wu.display_name AS title,
                 wu.user_nicename AS slug
@@ -116,17 +142,20 @@ if(in_array($action, $allowed_actions)) {
                 wum.meta_value > 1
               ORDER BY wu.id;";
 
-      $auth = $wpdb->get_results($sql, ARRAY_A);
-      $k = 0;
-      foreach($auth as &$val) {
-        $k++;
-        $val['recid'] = $k;
+
+        $auth = $wpdb->get_results($sql, ARRAY_A);
+        $k = 0;
+        foreach($auth as &$val) {
+          $k++;
+          $val['recid'] = $k;
+        }
+        $out = $auth;
       }
-      $out = $auth;
+			else $out = array('success' => false);
       break;
 
     case 'sam_ajax_load_posts':
-      $custs = (isset($_REQUEST['cstr'])) ? $_REQUEST['cstr'] : '';
+      $custs = sam_esc_sql((isset($_REQUEST['cstr'])) ? $_REQUEST['cstr'] : '');
       $sPost = (isset($_REQUEST['sp'])) ? urldecode( $_REQUEST['sp'] ) : 'Post';
       $sPage = (isset($_REQUEST['spg'])) ? urldecode( $_REQUEST['spg'] ) : 'Page';
 
@@ -187,13 +216,14 @@ if(in_array($action, $allowed_actions)) {
 		  break;
 
     case 'sam_ajax_load_users':
-      $roleSubscriber = (isset($_REQUEST['subscriber'])) ? urldecode($_REQUEST['subscriber']) : 'Subscriber';
-      $roleContributor = (isset($_REQUEST['contributor'])) ? urldecode($_REQUEST['contributor']) : 'Contributor';
-      $roleAuthor = (isset($_REQUEST['author'])) ? urldecode($_REQUEST['author']) : 'Author';
-      $roleEditor = (isset($_REQUEST['editor'])) ? urldecode($_REQUEST['editor']) : 'Editor';
-      $roleAdministrator = (isset($_REQUEST["admin"])) ? urldecode($_REQUEST["admin"]) : 'Administrator';
-      $roleSuperAdmin = (isset($_REQUEST['sadmin'])) ? urldecode($_REQUEST['sadmin']) : 'Super Admin';
-      $sql = "SELECT
+      if($validRequest !== false) {
+	      $roleSubscriber = sam_esc_sql((isset($_REQUEST['subscriber'])) ? urldecode($_REQUEST['subscriber']) : 'Subscriber');
+        $roleContributor = sam_esc_sql((isset($_REQUEST['contributor'])) ? urldecode($_REQUEST['contributor']) : 'Contributor');
+        $roleAuthor = sam_esc_sql((isset($_REQUEST['author'])) ? urldecode($_REQUEST['author']) : 'Author');
+        $roleEditor = sam_esc_sql((isset($_REQUEST['editor'])) ? urldecode($_REQUEST['editor']) : 'Editor');
+        $roleAdministrator = sam_esc_sql((isset($_REQUEST["admin"])) ? urldecode($_REQUEST["admin"]) : 'Administrator');
+        $roleSuperAdmin = sam_esc_sql((isset($_REQUEST['sadmin'])) ? urldecode($_REQUEST['sadmin']) : 'Super Admin');
+        $sql = "SELECT
                 wu.id,
                 wu.display_name AS title,
                 wu.user_nicename AS slug,
@@ -212,46 +242,71 @@ if(in_array($action, $allowed_actions)) {
               INNER JOIN $umTable wum
                 ON wu.id = wum.user_id AND wum.meta_key = '$userLevel'
               ORDER BY wu.id;";
-      $users = $wpdb->get_results($sql, ARRAY_A);
+        $users = $wpdb->get_results($sql, ARRAY_A);
 
-      $k = 0;
-      foreach($users as &$val) {
-        $k++;
-        $val['recid'] = $k;
+        $k = 0;
+        foreach($users as &$val) {
+          $k++;
+          $val['recid'] = $k;
+        }
+
+        $out = $users;
       }
-
-      $out = $users;
+			else $out = array('success' => false, 'validRequest' => $validRequest);
       break;
 
     case 'sam_ajax_load_combo_data':
-      $page = $_GET['page'];
-      $rows = $_GET['rows'];
-      $searchTerm = $_GET['searchTerm'];
-      $offset = ((int)$page - 1) * (int)$rows;
+      if($validRequest !== false) {
+	      $page = $_GET['page'];
+        $rows = $_GET['rows'];
+        $searchTerm = $_GET['searchTerm'];
+        $searchTerm = sam_esc_sql($searchTerm);
+        $offset = ((int)$page - 1) * (int)$rows;
 
-      $sql = "SELECT
-                wu.id,
-                wu.display_name AS title,
-                wu.user_nicename AS slug,
-                wu.user_email AS email
-              FROM
-                $uTable wu
-              WHERE wu.user_nicename LIKE '{$searchTerm}%'
-              ORDER BY wu.id
-              LIMIT $offset, $rows;";
-      $users = $wpdb->get_results($sql, ARRAY_A);
+        $sql = "(SELECT
+  wu.display_name AS title,
+  wu.user_nicename AS slug,
+  wu.user_email AS email
+FROM
+  $uTable wu
+WHERE wu.user_nicename LIKE '%{$searchTerm}%')
+UNION
+(SELECT
+  wsa.adv_name AS title,
+  wsa.adv_nick AS slug,
+  wsa.adv_mail AS email
+FROM {$aTable} wsa
+WHERE wsa.adv_nick IS NOT NULL AND wsa.adv_nick <> '' AND wsa.adv_nick LIKE '%{$searchTerm}%'
+GROUP BY wsa.adv_nick)
+LIMIT $offset, $rows;";
+        $users = $wpdb->get_results($sql, ARRAY_A);
 
-      $sql = "SELECT COUNT(*) FROM $uTable wu WHERE wu.user_nicename LIKE '{$searchTerm}%';";
-      $rTotal = $wpdb->get_var($sql);
-      $total = ceil((int)$rTotal/(int)$rows);
+        $sql = "SELECT COUNT(*) AS total FROM $uTable wu WHERE wu.user_nicename LIKE '%{$searchTerm}%'";
+	      $sql .= " UNION ";
+	      $sql .= "SELECT COUNT(DISTINCT wsa.adv_nick) AS total FROM {$aTable} wsa WHERE wsa.adv_nick IS NOT NULL AND wsa.adv_nick <> '' AND wsa.adv_nick LIKE '%{$searchTerm}%' GROUP BY wsa.adv_nick;";
+        $raTotal = $wpdb->get_results($sql, ARRAY_A);
+	      $rTotal = 0;
+	      foreach($raTotal as $val) $rTotal += $val['total'];
+        $total = ceil((int)$rTotal/(int)$rows);
 
-      $out = array(
-        'page' => $page,
-        'records' => count($users),
-        'rows' => $users,
-        'total' => $total,
-        'offset' => $offset
-      );
+        $out = array(
+          'page' => $page,
+          'records' => $rTotal,//count($users),
+          'rows' => $users,
+          'total' => $total,
+          'offset' => $offset,
+	        'raTotal' => $raTotal,
+	        'sql' => $sql
+        );
+      }
+			else
+				$out = array(
+					'page' => 0,
+					'records' => 0,
+					'rows' => 0,
+					'total' => 0,
+					'offset' => 0
+				);
 
       break;
 
@@ -282,7 +337,7 @@ if(in_array($action, $allowed_actions)) {
         ((isset($_POST['oe'])) ? $_POST['wa'] : 'Output Error')
       );
       if(isset($_POST['id'])) {
-        $id = $_POST['id'];
+        $id = (integer)$_POST['id'];
         $eSql = "SELECT
                   se.id,
                   se.error_date,
@@ -298,19 +353,6 @@ if(in_array($action, $allowed_actions)) {
         $out['type'] = $eTypes[$out['error_type']];
       }
       else $out = array("status" => "error", "message" => "ID Error");
-      break;
-
-    case 'sam_ajax_upload_ad_image':
-      if(isset($_POST['path'])) {
-        $uploadDir = $_POST['path'];
-        $file = $uploadDir . basename($_FILES['uploadfile']['name']);
-
-        if ( move_uploaded_file( $_FILES['uploadfile']['tmp_name'], $file )) {
-          $out = array('status' => "success");
-        } else {
-          $out = array('status' => "error");
-        }
-      }
       break;
 
     default:

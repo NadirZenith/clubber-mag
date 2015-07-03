@@ -9,18 +9,31 @@
 define('DOING_AJAX', true);
 
 if (!isset( $_REQUEST['action'])) die('-1');
-if (isset( $_REQUEST['level'] )) {
-  $rootLevel = intval($_REQUEST['level']);
-  $root = dirname( __FILE__ );
-  for( $i = 0; $i < $rootLevel; $i++ ) $root = dirname( $root );
+
+function samCheckLevel() {
+	$level = 0;
+	$upPath = '';
+	$file = 'wp-load.php';
+	$out = false;
+
+	while(!$out && $level < 6) {
+		$out = file_exists($upPath . $file);
+		if(!$out) {
+			$upPath .= '../';
+			$level++;
+		}
+	}
+	if($out) return realpath($upPath . $file);
+	else return dirname(dirname(dirname(dirname(__FILE__))));
 }
-else $root = dirname(dirname(dirname(dirname(__FILE__))));
+
+$wpLoadPath = samCheckLevel();
 
 ini_set('html_errors', 0);
 
 define('SHORTINIT', true);
 
-require_once( $root . '/wp-load.php' );
+require_once( $wpLoadPath );
 
 global $wpdb;
 
@@ -55,8 +68,8 @@ if(in_array($action, $allowed_actions)) {
   switch($action) {
     case 'sam_ajax_load_stats':
       if(isset($_POST['id'])) {
-        $pid = $_POST['id'];
-        $sMonth = (isset($_POST['sm'])) ? $_POST['sm'] : 0;
+        $pid = (integer)$_POST['id'];
+        $sMonth = (isset($_POST['sm'])) ? (integer)$_POST['sm'] : 0;
 
         $date = new DateTime('now');
         $si = '-'.$sMonth.' month';
@@ -99,8 +112,8 @@ if(in_array($action, $allowed_actions)) {
 
     case 'sam_ajax_load_item_stats':
       if(isset($_POST['id'])) {
-        $id = $_POST['id'];
-        $sMonth = (isset($_POST['sm'])) ? $_POST['sm'] : 0;
+        $id = (integer)$_POST['id'];
+        $sMonth = (isset($_POST['sm'])) ? (integer)$_POST['sm'] : 0;
 
         $date = new DateTime('now');
         $si = '-'.$sMonth.' month';
@@ -143,8 +156,8 @@ if(in_array($action, $allowed_actions)) {
 
     case 'sam_ajax_load_ads':
       if(isset($_POST['id'])) {
-        $id = $_POST['id'];
-        $sMonth = (isset($_POST['sm'])) ? $_POST['sm'] : 0;
+        $id = (integer)$_POST['id'];
+        $sMonth = (isset($_POST['sm'])) ? (integer)$_POST['sm'] : 0;
 
         $date = new DateTime('now');
         $si = '-'.$sMonth.' month';

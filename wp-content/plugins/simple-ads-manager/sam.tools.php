@@ -4,11 +4,14 @@
  * Date: 23.12.13
  * Time: 18:25
  */
+
+include_once('sam.functions.php');
 if(!class_exists('SamMailer')) {
   class SamMailer {
     private $options;
     private $advertisersList;
     private $month;
+	  private $year;
     private $first;
     private $last;
     private $error;
@@ -78,6 +81,7 @@ if(!class_exists('SamMailer')) {
       $out = str_replace('[month]', $this->month, $out);
       $out = str_replace('[first]', $this->first, $out);
       $out = str_replace('[last]', $this->last, $out);
+	    $out = str_replace('[year]', $this->year, $out);
 
       return $out;
     }
@@ -163,6 +167,8 @@ if(!class_exists('SamMailer')) {
         $this->first = $first;
         $this->last = $last;
       }
+	    $this->month = $date->format('M');
+	    $this->year = $date->format('Y');
 
       $greeting = self::parseText($options['mail_greeting'], $user['adv_name']);
       $textBefore = self::parseText($options['mail_text_before'], $user['adv_name']);
@@ -258,6 +264,30 @@ if(!class_exists('SamMailer')) {
       return 'text/html';
     }
 
+	  public function sendMail($user, $key = 'nick') {
+		  $column = 'adv_' . $key;
+		  $advKey = array_search($user, array_column($this->advertisersList, $column));
+		  $adv = $this->advertisersList[$advKey];
+		  $success = false;
+
+		  if(!is_null($adv) && $adv !== false) {
+			  $headers = 'Content-type: text/html; charset=UTF-8' . "\r\n";
+			  $message = self::buildMessage( $adv );
+			  $subject = self::parseText( $this->options['mail_subject'], $adv['adv_name'] );
+			  if ( ! empty( $message ) ) {
+				  if ( function_exists( 'wp_mail' ) ) {
+					  $success = wp_mail( $adv['adv_mail'], $subject, $message, $headers );
+				  } else {
+					  $samAdminMail = self::getSiteInfo( 'admin_email' );
+					  $headers .= "From: SAM Info <{$samAdminMail}>" . "\r\n";
+					  $success = mail( $adv['adv_mail'], $subject, $message, $headers );
+				  }
+			  }
+		  }
+
+		  return $success;
+	  }
+
     public function sendMails() {
       $k = 0; $s = 0; $e = 0;
       $advertisers = $this->advertisersList;
@@ -304,6 +334,9 @@ if(!class_exists('SamMailer')) {
         $this->first = $first;
         $this->last = $last;
       }
+
+	    $this->month = $date->format('M');
+	    $this->year = $date->format('Y');
 
       $options = $this->options;
       $greeting = self::parseText($options['mail_greeting'], $user);
@@ -406,15 +439,20 @@ if(!class_exists('SamStatsCleaner')) {
     private function errorWrite($eTable, $rTable, $eSql = null, $eResult = null, $lastError = null, $date = null) {
       global $wpdb;
 
+	    $errorMsg = '';
+	    $error = false;
+
       if(!is_null($eResult)) {
         if($eResult === false) {
-          $wpdb->insert(
+          $errorMsg = (empty($lastError)) ? __('An error occurred during updating process...', SAM_DOMAIN) : $lastError;
+	        $error = true;
+	        $wpdb->insert(
             $eTable,
             array(
               'error_date' => current_time('mysql'),
               'table_name' => $rTable,
               'error_type' => 1,
-              'error_msg' => (empty($lastError)) ? __('An error occurred during updating process...', SAM_DOMAIN) : $lastError,
+              'error_msg' => $errorMsg,
               'error_sql' => $eSql,
               'resolved' => 0
             ),
@@ -422,13 +460,14 @@ if(!class_exists('SamStatsCleaner')) {
           );
         }
         else {
-          $wpdb->insert(
+          $errorMsg = (empty($lastError)) ? sprintf( __('All statistical data before %s is cleared...', SAM_DOMAIN), $date ) : $lastError;
+	        $wpdb->insert(
             $eTable,
             array(
               'error_date' => current_time('mysql'),
               'table_name' => $rTable,
               'error_type' => 0,
-              'error_msg' => (empty($lastError)) ? sprintf( __('All statistical data before %s is cleared...', SAM_DOMAIN), $date ) : $lastError,
+              'error_msg' => $errorMsg,
               'error_sql' => $eSql,
               'resolved' => 1
             ),
@@ -436,6 +475,8 @@ if(!class_exists('SamStatsCleaner')) {
           );
         }
       }
+
+	    return array('error' => $error, 'msg' => $errorMsg);
     }
 
     public function clear($date = null) {
@@ -453,6 +494,7 @@ if(!class_exists('SamStatsCleaner')) {
       global $wpdb;
       $dbResult = null;
       $el = (integer)$this->options['errorlog'];
+	    $error = false;
 
       $sTable = $wpdb->prefix . 'sam_stats';
       $eTable = $wpdb->prefix . "sam_errors";
@@ -460,9 +502,37 @@ if(!class_exists('SamStatsCleaner')) {
       $sql = "DELETE FROM $sTable WHERE event_time < %s;";
       $dbResult = $wpdb->query($wpdb->prepare($sql, $date));
       if($el) {
-        self::errorWrite($eTable, $sTable, $wpdb->prepare($sql, $date), $dbResult, $wpdb->last_error, $sDate);
+        $out = self::errorWrite($eTable, $sTable, $wpdb->prepare($sql, $date), $dbResult, $wpdb->last_error, $sDate);
         $dbResult = null;
       }
+	    else $out = array('error' => $error, 'msg' => __('Statistical data were cleared.', SAM_DOMAIN));
+
+	    return $out;
     }
+
+	  public function kill() {
+		  global $wpdb;
+		  $dbResult = null;
+		  $el = (integer)$this->options['errorlog'];
+		  $error = false;
+
+		  $nowDate = new DateTime('now');
+		  $sDate = $nowDate->format(str_replace(array('d', 'j'), array('01', '1'), get_option('date_format')));
+
+		  $sTable = $wpdb->prefix . 'sam_stats';
+		  $eTable = $wpdb->prefix . "sam_errors";
+
+		  $sql = "DELETE FROM {$sTable};";
+		  $dbResult = $wpdb->query($sql);
+		  if($el) {
+			  $out = self::errorWrite($eTable, $sTable, $sql, $dbResult, $wpdb->last_error, $sDate);
+			  $dbResult = null;
+		  }
+		  else $out = array('error' => $error, 'msg' => __('All statistical data are completely removed.', SAM_DOMAIN));
+
+		  if(!$out['error']) $out['msg'] = __('All statistical data are completely removed.', SAM_DOMAIN);
+
+		  return $out;
+	  }
   }
 }

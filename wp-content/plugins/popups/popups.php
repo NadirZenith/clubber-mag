@@ -11,8 +11,8 @@
  * @socialpopup
  * Plugin Name:       Popups - WordPress Popup
  * Plugin URI:        http://www.timersys.com/free-plugins/social-popup/
- * Version: 		  1.2.3.3
- * Description: 	  This plugin will display a popup or splash screen when a new user visit your site showing a Google+, twitter and facebook follow links. This will increase you followers ratio in a 40%. Popup will be close depending on your settings. Check readme.txt for full details.
+ * Version: 		  1.3.3
+ * Description: 	  Most complete free Popups plugin, scroll triggered popups, compatible with social networks, Gravity Forms, Ninja Forms, Contact form 7, Mailpoet, Mailchimp for WP, Postmatic, etc
  * Author: 			  Damian Logghe
  * Author URI:        http://wp.timersys.com
  * Text Domain:       spu
@@ -30,12 +30,15 @@ if ( ! defined( 'WPINC' ) ) {
  * Public-Facing Functionality
  *----------------------------------------------------------------------------*/
 
+define( 'SPU_VERSION' , '1.3.3' );
 define( 'SPU_PLUGIN_DIR' , plugin_dir_path(__FILE__) );
 define( 'SPU_PLUGIN_URL' , plugin_dir_url(__FILE__) );
 define( 'SPU_PLUGIN_HOOK' , basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ) );
 
-
+require_once( plugin_dir_path( __FILE__ ) . 'admin/includes/class-spu-upgrader.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-social-popup.php' );
+// Include Helper class
+require_once( SPU_PLUGIN_DIR . 'includes/class-spu-helper.php' );
 
 /*
  * Register hooks that are fired when the plugin is activated or deactivated.
@@ -60,7 +63,13 @@ add_action( 'plugins_loaded', array( 'SocialPopup', 'get_instance' ) );
 if ( is_admin() ) {
 
 	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-social-popup-admin.php' );
+	require_once( plugin_dir_path( __FILE__ ) . 'admin/includes/class-spu-notices.php' );
+
+	$spu_notices = new SocialPopup_Notices();
 
 	add_action( 'plugins_loaded', array( 'SocialPopup_Admin', 'get_instance' ) );
+
+	if( get_option('spu_plugin_updated') && !get_option('spu_rate_plugin') )
+		add_action( 'admin_notices', array( $spu_notices, 'rate_plugin') );
 
 }

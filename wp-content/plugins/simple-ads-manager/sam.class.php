@@ -18,7 +18,7 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
       'deleteFolder' => 0,              // bool
       'beforePost' => 0,                // bool
       'bpAdsId' => 0,                   // int
-      'bpAdsType' => 1,
+      'bpAdsType' => 1,                 // int
       'bpUseCodes' => 0,                // bool
       'bpExcerpt' => 0,                 // bool
       'bbpBeforePost' => 0,             // bool
@@ -33,6 +33,9 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
       'apAdsId' => 0,                   // int
       'apUseCodes' => 0,                // bool
       'bbpAfterPost' => 0,              // bool
+	    'wptAdsType' => 1,                // int
+	    'wptAdsId' => 0,                  // int
+	    'wptAd' => 0,                     // bool
       'useDFP' => 0,                    // bool
       'detectBots' => 0,                // bool
       'detectingMode' => 'inexact',
@@ -49,14 +52,16 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
       'errorlogFS' => 1,                // bool
       'bbpActive' => 0,                 // bool
       'bbpEnabled' => 0,                // bool
+	    //'wptouchActive' => 0,             // bool
+	    'wptouchEnabled' => 0,            // bool
       // Mailer
       'mailer' => 1,                    // bool
       'mail_subject' => 'Ad campaign report ([month])',
       'mail_greeting' => 'Hi! [name]!',
-      'mail_text_before' => 'This is your Ad Campaing Report:',
+      'mail_text_before' => 'This is your Ad Campaign Report:',
       'mail_text_after' => '',
       'mail_warning' => 'You received this mail because you are an advertiser of site [site]. If time of your campaign expires or if you refuse to post your ads on our site, you will be excluded from the mailing list automatically. Thank you for your cooperation.',
-      'mail_message' => 'Do not respond to this mail! This mail was sent automatically by Wordpress plugin Simple Ads Manager.',
+      'mail_message' => 'Do not respond to this mail! This mail was sent automatically by Wordpress plugin Simple Ads Manager (Free Edition).',
       'mail_period' => 'monthly',        // monthly|weekly
       'mail_hits' => 1,                  // bool
       'mail_clicks' => 1,                // bool
@@ -74,8 +79,8 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
 	  );
 		
 	  public function __construct() {
-      define('SAM_VERSION', '2.5.94');
-      define('SAM_DB_VERSION', '2.8');
+      define('SAM_VERSION', '2.9.4.116');
+      define('SAM_DB_VERSION', '2.9');
       define('SAM_PATH', dirname( __FILE__ ));
       define('SAM_URL', plugins_url( '/',  __FILE__  ) );
       define('SAM_IMG_URL', SAM_URL.'images/');
@@ -122,6 +127,10 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
           add_action('bbp_theme_after_forum_sub_forums', array(&$this, 'addBbpForumAds'));
           add_action('bbp_theme_before_topic_started_by', array(&$this, 'addBbpForumAds'));
         }
+	      if($this->samOptions['wptouchEnabled']) {
+		      if($this->samOptions['wptAd'] && $this->samOptions['wptAdsId'] > 0)
+			      add_action('wptouch_advertising_top', array(&$this, 'drawWptAd'), 9999);
+	      }
 
         // For backward compatibility
         add_shortcode('sam-ad', array(&$this, 'doAdShortcode'));
@@ -441,7 +450,7 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
           'ajaxurl' => SAM_URL . 'sam-ajax.php',
           'loadurl' => SAM_URL . 'sam-ajax-loader.php',
           'load' => ($this->samOptions['adShow'] == 'js'),
-          'level' => self::getDirLevel(), //count(explode('/', str_replace( ABSPATH, '', dirname( __FILE__ ) ))),
+          //'level' => self::getDirLevel(),
           'mailer' => $options['mailer'],
           'clauses' => $clauses64,
 		      'doStats' => $this->samOptions['stats'],
@@ -457,30 +466,22 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
       $options = self::getSettings();
       $netCode = $options['dfpNetworkCode'];
 
-      if(($options['useDFP'] == 1) && !empty($netCode) && is_array($options['dfpBlocks'])) {
+      if(($options['useDFP'] == 1) && !empty($netCode) && is_array($options['dfpBlocks2'])) {
         $slots = '';
-        foreach($options['dfpBlocks'] as $value)
-          $slots .= "googletag.defineSlot('/$netCode/$value', [468, 60], 'div-gpt-ad-1390745798945-0').addService(googletag.pubads());";
+        foreach($options['dfpBlocks2'] as $value)
+          $slots .= "googletag.defineSlot('/{$netCode}/{$value['name']}', [{$value['size'][0]}, {$value['size'][1]}], '{$value['div']}').addService(googletag.pubads());\n";
         $out = "
 <script type='text/javascript'>
-  var googletag = googletag || {};
-  googletag.cmd = googletag.cmd || [];
   (function() {
-    var gads = document.createElement('script');
-    gads.async = true;
-    gads.type = 'text/javascript';
     var useSSL = 'https:' == document.location.protocol;
-    gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
-    var node = document.getElementsByTagName('script')[0];
-    node.parentNode.insertBefore(gads, node);
+    var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+    document.write('<scr' + 'ipt src=\"' + src + '\"></scr' + 'ipt>');
   })();
 </script>
 
 <script type='text/javascript'>
   googletag.cmd.push(function() {
-    googletag.defineSlot('/5043950/Header', [468, 60], 'div-gpt-ad-1390745798945-0').addService(googletag.pubads());
-    googletag.defineSlot('/5043950/Sidebar', [300, 250], 'div-gpt-ad-1390745798945-1').addService(googletag.pubads());
-    googletag.defineSlot('/5043950/SiteTop', [468, 60], 'div-gpt-ad-1390745798945-2').addService(googletag.pubads());
+    {$slots}
     googletag.pubads().enableSingleRequest();
     googletag.enableServices();
   });
@@ -495,25 +496,33 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
       $options = self::getSettings();
       $pub = $options['dfpPub'];
       
-      if(($options['useDFP'] == 1) && !empty($options['dfpPub'])) {
-        $output = "<!-- Start of SAM ".SAM_VERSION." scripts -->"."\n";
-        $output .= "<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'></script>"."\n";
-        $output .= "<script type='text/javascript'>"."\n";
-        $output .= "  GS_googleAddAdSenseService('$pub');"."\n";
-        $output .= "  GS_googleEnableAllServices();"."\n";
-        $output .= "</script>"."\n";
-        $output .= "<script type='text/javascript'>"."\n";
-        foreach($options['dfpBlocks'] as $value)
-          $output .= "  GA_googleAddSlot('$pub', '$value');"."\n";
-        $output .= "</script>"."\n";
-        $output .= "<script type='text/javascript'>"."\n";
-        $output .= "  GA_googleFetchAds();"."\n";
-        $output .= "</script>"."\n";
-        $output .= "<!-- End of SAM ".SAM_VERSION." scripts -->"."\n";
+      if($options['dfpMode'] == 'gam') {
+	      if ( ( $options['useDFP'] == 1 ) && ! empty( $options['dfpPub'] ) ) {
+		      $output = "<!-- Start of SAM " . SAM_VERSION . " scripts -->" . "\n";
+		      $output .= "<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'></script>" . "\n";
+		      $output .= "<script type='text/javascript'>" . "\n";
+		      $output .= "  GS_googleAddAdSenseService('$pub');" . "\n";
+		      $output .= "  GS_googleEnableAllServices();" . "\n";
+		      $output .= "</script>" . "\n";
+		      $output .= "<script type='text/javascript'>" . "\n";
+		      foreach ( $options['dfpBlocks'] as $value ) {
+			      $output .= "  GA_googleAddSlot('$pub', '$value');" . "\n";
+		      }
+		      $output .= "</script>" . "\n";
+		      $output .= "<script type='text/javascript'>" . "\n";
+		      $output .= "  GA_googleFetchAds();" . "\n";
+		      $output .= "</script>" . "\n";
+		      $output .= "<!-- End of SAM " . SAM_VERSION . " scripts -->" . "\n";
+	      } else {
+		      $output = '';
+	      }
       }
-      else $output = '';
-      
-      echo $output;
+	    elseif($options['dfpMode'] == 'gpt') {
+		    $output = self::getDfpCodes();
+	    }
+	    else $output = '';
+
+	    echo $output;
     }
     
     private function isCrawler() {
@@ -523,11 +532,12 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
       if($options['detectBots'] == 1) {
         switch($options['detectingMode']) {
           case 'inexact':
-            if($_SERVER["HTTP_USER_AGENT"] == '' ||
-               $_SERVER['HTTP_ACCEPT'] == '' ||
-               $_SERVER['HTTP_ACCEPT_ENCODING'] == '' ||
-               $_SERVER['HTTP_ACCEPT_LANGUAGE'] == '' ||
-               $_SERVER['HTTP_CONNECTION']=='') $crawler = true;
+            if(((!isset($_SERVER["HTTP_USER_AGENT"])) ? true : ($_SERVER["HTTP_USER_AGENT"] == '')) ||
+               ((!isset($_SERVER['HTTP_ACCEPT'])) ? true : ($_SERVER['HTTP_ACCEPT'] == '')) ||
+               ((!isset($_SERVER['HTTP_ACCEPT_ENCODING'])) ? true : ($_SERVER['HTTP_ACCEPT_ENCODING'] == '')) ||
+               ((!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? true : ($_SERVER['HTTP_ACCEPT_LANGUAGE'] == '')) ||
+               ((!isset($_SERVER['HTTP_CONNECTION'])) ? true : $_SERVER['HTTP_CONNECTION'] == ''))
+	            $crawler = true;
             break;
             
           case 'exact':
@@ -814,6 +824,35 @@ if ( !class_exists( 'SimpleAdsManager' ) ) {
 
       echo $bpAd;
     }
+
+	  public function drawWptAd() {
+		  $options = self::getSettings();
+		  $ad = '';
+
+		  if(empty($this->whereClauses)) $this->whereClauses = self::buildWhereClause();
+
+		  if(isset($options['wptAdsId'])) {
+			  switch($options['wptAdsType']) {
+				  case 0:
+					  $wptAd = new SamAd(array('id' => $options['wptAdsId']), false, false);
+					  break;
+				  case 1:
+					  $wptAd = new SamAdPlace(array('id' => $options['wptAdsId']), false, false, $this->whereClauses);
+					  break;
+				  case 2:
+					  $wptAd = new SamAdPlaceZone(array('id' => $options['wptAdsId']), false, false, $this->whereClauses);
+					  break;
+				  case 3:
+					  $wptAd = new SamAdBlock(array('id' => $options['wptAdsId']), false, $this->whereClauses);
+					  break;
+				  default:
+					  $wptAd = new SamAdPlace(array('id' => $options['wptAdsId']), false, false, $this->whereClauses);
+					  break;
+			  }
+			  $ad = "<div style='margin:0 0 -4px'>{$wptAd->ad}</div>";
+		  }
+		  echo $ad;
+	  }
   } // end of class definition
 } // end of if not class SimpleAdsManager exists
 ?>

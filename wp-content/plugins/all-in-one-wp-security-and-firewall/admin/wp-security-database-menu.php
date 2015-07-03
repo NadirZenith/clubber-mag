@@ -104,7 +104,7 @@ class AIOWPSecurity_Database_Menu extends AIOWPSecurity_Admin_Menu
             {
                 if( isset($_POST['aiowps_enable_random_prefix'])) 
                 {//User has elected to generate a random DB prefix
-                    $string = AIOWPSecurity_Utility::generate_alpha_numeric_random_string('6');
+                    $string = AIOWPSecurity_Utility::generate_alpha_random_string('5');
                     $new_db_prefix = $string . '_';
                     $perform_db_change = true;
                 }else 
@@ -539,7 +539,7 @@ class AIOWPSecurity_Database_Menu extends AIOWPSecurity_Admin_Menu
     {
         global $aio_wp_security;
         $tables = array();
-        $list_tables_sql = "SHOW TABLES FROM {$database};";
+        $list_tables_sql = "SHOW TABLES FROM `{$database}`;";
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         
         if ($mysqli->connect_errno) {

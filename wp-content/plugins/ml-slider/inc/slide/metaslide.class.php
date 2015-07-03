@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // disable direct access
+}
+
 /**
  * Slide class represting a single slide. This is extended by type specific
  * slides (eg, MetaImageSlide, MetaYoutubeSlide (pro only), etc)
@@ -127,13 +132,17 @@ class MetaSlide {
      */
     public function get_slide_html() {
 
-        if ( is_admin() && isset( $_GET['page'] ) && $_GET['page'] == 'metaslider-theme-editor' ) {
+        $viewing_theme_editor = is_admin() && isset( $_GET['page'] ) && $_GET['page'] == 'metaslider-theme-editor';
+        $viewing_preview = did_action('admin_post_metaslider_preview');
+        $doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX;
+
+        if ( $doing_ajax || $viewing_preview || $viewing_theme_editor ) {
             return $this->get_public_slide();
         }
 
         $capability = apply_filters( 'metaslider_capability', 'edit_others_posts' );
 
-        if ( is_admin() && current_user_can( $capability ) && ! isset( $_GET['slider_id'] ) ) {
+        if ( is_admin() && current_user_can( $capability ) ) {
             return $this->get_admin_slide();
         }
 
@@ -272,7 +281,9 @@ class MetaSlide {
      */
     public function get_delete_button_html() {
 
-        return "<a title='" . __("Delete slide", "metaslider") . "' class='tipsy-tooltip-top delete-slide dashicons dashicons-trash' href='?page=metaslider&amp;id={$this->slider->ID}&amp;deleteSlide={$this->slide->ID}'>" . __("Delete slide", "metaslider") . "</a>";
+        $url = wp_nonce_url( admin_url( "admin-post.php?action=metaslider_delete_slide&slider_id={$this->slider->ID}&slide_id={$this->slide->ID}" ), "metaslider_delete_slide" );
+
+        return "<a title='" . __("Delete slide", "metaslider") . "' class='tipsy-tooltip-top delete-slide dashicons dashicons-trash' href='{$url}'>" . __("Delete slide", "metaslider") . "</a>";
     
     }
 

@@ -8,7 +8,9 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
     private $listZone;
     private $editBlock;
     private $listBlock;
+	  private $listAdvert;
     private $eLogPage;
+	  private $toolsPage;
     private $cmsVer;
     private $settingsTabs;
     private $samPointerOptions = array('places' => true, 'ads' => true, 'zones' => true, 'blocks' => true);
@@ -33,17 +35,16 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
       $options = parent::getSettings(false);
       if(!empty($options['access'])) $access = $options['access'];
       else $access = 'manage_options';
-      //self::checkCachePlugins();
 
       define('SAM_ACCESS', $access);
 
-      //add_action('wp_ajax_upload_ad_image', array(&$this, 'uploadHandler'));
       add_action('wp_ajax_close_sam_pointer', array(&$this, 'closePointerHandler'));
 			add_action('admin_menu', array(&$this, 'regAdminPage'));
       add_filter('tiny_mce_version', array(&$this, 'tinyMCEVersion'));
       add_action('init', array(&$this, 'addButtons'));
       add_action('admin_init', array(&$this, 'checkCachePlugins'));
       add_action('admin_init', array(&$this, 'checkBbpForum'));
+	    add_action('admin_init', array(&$this, 'checkWPtouch'));
       add_action('admin_init', array(&$this, 'initSettings'), 11);
       if(version_compare($wp_version, '3.3', '<'))
         add_filter('contextual_help', array(&$this, 'help'), 10, 3);
@@ -139,10 +140,21 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
       update_option( SAM_OPTIONS_NAME, $settings );
     }
 
+	  public function checkWPtouch() {
+		  $touch = 'wptouch/wptouch.php';
+		  define('SAM_WPTOUCH', is_plugin_active($touch));
+	  }
+
     public function hideBbpOptions() {
       $options = parent::getSettings();
       return !( SAM_BBP && $options['bbpEnabled']);
     }
+
+	  public function hideWptOptions() {
+		  $options = parent::getSettings();
+		  $samWPT = ((defined('SAM_WPTOUCH')) ? SAM_WPTOUCH : false);
+		  return !($samWPT && $options['wptouchEnabled']);
+	  }
 
     private function getWarningString( $mode = '' ) {
       if(empty($mode)) return '';
@@ -162,6 +174,11 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
           if(SAM_BBP) $text = __('Active bbPress Forum plugin detected.', SAM_DOMAIN);
           else $text = '';
           $classDef = (!$options['bbpEnabled']);
+		      break;
+	      case 'mobile':
+		      $text = (SAM_WPTOUCH) ? __('Active WPtouch (Free Edition) plugin detected.', SAM_DOMAIN) : '';
+					$classDef = !$options['wptouchEnabled'];
+		      break;
       }
 
       if(version_compare($wp_version, '3.8-RC1', '<')) $class = ($classDef) ? 'sam-warning' : 'sam-info';
@@ -284,6 +301,7 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
         'ad_swf_flashvars' => array('Type' => "text", 'Null' => 'YES', 'Key' => '', 'Default' => '', 'Extra' => ''),
         'ad_swf_params' => array('Type' => "text", 'Null' => 'YES', 'Key' => '', 'Default' => '', 'Extra' => ''),
         'ad_swf_attributes' => array('Type' => "text", 'Null' => 'YES', 'Key' => '', 'Default' => '', 'Extra' => ''),
+        'ad_swf_fallback' => array('Type' => "text", 'Null' => 'YES', 'Key' => '', 'Default' => '', 'Extra' => ''),
         'count_clicks' => array('Type' => "tinyint(1)", 'Null' => 'NO', 'Key' => '', 'Default' => '0', 'Extra' => ''),
         'view_type' => array('Type' => "int(11)", 'Null' => 'YES', 'Key' => '', 'Default' => '1', 'Extra' => ''),
         'view_pages' => array('Type' => "set('isHome','isSingular','isSingle','isPage','isAttachment','isSearch','is404','isArchive','isTax','isCategory','isTag','isAuthor','isDate','isPostType','isPostTypeArchive')", 'Null' => 'YES', 'Key' => '', 'Default' => '', 'Extra' => ''),
@@ -565,24 +583,28 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
       add_settings_field('adShow', __("Ad Output Mode", SAM_DOMAIN), array(&$this, 'drawRadioOption'), 'sam-settings', 'sam_general_section', array('description' => __('Standard (PHP) mode is more faster but is not compatible with caching plugins. If your blog use caching plugin (i.e WP Super Cache or W3 Total Cache) select "Caching Compatible (Javascript)" mode. Due to the confusion around "mfunc" in caching plugins, I decided to refrain from development of special support of these plugins.', SAM_DOMAIN), 'options' => array('php' => __('Standard (PHP)', SAM_DOMAIN), 'js' => __('Caching Compatible (Javascript)', SAM_DOMAIN)), 'warning' => 'cache'));
       add_settings_field('adDisplay', __("Display Ad Source in", SAM_DOMAIN), array(&$this, 'drawRadioOption'), 'sam-settings', 'sam_general_section', array('description' => __('Target wintow (tab) for advetisement source.', SAM_DOMAIN), 'options' => array('blank' => __('New Window (Tab)', SAM_DOMAIN), 'self' => __('Current Window (Tab)', SAM_DOMAIN))));
       add_settings_field('bbpEnabled', __('Allow displaying ads on bbPress forum pages', SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_general_section', array('label_for' => 'bbpEnabled', 'checkbox' => true, 'warning' => 'forum', 'enabled' => ( (defined('SAM_BBP')) ? SAM_BBP  : false )));
+			add_settings_field('wptouchEnabled', __('Allow displaying ads in the header of WPtouch mobile theme', SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_general_section', array('label_for' => 'wptouchEnabled', 'checkbox' => true, 'warning' => 'mobile', 'hide' => (defined('SAM_WPTOUCH')) ? !SAM_WPTOUCH : true));
 
       add_settings_field('bpAdsType', __('Ad Object before content', SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('group' => array('slave' => 'bpAdsId', 'master' => true, 'title' => __('Type of Ad Object', SAM_DOMAIN).':')));
-      add_settings_field('bpAdsId', __("Ads Place before content", SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('description' => '', 'group' => array('slave' => null, 'master' => false, 'title' => __('Ad Object', SAM_DOMAIN).':')));
-      add_settings_field('beforePost', __("Allow Ads Place auto inserting before post/page content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'beforePost', 'checkbox' => true));
-      add_settings_field('bpExcerpt', __('Allow Ads Place auto inserting before post/page or post/page excerpt in the loop', SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bpExcerpt', 'checkbox' => true));
-      add_settings_field('bbpBeforePost', __("Allow Ads Place auto inserting before bbPress Forum topic content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bbpBeforePost', 'checkbox' => true, 'hide' => self::hideBbpOptions()));
-      add_settings_field('bbpList', __("Allow Ads Place auto inserting into bbPress Forum forums/topics lists", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bbpList', 'checkbox' => true, 'hide' => self::hideBbpOptions()));
-      add_settings_field('bpUseCodes', __("Allow using predefined Ads Place HTML codes (before and after codes)", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bpUseCodes', 'checkbox' => true));
+      add_settings_field('bpAdsId', __("Ad Object before content", SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('description' => '', 'group' => array('slave' => null, 'master' => false, 'title' => __('Ad Object', SAM_DOMAIN).':')));
+      add_settings_field('beforePost', __("Allow Ad Object auto inserting before post/page content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'beforePost', 'checkbox' => true));
+      add_settings_field('bpExcerpt', __('Allow Ad Object auto inserting before post/page or post/page excerpt in the loop', SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bpExcerpt', 'checkbox' => true));
+      add_settings_field('bbpBeforePost', __("Allow Ad Object auto inserting before bbPress Forum topic content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bbpBeforePost', 'checkbox' => true, 'hide' => self::hideBbpOptions()));
+      add_settings_field('bbpList', __("Allow Ad Object auto inserting into bbPress Forum forums/topics lists", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bbpList', 'checkbox' => true, 'hide' => self::hideBbpOptions()));
+      add_settings_field('bpUseCodes', __("Allow using predefined Ad Object HTML codes (before and after codes)", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bpUseCodes', 'checkbox' => true));
       add_settings_field('mpAdsType', __('Ad Object in the middle of content', SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('group' => array('slave' => 'mpAdsId', 'master' => true, 'title' => __('Type of Ad Object', SAM_DOMAIN).':')));
-      add_settings_field('mpAdsId', __("Ads Place in the middle of content", SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('description' => '', 'group' => array('slave' => null, 'master' => false, 'title' => __('Ad Object', SAM_DOMAIN).':')));
-      add_settings_field('middlePost', __("Allow Ads Place auto inserting into the middle of post/page content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'middlePost', 'checkbox' => true));
-      add_settings_field('bbpMiddlePost', __("Allow Ads Place auto inserting into the middle of bbPress Forum topic content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bbpMiddlePost', 'checkbox' => true, 'hide' => self::hideBbpOptions()));
-      add_settings_field('mpUseCodes', __("Allow using predefined Ads Place HTML codes (before and after codes)", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'mpUseCodes', 'checkbox' => true));
+      add_settings_field('mpAdsId', __("Ad Object in the middle of content", SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('description' => '', 'group' => array('slave' => null, 'master' => false, 'title' => __('Ad Object', SAM_DOMAIN).':')));
+      add_settings_field('middlePost', __("Allow Ad Object auto inserting into the middle of post/page content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'middlePost', 'checkbox' => true));
+      add_settings_field('bbpMiddlePost', __("Allow Ad Object auto inserting into the middle of bbPress Forum topic content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bbpMiddlePost', 'checkbox' => true, 'hide' => self::hideBbpOptions()));
+      add_settings_field('mpUseCodes', __("Allow using predefined Ad Object HTML codes (before and after codes)", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'mpUseCodes', 'checkbox' => true));
       add_settings_field('apAdsType', __('Ad Object after content', SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('group' => array('slave' => 'apAdsId', 'master' => true, 'title' => __('Type of Ad Object', SAM_DOMAIN).':')));
-      add_settings_field('apAdsId', __("Ads Place after content", SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('description' => '', 'group' => array('slave' => null, 'master' => false, 'title' => __('Ad Object', SAM_DOMAIN).':')));
-      add_settings_field('afterPost', __("Allow Ads Place auto inserting after post/page content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'afterPost', 'checkbox' => true));
-      add_settings_field('bbpAfterPost', __("Allow Ads Place auto inserting after bbPress Forum topic content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bbpAfterPost', 'checkbox' => true, 'hide' => self::hideBbpOptions()));
-      add_settings_field('apUseCodes', __("Allow using predefined Ads Place HTML codes (before and after codes)", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'apUseCodes', 'checkbox' => true));
+      add_settings_field('apAdsId', __("Ad Object after content", SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('description' => '', 'group' => array('slave' => null, 'master' => false, 'title' => __('Ad Object', SAM_DOMAIN).':')));
+      add_settings_field('afterPost', __("Allow Ad Object auto inserting after post/page content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'afterPost', 'checkbox' => true));
+      add_settings_field('bbpAfterPost', __("Allow Ad Object auto inserting after bbPress Forum topic content", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'bbpAfterPost', 'checkbox' => true, 'hide' => self::hideBbpOptions()));
+      add_settings_field('apUseCodes', __("Allow using predefined Ad Object HTML codes (before and after codes)", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'apUseCodes', 'checkbox' => true));
+			add_settings_field('wptAdsType', __('Ad Object in the header of WPtouch', SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('group' => array('slave' => 'wptAdsId', 'master' => true, 'title' => __('Type of Ad Object', SAM_DOMAIN).':'), 'hide' => self::hideWptOptions()));
+			add_settings_field('wptAdsId', __("Ad Object after content", SAM_DOMAIN), array(&$this, 'drawCascadeSelectOption'), 'sam-settings', 'sam_single_section', array('description' => '', 'group' => array('slave' => null, 'master' => false, 'title' => __('Ad Object', SAM_DOMAIN).':'), 'hide' => self::hideWptOptions()));
+			add_settings_field('wptAd', __("Allow Ad Object auto inserting in the header of WPtouch mobile theme plugin", SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_single_section', array('label_for' => 'wptAd', 'checkbox' => true, 'hide' => self::hideWptOptions()));
 
       add_settings_field('useSWF', __('I use (plan to use) my own flash (SWF) banners. In other words, allow loading the script "SWFObject" on the pages of the blog.', SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_ext_section', array('label_for' => 'useSWF', 'checkbox' => true));
       add_settings_field('errorlog', __('Turn on/off the error log.', SAM_DOMAIN), array(&$this, 'drawCheckboxOption'), 'sam-settings', 'sam_ext_section', array('label_for' => 'errorlog', 'checkbox' => true));
@@ -643,7 +665,9 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
       $this->editZone = add_submenu_page('sam-list', __('Ads Zone Editor', SAM_DOMAIN), __('New Zone', SAM_DOMAIN), SAM_ACCESS, 'sam-zone-edit', array(&$this, 'samZoneEditPage'));
       $this->listBlock = add_submenu_page('sam-list', __('Ads Blocks List', SAM_DOMAIN), __('Ads Blocks', SAM_DOMAIN), SAM_ACCESS, 'sam-block-list', array(&$this, 'samBlockListPage'));
       $this->editBlock = add_submenu_page('sam-list', __('Ads Block Editor', SAM_DOMAIN), __('New Block', SAM_DOMAIN), SAM_ACCESS, 'sam-block-edit', array(&$this, 'samBlockEditPage'));
-      $this->settingsPage = add_submenu_page('sam-list', __('Simple Ads Manager Settings', SAM_DOMAIN), __('Settings', SAM_DOMAIN), 'manage_options', 'sam-settings', array(&$this, 'samAdminPage'));
+	    $this->listAdvert = add_submenu_page('sam-list', __('Advertisers List', SAM_DOMAIN), __('Advertisers', SAM_DOMAIN), SAM_ACCESS, 'sam-adverts', array(&$this, 'samAdvListPage'));
+      $this->toolsPage = add_submenu_page('sam-list', __('SAM Tools', SAM_DOMAIN), __('Tools', SAM_DOMAIN), SAM_ACCESS, 'sam-tools', array(&$this, 'samToolsPage'));
+	    $this->settingsPage = add_submenu_page('sam-list', __('Simple Ads Manager Settings', SAM_DOMAIN), __('Settings', SAM_DOMAIN), 'manage_options', 'sam-settings', array(&$this, 'samAdminPage'));
       $this->eLogPage = add_submenu_page('sam-list', __('Simple Ads Manager Error Log', SAM_DOMAIN), __('Error Log', SAM_DOMAIN), SAM_ACCESS, 'sam-errors', array(&$this, 'samErrorLog'));
 
       add_action('admin_enqueue_scripts', array(&$this, 'loadScripts'));
@@ -886,6 +910,7 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
               'superAdmin' => __('Super Admin', SAM_DOMAIN),
               'labels' => array('hits' => __('Hits', SAM_DOMAIN), 'clicks' => __('Clicks', SAM_DOMAIN))
             ),
+	          'action' => ((isset($_GET['action'])) ? $_GET['action'] : 'undefined')
           ));
         }
       }
@@ -949,6 +974,9 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
           'ajaxurl' => SAM_URL . 'sam-ajax-admin.php'
         ));
       }
+	    elseif($hook == $this->toolsPage) {
+		    wp_enqueue_style('adminListLayout', SAM_URL.'css/sam-tools.css', false, SAM_VERSION);
+	    }
     }
 
     public function getCategories($valueType = 'array') {
@@ -1023,7 +1051,7 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
 
         echo "<div class='ui-sortable sam-section'>\n";
         echo "<div class='postbox opened'>\n";
-        echo "<h3>{$section['title']}</h3>\n";
+        echo "<h3 class='hndle'>{$section['title']}</h3>\n";
         echo '<div class="inside">';
         call_user_func($section['callback'], $section);
         if ( !isset($wp_settings_fields) || !isset($wp_settings_fields[$page]) || !isset($wp_settings_fields[$page][$section['id']]) )
@@ -1043,18 +1071,19 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
 			if ( !isset($wp_settings_fields) || !isset($wp_settings_fields[$page]) || !isset($wp_settings_fields[$page][$section]) )
 				return;
 
-			foreach ( (array) $wp_settings_fields[$page][$section] as $field ) {
-				if ( !empty($field['args']['checkbox']) ) {
+	    foreach ( (array) $wp_settings_fields[$page][$section] as $field ) {
+		    $hide = ((isset($field['args']['hide']) && $field['args']['hide']) ? ' style="display: none;"' : '' );
+		    if ( !empty($field['args']['checkbox']) ) {
           echo '<p>';
 				  call_user_func($field['callback'], $field['id'], $field['args']);
-				  echo '<label for="' . $field['args']['label_for'] . '"' . ((isset($field['args']['hide']) && $field['args']['hide']) ? 'style="display: none;"' : '' ) . '>' . $field['title'] . '</label>';
+				  echo "<label for='{$field['args']['label_for']}'{$hide}>{$field['title']}</label>";
           echo '</p>';
 				}
 				else {
           if(isset($field['args']['group'])) {
             if($field['args']['group']['master']) {
-              echo "<p><strong>{$field['title']}</strong></p>";
-              echo "<div class='group-frame'><div class='cascade-item'>";
+              echo "<p{$hide}><strong>{$field['title']}</strong></p>";
+              echo "<div class='group-frame'{$hide}><div class='cascade-item'>";
               call_user_func($field['callback'], $field['id'], $field['args']);
               echo "</div>";
             }
@@ -1067,15 +1096,15 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
           else {
             echo '<p>';
             if ( !empty($field['args']['label_for']) )
-					    echo '<label for="' . $field['args']['label_for'] . '">' . $field['title'] . '</label>';
-				    else echo '<strong>' . $field['title'] . '</strong><br>';
+					    echo "<label for='{$field['args']['label_for']}'>{$field['title']}</label>";
+				    else echo "<strong>{$field['title']}</strong><br>";
             echo '</p>';
             echo '<p>';
 				    call_user_func($field['callback'], $field['id'], $field['args']);
             echo '</p>';
           }
 				}
-        if(!empty($field['args']['description'])) echo '<p>' . $field['args']['description'] . '</p>';
+        if(!empty($field['args']['description'])) echo "<p{$hide}>{$field['args']['description']}</p>";
         if(!empty($field['args']['warning'])) echo self::getWarningString($field['args']['warning']);
 			}
 		}
@@ -1126,7 +1155,8 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
         'keepStats',
         'bpAdsType',
         'mpAdsType',
-        'apAdsType'
+        'apAdsType',
+	      'wptAdsType'
       );
 
       foreach($intNames as $name)
@@ -1162,14 +1192,15 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
         'mail_cpc',
         'mail_ctr',
         'mail_preview',
-	      'stats'
+	      'stats',
+	      'wptAd'
       );
       foreach($boolNames as $name) {
         $output[$name] = ((isset($input[$name])) ? $input[$name] : 0);
       }
       //$output['keepStats'] = (integer)$input['keepStats'];
       $output['dfpBlocks'] = array_unique($blocks);
-      $output['dfpBlocks2'] = array_unique($blocks2);
+      $output['dfpBlocks2'] = $blocks2;
       return $output;
     }
     
@@ -1399,7 +1430,7 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
           <div id='poststuff' class='metabox-holder has-right-sidebar'>
             <div id="side-info-column" class="inner-sidebar">
               <div class='postbox opened'>
-                <h3><?php _e('System Info', SAM_DOMAIN) ?></h3>
+                <h3 class="hndle"><?php _e('System Info', SAM_DOMAIN) ?></h3>
                 <div class="inside">
                   <p>
                     <?php 
@@ -1420,7 +1451,7 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
                 </div>
               </div>
               <div class='postbox opened'>
-                <h3><?php _e('Resources', SAM_DOMAIN) ?></h3>
+                <h3 class="hndle"><?php _e('Resources', SAM_DOMAIN) ?></h3>
                 <div class="inside">
                   <ul>
                     <li><a target='_blank' href='http://wordpress.org/extend/plugins/simple-ads-manager/'><?php _e("Wordpress Plugin Page", SAM_DOMAIN); ?></a></li>
@@ -1431,7 +1462,7 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
                 </div>
               </div>  
               <div class='postbox opened'>
-                <h3><?php _e('Donations', SAM_DOMAIN) ?></h3>
+                <h3 class="hndle"><?php _e('Donations', SAM_DOMAIN) ?></h3>
                 <div class="inside">
                   <div style="text-align: center; margin-top: 10px;">
                     <script type="text/javascript">
@@ -1462,7 +1493,7 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
                 </div>
               </div>
               <div class='postbox opened'>
-                <h3><?php _e('Another Plugins', SAM_DOMAIN) ?></h3>
+                <h3 class="hndle"><?php _e('Another Plugins', SAM_DOMAIN) ?></h3>
                 <div class="inside">
                   <p>
                     <?php
@@ -1571,12 +1602,26 @@ if ( !class_exists( 'SimpleAdsManagerAdmin' && class_exists('SimpleAdsManager') 
       $editor->page();
     }
 
+	  public function samAdvListPage() {
+		  include_once('adv.list.admin.class.php');
+		  $settings = parent::getSettings();
+		  $list = new SamAdvertisersList($settings);
+		  $list->page();
+	  }
+
     public function samErrorLog() {
       include_once('errorlog.admin.class.php');
       $settings = parent::getSettings();
       $list = new SamErrorLog($settings);
       $list->page();
     }
+
+	  public function samToolsPage() {
+		  include_once('sam.tools.page.php');
+		  $settings = parent::getSettings();
+		  $tools = new SamToolsPage($settings);
+		  $tools->page();
+	  }
   } // end of class definition
 } // end of if not class SimpleAdsManager exists
 ?>

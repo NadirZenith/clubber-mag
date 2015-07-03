@@ -1,7 +1,7 @@
 === Force Regenerate Thumbnails ===
 Contributors: Pedro Elsner
 Requires at least: 2.8
-Tested up to: 3.8
+Tested up to: 4.0
 Stable tag: trunk
 Tags: force, regenerate thumbnails, thumbnail, thumbnails
 
@@ -26,6 +26,12 @@ See the [screenshots tab](http://wordpress.org/extend/plugins/force-regenerate-t
 2. You can resize specific multiples images using the checkboxes and the "Bulk Actions" dropdown
 
 == ChangeLog ==
+
+= 2.0.5 =
+* No timeout limit
+
+= 2.0.4 =
+* Fix issue when "opendir()" return FALSE (thanks Krody Robert)
 
 = 2.0.3 =
 * Add debug information on regenerate

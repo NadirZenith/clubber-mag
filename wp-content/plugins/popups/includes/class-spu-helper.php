@@ -133,6 +133,8 @@ class Spu_Helper {
 					'all_pages'		=>	__("All Pages", self::$plugin_slug),
 					'front_page'	=>	__("Front Page", self::$plugin_slug),
 					'posts_page'	=>	__("Posts Page", self::$plugin_slug),
+					'category_page'	=>	__("Category Page", self::$plugin_slug),
+					'archive_page'	=>	__("Archives Page", self::$plugin_slug),
 					'top_level'		=>	__("Top Level Page (parent of 0)", self::$plugin_slug),
 					'parent'		=>	__("Parent Page (has children)", self::$plugin_slug),
 					'child'			=>	__("Child Page (has parent)", self::$plugin_slug),
@@ -266,9 +268,9 @@ class Spu_Helper {
 		// allow custom rules rules
 		$choices = apply_filters( 'spu/rules/rule_values/' . $options['param'], $choices );
 
-		self::print_select( $choices, $options );
-		
-		
+		// Custom fields for rules
+		do_action( 'spu/rules/print_' . $options['param'] . '_field', $options, $choices );
+
 		// ajax?
 		if( $is_ajax )
 		{
@@ -284,7 +286,7 @@ class Spu_Helper {
 	 * @param  array  $options array to pass group, id, rule_id etc
 	 * @return echo  the select field
 	 */
-	static function print_select( $choices, $options ) {
+	static function print_select( $options, $choices ) {
 		
 		// value must be array
 		if( !is_array($options['value']) )
@@ -323,7 +325,7 @@ class Spu_Helper {
 		{
 			foreach( $choices as $key => $value )
 			{
-				if( $optgroup )
+				if( isset($optgroup) )
 				{
 					// this select is grouped with optgroup
 					if($key != '') echo '<optgroup label="'.$key.'">';
@@ -355,6 +357,14 @@ class Spu_Helper {
 	}
 
 	/**
+	 * Prints a text field rule
+	 * @param $options
+	 */
+	static function print_textfield( $options ) {
+		echo '<input type="text" name="'.$options['name'].'" value="'.$options['value'].'" id="spu_rule_'.$options['group_id'].'_rule_'.$options['rule_id'].'" />';
+	}
+
+	/**
 	 * Return the box options
 	 * @param  int $id spucpt id
 	 * @since  2.0
@@ -378,6 +388,8 @@ class Spu_Helper {
 			'cookie'			=> '99',
 			'auto_hide'			=> 0,
 			'test_mode'			=> 0,
+			'conversion_close'  => '1',
+			'powered_link'      => '1',
 		);
 		
 		$opts = get_post_meta( $id, 'spu_options', true );

@@ -128,8 +128,8 @@ if(!class_exists('SamPlaceList')) {
           $start = $offset = ( $apage - 1 ) * $places_per_page;
 
           $page_links = paginate_links( array(
-            'base' => add_query_arg( 'apage', '%#%' ),
-            'format' => '',
+            'base' => admin_url('admin.php') . '?page=sam-list&apage=%#%',
+            'format' => '&apage=%#%',
             'prev_text' => __('&laquo;'),
             'next_text' => __('&raquo;'),
             'total' => ceil($total / $places_per_page),
@@ -137,7 +137,6 @@ if(!class_exists('SamPlaceList')) {
           ));
           ?>
 <div class='wrap'>
-  <div class="icon32" style="background: url('<?php echo SAM_IMG_URL.'sam-list.png' ?>') no-repeat transparent; "><br/></div>
   <h2><?php _e('Managing Ads Places', SAM_DOMAIN); ?></h2>
   <?php
     include_once('errors.class.php');
@@ -161,12 +160,15 @@ if(!class_exists('SamPlaceList')) {
       <a class="button-secondary" href="<?php echo admin_url('admin.php'); ?>?page=sam-list&action=places&mode=<?php echo $mode; ?>&iaction=clear-stats"><?php _e('Reset Statistics', SAM_DOMAIN); ?></a>
     </div>
     <div class="tablenav-pages">
-      <?php $page_links_text = sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s', SAM_DOMAIN ) . '</span>%s',
+      <?php
+      $page_links_text = sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s', SAM_DOMAIN ) . '</span>%s',
         number_format_i18n( $start + 1 ),
         number_format_i18n( min( $apage * $places_per_page, $total ) ),
         '<span class="total-type-count">' . number_format_i18n( $total ) . '</span>',
         $page_links
-      ); echo $page_links_text; ?>
+      );
+      echo $page_links_text;
+      ?>
     </div>
   </div>
   <div class="clear"></div>
@@ -217,7 +219,7 @@ if(!class_exists('SamPlaceList')) {
           if(!is_array($places) || empty($places)) {
         ?>
       <tr class="no-items">
-        <th class="colspanchange" colspan='7'><?php _e('There are no data ...', SAM_DOMAIN).$pTable; ?></th>
+        <th class="colspanchange" colspan='7'><?php _e('There are no data ...', SAM_DOMAIN); ?></th>
       </tr>
         <?php } else {
           switch($options['currency']) {
@@ -311,8 +313,8 @@ if(!class_exists('SamPlaceList')) {
           $start = $offset = ( $apage - 1 ) * $items_per_page;
 
           $page_links = paginate_links( array(
-            'base' => add_query_arg( 'apage', '%#%' ),
-            'format' => '',
+            'base' => admin_url('admin.php') . '?page=sam-list&apage=%#%',
+            'format' => '&apage=%#%',
             'prev_text' => __('&laquo;'),
             'next_text' => __('&raquo;'),
             'total' => ceil($total / $items_per_page),

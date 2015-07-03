@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // disable direct access
+}
+
 /**
  * Helper class for resizing images, returning the correct URL to the image etc
  */
@@ -25,7 +30,7 @@ class MetaSliderImageHelper {
         $upload_dir = wp_upload_dir();
 
         $this->id = $slide_id;
-        $this->url = $upload_dir['baseurl'] . "/" . get_post_meta( $slide_id, '_wp_attached_file', true );
+        $this->url = apply_filters("metaslider_attachment_url", $upload_dir['baseurl'] . "/" . get_post_meta( $slide_id, '_wp_attached_file', true ), $slide_id);
         $this->path = get_attached_file( $slide_id );
         $this->container_width = $width;
         $this->container_height = $height;
@@ -41,13 +46,16 @@ class MetaSliderImageHelper {
      * @param string $crop_type
      */
     private function set_crop_type( $crop_type ) {
- 
+
         switch ( $crop_type ) {
             case "false":
             case "standard":
                 $this->crop_type = 'standard'; // smart crop enabled
                 break;
             case "disabled":
+                $this->crop_type = 'disabled'; // cropping disabled
+                break;
+            case "disabled_pad":
                 $this->crop_type = 'disabled'; // cropping disabled
                 break;
             case "true":
@@ -348,7 +356,7 @@ class MetaSliderImageHelper {
         $crop_position = get_post_meta( $this->id, 'ml-slider_crop_position', true );
 
         if ( $crop_position ) {
-            
+
             $parts = explode( "-", $crop_position );
 
             if ( isset( $parts[0], $parts[1] ) ) {

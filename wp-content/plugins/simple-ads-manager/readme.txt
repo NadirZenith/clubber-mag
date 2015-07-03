@@ -1,10 +1,10 @@
 === Simple Ads Manager ===
 Contributors: minimus
-Donate link: https://load.payoneer.com/LoadToPage.aspx?email=minimus@simplelib.com
-Tags: ad, adbrite, adgridwork, adify, admin, adpinion, adroll, ads, adsense, adserver, advertisement, advertising, affiliate, banner, banners, chitika, cj, commercial, commission, crispads, dfp, google, income, junction, link, manager, media, money, plugin, random, referral, revenue, rotator, seo, server, shoppingads, widget, widgetbucks, yahoo, ypn
+Donate link: http://www.simplelib.com/archives/wordpress-plugin-simple-ads-manager/
+Tags: ad, ads, adbrite, adgridwork, adify, admin, adpinion, adroll, ads, adsense, adserver, advertisement, advertising, affiliate, banner, banners, chitika, cj, commercial, commission, crispads, dfp, google, income, junction, link, manager, media, money, plugin, random, referral, revenue, rotator, seo, server, shoppingads, widget, widgetbucks, wptouch
 Requires at least: 3.9
-Tested up to: 4.1
-Stable tag: 2.5.94
+Tested up to: 4.2.2
+Stable tag: 2.9.4.116
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,7 @@ Simple Ads Manager is easy to use plugin providing a flexible logic of displayin
 * Customizable blocking of displaying advertisements on single post page or author archive page by author (authors)
 * Customizable blocking of displaying advertisements on single post page or tag archive page by tag (tags)
 * Customizable blocking of displaying advertisements on custom type single post page or custom type archive page by Custom Type (Types)
-* Schedule of displaying each advertisment if allowed
+* Schedule of displaying each advertisement if allowed
 * Customizable limitation of displaying advertisements by hits
 * Customizable limitation of displaying advertisements by clicks
 * Statistics of hits
@@ -46,6 +46,7 @@ Simple Ads Manager is easy to use plugin providing a flexible logic of displayin
 * Customizable accuracy of bots and crawlers detection
 * Counting revenue from ads placement, display ads and clicks on advertisements
 * Compatible with all caching plugins
+* Compatible with the WPtouch plugin (Free Edition)
 
 = Requirements =
 * PHP 5.2.14+
@@ -57,9 +58,11 @@ Simple Ads Manager is easy to use plugin providing a flexible logic of displayin
 * Belarusian by Alexander Ovsov ([Web Geek Sciense](http://webhostinggeeks.com/science/))
 * Spanish by [xiaobai_wp](http://wordpress.org/extend/plugins/profile/xiaobai_wp)
 
-If you have created your own language pack, or have an update of an existing one, you can send **.po** and **.mo files** to me (minimus AT simplelib.com) so that I can bundle it into **Simple Ads Manager** plugin pack.
+If you have created your own language pack, or have an update of an existing one, you can send **.po** and **.mo files** to me (minimus AT simplelib.com) so that I can bundle it into **Simple Ads Manager** plugin pack.  Also you can translate SAM on [Transifex](https://www.transifex.com/projects/p/simple-ads-manager/) site.  Just register on Transifex and make your SAM localization.
+
+SAM Free also available at [GitHub](https://github.com/minimus/simple-ads-manager). You can fork it and make your own improvements.
   
-Read more about **Simple Ads Manager** on the [plugin page](http://www.simplelib.com/?p=480)...
+Read more about **Simple Ads Manager** on the [plugin page](http://www.simplelib.com/archives/wordpress-plugin-simple-ads-manager/)...
 
 == Installation ==
 
@@ -85,6 +88,39 @@ No questions now...
 
 == Changelog ==
 
+= 2.9.4.116 =
+* Possibility of DoS attacks is eliminated
+* Flash overlay image URL is fixed ([**h8every1** aka **Anton Syuvaev**](http://h8every1.ru/))
+= 2.9.3.114 =
+* Overlay link for SWF banners is added. So it is possible to track views and clicks for flash banners. And also make flash banner clickable without having to edit banners in Adobe Flash. If the link for banner is not set, the swf banner is displayed as usual. Thanks for [**h8every1** aka **Anton Syuvaev**](http://h8every1.ru/).
+* *noindex*, *nofollow*, *dofollow* are added.
+* Some tools added
+= 2.9.2.111 =
+* Added manual sending reports to advertisers
+* GPT tags of Google DFP now is supported
+= 2.9.1.109 =
+* Minor bug resolved
+= 2.9.0.108 =
+* The list of advertisers was improved
+* Supporting for the plugin WPtouch (Free Edition) is provided
+* Fallback code for Flash Banners is added
+= 2.8.0.105 =
+* The list of advertisers was added
+* The Ads Zone Editor was improved
+* The bug of pagination was resolved
+= 2.7.102 =
+* Potential vulnerability issue was resolved
+= 2.7.101 =
+* Potential vulnerability of the `add_query_arg` was fixed
+* The bug known as "Disappearing Ads" was solved
+= 2.7.99 =
+* A bug of the statistics graph is fixed
+* A bug of the using of deprecated functions is fixed
+= 2.7.97 =
+* SQL injection fix.
+= 2.6.96 =
+* Potential vulnerability issue was resolved.
+* Error of detecting bots and crawlers was resolved.
 = 2.5.94 =
 * Indexes of plugin database tables were removed
 * Custom naming of classes of the plugin tags is added
@@ -207,6 +243,28 @@ No questions now...
 
 == Upgrade Notice ==
 
+= 2.9.4.116 =
+Possibility of DoS attacks is eliminated. Flash overlay image URL is fixed.
+= 2.9.3.114 =
+Overlay link for SWF banners is added. *noindex*, *nofollow*, *dofollow* are added.
+= 2.9.2.111 =
+Added manual sending reports to advertisers. GPT tags of Google DFP now is supported.
+= 2.9.1.109 =
+Minor bug resolved.
+= 2.9.0.108 =
+The list of advertisers was improved. Supporting for the plugin WPtouch is provided.
+= 2.8.0.105 =
+Some improvements...
+= 2.7.102 =
+Potential vulnerability issue was resolved.
+= 2.7.101 =
+The bug known as "Disappearing Ads" was solved.
+= 2.7.99 =
+Some bugs are fixed.
+= 2.7.97 =
+SQL injection fix.
+= 2.6.96 =
+Some issues with errors were resolved.
 = 2.5.94 =
 Some problems are solved.
 = 2.4.91 =

@@ -11,10 +11,10 @@ wp-content/w3tc-config.php
 sitemap.xml
 *.log
 wp-content/cache/
-wp-content/backups/
 sitemap.xml.gz
 wp-config.php
 nbproject/
+backups/
 /wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
 /wp-content/aiowps_backups/
 /wp-content/themes/clubber-magazine/prueba/
