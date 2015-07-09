@@ -5,7 +5,7 @@ $resource_type = get_post_type_object( $resource->post_type );
       <header class="mb5">
             <h2>
                   <a href="<?php echo get_permalink( $resource->ID ) ?>">
-                        <span class="sc-1">  <?php echo $resource_type->labels->singular_name ?>: </span>
+                        <span class="sc-1">  <?php _e($resource_type->labels->singular_name , 'cm') ?>: </span>
                         <?php echo $resource->post_title ?>
                   </a>
             </h2>
