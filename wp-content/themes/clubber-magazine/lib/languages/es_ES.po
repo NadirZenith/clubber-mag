@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-27 00:18+0100\n"
-"PO-Revision-Date: 2015-05-27 00:20+0100\n"
+"PO-Revision-Date: 2015-07-09 18:56+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -335,10 +335,12 @@ msgstr "Ver más..."
 #: tpl/home/newsletter.php:11
 msgid "Insert your email to receive our newsletter"
 msgstr ""
+"Suscríbete a nuestro newsletter introduciendo tu mail para recibir nuestras "
+"últimas noticias, eventos, sorteos, sorpresas y más."
 
 #: tpl/home/newsletter.php:15
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: tpl/home/home-music.php:4 lib/models/music.php:5
 msgid "Music"
