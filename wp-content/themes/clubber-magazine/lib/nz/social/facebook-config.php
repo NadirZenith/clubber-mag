@@ -32,7 +32,7 @@ function nz_facebook_sdk_output()
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-    <?php if (false) { //has fb login test user status        ?>
+    <?php if (false) { //has fb login test user status              ?>
             window.onload = function () {
                 alert('load');
                 FB.getLoginStatus(function (response) {
@@ -95,7 +95,6 @@ function nz_fb_like($url = null, $options = array())
         . '</div>'
         . '</div>';
 
-
     return $content;
 }
 
@@ -103,32 +102,34 @@ function nz_fb_like_box($url = null, $atts = array())
 {
 
     if (FACEBOOK_APP_ID && $url) {
-
+        //https://developers.facebook.com/docs/plugins/page-plugin
         $atts = array_merge(
             array(
-            'colorscheme' => 'light',
-            'show-faces' => 'true',
-            'header' => 'false',
-            'stream' => 'FALSE',
-            'width' => '300', //min is 292 default is 300
-            'height' => '300',
-            'show-border' => 'FALSE'
+            'adapt_container_width' => 'true', //Try to fit inside the container width
+            'width' => '340', //The pixel width of the plugin. Min. is 180 & Max. is 500
+            'height' => '500', //The pixel height of the plugin. Min. is 70
+            'hide_cover' => 'false',
+            'small_header' => 'false',
+            'show_facepile' => 'true',
+            'show_posts' => 'false',
+            'hide_cta' => 'false', //Hide the custom call to action button (if available)
             ), $atts
         );
-        $atts['colorscheme'] = ( in_array($atts['colorscheme'], array('light', 'dark'))) ? $atts['colorscheme'] : 'light';
-        $content = '<div class="nz-fblikebox">'
-            . '<div class="fb-like-box" '
+        $content = '<div class="nz-fbpage">'
+            . '<div class="fb-page" '
             . 'data-href="' . $url . '" '
-            . 'data-colorscheme="' . $atts['colorscheme'] . '" '
-            . 'data-show-faces="' . $atts['show-faces'] . '" '
-            . 'data-header="' . $atts['header'] . '" '
-            . 'data-stream="' . $atts['stream'] . '" '
+            . 'data-adapt-container-width="' . $atts['adapt_container_width'] . '" '
             . 'data-width="' . $atts['width'] . '" '
             . 'data-height="' . $atts['height'] . '" '
-            . 'data-show-border="' . $atts['show-border'] . '">'
+            . 'data-hide-cover="' . $atts['hide_cover'] . '" '
+            . 'data-show-facepile="' . $atts['show_facepile'] . '" '
+            . 'data-show-posts="' . $atts['show_posts'] . '" '
+            . 'data-show-hide_cta="' . $atts['hide_cta'] . '">'
             . '</div></div>';
     }
+    ?>
 
+    <?php
     return $content;
 }
 

@@ -21,8 +21,8 @@
         </div>
         <?php
     } else if (is_singular()) {
-
         if (is_singular('agenda')) {
+            d('single_event_sidebar');
 
             dynamic_sidebar('single_event_sidebar');
         } else {
