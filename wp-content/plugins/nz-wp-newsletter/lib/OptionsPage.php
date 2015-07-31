@@ -211,7 +211,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
         if (isset($return['complete'])) {
             global $wpdb;
             $wpdb->suppress_errors = TRUE;
-            $table_name = $wpdb->prefix . 'nzwpnewletter';
+            $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
             $r = $wpdb->update($table_name, [
                 'subscribed' => false,
@@ -354,7 +354,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
     {
         global $wpdb;
 
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
         $newsletter_users = $wpdb->get_results("SELECT * FROM $table_name");
 
         $link = '<a href="%s">' . __('edit', 'nzwpnewsletter') . '</a>';
@@ -376,7 +376,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
     {
         global $wpdb;
         $wpdb->suppress_errors = TRUE;
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
         // Default usage.
         $r = $wpdb->delete($table_name, array('id' => $_GET['id']));
@@ -397,7 +397,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
     protected function sitelist_clear_confirm()
     {
         global $wpdb;
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
         $delete = $wpdb->query("TRUNCATE TABLE `{$table_name}`");
         $status = ($delete) ? 'deleted' : 'error ocurred';
@@ -444,7 +444,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
         $id = $_GET['id'];
         global $wpdb;
 
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
         $newsletter_user = $wpdb->get_row("SELECT * FROM $table_name WHERE id = {$id}");
 
         if ($newsletter_user) {
@@ -475,7 +475,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
             global $wpdb;
             $wpdb->suppress_errors = TRUE;
 
-            $table_name = $wpdb->prefix . 'nzwpnewletter';
+            $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
             $r = $wpdb->update($table_name, [
                 'subscribed' => true,
@@ -496,7 +496,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
         $id = $_GET['id'];
         global $wpdb;
 
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
         $newsletter_user = $wpdb->get_row("SELECT * FROM $table_name WHERE id = {$id}");
 
         if ($newsletter_user) {
@@ -525,7 +525,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
             global $wpdb;
             $wpdb->suppress_errors = TRUE;
 
-            $table_name = $wpdb->prefix . 'nzwpnewletter';
+            $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
             $r = $wpdb->update($table_name, [
                 'subscribed' => false,
@@ -547,7 +547,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
         $site_users = $this->_get_site_users();
         global $wpdb;
         $wpdb->suppress_errors = TRUE;
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
         foreach ($site_users as $user) {
             $success = $wpdb->insert($table_name, array(
@@ -599,7 +599,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
         global $wpdb;
         $wpdb->suppress_errors = TRUE;
 
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
         $info = [];
         foreach ($members as $member) {
@@ -689,7 +689,7 @@ class OptionsPage extends NzWpOptionsPageAbstract implements NzWpOptionsPageInte
                 global $wpdb;
                 $wpdb->suppress_errors = TRUE;
 
-                $table_name = $wpdb->prefix . 'nzwpnewletter';
+                $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
                 $r = $wpdb->update($table_name, [
                     'subscribed' => true,

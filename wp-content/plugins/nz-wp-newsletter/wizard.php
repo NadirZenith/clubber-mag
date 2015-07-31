@@ -13,6 +13,7 @@ class NzWpNewsletterWizard
 
     function update_db_check()
     {
+        
         if (get_site_option('nz_wp_newsletter_db_version') != NzWpNewsletter::VERSION) {
             $this->install();
         }
@@ -23,7 +24,7 @@ class NzWpNewsletterWizard
         delete_option('nz_wp_newsletter_db_version');
 
         global $wpdb;
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
         $wpdb->query("DROP TABLE IF EXISTS $table_name");
     }
@@ -38,22 +39,22 @@ class NzWpNewsletterWizard
 
         global $wpdb;
 
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
         $charset_collate = $wpdb->get_charset_collate();
 
         $sql = "CREATE TABLE $table_name (
-              id mediumint(9) NOT NULL AUTO_INCREMENT,
+              id INT AUTO_INCREMENT  primary key NOT NULL ,
               time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
               user_id int DEFAULT 0,
               email varchar(55) NOT NULL,
               subscribed boolean NOT NULL DEFAULT 0,
               UNIQUE KEY email (email)
         ) $charset_collate;";
-
+        
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-        dbDelta($sql);
+        $r = dbDelta($sql);
 
         add_option('nz_wp_newsletter_db_version', NzWpNewsletter::VERSION);
     }

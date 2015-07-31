@@ -6,7 +6,7 @@
  */
 class NzWpNewsletter
 {
-    const VERSION = 0.7;
+    const VERSION = 0.6;
 
     private $options;
     private $mc;
@@ -153,7 +153,7 @@ class NzWpNewsletter
 
         global $wpdb;
         $wpdb->suppress_errors = TRUE;
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
         $site_list = $wpdb->insert($table_name, array(
             'time' => current_time('mysql'),
@@ -171,7 +171,7 @@ class NzWpNewsletter
         global $wpdb;
 
         $wpdb->suppress_errors = TRUE;
-        $table_name = $wpdb->prefix . 'nzwpnewletter';
+        $table_name = $wpdb->prefix . 'nzwpnewsletter';
 
         $r = $wpdb->update($table_name, [
             'subscribed' => false,
@@ -193,7 +193,7 @@ class NzWpNewsletter
         if ($sl || $mc) {
             global $wpdb;
             $wpdb->suppress_errors = TRUE;
-            $table_name = $wpdb->prefix . 'nzwpnewletter';
+            $table_name = $wpdb->prefix . 'nzwpnewsletter';
             $r = $wpdb->update($table_name, [
                 'subscribed' => true,
                 ], [
