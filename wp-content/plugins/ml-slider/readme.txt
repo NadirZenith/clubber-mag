@@ -4,7 +4,7 @@ Tags: wordpress slideshow,seo,slideshow,slider,widget,wordpress slider,image sli
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
 Tested up to: 4.2.2
-Stable tag: 3.3.2
+Stable tag: 3.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,7 +59,7 @@ Upgrade to [Meta Slider Pro](http://www.metaslider.com/upgrade) to add support f
 * Spanish (thanks to eltipografico)
 * German (thanks to Rewolve44)
 * Polish (thanks to gordon34)
-* Chinese (thanks to 断青丝)
+* Chinese (thanks to 断青丝 and mamsds)
 * Taiwanese (thanks to 断青丝)
 * Norwegian (thanks to Dreamsoft)
 * Romanian (thanks to Octav Madalin Stanoaia)
@@ -146,6 +146,16 @@ See www.metaslider.com/documentation/image-cropping/
 6. Administration panel - selecting slides
 
 == Changelog ==
+
+= 3.3.4.1 [29/07/15] =
+
+* Fix Roots theme CSS conflict
+
+= 3.3.4 [16/07/15] =
+
+* Add HTML5 validation by applying a property="stylesheet" attribute to meta slider <link> CSS tags
+* Remove unused "Resource Manager" code
+* Chinese language pack updated (thanks to mamsds!)
 
 = 3.3.3 [11/06/15] =
 
