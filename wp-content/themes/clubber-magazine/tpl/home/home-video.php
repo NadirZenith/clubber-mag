@@ -1,5 +1,5 @@
-<section class="video ibox-5 mt30">
-      <div class="mb5 ">
+<section class="video ibox-5- mt30-">
+      <div class="mb5- ">
             <?php
             cm_home_list_title( 'video', __( 'Video review', 'cm' ) );
             ?>

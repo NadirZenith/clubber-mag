@@ -1,5 +1,5 @@
-<section class="m5">
-      <div class="mb5">
+<section class="m5-">
+      <div class="mb5-">
             <?php
             cm_home_list_title( get_permalink( get_page_by_title( 'noticias' ) ), __( 'Latest News', 'cm' ), true );
             ?>
@@ -14,7 +14,7 @@
             while ( $query->have_posts() ) {
                   $query->the_post();
                   ?>
-                  <li class="mb5">
+                  <li class="mb5-">
                         <?php get_template_part( 'tpl/home/list-1' ); ?>
                   </li>
                   <?php

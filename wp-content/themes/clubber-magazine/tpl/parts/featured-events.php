@@ -1,19 +1,19 @@
-<section class="m5">
-    <div class="mb5">
-        <?php
-        cm_home_list_title('agenda', __('Recommended parties and events', 'cm'));
-        ?>
-    </div>
+<section class="">
+    <!--<div class="">-->
+    <?php
+    cm_home_list_title('agenda', __('Recommended parties and events', 'cm'));
+    ?>
+    <!--</div>-->
     <?php
     $query = new WP_Query('cm_get_featured_events');
     if ($query->have_posts()) {
         $posts_per_row = 5;
         $count = 0;
         ?> 
-        <div class="cb " id="featured-events-slider">
+        <div id="featured-events-slider">
             <ul class="slides">
                 <li>
-                    <ul>
+                    <ul class="pure-g">
                         <?php
                         while ($query->have_posts()) {
                             $query->the_post();
@@ -22,16 +22,17 @@
                             </ul>
                         </li>
                         <li>
-                            <ul>
+                            <ul class="pure-g">
                                 <?php
                             }
                             ?>
-                            <li class="col-1 col-sm-1-2 col-lg-1-5 fl">
-                                <div class="box-3">
-                                    <?php
-                                    get_template_part('tpl/home/list-2');
-                                    ?>
-                                </div>
+                            <li class="pure-u-1-5">
+                                <!--<li class="col-1 col-sm-1-2 col-lg-1-5 fl">-->
+                                <!--<div class="box-3">-->
+                                <?php
+                                get_template_part('tpl/home/list-2');
+                                ?>
+                                <!--</div>-->
                             </li>
                             <?php
                             $count +=1;

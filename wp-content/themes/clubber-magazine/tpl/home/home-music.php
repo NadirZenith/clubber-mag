@@ -1,5 +1,5 @@
-<section class="m5">
-      <div class="mb5">
+<section class="m5-">
+      <div class="mb5-">
             <?php
             cm_home_list_title( 'music', __( 'Music', 'cm' ) );
             ?>
@@ -15,7 +15,7 @@
             while ( $query->have_posts() ) {
                   $query->the_post();
                   ?>
-                  <li class="mb5">
+                  <li class="mb5-">
                         <?php get_template_part( 'tpl/home/list-1' ); ?>
                   </li>
                   <?php

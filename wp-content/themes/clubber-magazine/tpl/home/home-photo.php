@@ -1,6 +1,6 @@
 
-<section class="m5">
-      <div class="mb5">
+<section class="m5-">
+      <div class="mb5-">
             <?php
             cm_home_list_title( 'photo', __( 'Photo Gallery', 'cm' ) );
             ?>

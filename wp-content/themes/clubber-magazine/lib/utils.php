@@ -48,8 +48,8 @@ function nz_copy_post_terms( $from_id, $to_id, $tax = 'tags' ) {
  */
 function cm_home_list_title( $post_type, $title, $raw = false ) {
       ?>
-      <header class="h2">
-            <a class="cm-title" href="<?php echo ($raw) ? $post_type : get_post_type_archive_link( $post_type ); ?>">
+      <header class="h2-">
+            <a class="cm-title-" href="<?php echo ($raw) ? $post_type : get_post_type_archive_link( $post_type ); ?>">
                   <?php echo $title; ?>
             </a>
       </header>
