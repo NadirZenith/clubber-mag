@@ -16,53 +16,48 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-/*if (post_password_required())*/
-/* return; */
+if (post_password_required())
+    return;
 ?>
-<div style="clear: both; margin:15px;width: 300px; background-color: red;">
-     
-</div>
 
 <div id="comments" class="comments-area">
-      <!--<h1> ZZZZZZZZZZZZZ</h1>-->
-      <?php // You can start editing here -- including this comment!    ?>
 
-      <?php if (have_comments()) : ?>
-            <h2 class="">
-                  <?php
-                  if (1 == get_comments_number()) {
-                        printf(__('One thought XXYY on &ldquo;%2$s&rdquo;', 'cm'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>');
-                  } else {
-                        printf(__('%1$s thoughts on &ldquo;%2$s&rdquo;', 'cm'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>');
-                  }
-                  ?>
-            </h2>
-
-            <ol class="commentlist">
-                  <?php
-                  wp_list_comments(array('callback' => 'attitude_comment', 'style' => 'ol'));
-                  ?>
-            </ol>
-
-            <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // are there comments to navigate through    ?>
-                  <ul class="default-wp-page clearfix">
-                        <h1 class="assistive-text section-heading"><?php _e('Comment navigation', 'cm'); ?></h1>
-                        <li class="previous"><?php previous_comments_link(__('&larr; Older Comments', 'cm')); ?></li>
-                        <li class="next"><?php next_comments_link(__('Newer Comments &rarr;', 'cm')); ?></li>
-                  </ul>
-            <?php endif; // check for comment navigation    ?>
-
+    <?php if (have_comments()) : ?>
+        <h2 class="">
             <?php
-      // If comments are closed and there are comments, let's leave a little note.
-      elseif (!comments_open() && '0' != get_comments_number() && post_type_supports(get_post_type(), 'comments')) :
+            if (1 == get_comments_number()) {
+                printf(__('One thought XXYY on &ldquo;%2$s&rdquo;', 'cm'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>');
+            } else {
+                printf(__('%1$s thoughts on &ldquo;%2$s&rdquo;', 'cm'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>');
+            }
             ?>
-            <p class="nocomments"><?php _e('Comments are closed.', 'cm'); ?></p>
-      <?php endif; ?>
-      <div style="clear: both;">
-            <h1>------</h1>
-      </div>
-      <?php
-      comment_form();
-      ?>
+        </h2>
+
+        <ol class="commentlist">
+            <?php
+            wp_list_comments(array('callback' => 'attitude_comment', 'style' => 'ol'));
+            ?>
+        </ol>
+
+        <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // are there comments to navigate through    ?>
+            <ul class="default-wp-page clearfix">
+                <h1 class="assistive-text section-heading"><?php _e('Comment navigation', 'cm'); ?></h1>
+                <li class="previous"><?php previous_comments_link(__('&larr; Older Comments', 'cm')); ?></li>
+                <li class="next"><?php next_comments_link(__('Newer Comments &rarr;', 'cm')); ?></li>
+            </ul>
+        <?php endif; // check for comment navigation    ?>
+
+        <?php
+    // If comments are closed and there are comments, let's leave a little note.
+    elseif (!comments_open() && '0' != get_comments_number() && post_type_supports(get_post_type(), 'comments')) :
+        ?>
+        <p class="nocomments"><?php _e('Comments are closed.', 'cm'); ?></p>
+    <?php endif; ?>
+    <div style="clear: both;">
+        <h1>------</h1>
+    </div>
+    <?php
+    comment_form();
+    ?>
 
 </div><!-- #comments .comments-area -->

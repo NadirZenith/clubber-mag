@@ -95,17 +95,13 @@ $query2 = new WP_Query( $args );
                               if ( $query3->have_posts() )://have past events
                                     ?> 
                                     <a class="h3" href="<?php echo get_post_type_archive_link( 'agenda' ) ?>">
-                                          <?php
-                                          _e( '¡Subscribe to events!', 'cm' );
-                                          ?>
+                                          <?php _e( '¡Subscribe to events!', 'cm' ); ?>
                                     </a>
                                     <?php
                               else ://Never used button
                                     ?> 
                                     <a class="h3" href="<?php echo get_post_type_archive_link( 'agenda' ) ?>">
-                                          <?php
-                                          _e( '¡Subscribe to events!', 'cm' );
-                                          ?>
+                                          <?php _e( '¡Subscribe to events!', 'cm' ); ?>
                                     </a>
                               <?php
                               endif;

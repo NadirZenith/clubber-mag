@@ -19,7 +19,7 @@
                 }
             } else {
                 if (current_user_can('manage_options')) {
-                    echo '- activate ticketscript plugin -';
+                    echo '<h1>- activate ticketscript plugin -</h1>';
                 }
             }
             ?>

@@ -39,7 +39,7 @@ function nz_pre_get_page_recursos($query)
         if (!empty($main_resource) & $main_resource->post_type != 'artist') {
             global $NZS;
 
-            $NZS->getFlashBag()->add('success', __('You can only manage one resource per user'));
+            $NZS->getFlashBag()->add('success', __('You can only manage one resource per user','cm'));
 
             $url = get_author_posts_url(get_current_user_id());
             wp_redirect($url);
@@ -49,7 +49,7 @@ function nz_pre_get_page_recursos($query)
         //if there is artist page and is not editing redirect to it
         if ($main_resource && !$edit_id) {
             global $NZS;
-            $NZS->getFlashBag()->add('success', sprintf(__('You can only manage one %s page per user, edit it here'), __('artist')));
+            $NZS->getFlashBag()->add('success', sprintf(__('You can only manage one %s page per user, edit it here', 'cm'), __('artist')));
 
 
             $path = NZ_WP_Forms::link($query->get('pagename'), $main_resource_id);
@@ -67,7 +67,7 @@ function nz_pre_get_page_recursos($query)
         //check for main resource
         if (!empty($main_resource) & $main_resource->post_type != 'label') {
             global $NZS;
-            $NZS->getFlashBag()->add('success', __('You can only manage one resource per user'));
+            $NZS->getFlashBag()->add('success', __('You can only manage one resource per user','cm'));
 
             $url = get_author_posts_url(get_current_user_id());
             wp_redirect($url);
@@ -77,7 +77,7 @@ function nz_pre_get_page_recursos($query)
         //if there is label page and is not editing redirect to it
         if ($main_resource && !$edit_id) {
             global $NZS;
-            $NZS->getFlashBag()->add('success', sprintf(__('You can only manage one %s page per user, edit it here'), __('label')));
+            $NZS->getFlashBag()->add('success', sprintf(__('You can only manage one %s page per user, edit it here', 'cm'), __('label')));
 
             $path = NZ_WP_Forms::link($query->get('pagename'), $main_resource_id);
             $link = home_url($path);
@@ -93,7 +93,7 @@ function nz_pre_get_page_recursos($query)
         // //check for main resource
         if (!empty($main_resource) & $main_resource->post_type != 'cool-place') {
             global $NZS;
-            $NZS->getFlashBag()->add('success', __('You can only manage one resource per user'));
+            $NZS->getFlashBag()->add('success', __('You can only manage one resource per user','cm'));
 
             $url = get_author_posts_url(get_current_user_id());
             wp_redirect($url);
@@ -103,7 +103,7 @@ function nz_pre_get_page_recursos($query)
         //if there is artist page and is not editing redirect to it
         if ($main_resource && !$edit_id) {
             global $NZS;
-            $NZS->getFlashBag()->add('success', 'Solo puedes tener una página de local, edita la aqui');
+            $NZS->getFlashBag()->add('success', sprintf(__('You can only manage one %s page per user, edit it here', 'cm'), __('cool place')));
 
             $path = NZ_WP_Forms::link($query->get('pagename'), $main_resource_id);
             $link = home_url($path);

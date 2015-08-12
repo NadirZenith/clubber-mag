@@ -50,7 +50,7 @@ $roots_includes = array(
     'lib/api.php',
     'lib/nav.php',
     'lib/wrapper.php',
-    'lib/scripts.php',
+    'lib/assets.php',
     'lib/sidebar.php',
     'lib/queries.php',
     'lib/nz/widgets/widget-soundcloud.php',

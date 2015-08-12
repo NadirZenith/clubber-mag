@@ -1,7 +1,7 @@
 <div class="cm-sticky-sidebar oh">
     <?php
-    //archive event
     if (is_post_type_archive('agenda')) {
+        //archive event
         $new_event_link = get_permalink(cm_lang_get_post(CM_RESOURCE_EVENT_PAGE_ID));
         ?>
         <a class="readmore responsive" href="<?php echo $new_event_link ?>" >
@@ -10,8 +10,8 @@
         </a>
         <?php
         dynamic_sidebar('archive_event_sidebar');
-        //Single
     } else if (is_post_type_archive('open-frequency')) {
+        //Single
         $podcast_form_url = get_permalink(CM_RESOURCE_PODCAST_PAGE_ID);
         ?>
         <div class="mt15 mb15">
@@ -21,46 +21,45 @@
         </div>
         <?php
     } else if (is_singular()) {
+        //singular
         if (is_singular('agenda')) {
-
+            //agenda
             dynamic_sidebar('single_event_sidebar');
         } else {
+            //rest
             dynamic_sidebar('singular_sidebar');
         }
     }
+    //banners
     dynamic_sidebar('banners_sidebar');
     ?>
 </div>
-<?php
-if (is_super_admin()) {
-    ?>
-    <script>
-        (function ($) {
 
-            jQuery(document).ready(function ($) {
+<script>
+    (function ($) {
 
-                var sticky = new Waypoint.Sticky({
-                    element: $('.cm-sticky-sidebar')[0],
-                    offset: 30,
-                    handler: function () {
-                        console.log(arguments);
-                    }
-                })
+        $(document).ready(function ($) {
 
-                window.onresize = setSickWidth;
-
-                function setSickWidth()
-                {
-                    $('.cm-sticky-sidebar').css('width', $('.sticky-wrapper').parent().css('width'));
-                    console.log(
-                            'yes'
-                            );
+            var sticky = new Waypoint.Sticky({
+                element: $('.cm-sticky-sidebar')[0],
+                offset: 30,
+                handler: function () {
 
                 }
-                setSickWidth();
             });
+            console.log(sticky);
 
-        })(jQuery);
-    </script>
-    <?php
-}
+
+            setSickWidth();
+            window.onresize = setSickWidth;
+
+            function setSickWidth()
+            {
+                $('.cm-sticky-sidebar').css('width', $('.sticky-wrapper').parent().css('width'));
+
+            }
+        });
+
+    })(jQuery);
+</script>
+<?php

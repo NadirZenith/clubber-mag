@@ -69,9 +69,7 @@ if ( $is_main ) {
             </ul>
             <?php
       } else {
-            ?>
-            <?php the_content(); ?>
-            <?php
+          the_content();
       }
       ?>
 </section>

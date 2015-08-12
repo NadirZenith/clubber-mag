@@ -18,7 +18,7 @@ $user_query = new WP_User_Query($search_params);
     <section>
         <header>
             <h2>
-                Usuarios
+                <?php _e('Users', 'cm') ?>
             </h2>
             <hr class="cb pb5">
         </header>
@@ -39,7 +39,6 @@ $user_query = new WP_User_Query($search_params);
                             </a>
                             <div class="fl">
                                 <a class="ml5" href="<?php echo get_author_posts_url($user->ID); ?>" >
-
                                     <?php echo $user->display_name ?>
                                 </a>
                             </div>

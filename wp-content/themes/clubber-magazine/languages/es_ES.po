@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ClubberMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-12 08:30+0100\n"
-"PO-Revision-Date: 2015-08-12 08:30+0100\n"
+"POT-Creation-Date: 2015-08-12 09:37+0100\n"
+"PO-Revision-Date: 2015-08-12 09:38+0100\n"
 "Last-Translator: Nadir <2cb.md2@gmail.com>\n"
 "Language-Team: cm\n"
 "Language: es_ES\n"
@@ -150,19 +150,23 @@ msgstr "Contenidos Relacionados"
 msgid "News Archive"
 msgstr "Noticias"
 
-#: search.php:55
+#: search.php:21
+msgid "Users"
+msgstr "Usuarios"
+
+#: search.php:54
 msgid "No users found"
 msgstr "Ningún usuario encontrado"
 
-#: search.php:55 search.php:89
+#: search.php:54 search.php:88
 msgid "with"
 msgstr ""
 
-#: search.php:65
+#: search.php:64
 msgid "Other results"
 msgstr "Otros resultados"
 
-#: search.php:89
+#: search.php:88
 msgid "No content found"
 msgstr "Ningún contenido encontrado"
 
@@ -230,14 +234,14 @@ msgstr "No encontrado "
 msgid "by"
 msgstr ""
 
-#: tpl/user-profile/user-profile-info.php:21
-#: tpl/user-profile/resource-related-podcasts.php:44
+#: tpl/user-profile/user-profile-info.php:26
+#: tpl/user-profile/resource-related-podcasts.php:48
 #: tpl/user-profile/user-profile-resource-promoter.php:83
 #: tpl/user-profile/user-profile-main-resource.php:29
 msgid "edit"
 msgstr "Editar"
 
-#: tpl/user-profile/user-profile-info.php:24
+#: tpl/user-profile/user-profile-info.php:29
 msgid "sign-out"
 msgstr "Salir"
 
@@ -262,7 +266,7 @@ msgstr "Últimos eventos asistidos"
 msgid "This user has not subscribed to any event"
 msgstr "Este usuario no se ha apuntado a eventos"
 
-#: tpl/user-profile/resource-related-podcasts.php:42
+#: tpl/user-profile/resource-related-podcasts.php:46
 #: tpl/user-profile/user-profile-resource-promoter.php:76
 #: tpl/user-profile/user-profile-main-resource.php:21
 msgid "pending review"
@@ -301,7 +305,7 @@ msgstr "Participantes"
 msgid "Sign in to access"
 msgstr "Regístrate para acceder"
 
-#: tpl/base/header.php:66
+#: tpl/base/header.php:68
 msgid "Search for parties, clubs, artists..."
 msgstr "Busca fiestas, clubes, artistas, personas..."
 
@@ -978,6 +982,7 @@ msgid "You can only manage one resource per user"
 msgstr "Solo puedes manejar un recurso por usuario!"
 
 #: models/pages/recursos.php:52 models/pages/recursos.php:80
+#: models/pages/recursos.php:106
 #, php-format
 msgid "You can only manage one %s page per user, edit it here"
 msgstr "Solo puedes tener una página de %s, edita la aqui"
@@ -989,6 +994,11 @@ msgstr "Artista"
 #: models/pages/recursos.php:80
 msgid "label"
 msgstr "Sello"
+
+#: models/pages/recursos.php:106
+#, fuzzy
+msgid "cool place"
+msgstr "Coolplaces"
 
 #: lib/utils.php:100
 msgid "previous "

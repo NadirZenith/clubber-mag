@@ -1,25 +1,19 @@
 <head>
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title><?php wp_title( '|', true, 'right' ); ?></title>
       <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/assets/images/apple-touch-icon.png" />
       <link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/assets/images/favicon.ico" type="image/x-icon" />
-
-      <script src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=places"></script>
-      <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
-
-      <?php
-      wp_head();
-      ?>
+      <?php wp_head(); ?>
 </head>
 <?php
 /*
+      <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" type="text/css" href="//cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css"/>
   //spot th v3.exp from experimental
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
   //attitude
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   //pure
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   /** @todo nz implement this icons

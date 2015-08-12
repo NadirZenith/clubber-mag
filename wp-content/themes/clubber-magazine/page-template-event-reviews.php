@@ -17,7 +17,7 @@ $items[] = array(
 );
 
 $items[] = array(
-      'title' => 'Video review',
+      'title' => __( 'Video review', 'cm' ),
       'content' => 'Revive los eventos más destacados con nosotros.',
       'link' => get_post_type_archive_link( 'video' ),
       'thumbnail' => sprintf( $img, 'video_review.jpg' )

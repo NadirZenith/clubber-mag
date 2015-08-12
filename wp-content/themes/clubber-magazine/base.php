@@ -14,35 +14,26 @@
             if (is_front_page()) {
                 ?>
                 <section class="featured-posts">
-                    <?php
-                    echo do_shortcode('[metaslider id=661]');
-                    ?>
+                    <?php echo do_shortcode('[metaslider id=661]'); ?>
                 </section>
                 <?php
             } else if (is_singular('artist')) {
                 echo get_template_part('tpl/parts/artist-home');
             }
-            ob_flush();
-            ob_start();
             ?>
+            <?php ob_flush(); ob_start(); ?>
+            
             <div id="content" class="container cb group">
                 <?php nzs_display_messages(); ?>
                 <?php get_template_part('tpl/base/content'); ?>
             </div>
-            <?php
-            ob_flush();
-            ob_start();
-            ?>
+            <?php ob_flush(); ob_start(); ?>
 
             <footer id="footer" class="group pr" role="contentinfo">
                 <?php get_template_part('tpl/base/footer'); ?>
             </footer>
         </div>
-
         <?php wp_footer(); ?>
-            
     </body>
 </html>
-<?php
-ob_flush();
-?>
+<?php ob_flush(); ?>

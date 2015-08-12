@@ -18,31 +18,38 @@ add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
 function roots_scripts()
 {
-    /**
-     * The build task in Grunt renames production assets with a hash
-     * Read the asset names from assets-manifest.json
-     */
+    $base = get_template_directory_uri();
     if (WP_ENV === 'development') {
-
+        d('dev');
         $assets = array(
-            'css' => '/assets/css/main.css',
-            'js' => '/assets/js/scripts.js',
-            'pure-responsive-debug' => get_template_directory_uri() . '/assets/css/pure-responsive-debug.css',
-            'modernizr' => '/assets/vendor/modernizr/modernizr.js',
-            'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
+            'css' => array(
+                'main' => '/assets/css/main.css',
+                'pure-responsive-debug' => $base . '/assets/css/pure-responsive-debug.css',
+                'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One'
+            ),
+            'js' => array(
+                'main' => $base . '/assets/js/scripts.js',
+                'modernizr' => '/assets/vendor/modernizr/modernizr.js',
+                'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js',
+                'google-places' => 'https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=places',
+            ),
         );
-
-        wp_enqueue_style('pure-responsive-debug', $assets['pure-responsive-debug']);
     } else {
 
         $get_assets = file_get_contents(get_template_directory() . '/assets/manifest.json');
         $assets = json_decode($get_assets, true);
 
         $assets = array(
-            'css' => '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
-            'js' => '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
-            'modernizr' => '/assets/js/vendor/modernizr.min.js',
-            'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+            'css' => array(
+                'main' => $base . '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
+                'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One'
+            ),
+            'js' => array(
+                'main' => $base . '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
+                'modernizr' => $base . '/assets/js/vendor/modernizr.min.js',
+                'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js',
+                'google-places' => 'https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=places',
+            ),
         );
     }
 
@@ -54,21 +61,32 @@ function roots_scripts()
      */
     if (!is_admin() && current_theme_supports('jquery-cdn')) {
         wp_deregister_script('jquery');
-        wp_register_script('jquery', $assets['jquery'], array(), null, false);
+        wp_register_script('jquery', $assets['js']['jquery'], array(), null, false);
         add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
     }
 
-    wp_enqueue_style('roots_css', get_template_directory_uri() . $assets['css'], false, null);
-
-    wp_enqueue_script('jquery');
-    wp_enqueue_script('modernizr', get_template_directory_uri() . $assets['modernizr'], array(), null, false);
-    wp_enqueue_script('roots_js', get_template_directory_uri() . $assets['js'], array(), null, false);
-
+    nz_enqueue_styles($assets['css']);
+    nz_enqueue_scripts($assets['js']);
+    
     /*
       if (is_single() && comments_open() && get_option('thread_comments')) {
       wp_enqueue_script('comment-reply');
       }
      */
+}
+
+function nz_enqueue_styles($assets)
+{
+    foreach ($assets as $handle => $asset) {
+        wp_enqueue_style($handle, $asset);
+    }
+}
+
+function nz_enqueue_scripts($assets)
+{
+    foreach ($assets as $handle => $asset) {
+        wp_enqueue_script($handle, $asset);
+    }
 }
 
 // http://wordpress.stackexchange.com/a/12450

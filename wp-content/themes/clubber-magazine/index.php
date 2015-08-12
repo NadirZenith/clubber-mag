@@ -22,7 +22,6 @@
                         ?>
                         <li class="ibox-5">
                               <?php get_template_part( 'tpl/parts/list-3' ); ?>
-
                         </li>
                         <?php
                   }

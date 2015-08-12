@@ -15,46 +15,18 @@
   }
  */
 /* d(Roots_Wrapping::$raw); */
-if ( Roots_Wrapping::$raw ) {
-      include roots_template_path();
+if (Roots_Wrapping::$raw) {
+    include roots_template_path();
 } else {
-      ?>
-      <main class="<?php echo roots_main_class(); ?>" role="main">
-            <?php
-            include roots_template_path();
-            ?>
-      </main>
-
-      <?php if ( roots_display_sidebar() ) : ?>
-            <aside class="<?php echo roots_sidebar_class(); ?>" role="complementary">
-                  <?php
-                  include roots_sidebar_path();
-                  ?>
-            </aside>
-      <?php endif; ?>
-      <?php
+    ?>
+    <main class="<?php echo roots_main_class(); ?>" role="main">
+        <?php include roots_template_path(); ?>
+    </main>
+    <?php if (roots_display_sidebar()) : ?>
+        <aside class="<?php echo roots_sidebar_class(); ?>" role="complementary">
+            <?php include roots_sidebar_path(); ?>
+        </aside>
+    <?php endif; ?>
+    <?php
 }
-
-/*
-  <div class="container cb group" id="content">
-
-
-  <main role="main" class="no-sidebar">
-
-  </main>
-
-  </div>
-
- * .................................................
-
-  <div class="container cb group" id="content">
-  <main class="has-sidebar" role="main">
-
-  </main>
-
-  <aside class="" role="complementary">
-
-  </aside>
-  </div>
- */
 ?>

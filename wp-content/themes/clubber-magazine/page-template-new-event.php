@@ -23,8 +23,9 @@
         width: 60%;
         min-width: 200px;
     }
-
-
+    .row-relation-to-coolplace > a{
+        margin-left: 15px;
+    }
 </style>
 <script>
     $(function () {
