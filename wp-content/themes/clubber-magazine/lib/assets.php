@@ -20,16 +20,17 @@ function roots_scripts()
 {
     $base = get_template_directory_uri();
     if (WP_ENV === 'development') {
-        d('dev');
+        
         $assets = array(
             'css' => array(
-                'main' => '/assets/css/main.css',
+                'main' => $base.'/assets/css/main.css',
                 'pure-responsive-debug' => $base . '/assets/css/pure-responsive-debug.css',
-                'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One'
+                'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One',
+                'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
             ),
             'js' => array(
                 'main' => $base . '/assets/js/scripts.js',
-                'modernizr' => '/assets/vendor/modernizr/modernizr.js',
+                'modernizr' => $base.'/assets/vendor/modernizr/modernizr.js',
                 'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js',
                 'google-places' => 'https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=places',
             ),
@@ -42,7 +43,8 @@ function roots_scripts()
         $assets = array(
             'css' => array(
                 'main' => $base . '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
-                'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One'
+                'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One',
+                'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
             ),
             'js' => array(
                 'main' => $base . '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],

@@ -5,8 +5,8 @@
     <body <?php body_class(); ?> >
 
         <?php do_action('base_after_body') ?>
-        <div class="site">
-            <header id="header" class="cb" role="banner">
+        <div id="site">
+            <header id="header" role="banner">
                 <?php get_template_part('tpl/base/header'); //the header of page, logo banner menu etc...  ?>
             </header>
 
@@ -23,13 +23,13 @@
             ?>
             <?php ob_flush(); ob_start(); ?>
             
-            <div id="content" class="container cb group">
+            <div id="content">
                 <?php nzs_display_messages(); ?>
                 <?php get_template_part('tpl/base/content'); ?>
             </div>
             <?php ob_flush(); ob_start(); ?>
 
-            <footer id="footer" class="group pr" role="contentinfo">
+            <footer id="footer" role="contentinfo">
                 <?php get_template_part('tpl/base/footer'); ?>
             </footer>
         </div>

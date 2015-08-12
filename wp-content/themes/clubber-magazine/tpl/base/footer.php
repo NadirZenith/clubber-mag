@@ -5,7 +5,7 @@ if (
     WPSEO_Breadcrumbs::breadcrumb('<div id="breadcrumbs" class="group ml30">', '</div>', true);
 }
 ?>
-<div  class="nzparallax parallax" id="footer-parallax" >
+<div class="nzparallax parallax pr" id="footer-parallax">
     <img class="" src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/assets/css/img/logo-footer2.png" />
 </div>
 <nav id="footer-menu" class="group pb15 pr" style="z-index:20;">
