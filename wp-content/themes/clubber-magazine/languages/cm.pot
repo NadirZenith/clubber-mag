@@ -1,0 +1,1703 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CM\n"
+"POT-Creation-Date: 2015-08-12 08:21+0100\n"
+"PO-Revision-Date: 2015-08-12 08:21+0100\n"
+"Last-Translator: Nadir <2cb.md2@gmail.com>\n"
+"Language-Team: NZ <nz@nadirzenith.net>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;_x;_n;esc_html__;"
+"esc_html_e\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: page-template-resources.php:20 archive-music.php:22 models/artist.php:12
+msgid "Artists"
+msgstr ""
+
+#: page-template-resources.php:26
+msgid "Promoters"
+msgstr ""
+
+#: page-template-resources.php:32 archive-music.php:115 models/label.php:10
+msgid "Labels"
+msgstr ""
+
+#: page-template-resources.php:38
+msgid "Coolplaces"
+msgstr ""
+
+#: page-template-event-reviews.php:13
+msgid "Photo review"
+msgstr ""
+
+#: archive-agenda.php:17
+msgid "Party and Events of the week"
+msgstr ""
+
+#: archive-agenda.php:18
+msgid "in"
+msgstr ""
+
+#: archive-agenda.php:76 page-template-festivals.php:105
+msgid "Next parties and events"
+msgstr ""
+
+#: comments.php:34
+#, php-format
+msgid "One thought XXYY on &ldquo;%2$s&rdquo;"
+msgstr ""
+
+#: comments.php:36
+#, php-format
+msgid "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr ""
+
+#: comments.php:49
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:50
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:51
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:59
+msgid "Comments are closed."
+msgstr ""
+
+#: page-layout.php:15 page-template-form.php:22
+msgid "No Posts Found."
+msgstr ""
+
+#: page-template-connect.php:25
+msgid "Sign In"
+msgstr ""
+
+#: page-template-connect.php:29
+msgid "Sign in and enjoy our community."
+msgstr ""
+
+#: page-template-connect.php:45
+msgid "Sign Up"
+msgstr ""
+
+#: page-template-connect.php:49
+msgid ""
+"If you like electronic music, you are a producer, dj, promoter, or a club, "
+"signup in Clubber Magazine and enjoy our community."
+msgstr ""
+
+#: archive-artist.php:26
+msgid "Add new artist"
+msgstr ""
+
+#: archive-music.php:56 models/podcast.php:11 models/podcast.php:12
+#: models/podcast.php:13 models/podcast.php:14
+msgid "Into the Beat"
+msgstr ""
+
+#: archive-music.php:84 tpl/home/home-open-frequency.php:4
+#: models/podcast.php:53 models/podcast.php:54 models/podcast.php:55
+#: models/podcast.php:56
+msgid "Open Frequency"
+msgstr ""
+
+#: sidebar.php:8 tpl/archive/agenda.php:60
+msgid "Upload and share event"
+msgstr ""
+
+#: sidebar.php:19 tpl/user-profile/user-profile-main-resource.php:50
+msgid "Share your"
+msgstr ""
+
+#: archive-cool-place.php:38 forms/event_form.php:22
+msgid "Add new place"
+msgstr ""
+
+#: archive-cool-place.php:118
+msgid "No coolplaces found"
+msgstr ""
+
+#: functions.php:98
+#, php-format
+msgid "Error locating %s for inclusion"
+msgstr ""
+
+#: 404.php:2
+msgid "Page not found"
+msgstr ""
+
+#: single.php:62
+msgid "Related Contents"
+msgstr ""
+
+#: index.php:12
+msgid "News Archive"
+msgstr ""
+
+#: search.php:55
+msgid "No users found"
+msgstr ""
+
+#: search.php:55 search.php:89
+msgid "with"
+msgstr ""
+
+#: search.php:65
+msgid "Other results"
+msgstr ""
+
+#: search.php:89
+msgid "No content found"
+msgstr ""
+
+#: tpl/user/user-agenda-list.php:31
+#: tpl/user-profile/user-profile-resource-agenda.php:34
+msgid "Agenda"
+msgstr ""
+
+#: tpl/parts/featured-events.php:4 tpl/parts/featured-events-old.php:4
+msgid "Recommended parties and events"
+msgstr ""
+
+#: tpl/parts/featured-coolplaces.php:24
+msgid "Featured Cool Places"
+msgstr ""
+
+#: tpl/parts/comments.php:4
+msgid "Comments"
+msgstr ""
+
+#: tpl/parts/event-meta.php:79
+msgid "City"
+msgstr ""
+
+#: tpl/parts/event-meta.php:87 forms/event_form.php:189
+msgid "Promoter"
+msgstr ""
+
+#: tpl/parts/event-meta.php:99
+msgid "Place"
+msgstr ""
+
+#: tpl/parts/event-meta.php:107 forms/event_form.php:200
+msgid "Price"
+msgstr ""
+
+#: tpl/parts/event-meta.php:119
+msgid "Price Conditions"
+msgstr ""
+
+#: tpl/parts/event-meta.php:127 forms/coolplace_fast_form.php:26
+#: forms/coolplace_form.php:47
+msgid "Address"
+msgstr ""
+
+#: tpl/parts/event-meta.php:150 tpl/parts/list-3.php:125 models/menu.php:62
+msgid "Get your tickets!"
+msgstr ""
+
+#: tpl/parts/artist-home.php:9 models/artist.php:10 models/artist.php:11
+#: models/artist.php:13
+msgid "Artist"
+msgstr ""
+
+#: tpl/parts/list-3.php:115 tpl/parts/list-3.php:117 tpl/parts/list-0.php:40
+#: tpl/home/list-4.php:22
+msgid "Read more"
+msgstr ""
+
+#: tpl/parts/not-found.php:3 lib/nz/add-ons/query-functions.php:130
+msgid "Not Found."
+msgstr ""
+
+#: tpl/parts/list-5.php:21 tpl/parts/list-5.php:108
+msgid "by"
+msgstr ""
+
+#: tpl/user-profile/user-profile-info.php:21
+#: tpl/user-profile/resource-related-podcasts.php:44
+#: tpl/user-profile/user-profile-resource-promoter.php:83
+#: tpl/user-profile/user-profile-main-resource.php:29
+msgid "edit"
+msgstr ""
+
+#: tpl/user-profile/user-profile-info.php:24
+msgid "sign-out"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-agenda.php:24
+msgid "Subscribe to events"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-agenda.php:33
+msgid "See user agenda"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-agenda.php:99
+#: tpl/user-profile/user-profile-resource-agenda.php:107
+msgid "¡Subscribe to events!"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-agenda.php:117
+msgid "Last subscribed events"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-agenda.php:119
+msgid "This user has not subscribed to any event"
+msgstr ""
+
+#: tpl/user-profile/resource-related-podcasts.php:42
+#: tpl/user-profile/user-profile-resource-promoter.php:76
+#: tpl/user-profile/user-profile-main-resource.php:21
+msgid "pending review"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-promoter.php:34 models/event.php:7
+#: models/event.php:9
+msgid "Events"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-promoter.php:37
+msgid "My events"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-promoter.php:45
+msgid "See all events"
+msgstr ""
+
+#: tpl/user-profile/user-profile-resource-promoter.php:105
+msgid "Share event"
+msgstr ""
+
+#: tpl/user-profile/user-profile-main-resource.php:60
+msgid "Share Event"
+msgstr ""
+
+#: tpl/single/single-1.php:25
+msgid "backflyer"
+msgstr ""
+
+#: tpl/ajax/users_to_event.php:6
+msgid "Participants"
+msgstr ""
+
+#: tpl/ajax/connect-to-continue.php:4
+msgid "Sign in to access"
+msgstr ""
+
+#: tpl/base/header.php:66
+msgid "Search for parties, clubs, artists..."
+msgstr ""
+
+#: tpl/base/footer.php:25
+msgid "Back to Top"
+msgstr ""
+
+#: tpl/home/home-news.php:4
+msgid "Latest News"
+msgstr ""
+
+#: tpl/home/home-news.php:26 tpl/home/home-photo.php:27
+#: tpl/home/home-video.php:35 tpl/home/home-open-frequency.php:32
+#: tpl/home/home-music.php:26
+msgid "see more ..."
+msgstr ""
+
+#: tpl/home/home-photo.php:5
+msgid "Photo Gallery"
+msgstr ""
+
+#: tpl/home/home-video.php:4
+msgid "Video review"
+msgstr ""
+
+#: tpl/home/home-into-the-beat.php:4
+msgid "Into the Beat Radio"
+msgstr ""
+
+#: tpl/home/home-into-the-beat.php:58
+msgid "see more..."
+msgstr ""
+
+#: tpl/home/newsletter.php:14
+msgid "Insert your email to receive our newsletter"
+msgstr ""
+
+#: tpl/home/newsletter.php:18
+msgid "unsubscribe"
+msgstr ""
+
+#: tpl/home/newsletter.php:22
+msgid "Unsubscribe from newsletter"
+msgstr ""
+
+#: tpl/home/newsletter.php:26
+msgid "subscribe"
+msgstr ""
+
+#: tpl/home/home-music.php:4 models/music.php:9 models/music.php:11
+msgid "Music"
+msgstr ""
+
+#: tpl/archive/agenda.php:56
+msgid ""
+"Sorry! Currently we don´t have events available in this region. You can "
+"upload your events in the following link"
+msgstr ""
+
+#: languages/customs.php:3
+msgid "Interviews"
+msgstr ""
+
+#: languages/customs.php:4
+msgid "week"
+msgstr ""
+
+#: languages/customs.php:5
+msgid "month"
+msgstr ""
+
+#: languages/customs.php:6
+msgid "year"
+msgstr ""
+
+#: languages/customs.php:7
+msgid "next"
+msgstr ""
+
+#: languages/customs.php:8
+msgid "previous"
+msgstr ""
+
+#: languages/customs.php:9
+msgid "previous month"
+msgstr ""
+
+#: languages/customs.php:10
+msgid "previous week"
+msgstr ""
+
+#: languages/customs.php:11
+msgid "next week"
+msgstr ""
+
+#: languages/customs.php:12
+msgid "next month"
+msgstr ""
+
+#: models/podcast.php:15 models/podcast.php:57 models/artist.php:14
+#: models/music.php:12 models/event.php:11 models/video.php:12
+#: models/cool-place.php:10 models/label.php:12 models/photo.php:11
+msgid "Add New"
+msgstr ""
+
+#: models/podcast.php:16
+msgid "Add New Into the Beat"
+msgstr ""
+
+#: models/podcast.php:17
+msgid "New Into the Beat"
+msgstr ""
+
+#: models/podcast.php:18
+msgid "Edit Into the Beat"
+msgstr ""
+
+#: models/podcast.php:19
+msgid "View Into the Beat"
+msgstr ""
+
+#: models/podcast.php:20
+msgid "All Into the Beat"
+msgstr ""
+
+#: models/podcast.php:21
+msgid "Search Into the Beat"
+msgstr ""
+
+#: models/podcast.php:22
+msgid "Parent Into the Beat:"
+msgstr ""
+
+#: models/podcast.php:23
+msgid "No into the beat found."
+msgstr ""
+
+#: models/podcast.php:24
+msgid "No into the beat found in Trash."
+msgstr ""
+
+#: models/podcast.php:58
+msgid "Add New Open Frequency"
+msgstr ""
+
+#: models/podcast.php:59
+msgid "New Open Frequency"
+msgstr ""
+
+#: models/podcast.php:60
+msgid "Edit Open Frequency"
+msgstr ""
+
+#: models/podcast.php:61
+msgid "View Open Frequency"
+msgstr ""
+
+#: models/podcast.php:62
+msgid "All Open Frequency"
+msgstr ""
+
+#: models/podcast.php:63
+msgid "Search Open Frequency"
+msgstr ""
+
+#: models/podcast.php:64
+msgid "Parent Open Frequency:"
+msgstr ""
+
+#: models/podcast.php:65
+msgid "No open frequency found."
+msgstr ""
+
+#: models/podcast.php:66
+msgid "No open frequency found in Trash."
+msgstr ""
+
+#: models/artist.php:15
+msgid "Add New Artist"
+msgstr ""
+
+#: models/artist.php:16
+msgid "New Artist"
+msgstr ""
+
+#: models/artist.php:17
+msgid "Edit Artist"
+msgstr ""
+
+#: models/artist.php:18
+msgid "View Artist"
+msgstr ""
+
+#: models/artist.php:19
+msgid "All Artists"
+msgstr ""
+
+#: models/artist.php:20
+msgid "Search Artists"
+msgstr ""
+
+#: models/artist.php:21
+msgid "Parent Artists:"
+msgstr ""
+
+#: models/artist.php:22
+msgid "No artists found."
+msgstr ""
+
+#: models/artist.php:23
+msgid "No artists found in Trash."
+msgstr ""
+
+#: models/music.php:8 models/music.php:10
+msgid "Music Content"
+msgstr ""
+
+#: models/music.php:13
+msgid "Add New Music"
+msgstr ""
+
+#: models/music.php:14
+msgid "New Music"
+msgstr ""
+
+#: models/music.php:15
+msgid "Edit Music"
+msgstr ""
+
+#: models/music.php:16
+msgid "View Music"
+msgstr ""
+
+#: models/music.php:17
+msgid "All Music Content"
+msgstr ""
+
+#: models/music.php:18
+msgid "Search Music Content"
+msgstr ""
+
+#: models/music.php:19
+msgid "Parent Music Content:"
+msgstr ""
+
+#: models/music.php:20
+msgid "No music content found."
+msgstr ""
+
+#: models/music.php:21
+msgid "No music content found in Trash."
+msgstr ""
+
+#: models/music.php:42 models/music.php:57
+msgid "Music Categories"
+msgstr ""
+
+#: models/music.php:43
+msgid "Music Category"
+msgstr ""
+
+#: models/music.php:44
+msgid "Search Music Categories"
+msgstr ""
+
+#: models/music.php:45
+msgid "Popular Music Categories"
+msgstr ""
+
+#: models/music.php:46
+msgid "All Music Categories"
+msgstr ""
+
+#: models/music.php:49
+msgid "Edit Music Category"
+msgstr ""
+
+#: models/music.php:50
+msgid "Update Music Category"
+msgstr ""
+
+#: models/music.php:51
+msgid "Add New Music Category"
+msgstr ""
+
+#: models/music.php:52
+msgid "New Music Category Name"
+msgstr ""
+
+#: models/music.php:53
+msgid "Separate music categories with commas"
+msgstr ""
+
+#: models/music.php:54
+msgid "Add or remove music categories"
+msgstr ""
+
+#: models/music.php:55
+msgid "Choose from the most used music categories"
+msgstr ""
+
+#: models/music.php:56
+msgid "No music categories found."
+msgstr ""
+
+#: models/event.php:8 models/event.php:10
+msgid "Event"
+msgstr ""
+
+#: models/event.php:12
+msgid "Add New Event"
+msgstr ""
+
+#: models/event.php:13
+msgid "New Event"
+msgstr ""
+
+#: models/event.php:14
+msgid "Edit Event"
+msgstr ""
+
+#: models/event.php:15
+msgid "View Event"
+msgstr ""
+
+#: models/event.php:16
+msgid "All Events"
+msgstr ""
+
+#: models/event.php:17
+msgid "Search Events"
+msgstr ""
+
+#: models/event.php:18
+msgid "Parent Events:"
+msgstr ""
+
+#: models/event.php:19
+msgid "No events found."
+msgstr ""
+
+#: models/event.php:20
+msgid "No events found in Trash."
+msgstr ""
+
+#: models/video.php:8 models/video.php:10
+msgid "Videos"
+msgstr ""
+
+#: models/video.php:9 models/video.php:11
+msgid "Video"
+msgstr ""
+
+#: models/video.php:13
+msgid "Add New Video"
+msgstr ""
+
+#: models/video.php:14
+msgid "New Video"
+msgstr ""
+
+#: models/video.php:15
+msgid "Edit Video"
+msgstr ""
+
+#: models/video.php:16
+msgid "View Video"
+msgstr ""
+
+#: models/video.php:17
+msgid "All Videos"
+msgstr ""
+
+#: models/video.php:18
+msgid "Search Videos"
+msgstr ""
+
+#: models/video.php:19
+msgid "Parent Videos:"
+msgstr ""
+
+#: models/video.php:20
+msgid "No videos found."
+msgstr ""
+
+#: models/video.php:21
+msgid "No videos found in Trash."
+msgstr ""
+
+#: models/cool-place.php:6 models/cool-place.php:8
+msgid "Cool Places"
+msgstr ""
+
+#: models/cool-place.php:7 models/cool-place.php:9
+msgid "Cool Place"
+msgstr ""
+
+#: models/cool-place.php:11
+msgid "Add New Cool Place"
+msgstr ""
+
+#: models/cool-place.php:12
+msgid "New Cool Place"
+msgstr ""
+
+#: models/cool-place.php:13
+msgid "Edit Cool Place"
+msgstr ""
+
+#: models/cool-place.php:14
+msgid "View Cool Place"
+msgstr ""
+
+#: models/cool-place.php:15
+msgid "All Cool Places"
+msgstr ""
+
+#: models/cool-place.php:16
+msgid "Search Cool Places"
+msgstr ""
+
+#: models/cool-place.php:17
+msgid "Parent Cool Places:"
+msgstr ""
+
+#: models/cool-place.php:18
+msgid "No cool places found."
+msgstr ""
+
+#: models/cool-place.php:19
+msgid "No cool places found in Trash."
+msgstr ""
+
+#: models/cool-place.php:40 models/cool-place.php:55
+msgid "Places types"
+msgstr ""
+
+#: models/cool-place.php:41
+msgid "Places type"
+msgstr ""
+
+#: models/cool-place.php:42
+msgid "Search Places types"
+msgstr ""
+
+#: models/cool-place.php:43
+msgid "Popular Places types"
+msgstr ""
+
+#: models/cool-place.php:44
+msgid "All Places types"
+msgstr ""
+
+#: models/cool-place.php:47
+msgid "Edit Places type"
+msgstr ""
+
+#: models/cool-place.php:48
+msgid "Update Places type"
+msgstr ""
+
+#: models/cool-place.php:49
+msgid "Add New Places type"
+msgstr ""
+
+#: models/cool-place.php:50
+msgid "New Places type Name"
+msgstr ""
+
+#: models/cool-place.php:51
+msgid "Separate places types with commas"
+msgstr ""
+
+#: models/cool-place.php:52
+msgid "Add or remove places types"
+msgstr ""
+
+#: models/cool-place.php:53
+msgid "Choose from the most used places types"
+msgstr ""
+
+#: models/cool-place.php:54
+msgid "No places types found."
+msgstr ""
+
+#: models/news.php:9 models/news.php:10 models/news.php:21
+msgid "News"
+msgstr ""
+
+#: models/news.php:11
+msgid "Add News item"
+msgstr ""
+
+#: models/news.php:12
+msgid "News tags"
+msgstr ""
+
+#: models/label.php:8 models/label.php:9 models/label.php:11
+msgid "Label"
+msgstr ""
+
+#: models/label.php:13
+msgid "Add New Label"
+msgstr ""
+
+#: models/label.php:14
+msgid "New Label"
+msgstr ""
+
+#: models/label.php:15
+msgid "Edit Label"
+msgstr ""
+
+#: models/label.php:16
+msgid "View Label"
+msgstr ""
+
+#: models/label.php:17
+msgid "All Labels"
+msgstr ""
+
+#: models/label.php:18
+msgid "Search Labels"
+msgstr ""
+
+#: models/label.php:19
+msgid "Parent Labels:"
+msgstr ""
+
+#: models/label.php:20
+msgid "No labels found."
+msgstr ""
+
+#: models/label.php:21
+msgid "No labels found in Trash."
+msgstr ""
+
+#: models/menu.php:17
+msgid "Profile"
+msgstr ""
+
+#: models/menu.php:30
+msgid "Login / SignUp"
+msgstr ""
+
+#: models/photo.php:7 models/photo.php:9
+msgid "Photos"
+msgstr ""
+
+#: models/photo.php:8 models/photo.php:10
+msgid "Photo"
+msgstr ""
+
+#: models/photo.php:12
+msgid "Add New Photo"
+msgstr ""
+
+#: models/photo.php:13
+msgid "New Photo"
+msgstr ""
+
+#: models/photo.php:14
+msgid "Edit Photo"
+msgstr ""
+
+#: models/photo.php:15
+msgid "View Photo"
+msgstr ""
+
+#: models/photo.php:16
+msgid "All Photos"
+msgstr ""
+
+#: models/photo.php:17
+msgid "Search Photos"
+msgstr ""
+
+#: models/photo.php:18
+msgid "Parent Photos:"
+msgstr ""
+
+#: models/photo.php:19
+msgid "No photos found."
+msgstr ""
+
+#: models/photo.php:20
+msgid "No photos found in Trash."
+msgstr ""
+
+#: models/pages/recursos.php:25 models/pages/recursos.php:135
+msgid "Please login to manage resources"
+msgstr ""
+
+#: models/pages/recursos.php:42 models/pages/recursos.php:70
+#: models/pages/recursos.php:96
+msgid "You can only manage one resource per user"
+msgstr ""
+
+#: models/pages/recursos.php:52 models/pages/recursos.php:80
+#, php-format
+msgid "You can only manage one %s page per user, edit it here"
+msgstr ""
+
+#: models/pages/recursos.php:52
+msgid "artist"
+msgstr ""
+
+#: models/pages/recursos.php:80
+msgid "label"
+msgstr ""
+
+#: lib/utils.php:100
+msgid "previous "
+msgstr ""
+
+#: lib/utils.php:105
+msgid "next "
+msgstr ""
+
+#: lib/api.php:166
+msgid "No users found."
+msgstr ""
+
+#: lib/config.php:106
+msgid "Primary Menu"
+msgstr ""
+
+#: lib/config.php:107
+msgid "Footer Menu"
+msgstr ""
+
+#: lib/nz/add-ons/nz-start-msgs/NzStartMsgs.php:322
+msgid "5 minutes"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:162
+msgid "Locations"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:163
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:172
+msgid "Location"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:164
+msgid "Search Locations"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:165
+msgid "All Locations"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:166
+msgid "Parent Location"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:167
+msgid "Parent Location:"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:168
+msgid "Edit Location"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:169
+msgid "Update Location"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:170
+msgid "Add New Location"
+msgstr ""
+
+#: lib/nz/add-ons/location-taxonomy/contry-list.php:171
+msgid "New Location Name"
+msgstr ""
+
+#: lib/nz/widgets/widget-fb-like-box.php:13
+msgid "fb like box"
+msgstr ""
+
+#: lib/nz/widgets/widget-fb-like-box.php:16
+msgid "Fb Like Box - widget"
+msgstr ""
+
+#: lib/nz/widgets/widget-fb-like-box.php:63
+msgid "facebook page url:"
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:12 lib/nz/widgets/widget-test.php:12
+#: lib/nz/widgets/widget-share.php:12
+msgid "Test your Widget."
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:14
+msgid "relate - widget"
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:44
+msgid "Going!"
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:48 lib/nz/widgets/widget-relate.php:116
+msgid "Join!"
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:66
+msgid "Join and share"
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:77
+msgid "Attendees"
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:115
+msgid "Assisting!"
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:117
+msgid "Try later!"
+msgstr ""
+
+#: lib/nz/widgets/widget-relate.php:261 lib/nz/widgets/widget-audio.php:216
+#: lib/nz/widgets/widget-test.php:76 lib/nz/widgets/widget-soundcloud.php:71
+#: lib/nz/widgets/widget-share.php:80 lib/nz/widgets/widget-calendar.php:143
+msgid "Title:"
+msgstr ""
+
+#: lib/nz/widgets/widget-audio.php:12
+msgid "Display your Audio Player."
+msgstr ""
+
+#: lib/nz/widgets/widget-audio.php:14
+msgid "CLUBBER - Audio Player"
+msgstr ""
+
+#: lib/nz/widgets/widget-audio.php:231
+msgid "Post ID:"
+msgstr ""
+
+#: lib/nz/widgets/widget-audio.php:244
+msgid "(optional) SoundCloud API:"
+msgstr ""
+
+#: lib/nz/widgets/widget-test.php:14
+msgid "test - widget"
+msgstr ""
+
+#: lib/nz/widgets/widget-soundcloud.php:10
+msgid "Display your SoundCloud."
+msgstr ""
+
+#: lib/nz/widgets/widget-soundcloud.php:12
+msgid "CLUBBER - SoundCloud"
+msgstr ""
+
+#: lib/nz/widgets/widget-soundcloud.php:88
+msgid "SoundCloud API:"
+msgstr ""
+
+#: lib/nz/widgets/widget-share.php:14
+msgid "share - widget"
+msgstr ""
+
+#: lib/nz/widgets/widget-share.php:34
+msgid "Share this"
+msgstr ""
+
+#: lib/nz/widgets/widget-calendar.php:12
+msgid "Calendar widget."
+msgstr ""
+
+#: lib/nz/widgets/widget-calendar.php:14
+msgid "Calendar - widget"
+msgstr ""
+
+#: lib/nz/shortcodes/shortcode-soundcloud.php:206
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: lib/nz/shortcodes/shortcode-soundcloud.php:346
+msgid "Save Changes"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/nz-wp-forms.php:178
+#: lib/nz/lib/nz-wp-form/nz-wp-forms.php:281
+msgid "Error locating form "
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/nz-wp-form.php:79
+msgid "Confirm password"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/nz-wp-form.php:80
+msgid "Password not confirmed correctly!"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/login.php:58
+#: lib/nz/lib/nz-wp-form/login-register/login.php:80
+msgid "User does not exist"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/login.php:100
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:304
+msgid "Login complete"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/login.php:107
+msgid "Invalid credentials."
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/login.php:110
+msgid "User does not exist or is inactive"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/register.php:92
+msgid "Success Registration"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:129
+msgid "Login Handle"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:131
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:137
+msgid ""
+"Type the class name or ID of the element you want to launch the dialog box "
+"when clicked, example"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:131
+msgid ".login-link"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:135
+msgid "Register Handle"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:137
+msgid ".register-link"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:141
+msgid "Additional Styling"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:143
+msgid "Type your custom CSS styles that are applied to the dialog boxes."
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:147
+msgid "Redirect After Login URL"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:149
+msgid ""
+"Enter the URL or slug you want users redirected to after login, example: "
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:149
+msgid "http://site.com/, /dashboard/, /wp-admin/"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:153
+msgid "Form Layout"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:162
+msgid "URL"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:164
+msgid "This is the URL you have set in your Facebook Developer App Settings"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:168
+msgid "App ID"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:170
+msgid "This is the App ID as seen in your Facebook Developer App Dashboard"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:177
+msgid "Enable Facebook Login"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:178
+msgid "By disabling this, your Facebook settings will still be saved."
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:182
+msgid "Disable \"keep me logged in\""
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:183
+msgid "Use this option to disable the check box shown to keep users logged in."
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:292
+msgid "Invalid credentials"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:296
+msgid "User inactive"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:300
+msgid "Error creating user"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/abstract.php:309
+msgid "Registration complete"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-dialog.php:7
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:41
+#: forms/register_form.php:56
+msgid "Register"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-dialog.php:8
+#: lib/nz/lib/nz-wp-form/login-register/views/login-dialog.php:9
+msgid "Loading..."
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:13
+msgid "You are already registered"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:13
+msgid "Logout"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:31
+msgid "User Name"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:32
+#: forms/event_form.php:244 forms/artist_form.php:58
+#: forms/register_form.php:28 forms/login_form.php:14 forms/login_form.php:52
+#: forms/label_form.php:48 forms/contact_form.php:27
+#: forms/edituser_form.php:95 forms/coolplace_form.php:76
+msgid "Email"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:36
+#: lib/nz/lib/nz-wp-form/login-register/views/login-form.php:22
+#: forms/register_form.php:41 forms/login_form.php:30 forms/login_form.php:66
+#: forms/edituser_form.php:67 forms/edituser_form.php:155
+msgid "Password"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:37
+msgid "Confirm Password"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:39
+msgid "Already registered?"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/register-form.php:48
+msgid "Registration is currently closed."
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:15
+msgid "AJAX Login &amp; Register Settings"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:17
+msgid "Usage"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:18
+msgid ""
+"<p>To create a login page using shortcode; add the following shortcode "
+"<code>ajax_login</code> for the login page or <code>ajax_register</code> for "
+"the registration page to any Page or Post.</p><p>To create a login or "
+"registration dialog box do the following; create a menu item, assign a "
+"custom class name, then add that custom class name to the field: <em>Login "
+"Handle</em> for login or <em>Register Handle</em> for the registration page "
+"found in the settings below.</p><p><em>Note your theme must support custom "
+"menus</em></p><p><em>Note your site will need to be open to registration</"
+"em></p>"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:21
+msgid "General Settings"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:34
+msgid "Facebook Settings"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:36
+msgid ""
+"<p>Once you have created your Facebook App, go to your Facebook Developer "
+"App Settings and add your site URL(s) to the App Domains field. Then, copy "
+"your App ID and paste into your App ID field in the zM AJAX Login & Register "
+"Facebook settings.</p><p>In order to use Facebook login you will need to "
+"Create a Facebook App, by visiting <a href=\"https://developers.facebook.com/"
+"\" target=\"_blank\">Facebook Developers</a>. Once you have created your "
+"Facebook App you are now ready to enter your \"site URL\" as seen in "
+"Facebook Developer App Settings and your App ID.</p><p>For detailed "
+"instructions visit the <a href=\"http://zanematthew.com/ajax-login-register-"
+"help-videos/\" target=\"_blank\">How To add Facebook Settings to AJAX Login "
+"&amp; Register</a>, feel free to contact us via our <a href=\"http://support."
+"zanematthew.com/forum/zm-ajax-login-register/\" target=\"_blank\">Support "
+"Forum</a> if you need additional help.</p>"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:48
+msgid "Advanced Usage"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:76
+msgid "Upgrade to the Pro version"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:77
+msgid "Remove these ads?"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:78
+msgid "Remove this ad, upgrade to Pro"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/settings.php:78
+msgid "Upgrade to Login &amp; Register Pro"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/login-form.php:16
+msgid "User Email"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/login-form.php:29
+msgid "Keep me logged in"
+msgstr ""
+
+#: lib/nz/lib/nz-wp-form/login-register/views/login-form.php:33
+#: lib/nz/lib/nz-wp-form/login-register/views/login-dialog.php:8
+#: forms/login_form.php:87
+msgid "Login"
+msgstr ""
+
+#: lib/debug2/options2/register.php:18 lib/debug2/options2/register.php:19
+msgid "Example Options"
+msgstr ""
+
+#: lib/debug2/options2/register.php:40 lib/debug2/options2/register.php:41
+#: lib/debug2/options2/cm-options.php:4
+msgid "CM Options"
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:8
+msgid "Forms"
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:14
+msgid "Contact Form"
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:19
+msgid "User message"
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:20 lib/debug2/options2/cm-options.php:51
+msgid "Only alphabets allowed here."
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:26
+msgid "Admin email"
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:27 lib/debug2/options2/cm-options.php:42
+msgid "Wordpress tinyMCE editor."
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:36
+msgid "Event Form User email"
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:41
+msgid "Event form"
+msgstr ""
+
+#: lib/debug2/options2/cm-options.php:50
+msgid "Alphabet"
+msgstr ""
+
+#: forms/event_form.php:17
+msgid "Name of the club or place where the event is"
+msgstr ""
+
+#: forms/event_form.php:19
+msgid "Select a place"
+msgstr ""
+
+#: forms/event_form.php:28
+msgid "Place is required!"
+msgstr ""
+
+#: forms/event_form.php:38
+msgid "Event name"
+msgstr ""
+
+#: forms/event_form.php:41 forms/artist_form.php:16
+msgid "Name is required!"
+msgstr ""
+
+#: forms/event_form.php:50
+msgid "Write the name of your event"
+msgstr ""
+
+#: forms/event_form.php:63
+msgid "Begin date"
+msgstr ""
+
+#: forms/event_form.php:66
+msgid "Date is required!"
+msgstr ""
+
+#: forms/event_form.php:121
+msgid "End date"
+msgstr ""
+
+#: forms/event_form.php:124
+msgid "Invalid date!"
+msgstr ""
+
+#: forms/event_form.php:134
+msgid "Event flyer"
+msgstr ""
+
+#: forms/event_form.php:136
+msgid "Flyer is required"
+msgstr ""
+
+#: forms/event_form.php:143
+msgid "Event back flyer"
+msgstr ""
+
+#: forms/event_form.php:155
+msgid "Event info"
+msgstr ""
+
+#: forms/event_form.php:159
+msgid "Content is required"
+msgstr ""
+
+#: forms/event_form.php:170
+msgid "Event type"
+msgstr ""
+
+#: forms/event_form.php:172
+msgid "Party"
+msgstr ""
+
+#: forms/event_form.php:173
+msgid "Festival"
+msgstr ""
+
+#: forms/event_form.php:179 forms/coolplace_fast_form.php:48
+#: forms/coolplace_form.php:66
+msgid "Type is required"
+msgstr ""
+
+#: forms/event_form.php:203
+msgid "Price is required"
+msgstr ""
+
+#: forms/event_form.php:209
+msgid "Price ( Nº + € ) / Free / To announce"
+msgstr ""
+
+#: forms/event_form.php:220
+msgid "Price conditions"
+msgstr ""
+
+#: forms/event_form.php:247 forms/register_form.php:31 forms/login_form.php:17
+#: forms/login_form.php:55 forms/contact_form.php:33
+#: forms/edituser_form.php:98
+msgid "Email is required"
+msgstr ""
+
+#: forms/event_form.php:248 forms/artist_form.php:56
+#: forms/register_form.php:32 forms/login_form.php:18 forms/login_form.php:56
+#: forms/label_form.php:46 forms/contact_form.php:34
+#: forms/edituser_form.php:99 forms/coolplace_form.php:74
+msgid "Email is not valid"
+msgstr ""
+
+#: forms/event_form.php:257 forms/artist_form.php:89
+#: forms/coolplace_fast_form.php:57 forms/label_form.php:78
+#: forms/contact_form.php:54 forms/edituser_form.php:175
+#: forms/coolplace_form.php:103
+msgid "Submit"
+msgstr ""
+
+#: forms/event_form.php:283
+msgid "Thanks for submitting your event"
+msgstr ""
+
+#: forms/artist_form.php:13
+msgid "Artist name"
+msgstr ""
+
+#: forms/artist_form.php:31
+msgid "Artist image"
+msgstr ""
+
+#: forms/artist_form.php:38 forms/label_form.php:30
+#: forms/coolplace_form.php:28
+msgid "Image is required"
+msgstr ""
+
+#: forms/artist_form.php:46
+msgid "Artist info"
+msgstr ""
+
+#: forms/artist_form.php:61 forms/label_form.php:51
+#: forms/edituser_form.php:118 forms/coolplace_form.php:79
+msgid "Link Pagina Oficial"
+msgstr ""
+
+#: forms/artist_form.php:62 forms/label_form.php:52
+#: forms/edituser_form.php:119 forms/coolplace_form.php:80
+msgid "Link Facebook"
+msgstr ""
+
+#: forms/artist_form.php:63 forms/label_form.php:53
+#: forms/edituser_form.php:120
+msgid "Link Soundcloud"
+msgstr ""
+
+#: forms/artist_form.php:64 forms/label_form.php:54
+#: forms/edituser_form.php:121 forms/coolplace_form.php:81
+msgid "Link Instagram"
+msgstr ""
+
+#: forms/artist_form.php:65 forms/label_form.php:55
+#: forms/edituser_form.php:122 forms/coolplace_form.php:82
+msgid "Link Google +"
+msgstr ""
+
+#: forms/artist_form.php:66 forms/label_form.php:56
+#: forms/edituser_form.php:123
+msgid "Link Youtube"
+msgstr ""
+
+#: forms/artist_form.php:67 forms/label_form.php:57
+#: forms/edituser_form.php:124 forms/coolplace_form.php:83
+msgid "Link Twitter"
+msgstr ""
+
+#: forms/artist_form.php:68 forms/label_form.php:58
+msgid "Link Beatport"
+msgstr ""
+
+#: forms/artist_form.php:69 forms/label_form.php:59
+msgid "Link Bandpage"
+msgstr ""
+
+#: forms/artist_form.php:78 forms/label_form.php:67
+#: forms/edituser_form.php:133 forms/coolplace_form.php:92
+msgid ""
+"Url is not valid, ex: http://www.example.com, don't forget the protocol "
+"http://"
+msgstr ""
+
+#: forms/open_frequency_form.php:31
+msgid "Soundcloud Url"
+msgstr ""
+
+#: forms/open_frequency_form.php:39
+msgid "Soundcloud Url is required"
+msgstr ""
+
+#: forms/open_frequency_form.php:49
+msgid "Title"
+msgstr ""
+
+#: forms/open_frequency_form.php:49
+msgid "Title is required"
+msgstr ""
+
+#: forms/open_frequency_form.php:55
+msgid "Share"
+msgstr ""
+
+#: forms/open_frequency_form.php:139
+msgid "Podcast subido"
+msgstr ""
+
+#: forms/register_form.php:12
+msgid "Username"
+msgstr ""
+
+#: forms/register_form.php:15
+msgid "Username is required"
+msgstr ""
+
+#: forms/register_form.php:19
+msgid "Allowed characters a-z and 0-9 _- No spaces. 3-20 characters"
+msgstr ""
+
+#: forms/register_form.php:44 forms/login_form.php:34
+#: forms/edituser_form.php:71
+msgid "Password does not match"
+msgstr ""
+
+#: forms/register_form.php:47 forms/login_form.php:37
+#: forms/edituser_form.php:162
+msgid "Password is required"
+msgstr ""
+
+#: forms/register_form.php:48 forms/login_form.php:38
+#: forms/edituser_form.php:75
+msgid "The password must have between 6 and 16 characters"
+msgstr ""
+
+#: forms/coolplace_fast_form.php:15 forms/coolplace_form.php:14
+msgid "Club or place name"
+msgstr ""
+
+#: forms/coolplace_fast_form.php:32 forms/coolplace_form.php:53
+msgid "Address is required"
+msgstr ""
+
+#: forms/coolplace_fast_form.php:44 forms/coolplace_form.php:63
+msgid "Coolplace type"
+msgstr ""
+
+#: forms/login_form.php:24
+msgid "Recover password"
+msgstr ""
+
+#: forms/login_form.php:43
+msgid "Set password"
+msgstr ""
+
+#: forms/login_form.php:83
+msgid "Remember me"
+msgstr ""
+
+#: forms/label_form.php:13
+msgid "Label Name"
+msgstr ""
+
+#: forms/label_form.php:16 forms/contact_form.php:20
+#: forms/coolplace_form.php:17
+msgid "Name is required"
+msgstr ""
+
+#: forms/label_form.php:24
+msgid "Label image"
+msgstr ""
+
+#: forms/label_form.php:38
+msgid "Label info"
+msgstr ""
+
+#: forms/contact_form.php:14
+msgid "Name"
+msgstr ""
+
+#: forms/contact_form.php:42
+msgid "Content"
+msgstr ""
+
+#: forms/contact_form.php:46
+msgid "Info is required"
+msgstr ""
+
+#: forms/edituser_form.php:12 forms/edituser_form.php:39
+msgid "Background image"
+msgstr ""
+
+#: forms/edituser_form.php:85
+msgid "Info"
+msgstr ""
+
+#: forms/edituser_form.php:88
+msgid "Between 50 to 500 chars allowed"
+msgstr ""
+
+#: forms/edituser_form.php:107
+msgid "Display Name"
+msgstr ""
+
+#: forms/edituser_form.php:111
+msgid "Display name is required"
+msgstr ""
+
+#: forms/edituser_form.php:141
+msgid "Locale"
+msgstr ""
+
+#: forms/coolplace_form.php:25
+msgid "Coolplace image"
+msgstr ""
+
+#: forms/coolplace_form.php:37
+msgid "Coolplace info"
+msgstr ""

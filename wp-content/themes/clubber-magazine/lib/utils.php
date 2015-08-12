@@ -68,39 +68,6 @@ function cm_home_list_more( $post_type, $title, $raw = false ) {
       <?php
 }
 
-/**
- * youtube iframe from url
- */
-function nz_get_youtube_iframe( $url, $args = array() ) {
-
-      $query_string = array();
-      parse_str( parse_url( $url, PHP_URL_QUERY ), $query_string );
-      if ( !isset( $query_string[ "v" ] ) )
-            return false;
-
-      $id = $query_string[ "v" ];
-
-      $defaults = array(
-            'width' => '100%', //640
-            'height' => '166', //390
-            'color' => '0583F2',
-            'frameborder' => '0',
-      );
-
-      $args = wp_parse_args( $args, $defaults );
-
-
-      $content = '<div class="nz-sciframe">'
-                . '<iframe '
-                . 'width="' . $args[ 'width' ] . '" '
-                . 'height="' . $args[ 'height' ] . '" '
-                . 'frameborder="' . $args[ 'frameborder' ] . '" '
-                . 'src="http://www.youtube.com/embed/' . $id . '"'
-                . '></iframe></div>';
-
-
-      return $content;
-}
 
 function cm_lang_get_post( $id ) {
 
@@ -202,4 +169,58 @@ function cm_has_resource( $resource_type ) {
             return $resource_type == $resource->post_type;
       }
       return FALSE;
+}
+
+/*
+ * SECURITY FUNCTIONS
+ */
+
+/**
+ * Show admin bar only for admin
+ */
+add_filter('show_admin_bar', 'nz_filter_show_admin_bar');
+
+function nz_filter_show_admin_bar()
+{
+    if (current_user_can('administrator')) {
+        /* if (current_user_can('manage_options')) { */
+        return true;
+    }
+
+    return false;
+}
+// Removing front end admin bar because it's ugly
+/* add_filter('show_admin_bar', '__return_false'); */
+
+/**
+ * block front end from not logged in users
+ */
+/* add_action('wp', 'nz_block_front_end'); */
+
+function nz_block_front_end()
+{
+
+    // Current Page
+    global $pagenow;
+    // Check to see if user in not logged in and not on the login page
+    if (!is_user_logged_in() && $pagenow != 'wp-login.php') {
+        // If user is, Redirect to Login form.
+        auth_redirect();
+    }
+}
+/**
+ * block back end from non admins
+ */
+add_action('init', 'nz_block_backend');
+
+function nz_block_backend()
+{
+
+    if (is_admin() && !current_user_can('administrator') &&
+        !( defined('DOING_AJAX') && DOING_AJAX )) {
+
+        wp_redirect(home_url());
+
+        exit;
+    }
 }

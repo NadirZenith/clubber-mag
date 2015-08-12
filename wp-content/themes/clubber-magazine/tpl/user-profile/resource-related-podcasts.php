@@ -39,7 +39,7 @@ if ( $query2->have_posts() ) {
                                           ?>
                                           <div class="p-detail">
                                                 <?php if ( get_post_status() != 'publish' ) : ?>
-                                                      <span style="color:red" title="<?php _e( 'pendiente de revision', 'cm' ) ?>"> <i class="fa fa-eye-slash"></i></span>
+                                                      <span style="color:red" title="<?php _e( 'pending review', 'cm' ) ?>"> <i class="fa fa-eye-slash"></i></span>
                                                 <?php endif; ?>
                                                 <a class="fancybox" data-fancybox-type="ajax" href="<?php echo $resource_edit_url ?>" title="<?php _e( 'edit', 'cm' ) ?>"><i class="fa fa-pencil-square-o"></i></a> 
                                           </div>

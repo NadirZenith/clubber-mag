@@ -10,10 +10,9 @@
  */
 /* --------------------------- */
 
-define('CM_DIR', get_stylesheet_directory_uri());
 define('CM_LIB_DIR', '/lib');
 define('CM_ADDONS_DIR', '/lib/nz/add-ons');
-define('CM_MODELS_DIR', CM_LIB_DIR . '/models');
+define('CM_MODELS_DIR', '/models');
 
 //pages
 define('CM_RESOURCE_EVENT_PAGE_ID', 406);
@@ -54,32 +53,18 @@ $roots_includes = array(
     'lib/scripts.php',
     'lib/sidebar.php',
     'lib/queries.php',
-    //
-    'lib/nz/template.php',
-    'lib/nz/security.php',
-    'lib/nz/NzAjaxResponse.php',
-    //widgets
-    /* 'lib/nz/widgets/widget-audio.php', */
-    /* 'lib/nz/widgets/widget-test.php', */
     'lib/nz/widgets/widget-soundcloud.php',
     'lib/nz/widgets/widget-calendar.php',
     'lib/nz/widgets/widget-relate.php',
     'lib/nz/widgets/widget-share.php',
     'lib/nz/widgets/widget-fb-like-box.php',
-    'lib/nz/widgets/widget-newsletter.php',
-    //shortcode
+    /*'lib/nz/widgets/widget-newsletter.php',*/
     'lib/nz/shortcodes/shortcode-soundcloud.php',
-    //social
     'lib/nz/social/social-icons-list.php',
     'lib/nz/social/facebook-config.php',
     'lib/nz/social/soundcloud-config.php',
     'lib/nz/social/twitter-config.php',
-    //
-
     /** CLUBBER POST TYPES      */
-    'lib/nz/CPT.php', //library to create custom post and terms
-    /*
-     */
     CM_MODELS_DIR . '/user.php',
     CM_MODELS_DIR . '/menu.php',
     CM_MODELS_DIR . '/artist.php',
@@ -96,22 +81,16 @@ $roots_includes = array(
     CM_MODELS_DIR . '/pages/festivals.php', // Page festivals queries
     'lib/nz/lib/nzsession.php',
     //forms /login /register
-    'lib/nz/lib/nz-wp-form/nz-wp-forms.php',
+    'lib/nz/lib/nz-wp-form/nz-wp-forms.php',//forms to be replaced
     //
-    /* 'lib/nz/lib/debug/nz-url-functions.php', */
-    /* 'lib/nz/lib/debug/nz-debug-functions.php', */
-    /* 'lib/nz//lib/debug/css-media-queries.php', */
-    //
-    /* CM_PLUGIN_DIR . '/raw-radio-taxonomies/raw-radio-taxonomies.php', */
-    /* CM_PLUGIN_DIR . '/post-type-archive-links/post-type-archive-links.php', */
     /** CLUBBER add-ons      */
     CM_ADDONS_DIR . '/nz-start-msgs/NzStartMsgs.php',
-    CM_ADDONS_DIR . '/location-taxonomy/contry-list.php',
-    CM_ADDONS_DIR . '/col-shortcodes/col-shortcodes.php',
+    CM_ADDONS_DIR . '/location-taxonomy/contry-list.php',//tax tools cm specific
+    CM_ADDONS_DIR . '/col-shortcodes/col-shortcodes.php',//shortcodes cm specific()
     CM_ADDONS_DIR . '/todo-pending-posts.php',
-    CM_ADDONS_DIR . '/query-functions.php',
-    CM_ADDONS_DIR . '/language-selector.php',
-    'tpl/shortcodes/layout-shortcodes.php'
+    CM_ADDONS_DIR . '/query-functions.php',//artist archive filter
+    CM_ADDONS_DIR . '/language-selector.php',//to be removed by plugin localization
+    /*'tpl/shortcodes/layout-shortcodes.php'*/
 );
 
 foreach ($roots_includes as $file) {
@@ -123,60 +102,13 @@ foreach ($roots_includes as $file) {
 }
 unset($file, $filepath);
 
-/* d($GLOBALS); */
 
 global $nzwpnewsletter;
 
 if (isset($nzwpnewsletter)) {
-    $nzwpnewsletter->setFormTemplate(__DIR__.'/tpl/home/newsletter.php');
-    /*d($nzwpnewsletter);*/
+    $nzwpnewsletter->setFormTemplate(__DIR__ . '/tpl/home/newsletter.php');
+    /* d($nzwpnewsletter); */
 }
-/*
- *  
- *      DEV 
- * 
- * * 
-if ( NZ_USE_LIVE_DB || (isset( $_GET[ 'action' ] ) && $_GET[ 'action' ] == 'live') ) {
-
-      add_filter( 'wp_get_attachment_image_attributes', 'correct_localhost_live_path' );
-
-      function correct_localhost_live_path( $attr ) {
-
-            $attr[ 'src' ] = str_replace( 'http://lab.dev/clubber-mag-dev', 'http://www.clubber-mag.com/clubber-mag', $attr[ 'src' ] );
-
-            return $attr;
-      }
-
-}
- */
-
-/*
- *  
- *      TESTES 
- * 
- * * 
-
-// always paste as plain text
-foreach ( array( 'tiny_mce_before_init', 'teeny_mce_before_init' ) as $filter ) {
-      add_filter( $filter, function( $mceInit ) {
-            $mceInit[ 'paste_text_sticky' ] = true;
-            $mceInit[ 'paste_text_sticky_default' ] = true;
-            return $mceInit;
-      } );
-}
-// load 'paste' plugin in minimal/pressthis editor
-add_filter( 'teeny_mce_plugins', function( $plugins ) {
-      $plugins[] = 'paste';
-      return $plugins;
-} );
-// remove "Paste as Plain Text" button from editor
-add_filter( 'mce_buttons_2', function( $buttons ) {
-      if ( ( $key = array_search( 'pastetext', $buttons ) ) !== false ) {
-            unset( $buttons[ $key ] );
-      }
-      return $buttons;
-} );
 
 
 
- */

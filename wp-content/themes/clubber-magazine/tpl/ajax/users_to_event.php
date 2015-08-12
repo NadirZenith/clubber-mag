@@ -3,7 +3,7 @@
             <header class="mt5 mb10">
                   <h1>
                         <span class="cm-title">
-                              <?php _e( 'Participantes', 'cm' ) ?>
+                              <?php _e( 'Participants', 'cm' ) ?>
                         </span> 
                   </h1>
             </header>

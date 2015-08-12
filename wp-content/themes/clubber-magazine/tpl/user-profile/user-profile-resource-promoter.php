@@ -31,10 +31,10 @@ if ( $query->have_posts() ) {
       <section class="m5">
             <header class="m5 cb group">
                   <?php
-                  $title = 'Eventos';
+                  $title = __('Events', 'cm');
 
                   if ( $curauth->ID == get_current_user_id() ) :
-                        $title = 'Mis Eventos';
+                        $title = __('My events','cm');
                         ?>
 
                   <?php endif; ?>
@@ -73,7 +73,7 @@ if ( $query->have_posts() ) {
                                                       <?php endif; ?>
                                                       <?php if ( $curauth->ID == get_current_user_id() ): ?>
                                                             <?php if ( get_post_status() != 'publish' ) : ?>
-                                                                  <span style="color:red" title="pendiente de revision"> <i class="fa fa-eye-slash"></i> </span>
+                                                                  <span style="color:red" title="<?php _e( 'pending review', 'cm' ) ?>"> <i class="fa fa-eye-slash"></i> </span>
                                                             <?php endif; ?>
                                                             <?php
                                                             $event_form_url = get_permalink( cm_lang_get_post( CM_RESOURCE_EVENT_PAGE_ID ) );
@@ -102,7 +102,7 @@ if ( $query->have_posts() ) {
                         ?>
                         <div class="pt10 pb5">
                               <a class="readmore responsive " href="<?php echo $event_form_url ?>"> 
-                                    <?php _e( 'Compartir Evento', 'cm' ) ?>&nbsp;&nbsp;<i class="fa fa-users" style="color: #0583f2" ></i>
+                                    <?php _e( 'Share event', 'cm' ) ?>&nbsp;&nbsp;<i class="fa fa-users" style="color: #0583f2" ></i>
                               </a>
                         </div>
 

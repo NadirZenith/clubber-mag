@@ -18,7 +18,7 @@ add_action( 'after_setup_theme', 'my_theme_setup' );
 
 function my_theme_setup() {
 
-      load_theme_textdomain( 'cm', get_template_directory() . '/lib/languages' );
+      load_theme_textdomain( 'cm', get_template_directory() . '/languages' );
 }
 
 /**
@@ -88,8 +88,6 @@ if ( !isset( $content_width ) ) {
       $content_width = 1140;
 }
 
-$nz = new Pimple();
-
 
 add_filter( 'query_vars', 'add_used_vars' );
 
@@ -109,7 +107,9 @@ register_nav_menu( 'primary', __( 'Primary Menu', 'cm' ) );
 register_nav_menu( 'footer', __( 'Footer Menu', 'cm' ) );
 
 
-
+/*
+ * remove default sizes
+ */
 add_filter( 'intermediate_image_sizes_advanced', 'filter_image_sizes' );
 
 function filter_image_sizes( $sizes ) {
@@ -155,7 +155,6 @@ function clubber_register_image_sizes() {
 
 /**
  * Register our sidebars and widgetized areas.
- *
  */
 add_action( 'widgets_init', 'cm_widgets_init' );
 

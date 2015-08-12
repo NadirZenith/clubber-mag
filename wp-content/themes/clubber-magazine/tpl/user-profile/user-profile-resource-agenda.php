@@ -21,7 +21,7 @@ $query2 = new WP_Query( $args );
       <header class="m5 cb group">
             <?php if ( $curauth->ID == get_current_user_id() ) { ?>
                   <div  class="fr mr5">
-                        <a href="<?php echo get_post_type_archive_link( 'agenda' ) ?>" title="<?php _e( 'Apúntate a eventos', 'cm' ); ?>">
+                        <a href="<?php echo get_post_type_archive_link( 'agenda' ) ?>" title="<?php _e( 'Subscribe to events', 'cm' ); ?>">
                               <i class="fa fa-calendar"></i>
                         </a> 
                   </div>
@@ -30,8 +30,8 @@ $query2 = new WP_Query( $args );
             $user_agenda_url = get_author_posts_url( $curauth->ID ) . 'agenda';
             ?>
             <h2>
-                  <a href="<?php echo $user_agenda_url ?>" title="<?php _e( 'Ver agenda de usuário', 'cm' ) ?>">
-                        Agenda
+                  <a href="<?php echo $user_agenda_url ?>" title="<?php _e( 'See user agenda', 'cm' ) ?>">
+                        <?php _e( 'Agenda', 'cm' ) ?>
                   </a>
             </h2>
       </header>
@@ -96,7 +96,7 @@ $query2 = new WP_Query( $args );
                                     ?> 
                                     <a class="h3" href="<?php echo get_post_type_archive_link( 'agenda' ) ?>">
                                           <?php
-                                          _e( '¡Apúntate a eventos en nuestra agenda!', 'cm' );
+                                          _e( '¡Subscribe to events!', 'cm' );
                                           ?>
                                     </a>
                                     <?php
@@ -104,7 +104,7 @@ $query2 = new WP_Query( $args );
                                     ?> 
                                     <a class="h3" href="<?php echo get_post_type_archive_link( 'agenda' ) ?>">
                                           <?php
-                                          _e( '¡Apúntate a eventos en nuestra agenda!', 'cm' );
+                                          _e( '¡Subscribe to events!', 'cm' );
                                           ?>
                                     </a>
                               <?php
@@ -114,9 +114,9 @@ $query2 = new WP_Query( $args );
                               <span class="h3">
                                     <?php
                                     if ( $query3->have_posts() )://have past events
-                                          _e( 'Últimos eventos asistidos', 'cm' );
+                                          _e( 'Last subscribed events', 'cm' );
                                     else ://Never used button
-                                          _e( 'Este usuario no se ha apuntado a eventos', 'cm' );
+                                          _e( 'This user has not subscribed to any event', 'cm' );
                                     endif;
                                     ?>
                               </span>
