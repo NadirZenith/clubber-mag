@@ -9,7 +9,7 @@ $UserForm = new NZ_WP_Form( $form_name, $post_type );
  * PROFILE IMAGE meta(text)
  */
 $slug = 'userprofile_image';
-$label = __( 'Background image', 'cm' );
+$label = __( 'Profile image', 'cm' );
 $default = get_template_directory_uri() . '/assets/images/user/user-profile-ph.jpg';
 
 $url = nz_get_user_image( $curauth->ID, 'profile', $default );

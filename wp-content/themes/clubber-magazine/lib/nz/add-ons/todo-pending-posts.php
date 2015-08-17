@@ -38,7 +38,7 @@ function nz_toolbar_todo( $wp_admin_bar ) {
 
 
       /* d($post_types); */
-      $info_string = '<span style="color:red;">( %d )</span>';
+      $info_string = '<span style="color:red;"> ( %d )</span>';
 
       foreach ( $post_types as $key => $value ) {
             $posts = get_posts(

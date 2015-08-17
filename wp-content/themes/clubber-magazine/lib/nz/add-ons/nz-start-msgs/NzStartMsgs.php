@@ -59,8 +59,9 @@ class NzStartMsgs {
             foreach ( $this->msgs as $key => $item ) {
 
                   if ( $this->check_callback( $item[ 'when' ] ) ) {
-
-                        if ( $this->userSawMessage( $this->user_id, $item[ 'id' ] ) ) {
+    /*d($this->msgs);*/
+    /*d($item);*/
+                        if ( $this->userSawMessage( $item[ 'id' ] ) ) {
                               continue;
                         }
 
@@ -78,15 +79,17 @@ class NzStartMsgs {
             }
       }
 
-      private function userSawMessage( $user_id, $msg_id ) {
+      private function userSawMessage( $msg_id ) {
             $key = 'nz_start_msgs';
-            $data = get_user_meta( $user_id, $key, true );
+            $data = get_user_meta( $this->user_id, $key, true );
             $data = empty( $data ) ? array() : $data;
 
             return in_array( $msg_id, $data );
       }
 
       public function initScript() {
+            d($this->current);
+            d($this->msgs);
             ?>
             <script>
                   $(document).ready(function() {
@@ -299,7 +302,7 @@ function cm_start_msgs() {
       $single_agenda_msgs = array(
             'id' => 6,
             'name' => 'event-message',
-            'when' => array( 'is_singular', array( 'agenda' ) ),
+            'when' => array( 'is_single', array( 'agenda' ) ),
             'msgs' => array(
                   array(
                         'container' => '#user-event-signin',

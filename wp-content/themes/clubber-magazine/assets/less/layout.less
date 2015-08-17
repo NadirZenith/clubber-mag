@@ -1,39 +1,61 @@
 
 body {
-      font-family: @font-family-base;
-      font-size: @font-size-base;
-      line-height: @line-height-base;
-      color: #111;
-      height:100%;
-      width:100%;
-      background: @body-bg-color;
+    font-family: @font-family-base;
+    /*font-size: @font-size-base;*/
+    /*line-height: @line-height-base;*/
+    color: #111;
+    height:100%;
+    width:100%;
+    background: @body-bg-color;
 }
 
 #site { 
-      /*width: 98%;*/
-      width: 100%;
-      max-width: 1400px;
-      margin-top: 60px;
-      margin-bottom: 0px;
-      margin-left: auto;
-      margin-right: auto;
-      -webkit-box-shadow: 0px 7px 13px 0px rgba(50, 50, 50, 0.75);
-      -moz-box-shadow:    0px 7px 13px 0px rgba(50, 50, 50, 0.75);
-      box-shadow:         0px 7px 13px 0px rgba(50, 50, 50, 0.75);
-      background-color: @site-bg-color;
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 60px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: 0px 7px 13px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 7px 13px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 7px 13px 0px rgba(50, 50, 50, 0.75);
+    background-color: @site-bg-color;
 }
 
 header#header{
-      background:linear-gradient(0deg, @header-bg-end, @header-bg-start);
+    background:linear-gradient(0deg, @header-bg-end, @header-bg-start);
 }
 
+
 #content{
-      margin: 0 auto;
-      width: 98%;
+    margin: 0 auto;
+    width: 98%;
+
+    .has-sidebar{
+        width: 100%;
+        padding: 5px;
+    }
+
+    > aside{
+        width: 100%;
+
+    }
 }
-//sidebar below
+
+/*body.single-artist #content{*/
+    /*width: 100%;*/
+/*}*/
+
+footer#footer{
+    background-color: @footer-bg-color;
+    padding: 10px 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+/*
 #content .has-sidebar{
-      width: 100%;
+          width: 100%;
 }
 
 #content > aside{
@@ -42,146 +64,106 @@ header#header{
 .pagination a{
       color: #333;
 }
+*/
 /*FOOTER*/
-footer#footer{
-      background-color: @footer-bg-color;
-      padding: 10px 0;
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-}
 
-#site-logo {
+#branding{
+    float:left;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 35px;
+    
+    h1{
+        margin: 0;
+        font-size: 0;
+    }
 
-      float:left;
-      margin-top: 6px;
-      margin-bottom: 6px;
-      margin-left: 35px;
-
-      img{
-            width: 140px;
-
-      }
+    img{
+        width: 140px;
+    }
 
 }
 
+//for artists page
 .home-featured-image{
-      height: 220px;
-      width: 100%;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-color: white;
-      background-size: 100%;
-      position: relative;
+    height: 220px;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: 100%;
+    position: relative;
 }
 
+/*
 .pager-date,
 .menu-all-first-letter,
 .menu-az {
-      a{
-            color: @sc-2;
-      }
+    a{
+        color: @sc-2;
+    }
 }
+*/
+
 // sm ≥ 568px 
 @media screen and (min-width: 35.5em)
 {
-      .home-featured-image{
-            height: 350px;
-      }
+    .home-featured-image{
+        height: 350px;
+    }
 }
 // md ≥ 768px 
 @media screen and (min-width: 48em)
 { 
-      #site { 
-            margin-top: 0px;
-      }
-      .home-featured-image{
-            height: 450px;
-      }
+    #site { 
+        margin-top: 0px;
+    }
+    .home-featured-image{
+        height: 450px;
+    }
 }
 // lg ≥ 1024px
 //sidebar on side
 @media screen and (min-width: 64em)
 {
 
-      /*#content > main.has-sidebar{*/
-      #content .has-sidebar{
-            float: left;
-            width: 74%;
-      }
+    /*#content > main.has-sidebar{*/
+    #content .has-sidebar{
+        float: left;
+        width: 73%;
+    }
 
-      #content > aside{
-            float: left;
-            width: 26%;
-      }
-
-}
-// xl ≥ 1280px
-@media screen and (min-width: 80em)
-{
+    #content > aside{
+        float: left;
+        width: 26%;
+    }
 
 }
-
-
-
-
-
-
-// sm ≥ 568px 
-@media screen and (min-width: 35.5em){
-
-}
-// md ≥ 768px 
-@media screen and (min-width: 48em){
-
-}
-// lg ≥ 1024px
-@media screen and (min-width: 64em){
-
-}
-// xl ≥ 1280px
-@media screen and  (min-width: 80em){
-
-}
-
-
-
-
 
 .parallax{
-      position: absolute;
+    position: absolute;
 }
 
 #footer-parallax{
-      width: 100%;
-      bottom: 8;
+    width: 100%;
+    bottom: 8;
 }
 #footer-parallax img{
-      display: block;
-      /*width: 80%;*/
-      width: 12%;
-      //right
-      float: right;
-      /*margin-right: 20%;*/
-      margin-right: 3%;
-
-      /*      
-      //center
-      margin-left: auto;
-      margin-right: auto;
-      */
-
+    display: block;
+    width: 12%;
+    float: right;
+    margin-right: 3%;
 }
-
+/*
 #breadcrumbs span{
       color: #fff;
 }
 
-/*BACKGROUND*/ 
 .bg-50{
-      /*background-color: rgba(50, 50, 50, 0.30);*/
       background-color: @section-bg-color;
 }
+*/
+/*
 .cm-title,
 .cm-title2,
 .cm-title3{
@@ -200,25 +182,11 @@ footer#footer{
       background-color: #fff;
       color: @cm-blue-color;
 }
-#user-profile-images{
-      border-bottom:1px solid #aaa;
-}
-#user-profile-picture{
-      position: absolute;
-      top: 20px;
-      left: 0;
-      width: 25%;
-      height: 25%;
-}
-#user-profile-picture img{
-      width: 100%;
-      height: auto;
-      background-color: #fff;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      overflow: hidden;
-}
+*/
+/*
 
+*/
+/*
 body.single-podcast{
       .the-content{
             p{
@@ -227,4 +195,5 @@ body.single-podcast{
             }
       }
 }
+*/
 

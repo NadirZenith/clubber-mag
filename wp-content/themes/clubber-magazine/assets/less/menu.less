@@ -23,32 +23,18 @@
     height: 40px;
     line-height: 3;
     color: #333;
+    text-decoration: none;
 }
 
-// Dropdown */
-#access ul li ul, 
-#access ul li:hover ul ul, 
-#access ul ul li:hover ul ul, 
-#access ul ul ul li:hover ul ul, 
-#access ul ul ul ul li:hover ul ul {
+#access ul li ul {
     display:none;
     z-index: 9999;
     margin-left: @menu_space;
     padding-left: 0;
-}
-/*
-#access ul li:hover ul, 
-#access ul ul li:hover ul, 
-#access ul ul ul li:hover ul, 
-#access ul ul ul ul li:hover ul,
-#access ul ul ul ul ul li:hover ul {
-      //display:block;
-}
-*/
-#access ul li ul {
+    /*    */
     position: absolute;
     background-color: #fff;
-    border-top: 4px solid @cm-blue-color;
+    border-top: 4px solid @sc-1;
     top: 40px;
     left: 0px;
     width: 190px;
@@ -80,32 +66,30 @@
     color: #333;
 }
 //connect / user menu
-.menu-connect{
-    /*background-color: red;*/
-}
-.user-menu{
-    /*position: relative;*/
-    /*background-color: blue;*/
-    min-width: 120px;
-}
-.user-menu span{
-    position: absolute;
-    bottom: 1px;
-    display: block;
-    font-size:10px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1;
-    /*text-indent: 2px;*/
-}
-.user-menu img{
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    /*margin-left: 5px;*/
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background-color: #fff;
+#menu-connect{
+    .user-menu{
+        min-width: 120px;
+
+        span{
+            position: absolute;
+            bottom: 1px;
+            display: block;
+            font-size:10px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1;
+
+        }
+        img{
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            /*margin-left: 5px;*/
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background-color: #fff;
+        }
+    }
 }
 
 //search
@@ -140,8 +124,6 @@
         width: 240px;
         border-color: #eaeaea;
         background-color: #fff;
-        //padding-left: 10px;*/
-        //text-indent: 5px;*/
     }
 }
 
@@ -160,16 +142,30 @@
     .oh;
     font-size: 14px;
     font-family: @font-family-base;
-
 }
+/* 
+* buy tickets
+*/
+.buy-tickets{
+}  
 
-
+#access a.pure-button.buy-tickets{
+    height: 30px;
+    margin-top: 5px;
+    line-height: 1.5;
+    background-color: #0583f2;
+    border: 1px solid #0519F2;
+    /*border: 1px solid #666;*/
+    /*border-radius: 5px;*/
+    color: #333;
+}
 
 //mobile menu
 #mobile-menu .logo{
     text-align: center;     
 }
 #mobile-menu .logo img{
+    display: inline-block;
     margin-top: 5px;
 }
 
@@ -243,11 +239,12 @@ nav#footer-menu > ul
 nav#footer-menu > ul > li{
     width: 100%;
     float: left;
-    font-size: 15px;
+    /*font-size: 15px;*/
     text-align: center;
+    /*padding: 15px auto;*/
 }
 #footer-menu a{
-    padding: 5px 0;
+    padding: 8px 0;
     color: #eee;
     display: block;
 
@@ -290,7 +287,6 @@ nav#footer-menu > ul > li{
     {
         width: 90%;
     }
-
 
     //   columns   */
     nav#footer-menu > ul > li{

@@ -84,6 +84,7 @@ if ( isset( $_GET[ 'recover' ] ) ) {
       );
       $LoginForm->addField( $type, $slug, $label, $atts );
 
-      $LoginForm->addSubmit( 'btn_register', __( 'Login', 'cm' ) );
+      /*$LoginForm->addSubmit( 'btn_register', __( 'Login', 'cm' ) );*/
+      $LoginForm->addSubmit( 'btn_login', __( 'Login', 'cm' ) );
 }
 return $LoginForm;

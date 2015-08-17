@@ -146,10 +146,4 @@ if ($query->have_posts()) {
     }
 </script>
 
-<style>
-    #map-canvas {
-        width: 80%;
-        height: 450px;
-    }
-</style>
-<div id="map-canvas" class="m15"></div>
+<div id="map-canvas" class="map-canvas mt30" style="height: 450px"></div>

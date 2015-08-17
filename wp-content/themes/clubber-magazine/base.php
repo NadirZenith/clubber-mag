@@ -3,13 +3,11 @@
 <html class="no-js" <?php language_attributes(); ?>>
     <?php get_template_part('tpl/base/head'); ?>
     <body <?php body_class(); ?> >
-
         <?php do_action('base_after_body') ?>
-        <div id="site">
+        <div id="site" class="pure-type">
             <header id="header" role="banner">
                 <?php get_template_part('tpl/base/header'); //the header of page, logo banner menu etc...  ?>
             </header>
-
             <?php
             if (is_front_page()) {
                 ?>
@@ -21,14 +19,18 @@
                 echo get_template_part('tpl/parts/artist-home');
             }
             ?>
-            <?php ob_flush(); ob_start(); ?>
-            
+            <?php
+            ob_flush();
+            ob_start();
+            ?>
             <div id="content">
                 <?php nzs_display_messages(); ?>
                 <?php get_template_part('tpl/base/content'); ?>
             </div>
-            <?php ob_flush(); ob_start(); ?>
-
+            <?php
+            ob_flush();
+            ob_start();
+            ?>
             <footer id="footer" role="contentinfo">
                 <?php get_template_part('tpl/base/footer'); ?>
             </footer>

@@ -20,19 +20,20 @@ function roots_scripts()
 {
     $base = get_template_directory_uri();
     if (WP_ENV === 'development') {
-        
+
         $assets = array(
             'css' => array(
-                'main' => $base.'/assets/css/main.css',
-                'pure-responsive-debug' => $base . '/assets/css/pure-responsive-debug.css',
+                'pure-css-min' => 'http://yui.yahooapis.com/pure/0.6.0/pure-min.css',
+                'pure-css-responsive-min' => 'http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
                 'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One',
                 'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
-                'pure-css' => 'http://yui.yahooapis.com/pure/0.6.0/base-min.css',
-                'pure-css' => 'http://yui.yahooapis.com/pure/0.6.0/pure-min.css',
+                'main' => $base . '/assets/css/main.css',
+                'pure-responsive-debug' => $base . '/assets/css/pure-responsive-debug.css',
+            /* 'pure-css-base' => 'http://yui.yahooapis.com/pure/0.6.0/base-min.css', */
             ),
             'js' => array(
                 'main' => $base . '/assets/js/scripts.js',
-                'modernizr' => $base.'/assets/vendor/modernizr/modernizr.js',
+                'modernizr' => $base . '/assets/vendor/modernizr/modernizr.js',
                 'jquery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js',
                 'google-places' => 'https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=places',
             ),
@@ -44,9 +45,10 @@ function roots_scripts()
 
         $assets = array(
             'css' => array(
-                'main' => $base . '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
+                'pure-css-min' => 'http://yui.yahooapis.com/pure/0.6.0/pure-min.css',
                 'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One',
-                'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
+                'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
+                'main' => $base . '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
             ),
             'js' => array(
                 'main' => $base . '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
@@ -71,7 +73,7 @@ function roots_scripts()
 
     nz_enqueue_styles($assets['css']);
     nz_enqueue_scripts($assets['js']);
-    
+
     /*
       if (is_single() && comments_open() && get_option('thread_comments')) {
       wp_enqueue_script('comment-reply');

@@ -1,34 +1,33 @@
+
 <main role="main">
     <div class="mb30 mt15">
-        <?php
-        get_template_part('tpl/parts/featured-events');
-        ?>
+        <?php get_template_part('tpl/parts/featured-events'); ?>
     </div>
 
     <div class="has-sidebar">
-        <div class="ml5">
-            <div class="group cb mb15">
-                <?php
-                echo NzWpLocationTerms::get_location_filter();
-                ?>
-            </div>
-            <h1 class="h2">
+
+        <div class="group ">
+            <?php echo NzWpLocationTerms::get_location_filter(); ?>
+        </div>
+        <!--            
+        -->
+        <section>
+            <h1>
                 <?php
                 _e('Party and Events of the week', 'cm');
                 echo ($city) ? ' ' . __('in', 'cm') . ' ' . $city : '';
                 ?> 
             </h1>
-        </div>
+            <?php
+            $query = $wp_query;
+            nz_pagination_by_date();
 
-        <?php
-        $query = $wp_query;
-        nz_pagination_by_date();
+            $main_posts_id = array();
+            include('tpl/archive/agenda.php');
 
-        $main_posts_id = array();
-        include('tpl/archive/agenda.php');
-
-        nz_pagination_by_date();
-        ?>
+            nz_pagination_by_date();
+            ?>
+        </section>
 
         <?php
         /*   LESS THAN 5 EVENTS        */
@@ -70,15 +69,17 @@
             $query = new WP_Query($args);
             if ($query->found_posts > 0) {
                 ?>
-                <div class="ml5 mb15">
-                    <h1 class="h2">
-                        <?php
-                        _e('Next parties and events', 'cm');
-                        ?> 
+                <section>
+                    <div class="ml5- mb15-">
+                        <h1 class="h2-">
+                            <?php
+                            _e('Next parties and events', 'cm');
+                            ?> 
 
-                    </h1>
-                </div>
-                <?php include('tpl/archive/agenda.php'); ?>
+                        </h1>
+                    </div>
+                    <?php include('tpl/archive/agenda.php'); ?>
+                </section>
                 <?php
             }
         }
@@ -87,6 +88,6 @@
     </div>
 
 </main>
-<aside role="complementary">
-    <?php get_sidebar(); ?>
+<aside class="<?php echo roots_sidebar_class(); ?>" role="complementary">
+    <?php include roots_sidebar_path(); ?>
 </aside>

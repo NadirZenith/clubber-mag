@@ -1,6 +1,5 @@
 <?php
 
-
 /* ------------------------------------------------ */
 add_action('init', 'cm_register_artist_post_type');
 
@@ -108,4 +107,32 @@ function cm_artist_contact_custom_fields()
     }
 
     /* END CONTACT FIELDS */
+}
+/**
+ * PRE GET ARCHIVE ARTIST
+ */
+add_action('pre_get_posts', 'cm_pre_get_archive_artist');
+
+function cm_pre_get_archive_artist($query)
+{
+
+    if (
+        !$query->is_main_query() || $query->is_admin || !$query->is_post_type_archive('artist')
+    )
+        return;
+
+    $query->set('orderby', 'title');
+    $query->set('order', 'ASC');
+    $query->set('posts_per_page', -1);
+}
+add_action('pre_get_posts', 'cm_pre_get_single_artist');
+
+function cm_pre_get_single_artist($query)
+{
+
+    if (
+        'artist' != $query->get('post_type') || !$query->is_main_query() || $query->is_admin || !$query->is_single()
+    )
+        return;
+    /*Roots_Wrapping::$raw = TRUE;*/
 }

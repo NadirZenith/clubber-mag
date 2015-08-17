@@ -4,9 +4,6 @@
  */
 $args = array(
     'post_type' => 'agenda',
-    /* 'connected_type' => 'events_to_users', */
-    /* 'connected_items' => $curauth->ID, */
-    /* 'nopaging' => true, */
     'author' => -$curauth->ID,
     'meta_query' => array(
         'compare' => 'AND',
@@ -32,24 +29,20 @@ $query2 = new WP_Query($args);
 
 if ($query2->have_posts()) {
     ?>
-    <ul>
+    <ul class="pure-g">
         <?php
         while ($query2->have_posts()) {
             $query2->the_post();
             ?>
-            <li class="col-1-3 fl">
-                <div class="ibox-3 mt0">
-                    <?php
-                    get_template_part('tpl/home/list-2');
-                    ?>
+            <li class="pure-u-1-3">
+                <div class="p3">
+                    <?php get_template_part('tpl/home/list-2'); ?>
                 </div>
             </li>
             <?php
         }
         ?>
-
     </ul>
-
     <?php
     wp_reset_postdata();
 }

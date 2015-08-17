@@ -442,7 +442,7 @@ msgstr "Parece que el archivo <code>wp-config.php</code> no existe. Lo necesito 
 msgid "Links for %s"
 msgstr "Enlaces para %s"
 
-#: wp-includes/wp-db.php:2977
+#: wp-includes/wp-db.php:2979
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>ERROR</strong>: WordPress %1$s necesita MySQL %2$s o superior."
 
@@ -635,16 +635,16 @@ msgstr "(WordPress no pudo establecer una conexión segura con WordPress.org. Po
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
 msgstr "Ha sucedido un error inesperado. Puede que haya un problema con WordPress.org o con la configuración de este servidor. Si continuas teniendo problemas, por favor prueba en los <a href=\"https://es.forums.wordpress.org\">foros de soporte</a>."
 
-#: wp-includes/theme.php:1969
+#: wp-includes/theme.php:1948
 msgid "Customizer"
 msgstr "Personalizador"
 
 #. translators: 1: Theme support 2: hook name
-#: wp-includes/theme.php:1635
+#: wp-includes/theme.php:1614
 msgid "Theme support for %1$s should be registered before the %2$s hook."
 msgstr "El soporte del Tema para %1$s debe estar registrado antes del gancho %2$s."
 
-#: wp-includes/theme.php:1504
+#: wp-includes/theme.php:1483
 msgid "You need to pass an array of types."
 msgstr "Tienes que pasar una matriz de tipos."
 
@@ -1567,33 +1567,33 @@ msgstr "En <code>%1$s</code>, usa el método <code>%2$s</code>, no la función <
 msgid "Conditional query tags do not work before the query is run. Before then, they always return false."
 msgstr "Las etiquetas de las consultas condicionales no funcionan antes de ejecutar la consulta. Haciéndolo antes, siempre devuelven falso."
 
-#: wp-includes/post.php:3891 wp-includes/script-loader.php:449
+#: wp-includes/post.php:3892 wp-includes/script-loader.php:449
 #: wp-includes/script-loader.php:510
 msgctxt "tag delimiter"
 msgid ","
 msgstr ","
 
-#: wp-includes/post.php:3459
+#: wp-includes/post.php:3460
 msgid "The page template is invalid."
 msgstr "La plantilla de la página no es válida."
 
-#: wp-includes/post.php:3395
+#: wp-includes/post.php:3396
 msgid "Could not insert post into the database"
 msgstr "No ha sido posible insertar la entrada en la base de datos"
 
-#: wp-includes/post.php:3380
+#: wp-includes/post.php:3381
 msgid "Could not update post in the database"
 msgstr "No ha sido posible actualizar la entrada en la base de datos"
 
-#: wp-includes/post.php:3236
+#: wp-includes/post.php:3237
 msgid "Whoops, the provided date is invalid."
 msgstr "¡Vaya! la fecha que has dado no es válida."
 
-#: wp-includes/post.php:3168
+#: wp-includes/post.php:3169
 msgid "Content, title, and excerpt are empty."
 msgstr "Contenido, título y extracto están vacios."
 
-#: wp-includes/post.php:3011
+#: wp-includes/post.php:3012
 msgid "Passing an integer number of posts is deprecated. Pass an array of arguments instead."
 msgstr "Pasar un número entero de entradas es obsoleto. Pasa una matriz de argumentos en su lugar."
 
@@ -3633,12 +3633,12 @@ msgstr "Editar esto"
 msgid "Comments Feed"
 msgstr "Feed de comentarios"
 
-#: wp-includes/l10n.php:940
+#: wp-includes/l10n.php:944
 msgctxt "translations"
 msgid "Available"
 msgstr "Disponible"
 
-#: wp-includes/l10n.php:922
+#: wp-includes/l10n.php:926
 msgctxt "translations"
 msgid "Installed"
 msgstr "Instalada"
@@ -4128,33 +4128,33 @@ msgid "ERROR: This is not a valid feed template."
 msgstr "ERROR: Esta no es una plantilla de agregador válida."
 
 #. translators: used to join items in a list with only 2 items
-#: wp-includes/formatting.php:3798
+#: wp-includes/formatting.php:3830
 msgid "%s and %s"
 msgstr "%s y %s"
 
 #. translators: used to join last two items in a list with more than 2 times
-#: wp-includes/formatting.php:3796
+#: wp-includes/formatting.php:3828
 msgid "%s, and %s"
 msgstr "%s, y %s"
 
 #. translators: used to join items in a list with more than 2 items
-#: wp-includes/formatting.php:3794
+#: wp-includes/formatting.php:3826
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: wp-includes/formatting.php:3580
+#: wp-includes/formatting.php:3612
 msgid "The timezone you have entered is not valid. Please select a valid timezone."
 msgstr "La zona horaria que has introducido no es válida. Por favor, selecciona una zona horaria válida."
 
-#: wp-includes/formatting.php:3525
+#: wp-includes/formatting.php:3557
 msgid "The Site address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "La dirección del sitio no parece ser una URL válida. Por favor, introduce una válida."
 
-#: wp-includes/formatting.php:3512
+#: wp-includes/formatting.php:3544
 msgid "The WordPress address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "La dirección de WordPress parece no ser una URL válida. Por favor, introduce una válida."
 
-#: wp-includes/formatting.php:3412
+#: wp-includes/formatting.php:3444
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
 msgstr "La dirección de correo electrónico parece que no es válida. Por favor, introduce una válida."
 
@@ -4164,47 +4164,47 @@ msgstr "La dirección de correo electrónico parece que no es válida. Por favor
 #. translators: If your word count is based on single characters (East Asian
 #. characters), 		   enter 'characters'. Otherwise, enter 'words'. Do not
 #. translate into your own language.
-#: wp-includes/formatting.php:2738 wp-includes/script-loader.php:379
+#: wp-includes/formatting.php:2770 wp-includes/script-loader.php:379
 msgctxt "word count: words or characters?"
 msgid "words"
 msgstr "words"
 
-#: wp-includes/formatting.php:2733 wp-includes/general-template.php:2721
+#: wp-includes/formatting.php:2765 wp-includes/general-template.php:2721
 msgid "&hellip;"
 msgstr "&hellip;"
 
-#: wp-includes/formatting.php:2646
+#: wp-includes/formatting.php:2678
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s año"
 msgstr[1] "%s años"
 
-#: wp-includes/formatting.php:2641
+#: wp-includes/formatting.php:2673
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s mes"
 msgstr[1] "%s meses"
 
-#: wp-includes/formatting.php:2636
+#: wp-includes/formatting.php:2668
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s semana"
 msgstr[1] "%s semanas"
 
-#: wp-includes/formatting.php:2631
+#: wp-includes/formatting.php:2663
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s día"
 msgstr[1] "%s días"
 
-#: wp-includes/formatting.php:2626
+#: wp-includes/formatting.php:2658
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "%s hora"
 msgstr[1] "%s horas"
 
 #. translators: min=minute
-#: wp-includes/formatting.php:2621
+#: wp-includes/formatting.php:2653
 msgid "%s min"
 msgid_plural "%s mins"
 msgstr[0] "%s min"
@@ -4259,7 +4259,7 @@ msgid "&#8221;"
 msgstr "&#8221;"
 
 #. translators: opening curly double quote
-#: wp-includes/formatting.php:62 wp-includes/formatting.php:4035
+#: wp-includes/formatting.php:62 wp-includes/formatting.php:4067
 msgctxt "opening curly double quote"
 msgid "&#8220;"
 msgstr "&#8220;"
@@ -5354,8 +5354,8 @@ msgstr "Perdón, no tienes permisos para editar esta entrada."
 #: wp-includes/class-wp-xmlrpc-server.php:4986
 #: wp-includes/class-wp-xmlrpc-server.php:5476
 #: wp-includes/class-wp-xmlrpc-server.php:5524
-#: wp-includes/class-wp-xmlrpc-server.php:5648 wp-includes/post.php:3124
-#: wp-includes/post.php:3582
+#: wp-includes/class-wp-xmlrpc-server.php:5648 wp-includes/post.php:3125
+#: wp-includes/post.php:3583
 msgid "Invalid post ID."
 msgstr "El ID de la entrada no es válido."
 
@@ -5749,7 +5749,7 @@ msgstr "Tu navegador no soporta acceso directo al portapapeles. Por favor, usa l
 
 #: wp-includes/class-wp-editor.php:974 wp-includes/script-loader.php:395
 #: wp-includes/script-loader.php:474 wp-includes/script-loader.php:482
-#: wp-includes/script-loader.php:586 wp-includes/theme.php:1968
+#: wp-includes/script-loader.php:586 wp-includes/theme.php:1947
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "Los cambios realizados se perderán si abres otra página."
 

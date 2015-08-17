@@ -2,7 +2,9 @@
 
       <?php
       $taxonomy = 'country';
+      /*d($taxonomy);*/
       $term = wp_get_post_terms( get_the_ID(), $taxonomy );
+      /*d($term);*/
       if ( !is_wp_error( $term ) && ($term = $term[ 0 ]) ) {
             /* $link = get_term_link( $term ); */
             /* $country_name = $term->name; */
@@ -19,7 +21,7 @@
       ?>
       <div class="fr">
             <?php
-            $meta = get_post_meta(  get_queried_object_id());
+            $meta = get_post_meta( get_queried_object_id());
 
             /* CONTACT FIELDS */
             $all_socials = array(

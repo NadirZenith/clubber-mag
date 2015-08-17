@@ -4,19 +4,21 @@
         //archive event
         $new_event_link = get_permalink(cm_lang_get_post(CM_RESOURCE_EVENT_PAGE_ID));
         ?>
-        <a class="readmore responsive" href="<?php echo $new_event_link ?>" >
-            <span class=""><?php _e('Upload and share event', 'cm') ?></span>&nbsp;
-            <i class="fa fa-users" style="color: #0583F2"></i>
-        </a>
+        <div class="tc">
+            <a class="pure-button pure-button-primary" href="<?php echo $new_event_link ?>" >
+                <?php _e('Upload and share event', 'cm') ?>
+                <i class="fa fa-users"></i>
+            </a>
+        </div>
         <?php
         dynamic_sidebar('archive_event_sidebar');
     } else if (is_post_type_archive('open-frequency')) {
         //Single
         $podcast_form_url = get_permalink(CM_RESOURCE_PODCAST_PAGE_ID);
         ?>
-        <div class="mt15 mb15">
-            <a class="readmore responsive fancybox ajax" data-fancybox-type="ajax" href="<?php echo $podcast_form_url ?>"> 
-                <?php _e('Share your', 'cm') ?>&nbsp;&nbsp;<i class="fa fa-soundcloud" style="color: #f50;"></i>
+        <div class="tc">
+            <a class="pure-button pure-button-primary fancybox ajax" data-fancybox-type="ajax" href="<?php echo $podcast_form_url ?>"> 
+                <?php _e('Share your', 'cm') ?><i class="fa fa-soundcloud"></i>
             </a>
         </div>
         <?php

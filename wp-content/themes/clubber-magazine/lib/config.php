@@ -13,7 +13,7 @@ add_theme_support('post-thumbnails');
 /* add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery] */
 /* add_theme_support('html5', array('gallery'));     // Enable NZ Bootstrap Gallery */
 //add_theme_support( 'nz-bootstrap-gallery' );     // Enable NZ Bootstrap Gallery
-
+add_theme_support('yoast-seo-breadcrumbs');
 /**
  * Configuration values
  */

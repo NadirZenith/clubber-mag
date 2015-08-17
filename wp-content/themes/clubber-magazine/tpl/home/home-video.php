@@ -1,37 +1,35 @@
-<section class="video ibox-5- mt30-">
-      <div class="mb5- ">
+<section class="video">
+    <?php cm_home_list_title('video', __('Video review', 'cm')); ?>
+    <div class="home-slider">
+        <ul class="slides">
             <?php
-            cm_home_list_title( 'video', __( 'Video review', 'cm' ) );
+            $query = new WP_Query(array(
+                'post_type' => 'video',
+                'posts_per_page' => 2,
+                )
+            );
+            while ($query->have_posts()) {
+                $query->the_post();
+                if ($meta_video_url = get_post_meta(get_the_ID(), 'wpcf-video-url', true)) {
+                    ?>
+                    <li>
+                        <div class="p3">
+                            <article class="pr">
+                                <header class="hover top w-100">
+                                    <h2 class="reset"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+                                </header>
+                                <div class="iframe-container">
+                                    <?php echo cm_render_video($meta_video_url); ?>
+                                </div>
+                            </article>
+                        </div>
+                    </li>
+                    <?php
+                }
+            }
             ?>
-      </div>
-      <div class="home-slider">
-            <ul class="slides">
-                  <?php
-                  $query = new WP_Query( array(
-                        'post_type' => 'video',
-                        'posts_per_page' => 2,
-                            )
-                  );
-                  while ( $query->have_posts() ) {
-                        $query->the_post();
-                        ?>
-                        <li>
-                              <article>
-                                    <div class="iframe-container">
-                                          <?php
-                                          $url = get_metadata( 'post', get_the_ID(), 'wpcf-video-url', true );
-                                          $shortcode = '[embed width="123" height="456"]' . $url . '[/embed]';
-                                          global $wp_embed;
-                                          echo $wp_embed->run_shortcode( $shortcode );
-                                          ?>
-                                    </div>
-                              </article>
-                        </li>
-                        <?php
-                  }
-                  ?>
-                  <?php wp_reset_postdata(); ?>
-            </ul>
-            <?php cm_home_list_more( 'video', __( 'see more ...', 'cm' ) ) ?>
-      </div>
+            <?php wp_reset_postdata(); ?>
+        </ul>
+        <?php cm_home_list_more('video', __('see more ...', 'cm')) ?>
+    </div>
 </section>

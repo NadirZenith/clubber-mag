@@ -1,33 +1,27 @@
-<ul class="home-list2 pure-g">
+<ul id="home-list" class="pure-g">
     <li class="pure-u-1">
         <?php get_template_part('tpl/parts/featured-events'); ?>
     </li>
-    <li class="pure-u-7-24">
-        <!--<li class="col-1 col-md-1-2 col-small fl">-->
+    <li class="pure-u-1 pure-u-md-7-24 col-small">
         <?php get_template_part('tpl/home/home-news'); ?>
     </li>
-    <li class="pure-u-9-24">
-        <!--<li class="col-1 col-big fl">-->
+    <li class="pure-u-1 pure-u-md-9-24 col-big">
         <?php get_template_part('tpl/home/home-photo'); ?>
         <?php get_template_part('tpl/home/home-video'); ?>
         <?php echo do_shortcode('[nzwpnewsletter]'); ?>        
     </li>
-    <li class="pure-u-7-24">
-        <!--<li class="col-1 col-md-1-2 col-small fr">-->
+    <li class="pure-u-1 pure-u-md-7-24 col-small">
         <?php get_template_part('tpl/home/home-music'); ?>
     </li>
     <li class="pure-u-1">
-        <!--<li class="col-1">-->
         <div class="featured-image banner-bottom"> 
             <?php echo do_shortcode('[sam id=5]'); ?>
         </div>
     </li>
-    <li class="pure-u-1-2">
-        <!--<li class="col-1 col-md-1-2 fl">-->
+    <li class="pure-u-1 pure-u-md-1-2">
         <?php get_template_part('tpl/home/home-into-the-beat'); ?>
     </li>
-    <li class="pure-u-1-2">
-        <!--<li class="col-1 col-md-1-2 fl">-->
+    <li class="pure-u-1 pure-u-md-1-2">
         <?php get_template_part('tpl/home/home-open-frequency'); ?>
     </li>
 </ul>

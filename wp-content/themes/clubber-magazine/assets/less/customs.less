@@ -1,0 +1,196 @@
+.hover{
+    text-indent: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.hover.w-100{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: @hover-w100-background;
+    opacity: @hover-opacity;
+}
+
+.hover.right{
+    background-color: @sc-1;
+    opacity: @hover-opacity;
+}
+
+//
+article:hover .hover.w-100,
+article:hover .hover.top.right
+{
+    opacity: @hover-opacity-hover;
+}
+
+//set white color on hover when not pure-button
+.hover a:not(.pure-button){
+    color: @sc-3;
+    text-decoration: none;
+}
+ 
+.author-info{
+    min-width: 200px;
+}
+
+.pagination{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    
+}
+
+.pagination a,
+.event-meta a,
+.author-info a{
+    color: @sc-1;
+    text-decoration: none;
+}
+
+
+.cm-sticky-sidebar ul{
+    /*list-style: none;*/
+}
+/* ----------------------- */
+.gallery{
+    clear: both;
+}
+.gallery img{
+    width: 95%;
+}
+
+
+
+/* sidebar fixed*/
+.stuck {
+    position:fixed;
+    top:30px;
+    width: inherit;
+}
+//* relate user to event button */
+.cm-relation{
+    font-size: 28px;
+    margin: 5px;
+    position:relative;
+}
+.cm-relation a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.cm-relation a.relate-btn{
+    padding: 5px 3px;
+    text-align:center;
+    border-radius:3px;
+    background-color:#ccc;
+    display:block;
+    &:hover{
+        background-color:#777;
+
+    }
+    &.relation-active .r-icon{
+        background-position: -30px;
+    }
+    .r-icon{
+        background: url(img/btn/clubber-mag-icons.png) no-repeat ;
+        width:30px;
+        height:30px;
+        overflow: hidden;
+        float:left;
+        /*margin-top:5px;*/
+    }
+
+}
+
+.cm-relation a.view-relation-btn{
+    position:absolute;
+    right: 0;
+    top:0;
+    font-size: 20px;
+    color: @sc-1;
+    &:hover{
+        background-color:#777;
+
+    }
+    .r-count{
+        padding: 3px;
+    }
+
+}
+
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+// Back to Top */
+.back-to-top {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: none;
+    z-index: 10000;
+}
+.back-to-top a {
+    width: 35px;
+    height: 35px;
+    text-indent: -20000px;
+    display: block;
+    background-image: url("img/back-to-top.png");
+}
+
+
+//ajax effect
+.loading{
+    position: relative;
+    background-color: @sc-1;
+    opacity: 0;
+    height: 3px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.loading.x{
+    opacity: 1;
+    overflow: visible; 
+}
+.loading span{
+    font-size: 30px;
+    position: relative;
+    display: block;
+    top: -30px;
+}
+
+//spu box
+.spu-box{
+    background-image: url('../images/popup_background.jpg') !important;
+    background-size: 140% !important;
+    background-position: 0px -50px !important;
+}
+
+/* ----------------- */
+.country-select-wrap .sbOptions{
+    min-height: 300px;
+    height: 350px;
+}
+.country-select-wrap,
+.city-select-wrap
+{
+    float: left;
+}
+
+.map-canvas{
+    min-height: 200px;
+    width: 100%;
+    display: block;
+}
+
+.nz-sciframe{
+    width: 100%;
+
+}

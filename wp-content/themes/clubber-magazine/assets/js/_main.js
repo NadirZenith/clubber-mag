@@ -11,7 +11,7 @@
                 // JavaScript to be fired on all pages
                 // 
                 //fitText
-                jQuery("h2.sf-2").fitText(1.5, {minFontSize: '10px', maxFontSize: '16px'});
+                /*jQuery(".hover h2").fitText(1.5, {minFontSize: '10px', maxFontSize: '16px'});*/
 
                 /* desktop drop down*/
                 $('ul#main-menu li').hover(
@@ -77,7 +77,7 @@
                     autoSize: false,
                     width: "80%"
                 });
-                jQuery(".single .gallery-icon a").fancybox().attr('rel', 'wp-gallery-fancybox');
+                $(".single .gallery-icon a").fancybox().attr('rel', 'wp-gallery-fancybox');
 
                 /*
                  * 
@@ -110,6 +110,7 @@
                         $obj.css('bottom', move);
                     }
                 });
+
 
                 //decrease with
                 new CMP({

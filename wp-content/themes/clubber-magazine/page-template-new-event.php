@@ -8,10 +8,9 @@
 ?>
 <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post(); ?>
-        <section <?php post_class('ibox-5 box-5'); ?>>
+        <section <?php post_class(); ?>>
             <article id="post-<?php the_ID(); ?>">
                 <?php echo get_template_part('tpl/parts/page-header') ?>
-
                 <?php the_content(); ?>
             </article>
         </section>
@@ -25,6 +24,10 @@
     }
     .row-relation-to-coolplace > a{
         margin-left: 15px;
+    }
+    .row-wpcf-event_price,
+    .row-event_featured{
+        clear: left;
     }
 </style>
 <script>

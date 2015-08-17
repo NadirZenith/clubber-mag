@@ -1,5 +1,5 @@
-
 <?php
+d(get_the_title());
 if (
           $mapa = get_post_meta( get_the_ID(), CM_META_MAPA, true )
  ) {

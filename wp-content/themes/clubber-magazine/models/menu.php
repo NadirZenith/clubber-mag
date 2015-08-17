@@ -58,13 +58,13 @@ function cm_add_ticketscript_menu($items, $args)
 {
     if ($args->theme_location == 'primary') {
         $items .= '<li class="menu-ticketscript">';
-        $items.= '<a  href="' . get_permalink(CM_TICKETSCRIPT_PAGE_ID) . '">';
-        $items.= '<button  class="buy-tickets pure-button">' . __('Get your tickets!', 'cm') . '</button>';
+        $items.= '<a class="buy-tickets pure-button"  href="' . get_permalink(CM_TICKETSCRIPT_PAGE_ID) . '">';
+        /* $items.= '<button  class="buy-tickets pure-button">' . __('Get your tickets!', 'cm') . '</button>'; */
+        $items.= __('Get your tickets!', 'cm');
         $items .= '</a>';
         $items .= '</li>';
     }
     return $items;
-    
 }
 ?>
 <?php

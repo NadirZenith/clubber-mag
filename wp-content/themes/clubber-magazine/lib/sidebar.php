@@ -14,6 +14,7 @@
  */
 class Roots_Sidebar
 {
+
     private $conditionals;
     private $templates;
     public $display = true;
@@ -115,16 +116,16 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'singular_sidebar',
         'name' => 'Singular sidebar',
-        'before_widget' => '<div class="mb15 col-1 col-sm-1-2 col-md-1-3 col-lg-1 fl"><div class="ibox-5">',
-        'after_widget' => '</div></div>',
+        'before_widget' => '<div class="mb15">',
+        'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
     ));
     register_sidebar(array(
         'id' => 'banners_sidebar',
         'name' => 'Banners sidebar',
-        'before_widget' => '<div class="mb15 col-1 col-sm-1-2 col-md-1-3 col-lg-1 fl"><div class="ibox-5">',
-        'after_widget' => '</div></div>',
+        'before_widget' => '<div class="mb15">',
+        'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
     ));
@@ -132,7 +133,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'archive_event_sidebar',
         'name' => 'Agenda sidebar',
-        'before_widget' => '<div class="ibox-5 mb15">',
+        'before_widget' => '<div class="mb15">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
@@ -141,7 +142,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'single_event_sidebar',
         'name' => 'Event sidebar',
-        'before_widget' => '<div class="ibox-5 mb15 single_event_sidebar_item">',
+        'before_widget' => '<div class="mb15 single_event_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',

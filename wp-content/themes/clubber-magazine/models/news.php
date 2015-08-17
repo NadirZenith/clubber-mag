@@ -10,7 +10,7 @@ function nz_change_post_label() {
       $submenu[ 'edit.php' ][ 5 ][ 0 ] = __( 'News', 'cm' );
       $submenu[ 'edit.php' ][ 10 ][ 0 ] = __( 'Add News item', 'cm' ); //admin sidebar
       $submenu[ 'edit.php' ][ 16 ][ 0 ] = __( 'News tags', 'cm' );
-      echo '';
+      /*echo '';*/
 }
 
 add_action( 'init', 'nz_change_post_object' );

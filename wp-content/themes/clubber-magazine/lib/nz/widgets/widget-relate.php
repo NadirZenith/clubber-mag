@@ -61,8 +61,8 @@ class Relate_Widget extends WP_Widget {
                   $total_style = '';
             }
             ?>
-            <div class="h3 tc ibox-5" >
-                  <span class="cm-title3">
+            <div class="h2 tc" >
+                  <span class="title-highlight">
                         <?php _e( 'Join and share', 'cm' ); ?>
                   </span>
             </div>

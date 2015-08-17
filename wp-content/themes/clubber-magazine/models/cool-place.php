@@ -1,7 +1,8 @@
 <?php
 add_action('init', 'cm_register_coolplace_post_type');
 
-function cm_register_coolplace_post_type() {
+function cm_register_coolplace_post_type()
+{
     $labels = array(
         'name' => _x('Cool Places', 'post type general name', 'cm'),
         'singular_name' => _x('Cool Place', 'post type singular name', 'cm'),
@@ -31,7 +32,7 @@ function cm_register_coolplace_post_type() {
         'has_archive' => 'cool-places',
         'hierarchical' => false,
         'menu_position' => null,
-        'supports' => array('title','author', 'editor', 'thumbnail', 'custom-fields')
+        'supports' => array('title', 'author', 'editor', 'thumbnail', 'custom-fields')
     );
 
     register_post_type('cool-place', $args);
@@ -60,18 +61,18 @@ function cm_register_coolplace_post_type() {
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,
-        /*'update_count_callback' => '_update_post_term_count',*/
+        /* 'update_count_callback' => '_update_post_term_count', */
         'query_var' => true,
         'rewrite' => array('slug' => 'cool-places'),
     );
 
     register_taxonomy('cool_place_type', 'cool-place', $args);
 }
-
 //add map field scripts
 add_action('admin_enqueue_scripts', 'cm_coolplace_load_scripts');
 
-function cm_coolplace_load_scripts($hook) {
+function cm_coolplace_load_scripts($hook)
+{
     if (in_array($hook, array('post-new.php', 'post.php'))) {
         /* return; */
     }
@@ -82,11 +83,11 @@ function cm_coolplace_load_scripts($hook) {
     wp_enqueue_script('google-maps');
     wp_enqueue_script('nzGMField');
 }
-
 //add custom fields
 add_action('custom_metadata_manager_init_metadata', 'cm_coolplace_custom_fields');
 
-function cm_coolplace_custom_fields() {
+function cm_coolplace_custom_fields()
+{
     /**      */
     $post_types = array('cool-place');
 
@@ -114,7 +115,8 @@ function cm_coolplace_custom_fields() {
     ));
 }
 
-function nz_gmfield_coolplace($field_slug, $field, $object_type, $object_id, $value) {
+function nz_gmfield_coolplace($field_slug, $field, $object_type, $object_id, $value)
+{
     ?>
     <div data-slug="<?php echo $field_slug ?>" class="custom-metadata-field text">
         <label for="<?php echo $field_slug ?>">Map info</label>
@@ -165,11 +167,11 @@ function nz_gmfield_coolplace($field_slug, $field, $object_type, $object_id, $va
     </style>
     <?php
 }
-
 //set post taxonomy city
 add_action('save_post', 'cm_coolplace_set_category');
 
-function cm_coolplace_set_category($post_ID) {
+function cm_coolplace_set_category($post_ID)
+{
     if (wp_is_post_autosave($post_ID) || wp_is_post_revision($post_ID))
         return $post_ID;
 
@@ -189,7 +191,8 @@ function cm_coolplace_set_category($post_ID) {
     set_map_terms($map_info, $post_ID);
 }
 
-function set_map_terms($map_info, $post_id) {
+function set_map_terms($map_info, $post_id)
+{
     $taxonomy = 'location';
     $current_terms = wp_get_object_terms($post_id, $taxonomy);
     if (!empty($current_terms))
@@ -215,21 +218,20 @@ function set_map_terms($map_info, $post_id) {
     }
 }
 
+/**
+ * PRE GET ARCHIVE COOLPLACE
+ */
 add_action('pre_get_posts', 'cm_pre_get_archive_coolplace');
 
-function cm_pre_get_archive_coolplace($query) {
-    
+function cm_pre_get_archive_coolplace($query)
+{
 
     if (
         !$query->is_main_query() || $query->is_admin || !$query->is_post_type_archive('cool-place')
     )
         return;
-    
+
     $query->set('orderby', 'title');
     $query->set('order', 'ASC');
     $query->set('posts_per_page', -1);
-    
-    
-    
-
 }

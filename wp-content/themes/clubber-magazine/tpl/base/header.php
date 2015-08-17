@@ -1,6 +1,7 @@
-<div id="site-logo" class="fl hide show-md">
+<div id="branding" class="fl hide show-md">
     <h1>
-        <a href="<?php echo esc_url(home_url('/')); ?>" title="Clubber-Mag" rel="home">
+        <span>Clubber-Mag</span>
+        <a href="<?php echo esc_url(home_url('/')); ?>" title="Clubber-Mag" rel="home" >
             <img src="<?php echo get_site_url() ?>/wp-content/themes/clubber-magazine/assets/images/clubber-mag.png" alt="Clubber-Mag">
         </a>	
     </h1>
@@ -68,3 +69,4 @@
     </div>
 </div>
 
+<!--<div class="cb"></div>-->

@@ -193,8 +193,9 @@ Class NzWpLocationTerms
 
         return $city;
     }
-    
-    public function get_current_city(){
+
+    public function get_current_city()
+    {
         
     }
 
@@ -217,13 +218,13 @@ Class NzWpLocationTerms
         $countries = $wp_query->get('_countries');
         ?>
         <div class="location-filter-wrap">
-            <div class="country-select-wrap fl">
+            <div class="country-select-wrap">
                 <select name="contry-select" id="contry-select" style="visibility: hidden">
                     <?php
                     foreach ($countries as $country) {
                         ?>
                         <option value="<?php echo $country->slug ?>" <?php echo ($country->slug == self::$current_country->slug ) ? 'selected' : ''; ?> >
-                        <?php echo $country->name ?>
+                            <?php echo $country->name ?>
                         </option> 
                         <?php
                     }
@@ -234,13 +235,13 @@ Class NzWpLocationTerms
             $cities = $wp_query->get('_cities');
             if (!empty($cities)) {
                 ?>
-                <div class="city-select-wrap fl">
+                <div class="city-select-wrap">
                     <select name="city-select" id="city-select" style="visibility: hidden">
                         <?php
                         foreach ($cities as $city) {
                             ?>
                             <option value="<?php echo $city->slug ?>" <?php echo ($city->slug == self::$current_city->slug ) ? 'selected' : ''; ?> >
-                            <?php echo $city->name ?>
+                                <?php echo $city->name ?>
                             </option> 
                             <?php
                         }
@@ -301,15 +302,26 @@ Class NzWpLocationTerms
                 }
             })();
         </script>
+        <?php
+        /*
         <style>
             .country-select-wrap .sbOptions{
                 min-height: 300px;
                 height: 350px;
             }
+            .country-select-wrap,
+            .city-select-wrap
+            {
+                float: left;
+            }
+
         </style>
+         */
+        ?>
         <?php
     }
 }
+
 $NzLocationsTerms = New NzWpLocationTerms(array(
     'post_type' => array('agenda', 'cool-place'),
     'custom_pre_get_posts' => array('is_tax', 'cool_place_type')

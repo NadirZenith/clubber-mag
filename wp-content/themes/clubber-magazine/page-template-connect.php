@@ -15,16 +15,15 @@ if (is_user_logged_in()) {
     <?php
 }
 ?>
-
-<div class="col-1 col-sm-1-2 fl">
-    <div class="ibox-5">
-        <div class="box-5">
+<div class="pure-g">
+    <div class="pure-u-1-2">
+        <section>
             <?php if (!isset($_GET['recover'])) { ?>
-                <h2>
-                    <span class="cm-title">
+                <h1>
+                    <span class="title">
                         <?php _e('Sign In', 'cm') ?>
                     </span>
-                </h2>
+                </h1>
                 <p class="tj">
                     <?php _e('Sign in and enjoy our community.', 'cm') ?>
                 </p>
@@ -33,25 +32,23 @@ if (is_user_logged_in()) {
             <?php
             echo do_shortcode('[nzwp_forms_login]');
             ?>
-        </div>
+        </section>
     </div>
-</div>
-<?php if (!isset($_GET['recover'])) { ?>
-    <div class="col-1 col-sm-1-2 fl">
-        <div class="ibox-5 ">
-            <div class="box-5">
-                <h2>
-                    <span class="cm-title">
+    <?php if (!isset($_GET['recover'])) { ?>
+        <div class="pure-u-1-2">
+            <section>
+                <h1>
+                    <span class="title">
                         <?php _e('Sign Up', 'cm') ?>
                     </span>
-                </h2>
+                </h1>
                 <p class="tj">
                     <?php _e('If you like electronic music, you are a producer, dj, promoter, or a club, signup in Clubber Magazine and enjoy our community.', 'cm') ?>
                 </p>
                 <?php
                 echo do_shortcode('[nzwp_forms_register]');
                 ?>
-            </div>
+            </section>
         </div>
-    </div>
-<?php } ?>
+    <?php } ?>
+</div>

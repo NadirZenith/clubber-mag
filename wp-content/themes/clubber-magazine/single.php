@@ -1,91 +1,32 @@
-<?php
-while (have_posts()) {
-    the_post();
-    switch (get_post_type()) {
-        case 'label':
-        case 'agenda':
-            get_template_part('tpl/single/single-1');
+<!--<section class="">-->
+    <!--<h1 class="title"><?php echo get_post_type(); ?></h1>-->
 
-            break;
+<article class="pr">
+    <?php
+    while (have_posts()) {
+        the_post();
+        switch (get_post_type()) {
+            case 'label':
+            case 'agenda':
+                get_template_part('tpl/single/two-column');
 
-        default:
-            get_template_part('tpl/single/single-0');
+                break;
 
-            break;
+            default:
+                get_template_part('tpl/single/one-column');
+
+                break;
+        }
     }
-}
-?>
 
-<?php
-//related content
-$args = array(
-    'post_type' => get_post_type(),
-    'posts_per_page' => 4,
-    'orderby' => 'rand',
-    'post__not_in' => array(get_queried_object_id())
-);
-if (get_post_type() == 'agenda') {
-
-    $args['meta_query'] = array(
-        'relation' => 'AND',
-        array(
-            'key' => 'wpcf-event_begin_date',
-            'value' => time(),
-            'type' => 'NUMERIC',
-            'compare' => '>='
-        ),
-        array(
-            'key' => '_thumbnail_id',
-            'compare' => 'EXISTS',
-        )
-    );
-} else {
-
-    $args['meta_query'] = array(
-        array(
-            'key' => '_thumbnail_id',
-            'compare' => 'EXISTS',
-        )
-    );
-    $args['date_query'] = array(
-        array(
-            'after' => '-1 month',
-        )
-    );
-}
-$query = new WP_Query($args);
-if ($query->have_posts()) {
+    get_template_part('tpl/parts/comments');
+    get_template_part('tpl/parts/post-tags');
     ?>
-    <section class="group m5" >
-        <h2 class="m3">
-            <span class="cm-title2">
-                <?php _e('Related Contents', 'cm') ?>
-            </span>
-        </h2>
-        <ul>
-            <?php
-            while ($query->have_posts()) {
-                $query->the_post();
-                ?>
-                <li class="col-1-4 fl">
-                    <div class="ibox-3">
-                        <?php
-                        get_template_part('tpl/home/list-2');
-                        ?>
-                    </div>
-                </li>
-                <?php
-            }
-            wp_reset_postdata();
-            ?>
-        </ul>     
-    </section>
-    <?php
-}
-?>
+</article>
+<!--</section>-->
 
-<div class="featured-image banner-bottom cb"> 
-    <?php
-    echo do_shortcode('[sam id=5]');
-    ?>
+<?php get_template_part('tpl/single/related-content-bottom'); ?>
+
+<div class="featured-image banner-bottom group"> 
+    <?php echo do_shortcode('[sam id=5]'); ?>
 </div>
