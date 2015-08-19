@@ -27,7 +27,7 @@ $query2 = new WP_Query($args);
 
         <header>
             <h1>
-                <?php _e('Agenda', 'cm') ?>
+                <?php echo __('Agenda', 'cm') ?>
                 <?php echo $curauth->get('display_name'); ?>
             </h1>
         </header>
