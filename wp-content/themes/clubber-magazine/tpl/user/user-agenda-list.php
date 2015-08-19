@@ -27,7 +27,7 @@ $query2 = new WP_Query($args);
 
         <header>
             <h1>
-                <?php echo __('Agenda', 'cm') ?>
+                <?php _e('Agenda', 'cm') ?>
                 <?php echo $curauth->get('display_name'); ?>
             </h1>
         </header>
@@ -60,7 +60,7 @@ $query2 = new WP_Query($args);
             } else {
                 ?>
                 <h2>
-                    <?php e('This user has not subscribed to any event', 'cm'); ?>
+                    <?php _e('This user has not subscribed to any event', 'cm'); ?>
                 </h2>
                 <?php
             }
