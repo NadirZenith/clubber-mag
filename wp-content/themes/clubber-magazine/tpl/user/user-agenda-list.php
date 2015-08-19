@@ -23,17 +23,13 @@ $query2 = new WP_Query($args);
 ?>
 
 <main role="main" class="has-sidebar">
-    <section class="pb15 cb">
+    <section>
 
-        <header class="mt5 mb10 ml5 mt15">
+        <header>
             <h1>
-                <span class="cm-title">
-                    <?php _e('Agenda', 'cm') ?>
-                </span>
+                <?php _e('Agenda', 'cm') ?>
             </h1>
         </header>
-
-
         <?php
         if ($query2->have_posts()) {
             ?>
@@ -42,41 +38,35 @@ $query2 = new WP_Query($args);
                 while ($query2->have_posts()) {
                     $query2->the_post();
                     ?>
-                    <li class="col-1-5 fl">
-                        <div class="ibox-3 mt0">
-                            <?php
-                            get_template_part('tpl/home/list-2');
-                            ?>
+                    <li class="pure-u-1-2 pure-u-md-1-5">
+                        <div class="p3">
+                            <?php get_template_part('tpl/list/list-2'); ?>
                         </div>
                     </li>
                     <?php
                 }
                 ?>
-
             </ul>
             <?php
         } else {
             if ($curauth->ID == get_current_user_id()) {
                 ?>
-                <h2 class="ml5">
+                <h2>
                     <?php _e('¡Subscribe to events!', 'cm'); ?>
 
                 </h2>
                 <?php
             } else {
                 ?>
-                <h2 class="ml5">
+                <h2>
                     <?php e('This user has not subscribed to any event', 'cm'); ?>
                 </h2>
                 <?php
             }
-            ?>
-            <?php
         }
         ?>
     </section>
-
 </main>
-<aside role="complementary">
-    <?php get_sidebar(); ?>
+<aside class="<?php echo roots_sidebar_class(); ?>" role="complementary">
+    <?php include roots_sidebar_path(); ?>
 </aside>
