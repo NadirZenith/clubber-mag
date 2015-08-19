@@ -53,10 +53,10 @@ if ($query->have_posts()) {
                     <li class="pure-u-1-3">
                         <div class="p3">
                             <article class="pr">
-                                <div class="hover-2">
-                                    <h2 class="ml5">
-                                        <a href="<?php the_permalink() ?>">
-                                            <?php echo get_the_title(); ?>
+                                <div class="hover bottom w-100">
+                                    <h2 class="reset h3">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php echo get_the_title() ?>
                                         </a>
                                     </h2>
                                 </div>
