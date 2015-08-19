@@ -1,7 +1,6 @@
 <?php
 $start_date = strtotime("now");
 
-
 $args = array(
     'post_type' => 'agenda',
     'post_status' => 'any',
@@ -30,7 +29,6 @@ $wp_query = new WP_Query($args);
                 <?php _e('User events'); ?>
             </h1>
         </header>
-
 
         <?php
         if (have_posts()) {
