@@ -42,7 +42,7 @@ if (
 }
 ?>
 
-<div class="m10">
+<div class="m10 pure-type">
     <?php the_content(); ?> 
 </div>
 

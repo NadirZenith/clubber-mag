@@ -1,6 +1,6 @@
 <?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post(); ?>
-        <article <?php post_class(); ?>>
+        <article <?php post_class('pure-type'); ?>>
             <?php echo get_template_part('tpl/parts/page-header') ?>
             <?php the_content(); ?>
         </article>

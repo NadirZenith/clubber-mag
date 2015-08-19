@@ -4,7 +4,7 @@
     <?php get_template_part('tpl/base/head'); ?>
     <body <?php body_class(); ?> >
         <?php do_action('base_after_body') ?>
-        <div id="site" class="pure-type">
+        <div id="site">
             <header id="header" role="banner">
                 <?php get_template_part('tpl/base/header'); //the header of page, logo banner menu etc...  ?>
             </header>
