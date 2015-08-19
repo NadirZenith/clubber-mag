@@ -44,7 +44,7 @@ $query2 = new WP_Query($args);
                 while ($query2->have_posts()) {
                     $query2->the_post();
                     ?>
-                    <li class="pure-u-1-2 pure-u-lg-1-3">
+                    <li class="pure-u-1-2 pure-u-md-1-5">
                         <div class="p3">
                             <?php get_template_part('tpl/list/list-2'); ?>
                         </div>
@@ -52,7 +52,6 @@ $query2 = new WP_Query($args);
                     <?php
                 }
                 ?>
-
             </ul>
             <?php
         } else {
