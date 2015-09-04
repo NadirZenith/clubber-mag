@@ -54,6 +54,7 @@
 
             if (!empty($artist)) {
                 ?>
+                <i class="clubbermag-podcast-wm"></i>
                 <div class="pr">
                     <?php
                     $artist = $artist[0];
@@ -65,7 +66,6 @@
                         <?php
                     }
                     ?>
-                    <i class="clubbermag-podcast-wm"></i>
                     <div class="hover-3">
                         <div class="pod-title">
                             <a href="<?php echo get_permalink($artist) ?>">
