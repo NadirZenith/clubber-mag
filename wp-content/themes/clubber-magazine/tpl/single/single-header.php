@@ -53,34 +53,38 @@
             $artist = get_posts($args);
 
             if (!empty($artist)) {
-                $artist = $artist[0];
-                if (get_post_type() == 'open-frequency') {
-                    ?>
-                    <div class="featured-image">
-                        <?php echo get_the_post_thumbnail($artist->ID, 'single'); ?>
-                    </div>
-                    <?php
-                }
                 ?>
-                <i class="clubbermag-podcast-wm"></i>
-                <div class="hover-3">
-                    <div class="pod-title">
-                        <a href="<?php echo get_permalink($artist) ?>">
-                            <span class="sc-1">
-                                <?php if (get_post_type() == 'into-the-beat') : ?>
-                                    Special Guest
-                                <?php else: ?>
-                                    Open Signal
-                                <?php endif ?>
-                            </span>
-                            <?php echo $artist->post_title ?>
-                            <span class="sf-2" style="font-size: 60%">
-                                <?php the_date(); ?>                                                               
-                            </span>
-                        </a>
+                <div class="pr">
+                    <?php
+                    $artist = $artist[0];
+                    if (get_post_type() == 'open-frequency') {
+                        ?>
+                        <div class="featured-image">
+                            <?php echo get_the_post_thumbnail($artist->ID, 'single'); ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    <i class="clubbermag-podcast-wm"></i>
+                    <div class="hover-3">
+                        <div class="pod-title">
+                            <a href="<?php echo get_permalink($artist) ?>">
+                                <span class="sc-1">
+                                    <?php if (get_post_type() == 'into-the-beat') : ?>
+                                        Special Guest
+                                    <?php else: ?>
+                                        Open Signal
+                                    <?php endif ?>
+                                </span>
+                                <?php echo $artist->post_title ?>
+                                <span class="sf-2" style="font-size: 60%">
+                                    <?php the_date(); ?>                                                               
+                                </span>
+                            </a>
+                        </div>
                     </div>
-                </div>
 
+                </div>
                 <?php
             }
 
