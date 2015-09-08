@@ -26,6 +26,7 @@
         margin-left: 15px;
     }
     .row-wpcf-event_price,
+    .row-wpcf-event_user_email,
     .row-event_featured{
         clear: left;
     }
