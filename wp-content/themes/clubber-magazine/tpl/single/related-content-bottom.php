@@ -62,7 +62,7 @@ if ($query->have_posts()) {
             while ($query->have_posts()) {
                 $query->the_post();
                 ?>
-                <li class="pure-u-1 pure-u-md-1-2">
+                <li class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-4">
                     <div class="p3">
                         <?php get_template_part('tpl/list/list-2'); ?>
                     </div>
