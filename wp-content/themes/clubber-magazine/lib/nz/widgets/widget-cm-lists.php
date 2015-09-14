@@ -103,7 +103,10 @@ class CM_Lists_Widget extends WP_Widget
 
             <?php
             switch ($instance['js_lib']) {
-                case 'customscroll' && (self::$custom_scroll === false):
+                case 'customscroll':
+                    if (self::$custom_scroll === true) {
+                        return;
+                    }
                     ?>
                     <script type="text/javascript">
                         (function ($) {
