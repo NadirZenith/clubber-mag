@@ -32,7 +32,7 @@ article:hover .hover.top.right
     color: @sc-3;
     text-decoration: none;
 }
- 
+
 .author-info{
     min-width: 200px;
 }
@@ -40,7 +40,7 @@ article:hover .hover.top.right
 .pagination{
     margin-top: 20px;
     padding-bottom: 20px;
-    
+
 }
 
 .pagination a,
@@ -63,13 +63,24 @@ article:hover .hover.top.right
 }
 
 
-
-/* sidebar fixed*/
-.stuck {
+.sidebar-top{
     position:fixed;
-    top:30px;
+    top:0px;
     width: inherit;
 }
+.sidebar-bottom{
+    position:fixed;
+    bottom:0px;
+    width: inherit;
+}
+.sidebar-down
+{
+    top: auto;
+    bottom:0px;
+    position:absolute;
+    width: inherit;
+}
+
 //* relate user to event button */
 .cm-relation{
     font-size: 28px;

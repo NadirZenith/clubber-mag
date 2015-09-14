@@ -14,7 +14,9 @@
                 </label><br>
                 <input type="text" name="subscribe_email"/><br>
                 <input type="submit" value="Subscribe"/>
-                <a class="switch"><?php _e('unsubscribe', 'cm') ?></a>
+                <?php
+                /*<a class="switch"><?php _e('unsubscribe', 'cm') ?></a>*/
+                ?>
             </form>
             <form class="unsubscribe" style="display: none">
                 <label>

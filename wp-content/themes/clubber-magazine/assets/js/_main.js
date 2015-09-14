@@ -79,6 +79,10 @@
                 });
                 $(".single .gallery-icon a").fancybox().attr('rel', 'wp-gallery-fancybox');
 
+                //tooltipster
+                $('.tooltip').tooltipster({
+                    contentAsHTML: true
+                });
                 /*
                  * 
                  $('.nzSCField_newpodcast').nzSCField({

@@ -36,7 +36,30 @@
                         ?>
                         <li class="<?php echo $class ?>">
                             <div class="p3">
-                                <?php get_template_part('tpl/list/list-5'); ?>
+                                <?php //get_template_part('tpl/list/list-5'); ?>
+
+                                <article class="pr">
+
+                                    <?php
+                                    if (get_post_type() == 'into-the-beat') {
+                                        get_template_part('tpl/podcast/into-the-beat-header');
+                                    }
+
+                                    if (is_post_type_archive('open-frequency')) {
+                                        get_template_part('tpl/podcast/open-frequency-header-top');
+                                    }
+
+                                    if ('open-frequency' == get_post_type() && is_front_page()) {
+
+                                        get_template_part('tpl/podcast/open-frequency-header-bottom');
+                                    }
+                                    ?>
+
+                                    <?php
+                                    get_template_part('tpl/podcast/soundcloud-iframe');
+                                    ?>
+
+                                </article>
                             </div>
                         </li>
                         <?php
@@ -50,6 +73,7 @@
                 }
                 ?>
             </ul>
+            
             <?php
             include (locate_template('tpl/parts/pagination.php'));
         } else {

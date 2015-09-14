@@ -77,7 +77,7 @@
         }
     </style>
     <div class="pure-g">
-        <div class="pure-u-1-2">
+        <div class="pure-u-1-2 pt3">
             <?php _e('City', 'cm') ?>:
             <b>
                 <?php
@@ -85,7 +85,7 @@
                 ?>
             </b>
         </div>
-        <div class="pure-u-1-2">
+        <div class="pure-u-1-2 pt3">
             <?php _e('Promoter', 'cm') ?>:
             <b>
                 <?php $event_promoter = get_post_meta(get_the_ID(), 'wpcf-event_promoter', true); ?>
@@ -93,7 +93,7 @@
             </b>
         </div>
 
-        <div class="pure-u-1-2">
+        <div class="pure-u-1-2 pt3">
             <?php _e('Place', 'cm') ?>:
             <b>
                 <?php if (!is_null($event_place_name)) { ?>
@@ -101,7 +101,7 @@
                 <?php } ?>
             </b>
         </div>
-        <div class="pure-u-1-2">
+        <div class="pure-u-1-2 pt3">
             <?php _e('Price', 'cm') ?>:
             <b>
                 <?php $event_price = get_post_meta(get_the_ID(), 'wpcf-event_price', true) ?>
@@ -112,7 +112,7 @@
         </div>
         <?php $event_price_conditions = get_post_meta(get_the_ID(), 'wpcf-event_price_conditions', true); ?>
         <?php if ($event_price_conditions) { ?>
-            <div class="pure-u-1">
+            <div class="pure-u-1 pt3">
                 <?php _e('Price Conditions', 'cm') ?>
                 <b>
                     <?php echo $event_price_conditions; ?>
@@ -120,7 +120,7 @@
             </div>
         <?php } ?>
 
-        <div class="pure-u-1">
+        <div class="pure-u-1 pt3">
             <?php _e('Address', 'cm') ?>:
             <b>
                 <?php if (!is_null($event_address)) { ?>
@@ -189,4 +189,3 @@ if ($eid && class_exists('NzWpCmTicketscript')) {
     <?php
 }
 ?>
-<!--<hr>-->

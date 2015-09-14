@@ -1,11 +1,11 @@
 <section class="video">
     <?php cm_home_list_title('video', __('Video review', 'cm')); ?>
-    <div class="home-slider">
+    <div class="home-slider pr">
         <ul class="slides">
             <?php
             $query = new WP_Query(array(
                 'post_type' => 'video',
-                'posts_per_page' => 2,
+                'posts_per_page' => 3,
                 )
             );
             while ($query->have_posts()) {

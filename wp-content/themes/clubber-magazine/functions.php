@@ -55,6 +55,7 @@ $roots_includes = array(
     'lib/nz/widgets/widget-soundcloud.php',
     'lib/nz/widgets/widget-calendar.php',
     'lib/nz/widgets/widget-relate.php',
+    'lib/nz/widgets/widget-cm-lists.php',
     'lib/nz/widgets/widget-share.php',
     'lib/nz/widgets/widget-fb-like-box.php',
     /* 'lib/nz/widgets/widget-newsletter.php', */

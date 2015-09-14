@@ -17,10 +17,12 @@
         <?php
         $terms = get_the_terms(get_the_ID(), 'music_type');
         if (!empty($terms)) {
+            $term = $terms[0];
             ?>
             <div class="hover top right">
                 <?php
-                echo $terms[0]->name;
+                $link = get_term_link($term);
+                echo "<a href=\"{$link}\">{$term->name}</a>";
                 ?>
             </div>
             <?php

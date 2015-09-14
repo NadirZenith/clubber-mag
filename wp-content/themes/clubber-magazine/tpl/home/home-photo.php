@@ -1,6 +1,6 @@
 <section>
     <?php cm_home_list_title('photo', __('Photo Gallery', 'cm')); ?>
-    <div class="home-slider">
+    <div class="home-slider pr">
         <ul class="slides">
             <?php
             $query = new WP_Query(array(

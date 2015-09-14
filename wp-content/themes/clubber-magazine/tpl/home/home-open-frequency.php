@@ -13,7 +13,13 @@
                 ?>
                 <li class="pure-u-1">
                     <div class="p3">
-                        <?php get_template_part('tpl/list/list-5'); ?>
+                        <article class="pr">
+                            <?php
+                            get_template_part('tpl/podcast/open-frequency-header-bottom');
+
+                            get_template_part('tpl/podcast/soundcloud-iframe');
+                            ?>
+                        </article>
                     </div>
                 </li>
                 <?php

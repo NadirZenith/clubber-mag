@@ -29,9 +29,9 @@
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $('.home-slider').flexslider({
-            controlNav: false,
-            directionNav: false,
-            pauseOnHover: true
+            controlNav: true,
+            directionNav: true,
+            pauseOnHover: false
         });
     });
 </script> 

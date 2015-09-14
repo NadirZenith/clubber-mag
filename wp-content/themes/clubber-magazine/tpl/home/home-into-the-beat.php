@@ -1,6 +1,6 @@
 <section>
     <?php cm_home_list_title('into-the-beat', __('Into the Beat Radio', 'cm')); ?>
-    <div class="home-clubbermag-podcasts" >
+    <div class="pr home-clubbermag-podcasts" >
         <ul class="slides">
             <?php
             $args = array(
@@ -19,7 +19,13 @@
                 ?>
                 <li>
                     <div class="p3">
-                        <?php get_template_part('tpl/list/list-5'); ?>
+                        <article class="pr">
+                            <?php
+                            get_template_part('tpl/podcast/into-the-beat-header');
+
+                            get_template_part('tpl/podcast/soundcloud-iframe');
+                            ?>
+                        </article>
                     </div>
                 </li>
                 <?php
@@ -33,17 +39,17 @@
         jQuery(document).ready(function ($) {
 
             $('.home-clubbermag-podcasts').flexslider({
+                slideshowSpeed: 4000,
                 animation: "fade",
-                slideshowSpeed: 5000,
-                controlNav: false,
+                controlNav: true,
                 directionNav: false,
                 pauseOnHover: false,
                 direction: "horizontal",
                 reverse: false,
-                animationSpeed: 1000,
-                easing: "linear",
-                slideshow: true,
-                useCSS: false
+                animationSpeed: 600,
+                prevText: "&lt;",
+                nextText: "&gt;",
+                slideshow: true
             });
         });
     </script>    
