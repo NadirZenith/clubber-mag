@@ -35,6 +35,8 @@ class CM_Lists_Widget extends WP_Widget
         extract($args, EXTR_SKIP);
         $title = apply_filters('widget_title', $instance['title']);
 
+        $style = ($instance['js_lib'] === 'customscroll') ? 'max-height:220px' : '';
+
         /* before widget */
         echo $before_widget;
         /* echo $before_title . $title . $after_title; */
@@ -54,7 +56,7 @@ class CM_Lists_Widget extends WP_Widget
             }
             /* style="max-height: 455px;" */
             ?>
-            <div id="widget-cm-list-<?php echo self::$count ?>" class="pr widget-cm-list-<?php echo $instance['js_lib'] ?> "  style="zoom:0.7; max-height: 220px" >
+            <div id="widget-cm-list-<?php echo self::$count ?>" class="pr widget-cm-list-<?php echo $instance['js_lib'] ?> "  style="zoom:0.7;<?php echo $style; ?>" >
                 <ul class="slides">
                     <?php
                     $args = array(
