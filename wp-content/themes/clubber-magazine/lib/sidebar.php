@@ -132,6 +132,15 @@ function cm_widgets_init()
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
     ));
+    //SINGULAR - artist
+    register_sidebar(array(
+        'id' => 'single_artist_sidebar',
+        'name' => 'Artist sidebar',
+        'before_widget' => '<div class="mb15 single_event_sidebar_item">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="mb3">',
+        'after_title' => '</h3>',
+    ));
 
     //ARCHIVE - COMMON
     register_sidebar(array(

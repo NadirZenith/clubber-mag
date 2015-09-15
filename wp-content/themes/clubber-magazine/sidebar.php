@@ -34,7 +34,8 @@
             //event
             dynamic_sidebar('single_event_sidebar');
         } elseif (is_singular('artist')) {
-            
+            //artist
+            dynamic_sidebar('single_artist_sidebar');
         } else {
             //rest
             dynamic_sidebar('singular_sidebar');
