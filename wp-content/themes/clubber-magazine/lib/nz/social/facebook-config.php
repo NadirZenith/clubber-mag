@@ -32,7 +32,7 @@ function nz_facebook_sdk_output()
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-    <?php if (false) { //has fb login test user status              ?>
+    <?php if (false) { //has fb login test user status               ?>
             window.onload = function () {
                 alert('load');
                 FB.getLoginStatus(function (response) {
@@ -72,7 +72,11 @@ function nz_fb_like_iframe($url = null)
 
 function nz_fb_like($url = null, $options = array())
 {
-    $url = ($url) ? $url : get_permalink();
+    /*$url = ($url) ? $url : get_permalink();*/
+    if (!$url) {
+        global $wp;
+        $url = add_query_arg($wp->query_string, '', home_url($wp->request));
+    }
     $atts = array_merge(
         array(
         //standard, button_count, button, box_count
