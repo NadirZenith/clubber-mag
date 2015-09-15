@@ -113,6 +113,7 @@ add_action('widgets_init', 'cm_widgets_init');
 function cm_widgets_init()
 {
 
+    //SINGULAR - COMMON
     register_sidebar(array(
         'id' => 'singular_sidebar',
         'name' => 'Singular sidebar',
@@ -121,15 +122,28 @@ function cm_widgets_init()
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
     ));
+
+    //SINGULAR - EVENT
     register_sidebar(array(
-        'id' => 'banners_sidebar',
-        'name' => 'Banners sidebar',
-        'before_widget' => '<div class="mb15">',
+        'id' => 'single_event_sidebar',
+        'name' => 'Event sidebar',
+        'before_widget' => '<div class="mb15 single_event_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
     ));
 
+    //ARCHIVE - COMMON
+    register_sidebar(array(
+        'id' => 'archive_sidebar',
+        'name' => 'Archive sidebar',
+        'before_widget' => '<div class="mb15">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="mb3">',
+        'after_title' => '</h3>',
+    ));
+    
+    //ARCHIVE - EVENTS
     register_sidebar(array(
         'id' => 'archive_event_sidebar',
         'name' => 'Agenda sidebar',
@@ -139,6 +153,7 @@ function cm_widgets_init()
         'after_title' => '</h3>',
     ));
 
+    //ARCHIVE - OPEN FREQUENCY
     register_sidebar(array(
         'id' => 'archive_open_frequency_sidebar',
         'name' => 'Archive OpenFrequency sidebar',
@@ -147,11 +162,12 @@ function cm_widgets_init()
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
     ));
-
+    
+    //BANNERS - COMMON
     register_sidebar(array(
-        'id' => 'single_event_sidebar',
-        'name' => 'Event sidebar',
-        'before_widget' => '<div class="mb15 single_event_sidebar_item">',
+        'id' => 'banners_sidebar',
+        'name' => 'Banners sidebar',
+        'before_widget' => '<div class="mb15">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
