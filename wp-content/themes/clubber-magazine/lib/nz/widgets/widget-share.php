@@ -1,6 +1,8 @@
 <?php
+
 class Share_Widget extends WP_Widget
 {
+
     /* -------------------------------------------------- */
     /* CONSTRUCT THE WIDGET
       /*-------------------------------------------------- */
@@ -36,10 +38,29 @@ class Share_Widget extends WP_Widget
             </span>
         </div>
         <div class="group mt10 pb10 ml15" >
-            <?php get_template_part('tpl/parts/sharer'); ?>
+            <?php
+            $options = [
+                'socials' => [
+                    [
+                        'name' => 'facebook',
+                        'text' => 'share'
+                    ],
+                    [
+                        'name' => 'twitter',
+                        'text' => 'tweet'
+                    ],
+                    [
+                        'name' => 'googleplus',
+                        'text' => 'share&plus;',
+                        'type' => 'google'
+                    ]
+                ]
+            ];
+            nz_sharer(null, $options);
+            ?>
         </div>
         <div class="group mt10 pb10 ml30 oh" >
-            
+
             <?php echo nz_fb_like(); ?>
         </div>
 
