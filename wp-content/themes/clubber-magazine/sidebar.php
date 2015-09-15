@@ -4,7 +4,6 @@
         //noticias
         dynamic_sidebar('archive_sidebar');
     } elseif (is_archive()) {
-        d('archive');
         //archive
         if (is_post_type_archive('agenda')) {
             //events
