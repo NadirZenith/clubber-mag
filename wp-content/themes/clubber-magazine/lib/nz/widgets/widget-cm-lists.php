@@ -80,15 +80,15 @@ class CM_Lists_Widget extends WP_Widget
                         <li>
                             <div class="p3">
                                 <article class="pr">
-
                                     <?php
                                     if (get_post_type() == 'into-the-beat') {
                                         get_template_part('tpl/podcast/into-the-beat-header');
                                     }
-
+                                    if ('open-frequency' === get_post_type()) {
+                                        get_template_part('tpl/podcast/open-frequency-header-bottom');
+                                    }
                                     get_template_part('tpl/podcast/soundcloud-iframe');
                                     ?>
-
                                 </article>
                                 <?php //get_template_part('tpl/list/list-5'); ?>
                             </div>
