@@ -22,6 +22,7 @@
             </a>
         </div>
         <?php
+        dynamic_sidebar('archive_open_frequency_sidebar');
     } else if (is_singular()) {
         //singular
         if (is_singular('agenda')) {

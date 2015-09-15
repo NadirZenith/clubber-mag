@@ -140,6 +140,15 @@ function cm_widgets_init()
     ));
 
     register_sidebar(array(
+        'id' => 'archive_open_frequency_sidebar',
+        'name' => 'Archive OpenFrequency sidebar',
+        'before_widget' => '<div class="mb15">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="mb3">',
+        'after_title' => '</h3>',
+    ));
+
+    register_sidebar(array(
         'id' => 'single_event_sidebar',
         'name' => 'Event sidebar',
         'before_widget' => '<div class="mb15 single_event_sidebar_item">',
