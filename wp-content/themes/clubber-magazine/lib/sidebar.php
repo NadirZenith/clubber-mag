@@ -136,7 +136,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'single_artist_sidebar',
         'name' => 'Artist sidebar',
-        'before_widget' => '<div class="mb15 single_event_sidebar_item">',
+        'before_widget' => '<div class="mb15">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',

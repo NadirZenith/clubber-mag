@@ -68,14 +68,33 @@
                 height: $main.height()
             });
             $sidebar.wrap($wrap);
+
             window.onresize = function () {
                 $('#sticky-wrap').css('width', $ref.css('width'));
+
                 if ($(window).width() < 1024) {
                     Waypoint.disableAll();
+                    $('#sticky-wrap').css('height', 'auto');
                 } else {
+                    $('#sticky-wrap').css('height', $('.has-sidebar').css('height'));
                     Waypoint.refreshAll();
                 }
             };
+
+            /*            
+             setInterval(function () {
+             $('#sticky-wrap').css('height', $('.has-sidebar').css('height'));
+             Waypoint.refreshAll();
+             
+             }, 1000);
+             * */
+            $sidebar.find('iframe').load(function () {
+                $('#sticky-wrap').css('height', $('.has-sidebar').css('height'));
+                Waypoint.refreshAll();
+
+            });
+
+            //sidebar start
             new Waypoint({
                 element: $sidebar,
                 offset: 15,
@@ -85,6 +104,7 @@
                     }
                 }
             });
+            //sidebar finish
             new Waypoint({
                 element: $sidebar,
                 offset: function () {
@@ -100,21 +120,18 @@
                 }
             });
             var $footer = $('#footer');
+            //footer start
             new Waypoint({
                 element: $footer,
                 offset: function () {
                     if ($sidebar.height() > $(window).height()) {
                         return $(window).height();
                     } else {
-                        return $sidebar.height() + 60;
+                        return $sidebar.height() + 45;
                     }
                 },
                 handler: function (direction) {
-                    if ($sidebar.height() > $(window).height()) {
-                        $sidebar.toggleClass('sidebar-down', 'down' === direction);
-                    } else {
-                        $sidebar.toggleClass('sidebar-down', 'down' === direction);
-                    }
+                    $sidebar.toggleClass('sidebar-down', 'down' === direction);
                 }
             });
         };

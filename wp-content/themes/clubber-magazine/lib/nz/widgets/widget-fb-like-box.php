@@ -1,6 +1,8 @@
 <?php
+
 class NzWpSocials_FbLikeBox_Widget extends WP_Widget
 {
+
     /* -------------------------------------------------- */
     /* CONSTRUCT THE WIDGET
       /*-------------------------------------------------- */
@@ -26,11 +28,13 @@ class NzWpSocials_FbLikeBox_Widget extends WP_Widget
         $fb_page_url = $instance['fb_page_url'];
 
         if ($fb_page_url && $fb_page_url !== '') {
+            echo $args['before_widget'];
             ?>
-            <div class="group mt10 pb10" >
+            <div style="min-height:214px">
                 <?php echo nz_fb_like_box($fb_page_url); ?>
             </div>
             <?php
+            echo $args['after_widget'];
         }
     }
     /* -------------------------------------------------- */
