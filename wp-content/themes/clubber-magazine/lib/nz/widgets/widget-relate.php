@@ -85,8 +85,6 @@ class Relate_Widget extends WP_Widget
         </div>
         <div class="group mt10 pb10 ml10" >
             <?php
-            get_template_part('tpl/parts/sharer');
-
             $options = [
                 'socials' => [
                     [
