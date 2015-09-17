@@ -47,7 +47,9 @@
     dynamic_sidebar('banners_sidebar');
     ?>
 </div>
-
+<style>
+   
+</style>
 <script>
     (function ($) {
 
@@ -57,6 +59,13 @@
                 return;
             }
 
+            var debug = false;
+
+            function log() {
+                if (debug === true) {
+                    console.log(arguments);
+                }
+            }
 
             var $sidebar = $('.cm-sticky-sidebar');
             var $ref = $sidebar.parent();
@@ -70,6 +79,7 @@
             $sidebar.wrap($wrap);
 
             window.onresize = function () {
+                log('resize');
                 $('#sticky-wrap').css('width', $ref.css('width'));
 
                 if ($(window).width() < 1024) {
@@ -99,11 +109,13 @@
                 element: $sidebar,
                 offset: 15,
                 handler: function (direction) {
+                    log('sidebar start - ' + direction);
                     if ($sidebar.height() < $(window).height()) {
                         $sidebar.toggleClass('sidebar-top', 'down' === direction);
                     }
                 }
             });
+
             //sidebar finish
             new Waypoint({
                 element: $sidebar,
@@ -114,28 +126,36 @@
                     return -(sHeight - wHeight);
                 },
                 handler: function (direction) {
+                    log('sidebar finish - ' + direction);
                     if ($sidebar.height() > $(window).height()) {
                         $sidebar.toggleClass('sidebar-bottom', 'down' === direction);
                     }
                 }
             });
-            var $footer = $('#footer');
+
             //footer start
+            var $footer = $('#footer');
             new Waypoint({
                 element: $footer,
                 offset: function () {
                     if ($sidebar.height() > $(window).height()) {
                         return $(window).height();
                     } else {
+                        /*return $sidebar.height();*/
                         return $sidebar.height() + 45;
                     }
                 },
                 handler: function (direction) {
+                    log('footer start - ' + direction);
+
                     $sidebar.toggleClass('sidebar-down', 'down' === direction);
                 }
             });
         };
-        window.onload = stickySidebar;
+
+        $(document).ready(function () {
+            stickySidebar();
+        });
     })(jQuery);
 
 </script>

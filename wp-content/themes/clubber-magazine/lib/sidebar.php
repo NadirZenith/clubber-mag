@@ -117,7 +117,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'singular_sidebar',
         'name' => 'Singular sidebar',
-        'before_widget' => '<div class="mb15">',
+        'before_widget' => '<div class="pb15 singular_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
@@ -127,7 +127,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'single_event_sidebar',
         'name' => 'Event sidebar',
-        'before_widget' => '<div class="mb15 single_event_sidebar_item">',
+        'before_widget' => '<div class="pb15 single_event_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
@@ -136,7 +136,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'single_artist_sidebar',
         'name' => 'Artist sidebar',
-        'before_widget' => '<div class="mb15">',
+        'before_widget' => '<div class="pb15 single_artist_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
@@ -146,7 +146,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'archive_sidebar',
         'name' => 'Archive sidebar',
-        'before_widget' => '<div class="mb15">',
+        'before_widget' => '<div class="pb15 archive_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
@@ -156,7 +156,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'archive_event_sidebar',
         'name' => 'Agenda sidebar',
-        'before_widget' => '<div class="mb15">',
+        'before_widget' => '<div class="pb15 archive_event_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
@@ -166,7 +166,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'archive_open_frequency_sidebar',
         'name' => 'Archive OpenFrequency sidebar',
-        'before_widget' => '<div class="mb15">',
+        'before_widget' => '<div class="pb15 archive_open_frequency_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
@@ -176,7 +176,7 @@ function cm_widgets_init()
     register_sidebar(array(
         'id' => 'banners_sidebar',
         'name' => 'Banners sidebar',
-        'before_widget' => '<div class="mb15">',
+        'before_widget' => '<div class="pb15 banners_sidebar_item">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="mb3">',
         'after_title' => '</h3>',
