@@ -4,7 +4,7 @@
  */
 ?>
 <article class="pr">
-    <div class="hover bottom w-100">
+    <div class="hover bottom w-100 slideU">
         <h2 class="reset h3">
             <a href="<?php the_permalink(); ?>">
                 <?php echo get_the_title() ?>

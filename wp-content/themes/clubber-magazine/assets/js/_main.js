@@ -83,6 +83,11 @@
                 $('.tooltip').tooltipster({
                     contentAsHTML: true
                 });
+
+                //slideU
+                $('.slideU').slideU({
+                    hideParentOverflow: true
+                });
                 /*
                  * 
                  $('.nzSCField_newpodcast').nzSCField({

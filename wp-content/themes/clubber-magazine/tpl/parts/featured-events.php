@@ -22,7 +22,7 @@
                                 <?php
                             }
                             ?>
-                            <li class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-5">
+                            <li class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-5">
                                 <div class="p3">
                                     <?php get_template_part('tpl/list/list-2'); ?>
                                 </div>
@@ -39,7 +39,7 @@
     } //end if have posts
     wp_reset_postdata();
     ?>
-
+    
     <script type="text/javascript">
 
         $(function () {
