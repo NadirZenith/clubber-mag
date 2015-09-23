@@ -4,7 +4,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title><?php wp_title( '|', true, 'right' ); ?></title>
       <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() ?>/assets/images/apple-touch-icon.png" />
-      <link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/assets/images/favicon.ico" type="image/x-icon" />
+      <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="<?php echo get_template_directory_uri() ?>/assets/images/favicon.ico">
       <?php wp_head(); ?>
 </head>
 <?php
