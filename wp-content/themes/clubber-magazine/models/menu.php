@@ -21,6 +21,7 @@ function cm_add_loginout_link($items, $args)
             if (is_super_admin()) {
                 $sub .= '<ul class="sub-menu">';
                 $sub .= '<li><a href="' . admin_url() . '">ADMIN</a></li>';
+                $sub .= '<li><a href="' . get_permalink(CM_MEDIAKIT_PAGE_ID) . '">Mediakit</a></li>';
                 $sub .= '</ul>';
             }
             $item = sprintf($wrapper, $class, $user_link . $sub);
