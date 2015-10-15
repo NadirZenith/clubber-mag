@@ -40,6 +40,80 @@
     <?php echo do_shortcode('[sam id=1]'); ?>
 </div>
 
+<?php
+/**
+ *  ################ BETA
+ */
+if (current_user_can('manage_options')) {
+    ?>
+    <style>
+        #desktop-menu{
+            background-color: #c4c4c4;
+
+        }
+        #desktop-menu.static-menu{
+            top: 0px;
+            position: fixed;
+            background-color: #ddd;
+            z-index: 10000000;
+            width: 100%;
+
+            -webkit-transition: background-color 500ms linear;
+            -moz-transition: background-color 500ms linear;
+            -o-transition: background-color 500ms linear;
+            -ms-transition: background-color 500ms linear;
+            transition: background-color 500ms linear;
+        }
+
+        .static-menu #main-menu li{
+            opacity: 1;
+        }
+
+        .static-menu #main-menu > li:not(.menu-search):not(.menu-ticketscript):not(.menu-connect){
+
+            visibility: hidden;
+            opacity: 0;
+            -webkit-transition: all 500ms linear;
+            -moz-transition: all 500ms linear;
+            -o-transition: all 500ms linear;
+            -ms-transition: all 500ms linear;
+            transition: all 500ms linear;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            var windowWidth = $(window).width();
+
+            if (windowWidth < 1280) {
+                return;
+            }
+
+            var $el = $('#desktop-menu');
+
+            var $promo = $el.wrap($('<div></div>').css({height: $el.css('height')}));
+
+            var waypoint = new Waypoint({
+                element: document.getElementById('access'),
+                handler: function (direction) {
+                    if (direction === 'down') {
+                        $promo.addClass('static-menu');
+                    } else {
+                        $promo.removeClass('static-menu');
+                    }
+                }
+            });
+
+        });
+
+    </script>
+    <?php
+}
+/**
+ * END ################ BETA
+ */
+?>
+
 <nav id="access" class="cb hide show-md">
     <div id="desktop-menu" class="group">
         <?php
@@ -68,5 +142,3 @@
         </form>
     </div>
 </div>
-
-<!--<div class="cb"></div>-->

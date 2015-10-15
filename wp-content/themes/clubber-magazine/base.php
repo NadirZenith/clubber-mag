@@ -1,7 +1,9 @@
 <?php ob_start() ?>
 <!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
-    <?php get_template_part('tpl/base/head'); ?>
+    <head>
+        <?php get_template_part('tpl/base/head'); ?>
+    </head>
     <body <?php body_class(); ?> >
         <?php do_action('base_after_body') ?>
         <div id="site">

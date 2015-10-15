@@ -22,8 +22,6 @@
 body:before{
       display: block;width: 100px;height: 12px;
       background:#fff;
-      position:fixed;
-      top: 0;left: 80%;
       z-index: 9999999;
       content: '<568px';
       line-height:-2px;
@@ -31,6 +29,9 @@ body:before{
       font-size: 10px;
       overflow: visible;
       color:#111;
+      position:fixed;left: 80%;
+      /*top: 0;*/
+      bottom: 0;
 
 }
 
@@ -39,7 +40,6 @@ body:after{
       display: block;width: 100px;height: 12px;
       background:#fff;
       border-right: 1000px solid greenyellow;
-      position:fixed;top: 0;left: 100%;
       text-indent: -100px;
       z-index: 9999999;
       content: ' ';
@@ -48,6 +48,9 @@ body:after{
       font-size: 10px;
       overflow: visible;
       color:#111;
+      position:fixed;left: 100%;
+      /*top: 0;*/
+      bottom: 0;
 
 }
 /*sm ≥ 568px */
