@@ -74,7 +74,7 @@ class NzWpSocialsInit extends NzWpSocialloginsAbstract
         //validate code
         $params = [
             'client_id' => $this->options['facebook']['app_id'],
-            'redirect_uri' => rtrim(site_url(), '/') . '/',
+            'redirect_uri' => rtrim(home_url(), '/') . '/',
             'client_secret' => $this->options['facebook']['app_secret'],
             'code' => $code,
         ];
