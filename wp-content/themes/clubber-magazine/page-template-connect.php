@@ -31,6 +31,17 @@ if (is_user_logged_in()) {
 
             <?php
             echo do_shortcode('[nzwp_forms_login]');
+
+            if (isset($_GET['test'])) {
+                ?>
+                <div class="social-logins">
+                    <h2>
+                        or login with:
+                    </h2>
+                    <a onclick="nzwpsocials.facebookLogin()" class="pure-button" href="#">Facebook</a>
+                </div>
+                <?php
+            }
             ?>
         </section>
     </div>

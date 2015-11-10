@@ -3,7 +3,7 @@
 $letter = (isset($_GET['first-letter'])) ? $_GET['first-letter'] : null;
 if (is_post_type_archive('cool-place') && !isset($letter)) {
     //featured coolplaces
-    get_template_part('tpl/parts/featured-coolplaces');
+    /*get_template_part('tpl/parts/featured-coolplaces');*/
 }
 ?>
 
@@ -34,9 +34,10 @@ if (is_post_type_archive('cool-place') && !isset($letter)) {
     <?php
     //QUERY BY FIRST LETTER
     $term_name = get_query_var('cool_place_type', '');
-
+    /* d($term_name); */
     $term = get_term_by('name', $term_name, 'cool_place_type');
-    query_by_first_letter('cool-place', $letter, $term);
+
+    /* query_by_first_letter('cool-place', $letter, $term); */
     ?>
 
 </div>
@@ -51,11 +52,13 @@ if (is_post_type_archive('cool-place') && !isset($letter)) {
     </header>
     <!--  ALL GROUPED BY FIRST LETTER  -->
     <div class="menu-all-first-letter">
-        <?php cm_sort_all_by_first_letter(); ?>
+        <?php
+        /* cm_sort_all_by_first_letter(); */
+        ?>
     </div>
     <?php
     if (NzWpLocationTerms::$current_city->slug == 'barcelona') {
-        get_template_part('tpl/parts/coolplaces-archive-map');
+        /*get_template_part('tpl/parts/coolplaces-archive-map');*/
     }
     ?>
 </section>

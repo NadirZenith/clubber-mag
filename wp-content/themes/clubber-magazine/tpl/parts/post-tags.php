@@ -5,7 +5,7 @@ if ( !empty( $tags ) ) {
             ?>
             <div class="cb pb15">
                   <div class="tag-list">
-                        <span class="tags-icon"></span>
+                        <i class="fa fa-tags tags-icon"></i>
                         <ul>
                               <?php
                               foreach ( $tags as $tag ) {

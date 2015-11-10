@@ -1,10 +1,9 @@
 <?php
-if (WP_ENV === 'development') {
-    /* define('FACEBOOK_APP_ID', '1549701461914029'); // facebook app id development */
-} else {
-    
+if (!defined('FACEBOOK_APP_ID')) {
+    define('FACEBOOK_APP_ID', '1467286160155560'); // facebook app id 
 }
-define('FACEBOOK_APP_ID', '1467286160155560'); // facebook app id 
+
+add_action('base_after_body', 'nz_facebook_sdk_output', 10);
 
 function nz_facebook_sdk_output()
 {
@@ -32,7 +31,7 @@ function nz_facebook_sdk_output()
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-    <?php if (false) { //has fb login test user status                 ?>
+    <?php if (false) { //has fb login test user status                   ?>
             window.onload = function () {
                 alert('load');
                 FB.getLoginStatus(function (response) {
@@ -47,11 +46,6 @@ function nz_facebook_sdk_output()
     <?php } ?>
     </script> 
     <?php
-}
-/*
- */
-if (FACEBOOK_APP_ID) {
-    add_action('base_after_body', 'nz_facebook_sdk_output', 10);
 }
 
 /**
