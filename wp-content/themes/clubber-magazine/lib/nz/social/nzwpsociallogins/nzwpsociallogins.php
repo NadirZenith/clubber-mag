@@ -32,6 +32,27 @@ class NzWpSocialsInit extends NzWpSocialloginsAbstract
 {
 
     /**
+     * User is redirect here after click button
+     */
+    protected function link_facebook_login()
+    {
+
+        $fb_oauth_url = 'https://www.facebook.com/dialog/oauth?';
+
+        $query_arg = http_build_query([
+            'client_id' => $this->options['facebook']['app_id'],
+            'redirect_uri' => home_url(),
+            'scope' => $this->options['facebook']['scope']
+        ]);
+
+        $location = $fb_oauth_url . $query_arg;
+
+        wp_redirect($location, 302);
+
+        exit;
+    }
+
+    /**
      * After user Authorization facebook redirects to here
      * 
      */
@@ -140,7 +161,7 @@ class NzWpSocialsInit extends NzWpSocialloginsAbstract
             if (($user_id = email_exists($social_user['email'])) !== false) {
                 //wp user already exist
                 $current_user = get_userdata($user_id);
-                
+
                 $this->update_sociallogin_user_meta($social_user, 'twitter', $current_user);
             } else {
                 //new wp user
@@ -181,10 +202,10 @@ class NzWpSocialsInit extends NzWpSocialloginsAbstract
 
         $wpuser['username'] = (!empty($profile['name']) ? sanitize_user($profile['name']) : 'fb' . $profile['id']);
 
-        if(empty($profile['email'])){
+        if (empty($profile['email'])) {
             die('The email is obligatory');
         }
-        /*$wpuser['user_email'] = (!empty($profile['email'])) ? $profile['email'] : sprintf('facebook_user_%d@mail.local', $profile['id']);*/
+        /* $wpuser['user_email'] = (!empty($profile['email'])) ? $profile['email'] : sprintf('facebook_user_%d@mail.local', $profile['id']); */
         $wpuser['user_email'] = $profile['email'];
 
         $wpuser['thumbnail'] = "https://graph.facebook.com/v2.3/" . $wpuser['id'] . "/picture";
@@ -384,27 +405,6 @@ class NzWpSocialsInit extends NzWpSocialloginsAbstract
         exit;
     }
 
-    /**
-     * User is redirect here after click button
-     */
-    protected function link_facebook_login()
-    {
-
-        $fb_oauth_url = 'https://www.facebook.com/dialog/oauth?';
-
-        $query_arg = http_build_query([
-            'client_id' => $this->options['facebook']['app_id'],
-            'redirect_uri' => urlencode(home_url()),
-            'scope' => $this->options['facebook']['scope']
-        ]);
-
-        $location = $fb_oauth_url . $query_arg;
-
-        wp_redirect($location, 302);
-
-        exit;
-    }
-
     protected function init()
     {
 
@@ -465,7 +465,6 @@ class NzWpSocialsInit extends NzWpSocialloginsAbstract
         }
     }
 
-
     protected function init_script_facebook()
     {
         ?>
@@ -520,4 +519,3 @@ class NzWpSocialsInit extends NzWpSocialloginsAbstract
         <?php
     }
 }
-
