@@ -297,11 +297,10 @@ if (class_exists('NzWpSocialsInit')) {
         'link_account' => true,
         'default_email_mask' => 'user_%d@nzwpsocials.clubber-mag.com',
         'facebook' => [
-            'app_id' => '131961073828393',
-            'app_secret' => 'b365145871dc572a4fed8341fe7b1d60',
-            'client_token' => 'dd7597db92b2a479da40ed9b5dd1e4db',
+            'app_id' => FACEBOOK_APP_ID,
+            'app_secret' => FACEBOOK_APP_SECRET,
+            'client_token' => FACEBOOK_CLIENT_TOKEN,
             'scope' => 'email', //,publish_actions',public_profile
-        /* 'page_id' => '533384016799314' */
         ]
     ];
     new NzWpSocialsInit($options);
