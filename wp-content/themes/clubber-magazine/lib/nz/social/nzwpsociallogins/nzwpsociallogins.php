@@ -394,7 +394,7 @@ class NzWpSocialsInit extends NzWpSocialloginsAbstract
 
         $query_arg = http_build_query([
             'client_id' => $this->options['facebook']['app_id'],
-            'redirect_uri' => site_url(),
+            'redirect_uri' => home_url(),
             'scope' => $this->options['facebook']['scope']
         ]);
 
