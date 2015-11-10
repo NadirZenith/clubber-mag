@@ -38,7 +38,7 @@ if (is_user_logged_in()) {
                     <h2>
                         or login with:
                     </h2>
-                    <a onclick="nzwpsocials.facebookLogin()" class="pure-button" href="#">Facebook</a>
+                    <a onclick="nzwpsocials.facebookLogin()" class="pure-button" >Facebook</a>
                 </div>
                 <?php
             }
