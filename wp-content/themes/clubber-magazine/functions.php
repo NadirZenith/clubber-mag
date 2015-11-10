@@ -66,6 +66,7 @@ $roots_includes = array(
     'lib/nz/social/soundcloud-config.php',
     'lib/nz/social/twitter-config.php',
     'lib/nz/social/sharer.php',
+    'lib/nz/social/nzwpsociallogins/nzwpsociallogins.php',
     /** CLUBBER POST TYPES      */
     CM_MODELS_DIR . '/user.php',
     CM_MODELS_DIR . '/menu.php',
@@ -270,4 +271,38 @@ function cm_render_video($url, array $options = array())
         ], $output);
 
     return $output;
+}
+if (class_exists('NzWpSocialsInit')) {
+
+
+
+    if (!defined('FACEBOOK_APP_ID')){
+        return;
+    }
+    if (!defined('FACEBOOK_APP_SECRET')){
+        return;
+    }
+    if (!defined('FACEBOOK_CLIENT_TOKEN')){
+        return;
+    }
+    
+    $options = [
+        'connection_handler' => 'curl', //file_get_contents
+        'init_apis_action' => FALSE,
+        'enqueue_scripts' => false,
+        'redirect' => true,
+        'redirect_to' => function($user) {
+            return get_author_posts_url($user->ID);
+        },
+        'link_account' => true,
+        'default_email_mask' => 'user_%d@nzwpsocials.clubber-mag.com',
+        'facebook' => [
+            'app_id' => '131961073828393',
+            'app_secret' => 'b365145871dc572a4fed8341fe7b1d60',
+            'client_token' => 'dd7597db92b2a479da40ed9b5dd1e4db',
+            'scope' => 'email', //,publish_actions',public_profile
+        /* 'page_id' => '533384016799314' */
+        ]
+    ];
+    new NzWpSocialsInit($options);
 }
