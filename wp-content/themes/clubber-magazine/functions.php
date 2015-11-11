@@ -274,8 +274,6 @@ function cm_render_video($url, array $options = array())
 }
 if (class_exists('NzWpSocialsInit')) {
 
-
-
     if (!defined('FACEBOOK_APP_ID')){
         return;
     }

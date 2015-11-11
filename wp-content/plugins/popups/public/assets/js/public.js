@@ -48,7 +48,7 @@ var SPU_master = function() {
 		facebookFix( $box );
 
         // Custom links conversion
-        $box.on('click', 'a:not(".spu-close-popup")', function(){
+        $box.on('click', 'a:not(".spu-close-popup, .flp_wrapper a, .spu-not-close")', function(){
             // hide the popup and track conversion
             toggleBox( id, false, true);
         });
@@ -169,6 +169,8 @@ var SPU_master = function() {
 
 		// add class to the gravity form if they exist within the box
 		$box.find('.gform_wrapper form').addClass('gravity-form');
+		// same for mc4wp
+		$box.find('.mc4wp-form form').addClass('mc4wp-form');
 
         // check if we have forms and perform different actions
         var box_form = $box.find('form');
@@ -187,14 +189,14 @@ var SPU_master = function() {
                 $('.spu-disable-ajax form').addClass('spu-disable-ajax');
             }
             // Disable ajax on form by adding .spu-disable-ajax class to it
-            $box.on('submit','form.spu-disable-ajax', function(){
+            $box.on('submit','form.spu-disable-ajax:not(".flp_form")', function(){
 
                 $box.trigger('spu.form_submitted', [id]);
                 toggleBox(id, false, true );
             });
 
             // Add generic form tracking
-            $box.on('submit','form:not(".wpcf7-form, .gravity-form, .infusion-form, .spu-disable-ajax, .widget_wysija, .ninja-forms-form")', function(e){
+            $box.on('submit','form:not(".wpcf7-form, .gravity-form, .infusion-form, .spu-disable-ajax, .widget_wysija, .ninja-forms-form, .flp_form, .mc4wp-form")', function(e){
                 e.preventDefault();
 
 
@@ -444,8 +446,8 @@ var SPU_master = function() {
 		show: function( box_id ) {
 			return toggleBox( box_id, true, false );
 		},
-		hide: function( box_id ) {
-			return toggleBox( box_id, false, false );
+		hide: function( box_id, show, conversion ) {
+			return toggleBox( box_id, false, conversion );
 		},
 		request: function( data, url, success_cb, error_cb ) {
 			return request( data, url, success_cb, error_cb );
@@ -573,7 +575,7 @@ function subscribeFbEvent(){
         FB.Event.subscribe('edge.create', function (href, html_element) {
             var box_id = $(html_element).parents('.spu-box').data('box-id');
             if (box_id) {
-                SPU.hide(box_id);
+                SPU.hide(box_id, false, true);
             }
         });
     }catch(ex){}
@@ -585,7 +587,7 @@ function twitterCB(intent_event) {
 	var box_id = $(intent_event.target).parents('.spu-box').data('box-id');
 
 	if( box_id) {
-		SPU.hide(box_id);
+		SPU.hide(box_id, false, true);
 	}
 }
 function googleCB(a) {
@@ -594,7 +596,7 @@ function googleCB(a) {
 
 		var box_id = jQuery('.spu-gogl').data('box-id');
 		if( box_id) {
-			SPU.hide(box_id);
+			SPU.hide(box_id, false, true);
 		}
 	}
 }
@@ -603,7 +605,7 @@ function closeGoogle(a){
 	{
 		var box_id = jQuery('.spu-gogl').data('box-id');
 		if( box_id) {
-			SPU.hide(box_id);
+			SPU.hide(box_id, false, true);
 
 		}
 	}

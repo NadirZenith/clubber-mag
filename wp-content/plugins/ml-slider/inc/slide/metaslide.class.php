@@ -73,7 +73,7 @@ class MetaSlide {
         if ( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'metaslider_changeslide' ) ) {
             wp_die( json_encode( array(
                     'status' => 'fail',
-                    'msg' => __( "Security check failed. Refresh page and try again.", "metaslider" )
+                    'msg' => __( "Security check failed. Refresh page and try again.", "ml-slider" )
                 )
             ));
         }
@@ -118,7 +118,7 @@ class MetaSlide {
 
         wp_die( json_encode( array(
                 'status' => 'fail',
-                'msg' => __( "File copy failed. Please check upload directory permissions.", "metaslider" )
+                'msg' => __( "File copy failed. Please check upload directory permissions.", "ml-slider" )
             )
         ));
     }
@@ -283,8 +283,8 @@ class MetaSlide {
 
         $url = wp_nonce_url( admin_url( "admin-post.php?action=metaslider_delete_slide&slider_id={$this->slider->ID}&slide_id={$this->slide->ID}" ), "metaslider_delete_slide" );
 
-        return "<a title='" . __("Delete slide", "metaslider") . "' class='tipsy-tooltip-top delete-slide dashicons dashicons-trash' href='{$url}'>" . __("Delete slide", "metaslider") . "</a>";
-    
+        return "<a title='" . __("Delete slide", "ml-slider") . "' class='tipsy-tooltip-top delete-slide dashicons dashicons-trash' href='{$url}'>" . __("Delete slide", "ml-slider") . "</a>";
+
     }
 
     /**
@@ -294,7 +294,7 @@ class MetaSlide {
 
         return apply_filters("metaslider_change_image_button_html", "", $this->slide);
 
-        //return "<a title='" . __("Change slide image", "metaslider") . "' class='tipsy-tooltip-top change-image dashicons dashicons-edit' data-button-text='" . __("Change slide image", "metaslider") . "' data-slide-id='{$this->slide->ID}'>" . __("Change slide image", "metaslider") . "</a>";
+        //return "<a title='" . __("Change slide image", "ml-slider") . "' class='tipsy-tooltip-top change-image dashicons dashicons-edit' data-button-text='" . __("Change slide image", "ml-slider") . "' data-slide-id='{$this->slide->ID}'>" . __("Change slide image", "ml-slider") . "</a>";
     }
 
     /**
@@ -367,7 +367,7 @@ class MetaSlide {
         wp_update_post( array(
                 'ID' => $this->slide->ID,
                 'menu_order' => $menu_order
-            ) 
+            )
         );
 
     }

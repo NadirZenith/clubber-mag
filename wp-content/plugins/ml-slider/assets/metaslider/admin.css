@@ -852,6 +852,11 @@ textarea:-ms-input-placeholder {
 
 #screen-meta-links #screen-options-link-wrap a {
     padding: 3px 6px;
+    text-decoration: none;
+    line-height: 28px;
+}
+#screen-meta-links #screen-options-link-wrap a:before {
+    line-height: 28px;
 }
 
 #screen-meta-links #screen-options-link-wrap a:after,

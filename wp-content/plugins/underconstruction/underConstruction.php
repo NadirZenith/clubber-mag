@@ -3,7 +3,7 @@
  Plugin Name: Under Construction
  Plugin URI: https://wordpress.org/plugins/underconstruction/
  Description: Makes it so your site can only be accessed by users who log in. Useful for developing a site on a live server, without the world being able to see it
- Version: 1.13
+ Version: 1.14
  Author: Noah Kagan
  Author URI: http://SumoMe.com/
  */
@@ -378,5 +378,5 @@ add_filter('plugin_action_links', 'underConstructionPluginLinks', 10, 2);
 add_action('wp_ajax_uc_get_ip_address', 'uc_get_ip_address');
 
 add_option('underconstruction_global_notification', 1);
-add_action( 'admin_notices', array($underConstructionPlugin, 'global_notice') );
+//add_action( 'admin_notices', array($underConstructionPlugin, 'global_notice') );
 register_deactivation_hook( __FILE__, array($underConstructionPlugin, 'plugin_deactivate') );
