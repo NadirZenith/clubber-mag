@@ -66,7 +66,7 @@ $roots_includes = array(
     'lib/nz/social/soundcloud-config.php',
     'lib/nz/social/twitter-config.php',
     'lib/nz/social/sharer.php',
-    /*'lib/nz/social/nzwpsociallogins/nzwpsociallogins.php',*/
+    'lib/nz/social/nzwpsociallogins/nzwpsociallogins.php',
     /** CLUBBER POST TYPES      */
     CM_MODELS_DIR . '/user.php',
     CM_MODELS_DIR . '/menu.php',

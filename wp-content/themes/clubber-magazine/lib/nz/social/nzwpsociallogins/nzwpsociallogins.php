@@ -26,7 +26,7 @@
 /* define('NZWPSOCIAL_FACEBOOK_APP_ID', 694295497297854); */
 /* define('NZWPSOCIAL_FACEBOOK_APP_SECRET', '35c5790da99ffa04bf642ae610fd9214'); */
 include 'abstractnzwpsociallogins.php';
-include 'admin.php';
+/*include 'admin.php';*/
 
 class NzWpSocialsInit extends NzWpSocialloginsAbstract
 {
