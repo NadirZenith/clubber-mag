@@ -5,7 +5,7 @@
  * Plugin Name: Meta Slider
  * Plugin URI:  https://www.metaslider.com
  * Description: Easy to use slideshow plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.
- * Version:     3.3.5
+ * Version:     3.3.6
  * Author:      Matcha Labs
  * Author URI:  https://www.metaslider.com
  * License:     GPL-2.0+
@@ -31,7 +31,7 @@ class MetaSliderPlugin {
     /**
      * @var string
      */
-    public $version = '3.3.5';
+    public $version = '3.3.6';
 
 
     /**
@@ -1259,12 +1259,11 @@ class MetaSliderPlugin {
                         <div id="postbox-container-1" class="postbox-container">
                             <div class='right'>
                                 <div class="ms-postbox" id="metaslider_configuration">
-                                    <h3 class='configuration'>
-                                        <?php _e( "Settings", "ml-slider" ) ?>
+                                    <div class='configuration'>
                                         <input class='alignright button button-primary' type='submit' name='save' id='ms-save' value='<?php _e( "Save", "ml-slider" ) ?>' />
                                         <input class='alignright button button-primary' type='submit' name='preview' id='ms-preview' value='<?php _e( "Save & Preview", "ml-slider" ) ?>' data-slider_id='<?php echo $this->slider->id ?>' data-slider_width='<?php echo $this->slider->get_setting( 'width' ) ?>' data-slider_height='<?php echo $this->slider->get_setting( 'height' ) ?>' />
                                         <span class="spinner"></span>
-                                    </h3>
+                                    </div>
                                     <div class="inside">
                                         <table class="settings">
                                             <tbody>

@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
         // When an image is selected, run a callback.
         add_slide_frame.on('insert', function() {
 
-            jQuery(".metaslider .spinner").show();
+            jQuery(".metaslider .spinner").show().css('visibility', 'visible');
             jQuery(".metaslider input[type=submit]").attr('disabled', 'disabled');
 
             var selection = add_slide_frame.state().get('selection');
@@ -73,7 +73,7 @@ jQuery(document).ready(function($) {
         // When an image is selected, run a callback.
         change_slide_frame.on('select', function() {
 
-            jQuery(".metaslider .spinner").show();
+            jQuery(".metaslider .spinner").show().css('visibility', 'visible');
             jQuery(".metaslider input[type=submit]").attr('disabled', 'disabled');
 
             var selection = change_slide_frame.state().get('selection');
@@ -106,7 +106,7 @@ jQuery(document).ready(function($) {
                     }
 
                 });
-            
+
             }
 
         });
@@ -237,7 +237,7 @@ jQuery(document).ready(function($) {
     });
 
     jQuery(document).ajaxStop(function() {
-        jQuery(".metaslider .spinner").hide();
+        jQuery(".metaslider .spinner").hide().css('visibility', '');
         jQuery(".metaslider input[type=submit]").removeAttr("disabled");
     });
 
@@ -334,7 +334,7 @@ jQuery(document).ready(function($) {
     jQuery(".metaslider form").find("input[type=submit]").on("click", function(e) {
         e.preventDefault();
 
-        jQuery(".metaslider .spinner").show();
+        jQuery(".metaslider .spinner").show().css('visibility', 'visible');
         jQuery(".metaslider input[type=submit]").attr("disabled", "disabled");
 
         // update slide order

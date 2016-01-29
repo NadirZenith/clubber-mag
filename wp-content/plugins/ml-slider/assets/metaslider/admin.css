@@ -71,14 +71,19 @@
     margin: 0 3px
 }
 
-.metaslider #poststuff .right h3.configuration {
+.metaslider #poststuff .right .configuration {
     padding: 7px 7px 7px 12px;
     line-height: 27px;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .metaslider #poststuff .left h3 {
     padding: 7px 5px;
     line-height: 27px;
+    margin: 0;
+    font-size: 14px;
 }
 
 .metaslider #poststuff .left th {

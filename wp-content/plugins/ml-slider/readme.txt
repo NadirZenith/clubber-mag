@@ -3,8 +3,8 @@ Contributors: matchalabs
 Tags: wordpress slideshow,seo,slideshow,slider,widget,wordpress slider,image slider,flexslider,flex slider,nivoslider,nivo slider,responsive,responsive slides,coinslider,coin slider,slideshow,carousel,responsive slider,vertical slides
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
-Tested up to: 4.3.1
-Stable tag: 3.3.4.1
+Tested up to: 4.4
+Stable tag: 3.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,7 +43,7 @@ The most popular WordPress slider plugin. Creating slideshows with [Meta Slider]
 * Free basic support (covering installation issues and theme/plugin conflicts)
 * Lightbox support with the [Meta Slider Lightbox](http://wordpress.org/plugins/ml-slider-lightbox/) addon
 
-Upgrade to [Meta Slider Pro](http://www.metaslider.com/upgrade) to add support for:
+Upgrade to [Meta Slider Pro](https://www.metaslider.com/upgrade) to add support for:
 
 * YouTube & Vimeo slides
 * HTML slides
@@ -79,7 +79,7 @@ Read more and thanks to:
 * [Coin Slider](http://workshop.rs/projects/coin-slider/)
 * [Nivo Slider](http://dev7studios.com/nivo-slider/)
 
-Find out more at http://www.metaslider.com
+Find out more at https://www.metaslider.com
 
 Follow us on Twitter: [@wpmetaslider](https://twitter.com/wpmetaslider)
 
@@ -147,7 +147,7 @@ See www.metaslider.com/documentation/image-cropping/
 
 == Changelog ==
 
-= 3.3.5 [11/09/15] =
+= 3.3.5 [22/09/15] =
 
 * Prepare plugin for WordPress.org translation project (rename textdomain from 'metaslider' to 'ml-slider')
 * Small styling fix
