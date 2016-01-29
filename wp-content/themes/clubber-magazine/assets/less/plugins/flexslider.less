@@ -47,7 +47,13 @@ html[xmlns] .slides {display: block;}
 
 
 /* Direction Nav */
-.flex-direction-nav {*height: 0;}
+.flex-direction-nav {*height: 0; display: none;}
+// md ≥ 768px 
+@media screen and (min-width: 48em)
+{
+    .flex-direction-nav { display: block;}
+
+}
 .flex-direction-nav a {width: 30px; height: 30px; margin: -20px 0 0; display: block; background: url(bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 50%; z-index: 10; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease;}
 .flex-direction-nav .flex-next {background-position: 100% 0; right: -36px; }
 .flex-direction-nav .flex-prev {left: -36px;}
@@ -70,23 +76,22 @@ html[xmlns] .slides {display: block;}
 .flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
 .flex-control-paging li a.flex-active { background: #bbb; background: rgba(187,187,187,0.9); cursor: default; }
 
-.flex-control-nav {display: none}
+/*
 // sm ≥ 568px 
 @media screen and (min-width: 35.5em)
 {}
 // md ≥ 768px 
 @media screen and (min-width: 48em)
-{
-    
-.flex-control-nav {display: block}
-}
+{}
 // lg ≥ 1024px
 @media screen and (min-width: 64em)
 {}
 // xl ≥ 1280px
 @media screen and (min-width: 80em)
 {}
+*/
 @media only screen and (max-width: 767px) {
+    .flex-control-nav {display: none}
 
     /*.flex-control-paging li a {width: 5px; height: 5px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; box-shadow: inset 0 0 3px rgba(0,0,0,0.3);}*/
 
