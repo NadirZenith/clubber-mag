@@ -4,15 +4,9 @@ $posts_per_row = 4;
 $args = array(
     'post_type' => 'cool-place',
     'posts_per_page' => $posts_per_row * 1,
-    'order' => 'rand',
-    'orderby' => 'meta_valua',
-    'meta_query' => array(
-        array(
-            'key' => 'featured',
-            'value' => 'on',
-            'compare' => '=',
-        )
-    )
+    'orderby' => 'rand',
+    'meta_key' => 'featured',
+    'meta_value' => 'on'
 );
 
 $query = new WP_Query($args);
