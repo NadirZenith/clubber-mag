@@ -10,26 +10,26 @@ wp-content/wp-cache-config.php
 wp-content/w3tc-config.php
 sitemap.xml
 *.log
-wp-content/cache/
+/web/wp-content/cache/
 sitemap.xml.gz
-wp-config.php
+/web/wp-config.php
 nbproject/
 backups/
-/wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
-/wp-content/aiowps_backups/
-/wp-content/themes/clubber-magazine/prueba/
+/web/wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
+/web/wp-content/aiowps_backups/
+/web/wp-content/themes/clubber-magazine/prueba/
 
-/wp-content/plugins/core-control/
-/wp-content/plugins/debug-*/
-/wp-content/plugins/developer/
-/wp-content/plugins/query-monitor/
-/wp-content/plugins/rewrite-rules-inspector/
-/wp-content/plugins/theme-check/
-/wp-content/plugins/user-switching/
-/wp-content/plugins/wpdevtool/
+/web/wp-content/plugins/core-control/
+/web/wp-content/plugins/debug-*/
+/web/wp-content/plugins/developer/
+/web/wp-content/plugins/query-monitor/
+/web/wp-content/plugins/rewrite-rules-inspector/
+/web/wp-content/plugins/theme-check/
+/web/wp-content/plugins/user-switching/
+/web/wp-content/plugins/wpdevtool/
 
-/wp-content/plugins/myMail/
-/wp-content/plugins/admin-bar-toggle/
+/web/wp-content/plugins/myMail/
+/web/wp-content/plugins/admin-bar-toggle/
 
 /.idea
 
