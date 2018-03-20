@@ -1,0 +1,29 @@
+version: "2"
+services:
+    mariadb:
+      image: mariadb:10.1
+      working_dir: /application
+      volumes:
+        - ./volume/db/mysql:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+    webserver:
+      image: nginx:alpine
+      working_dir: /application
+      volumes:
+          - ${APP_PATH}:/application
+          - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+          - ./volume/logs/nginx:/var/log/nginx
+          - ./volume/uploads:/application/web/wp-content/uploads
+
+    php:
+      build: php-fpm
+      working_dir: /application
+      volumes:
+          - ${APP_PATH}:/application
+          - ./volume/uploads:/application/web/wp-content/uploads
+          # - ./php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini

@@ -1,0 +1,11 @@
+version: "2"
+services:
+    mariadb:
+      volumes:
+        - ./volume/db/dump:/docker-entrypoint-initdb.d
+      ports:
+        - "3306:3306"
+
+    webserver:
+      ports:
+          - "103:80"

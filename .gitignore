@@ -30,3 +30,9 @@ backups/
 
 /wp-content/plugins/myMail/
 /wp-content/plugins/admin-bar-toggle/
+
+/.idea
+
+/docker/volume/db/mysql
+/docker/docker-compose.override.yml
+/docker/.env
