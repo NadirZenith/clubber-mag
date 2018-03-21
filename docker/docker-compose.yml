@@ -26,4 +26,4 @@ services:
       volumes:
           - ${APP_PATH}:/application
           - ./volume/uploads:/application/web/wp-content/uploads
-          # - ./php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
+          - ./php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
