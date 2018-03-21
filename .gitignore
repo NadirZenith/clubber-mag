@@ -12,6 +12,7 @@ sitemap.xml.gz
 /web/wp-config.php
 /backups
 /web/wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
+/web/wp-content/plugins/all-in-one-wp-security-and-firewall/backups/
 /web/wp-content/aiowps_backups/
 /web/wp-content/themes/clubber-magazine/prueba/
 
