@@ -34,5 +34,15 @@ backups/
 /.idea
 
 /docker/volume/db/mysql
+
+/docker/volume/db/dump/*
+!/docker/volume/db/dump/.gitkeep
+
+/docker/volume/logs/nginx/*
+!/docker/volume/logs/nginx/.gitkeep
+
+/docker/volume/uploads/*
+!/docker/volume/uploads/.gitkeep
+
 /docker/docker-compose.override.yml
 /docker/.env
