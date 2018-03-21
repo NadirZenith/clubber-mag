@@ -198,7 +198,7 @@ add_filter('show_admin_bar', 'nz_filter_show_admin_bar');
 
 function nz_filter_show_admin_bar()
 {
-    if (current_user_can('administrator')) {
+    if (current_user_can('editor')) {
         /* if (current_user_can('manage_options')) { */
         return true;
     }

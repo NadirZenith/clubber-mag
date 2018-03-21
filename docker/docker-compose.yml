@@ -10,6 +10,7 @@ services:
         MYSQL_DATABASE: ${MYSQL_DATABASE}
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      restart: always
 
     webserver:
       image: nginx:alpine
@@ -19,6 +20,7 @@ services:
           - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
           - ./volume/logs/nginx:/var/log/nginx
           - ./volume/uploads:/application/web/wp-content/uploads
+      restart: always
 
     php:
       build: php-fpm
@@ -27,3 +29,4 @@ services:
           - ${APP_PATH}:/application
           - ./volume/uploads:/application/web/wp-content/uploads
           - ./php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
+      restart: always
