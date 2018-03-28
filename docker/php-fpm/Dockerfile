@@ -1,6 +1,6 @@
 FROM php:7.0-fpm
 
-RUN apt-get update && apt-get install -y gcc zlib1g-dev zip unzip && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y gcc zlib1g-dev libjpeg-dev libpng-dev zip unzip && rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsS -o /tmp/icu.tgz -L http://download.icu-project.org/files/icu4c/59.1/icu4c-59_1-src.tgz \
   && tar -zxf /tmp/icu.tgz -C /tmp \
@@ -15,7 +15,8 @@ RUN curl -fsS -o /tmp/icu.tgz -L http://download.icu-project.org/files/icu4c/59.
 ENV PHP_CPPFLAGS="$PHP_CPPFLAGS -std=c++11"
 
 RUN docker-php-ext-configure intl --with-icu-dir=/usr/local && \
-    docker-php-ext-install intl zip mysqli pdo pdo_mysql
+    docker-php-ext-configure gd --with-png-dir=/usr/lib/ --with-jpeg-dir=/usr/lib/ && \
+    docker-php-ext-install intl zip mysqli pdo pdo_mysql gd
 
 #RUN usermod -u 1000 www-data
 
