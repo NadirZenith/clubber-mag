@@ -2,7 +2,7 @@
 if (WP_ENV === 'development') {
     define('SOUNDCLOUD_CLIENT_ID', 'c8ca096c652b8c84856ef241d6e56ab3'); // facebook app id development
 } else {
-    define('SOUNDCLOUD_CLIENT_ID', 'c8ca096c652b8c84856ef241d6e56ab3'); // facebook app id 
+    define('SOUNDCLOUD_CLIENT_ID', 'c8ca096c652b8c84856ef241d6e56ab3'); // facebook app id
 }
 
 //SECRET
@@ -10,7 +10,7 @@ if (WP_ENV === 'development') {
 function nz_soundcloud_sdk_output()
 {
     ?>
-    <script src="http://connect.soundcloud.com/sdk.js" ></script>
+    <script src="//connect.soundcloud.com/sdk.js" ></script>
     <script>
         SC.initialize({
             client_id: '<?php echo SOUNDCLOUD_CLIENT_ID ?>'
@@ -38,7 +38,7 @@ add_shortcode('nz-soundcloud', 'nz_soundcloud_shortcode');
 
 function nz_soundcloud_shortcode($atts, $content = null)
 {
-    
+
 }
 
 function nz_get_soundcloud_iframe($uri, $args = array())

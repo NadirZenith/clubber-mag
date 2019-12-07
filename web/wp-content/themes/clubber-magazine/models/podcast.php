@@ -115,7 +115,7 @@ function cm_podcast_load_scripts($hook)
     }
 
     // Register the script
-    wp_register_script('soundcloud-api', 'http://connect.soundcloud.com/sdk.js');
+    wp_register_script('soundcloud-api', '//connect.soundcloud.com/sdk.js');
     wp_register_script('nzSCField', get_template_directory_uri() . '/assets/js/plugins/nzSCField.js');
 
     // Enqueued script with localized data.
@@ -123,7 +123,7 @@ function cm_podcast_load_scripts($hook)
     wp_enqueue_script('nzSCField');
 }
 /**
- * custom fields 
+ * custom fields
  */
 add_action('custom_metadata_manager_init_metadata', 'cm_podcast_custom_fields');
 
@@ -137,7 +137,7 @@ function cm_podcast_custom_fields()
         'label' => 'Podcast field group'
     ));
 
-    //fields start here 
+    //fields start here
     x_add_metadata_field(CM_META_SOUNDCLOUD, $post_type, array(
         'group' => $group,
         'label' => 'Soundcloud url',
