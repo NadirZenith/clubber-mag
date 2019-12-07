@@ -9,7 +9,7 @@ sitemap.xml
 *.log
 /web/wp-content/cache/
 sitemap.xml.gz
-/web/wp-config.php
+
 /backups
 /web/wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
 /web/wp-content/plugins/all-in-one-wp-security-and-firewall/backups/
