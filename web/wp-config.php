@@ -13,28 +13,25 @@
  *
  * @package WordPress
  */
-define('WP_HOME', 'http://www.clubber-mag.test');
-define('WP_SITEURL', 'http://www.clubber-mag.test/web');
-//define('WP_HOME', 'http://clubbermagcomwp_webserver_1');
-//define('WP_SITEURL', 'http://clubbermagcomwp_webserver_1/web');
+define( 'WP_HOME', getenv('WP_HOME'));
+define( 'WP_SITEURL', getenv('WP_SITEURL') );
 
-define('FACEBOOK_APP_ID', '1467286160155560'); 
-define('FACEBOOK_APP_SECRET', 'fb60751e9d15bb620dc4885097904721'); 
-define('FACEBOOK_CLIENT_TOKEN', 'dbb7a1db27c2cde983b4157a359ea377');
-
+define('FACEBOOK_APP_ID', getenv('FACEBOOK_APP_ID'));
+define('FACEBOOK_APP_SECRET', getenv('FACEBOOK_APP_SECRET'));
+define('FACEBOOK_CLIENT_TOKEN', getenv('FACEBOOK_CLIENT_TOKEN'));
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'db');
+define('DB_NAME', getenv('MYSQL_DATABASE'));
 
 /** MySQL database username */
-define('DB_USER', 'user');
+define('DB_USER', getenv('MYSQL_USER'));
 
 /** MySQL database password */
-define('DB_PASSWORD', 'pass');
+define('DB_PASSWORD', getenv('MYSQL_PASSWORD'));
 
 /** MySQL hostname */
-define('DB_HOST', 'clubbermagcomwp_mariadb_1');
+define('DB_HOST', getenv('MYSQL_HOST'));
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -51,14 +48,18 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
+define('AUTH_KEY', getenv('AUTH_KEY'));
+define('SECURE_AUTH_KEY', getenv('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY', getenv('LOGGED_IN_KEY'));
+define('NONCE_KEY', getenv('NONCE_KEY'));
+define('AUTH_SALT', getenv('AUTH_SALT'));
+define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
+define('LOGGED_IN_SALT', getenv('LOGGED_IN_SALT'));
+define('NONCE_SALT', getenv('NONCE_SALT'));
+
+if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false){
+    $_SERVER['HTTPS']='on';
+}
 
 /**#@-*/
 
@@ -77,11 +78,11 @@ $table_prefix  = 'wp_';
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', true);
-define('WP_DEBUG_LOG', true);
-define('WP_DEBUG_DISPLAY', false);
-define('SCRIPT_DEBUG', false);
-define('ERRORLOGFILE', __DIR__ . '/../log/log-'.date('Y-m-d').'.log');
+define('WP_DEBUG', intval(getenv('WP_DEBUG')));
+//define('WP_DEBUG_LOG', true);
+//define('WP_DEBUG_DISPLAY', false);
+//define('SCRIPT_DEBUG', false);
+//define('ERRORLOGFILE', __DIR__ . '/../log/log-'.date('Y-m-d').'.log');
 
 
 /* That's all, stop editing! Happy blogging. */

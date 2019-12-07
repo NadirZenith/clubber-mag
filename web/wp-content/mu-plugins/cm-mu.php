@@ -1,5 +1,7 @@
 <?php
-
+if ( defined( 'ERRORLOGFILE' ) ) {
+    ini_set( 'error_log',ERRORLOGFILE );
+}
 include_once 'firephp/fb.php';
 
 // ob_start(); 

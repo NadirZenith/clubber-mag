@@ -1,7 +1,7 @@
-version: "2"
+version: "3"
 services:
     mariadb:
-      image: mariadb:10.1
+      build: mariadb
       working_dir: /application
       volumes:
         - ./volume/db/mysql:/var/lib/mysql
@@ -10,17 +10,14 @@ services:
         MYSQL_DATABASE: ${MYSQL_DATABASE}
         MYSQL_USER: ${MYSQL_USER}
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      restart: always
 
     webserver:
-      image: nginx:alpine
+      build: nginx
       working_dir: /application
       volumes:
           - ${APP_PATH}:/application
-          - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
           - ./volume/logs/nginx:/var/log/nginx
           - ./volume/uploads:/application/web/wp-content/uploads
-      restart: always
 
     php:
       build: php-fpm
@@ -28,5 +25,25 @@ services:
       volumes:
           - ${APP_PATH}:/application
           - ./volume/uploads:/application/web/wp-content/uploads
+          - ./php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf # config php-fpm
           - ./php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
-      restart: always
+      environment:
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_HOST: ${MYSQL_HOST}
+        WP_HOME: ${WP_HOME}
+        WP_SITEURL: ${WP_SITEURL}
+        WP_DEBUG: ${WP_DEBUG}
+        WP_ENV: ${WP_ENV}
+        AUTH_KEY: ${AUTH_KEY}
+        SECURE_AUTH_KEY: ${SECURE_AUTH_KEY}
+        LOGGED_IN_KEY: ${LOGGED_IN_KEY}
+        NONCE_KEY: ${NONCE_KEY}
+        AUTH_SALT: ${AUTH_SALT}
+        SECURE_AUTH_SALT: ${SECURE_AUTH_SALT}
+        LOGGED_IN_SALT: ${LOGGED_IN_SALT}
+        NONCE_SALT: ${NONCE_SALT}
+        FACEBOOK_APP_ID: ${FACEBOOK_APP_ID}
+        FACEBOOK_APP_SECRET: ${FACEBOOK_APP_SECRET}
+        FACEBOOK_CLIENT_TOKEN: ${FACEBOOK_CLIENT_TOKEN}
