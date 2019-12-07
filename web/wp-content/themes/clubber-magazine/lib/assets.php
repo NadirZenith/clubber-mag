@@ -23,8 +23,10 @@ function roots_scripts()
 
         $assets = array(
             'css' => array(
-                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
-                'pure-css-responsive-min' => '//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
+                'pure-css-min' => '/assets/css/pure-min.css',
+//                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
+                'pure-css-responsive-min' => '/assets/css/grids-responsive-min.css',
+//                'pure-css-responsive-min' => '//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
                 'font-russo-one' => '//fonts.googleapis.com/css?family=Russo+One',
                 'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
                 'main' => $base . '/assets/css/main.css',
@@ -45,8 +47,10 @@ function roots_scripts()
 
         $assets = array(
             'css' => array(
-                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
-                'pure-css-responsive-min' => '//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
+//                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
+                'pure-css-min' => '/assets/css/pure-min.css',
+                'pure-css-responsive-min' => '/assets/css/grids-responsive-min.css',
+//                'pure-css-responsive-min' => '//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
                 'font-russo-one' => '//fonts.googleapis.com/css?family=Russo+One',
                 'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
                 'main' => $base . '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
