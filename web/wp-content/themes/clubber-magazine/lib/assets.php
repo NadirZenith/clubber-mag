@@ -23,10 +23,10 @@ function roots_scripts()
 
         $assets = array(
             'css' => array(
-                'pure-css-min' => '/assets/css/pure-min.css',
-//                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
-                'pure-css-responsive-min' => '/assets/css/grids-responsive-min.css',
 //                'pure-css-responsive-min' => '//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
+//                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
+                'pure-css-min' => $base . '/assets/css/pure-min.css',
+                'pure-css-responsive-min' => $base . '/assets/css/grids-responsive-min.css',
                 'font-russo-one' => '//fonts.googleapis.com/css?family=Russo+One',
                 'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
                 'main' => $base . '/assets/css/main.css',
@@ -44,13 +44,13 @@ function roots_scripts()
 
         $get_assets = file_get_contents(get_template_directory() . '/assets/manifest.json');
         $assets = json_decode($get_assets, true);
-
+        https://www.clubber-mag.com/web/wp-content/themes/clubber-magazine/assets/css/main.min.css?01db350c1c12fdf70e85236e60c2a2da&ver=4.3.1
         $assets = array(
             'css' => array(
 //                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
-                'pure-css-min' => '/assets/css/pure-min.css',
-                'pure-css-responsive-min' => '/assets/css/grids-responsive-min.css',
 //                'pure-css-responsive-min' => '//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
+                'pure-css-min' => $base . '/assets/css/pure-min.css',
+                'pure-css-responsive-min' => $base . '/assets/css/grids-responsive-min.css',
                 'font-russo-one' => '//fonts.googleapis.com/css?family=Russo+One',
                 'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
                 'main' => $base . '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
