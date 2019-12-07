@@ -65,7 +65,7 @@ if ($query->have_posts()) {
             if (places[i]['url']) {
                 preloads[i] = places[i]['url'];
             } else {
-                preloads[i] = 'http://www.clubber-mag.com/clubber-mag/wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
+                preloads[i] = '//www.clubber-mag.com/clubber-mag/wp-content/themes/clubber-magazine/assets/css/img/placeholder.jpg';
             }
 
             //infowindow content
