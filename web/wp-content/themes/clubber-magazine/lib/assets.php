@@ -23,13 +23,13 @@ function roots_scripts()
 
         $assets = array(
             'css' => array(
-                'pure-css-min' => 'http://yui.yahooapis.com/pure/0.6.0/pure-min.css',
-                'pure-css-responsive-min' => 'http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
-                'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One',
+                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
+                'pure-css-responsive-min' => '//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
+                'font-russo-one' => '//fonts.googleapis.com/css?family=Russo+One',
                 'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
                 'main' => $base . '/assets/css/main.css',
                 'pure-responsive-debug' => $base . '/assets/css/pure-responsive-debug.css',
-            /* 'pure-css-base' => 'http://yui.yahooapis.com/pure/0.6.0/base-min.css', */
+            /* 'pure-css-base' => '//yui.yahooapis.com/pure/0.6.0/base-min.css', */
             ),
             'js' => array(
                 'main' => $base . '/assets/js/scripts.js',
@@ -45,9 +45,9 @@ function roots_scripts()
 
         $assets = array(
             'css' => array(
-                'pure-css-min' => 'http://yui.yahooapis.com/pure/0.6.0/pure-min.css',
-                'pure-css-responsive-min' => 'http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
-                'font-russo-one' => 'http://fonts.googleapis.com/css?family=Russo+One',
+                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
+                'pure-css-responsive-min' => '//yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css',
+                'font-russo-one' => '//fonts.googleapis.com/css?family=Russo+One',
                 'font-awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
                 'main' => $base . '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
             ),
