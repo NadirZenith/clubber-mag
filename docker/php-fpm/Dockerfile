@@ -25,5 +25,14 @@ RUN docker-php-ext-configure intl --with-icu-dir=/usr/local && \
 # or pass ENV variable to php.ini-$WP_ENV
 RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/conf.d/php.ini
 
-WORKDIR  "/application"
 
+
+# override parent entry point
+# composer install & run tests
+ADD bin/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+
+WORKDIR  "/application"
+VOLUME  "/application"
