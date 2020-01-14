@@ -1153,12 +1153,11 @@ class Zebra_Form {
             // add the "Zebra_Form" required class
                   $this->form_properties[ 'attributes' ][ 'class' ] .= ' Zebra_Form';
 
-//            die(var_dump($this->form_properties));
             // if no custom classes are set, set the required "Zebra_Form" class
-            else{
-                  
-                  $this->form_properties[ 'attributes' ]= [ 'class'  => 'Zebra_Form'];
-            }
+            else
+//                  $this->form_properties[ 'attributes' ][ 'class' ] = 'Zebra_Form';
+                  $this->form_properties['attributes'] = ['class' => 'Zebra_Form'];
+
 
             // if any form attributes have been specified
             if ( is_array( $this->form_properties[ 'attributes' ] ) )
