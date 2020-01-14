@@ -44,7 +44,8 @@ function roots_scripts()
 
         $get_assets = file_get_contents(get_template_directory() . '/assets/manifest.json');
         $assets = json_decode($get_assets, true);
-        https://www.clubber-mag.com/web/wp-content/themes/clubber-magazine/assets/css/main.min.css?01db350c1c12fdf70e85236e60c2a2da&ver=4.3.1
+        
+//        https://www.clubber-mag.com/web/wp-content/themes/clubber-magazine/assets/css/main.min.css?01db350c1c12fdf70e85236e60c2a2da&ver=4.3.1
         $assets = array(
             'css' => array(
 //                'pure-css-min' => '//yui.yahooapis.com/pure/0.6.0/pure-min.css',
