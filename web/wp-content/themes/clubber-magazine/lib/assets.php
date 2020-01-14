@@ -64,8 +64,8 @@ function roots_scripts()
             ),
         );
     }
-
-
+    
+    
     /**
      * jQuery is loaded using the same method from HTML5 Boilerplate:
      * Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
@@ -76,10 +76,10 @@ function roots_scripts()
         wp_register_script('jquery', $assets['js']['jquery'], array(), null, false);
         add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
     }
-
+    
     nz_enqueue_styles($assets['css']);
     nz_enqueue_scripts($assets['js']);
-
+    
     /*
       if (is_single() && comments_open() && get_option('thread_comments')) {
       wp_enqueue_script('comment-reply');
@@ -105,16 +105,16 @@ function nz_enqueue_scripts($assets)
 function roots_jquery_local_fallback($src, $handle = null)
 {
     static $add_jquery_fallback = false;
-
+    
     if ($add_jquery_fallback) {
         echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/vendor/jquery/dist/jquery.min.js?1.11.1"><\/script>\')</script>' . "\n";
         $add_jquery_fallback = false;
     }
-
+    
     if ($handle === 'jquery') {
         $add_jquery_fallback = true;
     }
-
+    
     return $src;
 }
 /** @todo nz change this because of assets rewrite */
@@ -134,9 +134,9 @@ function roots_google_analytics()
         (function (b, o, i, l, e, r) {
             b.GoogleAnalyticsObject = l;
             b[l] || (b[l] =
-                    function () {
-                        (b[l].q = b[l].q || []).push(arguments)
-                    });
+                function () {
+                    (b[l].q = b[l].q || []).push(arguments)
+                });
             b[l].l = +new Date;
             e = o.createElement(i);
             r = o.getElementsByTagName(i)[0];
@@ -146,6 +146,6 @@ function roots_google_analytics()
         ga('create', '<?php echo GOOGLE_ANALYTICS_ID; ?>');
         ga('send', 'pageview');
     </script>
-
+    
     <?php
 }
