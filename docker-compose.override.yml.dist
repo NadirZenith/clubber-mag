@@ -7,10 +7,8 @@ services:
 #      ports:
 #        - "3306:3306"
 
-    webserver:
+    wp:
       restart: unless-stopped
       ports:
           - $WEBSERVER_PORT:80
 
-    php:
-      restart: unless-stopped
