@@ -1,0 +1,54 @@
+version: "3"
+services:
+    mariadb:
+      build: docker/mariadb
+      volumes:
+        - ./volume/db/mysql:/var/lib/mysql
+      env_file:
+        - .env
+
+#    webserver:
+#      build: nginx
+#      working_dir: /application
+#      volumes:
+#          - ${APP_PATH}:/application
+#          - ./volume/logs/nginx:/var/log/nginx
+#          - ./volume/uploads:/application/web/wp-content/uploads
+#
+#    php:
+#      build: php-fpm
+#      working_dir: /application
+#      volumes:
+#          - ${APP_PATH}:/application
+#          - ./volume/uploads:/application/web/wp-content/uploads
+#          - ./php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf # config php-fpm
+#          - ./php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
+#      environment:
+#        MYSQL_DATABASE: ${MYSQL_DATABASE}
+#        MYSQL_USER: ${MYSQL_USER}
+#        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#        MYSQL_HOST: ${MYSQL_HOST}
+#        WP_HOME: ${WP_HOME}
+#        WP_SITEURL: ${WP_SITEURL}
+#        WP_DEBUG: ${WP_DEBUG}
+#        WP_ENV: ${WP_ENV}
+#        AUTH_KEY: ${AUTH_KEY}
+#        SECURE_AUTH_KEY: ${SECURE_AUTH_KEY}
+#        LOGGED_IN_KEY: ${LOGGED_IN_KEY}
+#        NONCE_KEY: ${NONCE_KEY}
+#        AUTH_SALT: ${AUTH_SALT}
+#        SECURE_AUTH_SALT: ${SECURE_AUTH_SALT}
+#        LOGGED_IN_SALT: ${LOGGED_IN_SALT}
+#        NONCE_SALT: ${NONCE_SALT}
+#        FACEBOOK_APP_ID: ${FACEBOOK_APP_ID}
+#        FACEBOOK_APP_SECRET: ${FACEBOOK_APP_SECRET}
+#        FACEBOOK_CLIENT_TOKEN: ${FACEBOOK_CLIENT_TOKEN}
+
+    wp:
+      build: docker/wp
+      env_file:
+        - .env
+      volumes:
+        - ./volume/uploads:/var/www/html/wp-content/uploads
+        - ./site/wp-content:/var/www/html/wp-content
+        - ./site/wp-config.php:/var/www/html/wp-config.php

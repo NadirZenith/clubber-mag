@@ -1,45 +1,45 @@
-/web/wp-content/uploads/
-/web/wp-content/blogs.dir/
-/web/wp-content/upgrade/
-/web/wp-content/backup-db/
-/web/wp-content/advanced-cache.php
-/web/wp-content/wp-cache-config.php
-/web/wp-content/w3tc-config.php
+/site/wp-content/uploads/
+/site/wp-content/blogs.dir/
+/site/wp-content/upgrade/
+/site/wp-content/backup-db/
+/site/wp-content/advanced-cache.php
+/site/wp-content/wp-cache-config.php
+/site/wp-content/w3tc-config.php
 sitemap.xml
 *.log
-/web/wp-content/cache/
+/site/wp-content/cache/
 sitemap.xml.gz
 
 /backups
-/web/wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
-/web/wp-content/plugins/all-in-one-wp-security-and-firewall/backups/
-/web/wp-content/aiowps_backups/
-/web/wp-content/themes/clubber-magazine/prueba/
+/site/wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
+/site/wp-content/plugins/all-in-one-wp-security-and-firewall/backups/
+/site/wp-content/aiowps_backups/
+/site/wp-content/themes/clubber-magazine/prueba/
 
-/web/wp-content/plugins/core-control/
-/web/wp-content/plugins/debug-*/
-/web/wp-content/plugins/developer/
-/web/wp-content/plugins/query-monitor/
-/web/wp-content/plugins/rewrite-rules-inspector/
-/web/wp-content/plugins/theme-check/
-/web/wp-content/plugins/user-switching/
-/web/wp-content/plugins/wpdevtool/
+/site/wp-content/plugins/core-control/
+/site/wp-content/plugins/debug-*/
+/site/wp-content/plugins/developer/
+/site/wp-content/plugins/query-monitor/
+/site/wp-content/plugins/rewrite-rules-inspector/
+/site/wp-content/plugins/theme-check/
+/site/wp-content/plugins/user-switching/
+/site/wp-content/plugins/wpdevtool/
 
-/web/wp-content/plugins/myMail/
-/web/wp-content/plugins/admin-bar-toggle/
+/site/wp-content/plugins/myMail/
+/site/wp-content/plugins/admin-bar-toggle/
 
 /.idea
 
-/docker/volume/db/mysql
+/volume/db/mysql
 
-/docker/volume/db/dump/*
-!/docker/volume/db/dump/.gitkeep
+/volume/db/dump/*
+!/volume/db/dump/.gitkeep
 
-/docker/volume/logs/nginx/*
-!/docker/volume/logs/nginx/.gitkeep
+/volume/logs/nginx/*
+!/volume/logs/nginx/.gitkeep
 
-/docker/volume/uploads/*
-!/docker/volume/uploads/.gitkeep
+/volume/uploads/*
+!/volume/uploads/.gitkeep
 
-/docker/docker-compose.override.yml
-/docker/.env
+/docker-compose.override.yml
+/.env
