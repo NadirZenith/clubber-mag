@@ -39,8 +39,7 @@ sitemap.xml.gz
 /volume/logs/nginx/*
 !/volume/logs/nginx/.gitkeep
 
-/volume/uploads/*
-!/volume/uploads/.gitkeep
+/volume/uploads
 
 /docker-compose.override.yml
 /.env
