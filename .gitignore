@@ -14,7 +14,8 @@ sitemap.xml.gz
 /site/wp-content/plugins/all-in-one-wp-security-and-firewall/logs/
 /site/wp-content/plugins/all-in-one-wp-security-and-firewall/backups/
 /site/wp-content/aiowps_backups/
-/site/wp-content/themes/clubber-magazine/prueba/
+/site/wp-content/themes/*
+!/site/wp-content/themes/clubber-magazine/
 
 /site/wp-content/plugins/core-control/
 /site/wp-content/plugins/debug-*/
