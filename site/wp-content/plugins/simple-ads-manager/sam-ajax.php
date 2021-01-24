@@ -44,9 +44,9 @@ $sTable = $wpdb->prefix . 'sam_stats';
 
 $options = get_option('samPluginOptions');
 
-function sanitize_option($option, $value) {
-  return $value;
-}
+//function sanitize_option($option, $value) {
+//  return $value;
+//}
 
 //Typical headers
 @header("Content-Type: application/json; charset=$charset");
